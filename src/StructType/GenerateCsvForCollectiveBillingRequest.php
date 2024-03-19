@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: Deprecated and replaced by GenerateInvoiceFileRequest
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GenerateCsvForCollectiveBillingRequest extends AbstractStructBase
 {
     /**

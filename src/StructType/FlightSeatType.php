@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for FlightSeatType StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class FlightSeatType extends AbstractStructBase
 {
     /**

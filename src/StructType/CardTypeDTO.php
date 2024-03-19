@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CardTypeDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CardTypeDTO extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for OrderHistoryDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class OrderHistoryDTO extends AbstractStructBase
 {
     /**

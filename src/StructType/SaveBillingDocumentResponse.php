@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: saveBillingDocument --- Save a document (error, if the document is already assigned a document_no). Request: - a BillingDocumentDTO - zero or more BillingPositionDTO Calculate the new total_price
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveBillingDocumentResponse extends AbstractStructBase
 {
     /**

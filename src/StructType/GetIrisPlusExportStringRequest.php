@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetIrisPlusExportStringRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetIrisPlusExportStringRequest extends AbstractStructBase
 {
     /**

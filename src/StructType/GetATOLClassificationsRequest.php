@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetATOLClassificationsRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetATOLClassificationsRequest extends AbstractStructBase
 {
 }

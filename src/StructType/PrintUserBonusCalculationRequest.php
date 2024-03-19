@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for PrintUserBonusCalculationRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class PrintUserBonusCalculationRequest extends AbstractStructBase
 {
     /**
@@ -20,7 +21,7 @@ class PrintUserBonusCalculationRequest extends AbstractStructBase
      * - ref: MidocoBonusEmployee
      * @var \Pggns\MidocoApi\Order\StructType\MidocoBonusEmployee[]
      */
-    protected array $MidocoBonusEmployee = [];
+    protected ?array $MidocoBonusEmployee = null;
     /**
      * The isPreview
      * @var bool|null
@@ -40,7 +41,7 @@ class PrintUserBonusCalculationRequest extends AbstractStructBase
      * @param bool $isPreview
      * @param bool $test
      */
-    public function __construct(array $midocoBonusEmployee = [], ?bool $isPreview = null, ?bool $test = null)
+    public function __construct(?array $midocoBonusEmployee = null, ?bool $isPreview = null, ?bool $test = null)
     {
         $this
             ->setMidocoBonusEmployee($midocoBonusEmployee)
@@ -51,18 +52,22 @@ class PrintUserBonusCalculationRequest extends AbstractStructBase
      * Get MidocoBonusEmployee value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoBonusEmployee[]
      */
-    public function getMidocoBonusEmployee(): array
+    public function getMidocoBonusEmployee(): ?array
     {
         return $this->MidocoBonusEmployee;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoBonusEmployee method
+     * This method is responsible for validating the value(s) passed to the setMidocoBonusEmployee method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoBonusEmployee method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoBonusEmployeeForArrayConstraintsFromSetMidocoBonusEmployee(array $values = []): string
+    public static function validateMidocoBonusEmployeeForArrayConstraintFromSetMidocoBonusEmployee(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $printUserBonusCalculationRequestMidocoBonusEmployeeItem) {
@@ -84,10 +89,10 @@ class PrintUserBonusCalculationRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoBonusEmployee[] $midocoBonusEmployee
      * @return \Pggns\MidocoApi\Order\StructType\PrintUserBonusCalculationRequest
      */
-    public function setMidocoBonusEmployee(array $midocoBonusEmployee = []): self
+    public function setMidocoBonusEmployee(?array $midocoBonusEmployee = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoBonusEmployeeArrayErrorMessage = self::validateMidocoBonusEmployeeForArrayConstraintsFromSetMidocoBonusEmployee($midocoBonusEmployee))) {
+        if ('' !== ($midocoBonusEmployeeArrayErrorMessage = self::validateMidocoBonusEmployeeForArrayConstraintFromSetMidocoBonusEmployee($midocoBonusEmployee))) {
             throw new InvalidArgumentException($midocoBonusEmployeeArrayErrorMessage, __LINE__);
         }
         $this->MidocoBonusEmployee = $midocoBonusEmployee;

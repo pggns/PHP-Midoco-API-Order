@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SearchMediatorConditionResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchMediatorConditionResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class SearchMediatorConditionResponse extends AbstractStructBase
      * - ref: MediatorConditionInfo
      * @var \Pggns\MidocoApi\Order\StructType\MediatorConditionInfo[]
      */
-    protected array $MediatorConditionInfo = [];
+    protected ?array $MediatorConditionInfo = null;
     /**
      * Constructor method for SearchMediatorConditionResponse
      * @uses SearchMediatorConditionResponse::setMediatorConditionInfo()
      * @param \Pggns\MidocoApi\Order\StructType\MediatorConditionInfo[] $mediatorConditionInfo
      */
-    public function __construct(array $mediatorConditionInfo = [])
+    public function __construct(?array $mediatorConditionInfo = null)
     {
         $this
             ->setMediatorConditionInfo($mediatorConditionInfo);
@@ -36,18 +37,22 @@ class SearchMediatorConditionResponse extends AbstractStructBase
      * Get MediatorConditionInfo value
      * @return \Pggns\MidocoApi\Order\StructType\MediatorConditionInfo[]
      */
-    public function getMediatorConditionInfo(): array
+    public function getMediatorConditionInfo(): ?array
     {
         return $this->MediatorConditionInfo;
     }
     /**
-     * This method is responsible for validating the values passed to the setMediatorConditionInfo method
+     * This method is responsible for validating the value(s) passed to the setMediatorConditionInfo method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMediatorConditionInfo method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMediatorConditionInfoForArrayConstraintsFromSetMediatorConditionInfo(array $values = []): string
+    public static function validateMediatorConditionInfoForArrayConstraintFromSetMediatorConditionInfo(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $searchMediatorConditionResponseMediatorConditionInfoItem) {
@@ -69,10 +74,10 @@ class SearchMediatorConditionResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MediatorConditionInfo[] $mediatorConditionInfo
      * @return \Pggns\MidocoApi\Order\StructType\SearchMediatorConditionResponse
      */
-    public function setMediatorConditionInfo(array $mediatorConditionInfo = []): self
+    public function setMediatorConditionInfo(?array $mediatorConditionInfo = null): self
     {
         // validation for constraint: array
-        if ('' !== ($mediatorConditionInfoArrayErrorMessage = self::validateMediatorConditionInfoForArrayConstraintsFromSetMediatorConditionInfo($mediatorConditionInfo))) {
+        if ('' !== ($mediatorConditionInfoArrayErrorMessage = self::validateMediatorConditionInfoForArrayConstraintFromSetMediatorConditionInfo($mediatorConditionInfo))) {
             throw new InvalidArgumentException($mediatorConditionInfoArrayErrorMessage, __LINE__);
         }
         $this->MediatorConditionInfo = $mediatorConditionInfo;

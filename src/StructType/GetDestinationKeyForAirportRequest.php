@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetDestinationKeyForAirportRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetDestinationKeyForAirportRequest extends AbstractStructBase
 {
     /**

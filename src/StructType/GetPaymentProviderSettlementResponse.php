@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetPaymentProviderSettlementResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetPaymentProviderSettlementResponse extends AbstractStructBase
 {
     /**

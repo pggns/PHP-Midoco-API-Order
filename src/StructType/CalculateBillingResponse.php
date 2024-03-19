@@ -19,6 +19,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * pre-existing billing-positions with the different account (which are not deposit positions) have to be voided.
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CalculateBillingResponse extends AbstractStructBase
 {
 }

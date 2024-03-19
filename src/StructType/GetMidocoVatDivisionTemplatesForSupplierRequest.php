@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetMidocoVatDivisionTemplatesForSupplierRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetMidocoVatDivisionTemplatesForSupplierRequest extends AbstractStructBase
 {
     /**

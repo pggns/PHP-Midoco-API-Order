@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoCommunicationHistoryPrintInfo StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoCommunicationHistoryPrintInfo extends CommunicationHistoryDTO
 {
     /**
@@ -25,7 +26,7 @@ class MidocoCommunicationHistoryPrintInfo extends CommunicationHistoryDTO
      * - minOccurs: 0
      * @var int[]
      */
-    protected array $Ids = [];
+    protected ?array $Ids = null;
     /**
      * Constructor method for MidocoCommunicationHistoryPrintInfo
      * @uses MidocoCommunicationHistoryPrintInfo::setSelected()
@@ -33,7 +34,7 @@ class MidocoCommunicationHistoryPrintInfo extends CommunicationHistoryDTO
      * @param bool $selected
      * @param int[] $ids
      */
-    public function __construct(?bool $selected = null, array $ids = [])
+    public function __construct(?bool $selected = null, ?array $ids = null)
     {
         $this
             ->setSelected($selected)
@@ -66,18 +67,22 @@ class MidocoCommunicationHistoryPrintInfo extends CommunicationHistoryDTO
      * Get Ids value
      * @return int[]
      */
-    public function getIds(): array
+    public function getIds(): ?array
     {
         return $this->Ids;
     }
     /**
-     * This method is responsible for validating the values passed to the setIds method
+     * This method is responsible for validating the value(s) passed to the setIds method
      * This method is willingly generated in order to preserve the one-line inline validation within the setIds method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateIdsForArrayConstraintsFromSetIds(array $values = []): string
+    public static function validateIdsForArrayConstraintFromSetIds(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoCommunicationHistoryPrintInfoIdsItem) {
@@ -99,10 +104,10 @@ class MidocoCommunicationHistoryPrintInfo extends CommunicationHistoryDTO
      * @param int[] $ids
      * @return \Pggns\MidocoApi\Order\StructType\MidocoCommunicationHistoryPrintInfo
      */
-    public function setIds(array $ids = []): self
+    public function setIds(?array $ids = null): self
     {
         // validation for constraint: array
-        if ('' !== ($idsArrayErrorMessage = self::validateIdsForArrayConstraintsFromSetIds($ids))) {
+        if ('' !== ($idsArrayErrorMessage = self::validateIdsForArrayConstraintFromSetIds($ids))) {
             throw new InvalidArgumentException($idsArrayErrorMessage, __LINE__);
         }
         $this->Ids = $ids;

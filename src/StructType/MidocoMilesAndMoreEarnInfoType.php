@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: The promotion that can be applied. The transaction provides the information about the actually applied promotion. | The most recent Miles & More transaction.
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoMilesAndMoreEarnInfoType extends MilesAndMoreEarnInfoDTO
 {
     /**
@@ -31,7 +32,7 @@ class MidocoMilesAndMoreEarnInfoType extends MilesAndMoreEarnInfoDTO
      * - ref: MidocoMilesAndMoreEarnTransactionReference
      * @var \Pggns\MidocoApi\Order\StructType\MidocoMilesAndMoreEarnTransactionReference[]
      */
-    protected array $MidocoMilesAndMoreEarnTransactionReference = [];
+    protected ?array $MidocoMilesAndMoreEarnTransactionReference = null;
     /**
      * The MidocoMilesAndMorePromotion
      * Meta information extracted from the WSDL
@@ -78,7 +79,7 @@ class MidocoMilesAndMoreEarnInfoType extends MilesAndMoreEarnInfoDTO
      * @param string $calculatedDueDate
      * @param bool $isChanged
      */
-    public function __construct(?\Pggns\MidocoApi\Order\StructType\MidocoMilesAndMoreEarnTransaction $midocoMilesAndMoreEarnTransaction = null, array $midocoMilesAndMoreEarnTransactionReference = [], ?\Pggns\MidocoApi\Order\StructType\MilesAndMorePromotionDTO $midocoMilesAndMorePromotion = null, ?int $calculatedMiles = null, ?string $calculatedDueDate = null, ?bool $isChanged = null)
+    public function __construct(?\Pggns\MidocoApi\Order\StructType\MidocoMilesAndMoreEarnTransaction $midocoMilesAndMoreEarnTransaction = null, ?array $midocoMilesAndMoreEarnTransactionReference = null, ?\Pggns\MidocoApi\Order\StructType\MilesAndMorePromotionDTO $midocoMilesAndMorePromotion = null, ?int $calculatedMiles = null, ?string $calculatedDueDate = null, ?bool $isChanged = null)
     {
         $this
             ->setMidocoMilesAndMoreEarnTransaction($midocoMilesAndMoreEarnTransaction)
@@ -111,18 +112,22 @@ class MidocoMilesAndMoreEarnInfoType extends MilesAndMoreEarnInfoDTO
      * Get MidocoMilesAndMoreEarnTransactionReference value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoMilesAndMoreEarnTransactionReference[]
      */
-    public function getMidocoMilesAndMoreEarnTransactionReference(): array
+    public function getMidocoMilesAndMoreEarnTransactionReference(): ?array
     {
         return $this->MidocoMilesAndMoreEarnTransactionReference;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoMilesAndMoreEarnTransactionReference method
+     * This method is responsible for validating the value(s) passed to the setMidocoMilesAndMoreEarnTransactionReference method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoMilesAndMoreEarnTransactionReference method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoMilesAndMoreEarnTransactionReferenceForArrayConstraintsFromSetMidocoMilesAndMoreEarnTransactionReference(array $values = []): string
+    public static function validateMidocoMilesAndMoreEarnTransactionReferenceForArrayConstraintFromSetMidocoMilesAndMoreEarnTransactionReference(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoMilesAndMoreEarnInfoTypeMidocoMilesAndMoreEarnTransactionReferenceItem) {
@@ -144,10 +149,10 @@ class MidocoMilesAndMoreEarnInfoType extends MilesAndMoreEarnInfoDTO
      * @param \Pggns\MidocoApi\Order\StructType\MidocoMilesAndMoreEarnTransactionReference[] $midocoMilesAndMoreEarnTransactionReference
      * @return \Pggns\MidocoApi\Order\StructType\MidocoMilesAndMoreEarnInfoType
      */
-    public function setMidocoMilesAndMoreEarnTransactionReference(array $midocoMilesAndMoreEarnTransactionReference = []): self
+    public function setMidocoMilesAndMoreEarnTransactionReference(?array $midocoMilesAndMoreEarnTransactionReference = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoMilesAndMoreEarnTransactionReferenceArrayErrorMessage = self::validateMidocoMilesAndMoreEarnTransactionReferenceForArrayConstraintsFromSetMidocoMilesAndMoreEarnTransactionReference($midocoMilesAndMoreEarnTransactionReference))) {
+        if ('' !== ($midocoMilesAndMoreEarnTransactionReferenceArrayErrorMessage = self::validateMidocoMilesAndMoreEarnTransactionReferenceForArrayConstraintFromSetMidocoMilesAndMoreEarnTransactionReference($midocoMilesAndMoreEarnTransactionReference))) {
             throw new InvalidArgumentException($midocoMilesAndMoreEarnTransactionReferenceArrayErrorMessage, __LINE__);
         }
         $this->MidocoMilesAndMoreEarnTransactionReference = $midocoMilesAndMoreEarnTransactionReference;

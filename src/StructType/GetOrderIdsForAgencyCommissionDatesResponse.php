@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetOrderIdsForAgencyCommissionDatesResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetOrderIdsForAgencyCommissionDatesResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetOrderIdsForAgencyCommissionDatesResponse extends AbstractStructBase
      * - ref: MidocoOrderId
      * @var \Pggns\MidocoApi\Order\StructType\MidocoOrderId[]
      */
-    protected array $MidocoOrderId = [];
+    protected ?array $MidocoOrderId = null;
     /**
      * Constructor method for GetOrderIdsForAgencyCommissionDatesResponse
      * @uses GetOrderIdsForAgencyCommissionDatesResponse::setMidocoOrderId()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoOrderId[] $midocoOrderId
      */
-    public function __construct(array $midocoOrderId = [])
+    public function __construct(?array $midocoOrderId = null)
     {
         $this
             ->setMidocoOrderId($midocoOrderId);
@@ -36,18 +37,22 @@ class GetOrderIdsForAgencyCommissionDatesResponse extends AbstractStructBase
      * Get MidocoOrderId value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoOrderId[]
      */
-    public function getMidocoOrderId(): array
+    public function getMidocoOrderId(): ?array
     {
         return $this->MidocoOrderId;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoOrderId method
+     * This method is responsible for validating the value(s) passed to the setMidocoOrderId method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoOrderId method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoOrderIdForArrayConstraintsFromSetMidocoOrderId(array $values = []): string
+    public static function validateMidocoOrderIdForArrayConstraintFromSetMidocoOrderId(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getOrderIdsForAgencyCommissionDatesResponseMidocoOrderIdItem) {
@@ -69,10 +74,10 @@ class GetOrderIdsForAgencyCommissionDatesResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoOrderId[] $midocoOrderId
      * @return \Pggns\MidocoApi\Order\StructType\GetOrderIdsForAgencyCommissionDatesResponse
      */
-    public function setMidocoOrderId(array $midocoOrderId = []): self
+    public function setMidocoOrderId(?array $midocoOrderId = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoOrderIdArrayErrorMessage = self::validateMidocoOrderIdForArrayConstraintsFromSetMidocoOrderId($midocoOrderId))) {
+        if ('' !== ($midocoOrderIdArrayErrorMessage = self::validateMidocoOrderIdForArrayConstraintFromSetMidocoOrderId($midocoOrderId))) {
             throw new InvalidArgumentException($midocoOrderIdArrayErrorMessage, __LINE__);
         }
         $this->MidocoOrderId = $midocoOrderId;

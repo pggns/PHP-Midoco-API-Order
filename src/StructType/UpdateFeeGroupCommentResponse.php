@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for UpdateFeeGroupCommentResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class UpdateFeeGroupCommentResponse extends AbstractStructBase
 {
     /**

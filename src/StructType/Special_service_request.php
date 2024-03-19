@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for special-service-request StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class Special_service_request extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for AutoInvoiceConditionsChangeLogDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class AutoInvoiceConditionsChangeLogDTO extends AbstractStructBase
 {
     /**

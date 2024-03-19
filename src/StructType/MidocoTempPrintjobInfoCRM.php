@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoTempPrintjobInfoCRM StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoTempPrintjobInfoCRM extends AbstractStructBase
 {
     /**

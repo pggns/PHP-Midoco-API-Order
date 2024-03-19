@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for UnfinishedTaskTypeStatisticsRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class UnfinishedTaskTypeStatisticsRequest extends AbstractStructBase
 {
     /**

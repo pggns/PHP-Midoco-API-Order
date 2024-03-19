@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoAreaCode StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoAreaCode extends AreaDTO
 {
     /**
@@ -21,7 +22,7 @@ class MidocoAreaCode extends AreaDTO
      * - ref: MidocoAreaDescription
      * @var \Pggns\MidocoApi\Order\StructType\AreaDescriptionDTO[]
      */
-    protected array $MidocoAreaDescription = [];
+    protected ?array $MidocoAreaDescription = null;
     /**
      * The unitName
      * Meta information extracted from the WSDL
@@ -45,7 +46,7 @@ class MidocoAreaCode extends AreaDTO
      * @param string $unitName
      * @param string $displayDescription
      */
-    public function __construct(array $midocoAreaDescription = [], ?string $unitName = null, ?string $displayDescription = null)
+    public function __construct(?array $midocoAreaDescription = null, ?string $unitName = null, ?string $displayDescription = null)
     {
         $this
             ->setMidocoAreaDescription($midocoAreaDescription)
@@ -56,18 +57,22 @@ class MidocoAreaCode extends AreaDTO
      * Get MidocoAreaDescription value
      * @return \Pggns\MidocoApi\Order\StructType\AreaDescriptionDTO[]
      */
-    public function getMidocoAreaDescription(): array
+    public function getMidocoAreaDescription(): ?array
     {
         return $this->MidocoAreaDescription;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoAreaDescription method
+     * This method is responsible for validating the value(s) passed to the setMidocoAreaDescription method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoAreaDescription method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoAreaDescriptionForArrayConstraintsFromSetMidocoAreaDescription(array $values = []): string
+    public static function validateMidocoAreaDescriptionForArrayConstraintFromSetMidocoAreaDescription(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoAreaCodeMidocoAreaDescriptionItem) {
@@ -89,10 +94,10 @@ class MidocoAreaCode extends AreaDTO
      * @param \Pggns\MidocoApi\Order\StructType\AreaDescriptionDTO[] $midocoAreaDescription
      * @return \Pggns\MidocoApi\Order\StructType\MidocoAreaCode
      */
-    public function setMidocoAreaDescription(array $midocoAreaDescription = []): self
+    public function setMidocoAreaDescription(?array $midocoAreaDescription = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoAreaDescriptionArrayErrorMessage = self::validateMidocoAreaDescriptionForArrayConstraintsFromSetMidocoAreaDescription($midocoAreaDescription))) {
+        if ('' !== ($midocoAreaDescriptionArrayErrorMessage = self::validateMidocoAreaDescriptionForArrayConstraintFromSetMidocoAreaDescription($midocoAreaDescription))) {
             throw new InvalidArgumentException($midocoAreaDescriptionArrayErrorMessage, __LINE__);
         }
         $this->MidocoAreaDescription = $midocoAreaDescription;

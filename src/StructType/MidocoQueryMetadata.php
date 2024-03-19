@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoQueryMetadata StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoQueryMetadata extends AbstractStructBase
 {
     /**
@@ -20,13 +21,13 @@ class MidocoQueryMetadata extends AbstractStructBase
      * - ref: MidocoQueryField
      * @var \Pggns\MidocoApi\Order\StructType\MidocoQueryField[]
      */
-    protected array $MidocoQueryField = [];
+    protected ?array $MidocoQueryField = null;
     /**
      * Constructor method for MidocoQueryMetadata
      * @uses MidocoQueryMetadata::setMidocoQueryField()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoQueryField[] $midocoQueryField
      */
-    public function __construct(array $midocoQueryField = [])
+    public function __construct(?array $midocoQueryField = null)
     {
         $this
             ->setMidocoQueryField($midocoQueryField);
@@ -35,18 +36,22 @@ class MidocoQueryMetadata extends AbstractStructBase
      * Get MidocoQueryField value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoQueryField[]
      */
-    public function getMidocoQueryField(): array
+    public function getMidocoQueryField(): ?array
     {
         return $this->MidocoQueryField;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoQueryField method
+     * This method is responsible for validating the value(s) passed to the setMidocoQueryField method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoQueryField method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoQueryFieldForArrayConstraintsFromSetMidocoQueryField(array $values = []): string
+    public static function validateMidocoQueryFieldForArrayConstraintFromSetMidocoQueryField(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoQueryMetadataMidocoQueryFieldItem) {
@@ -68,10 +73,10 @@ class MidocoQueryMetadata extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoQueryField[] $midocoQueryField
      * @return \Pggns\MidocoApi\Order\StructType\MidocoQueryMetadata
      */
-    public function setMidocoQueryField(array $midocoQueryField = []): self
+    public function setMidocoQueryField(?array $midocoQueryField = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoQueryFieldArrayErrorMessage = self::validateMidocoQueryFieldForArrayConstraintsFromSetMidocoQueryField($midocoQueryField))) {
+        if ('' !== ($midocoQueryFieldArrayErrorMessage = self::validateMidocoQueryFieldForArrayConstraintFromSetMidocoQueryField($midocoQueryField))) {
             throw new InvalidArgumentException($midocoQueryFieldArrayErrorMessage, __LINE__);
         }
         $this->MidocoQueryField = $midocoQueryField;

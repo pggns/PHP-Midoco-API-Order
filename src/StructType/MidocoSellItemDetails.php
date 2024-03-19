@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoSellItemDetails StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoSellItemDetails extends AbstractStructBase
 {
     /**
@@ -285,6 +286,13 @@ class MidocoSellItemDetails extends AbstractStructBase
      */
     protected ?string $locationDescription = null;
     /**
+     * The depositPreset
+     * Meta information extracted from the WSDL
+     * - minOccurs: 0
+     * @var bool|null
+     */
+    protected ?bool $depositPreset = null;
+    /**
      * The depositAmount
      * Meta information extracted from the WSDL
      * - minOccurs: 0
@@ -298,6 +306,20 @@ class MidocoSellItemDetails extends AbstractStructBase
      * @var string|null
      */
     protected ?string $depositPaymentType = null;
+    /**
+     * The finalPaymentAmount
+     * Meta information extracted from the WSDL
+     * - minOccurs: 0
+     * @var float|null
+     */
+    protected ?float $finalPaymentAmount = null;
+    /**
+     * The finalPaymentDate
+     * Meta information extracted from the WSDL
+     * - minOccurs: 0
+     * @var string|null
+     */
+    protected ?string $finalPaymentDate = null;
     /**
      * The finalPaymentType
      * Meta information extracted from the WSDL
@@ -348,7 +370,7 @@ class MidocoSellItemDetails extends AbstractStructBase
      * - ref: MidocoAccomodationDetailsInfo4Printing
      * @var \Pggns\MidocoApi\Order\StructType\MidocoAccomodationDetailsInfo4Printing[]
      */
-    protected array $MidocoAccomodationDetailsInfo4Printing = [];
+    protected ?array $MidocoAccomodationDetailsInfo4Printing = null;
     /**
      * The MidocoCarDetailInfo4Printing
      * Meta information extracted from the WSDL
@@ -356,7 +378,7 @@ class MidocoSellItemDetails extends AbstractStructBase
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\CarDetailDTO[]
      */
-    protected array $MidocoCarDetailInfo4Printing = [];
+    protected ?array $MidocoCarDetailInfo4Printing = null;
     /**
      * The MidocoFlightDetailsInfo4Printing
      * Meta information extracted from the WSDL
@@ -365,7 +387,7 @@ class MidocoSellItemDetails extends AbstractStructBase
      * - ref: MidocoFlightDetailsInfo4Printing
      * @var \Pggns\MidocoApi\Order\StructType\MidocoFlightDetailsInfo4Printing[]
      */
-    protected array $MidocoFlightDetailsInfo4Printing = [];
+    protected ?array $MidocoFlightDetailsInfo4Printing = null;
     /**
      * The MidocoInsuranceDetailInfo4Printing
      * Meta information extracted from the WSDL
@@ -373,7 +395,7 @@ class MidocoSellItemDetails extends AbstractStructBase
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\InsuranceDetailDTO[]
      */
-    protected array $MidocoInsuranceDetailInfo4Printing = [];
+    protected ?array $MidocoInsuranceDetailInfo4Printing = null;
     /**
      * The MidocoTravelDetailsInfo4Printing
      * Meta information extracted from the WSDL
@@ -382,7 +404,7 @@ class MidocoSellItemDetails extends AbstractStructBase
      * - ref: MidocoTravelDetailsInfo4Printing
      * @var \Pggns\MidocoApi\Order\StructType\TravelDetailDTO[]
      */
-    protected array $MidocoTravelDetailsInfo4Printing = [];
+    protected ?array $MidocoTravelDetailsInfo4Printing = null;
     /**
      * The MidocoCalcItemDetailsInfo4Printing
      * Meta information extracted from the WSDL
@@ -391,7 +413,7 @@ class MidocoSellItemDetails extends AbstractStructBase
      * - ref: MidocoCalcItemDetailsInfo4Printing
      * @var \Pggns\MidocoApi\Order\StructType\MidocoCalcItemDetailsInfo4Printing[]
      */
-    protected array $MidocoCalcItemDetailsInfo4Printing = [];
+    protected ?array $MidocoCalcItemDetailsInfo4Printing = null;
     /**
      * The MidocoPassengerInfo4Printing
      * Meta information extracted from the WSDL
@@ -400,7 +422,7 @@ class MidocoSellItemDetails extends AbstractStructBase
      * - ref: MidocoPassengerInfo4Printing
      * @var \Pggns\MidocoApi\Order\StructType\MidocoPassengerInfo4Printing[]
      */
-    protected array $MidocoPassengerInfo4Printing = [];
+    protected ?array $MidocoPassengerInfo4Printing = null;
     /**
      * The MidocoCruiseDetailsInfo4Printing
      * Meta information extracted from the WSDL
@@ -409,7 +431,7 @@ class MidocoSellItemDetails extends AbstractStructBase
      * - ref: MidocoCruiseDetailsInfo4Printing
      * @var \Pggns\MidocoApi\Order\StructType\MidocoCruiseDetailsInfo4Printing[]
      */
-    protected array $MidocoCruiseDetailsInfo4Printing = [];
+    protected ?array $MidocoCruiseDetailsInfo4Printing = null;
     /**
      * The MidocoAttributeValue4Printing
      * Meta information extracted from the WSDL
@@ -418,7 +440,7 @@ class MidocoSellItemDetails extends AbstractStructBase
      * - ref: MidocoAttributeValue4Printing
      * @var \Pggns\MidocoApi\Order\StructType\MidocoAttributeValue4Printing[]
      */
-    protected array $MidocoAttributeValue4Printing = [];
+    protected ?array $MidocoAttributeValue4Printing = null;
     /**
      * The MidocoRemarks
      * Meta information extracted from the WSDL
@@ -426,7 +448,7 @@ class MidocoSellItemDetails extends AbstractStructBase
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\MidocoRemarkType[]
      */
-    protected array $MidocoRemarks = [];
+    protected ?array $MidocoRemarks = null;
     /**
      * The MidocoRemarksAbove
      * Meta information extracted from the WSDL
@@ -434,7 +456,7 @@ class MidocoSellItemDetails extends AbstractStructBase
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\MidocoRemarkType[]
      */
-    protected array $MidocoRemarksAbove = [];
+    protected ?array $MidocoRemarksAbove = null;
     /**
      * The MidocoRemarksAfterService
      * Meta information extracted from the WSDL
@@ -442,7 +464,7 @@ class MidocoSellItemDetails extends AbstractStructBase
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\MidocoRemarkType[]
      */
-    protected array $MidocoRemarksAfterService = [];
+    protected ?array $MidocoRemarksAfterService = null;
     /**
      * The MidocoRemarksEnd
      * Meta information extracted from the WSDL
@@ -450,7 +472,7 @@ class MidocoSellItemDetails extends AbstractStructBase
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\MidocoRemarkType[]
      */
-    protected array $MidocoRemarksEnd = [];
+    protected ?array $MidocoRemarksEnd = null;
     /**
      * The MidocoHint
      * Meta information extracted from the WSDL
@@ -459,7 +481,7 @@ class MidocoSellItemDetails extends AbstractStructBase
      * - ref: MidocoHint
      * @var \Pggns\MidocoApi\Order\StructType\MidocoHintType[]
      */
-    protected array $MidocoHint = [];
+    protected ?array $MidocoHint = null;
     /**
      * The MidocoBusDetailsInfo4Printing
      * Meta information extracted from the WSDL
@@ -468,7 +490,7 @@ class MidocoSellItemDetails extends AbstractStructBase
      * - ref: MidocoBusDetailsInfo4Printing
      * @var \Pggns\MidocoApi\Order\StructType\MidocoBusDetailsInfo4Printing[]
      */
-    protected array $MidocoBusDetailsInfo4Printing = [];
+    protected ?array $MidocoBusDetailsInfo4Printing = null;
     /**
      * The MidocoRailDetailsInfo4Printing
      * Meta information extracted from the WSDL
@@ -477,7 +499,7 @@ class MidocoSellItemDetails extends AbstractStructBase
      * - ref: MidocoRailDetailsInfo4Printing
      * @var \Pggns\MidocoApi\Order\StructType\MidocoRailDetailsInfo4Printing[]
      */
-    protected array $MidocoRailDetailsInfo4Printing = [];
+    protected ?array $MidocoRailDetailsInfo4Printing = null;
     /**
      * The MidocoPackageDetailsInfo4Printing
      * Meta information extracted from the WSDL
@@ -486,7 +508,7 @@ class MidocoSellItemDetails extends AbstractStructBase
      * - ref: MidocoPackageDetailsInfo4Printing
      * @var \Pggns\MidocoApi\Order\StructType\MidocoSellItemInfo4Printing[]
      */
-    protected array $MidocoPackageDetailsInfo4Printing = [];
+    protected ?array $MidocoPackageDetailsInfo4Printing = null;
     /**
      * The MidocoAdditionalService
      * Meta information extracted from the WSDL
@@ -495,7 +517,7 @@ class MidocoSellItemDetails extends AbstractStructBase
      * - ref: MidocoAdditionalService
      * @var \Pggns\MidocoApi\Order\StructType\MidocoAdditionalService[]
      */
-    protected array $MidocoAdditionalService = [];
+    protected ?array $MidocoAdditionalService = null;
     /**
      * The MidocoEventDetailsInfo4Printing
      * Meta information extracted from the WSDL
@@ -504,7 +526,7 @@ class MidocoSellItemDetails extends AbstractStructBase
      * - ref: MidocoEventDetailsInfo4Printing
      * @var \Pggns\MidocoApi\Order\StructType\MidocoEventDetailsInfo4Printing[]
      */
-    protected array $MidocoEventDetailsInfo4Printing = [];
+    protected ?array $MidocoEventDetailsInfo4Printing = null;
     /**
      * The MidocoDocumentitem4Printing
      * Meta information extracted from the WSDL
@@ -513,7 +535,7 @@ class MidocoSellItemDetails extends AbstractStructBase
      * - ref: MidocoDocumentitem4Printing
      * @var \Pggns\MidocoApi\Order\StructType\MidocoDocumentitem4Printing[]
      */
-    protected array $MidocoDocumentitem4Printing = [];
+    protected ?array $MidocoDocumentitem4Printing = null;
     /**
      * The MidocoTransferDetailsInfo4Printing
      * Meta information extracted from the WSDL
@@ -522,7 +544,7 @@ class MidocoSellItemDetails extends AbstractStructBase
      * - ref: MidocoTransferDetailsInfo4Printing
      * @var \Pggns\MidocoApi\Order\StructType\MidocoTransferDetailsInfo4Printing[]
      */
-    protected array $MidocoTransferDetailsInfo4Printing = [];
+    protected ?array $MidocoTransferDetailsInfo4Printing = null;
     /**
      * The MidocoSellDetailsPrice
      * Meta information extracted from the WSDL
@@ -531,7 +553,7 @@ class MidocoSellItemDetails extends AbstractStructBase
      * - ref: MidocoSellDetailsPrice
      * @var \Pggns\MidocoApi\Order\StructType\MidocoSellDetailsPrice[]
      */
-    protected array $MidocoSellDetailsPrice = [];
+    protected ?array $MidocoSellDetailsPrice = null;
     /**
      * The MidocoSupplier
      * Meta information extracted from the WSDL
@@ -556,7 +578,7 @@ class MidocoSellItemDetails extends AbstractStructBase
      * - ref: ordersd:MidocoSupplierTemplate
      * @var \Pggns\MidocoApi\Order\StructType\SupplierTemplateDTO[]
      */
-    protected array $MidocoSupplierTemplate = [];
+    protected ?array $MidocoSupplierTemplate = null;
     /**
      * The touchedCountry
      * Meta information extracted from the WSDL
@@ -564,7 +586,7 @@ class MidocoSellItemDetails extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $touchedCountry = [];
+    protected ?array $touchedCountry = null;
     /**
      * The travelTypeDescription
      * Meta information extracted from the WSDL
@@ -703,8 +725,11 @@ class MidocoSellItemDetails extends AbstractStructBase
      * @uses MidocoSellItemDetails::setExtId()
      * @uses MidocoSellItemDetails::setExtSystem()
      * @uses MidocoSellItemDetails::setLocationDescription()
+     * @uses MidocoSellItemDetails::setDepositPreset()
      * @uses MidocoSellItemDetails::setDepositAmount()
      * @uses MidocoSellItemDetails::setDepositPaymentType()
+     * @uses MidocoSellItemDetails::setFinalPaymentAmount()
+     * @uses MidocoSellItemDetails::setFinalPaymentDate()
      * @uses MidocoSellItemDetails::setFinalPaymentType()
      * @uses MidocoSellItemDetails::setIsOneWay()
      * @uses MidocoSellItemDetails::setFeeCode()
@@ -799,8 +824,11 @@ class MidocoSellItemDetails extends AbstractStructBase
      * @param string $extId
      * @param string $extSystem
      * @param string $locationDescription
+     * @param bool $depositPreset
      * @param float $depositAmount
      * @param string $depositPaymentType
+     * @param float $finalPaymentAmount
+     * @param string $finalPaymentDate
      * @param string $finalPaymentType
      * @param bool $isOneWay
      * @param string $feeCode
@@ -846,7 +874,7 @@ class MidocoSellItemDetails extends AbstractStructBase
      * @param string $noOfNights
      * @param \Pggns\MidocoApi\Order\StructType\MidocoTravelNumber $midocoTravelNumber
      */
-    public function __construct(?int $itemId = null, ?string $itemType = null, ?string $originalBookingId = null, ?string $supplierId = null, ?string $supplierName = null, ?int $supplierPosition = null, ?string $travelType = null, ?string $startTravel = null, ?string $endTravel = null, ?string $accountId = null, ?string $areaDescription = null, ?string $departureCode = null, ?string $departureDescription = null, ?string $destinationCode = null, ?string $destinationDescription = null, ?string $accomodationCode = null, ?string $accomodationDescription = null, ?string $cruiseCode = null, ?string $cruiseDescription = null, ?string $itemDescription = null, ?string $cateringDescription = null, ?string $roomDescription = null, ?string $itemReferenceNo = null, ?string $insuranceDescription = null, ?string $status = null, ?bool $isStorno = null, ?string $stornoDate = null, ?string $bookingDate = null, ?string $creationUser = null, ?string $creationDate = null, ?string $carrier = null, ?string $carrierName = null, ?string $flightNo = null, ?string $departureTime = null, ?string $arrivalTime = null, ?string $days = null, ?string $returnDepartureCode = null, ?string $returnDepartureDescription = null, ?string $returnDestinationCode = null, ?string $returnDestinationDescription = null, ?string $returnCarrier = null, ?string $returnCarrierName = null, ?string $returnFlightNo = null, ?string $returnDepartureTime = null, ?string $returnArrivalTime = null, ?string $returnDays = null, ?bool $preventPrinting = false, ?string $extId = null, ?string $extSystem = null, ?string $locationDescription = null, ?float $depositAmount = null, ?string $depositPaymentType = null, ?string $finalPaymentType = null, ?bool $isOneWay = null, ?string $feeCode = null, ?string $productType = null, ?string $bookingReference = null, ?string $articleType = null, array $midocoAccomodationDetailsInfo4Printing = [], array $midocoCarDetailInfo4Printing = [], array $midocoFlightDetailsInfo4Printing = [], array $midocoInsuranceDetailInfo4Printing = [], array $midocoTravelDetailsInfo4Printing = [], array $midocoCalcItemDetailsInfo4Printing = [], array $midocoPassengerInfo4Printing = [], array $midocoCruiseDetailsInfo4Printing = [], array $midocoAttributeValue4Printing = [], array $midocoRemarks = [], array $midocoRemarksAbove = [], array $midocoRemarksAfterService = [], array $midocoRemarksEnd = [], array $midocoHint = [], array $midocoBusDetailsInfo4Printing = [], array $midocoRailDetailsInfo4Printing = [], array $midocoPackageDetailsInfo4Printing = [], array $midocoAdditionalService = [], array $midocoEventDetailsInfo4Printing = [], array $midocoDocumentitem4Printing = [], array $midocoTransferDetailsInfo4Printing = [], array $midocoSellDetailsPrice = [], ?\Pggns\MidocoApi\Order\StructType\MidocoSupplierType $midocoSupplier = null, ?\Pggns\MidocoApi\Order\StructType\MidocoSupplierAddress $midocoSupplierAddress = null, array $midocoSupplierTemplate = [], array $touchedCountry = [], ?string $travelTypeDescription = null, ?bool $immediatePayment = false, ?string $forCustomer = null, ?string $fromCustomer = null, ?int $voucherQuantity = null, ?float $voucherSinglePrice = null, ?float $revenuePercent = null, ?string $confirmationGroup = null, ?int $sellingMode = null, ?string $transfer = null, ?string $noOfNights = null, ?\Pggns\MidocoApi\Order\StructType\MidocoTravelNumber $midocoTravelNumber = null)
+    public function __construct(?int $itemId = null, ?string $itemType = null, ?string $originalBookingId = null, ?string $supplierId = null, ?string $supplierName = null, ?int $supplierPosition = null, ?string $travelType = null, ?string $startTravel = null, ?string $endTravel = null, ?string $accountId = null, ?string $areaDescription = null, ?string $departureCode = null, ?string $departureDescription = null, ?string $destinationCode = null, ?string $destinationDescription = null, ?string $accomodationCode = null, ?string $accomodationDescription = null, ?string $cruiseCode = null, ?string $cruiseDescription = null, ?string $itemDescription = null, ?string $cateringDescription = null, ?string $roomDescription = null, ?string $itemReferenceNo = null, ?string $insuranceDescription = null, ?string $status = null, ?bool $isStorno = null, ?string $stornoDate = null, ?string $bookingDate = null, ?string $creationUser = null, ?string $creationDate = null, ?string $carrier = null, ?string $carrierName = null, ?string $flightNo = null, ?string $departureTime = null, ?string $arrivalTime = null, ?string $days = null, ?string $returnDepartureCode = null, ?string $returnDepartureDescription = null, ?string $returnDestinationCode = null, ?string $returnDestinationDescription = null, ?string $returnCarrier = null, ?string $returnCarrierName = null, ?string $returnFlightNo = null, ?string $returnDepartureTime = null, ?string $returnArrivalTime = null, ?string $returnDays = null, ?bool $preventPrinting = false, ?string $extId = null, ?string $extSystem = null, ?string $locationDescription = null, ?bool $depositPreset = null, ?float $depositAmount = null, ?string $depositPaymentType = null, ?float $finalPaymentAmount = null, ?string $finalPaymentDate = null, ?string $finalPaymentType = null, ?bool $isOneWay = null, ?string $feeCode = null, ?string $productType = null, ?string $bookingReference = null, ?string $articleType = null, ?array $midocoAccomodationDetailsInfo4Printing = null, ?array $midocoCarDetailInfo4Printing = null, ?array $midocoFlightDetailsInfo4Printing = null, ?array $midocoInsuranceDetailInfo4Printing = null, ?array $midocoTravelDetailsInfo4Printing = null, ?array $midocoCalcItemDetailsInfo4Printing = null, ?array $midocoPassengerInfo4Printing = null, ?array $midocoCruiseDetailsInfo4Printing = null, ?array $midocoAttributeValue4Printing = null, ?array $midocoRemarks = null, ?array $midocoRemarksAbove = null, ?array $midocoRemarksAfterService = null, ?array $midocoRemarksEnd = null, ?array $midocoHint = null, ?array $midocoBusDetailsInfo4Printing = null, ?array $midocoRailDetailsInfo4Printing = null, ?array $midocoPackageDetailsInfo4Printing = null, ?array $midocoAdditionalService = null, ?array $midocoEventDetailsInfo4Printing = null, ?array $midocoDocumentitem4Printing = null, ?array $midocoTransferDetailsInfo4Printing = null, ?array $midocoSellDetailsPrice = null, ?\Pggns\MidocoApi\Order\StructType\MidocoSupplierType $midocoSupplier = null, ?\Pggns\MidocoApi\Order\StructType\MidocoSupplierAddress $midocoSupplierAddress = null, ?array $midocoSupplierTemplate = null, ?array $touchedCountry = null, ?string $travelTypeDescription = null, ?bool $immediatePayment = false, ?string $forCustomer = null, ?string $fromCustomer = null, ?int $voucherQuantity = null, ?float $voucherSinglePrice = null, ?float $revenuePercent = null, ?string $confirmationGroup = null, ?int $sellingMode = null, ?string $transfer = null, ?string $noOfNights = null, ?\Pggns\MidocoApi\Order\StructType\MidocoTravelNumber $midocoTravelNumber = null)
     {
         $this
             ->setItemId($itemId)
@@ -899,8 +927,11 @@ class MidocoSellItemDetails extends AbstractStructBase
             ->setExtId($extId)
             ->setExtSystem($extSystem)
             ->setLocationDescription($locationDescription)
+            ->setDepositPreset($depositPreset)
             ->setDepositAmount($depositAmount)
             ->setDepositPaymentType($depositPaymentType)
+            ->setFinalPaymentAmount($finalPaymentAmount)
+            ->setFinalPaymentDate($finalPaymentDate)
             ->setFinalPaymentType($finalPaymentType)
             ->setIsOneWay($isOneWay)
             ->setFeeCode($feeCode)
@@ -2097,6 +2128,29 @@ class MidocoSellItemDetails extends AbstractStructBase
         return $this;
     }
     /**
+     * Get depositPreset value
+     * @return bool|null
+     */
+    public function getDepositPreset(): ?bool
+    {
+        return $this->depositPreset;
+    }
+    /**
+     * Set depositPreset value
+     * @param bool $depositPreset
+     * @return \Pggns\MidocoApi\Order\StructType\MidocoSellItemDetails
+     */
+    public function setDepositPreset(?bool $depositPreset = null): self
+    {
+        // validation for constraint: boolean
+        if (!is_null($depositPreset) && !is_bool($depositPreset)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($depositPreset, true), gettype($depositPreset)), __LINE__);
+        }
+        $this->depositPreset = $depositPreset;
+        
+        return $this;
+    }
+    /**
      * Get depositAmount value
      * @return float|null
      */
@@ -2139,6 +2193,52 @@ class MidocoSellItemDetails extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($depositPaymentType, true), gettype($depositPaymentType)), __LINE__);
         }
         $this->depositPaymentType = $depositPaymentType;
+        
+        return $this;
+    }
+    /**
+     * Get finalPaymentAmount value
+     * @return float|null
+     */
+    public function getFinalPaymentAmount(): ?float
+    {
+        return $this->finalPaymentAmount;
+    }
+    /**
+     * Set finalPaymentAmount value
+     * @param float $finalPaymentAmount
+     * @return \Pggns\MidocoApi\Order\StructType\MidocoSellItemDetails
+     */
+    public function setFinalPaymentAmount(?float $finalPaymentAmount = null): self
+    {
+        // validation for constraint: float
+        if (!is_null($finalPaymentAmount) && !(is_float($finalPaymentAmount) || is_numeric($finalPaymentAmount))) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a float value, %s given', var_export($finalPaymentAmount, true), gettype($finalPaymentAmount)), __LINE__);
+        }
+        $this->finalPaymentAmount = $finalPaymentAmount;
+        
+        return $this;
+    }
+    /**
+     * Get finalPaymentDate value
+     * @return string|null
+     */
+    public function getFinalPaymentDate(): ?string
+    {
+        return $this->finalPaymentDate;
+    }
+    /**
+     * Set finalPaymentDate value
+     * @param string $finalPaymentDate
+     * @return \Pggns\MidocoApi\Order\StructType\MidocoSellItemDetails
+     */
+    public function setFinalPaymentDate(?string $finalPaymentDate = null): self
+    {
+        // validation for constraint: string
+        if (!is_null($finalPaymentDate) && !is_string($finalPaymentDate)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($finalPaymentDate, true), gettype($finalPaymentDate)), __LINE__);
+        }
+        $this->finalPaymentDate = $finalPaymentDate;
         
         return $this;
     }
@@ -2284,18 +2384,22 @@ class MidocoSellItemDetails extends AbstractStructBase
      * Get MidocoAccomodationDetailsInfo4Printing value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoAccomodationDetailsInfo4Printing[]
      */
-    public function getMidocoAccomodationDetailsInfo4Printing(): array
+    public function getMidocoAccomodationDetailsInfo4Printing(): ?array
     {
         return $this->MidocoAccomodationDetailsInfo4Printing;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoAccomodationDetailsInfo4Printing method
+     * This method is responsible for validating the value(s) passed to the setMidocoAccomodationDetailsInfo4Printing method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoAccomodationDetailsInfo4Printing method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoAccomodationDetailsInfo4PrintingForArrayConstraintsFromSetMidocoAccomodationDetailsInfo4Printing(array $values = []): string
+    public static function validateMidocoAccomodationDetailsInfo4PrintingForArrayConstraintFromSetMidocoAccomodationDetailsInfo4Printing(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoSellItemDetailsMidocoAccomodationDetailsInfo4PrintingItem) {
@@ -2317,10 +2421,10 @@ class MidocoSellItemDetails extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoAccomodationDetailsInfo4Printing[] $midocoAccomodationDetailsInfo4Printing
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSellItemDetails
      */
-    public function setMidocoAccomodationDetailsInfo4Printing(array $midocoAccomodationDetailsInfo4Printing = []): self
+    public function setMidocoAccomodationDetailsInfo4Printing(?array $midocoAccomodationDetailsInfo4Printing = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoAccomodationDetailsInfo4PrintingArrayErrorMessage = self::validateMidocoAccomodationDetailsInfo4PrintingForArrayConstraintsFromSetMidocoAccomodationDetailsInfo4Printing($midocoAccomodationDetailsInfo4Printing))) {
+        if ('' !== ($midocoAccomodationDetailsInfo4PrintingArrayErrorMessage = self::validateMidocoAccomodationDetailsInfo4PrintingForArrayConstraintFromSetMidocoAccomodationDetailsInfo4Printing($midocoAccomodationDetailsInfo4Printing))) {
             throw new InvalidArgumentException($midocoAccomodationDetailsInfo4PrintingArrayErrorMessage, __LINE__);
         }
         $this->MidocoAccomodationDetailsInfo4Printing = $midocoAccomodationDetailsInfo4Printing;
@@ -2347,18 +2451,22 @@ class MidocoSellItemDetails extends AbstractStructBase
      * Get MidocoCarDetailInfo4Printing value
      * @return \Pggns\MidocoApi\Order\StructType\CarDetailDTO[]
      */
-    public function getMidocoCarDetailInfo4Printing(): array
+    public function getMidocoCarDetailInfo4Printing(): ?array
     {
         return $this->MidocoCarDetailInfo4Printing;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoCarDetailInfo4Printing method
+     * This method is responsible for validating the value(s) passed to the setMidocoCarDetailInfo4Printing method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoCarDetailInfo4Printing method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoCarDetailInfo4PrintingForArrayConstraintsFromSetMidocoCarDetailInfo4Printing(array $values = []): string
+    public static function validateMidocoCarDetailInfo4PrintingForArrayConstraintFromSetMidocoCarDetailInfo4Printing(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoSellItemDetailsMidocoCarDetailInfo4PrintingItem) {
@@ -2380,10 +2488,10 @@ class MidocoSellItemDetails extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\CarDetailDTO[] $midocoCarDetailInfo4Printing
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSellItemDetails
      */
-    public function setMidocoCarDetailInfo4Printing(array $midocoCarDetailInfo4Printing = []): self
+    public function setMidocoCarDetailInfo4Printing(?array $midocoCarDetailInfo4Printing = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoCarDetailInfo4PrintingArrayErrorMessage = self::validateMidocoCarDetailInfo4PrintingForArrayConstraintsFromSetMidocoCarDetailInfo4Printing($midocoCarDetailInfo4Printing))) {
+        if ('' !== ($midocoCarDetailInfo4PrintingArrayErrorMessage = self::validateMidocoCarDetailInfo4PrintingForArrayConstraintFromSetMidocoCarDetailInfo4Printing($midocoCarDetailInfo4Printing))) {
             throw new InvalidArgumentException($midocoCarDetailInfo4PrintingArrayErrorMessage, __LINE__);
         }
         $this->MidocoCarDetailInfo4Printing = $midocoCarDetailInfo4Printing;
@@ -2410,18 +2518,22 @@ class MidocoSellItemDetails extends AbstractStructBase
      * Get MidocoFlightDetailsInfo4Printing value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoFlightDetailsInfo4Printing[]
      */
-    public function getMidocoFlightDetailsInfo4Printing(): array
+    public function getMidocoFlightDetailsInfo4Printing(): ?array
     {
         return $this->MidocoFlightDetailsInfo4Printing;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoFlightDetailsInfo4Printing method
+     * This method is responsible for validating the value(s) passed to the setMidocoFlightDetailsInfo4Printing method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoFlightDetailsInfo4Printing method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoFlightDetailsInfo4PrintingForArrayConstraintsFromSetMidocoFlightDetailsInfo4Printing(array $values = []): string
+    public static function validateMidocoFlightDetailsInfo4PrintingForArrayConstraintFromSetMidocoFlightDetailsInfo4Printing(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoSellItemDetailsMidocoFlightDetailsInfo4PrintingItem) {
@@ -2443,10 +2555,10 @@ class MidocoSellItemDetails extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoFlightDetailsInfo4Printing[] $midocoFlightDetailsInfo4Printing
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSellItemDetails
      */
-    public function setMidocoFlightDetailsInfo4Printing(array $midocoFlightDetailsInfo4Printing = []): self
+    public function setMidocoFlightDetailsInfo4Printing(?array $midocoFlightDetailsInfo4Printing = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoFlightDetailsInfo4PrintingArrayErrorMessage = self::validateMidocoFlightDetailsInfo4PrintingForArrayConstraintsFromSetMidocoFlightDetailsInfo4Printing($midocoFlightDetailsInfo4Printing))) {
+        if ('' !== ($midocoFlightDetailsInfo4PrintingArrayErrorMessage = self::validateMidocoFlightDetailsInfo4PrintingForArrayConstraintFromSetMidocoFlightDetailsInfo4Printing($midocoFlightDetailsInfo4Printing))) {
             throw new InvalidArgumentException($midocoFlightDetailsInfo4PrintingArrayErrorMessage, __LINE__);
         }
         $this->MidocoFlightDetailsInfo4Printing = $midocoFlightDetailsInfo4Printing;
@@ -2473,18 +2585,22 @@ class MidocoSellItemDetails extends AbstractStructBase
      * Get MidocoInsuranceDetailInfo4Printing value
      * @return \Pggns\MidocoApi\Order\StructType\InsuranceDetailDTO[]
      */
-    public function getMidocoInsuranceDetailInfo4Printing(): array
+    public function getMidocoInsuranceDetailInfo4Printing(): ?array
     {
         return $this->MidocoInsuranceDetailInfo4Printing;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoInsuranceDetailInfo4Printing method
+     * This method is responsible for validating the value(s) passed to the setMidocoInsuranceDetailInfo4Printing method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoInsuranceDetailInfo4Printing method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoInsuranceDetailInfo4PrintingForArrayConstraintsFromSetMidocoInsuranceDetailInfo4Printing(array $values = []): string
+    public static function validateMidocoInsuranceDetailInfo4PrintingForArrayConstraintFromSetMidocoInsuranceDetailInfo4Printing(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoSellItemDetailsMidocoInsuranceDetailInfo4PrintingItem) {
@@ -2506,10 +2622,10 @@ class MidocoSellItemDetails extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\InsuranceDetailDTO[] $midocoInsuranceDetailInfo4Printing
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSellItemDetails
      */
-    public function setMidocoInsuranceDetailInfo4Printing(array $midocoInsuranceDetailInfo4Printing = []): self
+    public function setMidocoInsuranceDetailInfo4Printing(?array $midocoInsuranceDetailInfo4Printing = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoInsuranceDetailInfo4PrintingArrayErrorMessage = self::validateMidocoInsuranceDetailInfo4PrintingForArrayConstraintsFromSetMidocoInsuranceDetailInfo4Printing($midocoInsuranceDetailInfo4Printing))) {
+        if ('' !== ($midocoInsuranceDetailInfo4PrintingArrayErrorMessage = self::validateMidocoInsuranceDetailInfo4PrintingForArrayConstraintFromSetMidocoInsuranceDetailInfo4Printing($midocoInsuranceDetailInfo4Printing))) {
             throw new InvalidArgumentException($midocoInsuranceDetailInfo4PrintingArrayErrorMessage, __LINE__);
         }
         $this->MidocoInsuranceDetailInfo4Printing = $midocoInsuranceDetailInfo4Printing;
@@ -2536,18 +2652,22 @@ class MidocoSellItemDetails extends AbstractStructBase
      * Get MidocoTravelDetailsInfo4Printing value
      * @return \Pggns\MidocoApi\Order\StructType\TravelDetailDTO[]
      */
-    public function getMidocoTravelDetailsInfo4Printing(): array
+    public function getMidocoTravelDetailsInfo4Printing(): ?array
     {
         return $this->MidocoTravelDetailsInfo4Printing;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoTravelDetailsInfo4Printing method
+     * This method is responsible for validating the value(s) passed to the setMidocoTravelDetailsInfo4Printing method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoTravelDetailsInfo4Printing method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoTravelDetailsInfo4PrintingForArrayConstraintsFromSetMidocoTravelDetailsInfo4Printing(array $values = []): string
+    public static function validateMidocoTravelDetailsInfo4PrintingForArrayConstraintFromSetMidocoTravelDetailsInfo4Printing(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoSellItemDetailsMidocoTravelDetailsInfo4PrintingItem) {
@@ -2569,10 +2689,10 @@ class MidocoSellItemDetails extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\TravelDetailDTO[] $midocoTravelDetailsInfo4Printing
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSellItemDetails
      */
-    public function setMidocoTravelDetailsInfo4Printing(array $midocoTravelDetailsInfo4Printing = []): self
+    public function setMidocoTravelDetailsInfo4Printing(?array $midocoTravelDetailsInfo4Printing = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoTravelDetailsInfo4PrintingArrayErrorMessage = self::validateMidocoTravelDetailsInfo4PrintingForArrayConstraintsFromSetMidocoTravelDetailsInfo4Printing($midocoTravelDetailsInfo4Printing))) {
+        if ('' !== ($midocoTravelDetailsInfo4PrintingArrayErrorMessage = self::validateMidocoTravelDetailsInfo4PrintingForArrayConstraintFromSetMidocoTravelDetailsInfo4Printing($midocoTravelDetailsInfo4Printing))) {
             throw new InvalidArgumentException($midocoTravelDetailsInfo4PrintingArrayErrorMessage, __LINE__);
         }
         $this->MidocoTravelDetailsInfo4Printing = $midocoTravelDetailsInfo4Printing;
@@ -2599,18 +2719,22 @@ class MidocoSellItemDetails extends AbstractStructBase
      * Get MidocoCalcItemDetailsInfo4Printing value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoCalcItemDetailsInfo4Printing[]
      */
-    public function getMidocoCalcItemDetailsInfo4Printing(): array
+    public function getMidocoCalcItemDetailsInfo4Printing(): ?array
     {
         return $this->MidocoCalcItemDetailsInfo4Printing;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoCalcItemDetailsInfo4Printing method
+     * This method is responsible for validating the value(s) passed to the setMidocoCalcItemDetailsInfo4Printing method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoCalcItemDetailsInfo4Printing method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoCalcItemDetailsInfo4PrintingForArrayConstraintsFromSetMidocoCalcItemDetailsInfo4Printing(array $values = []): string
+    public static function validateMidocoCalcItemDetailsInfo4PrintingForArrayConstraintFromSetMidocoCalcItemDetailsInfo4Printing(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoSellItemDetailsMidocoCalcItemDetailsInfo4PrintingItem) {
@@ -2632,10 +2756,10 @@ class MidocoSellItemDetails extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoCalcItemDetailsInfo4Printing[] $midocoCalcItemDetailsInfo4Printing
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSellItemDetails
      */
-    public function setMidocoCalcItemDetailsInfo4Printing(array $midocoCalcItemDetailsInfo4Printing = []): self
+    public function setMidocoCalcItemDetailsInfo4Printing(?array $midocoCalcItemDetailsInfo4Printing = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoCalcItemDetailsInfo4PrintingArrayErrorMessage = self::validateMidocoCalcItemDetailsInfo4PrintingForArrayConstraintsFromSetMidocoCalcItemDetailsInfo4Printing($midocoCalcItemDetailsInfo4Printing))) {
+        if ('' !== ($midocoCalcItemDetailsInfo4PrintingArrayErrorMessage = self::validateMidocoCalcItemDetailsInfo4PrintingForArrayConstraintFromSetMidocoCalcItemDetailsInfo4Printing($midocoCalcItemDetailsInfo4Printing))) {
             throw new InvalidArgumentException($midocoCalcItemDetailsInfo4PrintingArrayErrorMessage, __LINE__);
         }
         $this->MidocoCalcItemDetailsInfo4Printing = $midocoCalcItemDetailsInfo4Printing;
@@ -2662,18 +2786,22 @@ class MidocoSellItemDetails extends AbstractStructBase
      * Get MidocoPassengerInfo4Printing value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoPassengerInfo4Printing[]
      */
-    public function getMidocoPassengerInfo4Printing(): array
+    public function getMidocoPassengerInfo4Printing(): ?array
     {
         return $this->MidocoPassengerInfo4Printing;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoPassengerInfo4Printing method
+     * This method is responsible for validating the value(s) passed to the setMidocoPassengerInfo4Printing method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoPassengerInfo4Printing method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoPassengerInfo4PrintingForArrayConstraintsFromSetMidocoPassengerInfo4Printing(array $values = []): string
+    public static function validateMidocoPassengerInfo4PrintingForArrayConstraintFromSetMidocoPassengerInfo4Printing(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoSellItemDetailsMidocoPassengerInfo4PrintingItem) {
@@ -2695,10 +2823,10 @@ class MidocoSellItemDetails extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoPassengerInfo4Printing[] $midocoPassengerInfo4Printing
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSellItemDetails
      */
-    public function setMidocoPassengerInfo4Printing(array $midocoPassengerInfo4Printing = []): self
+    public function setMidocoPassengerInfo4Printing(?array $midocoPassengerInfo4Printing = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoPassengerInfo4PrintingArrayErrorMessage = self::validateMidocoPassengerInfo4PrintingForArrayConstraintsFromSetMidocoPassengerInfo4Printing($midocoPassengerInfo4Printing))) {
+        if ('' !== ($midocoPassengerInfo4PrintingArrayErrorMessage = self::validateMidocoPassengerInfo4PrintingForArrayConstraintFromSetMidocoPassengerInfo4Printing($midocoPassengerInfo4Printing))) {
             throw new InvalidArgumentException($midocoPassengerInfo4PrintingArrayErrorMessage, __LINE__);
         }
         $this->MidocoPassengerInfo4Printing = $midocoPassengerInfo4Printing;
@@ -2725,18 +2853,22 @@ class MidocoSellItemDetails extends AbstractStructBase
      * Get MidocoCruiseDetailsInfo4Printing value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoCruiseDetailsInfo4Printing[]
      */
-    public function getMidocoCruiseDetailsInfo4Printing(): array
+    public function getMidocoCruiseDetailsInfo4Printing(): ?array
     {
         return $this->MidocoCruiseDetailsInfo4Printing;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoCruiseDetailsInfo4Printing method
+     * This method is responsible for validating the value(s) passed to the setMidocoCruiseDetailsInfo4Printing method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoCruiseDetailsInfo4Printing method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoCruiseDetailsInfo4PrintingForArrayConstraintsFromSetMidocoCruiseDetailsInfo4Printing(array $values = []): string
+    public static function validateMidocoCruiseDetailsInfo4PrintingForArrayConstraintFromSetMidocoCruiseDetailsInfo4Printing(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoSellItemDetailsMidocoCruiseDetailsInfo4PrintingItem) {
@@ -2758,10 +2890,10 @@ class MidocoSellItemDetails extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoCruiseDetailsInfo4Printing[] $midocoCruiseDetailsInfo4Printing
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSellItemDetails
      */
-    public function setMidocoCruiseDetailsInfo4Printing(array $midocoCruiseDetailsInfo4Printing = []): self
+    public function setMidocoCruiseDetailsInfo4Printing(?array $midocoCruiseDetailsInfo4Printing = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoCruiseDetailsInfo4PrintingArrayErrorMessage = self::validateMidocoCruiseDetailsInfo4PrintingForArrayConstraintsFromSetMidocoCruiseDetailsInfo4Printing($midocoCruiseDetailsInfo4Printing))) {
+        if ('' !== ($midocoCruiseDetailsInfo4PrintingArrayErrorMessage = self::validateMidocoCruiseDetailsInfo4PrintingForArrayConstraintFromSetMidocoCruiseDetailsInfo4Printing($midocoCruiseDetailsInfo4Printing))) {
             throw new InvalidArgumentException($midocoCruiseDetailsInfo4PrintingArrayErrorMessage, __LINE__);
         }
         $this->MidocoCruiseDetailsInfo4Printing = $midocoCruiseDetailsInfo4Printing;
@@ -2788,18 +2920,22 @@ class MidocoSellItemDetails extends AbstractStructBase
      * Get MidocoAttributeValue4Printing value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoAttributeValue4Printing[]
      */
-    public function getMidocoAttributeValue4Printing(): array
+    public function getMidocoAttributeValue4Printing(): ?array
     {
         return $this->MidocoAttributeValue4Printing;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoAttributeValue4Printing method
+     * This method is responsible for validating the value(s) passed to the setMidocoAttributeValue4Printing method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoAttributeValue4Printing method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoAttributeValue4PrintingForArrayConstraintsFromSetMidocoAttributeValue4Printing(array $values = []): string
+    public static function validateMidocoAttributeValue4PrintingForArrayConstraintFromSetMidocoAttributeValue4Printing(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoSellItemDetailsMidocoAttributeValue4PrintingItem) {
@@ -2821,10 +2957,10 @@ class MidocoSellItemDetails extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoAttributeValue4Printing[] $midocoAttributeValue4Printing
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSellItemDetails
      */
-    public function setMidocoAttributeValue4Printing(array $midocoAttributeValue4Printing = []): self
+    public function setMidocoAttributeValue4Printing(?array $midocoAttributeValue4Printing = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoAttributeValue4PrintingArrayErrorMessage = self::validateMidocoAttributeValue4PrintingForArrayConstraintsFromSetMidocoAttributeValue4Printing($midocoAttributeValue4Printing))) {
+        if ('' !== ($midocoAttributeValue4PrintingArrayErrorMessage = self::validateMidocoAttributeValue4PrintingForArrayConstraintFromSetMidocoAttributeValue4Printing($midocoAttributeValue4Printing))) {
             throw new InvalidArgumentException($midocoAttributeValue4PrintingArrayErrorMessage, __LINE__);
         }
         $this->MidocoAttributeValue4Printing = $midocoAttributeValue4Printing;
@@ -2851,18 +2987,22 @@ class MidocoSellItemDetails extends AbstractStructBase
      * Get MidocoRemarks value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoRemarkType[]
      */
-    public function getMidocoRemarks(): array
+    public function getMidocoRemarks(): ?array
     {
         return $this->MidocoRemarks;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoRemarks method
+     * This method is responsible for validating the value(s) passed to the setMidocoRemarks method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoRemarks method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoRemarksForArrayConstraintsFromSetMidocoRemarks(array $values = []): string
+    public static function validateMidocoRemarksForArrayConstraintFromSetMidocoRemarks(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoSellItemDetailsMidocoRemarksItem) {
@@ -2884,10 +3024,10 @@ class MidocoSellItemDetails extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoRemarkType[] $midocoRemarks
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSellItemDetails
      */
-    public function setMidocoRemarks(array $midocoRemarks = []): self
+    public function setMidocoRemarks(?array $midocoRemarks = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoRemarksArrayErrorMessage = self::validateMidocoRemarksForArrayConstraintsFromSetMidocoRemarks($midocoRemarks))) {
+        if ('' !== ($midocoRemarksArrayErrorMessage = self::validateMidocoRemarksForArrayConstraintFromSetMidocoRemarks($midocoRemarks))) {
             throw new InvalidArgumentException($midocoRemarksArrayErrorMessage, __LINE__);
         }
         $this->MidocoRemarks = $midocoRemarks;
@@ -2914,18 +3054,22 @@ class MidocoSellItemDetails extends AbstractStructBase
      * Get MidocoRemarksAbove value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoRemarkType[]
      */
-    public function getMidocoRemarksAbove(): array
+    public function getMidocoRemarksAbove(): ?array
     {
         return $this->MidocoRemarksAbove;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoRemarksAbove method
+     * This method is responsible for validating the value(s) passed to the setMidocoRemarksAbove method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoRemarksAbove method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoRemarksAboveForArrayConstraintsFromSetMidocoRemarksAbove(array $values = []): string
+    public static function validateMidocoRemarksAboveForArrayConstraintFromSetMidocoRemarksAbove(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoSellItemDetailsMidocoRemarksAboveItem) {
@@ -2947,10 +3091,10 @@ class MidocoSellItemDetails extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoRemarkType[] $midocoRemarksAbove
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSellItemDetails
      */
-    public function setMidocoRemarksAbove(array $midocoRemarksAbove = []): self
+    public function setMidocoRemarksAbove(?array $midocoRemarksAbove = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoRemarksAboveArrayErrorMessage = self::validateMidocoRemarksAboveForArrayConstraintsFromSetMidocoRemarksAbove($midocoRemarksAbove))) {
+        if ('' !== ($midocoRemarksAboveArrayErrorMessage = self::validateMidocoRemarksAboveForArrayConstraintFromSetMidocoRemarksAbove($midocoRemarksAbove))) {
             throw new InvalidArgumentException($midocoRemarksAboveArrayErrorMessage, __LINE__);
         }
         $this->MidocoRemarksAbove = $midocoRemarksAbove;
@@ -2977,18 +3121,22 @@ class MidocoSellItemDetails extends AbstractStructBase
      * Get MidocoRemarksAfterService value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoRemarkType[]
      */
-    public function getMidocoRemarksAfterService(): array
+    public function getMidocoRemarksAfterService(): ?array
     {
         return $this->MidocoRemarksAfterService;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoRemarksAfterService method
+     * This method is responsible for validating the value(s) passed to the setMidocoRemarksAfterService method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoRemarksAfterService method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoRemarksAfterServiceForArrayConstraintsFromSetMidocoRemarksAfterService(array $values = []): string
+    public static function validateMidocoRemarksAfterServiceForArrayConstraintFromSetMidocoRemarksAfterService(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoSellItemDetailsMidocoRemarksAfterServiceItem) {
@@ -3010,10 +3158,10 @@ class MidocoSellItemDetails extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoRemarkType[] $midocoRemarksAfterService
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSellItemDetails
      */
-    public function setMidocoRemarksAfterService(array $midocoRemarksAfterService = []): self
+    public function setMidocoRemarksAfterService(?array $midocoRemarksAfterService = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoRemarksAfterServiceArrayErrorMessage = self::validateMidocoRemarksAfterServiceForArrayConstraintsFromSetMidocoRemarksAfterService($midocoRemarksAfterService))) {
+        if ('' !== ($midocoRemarksAfterServiceArrayErrorMessage = self::validateMidocoRemarksAfterServiceForArrayConstraintFromSetMidocoRemarksAfterService($midocoRemarksAfterService))) {
             throw new InvalidArgumentException($midocoRemarksAfterServiceArrayErrorMessage, __LINE__);
         }
         $this->MidocoRemarksAfterService = $midocoRemarksAfterService;
@@ -3040,18 +3188,22 @@ class MidocoSellItemDetails extends AbstractStructBase
      * Get MidocoRemarksEnd value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoRemarkType[]
      */
-    public function getMidocoRemarksEnd(): array
+    public function getMidocoRemarksEnd(): ?array
     {
         return $this->MidocoRemarksEnd;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoRemarksEnd method
+     * This method is responsible for validating the value(s) passed to the setMidocoRemarksEnd method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoRemarksEnd method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoRemarksEndForArrayConstraintsFromSetMidocoRemarksEnd(array $values = []): string
+    public static function validateMidocoRemarksEndForArrayConstraintFromSetMidocoRemarksEnd(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoSellItemDetailsMidocoRemarksEndItem) {
@@ -3073,10 +3225,10 @@ class MidocoSellItemDetails extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoRemarkType[] $midocoRemarksEnd
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSellItemDetails
      */
-    public function setMidocoRemarksEnd(array $midocoRemarksEnd = []): self
+    public function setMidocoRemarksEnd(?array $midocoRemarksEnd = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoRemarksEndArrayErrorMessage = self::validateMidocoRemarksEndForArrayConstraintsFromSetMidocoRemarksEnd($midocoRemarksEnd))) {
+        if ('' !== ($midocoRemarksEndArrayErrorMessage = self::validateMidocoRemarksEndForArrayConstraintFromSetMidocoRemarksEnd($midocoRemarksEnd))) {
             throw new InvalidArgumentException($midocoRemarksEndArrayErrorMessage, __LINE__);
         }
         $this->MidocoRemarksEnd = $midocoRemarksEnd;
@@ -3103,18 +3255,22 @@ class MidocoSellItemDetails extends AbstractStructBase
      * Get MidocoHint value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoHintType[]
      */
-    public function getMidocoHint(): array
+    public function getMidocoHint(): ?array
     {
         return $this->MidocoHint;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoHint method
+     * This method is responsible for validating the value(s) passed to the setMidocoHint method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoHint method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoHintForArrayConstraintsFromSetMidocoHint(array $values = []): string
+    public static function validateMidocoHintForArrayConstraintFromSetMidocoHint(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoSellItemDetailsMidocoHintItem) {
@@ -3136,10 +3292,10 @@ class MidocoSellItemDetails extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoHintType[] $midocoHint
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSellItemDetails
      */
-    public function setMidocoHint(array $midocoHint = []): self
+    public function setMidocoHint(?array $midocoHint = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoHintArrayErrorMessage = self::validateMidocoHintForArrayConstraintsFromSetMidocoHint($midocoHint))) {
+        if ('' !== ($midocoHintArrayErrorMessage = self::validateMidocoHintForArrayConstraintFromSetMidocoHint($midocoHint))) {
             throw new InvalidArgumentException($midocoHintArrayErrorMessage, __LINE__);
         }
         $this->MidocoHint = $midocoHint;
@@ -3166,18 +3322,22 @@ class MidocoSellItemDetails extends AbstractStructBase
      * Get MidocoBusDetailsInfo4Printing value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoBusDetailsInfo4Printing[]
      */
-    public function getMidocoBusDetailsInfo4Printing(): array
+    public function getMidocoBusDetailsInfo4Printing(): ?array
     {
         return $this->MidocoBusDetailsInfo4Printing;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoBusDetailsInfo4Printing method
+     * This method is responsible for validating the value(s) passed to the setMidocoBusDetailsInfo4Printing method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoBusDetailsInfo4Printing method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoBusDetailsInfo4PrintingForArrayConstraintsFromSetMidocoBusDetailsInfo4Printing(array $values = []): string
+    public static function validateMidocoBusDetailsInfo4PrintingForArrayConstraintFromSetMidocoBusDetailsInfo4Printing(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoSellItemDetailsMidocoBusDetailsInfo4PrintingItem) {
@@ -3199,10 +3359,10 @@ class MidocoSellItemDetails extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoBusDetailsInfo4Printing[] $midocoBusDetailsInfo4Printing
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSellItemDetails
      */
-    public function setMidocoBusDetailsInfo4Printing(array $midocoBusDetailsInfo4Printing = []): self
+    public function setMidocoBusDetailsInfo4Printing(?array $midocoBusDetailsInfo4Printing = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoBusDetailsInfo4PrintingArrayErrorMessage = self::validateMidocoBusDetailsInfo4PrintingForArrayConstraintsFromSetMidocoBusDetailsInfo4Printing($midocoBusDetailsInfo4Printing))) {
+        if ('' !== ($midocoBusDetailsInfo4PrintingArrayErrorMessage = self::validateMidocoBusDetailsInfo4PrintingForArrayConstraintFromSetMidocoBusDetailsInfo4Printing($midocoBusDetailsInfo4Printing))) {
             throw new InvalidArgumentException($midocoBusDetailsInfo4PrintingArrayErrorMessage, __LINE__);
         }
         $this->MidocoBusDetailsInfo4Printing = $midocoBusDetailsInfo4Printing;
@@ -3229,18 +3389,22 @@ class MidocoSellItemDetails extends AbstractStructBase
      * Get MidocoRailDetailsInfo4Printing value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoRailDetailsInfo4Printing[]
      */
-    public function getMidocoRailDetailsInfo4Printing(): array
+    public function getMidocoRailDetailsInfo4Printing(): ?array
     {
         return $this->MidocoRailDetailsInfo4Printing;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoRailDetailsInfo4Printing method
+     * This method is responsible for validating the value(s) passed to the setMidocoRailDetailsInfo4Printing method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoRailDetailsInfo4Printing method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoRailDetailsInfo4PrintingForArrayConstraintsFromSetMidocoRailDetailsInfo4Printing(array $values = []): string
+    public static function validateMidocoRailDetailsInfo4PrintingForArrayConstraintFromSetMidocoRailDetailsInfo4Printing(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoSellItemDetailsMidocoRailDetailsInfo4PrintingItem) {
@@ -3262,10 +3426,10 @@ class MidocoSellItemDetails extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoRailDetailsInfo4Printing[] $midocoRailDetailsInfo4Printing
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSellItemDetails
      */
-    public function setMidocoRailDetailsInfo4Printing(array $midocoRailDetailsInfo4Printing = []): self
+    public function setMidocoRailDetailsInfo4Printing(?array $midocoRailDetailsInfo4Printing = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoRailDetailsInfo4PrintingArrayErrorMessage = self::validateMidocoRailDetailsInfo4PrintingForArrayConstraintsFromSetMidocoRailDetailsInfo4Printing($midocoRailDetailsInfo4Printing))) {
+        if ('' !== ($midocoRailDetailsInfo4PrintingArrayErrorMessage = self::validateMidocoRailDetailsInfo4PrintingForArrayConstraintFromSetMidocoRailDetailsInfo4Printing($midocoRailDetailsInfo4Printing))) {
             throw new InvalidArgumentException($midocoRailDetailsInfo4PrintingArrayErrorMessage, __LINE__);
         }
         $this->MidocoRailDetailsInfo4Printing = $midocoRailDetailsInfo4Printing;
@@ -3292,18 +3456,22 @@ class MidocoSellItemDetails extends AbstractStructBase
      * Get MidocoPackageDetailsInfo4Printing value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSellItemInfo4Printing[]
      */
-    public function getMidocoPackageDetailsInfo4Printing(): array
+    public function getMidocoPackageDetailsInfo4Printing(): ?array
     {
         return $this->MidocoPackageDetailsInfo4Printing;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoPackageDetailsInfo4Printing method
+     * This method is responsible for validating the value(s) passed to the setMidocoPackageDetailsInfo4Printing method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoPackageDetailsInfo4Printing method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoPackageDetailsInfo4PrintingForArrayConstraintsFromSetMidocoPackageDetailsInfo4Printing(array $values = []): string
+    public static function validateMidocoPackageDetailsInfo4PrintingForArrayConstraintFromSetMidocoPackageDetailsInfo4Printing(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoSellItemDetailsMidocoPackageDetailsInfo4PrintingItem) {
@@ -3325,10 +3493,10 @@ class MidocoSellItemDetails extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSellItemInfo4Printing[] $midocoPackageDetailsInfo4Printing
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSellItemDetails
      */
-    public function setMidocoPackageDetailsInfo4Printing(array $midocoPackageDetailsInfo4Printing = []): self
+    public function setMidocoPackageDetailsInfo4Printing(?array $midocoPackageDetailsInfo4Printing = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoPackageDetailsInfo4PrintingArrayErrorMessage = self::validateMidocoPackageDetailsInfo4PrintingForArrayConstraintsFromSetMidocoPackageDetailsInfo4Printing($midocoPackageDetailsInfo4Printing))) {
+        if ('' !== ($midocoPackageDetailsInfo4PrintingArrayErrorMessage = self::validateMidocoPackageDetailsInfo4PrintingForArrayConstraintFromSetMidocoPackageDetailsInfo4Printing($midocoPackageDetailsInfo4Printing))) {
             throw new InvalidArgumentException($midocoPackageDetailsInfo4PrintingArrayErrorMessage, __LINE__);
         }
         $this->MidocoPackageDetailsInfo4Printing = $midocoPackageDetailsInfo4Printing;
@@ -3355,18 +3523,22 @@ class MidocoSellItemDetails extends AbstractStructBase
      * Get MidocoAdditionalService value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoAdditionalService[]
      */
-    public function getMidocoAdditionalService(): array
+    public function getMidocoAdditionalService(): ?array
     {
         return $this->MidocoAdditionalService;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoAdditionalService method
+     * This method is responsible for validating the value(s) passed to the setMidocoAdditionalService method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoAdditionalService method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoAdditionalServiceForArrayConstraintsFromSetMidocoAdditionalService(array $values = []): string
+    public static function validateMidocoAdditionalServiceForArrayConstraintFromSetMidocoAdditionalService(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoSellItemDetailsMidocoAdditionalServiceItem) {
@@ -3388,10 +3560,10 @@ class MidocoSellItemDetails extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoAdditionalService[] $midocoAdditionalService
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSellItemDetails
      */
-    public function setMidocoAdditionalService(array $midocoAdditionalService = []): self
+    public function setMidocoAdditionalService(?array $midocoAdditionalService = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoAdditionalServiceArrayErrorMessage = self::validateMidocoAdditionalServiceForArrayConstraintsFromSetMidocoAdditionalService($midocoAdditionalService))) {
+        if ('' !== ($midocoAdditionalServiceArrayErrorMessage = self::validateMidocoAdditionalServiceForArrayConstraintFromSetMidocoAdditionalService($midocoAdditionalService))) {
             throw new InvalidArgumentException($midocoAdditionalServiceArrayErrorMessage, __LINE__);
         }
         $this->MidocoAdditionalService = $midocoAdditionalService;
@@ -3418,18 +3590,22 @@ class MidocoSellItemDetails extends AbstractStructBase
      * Get MidocoEventDetailsInfo4Printing value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoEventDetailsInfo4Printing[]
      */
-    public function getMidocoEventDetailsInfo4Printing(): array
+    public function getMidocoEventDetailsInfo4Printing(): ?array
     {
         return $this->MidocoEventDetailsInfo4Printing;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoEventDetailsInfo4Printing method
+     * This method is responsible for validating the value(s) passed to the setMidocoEventDetailsInfo4Printing method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoEventDetailsInfo4Printing method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoEventDetailsInfo4PrintingForArrayConstraintsFromSetMidocoEventDetailsInfo4Printing(array $values = []): string
+    public static function validateMidocoEventDetailsInfo4PrintingForArrayConstraintFromSetMidocoEventDetailsInfo4Printing(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoSellItemDetailsMidocoEventDetailsInfo4PrintingItem) {
@@ -3451,10 +3627,10 @@ class MidocoSellItemDetails extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoEventDetailsInfo4Printing[] $midocoEventDetailsInfo4Printing
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSellItemDetails
      */
-    public function setMidocoEventDetailsInfo4Printing(array $midocoEventDetailsInfo4Printing = []): self
+    public function setMidocoEventDetailsInfo4Printing(?array $midocoEventDetailsInfo4Printing = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoEventDetailsInfo4PrintingArrayErrorMessage = self::validateMidocoEventDetailsInfo4PrintingForArrayConstraintsFromSetMidocoEventDetailsInfo4Printing($midocoEventDetailsInfo4Printing))) {
+        if ('' !== ($midocoEventDetailsInfo4PrintingArrayErrorMessage = self::validateMidocoEventDetailsInfo4PrintingForArrayConstraintFromSetMidocoEventDetailsInfo4Printing($midocoEventDetailsInfo4Printing))) {
             throw new InvalidArgumentException($midocoEventDetailsInfo4PrintingArrayErrorMessage, __LINE__);
         }
         $this->MidocoEventDetailsInfo4Printing = $midocoEventDetailsInfo4Printing;
@@ -3481,18 +3657,22 @@ class MidocoSellItemDetails extends AbstractStructBase
      * Get MidocoDocumentitem4Printing value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoDocumentitem4Printing[]
      */
-    public function getMidocoDocumentitem4Printing(): array
+    public function getMidocoDocumentitem4Printing(): ?array
     {
         return $this->MidocoDocumentitem4Printing;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoDocumentitem4Printing method
+     * This method is responsible for validating the value(s) passed to the setMidocoDocumentitem4Printing method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoDocumentitem4Printing method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoDocumentitem4PrintingForArrayConstraintsFromSetMidocoDocumentitem4Printing(array $values = []): string
+    public static function validateMidocoDocumentitem4PrintingForArrayConstraintFromSetMidocoDocumentitem4Printing(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoSellItemDetailsMidocoDocumentitem4PrintingItem) {
@@ -3514,10 +3694,10 @@ class MidocoSellItemDetails extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoDocumentitem4Printing[] $midocoDocumentitem4Printing
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSellItemDetails
      */
-    public function setMidocoDocumentitem4Printing(array $midocoDocumentitem4Printing = []): self
+    public function setMidocoDocumentitem4Printing(?array $midocoDocumentitem4Printing = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoDocumentitem4PrintingArrayErrorMessage = self::validateMidocoDocumentitem4PrintingForArrayConstraintsFromSetMidocoDocumentitem4Printing($midocoDocumentitem4Printing))) {
+        if ('' !== ($midocoDocumentitem4PrintingArrayErrorMessage = self::validateMidocoDocumentitem4PrintingForArrayConstraintFromSetMidocoDocumentitem4Printing($midocoDocumentitem4Printing))) {
             throw new InvalidArgumentException($midocoDocumentitem4PrintingArrayErrorMessage, __LINE__);
         }
         $this->MidocoDocumentitem4Printing = $midocoDocumentitem4Printing;
@@ -3544,18 +3724,22 @@ class MidocoSellItemDetails extends AbstractStructBase
      * Get MidocoTransferDetailsInfo4Printing value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoTransferDetailsInfo4Printing[]
      */
-    public function getMidocoTransferDetailsInfo4Printing(): array
+    public function getMidocoTransferDetailsInfo4Printing(): ?array
     {
         return $this->MidocoTransferDetailsInfo4Printing;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoTransferDetailsInfo4Printing method
+     * This method is responsible for validating the value(s) passed to the setMidocoTransferDetailsInfo4Printing method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoTransferDetailsInfo4Printing method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoTransferDetailsInfo4PrintingForArrayConstraintsFromSetMidocoTransferDetailsInfo4Printing(array $values = []): string
+    public static function validateMidocoTransferDetailsInfo4PrintingForArrayConstraintFromSetMidocoTransferDetailsInfo4Printing(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoSellItemDetailsMidocoTransferDetailsInfo4PrintingItem) {
@@ -3577,10 +3761,10 @@ class MidocoSellItemDetails extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoTransferDetailsInfo4Printing[] $midocoTransferDetailsInfo4Printing
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSellItemDetails
      */
-    public function setMidocoTransferDetailsInfo4Printing(array $midocoTransferDetailsInfo4Printing = []): self
+    public function setMidocoTransferDetailsInfo4Printing(?array $midocoTransferDetailsInfo4Printing = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoTransferDetailsInfo4PrintingArrayErrorMessage = self::validateMidocoTransferDetailsInfo4PrintingForArrayConstraintsFromSetMidocoTransferDetailsInfo4Printing($midocoTransferDetailsInfo4Printing))) {
+        if ('' !== ($midocoTransferDetailsInfo4PrintingArrayErrorMessage = self::validateMidocoTransferDetailsInfo4PrintingForArrayConstraintFromSetMidocoTransferDetailsInfo4Printing($midocoTransferDetailsInfo4Printing))) {
             throw new InvalidArgumentException($midocoTransferDetailsInfo4PrintingArrayErrorMessage, __LINE__);
         }
         $this->MidocoTransferDetailsInfo4Printing = $midocoTransferDetailsInfo4Printing;
@@ -3607,18 +3791,22 @@ class MidocoSellItemDetails extends AbstractStructBase
      * Get MidocoSellDetailsPrice value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSellDetailsPrice[]
      */
-    public function getMidocoSellDetailsPrice(): array
+    public function getMidocoSellDetailsPrice(): ?array
     {
         return $this->MidocoSellDetailsPrice;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoSellDetailsPrice method
+     * This method is responsible for validating the value(s) passed to the setMidocoSellDetailsPrice method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoSellDetailsPrice method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoSellDetailsPriceForArrayConstraintsFromSetMidocoSellDetailsPrice(array $values = []): string
+    public static function validateMidocoSellDetailsPriceForArrayConstraintFromSetMidocoSellDetailsPrice(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoSellItemDetailsMidocoSellDetailsPriceItem) {
@@ -3640,10 +3828,10 @@ class MidocoSellItemDetails extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSellDetailsPrice[] $midocoSellDetailsPrice
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSellItemDetails
      */
-    public function setMidocoSellDetailsPrice(array $midocoSellDetailsPrice = []): self
+    public function setMidocoSellDetailsPrice(?array $midocoSellDetailsPrice = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoSellDetailsPriceArrayErrorMessage = self::validateMidocoSellDetailsPriceForArrayConstraintsFromSetMidocoSellDetailsPrice($midocoSellDetailsPrice))) {
+        if ('' !== ($midocoSellDetailsPriceArrayErrorMessage = self::validateMidocoSellDetailsPriceForArrayConstraintFromSetMidocoSellDetailsPrice($midocoSellDetailsPrice))) {
             throw new InvalidArgumentException($midocoSellDetailsPriceArrayErrorMessage, __LINE__);
         }
         $this->MidocoSellDetailsPrice = $midocoSellDetailsPrice;
@@ -3708,18 +3896,22 @@ class MidocoSellItemDetails extends AbstractStructBase
      * Get MidocoSupplierTemplate value
      * @return \Pggns\MidocoApi\Order\StructType\SupplierTemplateDTO[]
      */
-    public function getMidocoSupplierTemplate(): array
+    public function getMidocoSupplierTemplate(): ?array
     {
         return $this->MidocoSupplierTemplate;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoSupplierTemplate method
+     * This method is responsible for validating the value(s) passed to the setMidocoSupplierTemplate method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoSupplierTemplate method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoSupplierTemplateForArrayConstraintsFromSetMidocoSupplierTemplate(array $values = []): string
+    public static function validateMidocoSupplierTemplateForArrayConstraintFromSetMidocoSupplierTemplate(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoSellItemDetailsMidocoSupplierTemplateItem) {
@@ -3741,10 +3933,10 @@ class MidocoSellItemDetails extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\SupplierTemplateDTO[] $midocoSupplierTemplate
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSellItemDetails
      */
-    public function setMidocoSupplierTemplate(array $midocoSupplierTemplate = []): self
+    public function setMidocoSupplierTemplate(?array $midocoSupplierTemplate = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoSupplierTemplateArrayErrorMessage = self::validateMidocoSupplierTemplateForArrayConstraintsFromSetMidocoSupplierTemplate($midocoSupplierTemplate))) {
+        if ('' !== ($midocoSupplierTemplateArrayErrorMessage = self::validateMidocoSupplierTemplateForArrayConstraintFromSetMidocoSupplierTemplate($midocoSupplierTemplate))) {
             throw new InvalidArgumentException($midocoSupplierTemplateArrayErrorMessage, __LINE__);
         }
         $this->MidocoSupplierTemplate = $midocoSupplierTemplate;
@@ -3771,18 +3963,22 @@ class MidocoSellItemDetails extends AbstractStructBase
      * Get touchedCountry value
      * @return string[]
      */
-    public function getTouchedCountry(): array
+    public function getTouchedCountry(): ?array
     {
         return $this->touchedCountry;
     }
     /**
-     * This method is responsible for validating the values passed to the setTouchedCountry method
+     * This method is responsible for validating the value(s) passed to the setTouchedCountry method
      * This method is willingly generated in order to preserve the one-line inline validation within the setTouchedCountry method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateTouchedCountryForArrayConstraintsFromSetTouchedCountry(array $values = []): string
+    public static function validateTouchedCountryForArrayConstraintFromSetTouchedCountry(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoSellItemDetailsTouchedCountryItem) {
@@ -3804,10 +4000,10 @@ class MidocoSellItemDetails extends AbstractStructBase
      * @param string[] $touchedCountry
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSellItemDetails
      */
-    public function setTouchedCountry(array $touchedCountry = []): self
+    public function setTouchedCountry(?array $touchedCountry = null): self
     {
         // validation for constraint: array
-        if ('' !== ($touchedCountryArrayErrorMessage = self::validateTouchedCountryForArrayConstraintsFromSetTouchedCountry($touchedCountry))) {
+        if ('' !== ($touchedCountryArrayErrorMessage = self::validateTouchedCountryForArrayConstraintFromSetTouchedCountry($touchedCountry))) {
             throw new InvalidArgumentException($touchedCountryArrayErrorMessage, __LINE__);
         }
         $this->touchedCountry = $touchedCountry;

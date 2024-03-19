@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoEventDetailsInfo4Printing StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoEventDetailsInfo4Printing extends EventDetailDTO
 {
 }

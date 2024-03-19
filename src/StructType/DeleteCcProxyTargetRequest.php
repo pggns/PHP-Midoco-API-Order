@@ -11,12 +11,12 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteCcProxyTargetRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteCcProxyTargetRequest extends AbstractStructBase
 {
     /**
      * The MidocoCcProxyTarget
      * Meta information extracted from the WSDL
-     * - maxOccurs: 1
      * - ref: MidocoCcProxyTarget
      * @var \Pggns\MidocoApi\Order\StructType\MidocoCcProxyTarget|null
      */

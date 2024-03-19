@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ParkAeroImportResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ParkAeroImportResponse extends AbstractStructBase
 {
     /**
@@ -20,7 +21,7 @@ class ParkAeroImportResponse extends AbstractStructBase
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\ParkAeroImportStatus[]
      */
-    protected array $ParkAeroImportStatus = [];
+    protected ?array $ParkAeroImportStatus = null;
     /**
      * The error
      * Meta information extracted from the WSDL
@@ -35,7 +36,7 @@ class ParkAeroImportResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\ParkAeroImportStatus[] $parkAeroImportStatus
      * @param string $error
      */
-    public function __construct(array $parkAeroImportStatus = [], ?string $error = null)
+    public function __construct(?array $parkAeroImportStatus = null, ?string $error = null)
     {
         $this
             ->setParkAeroImportStatus($parkAeroImportStatus)
@@ -45,18 +46,22 @@ class ParkAeroImportResponse extends AbstractStructBase
      * Get ParkAeroImportStatus value
      * @return \Pggns\MidocoApi\Order\StructType\ParkAeroImportStatus[]
      */
-    public function getParkAeroImportStatus(): array
+    public function getParkAeroImportStatus(): ?array
     {
         return $this->ParkAeroImportStatus;
     }
     /**
-     * This method is responsible for validating the values passed to the setParkAeroImportStatus method
+     * This method is responsible for validating the value(s) passed to the setParkAeroImportStatus method
      * This method is willingly generated in order to preserve the one-line inline validation within the setParkAeroImportStatus method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateParkAeroImportStatusForArrayConstraintsFromSetParkAeroImportStatus(array $values = []): string
+    public static function validateParkAeroImportStatusForArrayConstraintFromSetParkAeroImportStatus(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $parkAeroImportResponseParkAeroImportStatusItem) {
@@ -78,10 +83,10 @@ class ParkAeroImportResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\ParkAeroImportStatus[] $parkAeroImportStatus
      * @return \Pggns\MidocoApi\Order\StructType\ParkAeroImportResponse
      */
-    public function setParkAeroImportStatus(array $parkAeroImportStatus = []): self
+    public function setParkAeroImportStatus(?array $parkAeroImportStatus = null): self
     {
         // validation for constraint: array
-        if ('' !== ($parkAeroImportStatusArrayErrorMessage = self::validateParkAeroImportStatusForArrayConstraintsFromSetParkAeroImportStatus($parkAeroImportStatus))) {
+        if ('' !== ($parkAeroImportStatusArrayErrorMessage = self::validateParkAeroImportStatusForArrayConstraintFromSetParkAeroImportStatus($parkAeroImportStatus))) {
             throw new InvalidArgumentException($parkAeroImportStatusArrayErrorMessage, __LINE__);
         }
         $this->ParkAeroImportStatus = $parkAeroImportStatus;

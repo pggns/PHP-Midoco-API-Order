@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteMidocoSupplierTemplateRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteMidocoSupplierTemplateRequest extends AbstractStructBase
 {
     /**

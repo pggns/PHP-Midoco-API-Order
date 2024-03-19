@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetSichVExportProtocolResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetSichVExportProtocolResponse extends AbstractStructBase
 {
     /**
@@ -18,45 +19,49 @@ class GetSichVExportProtocolResponse extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: unbounded
      * - minOccurs: 0
-     * @var mixed[]
+     * @var string[]
      */
-    protected array $MidocoTssExportProtocol = [];
+    protected ?array $MidocoTssExportProtocol = null;
     /**
      * Constructor method for GetSichVExportProtocolResponse
      * @uses GetSichVExportProtocolResponse::setMidocoTssExportProtocol()
-     * @param mixed[] $midocoTssExportProtocol
+     * @param string[] $midocoTssExportProtocol
      */
-    public function __construct(array $midocoTssExportProtocol = [])
+    public function __construct(?array $midocoTssExportProtocol = null)
     {
         $this
             ->setMidocoTssExportProtocol($midocoTssExportProtocol);
     }
     /**
      * Get MidocoTssExportProtocol value
-     * @return mixed[]
+     * @return string[]
      */
-    public function getMidocoTssExportProtocol(): array
+    public function getMidocoTssExportProtocol(): ?array
     {
         return $this->MidocoTssExportProtocol;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoTssExportProtocol method
+     * This method is responsible for validating the value(s) passed to the setMidocoTssExportProtocol method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoTssExportProtocol method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoTssExportProtocolForArrayConstraintsFromSetMidocoTssExportProtocol(array $values = []): string
+    public static function validateMidocoTssExportProtocolForArrayConstraintFromSetMidocoTssExportProtocol(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getSichVExportProtocolResponseMidocoTssExportProtocolItem) {
             // validation for constraint: itemType
-            if (false) {
+            if (!is_string($getSichVExportProtocolResponseMidocoTssExportProtocolItem)) {
                 $invalidValues[] = is_object($getSichVExportProtocolResponseMidocoTssExportProtocolItem) ? get_class($getSichVExportProtocolResponseMidocoTssExportProtocolItem) : sprintf('%s(%s)', gettype($getSichVExportProtocolResponseMidocoTssExportProtocolItem), var_export($getSichVExportProtocolResponseMidocoTssExportProtocolItem, true));
             }
         }
         if (!empty($invalidValues)) {
-            $message = sprintf('The MidocoTssExportProtocol property can only contain items of type mixed, %s given', is_object($invalidValues) ? get_class($invalidValues) : (is_array($invalidValues) ? implode(', ', $invalidValues) : gettype($invalidValues)));
+            $message = sprintf('The MidocoTssExportProtocol property can only contain items of type string, %s given', is_object($invalidValues) ? get_class($invalidValues) : (is_array($invalidValues) ? implode(', ', $invalidValues) : gettype($invalidValues)));
         }
         unset($invalidValues);
         
@@ -65,13 +70,13 @@ class GetSichVExportProtocolResponse extends AbstractStructBase
     /**
      * Set MidocoTssExportProtocol value
      * @throws InvalidArgumentException
-     * @param mixed[] $midocoTssExportProtocol
+     * @param string[] $midocoTssExportProtocol
      * @return \Pggns\MidocoApi\Order\StructType\GetSichVExportProtocolResponse
      */
-    public function setMidocoTssExportProtocol(array $midocoTssExportProtocol = []): self
+    public function setMidocoTssExportProtocol(?array $midocoTssExportProtocol = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoTssExportProtocolArrayErrorMessage = self::validateMidocoTssExportProtocolForArrayConstraintsFromSetMidocoTssExportProtocol($midocoTssExportProtocol))) {
+        if ('' !== ($midocoTssExportProtocolArrayErrorMessage = self::validateMidocoTssExportProtocolForArrayConstraintFromSetMidocoTssExportProtocol($midocoTssExportProtocol))) {
             throw new InvalidArgumentException($midocoTssExportProtocolArrayErrorMessage, __LINE__);
         }
         $this->MidocoTssExportProtocol = $midocoTssExportProtocol;
@@ -81,14 +86,14 @@ class GetSichVExportProtocolResponse extends AbstractStructBase
     /**
      * Add item to MidocoTssExportProtocol value
      * @throws InvalidArgumentException
-     * @param mixed $item
+     * @param string $item
      * @return \Pggns\MidocoApi\Order\StructType\GetSichVExportProtocolResponse
      */
-    public function addToMidocoTssExportProtocol(mixed $item): self
+    public function addToMidocoTssExportProtocol(string $item): self
     {
         // validation for constraint: itemType
-        if (false) {
-            throw new InvalidArgumentException(sprintf('The MidocoTssExportProtocol property can only contain items of type mixed, %s given', is_object($item) ? get_class($item) : (is_array($item) ? implode(', ', $item) : gettype($item))), __LINE__);
+        if (!is_string($item)) {
+            throw new InvalidArgumentException(sprintf('The MidocoTssExportProtocol property can only contain items of type string, %s given', is_object($item) ? get_class($item) : (is_array($item) ? implode(', ', $item) : gettype($item))), __LINE__);
         }
         $this->MidocoTssExportProtocol[] = $item;
         

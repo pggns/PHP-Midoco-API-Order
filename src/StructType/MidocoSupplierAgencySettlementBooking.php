@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoSupplierAgencySettlementBooking StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoSupplierAgencySettlementBooking extends SupplAgencySettlemBookDTO
 {
     /**

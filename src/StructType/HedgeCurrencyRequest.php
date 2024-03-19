@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for hedgeCurrencyRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class HedgeCurrencyRequest extends AbstractStructBase
 {
     /**

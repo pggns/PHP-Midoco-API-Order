@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for token-attributes StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class Token_attributes extends AbstractStructBase
 {
     /**

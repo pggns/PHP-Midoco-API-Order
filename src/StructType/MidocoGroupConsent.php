@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoGroupConsent StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoGroupConsent extends GroupConsentDTO
 {
 }

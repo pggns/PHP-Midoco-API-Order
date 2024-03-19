@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetMediaTypeDescriptionListResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetMediaTypeDescriptionListResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetMediaTypeDescriptionListResponse extends AbstractStructBase
      * - ref: MidocoMediaTypeDescription
      * @var \Pggns\MidocoApi\Order\StructType\MediaTypeDescriptionDTO[]
      */
-    protected array $MidocoMediaTypeDescription = [];
+    protected ?array $MidocoMediaTypeDescription = null;
     /**
      * Constructor method for GetMediaTypeDescriptionListResponse
      * @uses GetMediaTypeDescriptionListResponse::setMidocoMediaTypeDescription()
      * @param \Pggns\MidocoApi\Order\StructType\MediaTypeDescriptionDTO[] $midocoMediaTypeDescription
      */
-    public function __construct(array $midocoMediaTypeDescription = [])
+    public function __construct(?array $midocoMediaTypeDescription = null)
     {
         $this
             ->setMidocoMediaTypeDescription($midocoMediaTypeDescription);
@@ -36,18 +37,22 @@ class GetMediaTypeDescriptionListResponse extends AbstractStructBase
      * Get MidocoMediaTypeDescription value
      * @return \Pggns\MidocoApi\Order\StructType\MediaTypeDescriptionDTO[]
      */
-    public function getMidocoMediaTypeDescription(): array
+    public function getMidocoMediaTypeDescription(): ?array
     {
         return $this->MidocoMediaTypeDescription;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoMediaTypeDescription method
+     * This method is responsible for validating the value(s) passed to the setMidocoMediaTypeDescription method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoMediaTypeDescription method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoMediaTypeDescriptionForArrayConstraintsFromSetMidocoMediaTypeDescription(array $values = []): string
+    public static function validateMidocoMediaTypeDescriptionForArrayConstraintFromSetMidocoMediaTypeDescription(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getMediaTypeDescriptionListResponseMidocoMediaTypeDescriptionItem) {
@@ -69,10 +74,10 @@ class GetMediaTypeDescriptionListResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MediaTypeDescriptionDTO[] $midocoMediaTypeDescription
      * @return \Pggns\MidocoApi\Order\StructType\GetMediaTypeDescriptionListResponse
      */
-    public function setMidocoMediaTypeDescription(array $midocoMediaTypeDescription = []): self
+    public function setMidocoMediaTypeDescription(?array $midocoMediaTypeDescription = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoMediaTypeDescriptionArrayErrorMessage = self::validateMidocoMediaTypeDescriptionForArrayConstraintsFromSetMidocoMediaTypeDescription($midocoMediaTypeDescription))) {
+        if ('' !== ($midocoMediaTypeDescriptionArrayErrorMessage = self::validateMidocoMediaTypeDescriptionForArrayConstraintFromSetMidocoMediaTypeDescription($midocoMediaTypeDescription))) {
             throw new InvalidArgumentException($midocoMediaTypeDescriptionArrayErrorMessage, __LINE__);
         }
         $this->MidocoMediaTypeDescription = $midocoMediaTypeDescription;

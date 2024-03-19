@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetOrderStatusResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetOrderStatusResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetOrderStatusResponse extends AbstractStructBase
      * - ref: MidocoOrderStatus
      * @var \Pggns\MidocoApi\Order\StructType\MidocoOrderStatus[]
      */
-    protected array $MidocoOrderStatus = [];
+    protected ?array $MidocoOrderStatus = null;
     /**
      * Constructor method for GetOrderStatusResponse
      * @uses GetOrderStatusResponse::setMidocoOrderStatus()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoOrderStatus[] $midocoOrderStatus
      */
-    public function __construct(array $midocoOrderStatus = [])
+    public function __construct(?array $midocoOrderStatus = null)
     {
         $this
             ->setMidocoOrderStatus($midocoOrderStatus);
@@ -36,18 +37,22 @@ class GetOrderStatusResponse extends AbstractStructBase
      * Get MidocoOrderStatus value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoOrderStatus[]
      */
-    public function getMidocoOrderStatus(): array
+    public function getMidocoOrderStatus(): ?array
     {
         return $this->MidocoOrderStatus;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoOrderStatus method
+     * This method is responsible for validating the value(s) passed to the setMidocoOrderStatus method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoOrderStatus method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoOrderStatusForArrayConstraintsFromSetMidocoOrderStatus(array $values = []): string
+    public static function validateMidocoOrderStatusForArrayConstraintFromSetMidocoOrderStatus(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getOrderStatusResponseMidocoOrderStatusItem) {
@@ -69,10 +74,10 @@ class GetOrderStatusResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoOrderStatus[] $midocoOrderStatus
      * @return \Pggns\MidocoApi\Order\StructType\GetOrderStatusResponse
      */
-    public function setMidocoOrderStatus(array $midocoOrderStatus = []): self
+    public function setMidocoOrderStatus(?array $midocoOrderStatus = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoOrderStatusArrayErrorMessage = self::validateMidocoOrderStatusForArrayConstraintsFromSetMidocoOrderStatus($midocoOrderStatus))) {
+        if ('' !== ($midocoOrderStatusArrayErrorMessage = self::validateMidocoOrderStatusForArrayConstraintFromSetMidocoOrderStatus($midocoOrderStatus))) {
             throw new InvalidArgumentException($midocoOrderStatusArrayErrorMessage, __LINE__);
         }
         $this->MidocoOrderStatus = $midocoOrderStatus;

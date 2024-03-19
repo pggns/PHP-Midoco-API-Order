@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetSellItemProvisionRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetSellItemProvisionRequest extends AbstractStructBase
 {
     /**

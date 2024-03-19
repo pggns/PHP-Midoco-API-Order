@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetMarketingKeysLocalizedForTypeRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetMarketingKeysLocalizedForTypeRequest extends AbstractStructBase
 {
     /**

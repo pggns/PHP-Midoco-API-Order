@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteRemarkOrgunitRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteRemarkOrgunitRequest extends AbstractStructBase
 {
     /**

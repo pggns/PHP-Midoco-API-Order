@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GenericDetailDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GenericDetailDTO extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteSupplierFreeStornoDaysRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteSupplierFreeStornoDaysRequest extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SepaMandateDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SepaMandateDTO extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveDestinationDocumentRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveDestinationDocumentRequest extends AbstractStructBase
 {
     /**

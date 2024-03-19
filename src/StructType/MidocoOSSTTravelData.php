@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoOSSTTravelData StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoOSSTTravelData extends AbstractStructBase
 {
     /**

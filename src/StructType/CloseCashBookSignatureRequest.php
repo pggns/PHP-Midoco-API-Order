@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CloseCashBookSignatureRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CloseCashBookSignatureRequest extends AbstractStructBase
 {
     /**

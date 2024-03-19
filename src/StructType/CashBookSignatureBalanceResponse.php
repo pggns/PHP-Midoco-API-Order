@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CashBookSignatureBalanceResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CashBookSignatureBalanceResponse extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SetConfirmationRequiredOfSellitemResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SetConfirmationRequiredOfSellitemResponse extends AbstractStructBase
 {
 }

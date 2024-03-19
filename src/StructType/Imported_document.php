@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: optional documents. the content is base64 coded and is decoded before storing.
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class Imported_document extends AbstractStructBase
 {
     /**

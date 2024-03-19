@@ -11,16 +11,16 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MigrateFiskalyTssRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MigrateFiskalyTssRequest extends AbstractStructBase
 {
     /**
      * The UnitName
      * Meta information extracted from the WSDL
      * - maxOccurs: unbounded
-     * - minOccurs: 1
      * @var string[]
      */
-    protected array $UnitName = [];
+    protected ?array $UnitName = null;
     /**
      * The send_puk_mail
      * Meta information extracted from the WSDL
@@ -53,7 +53,7 @@ class MigrateFiskalyTssRequest extends AbstractStructBase
      * @param bool $stop_on_first_error
      * @param string $cancel_reason
      */
-    public function __construct(array $unitName, ?bool $send_puk_mail = false, ?bool $stop_on_first_error = true, ?string $cancel_reason = 'Migration to Fiskaly Version 2')
+    public function __construct(?array $unitName = null, ?bool $send_puk_mail = false, ?bool $stop_on_first_error = true, ?string $cancel_reason = 'Migration to Fiskaly Version 2')
     {
         $this
             ->setUnitName($unitName)
@@ -65,18 +65,22 @@ class MigrateFiskalyTssRequest extends AbstractStructBase
      * Get UnitName value
      * @return string[]
      */
-    public function getUnitName(): array
+    public function getUnitName(): ?array
     {
         return $this->UnitName;
     }
     /**
-     * This method is responsible for validating the values passed to the setUnitName method
+     * This method is responsible for validating the value(s) passed to the setUnitName method
      * This method is willingly generated in order to preserve the one-line inline validation within the setUnitName method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateUnitNameForArrayConstraintsFromSetUnitName(array $values = []): string
+    public static function validateUnitNameForArrayConstraintFromSetUnitName(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $migrateFiskalyTssRequestUnitNameItem) {
@@ -98,10 +102,10 @@ class MigrateFiskalyTssRequest extends AbstractStructBase
      * @param string[] $unitName
      * @return \Pggns\MidocoApi\Order\StructType\MigrateFiskalyTssRequest
      */
-    public function setUnitName(array $unitName): self
+    public function setUnitName(?array $unitName = null): self
     {
         // validation for constraint: array
-        if ('' !== ($unitNameArrayErrorMessage = self::validateUnitNameForArrayConstraintsFromSetUnitName($unitName))) {
+        if ('' !== ($unitNameArrayErrorMessage = self::validateUnitNameForArrayConstraintFromSetUnitName($unitName))) {
             throw new InvalidArgumentException($unitNameArrayErrorMessage, __LINE__);
         }
         $this->UnitName = $unitName;

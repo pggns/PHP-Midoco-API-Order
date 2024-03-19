@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteMidocoBonusCalculationResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteMidocoBonusCalculationResponse extends AbstractStructBase
 {
 }

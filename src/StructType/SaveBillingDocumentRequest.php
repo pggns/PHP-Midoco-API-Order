@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveBillingDocumentRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveBillingDocumentRequest extends AbstractStructBase
 {
     /**

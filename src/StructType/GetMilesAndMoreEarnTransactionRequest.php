@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: This action can be used to retrieve any Miles & More earn transaction. E.g. to display more than just the most recent transaction in the GUI.
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetMilesAndMoreEarnTransactionRequest extends AbstractStructBase
 {
     /**
@@ -26,7 +27,7 @@ class GetMilesAndMoreEarnTransactionRequest extends AbstractStructBase
      * - minOccurs: 1
      * @var int[]
      */
-    protected array $id = [];
+    protected array $id;
     /**
      * The TransactionId
      * Meta information extracted from the WSDL
@@ -38,7 +39,7 @@ class GetMilesAndMoreEarnTransactionRequest extends AbstractStructBase
      * - minOccurs: 1
      * @var string[]
      */
-    protected array $TransactionId = [];
+    protected array $TransactionId;
     /**
      * Constructor method for GetMilesAndMoreEarnTransactionRequest
      * @uses GetMilesAndMoreEarnTransactionRequest::setId()
@@ -46,7 +47,7 @@ class GetMilesAndMoreEarnTransactionRequest extends AbstractStructBase
      * @param int[] $id
      * @param string[] $transactionId
      */
-    public function __construct(array $id, array $transactionId)
+    public function __construct(array $id = null, array $transactionId = null)
     {
         $this
             ->setId($id)
@@ -54,20 +55,24 @@ class GetMilesAndMoreEarnTransactionRequest extends AbstractStructBase
     }
     /**
      * Get id value
-     * @return int[]
+     * @return int[]|null
      */
-    public function getId(): array
+    public function getId(): ?array
     {
-        return isset($this->id) ? $this->id : null;
+        return $this->id ?? null;
     }
     /**
-     * This method is responsible for validating the values passed to the setId method
+     * This method is responsible for validating the value(s) passed to the setId method
      * This method is willingly generated in order to preserve the one-line inline validation within the setId method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateIdForArrayConstraintsFromSetId(array $values = []): string
+    public static function validateIdForArrayConstraintFromSetId(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getMilesAndMoreEarnTransactionRequestIdItem) {
@@ -84,13 +89,13 @@ class GetMilesAndMoreEarnTransactionRequest extends AbstractStructBase
         return $message;
     }
     /**
-     * This method is responsible for validating the value passed to the setId method
+     * This method is responsible for validating the value(s) passed to the setId method
      * This method is willingly generated in order to preserve the one-line inline validation within the setId method
      * This has to validate that the property which is being set is the only one among the given choices
      * @param mixed $value
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public function validateIdForChoiceConstraintsFromSetId($value): string
+    public function validateIdForChoiceConstraintFromSetId($value): string
     {
         $message = '';
         if (is_null($value)) {
@@ -121,15 +126,19 @@ class GetMilesAndMoreEarnTransactionRequest extends AbstractStructBase
      * @param int[] $id
      * @return \Pggns\MidocoApi\Order\StructType\GetMilesAndMoreEarnTransactionRequest
      */
-    public function setId(array $id): self
+    public function setId(array $id = null): self
     {
         // validation for constraint: array
-        if ('' !== ($idArrayErrorMessage = self::validateIdForArrayConstraintsFromSetId($id))) {
+        if ('' !== ($idArrayErrorMessage = self::validateIdForArrayConstraintFromSetId($id))) {
             throw new InvalidArgumentException($idArrayErrorMessage, __LINE__);
         }
         // validation for constraint: choice(id, TransactionId)
-        if ('' !== ($idChoiceErrorMessage = self::validateIdForChoiceConstraintsFromSetId($id))) {
+        if ('' !== ($idChoiceErrorMessage = self::validateIdForChoiceConstraintFromSetId($id))) {
             throw new InvalidArgumentException($idChoiceErrorMessage, __LINE__);
+        }
+        // validation for constraint: choiceMaxOccurs(1)
+        if (is_array($id) && count($id) > 1) {
+            throw new InvalidArgumentException(sprintf('Invalid count of %s, the number of elements contained by the property must be less than or equal to 1', count($id)), __LINE__);
         }
         if (is_null($id) || (is_array($id) && empty($id))) {
             unset($this->id);
@@ -140,13 +149,13 @@ class GetMilesAndMoreEarnTransactionRequest extends AbstractStructBase
         return $this;
     }
     /**
-     * This method is responsible for validating the value passed to the addToId method
+     * This method is responsible for validating the value(s) passed to the addToId method
      * This method is willingly generated in order to preserve the one-line inline validation within the addToId method
      * This has to validate that the property which is being set is the only one among the given choices
      * @param mixed $value
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public function validateItemForChoiceConstraintsFromAddToId($value): string
+    public function validateItemForChoiceConstraintFromAddToId($value): string
     {
         $message = '';
         if (is_null($value)) {
@@ -180,8 +189,12 @@ class GetMilesAndMoreEarnTransactionRequest extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('The id property can only contain items of type int, %s given', is_object($item) ? get_class($item) : (is_array($item) ? implode(', ', $item) : gettype($item))), __LINE__);
         }
         // validation for constraint: choice(id, TransactionId)
-        if ('' !== ($itemChoiceErrorMessage = self::validateItemForChoiceConstraintsFromAddToId($item))) {
+        if ('' !== ($itemChoiceErrorMessage = self::validateItemForChoiceConstraintFromAddToId($item))) {
             throw new InvalidArgumentException($itemChoiceErrorMessage, __LINE__);
+        }
+        // validation for constraint: choiceMaxOccurs(1)
+        if (is_array($this->id) && count($this->id) >= 1) {
+            throw new InvalidArgumentException(sprintf('You can\'t add anymore element to this property that already contains %s elements, the number of elements contained by the property must be less than or equal to 1', count($this->id)), __LINE__);
         }
         $this->id[] = $item;
         
@@ -189,20 +202,24 @@ class GetMilesAndMoreEarnTransactionRequest extends AbstractStructBase
     }
     /**
      * Get TransactionId value
-     * @return string[]
+     * @return string[]|null
      */
-    public function getTransactionId(): array
+    public function getTransactionId(): ?array
     {
-        return isset($this->TransactionId) ? $this->TransactionId : null;
+        return $this->TransactionId ?? null;
     }
     /**
-     * This method is responsible for validating the values passed to the setTransactionId method
+     * This method is responsible for validating the value(s) passed to the setTransactionId method
      * This method is willingly generated in order to preserve the one-line inline validation within the setTransactionId method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateTransactionIdForArrayConstraintsFromSetTransactionId(array $values = []): string
+    public static function validateTransactionIdForArrayConstraintFromSetTransactionId(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getMilesAndMoreEarnTransactionRequestTransactionIdItem) {
@@ -219,13 +236,13 @@ class GetMilesAndMoreEarnTransactionRequest extends AbstractStructBase
         return $message;
     }
     /**
-     * This method is responsible for validating the value passed to the setTransactionId method
+     * This method is responsible for validating the value(s) passed to the setTransactionId method
      * This method is willingly generated in order to preserve the one-line inline validation within the setTransactionId method
      * This has to validate that the property which is being set is the only one among the given choices
      * @param mixed $value
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public function validateTransactionIdForChoiceConstraintsFromSetTransactionId($value): string
+    public function validateTransactionIdForChoiceConstraintFromSetTransactionId($value): string
     {
         $message = '';
         if (is_null($value)) {
@@ -256,15 +273,19 @@ class GetMilesAndMoreEarnTransactionRequest extends AbstractStructBase
      * @param string[] $transactionId
      * @return \Pggns\MidocoApi\Order\StructType\GetMilesAndMoreEarnTransactionRequest
      */
-    public function setTransactionId(array $transactionId): self
+    public function setTransactionId(array $transactionId = null): self
     {
         // validation for constraint: array
-        if ('' !== ($transactionIdArrayErrorMessage = self::validateTransactionIdForArrayConstraintsFromSetTransactionId($transactionId))) {
+        if ('' !== ($transactionIdArrayErrorMessage = self::validateTransactionIdForArrayConstraintFromSetTransactionId($transactionId))) {
             throw new InvalidArgumentException($transactionIdArrayErrorMessage, __LINE__);
         }
         // validation for constraint: choice(id, TransactionId)
-        if ('' !== ($transactionIdChoiceErrorMessage = self::validateTransactionIdForChoiceConstraintsFromSetTransactionId($transactionId))) {
+        if ('' !== ($transactionIdChoiceErrorMessage = self::validateTransactionIdForChoiceConstraintFromSetTransactionId($transactionId))) {
             throw new InvalidArgumentException($transactionIdChoiceErrorMessage, __LINE__);
+        }
+        // validation for constraint: choiceMaxOccurs(1)
+        if (is_array($transactionId) && count($transactionId) > 1) {
+            throw new InvalidArgumentException(sprintf('Invalid count of %s, the number of elements contained by the property must be less than or equal to 1', count($transactionId)), __LINE__);
         }
         if (is_null($transactionId) || (is_array($transactionId) && empty($transactionId))) {
             unset($this->TransactionId);
@@ -275,13 +296,13 @@ class GetMilesAndMoreEarnTransactionRequest extends AbstractStructBase
         return $this;
     }
     /**
-     * This method is responsible for validating the value passed to the addToTransactionId method
+     * This method is responsible for validating the value(s) passed to the addToTransactionId method
      * This method is willingly generated in order to preserve the one-line inline validation within the addToTransactionId method
      * This has to validate that the property which is being set is the only one among the given choices
      * @param mixed $value
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public function validateItemForChoiceConstraintsFromAddToTransactionId($value): string
+    public function validateItemForChoiceConstraintFromAddToTransactionId($value): string
     {
         $message = '';
         if (is_null($value)) {
@@ -315,8 +336,12 @@ class GetMilesAndMoreEarnTransactionRequest extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('The TransactionId property can only contain items of type string, %s given', is_object($item) ? get_class($item) : (is_array($item) ? implode(', ', $item) : gettype($item))), __LINE__);
         }
         // validation for constraint: choice(id, TransactionId)
-        if ('' !== ($itemChoiceErrorMessage = self::validateItemForChoiceConstraintsFromAddToTransactionId($item))) {
+        if ('' !== ($itemChoiceErrorMessage = self::validateItemForChoiceConstraintFromAddToTransactionId($item))) {
             throw new InvalidArgumentException($itemChoiceErrorMessage, __LINE__);
+        }
+        // validation for constraint: choiceMaxOccurs(1)
+        if (is_array($this->TransactionId) && count($this->TransactionId) >= 1) {
+            throw new InvalidArgumentException(sprintf('You can\'t add anymore element to this property that already contains %s elements, the number of elements contained by the property must be less than or equal to 1', count($this->TransactionId)), __LINE__);
         }
         $this->TransactionId[] = $item;
         

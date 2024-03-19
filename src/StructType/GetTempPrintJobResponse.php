@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetTempPrintJobResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetTempPrintJobResponse extends AbstractStructBase
 {
     /**

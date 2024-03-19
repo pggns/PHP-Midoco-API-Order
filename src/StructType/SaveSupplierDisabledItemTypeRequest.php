@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveSupplierDisabledItemTypeRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveSupplierDisabledItemTypeRequest extends AbstractStructBase
 {
     /**

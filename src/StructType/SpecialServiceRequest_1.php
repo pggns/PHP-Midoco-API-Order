@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SpecialServiceRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SpecialServiceRequest_1 extends AbstractStructBase
 {
     /**
@@ -21,7 +22,7 @@ class SpecialServiceRequest_1 extends AbstractStructBase
      * - ref: BookingDetailRefId
      * @var int[]
      */
-    protected array $BookingDetailRefId = [];
+    protected ?array $BookingDetailRefId = null;
     /**
      * The TravelerRefId
      * Meta information extracted from the WSDL
@@ -30,7 +31,7 @@ class SpecialServiceRequest_1 extends AbstractStructBase
      * - ref: TravelerRefId
      * @var int[]
      */
-    protected array $TravelerRefId = [];
+    protected ?array $TravelerRefId = null;
     /**
      * The ssrId
      * @var int|null
@@ -73,7 +74,7 @@ class SpecialServiceRequest_1 extends AbstractStructBase
      * @param string $seat
      * @param string $status
      */
-    public function __construct(array $bookingDetailRefId = [], array $travelerRefId = [], ?int $ssrId = null, ?string $code = null, ?string $description = null, ?string $seat = null, ?string $status = null)
+    public function __construct(?array $bookingDetailRefId = null, ?array $travelerRefId = null, ?int $ssrId = null, ?string $code = null, ?string $description = null, ?string $seat = null, ?string $status = null)
     {
         $this
             ->setBookingDetailRefId($bookingDetailRefId)
@@ -88,18 +89,22 @@ class SpecialServiceRequest_1 extends AbstractStructBase
      * Get BookingDetailRefId value
      * @return int[]
      */
-    public function getBookingDetailRefId(): array
+    public function getBookingDetailRefId(): ?array
     {
         return $this->BookingDetailRefId;
     }
     /**
-     * This method is responsible for validating the values passed to the setBookingDetailRefId method
+     * This method is responsible for validating the value(s) passed to the setBookingDetailRefId method
      * This method is willingly generated in order to preserve the one-line inline validation within the setBookingDetailRefId method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateBookingDetailRefIdForArrayConstraintsFromSetBookingDetailRefId(array $values = []): string
+    public static function validateBookingDetailRefIdForArrayConstraintFromSetBookingDetailRefId(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $specialServiceRequestBookingDetailRefIdItem) {
@@ -121,10 +126,10 @@ class SpecialServiceRequest_1 extends AbstractStructBase
      * @param int[] $bookingDetailRefId
      * @return \Pggns\MidocoApi\Order\StructType\SpecialServiceRequest_1
      */
-    public function setBookingDetailRefId(array $bookingDetailRefId = []): self
+    public function setBookingDetailRefId(?array $bookingDetailRefId = null): self
     {
         // validation for constraint: array
-        if ('' !== ($bookingDetailRefIdArrayErrorMessage = self::validateBookingDetailRefIdForArrayConstraintsFromSetBookingDetailRefId($bookingDetailRefId))) {
+        if ('' !== ($bookingDetailRefIdArrayErrorMessage = self::validateBookingDetailRefIdForArrayConstraintFromSetBookingDetailRefId($bookingDetailRefId))) {
             throw new InvalidArgumentException($bookingDetailRefIdArrayErrorMessage, __LINE__);
         }
         $this->BookingDetailRefId = $bookingDetailRefId;
@@ -151,18 +156,22 @@ class SpecialServiceRequest_1 extends AbstractStructBase
      * Get TravelerRefId value
      * @return int[]
      */
-    public function getTravelerRefId(): array
+    public function getTravelerRefId(): ?array
     {
         return $this->TravelerRefId;
     }
     /**
-     * This method is responsible for validating the values passed to the setTravelerRefId method
+     * This method is responsible for validating the value(s) passed to the setTravelerRefId method
      * This method is willingly generated in order to preserve the one-line inline validation within the setTravelerRefId method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateTravelerRefIdForArrayConstraintsFromSetTravelerRefId(array $values = []): string
+    public static function validateTravelerRefIdForArrayConstraintFromSetTravelerRefId(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $specialServiceRequestTravelerRefIdItem) {
@@ -184,10 +193,10 @@ class SpecialServiceRequest_1 extends AbstractStructBase
      * @param int[] $travelerRefId
      * @return \Pggns\MidocoApi\Order\StructType\SpecialServiceRequest_1
      */
-    public function setTravelerRefId(array $travelerRefId = []): self
+    public function setTravelerRefId(?array $travelerRefId = null): self
     {
         // validation for constraint: array
-        if ('' !== ($travelerRefIdArrayErrorMessage = self::validateTravelerRefIdForArrayConstraintsFromSetTravelerRefId($travelerRefId))) {
+        if ('' !== ($travelerRefIdArrayErrorMessage = self::validateTravelerRefIdForArrayConstraintFromSetTravelerRefId($travelerRefId))) {
             throw new InvalidArgumentException($travelerRefIdArrayErrorMessage, __LINE__);
         }
         $this->TravelerRefId = $travelerRefId;

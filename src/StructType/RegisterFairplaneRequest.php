@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for RegisterFairplaneRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class RegisterFairplaneRequest extends AbstractStructBase
 {
     /**
@@ -19,7 +20,7 @@ class RegisterFairplaneRequest extends AbstractStructBase
      * - maxOccurs: unbounded
      * @var string[]
      */
-    protected array $unitName = [];
+    protected ?array $unitName = null;
     /**
      * The activate
      * Meta information extracted from the WSDL
@@ -43,7 +44,7 @@ class RegisterFairplaneRequest extends AbstractStructBase
      * @param bool $activate
      * @param bool $registerAllAssigned
      */
-    public function __construct(array $unitName = [], ?bool $activate = true, ?bool $registerAllAssigned = false)
+    public function __construct(?array $unitName = null, ?bool $activate = true, ?bool $registerAllAssigned = false)
     {
         $this
             ->setUnitName($unitName)
@@ -54,18 +55,22 @@ class RegisterFairplaneRequest extends AbstractStructBase
      * Get unitName value
      * @return string[]
      */
-    public function getUnitName(): array
+    public function getUnitName(): ?array
     {
         return $this->unitName;
     }
     /**
-     * This method is responsible for validating the values passed to the setUnitName method
+     * This method is responsible for validating the value(s) passed to the setUnitName method
      * This method is willingly generated in order to preserve the one-line inline validation within the setUnitName method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateUnitNameForArrayConstraintsFromSetUnitName(array $values = []): string
+    public static function validateUnitNameForArrayConstraintFromSetUnitName(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $registerFairplaneRequestUnitNameItem) {
@@ -87,10 +92,10 @@ class RegisterFairplaneRequest extends AbstractStructBase
      * @param string[] $unitName
      * @return \Pggns\MidocoApi\Order\StructType\RegisterFairplaneRequest
      */
-    public function setUnitName(array $unitName = []): self
+    public function setUnitName(?array $unitName = null): self
     {
         // validation for constraint: array
-        if ('' !== ($unitNameArrayErrorMessage = self::validateUnitNameForArrayConstraintsFromSetUnitName($unitName))) {
+        if ('' !== ($unitNameArrayErrorMessage = self::validateUnitNameForArrayConstraintFromSetUnitName($unitName))) {
             throw new InvalidArgumentException($unitNameArrayErrorMessage, __LINE__);
         }
         $this->unitName = $unitName;

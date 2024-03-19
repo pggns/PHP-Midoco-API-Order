@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetMfLocalResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetMfLocalResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetMfLocalResponse extends AbstractStructBase
      * - ref: MidocoMfLocal
      * @var \Pggns\MidocoApi\Order\StructType\MidocoMfLocal[]
      */
-    protected array $MidocoMfLocal = [];
+    protected ?array $MidocoMfLocal = null;
     /**
      * Constructor method for GetMfLocalResponse
      * @uses GetMfLocalResponse::setMidocoMfLocal()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoMfLocal[] $midocoMfLocal
      */
-    public function __construct(array $midocoMfLocal = [])
+    public function __construct(?array $midocoMfLocal = null)
     {
         $this
             ->setMidocoMfLocal($midocoMfLocal);
@@ -36,18 +37,22 @@ class GetMfLocalResponse extends AbstractStructBase
      * Get MidocoMfLocal value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoMfLocal[]
      */
-    public function getMidocoMfLocal(): array
+    public function getMidocoMfLocal(): ?array
     {
         return $this->MidocoMfLocal;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoMfLocal method
+     * This method is responsible for validating the value(s) passed to the setMidocoMfLocal method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoMfLocal method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoMfLocalForArrayConstraintsFromSetMidocoMfLocal(array $values = []): string
+    public static function validateMidocoMfLocalForArrayConstraintFromSetMidocoMfLocal(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getMfLocalResponseMidocoMfLocalItem) {
@@ -69,10 +74,10 @@ class GetMfLocalResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoMfLocal[] $midocoMfLocal
      * @return \Pggns\MidocoApi\Order\StructType\GetMfLocalResponse
      */
-    public function setMidocoMfLocal(array $midocoMfLocal = []): self
+    public function setMidocoMfLocal(?array $midocoMfLocal = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoMfLocalArrayErrorMessage = self::validateMidocoMfLocalForArrayConstraintsFromSetMidocoMfLocal($midocoMfLocal))) {
+        if ('' !== ($midocoMfLocalArrayErrorMessage = self::validateMidocoMfLocalForArrayConstraintFromSetMidocoMfLocal($midocoMfLocal))) {
             throw new InvalidArgumentException($midocoMfLocalArrayErrorMessage, __LINE__);
         }
         $this->MidocoMfLocal = $midocoMfLocal;

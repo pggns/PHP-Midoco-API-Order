@@ -11,12 +11,12 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoTourOperatorInfo StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoTourOperatorInfo extends AbstractStructBase
 {
     /**
      * The MidocoTourOperator
      * Meta information extracted from the WSDL
-     * - maxOccurs: 1
      * - minOccurs: 0
      * - ref: MidocoTourOperator
      * @var \Pggns\MidocoApi\Order\StructType\MidocoTourOperator|null
@@ -25,7 +25,6 @@ class MidocoTourOperatorInfo extends AbstractStructBase
     /**
      * The MidocoTourOperatorAddress
      * Meta information extracted from the WSDL
-     * - maxOccurs: 1
      * - minOccurs: 0
      * - ref: MidocoTourOperatorAddress
      * @var \Pggns\MidocoApi\Order\StructType\MidocoTourOperatorAddress|null
@@ -34,7 +33,6 @@ class MidocoTourOperatorInfo extends AbstractStructBase
     /**
      * The MidocoInsurerInfo
      * Meta information extracted from the WSDL
-     * - maxOccurs: 1
      * - minOccurs: 0
      * - ref: MidocoInsurerInfo
      * @var \Pggns\MidocoApi\Order\StructType\MidocoInsurerInfo|null
@@ -43,7 +41,6 @@ class MidocoTourOperatorInfo extends AbstractStructBase
     /**
      * The MidocoAssessorInfo
      * Meta information extracted from the WSDL
-     * - maxOccurs: 1
      * - minOccurs: 0
      * - ref: MidocoAssessorInfo
      * @var \Pggns\MidocoApi\Order\StructType\MidocoAssessorInfo|null
@@ -52,7 +49,6 @@ class MidocoTourOperatorInfo extends AbstractStructBase
     /**
      * The MidocoTourOperatorInsurer
      * Meta information extracted from the WSDL
-     * - maxOccurs: 1
      * - minOccurs: 0
      * - ref: MidocoTourOperatorInsurer
      * @var \Pggns\MidocoApi\Order\StructType\MidocoTourOperatorInsurer|null

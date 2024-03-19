@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DebitTransactionDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DebitTransactionDTO extends AbstractStructBase
 {
     /**

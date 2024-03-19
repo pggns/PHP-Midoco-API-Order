@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoImportContactType StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoImportContactType extends AbstractStructBase
 {
     /**

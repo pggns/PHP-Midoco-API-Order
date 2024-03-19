@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: prepare the midoco settlement - generates companies list
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class PrepareMidocoSettlementRequest extends AbstractStructBase
 {
     /**

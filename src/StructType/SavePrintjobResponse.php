@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SavePrintjobResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SavePrintjobResponse extends AbstractStructBase
 {
     /**

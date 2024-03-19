@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetAgencyByCriteriaRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetAgencyByCriteriaRequest extends AbstractStructBase
 {
     /**

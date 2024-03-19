@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveFeeGroupRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveFeeGroupRequest extends AbstractStructBase
 {
     /**

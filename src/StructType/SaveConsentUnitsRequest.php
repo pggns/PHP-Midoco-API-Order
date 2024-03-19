@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveConsentUnitsRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveConsentUnitsRequest extends AbstractStructBase
 {
     /**
@@ -34,7 +35,7 @@ class SaveConsentUnitsRequest extends AbstractStructBase
      * - minOccurs: 1
      * @var string[]
      */
-    protected array $disabledUnitName = [];
+    protected array $disabledUnitName;
     /**
      * Constructor method for SaveConsentUnitsRequest
      * @uses SaveConsentUnitsRequest::setConsentId()
@@ -106,13 +107,17 @@ class SaveConsentUnitsRequest extends AbstractStructBase
         return $this->disabledUnitName;
     }
     /**
-     * This method is responsible for validating the values passed to the setDisabledUnitName method
+     * This method is responsible for validating the value(s) passed to the setDisabledUnitName method
      * This method is willingly generated in order to preserve the one-line inline validation within the setDisabledUnitName method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateDisabledUnitNameForArrayConstraintsFromSetDisabledUnitName(array $values = []): string
+    public static function validateDisabledUnitNameForArrayConstraintFromSetDisabledUnitName(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $saveConsentUnitsRequestDisabledUnitNameItem) {
@@ -137,7 +142,7 @@ class SaveConsentUnitsRequest extends AbstractStructBase
     public function setDisabledUnitName(array $disabledUnitName): self
     {
         // validation for constraint: array
-        if ('' !== ($disabledUnitNameArrayErrorMessage = self::validateDisabledUnitNameForArrayConstraintsFromSetDisabledUnitName($disabledUnitName))) {
+        if ('' !== ($disabledUnitNameArrayErrorMessage = self::validateDisabledUnitNameForArrayConstraintFromSetDisabledUnitName($disabledUnitName))) {
             throw new InvalidArgumentException($disabledUnitNameArrayErrorMessage, __LINE__);
         }
         $this->disabledUnitName = $disabledUnitName;

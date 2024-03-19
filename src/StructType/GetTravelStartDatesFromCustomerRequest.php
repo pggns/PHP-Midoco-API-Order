@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetTravelStartDatesFromCustomerRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetTravelStartDatesFromCustomerRequest extends AbstractStructBase
 {
     /**

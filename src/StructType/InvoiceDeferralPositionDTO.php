@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for InvoiceDeferralPositionDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class InvoiceDeferralPositionDTO extends AbstractStructBase
 {
     /**

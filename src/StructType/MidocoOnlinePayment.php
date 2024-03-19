@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoOnlinePayment StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoOnlinePayment extends OnlinePaymentDTO
 {
     /**
@@ -21,7 +22,7 @@ class MidocoOnlinePayment extends OnlinePaymentDTO
      * - ref: crm:MidocoCcToken
      * @var \Pggns\MidocoApi\Order\StructType\MidocoCcToken[]
      */
-    protected array $MidocoCcToken = [];
+    protected ?array $MidocoCcToken = null;
     /**
      * The cvc
      * Meta information extracted from the WSDL
@@ -36,7 +37,7 @@ class MidocoOnlinePayment extends OnlinePaymentDTO
      * @param \Pggns\MidocoApi\Order\StructType\MidocoCcToken[] $midocoCcToken
      * @param string $cvc
      */
-    public function __construct(array $midocoCcToken = [], ?string $cvc = null)
+    public function __construct(?array $midocoCcToken = null, ?string $cvc = null)
     {
         $this
             ->setMidocoCcToken($midocoCcToken)
@@ -46,18 +47,22 @@ class MidocoOnlinePayment extends OnlinePaymentDTO
      * Get MidocoCcToken value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoCcToken[]
      */
-    public function getMidocoCcToken(): array
+    public function getMidocoCcToken(): ?array
     {
         return $this->MidocoCcToken;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoCcToken method
+     * This method is responsible for validating the value(s) passed to the setMidocoCcToken method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoCcToken method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoCcTokenForArrayConstraintsFromSetMidocoCcToken(array $values = []): string
+    public static function validateMidocoCcTokenForArrayConstraintFromSetMidocoCcToken(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoOnlinePaymentMidocoCcTokenItem) {
@@ -79,10 +84,10 @@ class MidocoOnlinePayment extends OnlinePaymentDTO
      * @param \Pggns\MidocoApi\Order\StructType\MidocoCcToken[] $midocoCcToken
      * @return \Pggns\MidocoApi\Order\StructType\MidocoOnlinePayment
      */
-    public function setMidocoCcToken(array $midocoCcToken = []): self
+    public function setMidocoCcToken(?array $midocoCcToken = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoCcTokenArrayErrorMessage = self::validateMidocoCcTokenForArrayConstraintsFromSetMidocoCcToken($midocoCcToken))) {
+        if ('' !== ($midocoCcTokenArrayErrorMessage = self::validateMidocoCcTokenForArrayConstraintFromSetMidocoCcToken($midocoCcToken))) {
             throw new InvalidArgumentException($midocoCcTokenArrayErrorMessage, __LINE__);
         }
         $this->MidocoCcToken = $midocoCcToken;

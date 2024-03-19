@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetPrintDetailsForUsersRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetPrintDetailsForUsersRequest extends AbstractStructBase
 {
     /**
@@ -20,13 +21,13 @@ class GetPrintDetailsForUsersRequest extends AbstractStructBase
      * - ref: PrintDetailsForBonusEmployee
      * @var \Pggns\MidocoApi\Order\StructType\PrintDetailsForBonusEmployee[]
      */
-    protected array $PrintDetailsForBonusEmployee = [];
+    protected ?array $PrintDetailsForBonusEmployee = null;
     /**
      * Constructor method for GetPrintDetailsForUsersRequest
      * @uses GetPrintDetailsForUsersRequest::setPrintDetailsForBonusEmployee()
      * @param \Pggns\MidocoApi\Order\StructType\PrintDetailsForBonusEmployee[] $printDetailsForBonusEmployee
      */
-    public function __construct(array $printDetailsForBonusEmployee = [])
+    public function __construct(?array $printDetailsForBonusEmployee = null)
     {
         $this
             ->setPrintDetailsForBonusEmployee($printDetailsForBonusEmployee);
@@ -35,18 +36,22 @@ class GetPrintDetailsForUsersRequest extends AbstractStructBase
      * Get PrintDetailsForBonusEmployee value
      * @return \Pggns\MidocoApi\Order\StructType\PrintDetailsForBonusEmployee[]
      */
-    public function getPrintDetailsForBonusEmployee(): array
+    public function getPrintDetailsForBonusEmployee(): ?array
     {
         return $this->PrintDetailsForBonusEmployee;
     }
     /**
-     * This method is responsible for validating the values passed to the setPrintDetailsForBonusEmployee method
+     * This method is responsible for validating the value(s) passed to the setPrintDetailsForBonusEmployee method
      * This method is willingly generated in order to preserve the one-line inline validation within the setPrintDetailsForBonusEmployee method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validatePrintDetailsForBonusEmployeeForArrayConstraintsFromSetPrintDetailsForBonusEmployee(array $values = []): string
+    public static function validatePrintDetailsForBonusEmployeeForArrayConstraintFromSetPrintDetailsForBonusEmployee(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getPrintDetailsForUsersRequestPrintDetailsForBonusEmployeeItem) {
@@ -68,10 +73,10 @@ class GetPrintDetailsForUsersRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\PrintDetailsForBonusEmployee[] $printDetailsForBonusEmployee
      * @return \Pggns\MidocoApi\Order\StructType\GetPrintDetailsForUsersRequest
      */
-    public function setPrintDetailsForBonusEmployee(array $printDetailsForBonusEmployee = []): self
+    public function setPrintDetailsForBonusEmployee(?array $printDetailsForBonusEmployee = null): self
     {
         // validation for constraint: array
-        if ('' !== ($printDetailsForBonusEmployeeArrayErrorMessage = self::validatePrintDetailsForBonusEmployeeForArrayConstraintsFromSetPrintDetailsForBonusEmployee($printDetailsForBonusEmployee))) {
+        if ('' !== ($printDetailsForBonusEmployeeArrayErrorMessage = self::validatePrintDetailsForBonusEmployeeForArrayConstraintFromSetPrintDetailsForBonusEmployee($printDetailsForBonusEmployee))) {
             throw new InvalidArgumentException($printDetailsForBonusEmployeeArrayErrorMessage, __LINE__);
         }
         $this->PrintDetailsForBonusEmployee = $printDetailsForBonusEmployee;

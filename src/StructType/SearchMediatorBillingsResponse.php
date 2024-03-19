@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SearchMediatorBillingsResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchMediatorBillingsResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class SearchMediatorBillingsResponse extends AbstractStructBase
      * - ref: MidocoMediatorBilling
      * @var \Pggns\MidocoApi\Order\StructType\MediatorBillingDTO[]
      */
-    protected array $MidocoMediatorBilling = [];
+    protected ?array $MidocoMediatorBilling = null;
     /**
      * Constructor method for SearchMediatorBillingsResponse
      * @uses SearchMediatorBillingsResponse::setMidocoMediatorBilling()
      * @param \Pggns\MidocoApi\Order\StructType\MediatorBillingDTO[] $midocoMediatorBilling
      */
-    public function __construct(array $midocoMediatorBilling = [])
+    public function __construct(?array $midocoMediatorBilling = null)
     {
         $this
             ->setMidocoMediatorBilling($midocoMediatorBilling);
@@ -36,18 +37,22 @@ class SearchMediatorBillingsResponse extends AbstractStructBase
      * Get MidocoMediatorBilling value
      * @return \Pggns\MidocoApi\Order\StructType\MediatorBillingDTO[]
      */
-    public function getMidocoMediatorBilling(): array
+    public function getMidocoMediatorBilling(): ?array
     {
         return $this->MidocoMediatorBilling;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoMediatorBilling method
+     * This method is responsible for validating the value(s) passed to the setMidocoMediatorBilling method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoMediatorBilling method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoMediatorBillingForArrayConstraintsFromSetMidocoMediatorBilling(array $values = []): string
+    public static function validateMidocoMediatorBillingForArrayConstraintFromSetMidocoMediatorBilling(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $searchMediatorBillingsResponseMidocoMediatorBillingItem) {
@@ -69,10 +74,10 @@ class SearchMediatorBillingsResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MediatorBillingDTO[] $midocoMediatorBilling
      * @return \Pggns\MidocoApi\Order\StructType\SearchMediatorBillingsResponse
      */
-    public function setMidocoMediatorBilling(array $midocoMediatorBilling = []): self
+    public function setMidocoMediatorBilling(?array $midocoMediatorBilling = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoMediatorBillingArrayErrorMessage = self::validateMidocoMediatorBillingForArrayConstraintsFromSetMidocoMediatorBilling($midocoMediatorBilling))) {
+        if ('' !== ($midocoMediatorBillingArrayErrorMessage = self::validateMidocoMediatorBillingForArrayConstraintFromSetMidocoMediatorBilling($midocoMediatorBilling))) {
             throw new InvalidArgumentException($midocoMediatorBillingArrayErrorMessage, __LINE__);
         }
         $this->MidocoMediatorBilling = $midocoMediatorBilling;

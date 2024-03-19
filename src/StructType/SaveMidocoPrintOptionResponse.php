@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveMidocoPrintOptionResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveMidocoPrintOptionResponse extends AbstractStructBase
 {
 }

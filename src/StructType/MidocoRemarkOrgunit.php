@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoRemarkOrgunit StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoRemarkOrgunit extends RemarkOrgunitDTO
 {
     /**

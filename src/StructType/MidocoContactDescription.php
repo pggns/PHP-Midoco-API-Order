@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoContactDescription StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoContactDescription extends ContactDescriptionDTO
 {
     /**

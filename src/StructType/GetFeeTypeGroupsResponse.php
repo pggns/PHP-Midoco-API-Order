@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetFeeTypeGroupsResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetFeeTypeGroupsResponse extends AbstractStructBase
 {
     /**
@@ -20,13 +21,13 @@ class GetFeeTypeGroupsResponse extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $feeGroup = [];
+    protected ?array $feeGroup = null;
     /**
      * Constructor method for GetFeeTypeGroupsResponse
      * @uses GetFeeTypeGroupsResponse::setFeeGroup()
      * @param string[] $feeGroup
      */
-    public function __construct(array $feeGroup = [])
+    public function __construct(?array $feeGroup = null)
     {
         $this
             ->setFeeGroup($feeGroup);
@@ -35,18 +36,22 @@ class GetFeeTypeGroupsResponse extends AbstractStructBase
      * Get feeGroup value
      * @return string[]
      */
-    public function getFeeGroup(): array
+    public function getFeeGroup(): ?array
     {
         return $this->feeGroup;
     }
     /**
-     * This method is responsible for validating the values passed to the setFeeGroup method
+     * This method is responsible for validating the value(s) passed to the setFeeGroup method
      * This method is willingly generated in order to preserve the one-line inline validation within the setFeeGroup method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateFeeGroupForArrayConstraintsFromSetFeeGroup(array $values = []): string
+    public static function validateFeeGroupForArrayConstraintFromSetFeeGroup(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getFeeTypeGroupsResponseFeeGroupItem) {
@@ -68,10 +73,10 @@ class GetFeeTypeGroupsResponse extends AbstractStructBase
      * @param string[] $feeGroup
      * @return \Pggns\MidocoApi\Order\StructType\GetFeeTypeGroupsResponse
      */
-    public function setFeeGroup(array $feeGroup = []): self
+    public function setFeeGroup(?array $feeGroup = null): self
     {
         // validation for constraint: array
-        if ('' !== ($feeGroupArrayErrorMessage = self::validateFeeGroupForArrayConstraintsFromSetFeeGroup($feeGroup))) {
+        if ('' !== ($feeGroupArrayErrorMessage = self::validateFeeGroupForArrayConstraintFromSetFeeGroup($feeGroup))) {
             throw new InvalidArgumentException($feeGroupArrayErrorMessage, __LINE__);
         }
         $this->feeGroup = $feeGroup;

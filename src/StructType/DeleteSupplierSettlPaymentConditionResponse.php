@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteSupplierSettlPaymentConditionResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteSupplierSettlPaymentConditionResponse extends AbstractStructBase
 {
     /**

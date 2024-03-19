@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: getOrder --- retrieve an Order response is constructed as: - one OrderDTO - SellItemList (zero or more)
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetOrderResponse extends AbstractStructBase
 {
     /**

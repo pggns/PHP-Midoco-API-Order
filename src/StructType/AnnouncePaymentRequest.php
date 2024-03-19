@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: search order by orderId or orderNo or by supplierId, bookingId combination dontImportExistingPayments='true' : dont imports existing payments, if paymentText equals an existing payment for the order
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class AnnouncePaymentRequest extends AbstractStructBase
 {
     /**
@@ -22,7 +23,7 @@ class AnnouncePaymentRequest extends AbstractStructBase
      * - ref: AnnounceOrderPayment
      * @var \Pggns\MidocoApi\Order\StructType\AnnounceOrderPayment[]
      */
-    protected array $AnnounceOrderPayment = [];
+    protected ?array $AnnounceOrderPayment = null;
     /**
      * The orderId
      * @var int|null
@@ -65,7 +66,7 @@ class AnnouncePaymentRequest extends AbstractStructBase
      * @param string $bookingId
      * @param bool $dontImportExistingPayments
      */
-    public function __construct(array $announceOrderPayment = [], ?int $orderId = null, ?int $orderNo = null, ?string $supplierId = null, ?string $bookingId = null, ?bool $dontImportExistingPayments = false)
+    public function __construct(?array $announceOrderPayment = null, ?int $orderId = null, ?int $orderNo = null, ?string $supplierId = null, ?string $bookingId = null, ?bool $dontImportExistingPayments = false)
     {
         $this
             ->setAnnounceOrderPayment($announceOrderPayment)
@@ -79,18 +80,22 @@ class AnnouncePaymentRequest extends AbstractStructBase
      * Get AnnounceOrderPayment value
      * @return \Pggns\MidocoApi\Order\StructType\AnnounceOrderPayment[]
      */
-    public function getAnnounceOrderPayment(): array
+    public function getAnnounceOrderPayment(): ?array
     {
         return $this->AnnounceOrderPayment;
     }
     /**
-     * This method is responsible for validating the values passed to the setAnnounceOrderPayment method
+     * This method is responsible for validating the value(s) passed to the setAnnounceOrderPayment method
      * This method is willingly generated in order to preserve the one-line inline validation within the setAnnounceOrderPayment method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateAnnounceOrderPaymentForArrayConstraintsFromSetAnnounceOrderPayment(array $values = []): string
+    public static function validateAnnounceOrderPaymentForArrayConstraintFromSetAnnounceOrderPayment(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $announcePaymentRequestAnnounceOrderPaymentItem) {
@@ -112,10 +117,10 @@ class AnnouncePaymentRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\AnnounceOrderPayment[] $announceOrderPayment
      * @return \Pggns\MidocoApi\Order\StructType\AnnouncePaymentRequest
      */
-    public function setAnnounceOrderPayment(array $announceOrderPayment = []): self
+    public function setAnnounceOrderPayment(?array $announceOrderPayment = null): self
     {
         // validation for constraint: array
-        if ('' !== ($announceOrderPaymentArrayErrorMessage = self::validateAnnounceOrderPaymentForArrayConstraintsFromSetAnnounceOrderPayment($announceOrderPayment))) {
+        if ('' !== ($announceOrderPaymentArrayErrorMessage = self::validateAnnounceOrderPaymentForArrayConstraintFromSetAnnounceOrderPayment($announceOrderPayment))) {
             throw new InvalidArgumentException($announceOrderPaymentArrayErrorMessage, __LINE__);
         }
         $this->AnnounceOrderPayment = $announceOrderPayment;

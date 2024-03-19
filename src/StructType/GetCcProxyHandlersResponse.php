@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetCcProxyHandlersResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetCcProxyHandlersResponse extends AbstractStructBase
 {
     /**
@@ -20,13 +21,13 @@ class GetCcProxyHandlersResponse extends AbstractStructBase
      * - ref: MidocoCcProxyHandler
      * @var \Pggns\MidocoApi\Order\StructType\CcproxyHandlerDTO[]
      */
-    protected array $MidocoCcProxyHandler = [];
+    protected ?array $MidocoCcProxyHandler = null;
     /**
      * Constructor method for GetCcProxyHandlersResponse
      * @uses GetCcProxyHandlersResponse::setMidocoCcProxyHandler()
      * @param \Pggns\MidocoApi\Order\StructType\CcproxyHandlerDTO[] $midocoCcProxyHandler
      */
-    public function __construct(array $midocoCcProxyHandler = [])
+    public function __construct(?array $midocoCcProxyHandler = null)
     {
         $this
             ->setMidocoCcProxyHandler($midocoCcProxyHandler);
@@ -35,18 +36,22 @@ class GetCcProxyHandlersResponse extends AbstractStructBase
      * Get MidocoCcProxyHandler value
      * @return \Pggns\MidocoApi\Order\StructType\CcproxyHandlerDTO[]
      */
-    public function getMidocoCcProxyHandler(): array
+    public function getMidocoCcProxyHandler(): ?array
     {
         return $this->MidocoCcProxyHandler;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoCcProxyHandler method
+     * This method is responsible for validating the value(s) passed to the setMidocoCcProxyHandler method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoCcProxyHandler method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoCcProxyHandlerForArrayConstraintsFromSetMidocoCcProxyHandler(array $values = []): string
+    public static function validateMidocoCcProxyHandlerForArrayConstraintFromSetMidocoCcProxyHandler(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getCcProxyHandlersResponseMidocoCcProxyHandlerItem) {
@@ -68,10 +73,10 @@ class GetCcProxyHandlersResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\CcproxyHandlerDTO[] $midocoCcProxyHandler
      * @return \Pggns\MidocoApi\Order\StructType\GetCcProxyHandlersResponse
      */
-    public function setMidocoCcProxyHandler(array $midocoCcProxyHandler = []): self
+    public function setMidocoCcProxyHandler(?array $midocoCcProxyHandler = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoCcProxyHandlerArrayErrorMessage = self::validateMidocoCcProxyHandlerForArrayConstraintsFromSetMidocoCcProxyHandler($midocoCcProxyHandler))) {
+        if ('' !== ($midocoCcProxyHandlerArrayErrorMessage = self::validateMidocoCcProxyHandlerForArrayConstraintFromSetMidocoCcProxyHandler($midocoCcProxyHandler))) {
             throw new InvalidArgumentException($midocoCcProxyHandlerArrayErrorMessage, __LINE__);
         }
         $this->MidocoCcProxyHandler = $midocoCcProxyHandler;

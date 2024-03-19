@@ -14,6 +14,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * should be sent. Its a new service, that allows to send the payment separately.
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class AnnounceExternalPaymentRequest extends AbstractStructBase
 {
     /**
@@ -23,7 +24,7 @@ class AnnounceExternalPaymentRequest extends AbstractStructBase
      * - ref: mbm:ExternalPayment
      * @var \Pggns\MidocoApi\Order\StructType\ExternalPayment[]
      */
-    protected array $ExternalPayment = [];
+    protected ?array $ExternalPayment = null;
     /**
      * The orderId
      * @var int|null
@@ -36,7 +37,7 @@ class AnnounceExternalPaymentRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\ExternalPayment[] $externalPayment
      * @param int $orderId
      */
-    public function __construct(array $externalPayment = [], ?int $orderId = null)
+    public function __construct(?array $externalPayment = null, ?int $orderId = null)
     {
         $this
             ->setExternalPayment($externalPayment)
@@ -46,18 +47,22 @@ class AnnounceExternalPaymentRequest extends AbstractStructBase
      * Get ExternalPayment value
      * @return \Pggns\MidocoApi\Order\StructType\ExternalPayment[]
      */
-    public function getExternalPayment(): array
+    public function getExternalPayment(): ?array
     {
         return $this->ExternalPayment;
     }
     /**
-     * This method is responsible for validating the values passed to the setExternalPayment method
+     * This method is responsible for validating the value(s) passed to the setExternalPayment method
      * This method is willingly generated in order to preserve the one-line inline validation within the setExternalPayment method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateExternalPaymentForArrayConstraintsFromSetExternalPayment(array $values = []): string
+    public static function validateExternalPaymentForArrayConstraintFromSetExternalPayment(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $announceExternalPaymentRequestExternalPaymentItem) {
@@ -79,10 +84,10 @@ class AnnounceExternalPaymentRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\ExternalPayment[] $externalPayment
      * @return \Pggns\MidocoApi\Order\StructType\AnnounceExternalPaymentRequest
      */
-    public function setExternalPayment(array $externalPayment = []): self
+    public function setExternalPayment(?array $externalPayment = null): self
     {
         // validation for constraint: array
-        if ('' !== ($externalPaymentArrayErrorMessage = self::validateExternalPaymentForArrayConstraintsFromSetExternalPayment($externalPayment))) {
+        if ('' !== ($externalPaymentArrayErrorMessage = self::validateExternalPaymentForArrayConstraintFromSetExternalPayment($externalPayment))) {
             throw new InvalidArgumentException($externalPaymentArrayErrorMessage, __LINE__);
         }
         $this->ExternalPayment = $externalPayment;

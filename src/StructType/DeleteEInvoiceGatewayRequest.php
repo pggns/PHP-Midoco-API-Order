@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: Delete an e-invoice gateway configuration. The only required fields are orgUnit and gateway. The E-Mail gateway can not be deleted.
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteEInvoiceGatewayRequest extends AbstractStructBase
 {
     /**

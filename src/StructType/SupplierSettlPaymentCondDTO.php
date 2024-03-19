@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SupplierSettlPaymentCondDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SupplierSettlPaymentCondDTO extends AbstractStructBase
 {
     /**

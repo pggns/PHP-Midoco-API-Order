@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetAllCitiesFromZipCodeResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetAllCitiesFromZipCodeResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetAllCitiesFromZipCodeResponse extends AbstractStructBase
      * - ref: MidocoCity
      * @var \Pggns\MidocoApi\Order\StructType\CityDTO[]
      */
-    protected array $MidocoCity = [];
+    protected ?array $MidocoCity = null;
     /**
      * Constructor method for GetAllCitiesFromZipCodeResponse
      * @uses GetAllCitiesFromZipCodeResponse::setMidocoCity()
      * @param \Pggns\MidocoApi\Order\StructType\CityDTO[] $midocoCity
      */
-    public function __construct(array $midocoCity = [])
+    public function __construct(?array $midocoCity = null)
     {
         $this
             ->setMidocoCity($midocoCity);
@@ -36,18 +37,22 @@ class GetAllCitiesFromZipCodeResponse extends AbstractStructBase
      * Get MidocoCity value
      * @return \Pggns\MidocoApi\Order\StructType\CityDTO[]
      */
-    public function getMidocoCity(): array
+    public function getMidocoCity(): ?array
     {
         return $this->MidocoCity;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoCity method
+     * This method is responsible for validating the value(s) passed to the setMidocoCity method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoCity method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoCityForArrayConstraintsFromSetMidocoCity(array $values = []): string
+    public static function validateMidocoCityForArrayConstraintFromSetMidocoCity(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getAllCitiesFromZipCodeResponseMidocoCityItem) {
@@ -69,10 +74,10 @@ class GetAllCitiesFromZipCodeResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\CityDTO[] $midocoCity
      * @return \Pggns\MidocoApi\Order\StructType\GetAllCitiesFromZipCodeResponse
      */
-    public function setMidocoCity(array $midocoCity = []): self
+    public function setMidocoCity(?array $midocoCity = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoCityArrayErrorMessage = self::validateMidocoCityForArrayConstraintsFromSetMidocoCity($midocoCity))) {
+        if ('' !== ($midocoCityArrayErrorMessage = self::validateMidocoCityForArrayConstraintFromSetMidocoCity($midocoCity))) {
             throw new InvalidArgumentException($midocoCityArrayErrorMessage, __LINE__);
         }
         $this->MidocoCity = $midocoCity;

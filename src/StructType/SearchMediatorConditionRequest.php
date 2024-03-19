@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SearchMediatorConditionRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchMediatorConditionRequest extends AbstractStructBase
 {
     /**

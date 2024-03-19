@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoImportAttribute StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoImportAttribute extends AbstractStructBase
 {
     /**

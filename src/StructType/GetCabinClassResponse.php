@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetCabinClassResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetCabinClassResponse extends AbstractStructBase
 {
     /**

@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: relayState: travellers/faces-firmen-id
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SSOFacesRequest extends AbstractStructBase
 {
     /**

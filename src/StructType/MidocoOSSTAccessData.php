@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoOSSTAccessData StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoOSSTAccessData extends AbstractStructBase
 {
     /**

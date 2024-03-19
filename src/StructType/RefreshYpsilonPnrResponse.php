@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: refresh ypsilon booking
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class RefreshYpsilonPnrResponse extends AbstractStructBase
 {
 }

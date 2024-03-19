@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoCashBookSignature StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoCashBookSignature extends CashBookSignatureDTO
 {
     /**

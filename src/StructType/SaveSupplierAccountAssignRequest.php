@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveSupplierAccountAssignRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveSupplierAccountAssignRequest extends AbstractStructBase
 {
     /**

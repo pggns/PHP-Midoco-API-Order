@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for JasperReportParamValueDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class JasperReportParamValueDTO extends AbstractStructBase
 {
     /**

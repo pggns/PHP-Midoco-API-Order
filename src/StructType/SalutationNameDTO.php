@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SalutationNameDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SalutationNameDTO extends AbstractStructBase
 {
     /**

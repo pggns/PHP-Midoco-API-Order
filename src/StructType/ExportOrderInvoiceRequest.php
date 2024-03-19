@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: prepared payment for BillingDocument
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ExportOrderInvoiceRequest extends AbstractStructBase
 {
     /**
@@ -23,7 +24,7 @@ class ExportOrderInvoiceRequest extends AbstractStructBase
      * - ref: MidocoSellPassenger
      * @var \Pggns\MidocoApi\Order\StructType\MidocoSellPassenger[]
      */
-    protected array $MidocoSellPassenger = [];
+    protected ?array $MidocoSellPassenger = null;
     /**
      * The MidocoOnlinePaymentHelper
      * Meta information extracted from the WSDL
@@ -87,7 +88,7 @@ class ExportOrderInvoiceRequest extends AbstractStructBase
      * @param bool $useNewTransaction
      * @param string $confirmationGroup
      */
-    public function __construct(array $midocoSellPassenger = [], ?\Pggns\MidocoApi\Order\StructType\MidocoOnlinePaymentHelper $midocoOnlinePaymentHelper = null, ?int $orderId = null, ?int $orderNo = null, ?bool $isPreview = false, ?string $printMedia = 'P', ?bool $useNewTransaction = true, ?string $confirmationGroup = null)
+    public function __construct(?array $midocoSellPassenger = null, ?\Pggns\MidocoApi\Order\StructType\MidocoOnlinePaymentHelper $midocoOnlinePaymentHelper = null, ?int $orderId = null, ?int $orderNo = null, ?bool $isPreview = false, ?string $printMedia = 'P', ?bool $useNewTransaction = true, ?string $confirmationGroup = null)
     {
         $this
             ->setMidocoSellPassenger($midocoSellPassenger)
@@ -103,18 +104,22 @@ class ExportOrderInvoiceRequest extends AbstractStructBase
      * Get MidocoSellPassenger value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSellPassenger[]
      */
-    public function getMidocoSellPassenger(): array
+    public function getMidocoSellPassenger(): ?array
     {
         return $this->MidocoSellPassenger;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoSellPassenger method
+     * This method is responsible for validating the value(s) passed to the setMidocoSellPassenger method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoSellPassenger method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoSellPassengerForArrayConstraintsFromSetMidocoSellPassenger(array $values = []): string
+    public static function validateMidocoSellPassengerForArrayConstraintFromSetMidocoSellPassenger(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $exportOrderInvoiceRequestMidocoSellPassengerItem) {
@@ -136,10 +141,10 @@ class ExportOrderInvoiceRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSellPassenger[] $midocoSellPassenger
      * @return \Pggns\MidocoApi\Order\StructType\ExportOrderInvoiceRequest
      */
-    public function setMidocoSellPassenger(array $midocoSellPassenger = []): self
+    public function setMidocoSellPassenger(?array $midocoSellPassenger = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoSellPassengerArrayErrorMessage = self::validateMidocoSellPassengerForArrayConstraintsFromSetMidocoSellPassenger($midocoSellPassenger))) {
+        if ('' !== ($midocoSellPassengerArrayErrorMessage = self::validateMidocoSellPassengerForArrayConstraintFromSetMidocoSellPassenger($midocoSellPassenger))) {
             throw new InvalidArgumentException($midocoSellPassengerArrayErrorMessage, __LINE__);
         }
         $this->MidocoSellPassenger = $midocoSellPassenger;

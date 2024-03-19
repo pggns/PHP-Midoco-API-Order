@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: search a bank account by accountNo and BankNo
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchBankAccountRequest extends AbstractStructBase
 {
     /**

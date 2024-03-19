@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteVatCodeResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteVatCodeResponse extends AbstractStructBase
 {
 }

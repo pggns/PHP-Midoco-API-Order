@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetRemarks4OrgunitRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetRemarks4OrgunitRequest extends AbstractStructBase
 {
     /**

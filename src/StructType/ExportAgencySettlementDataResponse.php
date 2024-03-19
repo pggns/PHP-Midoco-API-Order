@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ExportAgencySettlementDataResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ExportAgencySettlementDataResponse extends AbstractStructBase
 {
     /**

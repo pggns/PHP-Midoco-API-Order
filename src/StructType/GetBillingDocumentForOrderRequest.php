@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetBillingDocumentForOrderRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetBillingDocumentForOrderRequest extends AbstractStructBase
 {
     /**

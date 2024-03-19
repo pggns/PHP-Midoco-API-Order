@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ListSuppCancelCEmailResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ListSuppCancelCEmailResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class ListSuppCancelCEmailResponse extends AbstractStructBase
      * - ref: MidocoSuppCancelCEmail
      * @var \Pggns\MidocoApi\Order\StructType\MidocoSuppCancelCEmail[]
      */
-    protected array $MidocoSuppCancelCEmail = [];
+    protected ?array $MidocoSuppCancelCEmail = null;
     /**
      * Constructor method for ListSuppCancelCEmailResponse
      * @uses ListSuppCancelCEmailResponse::setMidocoSuppCancelCEmail()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSuppCancelCEmail[] $midocoSuppCancelCEmail
      */
-    public function __construct(array $midocoSuppCancelCEmail = [])
+    public function __construct(?array $midocoSuppCancelCEmail = null)
     {
         $this
             ->setMidocoSuppCancelCEmail($midocoSuppCancelCEmail);
@@ -36,18 +37,22 @@ class ListSuppCancelCEmailResponse extends AbstractStructBase
      * Get MidocoSuppCancelCEmail value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSuppCancelCEmail[]
      */
-    public function getMidocoSuppCancelCEmail(): array
+    public function getMidocoSuppCancelCEmail(): ?array
     {
         return $this->MidocoSuppCancelCEmail;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoSuppCancelCEmail method
+     * This method is responsible for validating the value(s) passed to the setMidocoSuppCancelCEmail method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoSuppCancelCEmail method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoSuppCancelCEmailForArrayConstraintsFromSetMidocoSuppCancelCEmail(array $values = []): string
+    public static function validateMidocoSuppCancelCEmailForArrayConstraintFromSetMidocoSuppCancelCEmail(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $listSuppCancelCEmailResponseMidocoSuppCancelCEmailItem) {
@@ -69,10 +74,10 @@ class ListSuppCancelCEmailResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSuppCancelCEmail[] $midocoSuppCancelCEmail
      * @return \Pggns\MidocoApi\Order\StructType\ListSuppCancelCEmailResponse
      */
-    public function setMidocoSuppCancelCEmail(array $midocoSuppCancelCEmail = []): self
+    public function setMidocoSuppCancelCEmail(?array $midocoSuppCancelCEmail = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoSuppCancelCEmailArrayErrorMessage = self::validateMidocoSuppCancelCEmailForArrayConstraintsFromSetMidocoSuppCancelCEmail($midocoSuppCancelCEmail))) {
+        if ('' !== ($midocoSuppCancelCEmailArrayErrorMessage = self::validateMidocoSuppCancelCEmailForArrayConstraintFromSetMidocoSuppCancelCEmail($midocoSuppCancelCEmail))) {
             throw new InvalidArgumentException($midocoSuppCancelCEmailArrayErrorMessage, __LINE__);
         }
         $this->MidocoSuppCancelCEmail = $midocoSuppCancelCEmail;

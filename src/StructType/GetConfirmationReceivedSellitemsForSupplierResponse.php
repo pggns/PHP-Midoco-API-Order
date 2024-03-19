@@ -12,6 +12,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetConfirmationReceivedSellitemsForSupplierResponse extends AbstractStructBase
 {
     /**
@@ -22,13 +23,13 @@ class GetConfirmationReceivedSellitemsForSupplierResponse extends AbstractStruct
      * - ref: MidocoSupplierMailNotReceivedInfo
      * @var \Pggns\MidocoApi\Order\StructType\SupplierMailNotReceivedInfo[]
      */
-    protected array $MidocoSupplierMailNotReceivedInfo = [];
+    protected ?array $MidocoSupplierMailNotReceivedInfo = null;
     /**
      * Constructor method for GetConfirmationReceivedSellitemsForSupplierResponse
      * @uses GetConfirmationReceivedSellitemsForSupplierResponse::setMidocoSupplierMailNotReceivedInfo()
      * @param \Pggns\MidocoApi\Order\StructType\SupplierMailNotReceivedInfo[] $midocoSupplierMailNotReceivedInfo
      */
-    public function __construct(array $midocoSupplierMailNotReceivedInfo = [])
+    public function __construct(?array $midocoSupplierMailNotReceivedInfo = null)
     {
         $this
             ->setMidocoSupplierMailNotReceivedInfo($midocoSupplierMailNotReceivedInfo);
@@ -37,18 +38,22 @@ class GetConfirmationReceivedSellitemsForSupplierResponse extends AbstractStruct
      * Get MidocoSupplierMailNotReceivedInfo value
      * @return \Pggns\MidocoApi\Order\StructType\SupplierMailNotReceivedInfo[]
      */
-    public function getMidocoSupplierMailNotReceivedInfo(): array
+    public function getMidocoSupplierMailNotReceivedInfo(): ?array
     {
         return $this->MidocoSupplierMailNotReceivedInfo;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoSupplierMailNotReceivedInfo method
+     * This method is responsible for validating the value(s) passed to the setMidocoSupplierMailNotReceivedInfo method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoSupplierMailNotReceivedInfo method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoSupplierMailNotReceivedInfoForArrayConstraintsFromSetMidocoSupplierMailNotReceivedInfo(array $values = []): string
+    public static function validateMidocoSupplierMailNotReceivedInfoForArrayConstraintFromSetMidocoSupplierMailNotReceivedInfo(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getConfirmationReceivedSellitemsForSupplierResponseMidocoSupplierMailNotReceivedInfoItem) {
@@ -70,10 +75,10 @@ class GetConfirmationReceivedSellitemsForSupplierResponse extends AbstractStruct
      * @param \Pggns\MidocoApi\Order\StructType\SupplierMailNotReceivedInfo[] $midocoSupplierMailNotReceivedInfo
      * @return \Pggns\MidocoApi\Order\StructType\GetConfirmationReceivedSellitemsForSupplierResponse
      */
-    public function setMidocoSupplierMailNotReceivedInfo(array $midocoSupplierMailNotReceivedInfo = []): self
+    public function setMidocoSupplierMailNotReceivedInfo(?array $midocoSupplierMailNotReceivedInfo = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoSupplierMailNotReceivedInfoArrayErrorMessage = self::validateMidocoSupplierMailNotReceivedInfoForArrayConstraintsFromSetMidocoSupplierMailNotReceivedInfo($midocoSupplierMailNotReceivedInfo))) {
+        if ('' !== ($midocoSupplierMailNotReceivedInfoArrayErrorMessage = self::validateMidocoSupplierMailNotReceivedInfoForArrayConstraintFromSetMidocoSupplierMailNotReceivedInfo($midocoSupplierMailNotReceivedInfo))) {
             throw new InvalidArgumentException($midocoSupplierMailNotReceivedInfoArrayErrorMessage, __LINE__);
         }
         $this->MidocoSupplierMailNotReceivedInfo = $midocoSupplierMailNotReceivedInfo;

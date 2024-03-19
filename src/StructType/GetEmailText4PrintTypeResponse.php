@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetEmailText4PrintTypeResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetEmailText4PrintTypeResponse extends AbstractStructBase
 {
     /**

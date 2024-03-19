@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MoveOrderResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MoveOrderResponse extends AbstractStructBase
 {
 }

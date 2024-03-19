@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetQueryPageRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetQueryPageRequest extends AbstractStructBase
 {
     /**

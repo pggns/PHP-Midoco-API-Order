@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveAreaCodeResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveAreaCodeResponse extends AbstractStructBase
 {
 }

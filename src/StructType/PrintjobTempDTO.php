@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for PrintjobTempDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class PrintjobTempDTO extends AbstractStructBase
 {
     /**

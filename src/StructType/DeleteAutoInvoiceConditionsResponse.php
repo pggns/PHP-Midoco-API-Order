@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteAutoInvoiceConditionsResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteAutoInvoiceConditionsResponse extends AbstractStructBase
 {
 }

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetOrdersForMediatorResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetOrdersForMediatorResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetOrdersForMediatorResponse extends AbstractStructBase
      * - ref: MidocoMediatorOrderInfo
      * @var \Pggns\MidocoApi\Order\StructType\MidocoMediatorOrderInfo[]
      */
-    protected array $MidocoMediatorOrderInfo = [];
+    protected ?array $MidocoMediatorOrderInfo = null;
     /**
      * Constructor method for GetOrdersForMediatorResponse
      * @uses GetOrdersForMediatorResponse::setMidocoMediatorOrderInfo()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoMediatorOrderInfo[] $midocoMediatorOrderInfo
      */
-    public function __construct(array $midocoMediatorOrderInfo = [])
+    public function __construct(?array $midocoMediatorOrderInfo = null)
     {
         $this
             ->setMidocoMediatorOrderInfo($midocoMediatorOrderInfo);
@@ -36,18 +37,22 @@ class GetOrdersForMediatorResponse extends AbstractStructBase
      * Get MidocoMediatorOrderInfo value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoMediatorOrderInfo[]
      */
-    public function getMidocoMediatorOrderInfo(): array
+    public function getMidocoMediatorOrderInfo(): ?array
     {
         return $this->MidocoMediatorOrderInfo;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoMediatorOrderInfo method
+     * This method is responsible for validating the value(s) passed to the setMidocoMediatorOrderInfo method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoMediatorOrderInfo method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoMediatorOrderInfoForArrayConstraintsFromSetMidocoMediatorOrderInfo(array $values = []): string
+    public static function validateMidocoMediatorOrderInfoForArrayConstraintFromSetMidocoMediatorOrderInfo(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getOrdersForMediatorResponseMidocoMediatorOrderInfoItem) {
@@ -69,10 +74,10 @@ class GetOrdersForMediatorResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoMediatorOrderInfo[] $midocoMediatorOrderInfo
      * @return \Pggns\MidocoApi\Order\StructType\GetOrdersForMediatorResponse
      */
-    public function setMidocoMediatorOrderInfo(array $midocoMediatorOrderInfo = []): self
+    public function setMidocoMediatorOrderInfo(?array $midocoMediatorOrderInfo = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoMediatorOrderInfoArrayErrorMessage = self::validateMidocoMediatorOrderInfoForArrayConstraintsFromSetMidocoMediatorOrderInfo($midocoMediatorOrderInfo))) {
+        if ('' !== ($midocoMediatorOrderInfoArrayErrorMessage = self::validateMidocoMediatorOrderInfoForArrayConstraintFromSetMidocoMediatorOrderInfo($midocoMediatorOrderInfo))) {
             throw new InvalidArgumentException($midocoMediatorOrderInfoArrayErrorMessage, __LINE__);
         }
         $this->MidocoMediatorOrderInfo = $midocoMediatorOrderInfo;

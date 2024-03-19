@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: Special data in case of a company customer
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class Company_data extends AbstractStructBase
 {
     /**

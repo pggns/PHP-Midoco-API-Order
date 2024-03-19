@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoQueryResult StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoQueryResult extends AbstractStructBase
 {
     /**

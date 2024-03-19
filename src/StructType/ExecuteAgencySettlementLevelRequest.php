@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ExecuteAgencySettlementLevelRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ExecuteAgencySettlementLevelRequest extends AbstractStructBase
 {
     /**
@@ -55,7 +56,7 @@ class ExecuteAgencySettlementLevelRequest extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $ID = [];
+    protected ?array $ID = null;
     /**
      * The invoiceByEmail
      * Meta information extracted from the WSDL
@@ -89,7 +90,7 @@ class ExecuteAgencySettlementLevelRequest extends AbstractStructBase
      * @param bool $invoiceByEmail
      * @param bool $isPreview
      */
-    public function __construct(string $travelDateFrom, string $travelDateTo, string $compareTravelDateFrom, string $compareTravelDateTo, string $settlementType, array $iD = [], ?bool $invoiceByEmail = false, ?bool $isPreview = true)
+    public function __construct(string $travelDateFrom, string $travelDateTo, string $compareTravelDateFrom, string $compareTravelDateTo, string $settlementType, ?array $iD = null, ?bool $invoiceByEmail = false, ?bool $isPreview = true)
     {
         $this
             ->setTravelDateFrom($travelDateFrom)
@@ -220,18 +221,22 @@ class ExecuteAgencySettlementLevelRequest extends AbstractStructBase
      * Get ID value
      * @return string[]
      */
-    public function getID(): array
+    public function getID(): ?array
     {
         return $this->ID;
     }
     /**
-     * This method is responsible for validating the values passed to the setID method
+     * This method is responsible for validating the value(s) passed to the setID method
      * This method is willingly generated in order to preserve the one-line inline validation within the setID method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateIDForArrayConstraintsFromSetID(array $values = []): string
+    public static function validateIDForArrayConstraintFromSetID(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $executeAgencySettlementLevelRequestIDItem) {
@@ -253,10 +258,10 @@ class ExecuteAgencySettlementLevelRequest extends AbstractStructBase
      * @param string[] $iD
      * @return \Pggns\MidocoApi\Order\StructType\ExecuteAgencySettlementLevelRequest
      */
-    public function setID(array $iD = []): self
+    public function setID(?array $iD = null): self
     {
         // validation for constraint: array
-        if ('' !== ($iDArrayErrorMessage = self::validateIDForArrayConstraintsFromSetID($iD))) {
+        if ('' !== ($iDArrayErrorMessage = self::validateIDForArrayConstraintFromSetID($iD))) {
             throw new InvalidArgumentException($iDArrayErrorMessage, __LINE__);
         }
         $this->ID = $iD;

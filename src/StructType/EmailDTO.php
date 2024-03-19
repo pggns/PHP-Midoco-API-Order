@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for EmailDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class EmailDTO extends AbstractStructBase
 {
     /**

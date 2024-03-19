@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CustDeleteReasonDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CustDeleteReasonDTO extends AbstractStructBase
 {
     /**

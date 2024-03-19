@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for FlightBooking StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class FlightBooking extends AbstractStructBase
 {
     /**
@@ -21,7 +22,7 @@ class FlightBooking extends AbstractStructBase
      * - ref: FlightSegment
      * @var \Pggns\MidocoApi\Order\StructType\FlightSegment[]
      */
-    protected array $FlightSegment = [];
+    protected ?array $FlightSegment = null;
     /**
      * The Ticket
      * Meta information extracted from the WSDL
@@ -30,7 +31,7 @@ class FlightBooking extends AbstractStructBase
      * - ref: Ticket
      * @var \Pggns\MidocoApi\Order\StructType\Ticket_1[]
      */
-    protected array $Ticket = [];
+    protected ?array $Ticket = null;
     /**
      * The TicketPrice
      * Meta information extracted from the WSDL
@@ -39,7 +40,7 @@ class FlightBooking extends AbstractStructBase
      * - ref: TicketPrice
      * @var \Pggns\MidocoApi\Order\StructType\TicketPrice[]
      */
-    protected array $TicketPrice = [];
+    protected ?array $TicketPrice = null;
     /**
      * The SpecialServiceRequest
      * Meta information extracted from the WSDL
@@ -48,7 +49,7 @@ class FlightBooking extends AbstractStructBase
      * - ref: SpecialServiceRequest
      * @var \Pggns\MidocoApi\Order\StructType\SpecialServiceRequest_1[]
      */
-    protected array $SpecialServiceRequest = [];
+    protected ?array $SpecialServiceRequest = null;
     /**
      * The BaggageAllowance
      * Meta information extracted from the WSDL
@@ -57,7 +58,7 @@ class FlightBooking extends AbstractStructBase
      * - ref: BaggageAllowance
      * @var \Pggns\MidocoApi\Order\StructType\BaggageAllowance[]
      */
-    protected array $BaggageAllowance = [];
+    protected ?array $BaggageAllowance = null;
     /**
      * The TravelerRefId
      * Meta information extracted from the WSDL
@@ -66,7 +67,7 @@ class FlightBooking extends AbstractStructBase
      * - ref: TravelerRefId
      * @var int[]
      */
-    protected array $TravelerRefId = [];
+    protected ?array $TravelerRefId = null;
     /**
      * The TravelerTotalPrice
      * Meta information extracted from the WSDL
@@ -75,7 +76,7 @@ class FlightBooking extends AbstractStructBase
      * - ref: TravelerTotalPrice
      * @var \Pggns\MidocoApi\Order\StructType\TravelerTotalPrice[]
      */
-    protected array $TravelerTotalPrice = [];
+    protected ?array $TravelerTotalPrice = null;
     /**
      * The bookingPosition
      * @var int|null
@@ -163,7 +164,7 @@ class FlightBooking extends AbstractStructBase
      * @param string $sourceSystem
      * @param string $sourceExtId
      */
-    public function __construct(array $flightSegment = [], array $ticket = [], array $ticketPrice = [], array $specialServiceRequest = [], array $baggageAllowance = [], array $travelerRefId = [], array $travelerTotalPrice = [], ?int $bookingPosition = null, ?string $supplierId = null, ?string $bookingId = null, ?string $bookingDate = null, ?float $totalPrice = null, ?string $currency = null, ?string $extId = null, ?string $sourceSystem = null, ?string $sourceExtId = null)
+    public function __construct(?array $flightSegment = null, ?array $ticket = null, ?array $ticketPrice = null, ?array $specialServiceRequest = null, ?array $baggageAllowance = null, ?array $travelerRefId = null, ?array $travelerTotalPrice = null, ?int $bookingPosition = null, ?string $supplierId = null, ?string $bookingId = null, ?string $bookingDate = null, ?float $totalPrice = null, ?string $currency = null, ?string $extId = null, ?string $sourceSystem = null, ?string $sourceExtId = null)
     {
         $this
             ->setFlightSegment($flightSegment)
@@ -187,18 +188,22 @@ class FlightBooking extends AbstractStructBase
      * Get FlightSegment value
      * @return \Pggns\MidocoApi\Order\StructType\FlightSegment[]
      */
-    public function getFlightSegment(): array
+    public function getFlightSegment(): ?array
     {
         return $this->FlightSegment;
     }
     /**
-     * This method is responsible for validating the values passed to the setFlightSegment method
+     * This method is responsible for validating the value(s) passed to the setFlightSegment method
      * This method is willingly generated in order to preserve the one-line inline validation within the setFlightSegment method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateFlightSegmentForArrayConstraintsFromSetFlightSegment(array $values = []): string
+    public static function validateFlightSegmentForArrayConstraintFromSetFlightSegment(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $flightBookingFlightSegmentItem) {
@@ -220,10 +225,10 @@ class FlightBooking extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\FlightSegment[] $flightSegment
      * @return \Pggns\MidocoApi\Order\StructType\FlightBooking
      */
-    public function setFlightSegment(array $flightSegment = []): self
+    public function setFlightSegment(?array $flightSegment = null): self
     {
         // validation for constraint: array
-        if ('' !== ($flightSegmentArrayErrorMessage = self::validateFlightSegmentForArrayConstraintsFromSetFlightSegment($flightSegment))) {
+        if ('' !== ($flightSegmentArrayErrorMessage = self::validateFlightSegmentForArrayConstraintFromSetFlightSegment($flightSegment))) {
             throw new InvalidArgumentException($flightSegmentArrayErrorMessage, __LINE__);
         }
         $this->FlightSegment = $flightSegment;
@@ -250,18 +255,22 @@ class FlightBooking extends AbstractStructBase
      * Get Ticket value
      * @return \Pggns\MidocoApi\Order\StructType\Ticket_1[]
      */
-    public function getTicket(): array
+    public function getTicket(): ?array
     {
         return $this->Ticket;
     }
     /**
-     * This method is responsible for validating the values passed to the setTicket method
+     * This method is responsible for validating the value(s) passed to the setTicket method
      * This method is willingly generated in order to preserve the one-line inline validation within the setTicket method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateTicketForArrayConstraintsFromSetTicket(array $values = []): string
+    public static function validateTicketForArrayConstraintFromSetTicket(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $flightBookingTicketItem) {
@@ -283,10 +292,10 @@ class FlightBooking extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\Ticket_1[] $ticket
      * @return \Pggns\MidocoApi\Order\StructType\FlightBooking
      */
-    public function setTicket(array $ticket = []): self
+    public function setTicket(?array $ticket = null): self
     {
         // validation for constraint: array
-        if ('' !== ($ticketArrayErrorMessage = self::validateTicketForArrayConstraintsFromSetTicket($ticket))) {
+        if ('' !== ($ticketArrayErrorMessage = self::validateTicketForArrayConstraintFromSetTicket($ticket))) {
             throw new InvalidArgumentException($ticketArrayErrorMessage, __LINE__);
         }
         $this->Ticket = $ticket;
@@ -313,18 +322,22 @@ class FlightBooking extends AbstractStructBase
      * Get TicketPrice value
      * @return \Pggns\MidocoApi\Order\StructType\TicketPrice[]
      */
-    public function getTicketPrice(): array
+    public function getTicketPrice(): ?array
     {
         return $this->TicketPrice;
     }
     /**
-     * This method is responsible for validating the values passed to the setTicketPrice method
+     * This method is responsible for validating the value(s) passed to the setTicketPrice method
      * This method is willingly generated in order to preserve the one-line inline validation within the setTicketPrice method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateTicketPriceForArrayConstraintsFromSetTicketPrice(array $values = []): string
+    public static function validateTicketPriceForArrayConstraintFromSetTicketPrice(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $flightBookingTicketPriceItem) {
@@ -346,10 +359,10 @@ class FlightBooking extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\TicketPrice[] $ticketPrice
      * @return \Pggns\MidocoApi\Order\StructType\FlightBooking
      */
-    public function setTicketPrice(array $ticketPrice = []): self
+    public function setTicketPrice(?array $ticketPrice = null): self
     {
         // validation for constraint: array
-        if ('' !== ($ticketPriceArrayErrorMessage = self::validateTicketPriceForArrayConstraintsFromSetTicketPrice($ticketPrice))) {
+        if ('' !== ($ticketPriceArrayErrorMessage = self::validateTicketPriceForArrayConstraintFromSetTicketPrice($ticketPrice))) {
             throw new InvalidArgumentException($ticketPriceArrayErrorMessage, __LINE__);
         }
         $this->TicketPrice = $ticketPrice;
@@ -376,18 +389,22 @@ class FlightBooking extends AbstractStructBase
      * Get SpecialServiceRequest value
      * @return \Pggns\MidocoApi\Order\StructType\SpecialServiceRequest_1[]
      */
-    public function getSpecialServiceRequest(): array
+    public function getSpecialServiceRequest(): ?array
     {
         return $this->SpecialServiceRequest;
     }
     /**
-     * This method is responsible for validating the values passed to the setSpecialServiceRequest method
+     * This method is responsible for validating the value(s) passed to the setSpecialServiceRequest method
      * This method is willingly generated in order to preserve the one-line inline validation within the setSpecialServiceRequest method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateSpecialServiceRequestForArrayConstraintsFromSetSpecialServiceRequest(array $values = []): string
+    public static function validateSpecialServiceRequestForArrayConstraintFromSetSpecialServiceRequest(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $flightBookingSpecialServiceRequestItem) {
@@ -409,10 +426,10 @@ class FlightBooking extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\SpecialServiceRequest_1[] $specialServiceRequest
      * @return \Pggns\MidocoApi\Order\StructType\FlightBooking
      */
-    public function setSpecialServiceRequest(array $specialServiceRequest = []): self
+    public function setSpecialServiceRequest(?array $specialServiceRequest = null): self
     {
         // validation for constraint: array
-        if ('' !== ($specialServiceRequestArrayErrorMessage = self::validateSpecialServiceRequestForArrayConstraintsFromSetSpecialServiceRequest($specialServiceRequest))) {
+        if ('' !== ($specialServiceRequestArrayErrorMessage = self::validateSpecialServiceRequestForArrayConstraintFromSetSpecialServiceRequest($specialServiceRequest))) {
             throw new InvalidArgumentException($specialServiceRequestArrayErrorMessage, __LINE__);
         }
         $this->SpecialServiceRequest = $specialServiceRequest;
@@ -439,18 +456,22 @@ class FlightBooking extends AbstractStructBase
      * Get BaggageAllowance value
      * @return \Pggns\MidocoApi\Order\StructType\BaggageAllowance[]
      */
-    public function getBaggageAllowance(): array
+    public function getBaggageAllowance(): ?array
     {
         return $this->BaggageAllowance;
     }
     /**
-     * This method is responsible for validating the values passed to the setBaggageAllowance method
+     * This method is responsible for validating the value(s) passed to the setBaggageAllowance method
      * This method is willingly generated in order to preserve the one-line inline validation within the setBaggageAllowance method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateBaggageAllowanceForArrayConstraintsFromSetBaggageAllowance(array $values = []): string
+    public static function validateBaggageAllowanceForArrayConstraintFromSetBaggageAllowance(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $flightBookingBaggageAllowanceItem) {
@@ -472,10 +493,10 @@ class FlightBooking extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\BaggageAllowance[] $baggageAllowance
      * @return \Pggns\MidocoApi\Order\StructType\FlightBooking
      */
-    public function setBaggageAllowance(array $baggageAllowance = []): self
+    public function setBaggageAllowance(?array $baggageAllowance = null): self
     {
         // validation for constraint: array
-        if ('' !== ($baggageAllowanceArrayErrorMessage = self::validateBaggageAllowanceForArrayConstraintsFromSetBaggageAllowance($baggageAllowance))) {
+        if ('' !== ($baggageAllowanceArrayErrorMessage = self::validateBaggageAllowanceForArrayConstraintFromSetBaggageAllowance($baggageAllowance))) {
             throw new InvalidArgumentException($baggageAllowanceArrayErrorMessage, __LINE__);
         }
         $this->BaggageAllowance = $baggageAllowance;
@@ -502,18 +523,22 @@ class FlightBooking extends AbstractStructBase
      * Get TravelerRefId value
      * @return int[]
      */
-    public function getTravelerRefId(): array
+    public function getTravelerRefId(): ?array
     {
         return $this->TravelerRefId;
     }
     /**
-     * This method is responsible for validating the values passed to the setTravelerRefId method
+     * This method is responsible for validating the value(s) passed to the setTravelerRefId method
      * This method is willingly generated in order to preserve the one-line inline validation within the setTravelerRefId method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateTravelerRefIdForArrayConstraintsFromSetTravelerRefId(array $values = []): string
+    public static function validateTravelerRefIdForArrayConstraintFromSetTravelerRefId(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $flightBookingTravelerRefIdItem) {
@@ -535,10 +560,10 @@ class FlightBooking extends AbstractStructBase
      * @param int[] $travelerRefId
      * @return \Pggns\MidocoApi\Order\StructType\FlightBooking
      */
-    public function setTravelerRefId(array $travelerRefId = []): self
+    public function setTravelerRefId(?array $travelerRefId = null): self
     {
         // validation for constraint: array
-        if ('' !== ($travelerRefIdArrayErrorMessage = self::validateTravelerRefIdForArrayConstraintsFromSetTravelerRefId($travelerRefId))) {
+        if ('' !== ($travelerRefIdArrayErrorMessage = self::validateTravelerRefIdForArrayConstraintFromSetTravelerRefId($travelerRefId))) {
             throw new InvalidArgumentException($travelerRefIdArrayErrorMessage, __LINE__);
         }
         $this->TravelerRefId = $travelerRefId;
@@ -565,18 +590,22 @@ class FlightBooking extends AbstractStructBase
      * Get TravelerTotalPrice value
      * @return \Pggns\MidocoApi\Order\StructType\TravelerTotalPrice[]
      */
-    public function getTravelerTotalPrice(): array
+    public function getTravelerTotalPrice(): ?array
     {
         return $this->TravelerTotalPrice;
     }
     /**
-     * This method is responsible for validating the values passed to the setTravelerTotalPrice method
+     * This method is responsible for validating the value(s) passed to the setTravelerTotalPrice method
      * This method is willingly generated in order to preserve the one-line inline validation within the setTravelerTotalPrice method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateTravelerTotalPriceForArrayConstraintsFromSetTravelerTotalPrice(array $values = []): string
+    public static function validateTravelerTotalPriceForArrayConstraintFromSetTravelerTotalPrice(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $flightBookingTravelerTotalPriceItem) {
@@ -598,10 +627,10 @@ class FlightBooking extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\TravelerTotalPrice[] $travelerTotalPrice
      * @return \Pggns\MidocoApi\Order\StructType\FlightBooking
      */
-    public function setTravelerTotalPrice(array $travelerTotalPrice = []): self
+    public function setTravelerTotalPrice(?array $travelerTotalPrice = null): self
     {
         // validation for constraint: array
-        if ('' !== ($travelerTotalPriceArrayErrorMessage = self::validateTravelerTotalPriceForArrayConstraintsFromSetTravelerTotalPrice($travelerTotalPrice))) {
+        if ('' !== ($travelerTotalPriceArrayErrorMessage = self::validateTravelerTotalPriceForArrayConstraintFromSetTravelerTotalPrice($travelerTotalPrice))) {
             throw new InvalidArgumentException($travelerTotalPriceArrayErrorMessage, __LINE__);
         }
         $this->TravelerTotalPrice = $travelerTotalPrice;
@@ -713,7 +742,7 @@ class FlightBooking extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($bookingDate, true), gettype($bookingDate)), __LINE__);
         }
         // validation for constraint: pattern([0-9]{4}-[0-9]{2}-[0-9]{2})
-        if (!is_null($bookingDate) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', $bookingDate)) {
+        if (!is_null($bookingDate) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', (string) $bookingDate)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[0-9]{4}-[0-9]{2}-[0-9]{2}/', var_export($bookingDate, true)), __LINE__);
         }
         $this->bookingDate = $bookingDate;

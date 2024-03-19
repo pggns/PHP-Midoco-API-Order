@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for OrderLayoutDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class OrderLayoutDTO extends AbstractStructBase
 {
     /**

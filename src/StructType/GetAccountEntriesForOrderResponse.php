@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetAccountEntriesForOrderResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetAccountEntriesForOrderResponse extends AbstractStructBase
 {
     /**
@@ -21,7 +22,7 @@ class GetAccountEntriesForOrderResponse extends AbstractStructBase
      * - ref: MidocoOrderAccountEntry
      * @var \Pggns\MidocoApi\Order\StructType\MidocoOrderAccountEntry[]
      */
-    protected array $MidocoOrderAccountEntry = [];
+    protected ?array $MidocoOrderAccountEntry = null;
     /**
      * The totalNoOfRecords
      * @var int|null
@@ -48,7 +49,7 @@ class GetAccountEntriesForOrderResponse extends AbstractStructBase
      * @param float $totalDueAmount
      * @param float $totalAmount
      */
-    public function __construct(array $midocoOrderAccountEntry = [], ?int $totalNoOfRecords = null, ?float $totalDueAmount = null, ?float $totalAmount = null)
+    public function __construct(?array $midocoOrderAccountEntry = null, ?int $totalNoOfRecords = null, ?float $totalDueAmount = null, ?float $totalAmount = null)
     {
         $this
             ->setMidocoOrderAccountEntry($midocoOrderAccountEntry)
@@ -60,18 +61,22 @@ class GetAccountEntriesForOrderResponse extends AbstractStructBase
      * Get MidocoOrderAccountEntry value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoOrderAccountEntry[]
      */
-    public function getMidocoOrderAccountEntry(): array
+    public function getMidocoOrderAccountEntry(): ?array
     {
         return $this->MidocoOrderAccountEntry;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoOrderAccountEntry method
+     * This method is responsible for validating the value(s) passed to the setMidocoOrderAccountEntry method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoOrderAccountEntry method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoOrderAccountEntryForArrayConstraintsFromSetMidocoOrderAccountEntry(array $values = []): string
+    public static function validateMidocoOrderAccountEntryForArrayConstraintFromSetMidocoOrderAccountEntry(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getAccountEntriesForOrderResponseMidocoOrderAccountEntryItem) {
@@ -93,10 +98,10 @@ class GetAccountEntriesForOrderResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoOrderAccountEntry[] $midocoOrderAccountEntry
      * @return \Pggns\MidocoApi\Order\StructType\GetAccountEntriesForOrderResponse
      */
-    public function setMidocoOrderAccountEntry(array $midocoOrderAccountEntry = []): self
+    public function setMidocoOrderAccountEntry(?array $midocoOrderAccountEntry = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoOrderAccountEntryArrayErrorMessage = self::validateMidocoOrderAccountEntryForArrayConstraintsFromSetMidocoOrderAccountEntry($midocoOrderAccountEntry))) {
+        if ('' !== ($midocoOrderAccountEntryArrayErrorMessage = self::validateMidocoOrderAccountEntryForArrayConstraintFromSetMidocoOrderAccountEntry($midocoOrderAccountEntry))) {
             throw new InvalidArgumentException($midocoOrderAccountEntryArrayErrorMessage, __LINE__);
         }
         $this->MidocoOrderAccountEntry = $midocoOrderAccountEntry;

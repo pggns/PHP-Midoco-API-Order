@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MakeReceiptResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MakeReceiptResponse extends AbstractStructBase
 {
     /**

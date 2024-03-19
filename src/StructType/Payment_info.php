@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: Payment information
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class Payment_info extends AbstractStructBase
 {
     /**
@@ -22,7 +23,7 @@ class Payment_info extends AbstractStructBase
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\Cc_payment[]
      */
-    protected array $cc_payment = [];
+    protected ?array $cc_payment = null;
     /**
      * The debit_payment
      * Meta information extracted from the WSDL
@@ -53,7 +54,7 @@ class Payment_info extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\Advised_payment $advised_payment
      * @param string $preferred_payment_type
      */
-    public function __construct(array $cc_payment = [], ?\Pggns\MidocoApi\Order\StructType\Debit_payment $debit_payment = null, ?\Pggns\MidocoApi\Order\StructType\Advised_payment $advised_payment = null, ?string $preferred_payment_type = null)
+    public function __construct(?array $cc_payment = null, ?\Pggns\MidocoApi\Order\StructType\Debit_payment $debit_payment = null, ?\Pggns\MidocoApi\Order\StructType\Advised_payment $advised_payment = null, ?string $preferred_payment_type = null)
     {
         $this
             ->setCc_payment($cc_payment)
@@ -65,18 +66,22 @@ class Payment_info extends AbstractStructBase
      * Get cc_payment value
      * @return \Pggns\MidocoApi\Order\StructType\Cc_payment[]
      */
-    public function getCc_payment(): array
+    public function getCc_payment(): ?array
     {
         return $this->{'cc-payment'};
     }
     /**
-     * This method is responsible for validating the values passed to the setCc_payment method
+     * This method is responsible for validating the value(s) passed to the setCc_payment method
      * This method is willingly generated in order to preserve the one-line inline validation within the setCc_payment method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateCc_paymentForArrayConstraintsFromSetCc_payment(array $values = []): string
+    public static function validateCc_paymentForArrayConstraintFromSetCc_payment(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $payment_infoCc_paymentItem) {
@@ -98,10 +103,10 @@ class Payment_info extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\Cc_payment[] $cc_payment
      * @return \Pggns\MidocoApi\Order\StructType\Payment_info
      */
-    public function setCc_payment(array $cc_payment = []): self
+    public function setCc_payment(?array $cc_payment = null): self
     {
         // validation for constraint: array
-        if ('' !== ($cc_paymentArrayErrorMessage = self::validateCc_paymentForArrayConstraintsFromSetCc_payment($cc_payment))) {
+        if ('' !== ($cc_paymentArrayErrorMessage = self::validateCc_paymentForArrayConstraintFromSetCc_payment($cc_payment))) {
             throw new InvalidArgumentException($cc_paymentArrayErrorMessage, __LINE__);
         }
         $this->cc_payment = $this->{'cc-payment'} = $cc_payment;

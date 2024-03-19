@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveSupplAgencySettlemJournalsRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveSupplAgencySettlemJournalsRequest extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class SaveSupplAgencySettlemJournalsRequest extends AbstractStructBase
      * - ref: MidocoSupplAgencySettlemJournal
      * @var \Pggns\MidocoApi\Order\StructType\SupplAgencySettlemJournalDTO[]
      */
-    protected array $MidocoSupplAgencySettlemJournal = [];
+    protected ?array $MidocoSupplAgencySettlemJournal = null;
     /**
      * Constructor method for SaveSupplAgencySettlemJournalsRequest
      * @uses SaveSupplAgencySettlemJournalsRequest::setMidocoSupplAgencySettlemJournal()
      * @param \Pggns\MidocoApi\Order\StructType\SupplAgencySettlemJournalDTO[] $midocoSupplAgencySettlemJournal
      */
-    public function __construct(array $midocoSupplAgencySettlemJournal = [])
+    public function __construct(?array $midocoSupplAgencySettlemJournal = null)
     {
         $this
             ->setMidocoSupplAgencySettlemJournal($midocoSupplAgencySettlemJournal);
@@ -36,18 +37,22 @@ class SaveSupplAgencySettlemJournalsRequest extends AbstractStructBase
      * Get MidocoSupplAgencySettlemJournal value
      * @return \Pggns\MidocoApi\Order\StructType\SupplAgencySettlemJournalDTO[]
      */
-    public function getMidocoSupplAgencySettlemJournal(): array
+    public function getMidocoSupplAgencySettlemJournal(): ?array
     {
         return $this->MidocoSupplAgencySettlemJournal;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoSupplAgencySettlemJournal method
+     * This method is responsible for validating the value(s) passed to the setMidocoSupplAgencySettlemJournal method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoSupplAgencySettlemJournal method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoSupplAgencySettlemJournalForArrayConstraintsFromSetMidocoSupplAgencySettlemJournal(array $values = []): string
+    public static function validateMidocoSupplAgencySettlemJournalForArrayConstraintFromSetMidocoSupplAgencySettlemJournal(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $saveSupplAgencySettlemJournalsRequestMidocoSupplAgencySettlemJournalItem) {
@@ -69,10 +74,10 @@ class SaveSupplAgencySettlemJournalsRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\SupplAgencySettlemJournalDTO[] $midocoSupplAgencySettlemJournal
      * @return \Pggns\MidocoApi\Order\StructType\SaveSupplAgencySettlemJournalsRequest
      */
-    public function setMidocoSupplAgencySettlemJournal(array $midocoSupplAgencySettlemJournal = []): self
+    public function setMidocoSupplAgencySettlemJournal(?array $midocoSupplAgencySettlemJournal = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoSupplAgencySettlemJournalArrayErrorMessage = self::validateMidocoSupplAgencySettlemJournalForArrayConstraintsFromSetMidocoSupplAgencySettlemJournal($midocoSupplAgencySettlemJournal))) {
+        if ('' !== ($midocoSupplAgencySettlemJournalArrayErrorMessage = self::validateMidocoSupplAgencySettlemJournalForArrayConstraintFromSetMidocoSupplAgencySettlemJournal($midocoSupplAgencySettlemJournal))) {
             throw new InvalidArgumentException($midocoSupplAgencySettlemJournalArrayErrorMessage, __LINE__);
         }
         $this->MidocoSupplAgencySettlemJournal = $midocoSupplAgencySettlemJournal;

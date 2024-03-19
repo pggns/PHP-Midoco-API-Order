@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for PrintBillingPrintjobResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class PrintBillingPrintjobResponse extends AbstractStructBase
 {
     /**
@@ -19,7 +20,7 @@ class PrintBillingPrintjobResponse extends AbstractStructBase
      * - maxOccurs: unbounded
      * @var int[]
      */
-    protected array $PrintjobId = [];
+    protected ?array $PrintjobId = null;
     /**
      * The InternalVersion
      * @var int|null
@@ -41,7 +42,7 @@ class PrintBillingPrintjobResponse extends AbstractStructBase
      * - ref: system:MidocoMailDescription4Inexso
      * @var \Pggns\MidocoApi\Order\StructType\MidocoMailDescription4Inexso[]
      */
-    protected array $MidocoMailDescription4Inexso = [];
+    protected ?array $MidocoMailDescription4Inexso = null;
     /**
      * The file
      * Meta information extracted from the WSDL
@@ -62,7 +63,7 @@ class PrintBillingPrintjobResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoMailDescription4Inexso[] $midocoMailDescription4Inexso
      * @param \Pggns\MidocoApi\Order\StructType\FileType $file
      */
-    public function __construct(array $printjobId = [], ?int $internalVersion = null, ?\Pggns\MidocoApi\Order\StructType\MidocoMailMessageType $midocoMailMessage = null, array $midocoMailDescription4Inexso = [], ?\Pggns\MidocoApi\Order\StructType\FileType $file = null)
+    public function __construct(?array $printjobId = null, ?int $internalVersion = null, ?\Pggns\MidocoApi\Order\StructType\MidocoMailMessageType $midocoMailMessage = null, ?array $midocoMailDescription4Inexso = null, ?\Pggns\MidocoApi\Order\StructType\FileType $file = null)
     {
         $this
             ->setPrintjobId($printjobId)
@@ -75,18 +76,22 @@ class PrintBillingPrintjobResponse extends AbstractStructBase
      * Get PrintjobId value
      * @return int[]
      */
-    public function getPrintjobId(): array
+    public function getPrintjobId(): ?array
     {
         return $this->PrintjobId;
     }
     /**
-     * This method is responsible for validating the values passed to the setPrintjobId method
+     * This method is responsible for validating the value(s) passed to the setPrintjobId method
      * This method is willingly generated in order to preserve the one-line inline validation within the setPrintjobId method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validatePrintjobIdForArrayConstraintsFromSetPrintjobId(array $values = []): string
+    public static function validatePrintjobIdForArrayConstraintFromSetPrintjobId(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $printBillingPrintjobResponsePrintjobIdItem) {
@@ -108,10 +113,10 @@ class PrintBillingPrintjobResponse extends AbstractStructBase
      * @param int[] $printjobId
      * @return \Pggns\MidocoApi\Order\StructType\PrintBillingPrintjobResponse
      */
-    public function setPrintjobId(array $printjobId = []): self
+    public function setPrintjobId(?array $printjobId = null): self
     {
         // validation for constraint: array
-        if ('' !== ($printjobIdArrayErrorMessage = self::validatePrintjobIdForArrayConstraintsFromSetPrintjobId($printjobId))) {
+        if ('' !== ($printjobIdArrayErrorMessage = self::validatePrintjobIdForArrayConstraintFromSetPrintjobId($printjobId))) {
             throw new InvalidArgumentException($printjobIdArrayErrorMessage, __LINE__);
         }
         $this->PrintjobId = $printjobId;
@@ -180,18 +185,22 @@ class PrintBillingPrintjobResponse extends AbstractStructBase
      * Get MidocoMailDescription4Inexso value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoMailDescription4Inexso[]
      */
-    public function getMidocoMailDescription4Inexso(): array
+    public function getMidocoMailDescription4Inexso(): ?array
     {
         return $this->MidocoMailDescription4Inexso;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoMailDescription4Inexso method
+     * This method is responsible for validating the value(s) passed to the setMidocoMailDescription4Inexso method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoMailDescription4Inexso method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoMailDescription4InexsoForArrayConstraintsFromSetMidocoMailDescription4Inexso(array $values = []): string
+    public static function validateMidocoMailDescription4InexsoForArrayConstraintFromSetMidocoMailDescription4Inexso(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $printBillingPrintjobResponseMidocoMailDescription4InexsoItem) {
@@ -213,10 +222,10 @@ class PrintBillingPrintjobResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoMailDescription4Inexso[] $midocoMailDescription4Inexso
      * @return \Pggns\MidocoApi\Order\StructType\PrintBillingPrintjobResponse
      */
-    public function setMidocoMailDescription4Inexso(array $midocoMailDescription4Inexso = []): self
+    public function setMidocoMailDescription4Inexso(?array $midocoMailDescription4Inexso = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoMailDescription4InexsoArrayErrorMessage = self::validateMidocoMailDescription4InexsoForArrayConstraintsFromSetMidocoMailDescription4Inexso($midocoMailDescription4Inexso))) {
+        if ('' !== ($midocoMailDescription4InexsoArrayErrorMessage = self::validateMidocoMailDescription4InexsoForArrayConstraintFromSetMidocoMailDescription4Inexso($midocoMailDescription4Inexso))) {
             throw new InvalidArgumentException($midocoMailDescription4InexsoArrayErrorMessage, __LINE__);
         }
         $this->MidocoMailDescription4Inexso = $midocoMailDescription4Inexso;

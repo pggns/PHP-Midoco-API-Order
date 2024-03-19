@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: MakeBillingDocForItems --- make a billing document consisting of the items contained in the MidocoReceiptInfo object
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MakeBillingDocForItemsResponse extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SearchTravelNoMarginsRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchTravelNoMarginsRequest extends AbstractStructBase
 {
     /**
@@ -20,7 +21,7 @@ class SearchTravelNoMarginsRequest extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $travelNo = [];
+    protected ?array $travelNo = null;
     /**
      * The travelStartDateFrom
      * @var string|null
@@ -103,7 +104,7 @@ class SearchTravelNoMarginsRequest extends AbstractStructBase
      * @param bool $notBookedIncomingInvoices
      * @param string $orgunitName
      */
-    public function __construct(array $travelNo = [], ?string $travelStartDateFrom = null, ?string $travelStartDateTo = null, ?string $settlementStartDate = null, ?string $settlementEndDate = null, ?bool $isStorno = null, ?string $destination = null, ?int $orderNo = null, ?bool $notBookedMargins = null, ?bool $preventMarginBooking = null, ?bool $notBookedIncomingInvoices = null, ?string $orgunitName = null)
+    public function __construct(?array $travelNo = null, ?string $travelStartDateFrom = null, ?string $travelStartDateTo = null, ?string $settlementStartDate = null, ?string $settlementEndDate = null, ?bool $isStorno = null, ?string $destination = null, ?int $orderNo = null, ?bool $notBookedMargins = null, ?bool $preventMarginBooking = null, ?bool $notBookedIncomingInvoices = null, ?string $orgunitName = null)
     {
         $this
             ->setTravelNo($travelNo)
@@ -123,18 +124,22 @@ class SearchTravelNoMarginsRequest extends AbstractStructBase
      * Get travelNo value
      * @return string[]
      */
-    public function getTravelNo(): array
+    public function getTravelNo(): ?array
     {
         return $this->travelNo;
     }
     /**
-     * This method is responsible for validating the values passed to the setTravelNo method
+     * This method is responsible for validating the value(s) passed to the setTravelNo method
      * This method is willingly generated in order to preserve the one-line inline validation within the setTravelNo method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateTravelNoForArrayConstraintsFromSetTravelNo(array $values = []): string
+    public static function validateTravelNoForArrayConstraintFromSetTravelNo(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $searchTravelNoMarginsRequestTravelNoItem) {
@@ -156,10 +161,10 @@ class SearchTravelNoMarginsRequest extends AbstractStructBase
      * @param string[] $travelNo
      * @return \Pggns\MidocoApi\Order\StructType\SearchTravelNoMarginsRequest
      */
-    public function setTravelNo(array $travelNo = []): self
+    public function setTravelNo(?array $travelNo = null): self
     {
         // validation for constraint: array
-        if ('' !== ($travelNoArrayErrorMessage = self::validateTravelNoForArrayConstraintsFromSetTravelNo($travelNo))) {
+        if ('' !== ($travelNoArrayErrorMessage = self::validateTravelNoForArrayConstraintFromSetTravelNo($travelNo))) {
             throw new InvalidArgumentException($travelNoArrayErrorMessage, __LINE__);
         }
         $this->travelNo = $travelNo;

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetUsersFromBonusCalculationRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetUsersFromBonusCalculationRequest extends AbstractStructBase
 {
     /**

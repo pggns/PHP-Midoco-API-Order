@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoOrderTask StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoOrderTask extends AbstractStructBase
 {
     /**

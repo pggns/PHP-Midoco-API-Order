@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveCostCentreRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveCostCentreRequest extends AbstractStructBase
 {
     /**

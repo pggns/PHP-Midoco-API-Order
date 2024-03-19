@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ExportAutomaticSettlementRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ExportAutomaticSettlementRequest extends AbstractStructBase
 {
     /**

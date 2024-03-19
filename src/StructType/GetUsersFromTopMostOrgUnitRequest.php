@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetUsersFromTopMostOrgUnitRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetUsersFromTopMostOrgUnitRequest extends AbstractStructBase
 {
     /**

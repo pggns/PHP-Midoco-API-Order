@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ExecuteSettlementChargeForCompanyRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ExecuteSettlementChargeForCompanyRequest extends AbstractStructBase
 {
     /**
@@ -34,7 +35,7 @@ class ExecuteSettlementChargeForCompanyRequest extends AbstractStructBase
      * - ref: ordersd:MidocoSettlementCharge
      * @var \Pggns\MidocoApi\Order\StructType\SettlementChargeDTO[]
      */
-    protected array $MidocoSettlementCharge = [];
+    protected ?array $MidocoSettlementCharge = null;
     /**
      * The chargeId
      * @var int|null
@@ -51,7 +52,7 @@ class ExecuteSettlementChargeForCompanyRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\SettlementChargeDTO[] $midocoSettlementCharge
      * @param int $chargeId
      */
-    public function __construct(int $customerId, string $month, array $midocoSettlementCharge = [], ?int $chargeId = null)
+    public function __construct(int $customerId, string $month, ?array $midocoSettlementCharge = null, ?int $chargeId = null)
     {
         $this
             ->setCustomerId($customerId)
@@ -112,18 +113,22 @@ class ExecuteSettlementChargeForCompanyRequest extends AbstractStructBase
      * Get MidocoSettlementCharge value
      * @return \Pggns\MidocoApi\Order\StructType\SettlementChargeDTO[]
      */
-    public function getMidocoSettlementCharge(): array
+    public function getMidocoSettlementCharge(): ?array
     {
         return $this->MidocoSettlementCharge;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoSettlementCharge method
+     * This method is responsible for validating the value(s) passed to the setMidocoSettlementCharge method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoSettlementCharge method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoSettlementChargeForArrayConstraintsFromSetMidocoSettlementCharge(array $values = []): string
+    public static function validateMidocoSettlementChargeForArrayConstraintFromSetMidocoSettlementCharge(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $executeSettlementChargeForCompanyRequestMidocoSettlementChargeItem) {
@@ -145,10 +150,10 @@ class ExecuteSettlementChargeForCompanyRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\SettlementChargeDTO[] $midocoSettlementCharge
      * @return \Pggns\MidocoApi\Order\StructType\ExecuteSettlementChargeForCompanyRequest
      */
-    public function setMidocoSettlementCharge(array $midocoSettlementCharge = []): self
+    public function setMidocoSettlementCharge(?array $midocoSettlementCharge = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoSettlementChargeArrayErrorMessage = self::validateMidocoSettlementChargeForArrayConstraintsFromSetMidocoSettlementCharge($midocoSettlementCharge))) {
+        if ('' !== ($midocoSettlementChargeArrayErrorMessage = self::validateMidocoSettlementChargeForArrayConstraintFromSetMidocoSettlementCharge($midocoSettlementCharge))) {
             throw new InvalidArgumentException($midocoSettlementChargeArrayErrorMessage, __LINE__);
         }
         $this->MidocoSettlementCharge = $midocoSettlementCharge;

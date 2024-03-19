@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetMidocoSystemOrgunitClosingResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetMidocoSystemOrgunitClosingResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetMidocoSystemOrgunitClosingResponse extends AbstractStructBase
      * - ref: MidocoSystemOrgunitClosing
      * @var \Pggns\MidocoApi\Order\StructType\OrgunitClosingDTO[]
      */
-    protected array $MidocoSystemOrgunitClosing = [];
+    protected ?array $MidocoSystemOrgunitClosing = null;
     /**
      * Constructor method for GetMidocoSystemOrgunitClosingResponse
      * @uses GetMidocoSystemOrgunitClosingResponse::setMidocoSystemOrgunitClosing()
      * @param \Pggns\MidocoApi\Order\StructType\OrgunitClosingDTO[] $midocoSystemOrgunitClosing
      */
-    public function __construct(array $midocoSystemOrgunitClosing = [])
+    public function __construct(?array $midocoSystemOrgunitClosing = null)
     {
         $this
             ->setMidocoSystemOrgunitClosing($midocoSystemOrgunitClosing);
@@ -36,18 +37,22 @@ class GetMidocoSystemOrgunitClosingResponse extends AbstractStructBase
      * Get MidocoSystemOrgunitClosing value
      * @return \Pggns\MidocoApi\Order\StructType\OrgunitClosingDTO[]
      */
-    public function getMidocoSystemOrgunitClosing(): array
+    public function getMidocoSystemOrgunitClosing(): ?array
     {
         return $this->MidocoSystemOrgunitClosing;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoSystemOrgunitClosing method
+     * This method is responsible for validating the value(s) passed to the setMidocoSystemOrgunitClosing method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoSystemOrgunitClosing method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoSystemOrgunitClosingForArrayConstraintsFromSetMidocoSystemOrgunitClosing(array $values = []): string
+    public static function validateMidocoSystemOrgunitClosingForArrayConstraintFromSetMidocoSystemOrgunitClosing(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getMidocoSystemOrgunitClosingResponseMidocoSystemOrgunitClosingItem) {
@@ -69,10 +74,10 @@ class GetMidocoSystemOrgunitClosingResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\OrgunitClosingDTO[] $midocoSystemOrgunitClosing
      * @return \Pggns\MidocoApi\Order\StructType\GetMidocoSystemOrgunitClosingResponse
      */
-    public function setMidocoSystemOrgunitClosing(array $midocoSystemOrgunitClosing = []): self
+    public function setMidocoSystemOrgunitClosing(?array $midocoSystemOrgunitClosing = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoSystemOrgunitClosingArrayErrorMessage = self::validateMidocoSystemOrgunitClosingForArrayConstraintsFromSetMidocoSystemOrgunitClosing($midocoSystemOrgunitClosing))) {
+        if ('' !== ($midocoSystemOrgunitClosingArrayErrorMessage = self::validateMidocoSystemOrgunitClosingForArrayConstraintFromSetMidocoSystemOrgunitClosing($midocoSystemOrgunitClosing))) {
             throw new InvalidArgumentException($midocoSystemOrgunitClosingArrayErrorMessage, __LINE__);
         }
         $this->MidocoSystemOrgunitClosing = $midocoSystemOrgunitClosing;

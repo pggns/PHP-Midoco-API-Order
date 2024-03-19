@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ActivityPriorityDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ActivityPriorityDTO extends AbstractStructBase
 {
     /**

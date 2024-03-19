@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetSpecifiedSupplierSettlementDiffRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetSpecifiedSupplierSettlementDiffRequest extends AbstractStructBase
 {
     /**

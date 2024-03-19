@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveIncomingInvoiceResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveIncomingInvoiceResponse extends AbstractStructBase
 {
     /**

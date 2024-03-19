@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveBillingPrintSettingsResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveBillingPrintSettingsResponse extends AbstractStructBase
 {
 }

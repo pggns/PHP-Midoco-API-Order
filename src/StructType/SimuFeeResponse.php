@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SimuFeeResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SimuFeeResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class SimuFeeResponse extends AbstractStructBase
      * - ref: MidocoSimuFee
      * @var \Pggns\MidocoApi\Order\StructType\MidocoSimuFee[]
      */
-    protected array $MidocoSimuFee = [];
+    protected ?array $MidocoSimuFee = null;
     /**
      * Constructor method for SimuFeeResponse
      * @uses SimuFeeResponse::setMidocoSimuFee()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSimuFee[] $midocoSimuFee
      */
-    public function __construct(array $midocoSimuFee = [])
+    public function __construct(?array $midocoSimuFee = null)
     {
         $this
             ->setMidocoSimuFee($midocoSimuFee);
@@ -36,18 +37,22 @@ class SimuFeeResponse extends AbstractStructBase
      * Get MidocoSimuFee value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSimuFee[]
      */
-    public function getMidocoSimuFee(): array
+    public function getMidocoSimuFee(): ?array
     {
         return $this->MidocoSimuFee;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoSimuFee method
+     * This method is responsible for validating the value(s) passed to the setMidocoSimuFee method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoSimuFee method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoSimuFeeForArrayConstraintsFromSetMidocoSimuFee(array $values = []): string
+    public static function validateMidocoSimuFeeForArrayConstraintFromSetMidocoSimuFee(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $simuFeeResponseMidocoSimuFeeItem) {
@@ -69,10 +74,10 @@ class SimuFeeResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSimuFee[] $midocoSimuFee
      * @return \Pggns\MidocoApi\Order\StructType\SimuFeeResponse
      */
-    public function setMidocoSimuFee(array $midocoSimuFee = []): self
+    public function setMidocoSimuFee(?array $midocoSimuFee = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoSimuFeeArrayErrorMessage = self::validateMidocoSimuFeeForArrayConstraintsFromSetMidocoSimuFee($midocoSimuFee))) {
+        if ('' !== ($midocoSimuFeeArrayErrorMessage = self::validateMidocoSimuFeeForArrayConstraintFromSetMidocoSimuFee($midocoSimuFee))) {
             throw new InvalidArgumentException($midocoSimuFeeArrayErrorMessage, __LINE__);
         }
         $this->MidocoSimuFee = $midocoSimuFee;

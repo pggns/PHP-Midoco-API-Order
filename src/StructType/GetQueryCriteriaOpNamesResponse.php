@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetQueryCriteriaOpNamesResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetQueryCriteriaOpNamesResponse extends AbstractStructBase
 {
     /**
@@ -20,13 +21,13 @@ class GetQueryCriteriaOpNamesResponse extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $CriteriaOpName = [];
+    protected ?array $CriteriaOpName = null;
     /**
      * Constructor method for GetQueryCriteriaOpNamesResponse
      * @uses GetQueryCriteriaOpNamesResponse::setCriteriaOpName()
      * @param string[] $criteriaOpName
      */
-    public function __construct(array $criteriaOpName = [])
+    public function __construct(?array $criteriaOpName = null)
     {
         $this
             ->setCriteriaOpName($criteriaOpName);
@@ -35,18 +36,22 @@ class GetQueryCriteriaOpNamesResponse extends AbstractStructBase
      * Get CriteriaOpName value
      * @return string[]
      */
-    public function getCriteriaOpName(): array
+    public function getCriteriaOpName(): ?array
     {
         return $this->CriteriaOpName;
     }
     /**
-     * This method is responsible for validating the values passed to the setCriteriaOpName method
+     * This method is responsible for validating the value(s) passed to the setCriteriaOpName method
      * This method is willingly generated in order to preserve the one-line inline validation within the setCriteriaOpName method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateCriteriaOpNameForArrayConstraintsFromSetCriteriaOpName(array $values = []): string
+    public static function validateCriteriaOpNameForArrayConstraintFromSetCriteriaOpName(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getQueryCriteriaOpNamesResponseCriteriaOpNameItem) {
@@ -68,10 +73,10 @@ class GetQueryCriteriaOpNamesResponse extends AbstractStructBase
      * @param string[] $criteriaOpName
      * @return \Pggns\MidocoApi\Order\StructType\GetQueryCriteriaOpNamesResponse
      */
-    public function setCriteriaOpName(array $criteriaOpName = []): self
+    public function setCriteriaOpName(?array $criteriaOpName = null): self
     {
         // validation for constraint: array
-        if ('' !== ($criteriaOpNameArrayErrorMessage = self::validateCriteriaOpNameForArrayConstraintsFromSetCriteriaOpName($criteriaOpName))) {
+        if ('' !== ($criteriaOpNameArrayErrorMessage = self::validateCriteriaOpNameForArrayConstraintFromSetCriteriaOpName($criteriaOpName))) {
             throw new InvalidArgumentException($criteriaOpNameArrayErrorMessage, __LINE__);
         }
         $this->CriteriaOpName = $criteriaOpName;

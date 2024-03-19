@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveMergedMfResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveMergedMfResponse extends AbstractStructBase
 {
 }

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SendTssTestMailRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SendTssTestMailRequest extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetTravelNoMarginItemsRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetTravelNoMarginItemsRequest extends AbstractStructBase
 {
     /**

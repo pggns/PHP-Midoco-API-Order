@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetOrgUnitAndUserCashbookResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetOrgUnitAndUserCashbookResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetOrgUnitAndUserCashbookResponse extends AbstractStructBase
      * - ref: CashBookInfo
      * @var \Pggns\MidocoApi\Order\StructType\CashBookInfo[]
      */
-    protected array $CashBookInfo = [];
+    protected ?array $CashBookInfo = null;
     /**
      * Constructor method for GetOrgUnitAndUserCashbookResponse
      * @uses GetOrgUnitAndUserCashbookResponse::setCashBookInfo()
      * @param \Pggns\MidocoApi\Order\StructType\CashBookInfo[] $cashBookInfo
      */
-    public function __construct(array $cashBookInfo = [])
+    public function __construct(?array $cashBookInfo = null)
     {
         $this
             ->setCashBookInfo($cashBookInfo);
@@ -36,18 +37,22 @@ class GetOrgUnitAndUserCashbookResponse extends AbstractStructBase
      * Get CashBookInfo value
      * @return \Pggns\MidocoApi\Order\StructType\CashBookInfo[]
      */
-    public function getCashBookInfo(): array
+    public function getCashBookInfo(): ?array
     {
         return $this->CashBookInfo;
     }
     /**
-     * This method is responsible for validating the values passed to the setCashBookInfo method
+     * This method is responsible for validating the value(s) passed to the setCashBookInfo method
      * This method is willingly generated in order to preserve the one-line inline validation within the setCashBookInfo method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateCashBookInfoForArrayConstraintsFromSetCashBookInfo(array $values = []): string
+    public static function validateCashBookInfoForArrayConstraintFromSetCashBookInfo(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getOrgUnitAndUserCashbookResponseCashBookInfoItem) {
@@ -69,10 +74,10 @@ class GetOrgUnitAndUserCashbookResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\CashBookInfo[] $cashBookInfo
      * @return \Pggns\MidocoApi\Order\StructType\GetOrgUnitAndUserCashbookResponse
      */
-    public function setCashBookInfo(array $cashBookInfo = []): self
+    public function setCashBookInfo(?array $cashBookInfo = null): self
     {
         // validation for constraint: array
-        if ('' !== ($cashBookInfoArrayErrorMessage = self::validateCashBookInfoForArrayConstraintsFromSetCashBookInfo($cashBookInfo))) {
+        if ('' !== ($cashBookInfoArrayErrorMessage = self::validateCashBookInfoForArrayConstraintFromSetCashBookInfo($cashBookInfo))) {
             throw new InvalidArgumentException($cashBookInfoArrayErrorMessage, __LINE__);
         }
         $this->CashBookInfo = $cashBookInfo;

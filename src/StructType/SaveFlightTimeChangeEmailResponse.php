@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: saveFlightTimeChangeEmail --- saves a given FlightTimeChange Email
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveFlightTimeChangeEmailResponse extends AbstractStructBase
 {
     /**

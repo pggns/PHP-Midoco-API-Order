@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoGdsAttribute StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoGdsAttribute extends GdsAttribDTO
 {
 }

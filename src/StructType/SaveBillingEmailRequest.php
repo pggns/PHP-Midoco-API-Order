@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveBillingEmailRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveBillingEmailRequest extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoMilesAndMoreBurnTransactionType StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoMilesAndMoreBurnTransactionType extends MilesAndMoreBurnTransactionDTO
 {
     /**
@@ -42,7 +43,7 @@ class MidocoMilesAndMoreBurnTransactionType extends MilesAndMoreBurnTransactionD
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\MilesAndMoreBurnTransactionDeltaDTO[]
      */
-    protected array $MidocoMilesAndMoreBurnTransactionDelta = [];
+    protected ?array $MidocoMilesAndMoreBurnTransactionDelta = null;
     /**
      * Constructor method for MidocoMilesAndMoreBurnTransactionType
      * @uses MidocoMilesAndMoreBurnTransactionType::setIsRefund()
@@ -56,7 +57,7 @@ class MidocoMilesAndMoreBurnTransactionType extends MilesAndMoreBurnTransactionD
      * @param float $billedAmountInMiles
      * @param \Pggns\MidocoApi\Order\StructType\MilesAndMoreBurnTransactionDeltaDTO[] $midocoMilesAndMoreBurnTransactionDelta
      */
-    public function __construct(?bool $isRefund = null, ?bool $isFinished = null, ?float $billedAmount = null, ?float $billedAmountInMiles = null, array $midocoMilesAndMoreBurnTransactionDelta = [])
+    public function __construct(?bool $isRefund = null, ?bool $isFinished = null, ?float $billedAmount = null, ?float $billedAmountInMiles = null, ?array $midocoMilesAndMoreBurnTransactionDelta = null)
     {
         $this
             ->setIsRefund($isRefund)
@@ -161,18 +162,22 @@ class MidocoMilesAndMoreBurnTransactionType extends MilesAndMoreBurnTransactionD
      * Get MidocoMilesAndMoreBurnTransactionDelta value
      * @return \Pggns\MidocoApi\Order\StructType\MilesAndMoreBurnTransactionDeltaDTO[]
      */
-    public function getMidocoMilesAndMoreBurnTransactionDelta(): array
+    public function getMidocoMilesAndMoreBurnTransactionDelta(): ?array
     {
         return $this->MidocoMilesAndMoreBurnTransactionDelta;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoMilesAndMoreBurnTransactionDelta method
+     * This method is responsible for validating the value(s) passed to the setMidocoMilesAndMoreBurnTransactionDelta method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoMilesAndMoreBurnTransactionDelta method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoMilesAndMoreBurnTransactionDeltaForArrayConstraintsFromSetMidocoMilesAndMoreBurnTransactionDelta(array $values = []): string
+    public static function validateMidocoMilesAndMoreBurnTransactionDeltaForArrayConstraintFromSetMidocoMilesAndMoreBurnTransactionDelta(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoMilesAndMoreBurnTransactionTypeMidocoMilesAndMoreBurnTransactionDeltaItem) {
@@ -194,10 +199,10 @@ class MidocoMilesAndMoreBurnTransactionType extends MilesAndMoreBurnTransactionD
      * @param \Pggns\MidocoApi\Order\StructType\MilesAndMoreBurnTransactionDeltaDTO[] $midocoMilesAndMoreBurnTransactionDelta
      * @return \Pggns\MidocoApi\Order\StructType\MidocoMilesAndMoreBurnTransactionType
      */
-    public function setMidocoMilesAndMoreBurnTransactionDelta(array $midocoMilesAndMoreBurnTransactionDelta = []): self
+    public function setMidocoMilesAndMoreBurnTransactionDelta(?array $midocoMilesAndMoreBurnTransactionDelta = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoMilesAndMoreBurnTransactionDeltaArrayErrorMessage = self::validateMidocoMilesAndMoreBurnTransactionDeltaForArrayConstraintsFromSetMidocoMilesAndMoreBurnTransactionDelta($midocoMilesAndMoreBurnTransactionDelta))) {
+        if ('' !== ($midocoMilesAndMoreBurnTransactionDeltaArrayErrorMessage = self::validateMidocoMilesAndMoreBurnTransactionDeltaForArrayConstraintFromSetMidocoMilesAndMoreBurnTransactionDelta($midocoMilesAndMoreBurnTransactionDelta))) {
             throw new InvalidArgumentException($midocoMilesAndMoreBurnTransactionDeltaArrayErrorMessage, __LINE__);
         }
         $this->MidocoMilesAndMoreBurnTransactionDelta = $midocoMilesAndMoreBurnTransactionDelta;

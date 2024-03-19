@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteEmptyOrderResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteEmptyOrderResponse extends AbstractStructBase
 {
 }

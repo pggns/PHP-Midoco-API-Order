@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CrmMidocoChargeInfoType StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CrmMidocoChargeInfoType extends CrmMidocoChargeDTO
 {
     /**
@@ -21,7 +22,7 @@ class CrmMidocoChargeInfoType extends CrmMidocoChargeDTO
      * - ref: MidocoAssignedMidocoChargeOu
      * @var \Pggns\MidocoApi\Order\StructType\AssignedMidocoChargeOuDTO[]
      */
-    protected array $MidocoAssignedMidocoChargeOu = [];
+    protected ?array $MidocoAssignedMidocoChargeOu = null;
     /**
      * The accountId
      * @var string|null
@@ -83,7 +84,7 @@ class CrmMidocoChargeInfoType extends CrmMidocoChargeDTO
      * @param string $description
      * @param float $nettoAmount
      */
-    public function __construct(array $midocoAssignedMidocoChargeOu = [], ?string $accountId = null, ?bool $isCredit = null, ?bool $isInteractive = null, ?string $planId = null, ?int $schedulePeriod = null, ?bool $useVat = null, ?string $description = null, ?float $nettoAmount = null)
+    public function __construct(?array $midocoAssignedMidocoChargeOu = null, ?string $accountId = null, ?bool $isCredit = null, ?bool $isInteractive = null, ?string $planId = null, ?int $schedulePeriod = null, ?bool $useVat = null, ?string $description = null, ?float $nettoAmount = null)
     {
         $this
             ->setMidocoAssignedMidocoChargeOu($midocoAssignedMidocoChargeOu)
@@ -100,18 +101,22 @@ class CrmMidocoChargeInfoType extends CrmMidocoChargeDTO
      * Get MidocoAssignedMidocoChargeOu value
      * @return \Pggns\MidocoApi\Order\StructType\AssignedMidocoChargeOuDTO[]
      */
-    public function getMidocoAssignedMidocoChargeOu(): array
+    public function getMidocoAssignedMidocoChargeOu(): ?array
     {
         return $this->MidocoAssignedMidocoChargeOu;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoAssignedMidocoChargeOu method
+     * This method is responsible for validating the value(s) passed to the setMidocoAssignedMidocoChargeOu method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoAssignedMidocoChargeOu method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoAssignedMidocoChargeOuForArrayConstraintsFromSetMidocoAssignedMidocoChargeOu(array $values = []): string
+    public static function validateMidocoAssignedMidocoChargeOuForArrayConstraintFromSetMidocoAssignedMidocoChargeOu(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $crmMidocoChargeInfoTypeMidocoAssignedMidocoChargeOuItem) {
@@ -133,10 +138,10 @@ class CrmMidocoChargeInfoType extends CrmMidocoChargeDTO
      * @param \Pggns\MidocoApi\Order\StructType\AssignedMidocoChargeOuDTO[] $midocoAssignedMidocoChargeOu
      * @return \Pggns\MidocoApi\Order\StructType\CrmMidocoChargeInfoType
      */
-    public function setMidocoAssignedMidocoChargeOu(array $midocoAssignedMidocoChargeOu = []): self
+    public function setMidocoAssignedMidocoChargeOu(?array $midocoAssignedMidocoChargeOu = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoAssignedMidocoChargeOuArrayErrorMessage = self::validateMidocoAssignedMidocoChargeOuForArrayConstraintsFromSetMidocoAssignedMidocoChargeOu($midocoAssignedMidocoChargeOu))) {
+        if ('' !== ($midocoAssignedMidocoChargeOuArrayErrorMessage = self::validateMidocoAssignedMidocoChargeOuForArrayConstraintFromSetMidocoAssignedMidocoChargeOu($midocoAssignedMidocoChargeOu))) {
             throw new InvalidArgumentException($midocoAssignedMidocoChargeOuArrayErrorMessage, __LINE__);
         }
         $this->MidocoAssignedMidocoChargeOu = $midocoAssignedMidocoChargeOu;

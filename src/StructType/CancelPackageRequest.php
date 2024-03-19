@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CancelPackageRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CancelPackageRequest extends AbstractStructBase
 {
     /**

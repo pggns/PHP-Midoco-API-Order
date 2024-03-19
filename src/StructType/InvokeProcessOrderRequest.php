@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for InvokeProcessOrderRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class InvokeProcessOrderRequest extends AbstractStructBase
 {
     /**

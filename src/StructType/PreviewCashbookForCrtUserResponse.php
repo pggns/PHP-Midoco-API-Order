@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for PreviewCashbookForCrtUserResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class PreviewCashbookForCrtUserResponse extends AbstractStructBase
 {
     /**

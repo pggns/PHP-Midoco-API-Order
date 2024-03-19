@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ValidateSupplierAccessResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ValidateSupplierAccessResponse extends AbstractStructBase
 {
     /**

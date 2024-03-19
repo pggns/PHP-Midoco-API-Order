@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ReceiptDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ReceiptDTO extends AbstractStructBase
 {
     /**

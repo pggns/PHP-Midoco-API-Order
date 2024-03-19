@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoCashBookItemType StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoCashBookItemType extends CashBookItemTypeDTO
 {
     /**

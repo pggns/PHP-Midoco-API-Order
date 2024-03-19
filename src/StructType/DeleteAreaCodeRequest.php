@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteAreaCodeRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteAreaCodeRequest extends AbstractStructBase
 {
     /**

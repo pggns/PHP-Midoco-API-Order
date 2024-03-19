@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SellItemPrintRestriction StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SellItemPrintRestriction extends AbstractStructBase
 {
     /**
@@ -20,7 +21,7 @@ class SellItemPrintRestriction extends AbstractStructBase
      * - minOccurs: 0
      * @var int[]
      */
-    protected array $mustPrintSeparateFrom = [];
+    protected ?array $mustPrintSeparateFrom = null;
     /**
      * The mustPrintWith
      * Meta information extracted from the WSDL
@@ -28,7 +29,7 @@ class SellItemPrintRestriction extends AbstractStructBase
      * - minOccurs: 0
      * @var int[]
      */
-    protected array $mustPrintWith = [];
+    protected ?array $mustPrintWith = null;
     /**
      * The itemId
      * @var int|null
@@ -43,7 +44,7 @@ class SellItemPrintRestriction extends AbstractStructBase
      * @param int[] $mustPrintWith
      * @param int $itemId
      */
-    public function __construct(array $mustPrintSeparateFrom = [], array $mustPrintWith = [], ?int $itemId = null)
+    public function __construct(?array $mustPrintSeparateFrom = null, ?array $mustPrintWith = null, ?int $itemId = null)
     {
         $this
             ->setMustPrintSeparateFrom($mustPrintSeparateFrom)
@@ -54,18 +55,22 @@ class SellItemPrintRestriction extends AbstractStructBase
      * Get mustPrintSeparateFrom value
      * @return int[]
      */
-    public function getMustPrintSeparateFrom(): array
+    public function getMustPrintSeparateFrom(): ?array
     {
         return $this->mustPrintSeparateFrom;
     }
     /**
-     * This method is responsible for validating the values passed to the setMustPrintSeparateFrom method
+     * This method is responsible for validating the value(s) passed to the setMustPrintSeparateFrom method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMustPrintSeparateFrom method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMustPrintSeparateFromForArrayConstraintsFromSetMustPrintSeparateFrom(array $values = []): string
+    public static function validateMustPrintSeparateFromForArrayConstraintFromSetMustPrintSeparateFrom(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $sellItemPrintRestrictionMustPrintSeparateFromItem) {
@@ -87,10 +92,10 @@ class SellItemPrintRestriction extends AbstractStructBase
      * @param int[] $mustPrintSeparateFrom
      * @return \Pggns\MidocoApi\Order\StructType\SellItemPrintRestriction
      */
-    public function setMustPrintSeparateFrom(array $mustPrintSeparateFrom = []): self
+    public function setMustPrintSeparateFrom(?array $mustPrintSeparateFrom = null): self
     {
         // validation for constraint: array
-        if ('' !== ($mustPrintSeparateFromArrayErrorMessage = self::validateMustPrintSeparateFromForArrayConstraintsFromSetMustPrintSeparateFrom($mustPrintSeparateFrom))) {
+        if ('' !== ($mustPrintSeparateFromArrayErrorMessage = self::validateMustPrintSeparateFromForArrayConstraintFromSetMustPrintSeparateFrom($mustPrintSeparateFrom))) {
             throw new InvalidArgumentException($mustPrintSeparateFromArrayErrorMessage, __LINE__);
         }
         $this->mustPrintSeparateFrom = $mustPrintSeparateFrom;
@@ -117,18 +122,22 @@ class SellItemPrintRestriction extends AbstractStructBase
      * Get mustPrintWith value
      * @return int[]
      */
-    public function getMustPrintWith(): array
+    public function getMustPrintWith(): ?array
     {
         return $this->mustPrintWith;
     }
     /**
-     * This method is responsible for validating the values passed to the setMustPrintWith method
+     * This method is responsible for validating the value(s) passed to the setMustPrintWith method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMustPrintWith method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMustPrintWithForArrayConstraintsFromSetMustPrintWith(array $values = []): string
+    public static function validateMustPrintWithForArrayConstraintFromSetMustPrintWith(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $sellItemPrintRestrictionMustPrintWithItem) {
@@ -150,10 +159,10 @@ class SellItemPrintRestriction extends AbstractStructBase
      * @param int[] $mustPrintWith
      * @return \Pggns\MidocoApi\Order\StructType\SellItemPrintRestriction
      */
-    public function setMustPrintWith(array $mustPrintWith = []): self
+    public function setMustPrintWith(?array $mustPrintWith = null): self
     {
         // validation for constraint: array
-        if ('' !== ($mustPrintWithArrayErrorMessage = self::validateMustPrintWithForArrayConstraintsFromSetMustPrintWith($mustPrintWith))) {
+        if ('' !== ($mustPrintWithArrayErrorMessage = self::validateMustPrintWithForArrayConstraintFromSetMustPrintWith($mustPrintWith))) {
             throw new InvalidArgumentException($mustPrintWithArrayErrorMessage, __LINE__);
         }
         $this->mustPrintWith = $mustPrintWith;

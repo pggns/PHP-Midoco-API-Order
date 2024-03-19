@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveConnectionTypeResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveConnectionTypeResponse extends AbstractStructBase
 {
     /**

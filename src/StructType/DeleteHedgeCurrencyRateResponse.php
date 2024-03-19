@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteHedgeCurrencyRateResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteHedgeCurrencyRateResponse extends AbstractStructBase
 {
     /**

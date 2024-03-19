@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for PaymentProviderSettlBookJournalDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class PaymentProviderSettlBookJournalDTO extends AbstractStructBase
 {
     /**

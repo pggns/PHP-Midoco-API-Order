@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoBonusEmployeeSearchCriteria StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoBonusEmployeeSearchCriteria extends AbstractStructBase
 {
     /**

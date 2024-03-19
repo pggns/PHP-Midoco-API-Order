@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for BaggageAllowance StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class BaggageAllowance extends AbstractStructBase
 {
     /**
@@ -21,7 +22,7 @@ class BaggageAllowance extends AbstractStructBase
      * - ref: TravelerRefId
      * @var int[]
      */
-    protected array $TravelerRefId = [];
+    protected ?array $TravelerRefId = null;
     /**
      * The BookingDetailRefId
      * Meta information extracted from the WSDL
@@ -30,7 +31,7 @@ class BaggageAllowance extends AbstractStructBase
      * - ref: BookingDetailRefId
      * @var int[]
      */
-    protected array $BookingDetailRefId = [];
+    protected ?array $BookingDetailRefId = null;
     /**
      * The description
      * @var string|null
@@ -66,7 +67,7 @@ class BaggageAllowance extends AbstractStructBase
      * @param float $maxWeightPerPiece
      * @param string $weightUnit
      */
-    public function __construct(array $travelerRefId = [], array $bookingDetailRefId = [], ?string $description = null, ?int $maxPieces = null, ?float $maxWeightPerPiece = null, ?string $weightUnit = null)
+    public function __construct(?array $travelerRefId = null, ?array $bookingDetailRefId = null, ?string $description = null, ?int $maxPieces = null, ?float $maxWeightPerPiece = null, ?string $weightUnit = null)
     {
         $this
             ->setTravelerRefId($travelerRefId)
@@ -80,18 +81,22 @@ class BaggageAllowance extends AbstractStructBase
      * Get TravelerRefId value
      * @return int[]
      */
-    public function getTravelerRefId(): array
+    public function getTravelerRefId(): ?array
     {
         return $this->TravelerRefId;
     }
     /**
-     * This method is responsible for validating the values passed to the setTravelerRefId method
+     * This method is responsible for validating the value(s) passed to the setTravelerRefId method
      * This method is willingly generated in order to preserve the one-line inline validation within the setTravelerRefId method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateTravelerRefIdForArrayConstraintsFromSetTravelerRefId(array $values = []): string
+    public static function validateTravelerRefIdForArrayConstraintFromSetTravelerRefId(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $baggageAllowanceTravelerRefIdItem) {
@@ -113,10 +118,10 @@ class BaggageAllowance extends AbstractStructBase
      * @param int[] $travelerRefId
      * @return \Pggns\MidocoApi\Order\StructType\BaggageAllowance
      */
-    public function setTravelerRefId(array $travelerRefId = []): self
+    public function setTravelerRefId(?array $travelerRefId = null): self
     {
         // validation for constraint: array
-        if ('' !== ($travelerRefIdArrayErrorMessage = self::validateTravelerRefIdForArrayConstraintsFromSetTravelerRefId($travelerRefId))) {
+        if ('' !== ($travelerRefIdArrayErrorMessage = self::validateTravelerRefIdForArrayConstraintFromSetTravelerRefId($travelerRefId))) {
             throw new InvalidArgumentException($travelerRefIdArrayErrorMessage, __LINE__);
         }
         $this->TravelerRefId = $travelerRefId;
@@ -143,18 +148,22 @@ class BaggageAllowance extends AbstractStructBase
      * Get BookingDetailRefId value
      * @return int[]
      */
-    public function getBookingDetailRefId(): array
+    public function getBookingDetailRefId(): ?array
     {
         return $this->BookingDetailRefId;
     }
     /**
-     * This method is responsible for validating the values passed to the setBookingDetailRefId method
+     * This method is responsible for validating the value(s) passed to the setBookingDetailRefId method
      * This method is willingly generated in order to preserve the one-line inline validation within the setBookingDetailRefId method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateBookingDetailRefIdForArrayConstraintsFromSetBookingDetailRefId(array $values = []): string
+    public static function validateBookingDetailRefIdForArrayConstraintFromSetBookingDetailRefId(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $baggageAllowanceBookingDetailRefIdItem) {
@@ -176,10 +185,10 @@ class BaggageAllowance extends AbstractStructBase
      * @param int[] $bookingDetailRefId
      * @return \Pggns\MidocoApi\Order\StructType\BaggageAllowance
      */
-    public function setBookingDetailRefId(array $bookingDetailRefId = []): self
+    public function setBookingDetailRefId(?array $bookingDetailRefId = null): self
     {
         // validation for constraint: array
-        if ('' !== ($bookingDetailRefIdArrayErrorMessage = self::validateBookingDetailRefIdForArrayConstraintsFromSetBookingDetailRefId($bookingDetailRefId))) {
+        if ('' !== ($bookingDetailRefIdArrayErrorMessage = self::validateBookingDetailRefIdForArrayConstraintFromSetBookingDetailRefId($bookingDetailRefId))) {
             throw new InvalidArgumentException($bookingDetailRefIdArrayErrorMessage, __LINE__);
         }
         $this->BookingDetailRefId = $bookingDetailRefId;

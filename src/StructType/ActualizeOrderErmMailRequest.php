@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ActualizeOrderErmMailRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ActualizeOrderErmMailRequest extends AbstractStructBase
 {
     /**

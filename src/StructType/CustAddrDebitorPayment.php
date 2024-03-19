@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CustAddrDebitorPayment StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CustAddrDebitorPayment extends AbstractStructBase
 {
     /**
@@ -21,7 +22,7 @@ class CustAddrDebitorPayment extends AbstractStructBase
      * - ref: MidocoCrmAddress
      * @var \Pggns\MidocoApi\Order\StructType\MidocoCrmAddress[]
      */
-    protected array $MidocoCrmAddress = [];
+    protected ?array $MidocoCrmAddress = null;
     /**
      * The MidocoDebitor
      * Meta information extracted from the WSDL
@@ -30,7 +31,7 @@ class CustAddrDebitorPayment extends AbstractStructBase
      * - ref: MidocoDebitor
      * @var \Pggns\MidocoApi\Order\StructType\DebitorDTO[]
      */
-    protected array $MidocoDebitor = [];
+    protected ?array $MidocoDebitor = null;
     /**
      * The MidocoCustomerPayment
      * Meta information extracted from the WSDL
@@ -47,7 +48,7 @@ class CustAddrDebitorPayment extends AbstractStructBase
      * - ref: MidocoContactEntry
      * @var \Pggns\MidocoApi\Order\StructType\MidocoContactEntryType[]
      */
-    protected array $MidocoContactEntry = [];
+    protected ?array $MidocoContactEntry = null;
     /**
      * The MidocoCrmCcCard
      * Meta information extracted from the WSDL
@@ -56,7 +57,7 @@ class CustAddrDebitorPayment extends AbstractStructBase
      * - ref: MidocoCrmCcCard
      * @var \Pggns\MidocoApi\Order\StructType\MidocoCrmCcCard[]
      */
-    protected array $MidocoCrmCcCard = [];
+    protected ?array $MidocoCrmCcCard = null;
     /**
      * The MidocoCrmDebitCard
      * Meta information extracted from the WSDL
@@ -65,7 +66,7 @@ class CustAddrDebitorPayment extends AbstractStructBase
      * - ref: MidocoCrmDebitCard
      * @var \Pggns\MidocoApi\Order\StructType\MidocoCrmDebitCard[]
      */
-    protected array $MidocoCrmDebitCard = [];
+    protected ?array $MidocoCrmDebitCard = null;
     /**
      * The MidocoCrmBonusCard
      * Meta information extracted from the WSDL
@@ -74,7 +75,7 @@ class CustAddrDebitorPayment extends AbstractStructBase
      * - ref: MidocoCrmBonusCard
      * @var \Pggns\MidocoApi\Order\StructType\MidocoCrmBonusCard[]
      */
-    protected array $MidocoCrmBonusCard = [];
+    protected ?array $MidocoCrmBonusCard = null;
     /**
      * The MidocoCrmCriteria
      * Meta information extracted from the WSDL
@@ -83,7 +84,7 @@ class CustAddrDebitorPayment extends AbstractStructBase
      * - ref: MidocoCrmCriteria
      * @var \Pggns\MidocoApi\Order\StructType\MidocoCrmCriteria[]
      */
-    protected array $MidocoCrmCriteria = [];
+    protected ?array $MidocoCrmCriteria = null;
     /**
      * The MidocoCrmCustomer
      * Meta information extracted from the WSDL
@@ -119,7 +120,7 @@ class CustAddrDebitorPayment extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\CrmCustomerDTO $midocoCrmCustomer
      * @param int $custOrder
      */
-    public function __construct(array $midocoCrmAddress = [], array $midocoDebitor = [], ?\Pggns\MidocoApi\Order\StructType\CrmCustomerPaymentDTO $midocoCustomerPayment = null, array $midocoContactEntry = [], array $midocoCrmCcCard = [], array $midocoCrmDebitCard = [], array $midocoCrmBonusCard = [], array $midocoCrmCriteria = [], ?\Pggns\MidocoApi\Order\StructType\CrmCustomerDTO $midocoCrmCustomer = null, ?int $custOrder = null)
+    public function __construct(?array $midocoCrmAddress = null, ?array $midocoDebitor = null, ?\Pggns\MidocoApi\Order\StructType\CrmCustomerPaymentDTO $midocoCustomerPayment = null, ?array $midocoContactEntry = null, ?array $midocoCrmCcCard = null, ?array $midocoCrmDebitCard = null, ?array $midocoCrmBonusCard = null, ?array $midocoCrmCriteria = null, ?\Pggns\MidocoApi\Order\StructType\CrmCustomerDTO $midocoCrmCustomer = null, ?int $custOrder = null)
     {
         $this
             ->setMidocoCrmAddress($midocoCrmAddress)
@@ -137,18 +138,22 @@ class CustAddrDebitorPayment extends AbstractStructBase
      * Get MidocoCrmAddress value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoCrmAddress[]
      */
-    public function getMidocoCrmAddress(): array
+    public function getMidocoCrmAddress(): ?array
     {
         return $this->MidocoCrmAddress;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoCrmAddress method
+     * This method is responsible for validating the value(s) passed to the setMidocoCrmAddress method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoCrmAddress method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoCrmAddressForArrayConstraintsFromSetMidocoCrmAddress(array $values = []): string
+    public static function validateMidocoCrmAddressForArrayConstraintFromSetMidocoCrmAddress(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $custAddrDebitorPaymentMidocoCrmAddressItem) {
@@ -170,10 +175,10 @@ class CustAddrDebitorPayment extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoCrmAddress[] $midocoCrmAddress
      * @return \Pggns\MidocoApi\Order\StructType\CustAddrDebitorPayment
      */
-    public function setMidocoCrmAddress(array $midocoCrmAddress = []): self
+    public function setMidocoCrmAddress(?array $midocoCrmAddress = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoCrmAddressArrayErrorMessage = self::validateMidocoCrmAddressForArrayConstraintsFromSetMidocoCrmAddress($midocoCrmAddress))) {
+        if ('' !== ($midocoCrmAddressArrayErrorMessage = self::validateMidocoCrmAddressForArrayConstraintFromSetMidocoCrmAddress($midocoCrmAddress))) {
             throw new InvalidArgumentException($midocoCrmAddressArrayErrorMessage, __LINE__);
         }
         $this->MidocoCrmAddress = $midocoCrmAddress;
@@ -200,18 +205,22 @@ class CustAddrDebitorPayment extends AbstractStructBase
      * Get MidocoDebitor value
      * @return \Pggns\MidocoApi\Order\StructType\DebitorDTO[]
      */
-    public function getMidocoDebitor(): array
+    public function getMidocoDebitor(): ?array
     {
         return $this->MidocoDebitor;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoDebitor method
+     * This method is responsible for validating the value(s) passed to the setMidocoDebitor method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoDebitor method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoDebitorForArrayConstraintsFromSetMidocoDebitor(array $values = []): string
+    public static function validateMidocoDebitorForArrayConstraintFromSetMidocoDebitor(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $custAddrDebitorPaymentMidocoDebitorItem) {
@@ -233,10 +242,10 @@ class CustAddrDebitorPayment extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\DebitorDTO[] $midocoDebitor
      * @return \Pggns\MidocoApi\Order\StructType\CustAddrDebitorPayment
      */
-    public function setMidocoDebitor(array $midocoDebitor = []): self
+    public function setMidocoDebitor(?array $midocoDebitor = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoDebitorArrayErrorMessage = self::validateMidocoDebitorForArrayConstraintsFromSetMidocoDebitor($midocoDebitor))) {
+        if ('' !== ($midocoDebitorArrayErrorMessage = self::validateMidocoDebitorForArrayConstraintFromSetMidocoDebitor($midocoDebitor))) {
             throw new InvalidArgumentException($midocoDebitorArrayErrorMessage, __LINE__);
         }
         $this->MidocoDebitor = $midocoDebitor;
@@ -282,18 +291,22 @@ class CustAddrDebitorPayment extends AbstractStructBase
      * Get MidocoContactEntry value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoContactEntryType[]
      */
-    public function getMidocoContactEntry(): array
+    public function getMidocoContactEntry(): ?array
     {
         return $this->MidocoContactEntry;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoContactEntry method
+     * This method is responsible for validating the value(s) passed to the setMidocoContactEntry method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoContactEntry method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoContactEntryForArrayConstraintsFromSetMidocoContactEntry(array $values = []): string
+    public static function validateMidocoContactEntryForArrayConstraintFromSetMidocoContactEntry(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $custAddrDebitorPaymentMidocoContactEntryItem) {
@@ -315,10 +328,10 @@ class CustAddrDebitorPayment extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoContactEntryType[] $midocoContactEntry
      * @return \Pggns\MidocoApi\Order\StructType\CustAddrDebitorPayment
      */
-    public function setMidocoContactEntry(array $midocoContactEntry = []): self
+    public function setMidocoContactEntry(?array $midocoContactEntry = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoContactEntryArrayErrorMessage = self::validateMidocoContactEntryForArrayConstraintsFromSetMidocoContactEntry($midocoContactEntry))) {
+        if ('' !== ($midocoContactEntryArrayErrorMessage = self::validateMidocoContactEntryForArrayConstraintFromSetMidocoContactEntry($midocoContactEntry))) {
             throw new InvalidArgumentException($midocoContactEntryArrayErrorMessage, __LINE__);
         }
         $this->MidocoContactEntry = $midocoContactEntry;
@@ -345,18 +358,22 @@ class CustAddrDebitorPayment extends AbstractStructBase
      * Get MidocoCrmCcCard value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoCrmCcCard[]
      */
-    public function getMidocoCrmCcCard(): array
+    public function getMidocoCrmCcCard(): ?array
     {
         return $this->MidocoCrmCcCard;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoCrmCcCard method
+     * This method is responsible for validating the value(s) passed to the setMidocoCrmCcCard method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoCrmCcCard method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoCrmCcCardForArrayConstraintsFromSetMidocoCrmCcCard(array $values = []): string
+    public static function validateMidocoCrmCcCardForArrayConstraintFromSetMidocoCrmCcCard(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $custAddrDebitorPaymentMidocoCrmCcCardItem) {
@@ -378,10 +395,10 @@ class CustAddrDebitorPayment extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoCrmCcCard[] $midocoCrmCcCard
      * @return \Pggns\MidocoApi\Order\StructType\CustAddrDebitorPayment
      */
-    public function setMidocoCrmCcCard(array $midocoCrmCcCard = []): self
+    public function setMidocoCrmCcCard(?array $midocoCrmCcCard = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoCrmCcCardArrayErrorMessage = self::validateMidocoCrmCcCardForArrayConstraintsFromSetMidocoCrmCcCard($midocoCrmCcCard))) {
+        if ('' !== ($midocoCrmCcCardArrayErrorMessage = self::validateMidocoCrmCcCardForArrayConstraintFromSetMidocoCrmCcCard($midocoCrmCcCard))) {
             throw new InvalidArgumentException($midocoCrmCcCardArrayErrorMessage, __LINE__);
         }
         $this->MidocoCrmCcCard = $midocoCrmCcCard;
@@ -408,18 +425,22 @@ class CustAddrDebitorPayment extends AbstractStructBase
      * Get MidocoCrmDebitCard value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoCrmDebitCard[]
      */
-    public function getMidocoCrmDebitCard(): array
+    public function getMidocoCrmDebitCard(): ?array
     {
         return $this->MidocoCrmDebitCard;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoCrmDebitCard method
+     * This method is responsible for validating the value(s) passed to the setMidocoCrmDebitCard method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoCrmDebitCard method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoCrmDebitCardForArrayConstraintsFromSetMidocoCrmDebitCard(array $values = []): string
+    public static function validateMidocoCrmDebitCardForArrayConstraintFromSetMidocoCrmDebitCard(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $custAddrDebitorPaymentMidocoCrmDebitCardItem) {
@@ -441,10 +462,10 @@ class CustAddrDebitorPayment extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoCrmDebitCard[] $midocoCrmDebitCard
      * @return \Pggns\MidocoApi\Order\StructType\CustAddrDebitorPayment
      */
-    public function setMidocoCrmDebitCard(array $midocoCrmDebitCard = []): self
+    public function setMidocoCrmDebitCard(?array $midocoCrmDebitCard = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoCrmDebitCardArrayErrorMessage = self::validateMidocoCrmDebitCardForArrayConstraintsFromSetMidocoCrmDebitCard($midocoCrmDebitCard))) {
+        if ('' !== ($midocoCrmDebitCardArrayErrorMessage = self::validateMidocoCrmDebitCardForArrayConstraintFromSetMidocoCrmDebitCard($midocoCrmDebitCard))) {
             throw new InvalidArgumentException($midocoCrmDebitCardArrayErrorMessage, __LINE__);
         }
         $this->MidocoCrmDebitCard = $midocoCrmDebitCard;
@@ -471,18 +492,22 @@ class CustAddrDebitorPayment extends AbstractStructBase
      * Get MidocoCrmBonusCard value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoCrmBonusCard[]
      */
-    public function getMidocoCrmBonusCard(): array
+    public function getMidocoCrmBonusCard(): ?array
     {
         return $this->MidocoCrmBonusCard;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoCrmBonusCard method
+     * This method is responsible for validating the value(s) passed to the setMidocoCrmBonusCard method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoCrmBonusCard method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoCrmBonusCardForArrayConstraintsFromSetMidocoCrmBonusCard(array $values = []): string
+    public static function validateMidocoCrmBonusCardForArrayConstraintFromSetMidocoCrmBonusCard(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $custAddrDebitorPaymentMidocoCrmBonusCardItem) {
@@ -504,10 +529,10 @@ class CustAddrDebitorPayment extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoCrmBonusCard[] $midocoCrmBonusCard
      * @return \Pggns\MidocoApi\Order\StructType\CustAddrDebitorPayment
      */
-    public function setMidocoCrmBonusCard(array $midocoCrmBonusCard = []): self
+    public function setMidocoCrmBonusCard(?array $midocoCrmBonusCard = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoCrmBonusCardArrayErrorMessage = self::validateMidocoCrmBonusCardForArrayConstraintsFromSetMidocoCrmBonusCard($midocoCrmBonusCard))) {
+        if ('' !== ($midocoCrmBonusCardArrayErrorMessage = self::validateMidocoCrmBonusCardForArrayConstraintFromSetMidocoCrmBonusCard($midocoCrmBonusCard))) {
             throw new InvalidArgumentException($midocoCrmBonusCardArrayErrorMessage, __LINE__);
         }
         $this->MidocoCrmBonusCard = $midocoCrmBonusCard;
@@ -534,18 +559,22 @@ class CustAddrDebitorPayment extends AbstractStructBase
      * Get MidocoCrmCriteria value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoCrmCriteria[]
      */
-    public function getMidocoCrmCriteria(): array
+    public function getMidocoCrmCriteria(): ?array
     {
         return $this->MidocoCrmCriteria;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoCrmCriteria method
+     * This method is responsible for validating the value(s) passed to the setMidocoCrmCriteria method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoCrmCriteria method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoCrmCriteriaForArrayConstraintsFromSetMidocoCrmCriteria(array $values = []): string
+    public static function validateMidocoCrmCriteriaForArrayConstraintFromSetMidocoCrmCriteria(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $custAddrDebitorPaymentMidocoCrmCriteriaItem) {
@@ -567,10 +596,10 @@ class CustAddrDebitorPayment extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoCrmCriteria[] $midocoCrmCriteria
      * @return \Pggns\MidocoApi\Order\StructType\CustAddrDebitorPayment
      */
-    public function setMidocoCrmCriteria(array $midocoCrmCriteria = []): self
+    public function setMidocoCrmCriteria(?array $midocoCrmCriteria = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoCrmCriteriaArrayErrorMessage = self::validateMidocoCrmCriteriaForArrayConstraintsFromSetMidocoCrmCriteria($midocoCrmCriteria))) {
+        if ('' !== ($midocoCrmCriteriaArrayErrorMessage = self::validateMidocoCrmCriteriaForArrayConstraintFromSetMidocoCrmCriteria($midocoCrmCriteria))) {
             throw new InvalidArgumentException($midocoCrmCriteriaArrayErrorMessage, __LINE__);
         }
         $this->MidocoCrmCriteria = $midocoCrmCriteria;

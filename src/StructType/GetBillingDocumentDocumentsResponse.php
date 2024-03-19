@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: getBillingDocumentDocuments --- returns the list of documents corresponding to a BillingDocument having the id BillingDocumentId
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetBillingDocumentDocumentsResponse extends AbstractStructBase
 {
     /**
@@ -23,13 +24,13 @@ class GetBillingDocumentDocumentsResponse extends AbstractStructBase
      * - ref: MidocoBillingDocumentDocument
      * @var \Pggns\MidocoApi\Order\StructType\BillingDocumentDocumentDTO[]
      */
-    protected array $MidocoBillingDocumentDocument = [];
+    protected ?array $MidocoBillingDocumentDocument = null;
     /**
      * Constructor method for GetBillingDocumentDocumentsResponse
      * @uses GetBillingDocumentDocumentsResponse::setMidocoBillingDocumentDocument()
      * @param \Pggns\MidocoApi\Order\StructType\BillingDocumentDocumentDTO[] $midocoBillingDocumentDocument
      */
-    public function __construct(array $midocoBillingDocumentDocument = [])
+    public function __construct(?array $midocoBillingDocumentDocument = null)
     {
         $this
             ->setMidocoBillingDocumentDocument($midocoBillingDocumentDocument);
@@ -38,18 +39,22 @@ class GetBillingDocumentDocumentsResponse extends AbstractStructBase
      * Get MidocoBillingDocumentDocument value
      * @return \Pggns\MidocoApi\Order\StructType\BillingDocumentDocumentDTO[]
      */
-    public function getMidocoBillingDocumentDocument(): array
+    public function getMidocoBillingDocumentDocument(): ?array
     {
         return $this->MidocoBillingDocumentDocument;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoBillingDocumentDocument method
+     * This method is responsible for validating the value(s) passed to the setMidocoBillingDocumentDocument method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoBillingDocumentDocument method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoBillingDocumentDocumentForArrayConstraintsFromSetMidocoBillingDocumentDocument(array $values = []): string
+    public static function validateMidocoBillingDocumentDocumentForArrayConstraintFromSetMidocoBillingDocumentDocument(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getBillingDocumentDocumentsResponseMidocoBillingDocumentDocumentItem) {
@@ -71,10 +76,10 @@ class GetBillingDocumentDocumentsResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\BillingDocumentDocumentDTO[] $midocoBillingDocumentDocument
      * @return \Pggns\MidocoApi\Order\StructType\GetBillingDocumentDocumentsResponse
      */
-    public function setMidocoBillingDocumentDocument(array $midocoBillingDocumentDocument = []): self
+    public function setMidocoBillingDocumentDocument(?array $midocoBillingDocumentDocument = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoBillingDocumentDocumentArrayErrorMessage = self::validateMidocoBillingDocumentDocumentForArrayConstraintsFromSetMidocoBillingDocumentDocument($midocoBillingDocumentDocument))) {
+        if ('' !== ($midocoBillingDocumentDocumentArrayErrorMessage = self::validateMidocoBillingDocumentDocumentForArrayConstraintFromSetMidocoBillingDocumentDocument($midocoBillingDocumentDocument))) {
             throw new InvalidArgumentException($midocoBillingDocumentDocumentArrayErrorMessage, __LINE__);
         }
         $this->MidocoBillingDocumentDocument = $midocoBillingDocumentDocument;

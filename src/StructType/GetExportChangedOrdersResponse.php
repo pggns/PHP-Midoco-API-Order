@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetExportChangedOrdersResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetExportChangedOrdersResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetExportChangedOrdersResponse extends AbstractStructBase
      * - ref: MidocoExportChangedOrdersLog
      * @var \Pggns\MidocoApi\Order\StructType\ExportChangedOrdersLogDTO[]
      */
-    protected array $MidocoExportChangedOrdersLog = [];
+    protected ?array $MidocoExportChangedOrdersLog = null;
     /**
      * Constructor method for GetExportChangedOrdersResponse
      * @uses GetExportChangedOrdersResponse::setMidocoExportChangedOrdersLog()
      * @param \Pggns\MidocoApi\Order\StructType\ExportChangedOrdersLogDTO[] $midocoExportChangedOrdersLog
      */
-    public function __construct(array $midocoExportChangedOrdersLog = [])
+    public function __construct(?array $midocoExportChangedOrdersLog = null)
     {
         $this
             ->setMidocoExportChangedOrdersLog($midocoExportChangedOrdersLog);
@@ -36,18 +37,22 @@ class GetExportChangedOrdersResponse extends AbstractStructBase
      * Get MidocoExportChangedOrdersLog value
      * @return \Pggns\MidocoApi\Order\StructType\ExportChangedOrdersLogDTO[]
      */
-    public function getMidocoExportChangedOrdersLog(): array
+    public function getMidocoExportChangedOrdersLog(): ?array
     {
         return $this->MidocoExportChangedOrdersLog;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoExportChangedOrdersLog method
+     * This method is responsible for validating the value(s) passed to the setMidocoExportChangedOrdersLog method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoExportChangedOrdersLog method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoExportChangedOrdersLogForArrayConstraintsFromSetMidocoExportChangedOrdersLog(array $values = []): string
+    public static function validateMidocoExportChangedOrdersLogForArrayConstraintFromSetMidocoExportChangedOrdersLog(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getExportChangedOrdersResponseMidocoExportChangedOrdersLogItem) {
@@ -69,10 +74,10 @@ class GetExportChangedOrdersResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\ExportChangedOrdersLogDTO[] $midocoExportChangedOrdersLog
      * @return \Pggns\MidocoApi\Order\StructType\GetExportChangedOrdersResponse
      */
-    public function setMidocoExportChangedOrdersLog(array $midocoExportChangedOrdersLog = []): self
+    public function setMidocoExportChangedOrdersLog(?array $midocoExportChangedOrdersLog = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoExportChangedOrdersLogArrayErrorMessage = self::validateMidocoExportChangedOrdersLogForArrayConstraintsFromSetMidocoExportChangedOrdersLog($midocoExportChangedOrdersLog))) {
+        if ('' !== ($midocoExportChangedOrdersLogArrayErrorMessage = self::validateMidocoExportChangedOrdersLogForArrayConstraintFromSetMidocoExportChangedOrdersLog($midocoExportChangedOrdersLog))) {
             throw new InvalidArgumentException($midocoExportChangedOrdersLogArrayErrorMessage, __LINE__);
         }
         $this->MidocoExportChangedOrdersLog = $midocoExportChangedOrdersLog;

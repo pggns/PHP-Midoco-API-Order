@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetRevenueBookingForTravelNoRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetRevenueBookingForTravelNoRequest extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DoFlightTimeChangeEmailResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DoFlightTimeChangeEmailResponse extends AbstractStructBase
 {
     /**

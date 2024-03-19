@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteAdviceSettlementDetailRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteAdviceSettlementDetailRequest extends AbstractStructBase
 {
     /**

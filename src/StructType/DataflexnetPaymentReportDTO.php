@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DataflexnetPaymentReportDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DataflexnetPaymentReportDTO extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoCurrencyRate StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoCurrencyRate extends CurrencyHistoryDTO
 {
     /**

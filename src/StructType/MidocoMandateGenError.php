@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoMandateGenError StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoMandateGenError extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveMediatorConditionResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveMediatorConditionResponse extends AbstractStructBase
 {
     /**

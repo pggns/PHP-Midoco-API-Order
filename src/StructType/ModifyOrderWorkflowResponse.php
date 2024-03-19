@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ModifyOrderWorkflowResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ModifyOrderWorkflowResponse extends AbstractStructBase
 {
 }

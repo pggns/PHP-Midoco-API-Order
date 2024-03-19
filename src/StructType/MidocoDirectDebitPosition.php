@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoDirectDebitPosition StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoDirectDebitPosition extends MidocoOnlinePaymentTransactionPosition
 {
     /**

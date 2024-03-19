@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveHedgeCurrencyRatesRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveHedgeCurrencyRatesRequest extends AbstractStructBase
 {
     /**
@@ -20,13 +21,13 @@ class SaveHedgeCurrencyRatesRequest extends AbstractStructBase
      * - ref: MidocoCurrencyRateHedge
      * @var \Pggns\MidocoApi\Order\StructType\CurrencyRateHedgeDTO[]
      */
-    protected array $MidocoCurrencyRateHedge = [];
+    protected ?array $MidocoCurrencyRateHedge = null;
     /**
      * Constructor method for SaveHedgeCurrencyRatesRequest
      * @uses SaveHedgeCurrencyRatesRequest::setMidocoCurrencyRateHedge()
      * @param \Pggns\MidocoApi\Order\StructType\CurrencyRateHedgeDTO[] $midocoCurrencyRateHedge
      */
-    public function __construct(array $midocoCurrencyRateHedge = [])
+    public function __construct(?array $midocoCurrencyRateHedge = null)
     {
         $this
             ->setMidocoCurrencyRateHedge($midocoCurrencyRateHedge);
@@ -35,18 +36,22 @@ class SaveHedgeCurrencyRatesRequest extends AbstractStructBase
      * Get MidocoCurrencyRateHedge value
      * @return \Pggns\MidocoApi\Order\StructType\CurrencyRateHedgeDTO[]
      */
-    public function getMidocoCurrencyRateHedge(): array
+    public function getMidocoCurrencyRateHedge(): ?array
     {
         return $this->MidocoCurrencyRateHedge;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoCurrencyRateHedge method
+     * This method is responsible for validating the value(s) passed to the setMidocoCurrencyRateHedge method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoCurrencyRateHedge method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoCurrencyRateHedgeForArrayConstraintsFromSetMidocoCurrencyRateHedge(array $values = []): string
+    public static function validateMidocoCurrencyRateHedgeForArrayConstraintFromSetMidocoCurrencyRateHedge(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $saveHedgeCurrencyRatesRequestMidocoCurrencyRateHedgeItem) {
@@ -68,10 +73,10 @@ class SaveHedgeCurrencyRatesRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\CurrencyRateHedgeDTO[] $midocoCurrencyRateHedge
      * @return \Pggns\MidocoApi\Order\StructType\SaveHedgeCurrencyRatesRequest
      */
-    public function setMidocoCurrencyRateHedge(array $midocoCurrencyRateHedge = []): self
+    public function setMidocoCurrencyRateHedge(?array $midocoCurrencyRateHedge = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoCurrencyRateHedgeArrayErrorMessage = self::validateMidocoCurrencyRateHedgeForArrayConstraintsFromSetMidocoCurrencyRateHedge($midocoCurrencyRateHedge))) {
+        if ('' !== ($midocoCurrencyRateHedgeArrayErrorMessage = self::validateMidocoCurrencyRateHedgeForArrayConstraintFromSetMidocoCurrencyRateHedge($midocoCurrencyRateHedge))) {
             throw new InvalidArgumentException($midocoCurrencyRateHedgeArrayErrorMessage, __LINE__);
         }
         $this->MidocoCurrencyRateHedge = $midocoCurrencyRateHedge;

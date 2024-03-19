@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoProcessRoleAssign StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoProcessRoleAssign extends ProcessRoleAssignDTO
 {
     /**

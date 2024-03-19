@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetBillingDocDbiInfosRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetBillingDocDbiInfosRequest extends AbstractStructBase
 {
     /**

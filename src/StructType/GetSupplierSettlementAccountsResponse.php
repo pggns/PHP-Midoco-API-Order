@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetSupplierSettlementAccountsResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetSupplierSettlementAccountsResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetSupplierSettlementAccountsResponse extends AbstractStructBase
      * - ref: MidocoSupplierSettlementAccount
      * @var \Pggns\MidocoApi\Order\StructType\MidocoSupplierSettlementAccount[]
      */
-    protected array $MidocoSupplierSettlementAccount = [];
+    protected ?array $MidocoSupplierSettlementAccount = null;
     /**
      * Constructor method for GetSupplierSettlementAccountsResponse
      * @uses GetSupplierSettlementAccountsResponse::setMidocoSupplierSettlementAccount()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSupplierSettlementAccount[] $midocoSupplierSettlementAccount
      */
-    public function __construct(array $midocoSupplierSettlementAccount = [])
+    public function __construct(?array $midocoSupplierSettlementAccount = null)
     {
         $this
             ->setMidocoSupplierSettlementAccount($midocoSupplierSettlementAccount);
@@ -36,18 +37,22 @@ class GetSupplierSettlementAccountsResponse extends AbstractStructBase
      * Get MidocoSupplierSettlementAccount value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSupplierSettlementAccount[]
      */
-    public function getMidocoSupplierSettlementAccount(): array
+    public function getMidocoSupplierSettlementAccount(): ?array
     {
         return $this->MidocoSupplierSettlementAccount;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoSupplierSettlementAccount method
+     * This method is responsible for validating the value(s) passed to the setMidocoSupplierSettlementAccount method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoSupplierSettlementAccount method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoSupplierSettlementAccountForArrayConstraintsFromSetMidocoSupplierSettlementAccount(array $values = []): string
+    public static function validateMidocoSupplierSettlementAccountForArrayConstraintFromSetMidocoSupplierSettlementAccount(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getSupplierSettlementAccountsResponseMidocoSupplierSettlementAccountItem) {
@@ -69,10 +74,10 @@ class GetSupplierSettlementAccountsResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSupplierSettlementAccount[] $midocoSupplierSettlementAccount
      * @return \Pggns\MidocoApi\Order\StructType\GetSupplierSettlementAccountsResponse
      */
-    public function setMidocoSupplierSettlementAccount(array $midocoSupplierSettlementAccount = []): self
+    public function setMidocoSupplierSettlementAccount(?array $midocoSupplierSettlementAccount = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoSupplierSettlementAccountArrayErrorMessage = self::validateMidocoSupplierSettlementAccountForArrayConstraintsFromSetMidocoSupplierSettlementAccount($midocoSupplierSettlementAccount))) {
+        if ('' !== ($midocoSupplierSettlementAccountArrayErrorMessage = self::validateMidocoSupplierSettlementAccountForArrayConstraintFromSetMidocoSupplierSettlementAccount($midocoSupplierSettlementAccount))) {
             throw new InvalidArgumentException($midocoSupplierSettlementAccountArrayErrorMessage, __LINE__);
         }
         $this->MidocoSupplierSettlementAccount = $midocoSupplierSettlementAccount;

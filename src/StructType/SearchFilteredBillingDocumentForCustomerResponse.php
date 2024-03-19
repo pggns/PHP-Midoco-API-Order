@@ -12,6 +12,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchFilteredBillingDocumentForCustomerResponse extends AbstractStructBase
 {
     /**
@@ -22,13 +23,13 @@ class SearchFilteredBillingDocumentForCustomerResponse extends AbstractStructBas
      * - ref: MidocoBillingSearchInfoExt
      * @var \Pggns\MidocoApi\Order\StructType\MidocoBillingSearchInfoType[]
      */
-    protected array $MidocoBillingSearchInfoExt = [];
+    protected ?array $MidocoBillingSearchInfoExt = null;
     /**
      * Constructor method for SearchFilteredBillingDocumentForCustomerResponse
      * @uses SearchFilteredBillingDocumentForCustomerResponse::setMidocoBillingSearchInfoExt()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoBillingSearchInfoType[] $midocoBillingSearchInfoExt
      */
-    public function __construct(array $midocoBillingSearchInfoExt = [])
+    public function __construct(?array $midocoBillingSearchInfoExt = null)
     {
         $this
             ->setMidocoBillingSearchInfoExt($midocoBillingSearchInfoExt);
@@ -37,18 +38,22 @@ class SearchFilteredBillingDocumentForCustomerResponse extends AbstractStructBas
      * Get MidocoBillingSearchInfoExt value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoBillingSearchInfoType[]
      */
-    public function getMidocoBillingSearchInfoExt(): array
+    public function getMidocoBillingSearchInfoExt(): ?array
     {
         return $this->MidocoBillingSearchInfoExt;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoBillingSearchInfoExt method
+     * This method is responsible for validating the value(s) passed to the setMidocoBillingSearchInfoExt method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoBillingSearchInfoExt method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoBillingSearchInfoExtForArrayConstraintsFromSetMidocoBillingSearchInfoExt(array $values = []): string
+    public static function validateMidocoBillingSearchInfoExtForArrayConstraintFromSetMidocoBillingSearchInfoExt(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $searchFilteredBillingDocumentForCustomerResponseMidocoBillingSearchInfoExtItem) {
@@ -70,10 +75,10 @@ class SearchFilteredBillingDocumentForCustomerResponse extends AbstractStructBas
      * @param \Pggns\MidocoApi\Order\StructType\MidocoBillingSearchInfoType[] $midocoBillingSearchInfoExt
      * @return \Pggns\MidocoApi\Order\StructType\SearchFilteredBillingDocumentForCustomerResponse
      */
-    public function setMidocoBillingSearchInfoExt(array $midocoBillingSearchInfoExt = []): self
+    public function setMidocoBillingSearchInfoExt(?array $midocoBillingSearchInfoExt = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoBillingSearchInfoExtArrayErrorMessage = self::validateMidocoBillingSearchInfoExtForArrayConstraintsFromSetMidocoBillingSearchInfoExt($midocoBillingSearchInfoExt))) {
+        if ('' !== ($midocoBillingSearchInfoExtArrayErrorMessage = self::validateMidocoBillingSearchInfoExtForArrayConstraintFromSetMidocoBillingSearchInfoExt($midocoBillingSearchInfoExt))) {
             throw new InvalidArgumentException($midocoBillingSearchInfoExtArrayErrorMessage, __LINE__);
         }
         $this->MidocoBillingSearchInfoExt = $midocoBillingSearchInfoExt;

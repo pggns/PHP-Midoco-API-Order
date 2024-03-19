@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetSellRemarksRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetSellRemarksRequest extends AbstractStructBase
 {
     /**

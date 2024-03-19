@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveOrderLockPeriodResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveOrderLockPeriodResponse extends AbstractStructBase
 {
     /**

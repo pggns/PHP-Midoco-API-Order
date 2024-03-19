@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for LoadFlightTimeChangeEmailDetailsRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class LoadFlightTimeChangeEmailDetailsRequest extends AbstractStructBase
 {
     /**

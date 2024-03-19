@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetPrintSelectsRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetPrintSelectsRequest extends AbstractStructBase
 {
     /**
@@ -19,7 +20,7 @@ class GetPrintSelectsRequest extends AbstractStructBase
      * - maxOccurs: unbounded
      * @var string[]
      */
-    protected array $handler = [];
+    protected ?array $handler = null;
     /**
      * The unitName
      * @var string|null
@@ -41,7 +42,7 @@ class GetPrintSelectsRequest extends AbstractStructBase
      * @param string $unitName
      * @param string $cultureId
      */
-    public function __construct(array $handler = [], ?string $unitName = null, ?string $cultureId = null)
+    public function __construct(?array $handler = null, ?string $unitName = null, ?string $cultureId = null)
     {
         $this
             ->setHandler($handler)
@@ -52,18 +53,22 @@ class GetPrintSelectsRequest extends AbstractStructBase
      * Get handler value
      * @return string[]
      */
-    public function getHandler(): array
+    public function getHandler(): ?array
     {
         return $this->handler;
     }
     /**
-     * This method is responsible for validating the values passed to the setHandler method
+     * This method is responsible for validating the value(s) passed to the setHandler method
      * This method is willingly generated in order to preserve the one-line inline validation within the setHandler method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateHandlerForArrayConstraintsFromSetHandler(array $values = []): string
+    public static function validateHandlerForArrayConstraintFromSetHandler(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getPrintSelectsRequestHandlerItem) {
@@ -85,10 +90,10 @@ class GetPrintSelectsRequest extends AbstractStructBase
      * @param string[] $handler
      * @return \Pggns\MidocoApi\Order\StructType\GetPrintSelectsRequest
      */
-    public function setHandler(array $handler = []): self
+    public function setHandler(?array $handler = null): self
     {
         // validation for constraint: array
-        if ('' !== ($handlerArrayErrorMessage = self::validateHandlerForArrayConstraintsFromSetHandler($handler))) {
+        if ('' !== ($handlerArrayErrorMessage = self::validateHandlerForArrayConstraintFromSetHandler($handler))) {
             throw new InvalidArgumentException($handlerArrayErrorMessage, __LINE__);
         }
         $this->handler = $handler;

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetAllUserattribTypesResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetAllUserattribTypesResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetAllUserattribTypesResponse extends AbstractStructBase
      * - ref: MidocoUserattribType
      * @var \Pggns\MidocoApi\Order\StructType\MidocoUserattribType[]
      */
-    protected array $MidocoUserattribType = [];
+    protected ?array $MidocoUserattribType = null;
     /**
      * Constructor method for GetAllUserattribTypesResponse
      * @uses GetAllUserattribTypesResponse::setMidocoUserattribType()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoUserattribType[] $midocoUserattribType
      */
-    public function __construct(array $midocoUserattribType = [])
+    public function __construct(?array $midocoUserattribType = null)
     {
         $this
             ->setMidocoUserattribType($midocoUserattribType);
@@ -36,18 +37,22 @@ class GetAllUserattribTypesResponse extends AbstractStructBase
      * Get MidocoUserattribType value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoUserattribType[]
      */
-    public function getMidocoUserattribType(): array
+    public function getMidocoUserattribType(): ?array
     {
         return $this->MidocoUserattribType;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoUserattribType method
+     * This method is responsible for validating the value(s) passed to the setMidocoUserattribType method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoUserattribType method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoUserattribTypeForArrayConstraintsFromSetMidocoUserattribType(array $values = []): string
+    public static function validateMidocoUserattribTypeForArrayConstraintFromSetMidocoUserattribType(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getAllUserattribTypesResponseMidocoUserattribTypeItem) {
@@ -69,10 +74,10 @@ class GetAllUserattribTypesResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoUserattribType[] $midocoUserattribType
      * @return \Pggns\MidocoApi\Order\StructType\GetAllUserattribTypesResponse
      */
-    public function setMidocoUserattribType(array $midocoUserattribType = []): self
+    public function setMidocoUserattribType(?array $midocoUserattribType = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoUserattribTypeArrayErrorMessage = self::validateMidocoUserattribTypeForArrayConstraintsFromSetMidocoUserattribType($midocoUserattribType))) {
+        if ('' !== ($midocoUserattribTypeArrayErrorMessage = self::validateMidocoUserattribTypeForArrayConstraintFromSetMidocoUserattribType($midocoUserattribType))) {
             throw new InvalidArgumentException($midocoUserattribTypeArrayErrorMessage, __LINE__);
         }
         $this->MidocoUserattribType = $midocoUserattribType;

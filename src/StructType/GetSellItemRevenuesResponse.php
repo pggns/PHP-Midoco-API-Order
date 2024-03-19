@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: retrieve all preparedRevenueBookings and revenueBookings of this sellItem
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetSellItemRevenuesResponse extends AbstractStructBase
 {
     /**
@@ -30,7 +31,7 @@ class GetSellItemRevenuesResponse extends AbstractStructBase
      * - ref: MidocoPreparedRevenueBooking
      * @var \Pggns\MidocoApi\Order\StructType\MidocoPreparedRevenueBooking[]
      */
-    protected array $MidocoPreparedRevenueBooking = [];
+    protected ?array $MidocoPreparedRevenueBooking = null;
     /**
      * Constructor method for GetSellItemRevenuesResponse
      * @uses GetSellItemRevenuesResponse::setMidocoBookingInfo()
@@ -38,7 +39,7 @@ class GetSellItemRevenuesResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoBookingInfoType $midocoBookingInfo
      * @param \Pggns\MidocoApi\Order\StructType\MidocoPreparedRevenueBooking[] $midocoPreparedRevenueBooking
      */
-    public function __construct(?\Pggns\MidocoApi\Order\StructType\MidocoBookingInfoType $midocoBookingInfo = null, array $midocoPreparedRevenueBooking = [])
+    public function __construct(?\Pggns\MidocoApi\Order\StructType\MidocoBookingInfoType $midocoBookingInfo = null, ?array $midocoPreparedRevenueBooking = null)
     {
         $this
             ->setMidocoBookingInfo($midocoBookingInfo)
@@ -67,18 +68,22 @@ class GetSellItemRevenuesResponse extends AbstractStructBase
      * Get MidocoPreparedRevenueBooking value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoPreparedRevenueBooking[]
      */
-    public function getMidocoPreparedRevenueBooking(): array
+    public function getMidocoPreparedRevenueBooking(): ?array
     {
         return $this->MidocoPreparedRevenueBooking;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoPreparedRevenueBooking method
+     * This method is responsible for validating the value(s) passed to the setMidocoPreparedRevenueBooking method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoPreparedRevenueBooking method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoPreparedRevenueBookingForArrayConstraintsFromSetMidocoPreparedRevenueBooking(array $values = []): string
+    public static function validateMidocoPreparedRevenueBookingForArrayConstraintFromSetMidocoPreparedRevenueBooking(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getSellItemRevenuesResponseMidocoPreparedRevenueBookingItem) {
@@ -100,10 +105,10 @@ class GetSellItemRevenuesResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoPreparedRevenueBooking[] $midocoPreparedRevenueBooking
      * @return \Pggns\MidocoApi\Order\StructType\GetSellItemRevenuesResponse
      */
-    public function setMidocoPreparedRevenueBooking(array $midocoPreparedRevenueBooking = []): self
+    public function setMidocoPreparedRevenueBooking(?array $midocoPreparedRevenueBooking = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoPreparedRevenueBookingArrayErrorMessage = self::validateMidocoPreparedRevenueBookingForArrayConstraintsFromSetMidocoPreparedRevenueBooking($midocoPreparedRevenueBooking))) {
+        if ('' !== ($midocoPreparedRevenueBookingArrayErrorMessage = self::validateMidocoPreparedRevenueBookingForArrayConstraintFromSetMidocoPreparedRevenueBooking($midocoPreparedRevenueBooking))) {
             throw new InvalidArgumentException($midocoPreparedRevenueBookingArrayErrorMessage, __LINE__);
         }
         $this->MidocoPreparedRevenueBooking = $midocoPreparedRevenueBooking;

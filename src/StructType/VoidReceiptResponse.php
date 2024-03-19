@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for VoidReceiptResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class VoidReceiptResponse extends AbstractStructBase
 {
     /**

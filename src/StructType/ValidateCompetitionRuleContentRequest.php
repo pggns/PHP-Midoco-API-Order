@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ValidateCompetitionRuleContentRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ValidateCompetitionRuleContentRequest extends AbstractStructBase
 {
     /**

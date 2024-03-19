@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for AnnounceIrisPlusClientMessageResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class AnnounceIrisPlusClientMessageResponse extends AbstractStructBase
 {
 }

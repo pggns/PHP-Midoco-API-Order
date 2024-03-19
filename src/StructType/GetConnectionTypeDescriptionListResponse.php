@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetConnectionTypeDescriptionListResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetConnectionTypeDescriptionListResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetConnectionTypeDescriptionListResponse extends AbstractStructBase
      * - ref: MidocoConnectionTypeDescription
      * @var \Pggns\MidocoApi\Order\StructType\ConnectionTypeDescDTO[]
      */
-    protected array $MidocoConnectionTypeDescription = [];
+    protected ?array $MidocoConnectionTypeDescription = null;
     /**
      * Constructor method for GetConnectionTypeDescriptionListResponse
      * @uses GetConnectionTypeDescriptionListResponse::setMidocoConnectionTypeDescription()
      * @param \Pggns\MidocoApi\Order\StructType\ConnectionTypeDescDTO[] $midocoConnectionTypeDescription
      */
-    public function __construct(array $midocoConnectionTypeDescription = [])
+    public function __construct(?array $midocoConnectionTypeDescription = null)
     {
         $this
             ->setMidocoConnectionTypeDescription($midocoConnectionTypeDescription);
@@ -36,18 +37,22 @@ class GetConnectionTypeDescriptionListResponse extends AbstractStructBase
      * Get MidocoConnectionTypeDescription value
      * @return \Pggns\MidocoApi\Order\StructType\ConnectionTypeDescDTO[]
      */
-    public function getMidocoConnectionTypeDescription(): array
+    public function getMidocoConnectionTypeDescription(): ?array
     {
         return $this->MidocoConnectionTypeDescription;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoConnectionTypeDescription method
+     * This method is responsible for validating the value(s) passed to the setMidocoConnectionTypeDescription method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoConnectionTypeDescription method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoConnectionTypeDescriptionForArrayConstraintsFromSetMidocoConnectionTypeDescription(array $values = []): string
+    public static function validateMidocoConnectionTypeDescriptionForArrayConstraintFromSetMidocoConnectionTypeDescription(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getConnectionTypeDescriptionListResponseMidocoConnectionTypeDescriptionItem) {
@@ -69,10 +74,10 @@ class GetConnectionTypeDescriptionListResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\ConnectionTypeDescDTO[] $midocoConnectionTypeDescription
      * @return \Pggns\MidocoApi\Order\StructType\GetConnectionTypeDescriptionListResponse
      */
-    public function setMidocoConnectionTypeDescription(array $midocoConnectionTypeDescription = []): self
+    public function setMidocoConnectionTypeDescription(?array $midocoConnectionTypeDescription = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoConnectionTypeDescriptionArrayErrorMessage = self::validateMidocoConnectionTypeDescriptionForArrayConstraintsFromSetMidocoConnectionTypeDescription($midocoConnectionTypeDescription))) {
+        if ('' !== ($midocoConnectionTypeDescriptionArrayErrorMessage = self::validateMidocoConnectionTypeDescriptionForArrayConstraintFromSetMidocoConnectionTypeDescription($midocoConnectionTypeDescription))) {
             throw new InvalidArgumentException($midocoConnectionTypeDescriptionArrayErrorMessage, __LINE__);
         }
         $this->MidocoConnectionTypeDescription = $midocoConnectionTypeDescription;

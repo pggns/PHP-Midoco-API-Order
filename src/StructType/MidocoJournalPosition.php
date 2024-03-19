@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoJournalPosition StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoJournalPosition extends BookingJournalDTO
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetOrderMarginRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetOrderMarginRequest extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoOrderLayout StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoOrderLayout extends OrderLayoutDTO
 {
     /**

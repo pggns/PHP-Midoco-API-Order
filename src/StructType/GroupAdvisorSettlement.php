@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GroupAdvisorSettlement StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GroupAdvisorSettlement extends AbstractStructBase
 {
     /**
@@ -21,7 +22,7 @@ class GroupAdvisorSettlement extends AbstractStructBase
      * - ref: GroupAdvisorSettlementDetail
      * @var \Pggns\MidocoApi\Order\StructType\GroupAdvisorSettlementDetail[]
      */
-    protected array $GroupAdvisorSettlementDetail = [];
+    protected ?array $GroupAdvisorSettlementDetail = null;
     /**
      * The mediatorId
      * @var string|null
@@ -188,7 +189,7 @@ class GroupAdvisorSettlement extends AbstractStructBase
      * @param float $noCommissionTotalPartPercent
      * @param float $allBookingsTotalAmount
      */
-    public function __construct(array $groupAdvisorSettlementDetail = [], ?string $mediatorId = null, ?string $mediatorName = null, ?float $totalAmount = null, ?float $commissionAmount = null, ?string $fromDate = null, ?string $toDate = null, ?float $wotTotalAmount = null, ?float $specialTotalAmount = null, ?float $flightTotalAmount = null, ?float $hmrTotalAmount = null, ?float $noCommissionTotalAmount = null, ?int $totalNoOfBookings = null, ?int $specialNoOfBookings = null, ?int $wotNoOfBookings = null, ?int $flightNoOfBookings = null, ?int $hmrNoOfBookings = null, ?int $noCommissionNoOfBookings = null, ?float $wotTotalPartPercent = null, ?float $specialTotalPartPercent = null, ?float $flightTotalPartPercent = null, ?float $hmrTotalPartPercent = null, ?float $noCommissionTotalPartPercent = null, ?float $allBookingsTotalAmount = null)
+    public function __construct(?array $groupAdvisorSettlementDetail = null, ?string $mediatorId = null, ?string $mediatorName = null, ?float $totalAmount = null, ?float $commissionAmount = null, ?string $fromDate = null, ?string $toDate = null, ?float $wotTotalAmount = null, ?float $specialTotalAmount = null, ?float $flightTotalAmount = null, ?float $hmrTotalAmount = null, ?float $noCommissionTotalAmount = null, ?int $totalNoOfBookings = null, ?int $specialNoOfBookings = null, ?int $wotNoOfBookings = null, ?int $flightNoOfBookings = null, ?int $hmrNoOfBookings = null, ?int $noCommissionNoOfBookings = null, ?float $wotTotalPartPercent = null, ?float $specialTotalPartPercent = null, ?float $flightTotalPartPercent = null, ?float $hmrTotalPartPercent = null, ?float $noCommissionTotalPartPercent = null, ?float $allBookingsTotalAmount = null)
     {
         $this
             ->setGroupAdvisorSettlementDetail($groupAdvisorSettlementDetail)
@@ -220,18 +221,22 @@ class GroupAdvisorSettlement extends AbstractStructBase
      * Get GroupAdvisorSettlementDetail value
      * @return \Pggns\MidocoApi\Order\StructType\GroupAdvisorSettlementDetail[]
      */
-    public function getGroupAdvisorSettlementDetail(): array
+    public function getGroupAdvisorSettlementDetail(): ?array
     {
         return $this->GroupAdvisorSettlementDetail;
     }
     /**
-     * This method is responsible for validating the values passed to the setGroupAdvisorSettlementDetail method
+     * This method is responsible for validating the value(s) passed to the setGroupAdvisorSettlementDetail method
      * This method is willingly generated in order to preserve the one-line inline validation within the setGroupAdvisorSettlementDetail method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateGroupAdvisorSettlementDetailForArrayConstraintsFromSetGroupAdvisorSettlementDetail(array $values = []): string
+    public static function validateGroupAdvisorSettlementDetailForArrayConstraintFromSetGroupAdvisorSettlementDetail(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $groupAdvisorSettlementGroupAdvisorSettlementDetailItem) {
@@ -253,10 +258,10 @@ class GroupAdvisorSettlement extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\GroupAdvisorSettlementDetail[] $groupAdvisorSettlementDetail
      * @return \Pggns\MidocoApi\Order\StructType\GroupAdvisorSettlement
      */
-    public function setGroupAdvisorSettlementDetail(array $groupAdvisorSettlementDetail = []): self
+    public function setGroupAdvisorSettlementDetail(?array $groupAdvisorSettlementDetail = null): self
     {
         // validation for constraint: array
-        if ('' !== ($groupAdvisorSettlementDetailArrayErrorMessage = self::validateGroupAdvisorSettlementDetailForArrayConstraintsFromSetGroupAdvisorSettlementDetail($groupAdvisorSettlementDetail))) {
+        if ('' !== ($groupAdvisorSettlementDetailArrayErrorMessage = self::validateGroupAdvisorSettlementDetailForArrayConstraintFromSetGroupAdvisorSettlementDetail($groupAdvisorSettlementDetail))) {
             throw new InvalidArgumentException($groupAdvisorSettlementDetailArrayErrorMessage, __LINE__);
         }
         $this->GroupAdvisorSettlementDetail = $groupAdvisorSettlementDetail;

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteMidocoAttributeChoiceValueResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteMidocoAttributeChoiceValueResponse extends AbstractStructBase
 {
     /**

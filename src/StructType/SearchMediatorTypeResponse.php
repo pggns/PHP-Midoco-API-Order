@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SearchMediatorTypeResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchMediatorTypeResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class SearchMediatorTypeResponse extends AbstractStructBase
      * - ref: MediatorTypeInfo
      * @var \Pggns\MidocoApi\Order\StructType\MediatorTypeDTO[]
      */
-    protected array $MediatorTypeInfo = [];
+    protected ?array $MediatorTypeInfo = null;
     /**
      * Constructor method for SearchMediatorTypeResponse
      * @uses SearchMediatorTypeResponse::setMediatorTypeInfo()
      * @param \Pggns\MidocoApi\Order\StructType\MediatorTypeDTO[] $mediatorTypeInfo
      */
-    public function __construct(array $mediatorTypeInfo = [])
+    public function __construct(?array $mediatorTypeInfo = null)
     {
         $this
             ->setMediatorTypeInfo($mediatorTypeInfo);
@@ -36,18 +37,22 @@ class SearchMediatorTypeResponse extends AbstractStructBase
      * Get MediatorTypeInfo value
      * @return \Pggns\MidocoApi\Order\StructType\MediatorTypeDTO[]
      */
-    public function getMediatorTypeInfo(): array
+    public function getMediatorTypeInfo(): ?array
     {
         return $this->MediatorTypeInfo;
     }
     /**
-     * This method is responsible for validating the values passed to the setMediatorTypeInfo method
+     * This method is responsible for validating the value(s) passed to the setMediatorTypeInfo method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMediatorTypeInfo method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMediatorTypeInfoForArrayConstraintsFromSetMediatorTypeInfo(array $values = []): string
+    public static function validateMediatorTypeInfoForArrayConstraintFromSetMediatorTypeInfo(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $searchMediatorTypeResponseMediatorTypeInfoItem) {
@@ -69,10 +74,10 @@ class SearchMediatorTypeResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MediatorTypeDTO[] $mediatorTypeInfo
      * @return \Pggns\MidocoApi\Order\StructType\SearchMediatorTypeResponse
      */
-    public function setMediatorTypeInfo(array $mediatorTypeInfo = []): self
+    public function setMediatorTypeInfo(?array $mediatorTypeInfo = null): self
     {
         // validation for constraint: array
-        if ('' !== ($mediatorTypeInfoArrayErrorMessage = self::validateMediatorTypeInfoForArrayConstraintsFromSetMediatorTypeInfo($mediatorTypeInfo))) {
+        if ('' !== ($mediatorTypeInfoArrayErrorMessage = self::validateMediatorTypeInfoForArrayConstraintFromSetMediatorTypeInfo($mediatorTypeInfo))) {
             throw new InvalidArgumentException($mediatorTypeInfoArrayErrorMessage, __LINE__);
         }
         $this->MediatorTypeInfo = $mediatorTypeInfo;

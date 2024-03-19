@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for event-service-type StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class Event_service_type extends AbstractStructBase
 {
     /**
@@ -421,7 +422,7 @@ class Event_service_type extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($start_date, true), gettype($start_date)), __LINE__);
         }
         // validation for constraint: pattern([0-9]{4}-[0-9]{2}-[0-9]{2})
-        if (!is_null($start_date) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', $start_date)) {
+        if (!is_null($start_date) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', (string) $start_date)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[0-9]{4}-[0-9]{2}-[0-9]{2}/', var_export($start_date, true)), __LINE__);
         }
         $this->start_date = $this->{'start-date'} = $start_date;
@@ -448,7 +449,7 @@ class Event_service_type extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($end_date, true), gettype($end_date)), __LINE__);
         }
         // validation for constraint: pattern([0-9]{4}-[0-9]{2}-[0-9]{2})
-        if (!is_null($end_date) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', $end_date)) {
+        if (!is_null($end_date) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', (string) $end_date)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[0-9]{4}-[0-9]{2}-[0-9]{2}/', var_export($end_date, true)), __LINE__);
         }
         $this->end_date = $this->{'end-date'} = $end_date;
@@ -475,7 +476,7 @@ class Event_service_type extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($start_time, true), gettype($start_time)), __LINE__);
         }
         // validation for constraint: pattern([0-9]{2}:[0-9]{2}:{0,1}[0-9]{0,2})
-        if (!is_null($start_time) && !preg_match('/[0-9]{2}:[0-9]{2}:{0,1}[0-9]{0,2}/', $start_time)) {
+        if (!is_null($start_time) && !preg_match('/[0-9]{2}:[0-9]{2}:{0,1}[0-9]{0,2}/', (string) $start_time)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[0-9]{2}:[0-9]{2}:{0,1}[0-9]{0,2}/', var_export($start_time, true)), __LINE__);
         }
         $this->start_time = $this->{'start-time'} = $start_time;
@@ -502,7 +503,7 @@ class Event_service_type extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($end_time, true), gettype($end_time)), __LINE__);
         }
         // validation for constraint: pattern([0-9]{2}:[0-9]{2}:{0,1}[0-9]{0,2})
-        if (!is_null($end_time) && !preg_match('/[0-9]{2}:[0-9]{2}:{0,1}[0-9]{0,2}/', $end_time)) {
+        if (!is_null($end_time) && !preg_match('/[0-9]{2}:[0-9]{2}:{0,1}[0-9]{0,2}/', (string) $end_time)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[0-9]{2}:[0-9]{2}:{0,1}[0-9]{0,2}/', var_export($end_time, true)), __LINE__);
         }
         $this->end_time = $this->{'end-time'} = $end_time;

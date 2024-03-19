@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoCruiseDetailsInfo4Printing StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoCruiseDetailsInfo4Printing extends CruiseDetailDTO
 {
 }

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetMidocoGuiAttributeDefinitionResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetMidocoGuiAttributeDefinitionResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetMidocoGuiAttributeDefinitionResponse extends AbstractStructBase
      * - ref: MidocoGuiAttributeDefinition
      * @var \Pggns\MidocoApi\Order\StructType\GuiAttributeDefinitionDTO[]
      */
-    protected array $MidocoGuiAttributeDefinition = [];
+    protected ?array $MidocoGuiAttributeDefinition = null;
     /**
      * Constructor method for GetMidocoGuiAttributeDefinitionResponse
      * @uses GetMidocoGuiAttributeDefinitionResponse::setMidocoGuiAttributeDefinition()
      * @param \Pggns\MidocoApi\Order\StructType\GuiAttributeDefinitionDTO[] $midocoGuiAttributeDefinition
      */
-    public function __construct(array $midocoGuiAttributeDefinition = [])
+    public function __construct(?array $midocoGuiAttributeDefinition = null)
     {
         $this
             ->setMidocoGuiAttributeDefinition($midocoGuiAttributeDefinition);
@@ -36,18 +37,22 @@ class GetMidocoGuiAttributeDefinitionResponse extends AbstractStructBase
      * Get MidocoGuiAttributeDefinition value
      * @return \Pggns\MidocoApi\Order\StructType\GuiAttributeDefinitionDTO[]
      */
-    public function getMidocoGuiAttributeDefinition(): array
+    public function getMidocoGuiAttributeDefinition(): ?array
     {
         return $this->MidocoGuiAttributeDefinition;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoGuiAttributeDefinition method
+     * This method is responsible for validating the value(s) passed to the setMidocoGuiAttributeDefinition method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoGuiAttributeDefinition method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoGuiAttributeDefinitionForArrayConstraintsFromSetMidocoGuiAttributeDefinition(array $values = []): string
+    public static function validateMidocoGuiAttributeDefinitionForArrayConstraintFromSetMidocoGuiAttributeDefinition(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getMidocoGuiAttributeDefinitionResponseMidocoGuiAttributeDefinitionItem) {
@@ -69,10 +74,10 @@ class GetMidocoGuiAttributeDefinitionResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\GuiAttributeDefinitionDTO[] $midocoGuiAttributeDefinition
      * @return \Pggns\MidocoApi\Order\StructType\GetMidocoGuiAttributeDefinitionResponse
      */
-    public function setMidocoGuiAttributeDefinition(array $midocoGuiAttributeDefinition = []): self
+    public function setMidocoGuiAttributeDefinition(?array $midocoGuiAttributeDefinition = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoGuiAttributeDefinitionArrayErrorMessage = self::validateMidocoGuiAttributeDefinitionForArrayConstraintsFromSetMidocoGuiAttributeDefinition($midocoGuiAttributeDefinition))) {
+        if ('' !== ($midocoGuiAttributeDefinitionArrayErrorMessage = self::validateMidocoGuiAttributeDefinitionForArrayConstraintFromSetMidocoGuiAttributeDefinition($midocoGuiAttributeDefinition))) {
             throw new InvalidArgumentException($midocoGuiAttributeDefinitionArrayErrorMessage, __LINE__);
         }
         $this->MidocoGuiAttributeDefinition = $midocoGuiAttributeDefinition;

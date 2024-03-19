@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: saving data
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class Saving extends AbstractStructBase
 {
     /**

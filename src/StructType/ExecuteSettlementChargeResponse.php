@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ExecuteSettlementChargeResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ExecuteSettlementChargeResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class ExecuteSettlementChargeResponse extends AbstractStructBase
      * - ref: MidocoMediatorCharge
      * @var \Pggns\MidocoApi\Order\StructType\MediatorChargeDTO[]
      */
-    protected array $MidocoMediatorCharge = [];
+    protected ?array $MidocoMediatorCharge = null;
     /**
      * Constructor method for ExecuteSettlementChargeResponse
      * @uses ExecuteSettlementChargeResponse::setMidocoMediatorCharge()
      * @param \Pggns\MidocoApi\Order\StructType\MediatorChargeDTO[] $midocoMediatorCharge
      */
-    public function __construct(array $midocoMediatorCharge = [])
+    public function __construct(?array $midocoMediatorCharge = null)
     {
         $this
             ->setMidocoMediatorCharge($midocoMediatorCharge);
@@ -36,18 +37,22 @@ class ExecuteSettlementChargeResponse extends AbstractStructBase
      * Get MidocoMediatorCharge value
      * @return \Pggns\MidocoApi\Order\StructType\MediatorChargeDTO[]
      */
-    public function getMidocoMediatorCharge(): array
+    public function getMidocoMediatorCharge(): ?array
     {
         return $this->MidocoMediatorCharge;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoMediatorCharge method
+     * This method is responsible for validating the value(s) passed to the setMidocoMediatorCharge method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoMediatorCharge method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoMediatorChargeForArrayConstraintsFromSetMidocoMediatorCharge(array $values = []): string
+    public static function validateMidocoMediatorChargeForArrayConstraintFromSetMidocoMediatorCharge(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $executeSettlementChargeResponseMidocoMediatorChargeItem) {
@@ -69,10 +74,10 @@ class ExecuteSettlementChargeResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MediatorChargeDTO[] $midocoMediatorCharge
      * @return \Pggns\MidocoApi\Order\StructType\ExecuteSettlementChargeResponse
      */
-    public function setMidocoMediatorCharge(array $midocoMediatorCharge = []): self
+    public function setMidocoMediatorCharge(?array $midocoMediatorCharge = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoMediatorChargeArrayErrorMessage = self::validateMidocoMediatorChargeForArrayConstraintsFromSetMidocoMediatorCharge($midocoMediatorCharge))) {
+        if ('' !== ($midocoMediatorChargeArrayErrorMessage = self::validateMidocoMediatorChargeForArrayConstraintFromSetMidocoMediatorCharge($midocoMediatorCharge))) {
             throw new InvalidArgumentException($midocoMediatorChargeArrayErrorMessage, __LINE__);
         }
         $this->MidocoMediatorCharge = $midocoMediatorCharge;

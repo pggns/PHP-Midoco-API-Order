@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MarginsSearchCriteriaType StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MarginsSearchCriteriaType extends AbstractStructBase
 {
     /**
@@ -125,7 +126,7 @@ class MarginsSearchCriteriaType extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $unitNames = [];
+    protected ?array $unitNames = null;
     /**
      * The travelNo
      * Meta information extracted from the WSDL
@@ -188,7 +189,7 @@ class MarginsSearchCriteriaType extends AbstractStructBase
      * @param string $packageSupplierId
      * @param string $itemSupplierId
      */
-    public function __construct(bool $needsBooking, bool $preventBooking, bool $tentativeBooking, bool $travelNoBased, bool $packageBased, bool $itemBased, bool $positiveMargin, bool $negativeMargin, ?string $marginBookingDateFrom = null, ?string $marginBookingDateTo = null, ?string $travelStartDateFrom = null, ?string $travelStartDateTo = null, ?string $destination = null, ?int $orderNo = null, ?bool $incomingInvoiceComplete = null, array $unitNames = [], ?string $travelNo = null, ?string $packageSupplierId = null, ?string $itemSupplierId = null)
+    public function __construct(bool $needsBooking, bool $preventBooking, bool $tentativeBooking, bool $travelNoBased, bool $packageBased, bool $itemBased, bool $positiveMargin, bool $negativeMargin, ?string $marginBookingDateFrom = null, ?string $marginBookingDateTo = null, ?string $travelStartDateFrom = null, ?string $travelStartDateTo = null, ?string $destination = null, ?int $orderNo = null, ?bool $incomingInvoiceComplete = null, ?array $unitNames = null, ?string $travelNo = null, ?string $packageSupplierId = null, ?string $itemSupplierId = null)
     {
         $this
             ->setNeedsBooking($needsBooking)
@@ -560,18 +561,22 @@ class MarginsSearchCriteriaType extends AbstractStructBase
      * Get unitNames value
      * @return string[]
      */
-    public function getUnitNames(): array
+    public function getUnitNames(): ?array
     {
         return $this->unitNames;
     }
     /**
-     * This method is responsible for validating the values passed to the setUnitNames method
+     * This method is responsible for validating the value(s) passed to the setUnitNames method
      * This method is willingly generated in order to preserve the one-line inline validation within the setUnitNames method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateUnitNamesForArrayConstraintsFromSetUnitNames(array $values = []): string
+    public static function validateUnitNamesForArrayConstraintFromSetUnitNames(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $marginsSearchCriteriaTypeUnitNamesItem) {
@@ -593,10 +598,10 @@ class MarginsSearchCriteriaType extends AbstractStructBase
      * @param string[] $unitNames
      * @return \Pggns\MidocoApi\Order\StructType\MarginsSearchCriteriaType
      */
-    public function setUnitNames(array $unitNames = []): self
+    public function setUnitNames(?array $unitNames = null): self
     {
         // validation for constraint: array
-        if ('' !== ($unitNamesArrayErrorMessage = self::validateUnitNamesForArrayConstraintsFromSetUnitNames($unitNames))) {
+        if ('' !== ($unitNamesArrayErrorMessage = self::validateUnitNamesForArrayConstraintFromSetUnitNames($unitNames))) {
             throw new InvalidArgumentException($unitNamesArrayErrorMessage, __LINE__);
         }
         $this->unitNames = $unitNames;

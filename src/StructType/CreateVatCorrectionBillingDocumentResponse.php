@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: voidBillingDocument --- void a billing document
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CreateVatCorrectionBillingDocumentResponse extends AbstractStructBase
 {
     /**

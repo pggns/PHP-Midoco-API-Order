@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetBankNumberRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetBankNumberRequest extends AbstractStructBase
 {
     /**

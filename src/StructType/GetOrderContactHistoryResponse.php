@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: getOrderContactHistory --- returns the list of order contact history for a given order id
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetOrderContactHistoryResponse extends AbstractStructBase
 {
     /**
@@ -23,13 +24,13 @@ class GetOrderContactHistoryResponse extends AbstractStructBase
      * - ref: MidocoOrderContactHistory
      * @var \Pggns\MidocoApi\Order\StructType\MidocoOrderContactHistory[]
      */
-    protected array $MidocoOrderContactHistory = [];
+    protected ?array $MidocoOrderContactHistory = null;
     /**
      * Constructor method for GetOrderContactHistoryResponse
      * @uses GetOrderContactHistoryResponse::setMidocoOrderContactHistory()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoOrderContactHistory[] $midocoOrderContactHistory
      */
-    public function __construct(array $midocoOrderContactHistory = [])
+    public function __construct(?array $midocoOrderContactHistory = null)
     {
         $this
             ->setMidocoOrderContactHistory($midocoOrderContactHistory);
@@ -38,18 +39,22 @@ class GetOrderContactHistoryResponse extends AbstractStructBase
      * Get MidocoOrderContactHistory value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoOrderContactHistory[]
      */
-    public function getMidocoOrderContactHistory(): array
+    public function getMidocoOrderContactHistory(): ?array
     {
         return $this->MidocoOrderContactHistory;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoOrderContactHistory method
+     * This method is responsible for validating the value(s) passed to the setMidocoOrderContactHistory method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoOrderContactHistory method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoOrderContactHistoryForArrayConstraintsFromSetMidocoOrderContactHistory(array $values = []): string
+    public static function validateMidocoOrderContactHistoryForArrayConstraintFromSetMidocoOrderContactHistory(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getOrderContactHistoryResponseMidocoOrderContactHistoryItem) {
@@ -71,10 +76,10 @@ class GetOrderContactHistoryResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoOrderContactHistory[] $midocoOrderContactHistory
      * @return \Pggns\MidocoApi\Order\StructType\GetOrderContactHistoryResponse
      */
-    public function setMidocoOrderContactHistory(array $midocoOrderContactHistory = []): self
+    public function setMidocoOrderContactHistory(?array $midocoOrderContactHistory = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoOrderContactHistoryArrayErrorMessage = self::validateMidocoOrderContactHistoryForArrayConstraintsFromSetMidocoOrderContactHistory($midocoOrderContactHistory))) {
+        if ('' !== ($midocoOrderContactHistoryArrayErrorMessage = self::validateMidocoOrderContactHistoryForArrayConstraintFromSetMidocoOrderContactHistory($midocoOrderContactHistory))) {
             throw new InvalidArgumentException($midocoOrderContactHistoryArrayErrorMessage, __LINE__);
         }
         $this->MidocoOrderContactHistory = $midocoOrderContactHistory;

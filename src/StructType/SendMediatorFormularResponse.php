@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SendMediatorFormularResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SendMediatorFormularResponse extends AbstractStructBase
 {
     /**

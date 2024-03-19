@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for BillingPosOrigForSplitDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class BillingPosOrigForSplitDTO extends AbstractStructBase
 {
     /**

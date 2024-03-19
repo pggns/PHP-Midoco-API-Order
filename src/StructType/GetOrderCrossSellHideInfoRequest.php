@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetOrderCrossSellHideInfoRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetOrderCrossSellHideInfoRequest extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ProcessRoleDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ProcessRoleDTO extends AbstractStructBase
 {
     /**

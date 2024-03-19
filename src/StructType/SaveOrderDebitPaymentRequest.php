@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveOrderDebitPaymentRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveOrderDebitPaymentRequest extends AbstractStructBase
 {
     /**

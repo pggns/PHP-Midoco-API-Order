@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoCrmMidocoCharge StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoCrmMidocoCharge extends CrmMidocoChargeDTO
 {
     /**
@@ -21,13 +22,13 @@ class MidocoCrmMidocoCharge extends CrmMidocoChargeDTO
      * - ref: MidocoAssignedMidocoChargeOu
      * @var \Pggns\MidocoApi\Order\StructType\AssignedMidocoChargeOuDTO[]
      */
-    protected array $MidocoAssignedMidocoChargeOu = [];
+    protected ?array $MidocoAssignedMidocoChargeOu = null;
     /**
      * Constructor method for MidocoCrmMidocoCharge
      * @uses MidocoCrmMidocoCharge::setMidocoAssignedMidocoChargeOu()
      * @param \Pggns\MidocoApi\Order\StructType\AssignedMidocoChargeOuDTO[] $midocoAssignedMidocoChargeOu
      */
-    public function __construct(array $midocoAssignedMidocoChargeOu = [])
+    public function __construct(?array $midocoAssignedMidocoChargeOu = null)
     {
         $this
             ->setMidocoAssignedMidocoChargeOu($midocoAssignedMidocoChargeOu);
@@ -36,18 +37,22 @@ class MidocoCrmMidocoCharge extends CrmMidocoChargeDTO
      * Get MidocoAssignedMidocoChargeOu value
      * @return \Pggns\MidocoApi\Order\StructType\AssignedMidocoChargeOuDTO[]
      */
-    public function getMidocoAssignedMidocoChargeOu(): array
+    public function getMidocoAssignedMidocoChargeOu(): ?array
     {
         return $this->MidocoAssignedMidocoChargeOu;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoAssignedMidocoChargeOu method
+     * This method is responsible for validating the value(s) passed to the setMidocoAssignedMidocoChargeOu method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoAssignedMidocoChargeOu method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoAssignedMidocoChargeOuForArrayConstraintsFromSetMidocoAssignedMidocoChargeOu(array $values = []): string
+    public static function validateMidocoAssignedMidocoChargeOuForArrayConstraintFromSetMidocoAssignedMidocoChargeOu(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoCrmMidocoChargeMidocoAssignedMidocoChargeOuItem) {
@@ -69,10 +74,10 @@ class MidocoCrmMidocoCharge extends CrmMidocoChargeDTO
      * @param \Pggns\MidocoApi\Order\StructType\AssignedMidocoChargeOuDTO[] $midocoAssignedMidocoChargeOu
      * @return \Pggns\MidocoApi\Order\StructType\MidocoCrmMidocoCharge
      */
-    public function setMidocoAssignedMidocoChargeOu(array $midocoAssignedMidocoChargeOu = []): self
+    public function setMidocoAssignedMidocoChargeOu(?array $midocoAssignedMidocoChargeOu = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoAssignedMidocoChargeOuArrayErrorMessage = self::validateMidocoAssignedMidocoChargeOuForArrayConstraintsFromSetMidocoAssignedMidocoChargeOu($midocoAssignedMidocoChargeOu))) {
+        if ('' !== ($midocoAssignedMidocoChargeOuArrayErrorMessage = self::validateMidocoAssignedMidocoChargeOuForArrayConstraintFromSetMidocoAssignedMidocoChargeOu($midocoAssignedMidocoChargeOu))) {
             throw new InvalidArgumentException($midocoAssignedMidocoChargeOuArrayErrorMessage, __LINE__);
         }
         $this->MidocoAssignedMidocoChargeOu = $midocoAssignedMidocoChargeOu;

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CommissionDetail StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CommissionDetail extends AbstractStructBase
 {
     /**

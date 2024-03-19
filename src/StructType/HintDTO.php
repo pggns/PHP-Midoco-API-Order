@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for HintDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class HintDTO extends AbstractStructBase
 {
     /**

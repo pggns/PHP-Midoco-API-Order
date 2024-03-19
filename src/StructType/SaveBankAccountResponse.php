@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: save a bank account
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveBankAccountResponse extends AbstractStructBase
 {
 }

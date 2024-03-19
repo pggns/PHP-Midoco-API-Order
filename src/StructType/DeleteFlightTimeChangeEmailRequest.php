@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteFlightTimeChangeEmailRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteFlightTimeChangeEmailRequest extends AbstractStructBase
 {
     /**

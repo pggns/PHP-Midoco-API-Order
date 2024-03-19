@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: Save information from the MilesAndMoreEarnSelectionDialog. This will fill the PopupShown field of all linked MilesAndMoreEarnInfo entities with the current timestamp.
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveMilesAndMoreEarnSelectionRequest extends AbstractStructBase
 {
     /**
@@ -34,7 +35,7 @@ class SaveMilesAndMoreEarnSelectionRequest extends AbstractStructBase
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\MilesAndMoreEarnSelection[]
      */
-    protected array $MilesAndMoreEarnSelection = [];
+    protected ?array $MilesAndMoreEarnSelection = null;
     /**
      * The internalVersion
      * Meta information extracted from the WSDL
@@ -62,7 +63,7 @@ class SaveMilesAndMoreEarnSelectionRequest extends AbstractStructBase
      * @param int $internalVersion
      * @param bool $auto
      */
-    public function __construct(?int $orderId = null, ?string $cardNo = null, array $milesAndMoreEarnSelection = [], ?int $internalVersion = null, ?bool $auto = null)
+    public function __construct(?int $orderId = null, ?string $cardNo = null, ?array $milesAndMoreEarnSelection = null, ?int $internalVersion = null, ?bool $auto = null)
     {
         $this
             ->setOrderId($orderId)
@@ -121,18 +122,22 @@ class SaveMilesAndMoreEarnSelectionRequest extends AbstractStructBase
      * Get MilesAndMoreEarnSelection value
      * @return \Pggns\MidocoApi\Order\StructType\MilesAndMoreEarnSelection[]
      */
-    public function getMilesAndMoreEarnSelection(): array
+    public function getMilesAndMoreEarnSelection(): ?array
     {
         return $this->MilesAndMoreEarnSelection;
     }
     /**
-     * This method is responsible for validating the values passed to the setMilesAndMoreEarnSelection method
+     * This method is responsible for validating the value(s) passed to the setMilesAndMoreEarnSelection method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMilesAndMoreEarnSelection method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMilesAndMoreEarnSelectionForArrayConstraintsFromSetMilesAndMoreEarnSelection(array $values = []): string
+    public static function validateMilesAndMoreEarnSelectionForArrayConstraintFromSetMilesAndMoreEarnSelection(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $saveMilesAndMoreEarnSelectionRequestMilesAndMoreEarnSelectionItem) {
@@ -154,10 +159,10 @@ class SaveMilesAndMoreEarnSelectionRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MilesAndMoreEarnSelection[] $milesAndMoreEarnSelection
      * @return \Pggns\MidocoApi\Order\StructType\SaveMilesAndMoreEarnSelectionRequest
      */
-    public function setMilesAndMoreEarnSelection(array $milesAndMoreEarnSelection = []): self
+    public function setMilesAndMoreEarnSelection(?array $milesAndMoreEarnSelection = null): self
     {
         // validation for constraint: array
-        if ('' !== ($milesAndMoreEarnSelectionArrayErrorMessage = self::validateMilesAndMoreEarnSelectionForArrayConstraintsFromSetMilesAndMoreEarnSelection($milesAndMoreEarnSelection))) {
+        if ('' !== ($milesAndMoreEarnSelectionArrayErrorMessage = self::validateMilesAndMoreEarnSelectionForArrayConstraintFromSetMilesAndMoreEarnSelection($milesAndMoreEarnSelection))) {
             throw new InvalidArgumentException($milesAndMoreEarnSelectionArrayErrorMessage, __LINE__);
         }
         $this->MilesAndMoreEarnSelection = $milesAndMoreEarnSelection;

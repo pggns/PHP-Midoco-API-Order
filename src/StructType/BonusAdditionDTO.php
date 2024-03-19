@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for BonusAdditionDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class BonusAdditionDTO extends AbstractStructBase
 {
     /**

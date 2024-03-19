@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: information about the calculation, which lead to the selling price, only informational, not used for further calculation like storno fees
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class Price_calculation extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetProductKeysFromSpecifiedSupplierResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetProductKeysFromSpecifiedSupplierResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetProductKeysFromSpecifiedSupplierResponse extends AbstractStructBase
      * - ref: ProductKey
      * @var string[]
      */
-    protected array $ProductKey = [];
+    protected ?array $ProductKey = null;
     /**
      * Constructor method for GetProductKeysFromSpecifiedSupplierResponse
      * @uses GetProductKeysFromSpecifiedSupplierResponse::setProductKey()
      * @param string[] $productKey
      */
-    public function __construct(array $productKey = [])
+    public function __construct(?array $productKey = null)
     {
         $this
             ->setProductKey($productKey);
@@ -36,18 +37,22 @@ class GetProductKeysFromSpecifiedSupplierResponse extends AbstractStructBase
      * Get ProductKey value
      * @return string[]
      */
-    public function getProductKey(): array
+    public function getProductKey(): ?array
     {
         return $this->ProductKey;
     }
     /**
-     * This method is responsible for validating the values passed to the setProductKey method
+     * This method is responsible for validating the value(s) passed to the setProductKey method
      * This method is willingly generated in order to preserve the one-line inline validation within the setProductKey method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateProductKeyForArrayConstraintsFromSetProductKey(array $values = []): string
+    public static function validateProductKeyForArrayConstraintFromSetProductKey(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getProductKeysFromSpecifiedSupplierResponseProductKeyItem) {
@@ -69,10 +74,10 @@ class GetProductKeysFromSpecifiedSupplierResponse extends AbstractStructBase
      * @param string[] $productKey
      * @return \Pggns\MidocoApi\Order\StructType\GetProductKeysFromSpecifiedSupplierResponse
      */
-    public function setProductKey(array $productKey = []): self
+    public function setProductKey(?array $productKey = null): self
     {
         // validation for constraint: array
-        if ('' !== ($productKeyArrayErrorMessage = self::validateProductKeyForArrayConstraintsFromSetProductKey($productKey))) {
+        if ('' !== ($productKeyArrayErrorMessage = self::validateProductKeyForArrayConstraintFromSetProductKey($productKey))) {
             throw new InvalidArgumentException($productKeyArrayErrorMessage, __LINE__);
         }
         $this->ProductKey = $productKey;

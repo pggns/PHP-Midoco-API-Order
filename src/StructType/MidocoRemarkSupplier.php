@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoRemarkSupplier StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoRemarkSupplier extends RemarkSupplierDTO
 {
     /**

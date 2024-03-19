@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for OrderRemarkDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class OrderRemarkDTO extends AbstractStructBase
 {
     /**

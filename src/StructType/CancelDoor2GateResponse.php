@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CancelDoor2GateResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CancelDoor2GateResponse extends AbstractStructBase
 {
     /**

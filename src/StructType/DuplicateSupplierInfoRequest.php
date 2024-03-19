@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DuplicateSupplierInfoRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DuplicateSupplierInfoRequest extends AbstractStructBase
 {
     /**

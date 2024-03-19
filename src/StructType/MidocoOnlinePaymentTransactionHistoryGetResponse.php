@@ -12,6 +12,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoOnlinePaymentTransactionHistoryGetResponse extends AbstractStructBase
 {
     /**
@@ -22,13 +23,13 @@ class MidocoOnlinePaymentTransactionHistoryGetResponse extends AbstractStructBas
      * - ref: MidocoOnlinePaymentTransactionHistory
      * @var \Pggns\MidocoApi\Order\StructType\MidocoOnlinePaymentTransactionHistory[]
      */
-    protected array $MidocoOnlinePaymentTransactionHistory = [];
+    protected ?array $MidocoOnlinePaymentTransactionHistory = null;
     /**
      * Constructor method for MidocoOnlinePaymentTransactionHistoryGetResponse
      * @uses MidocoOnlinePaymentTransactionHistoryGetResponse::setMidocoOnlinePaymentTransactionHistory()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoOnlinePaymentTransactionHistory[] $midocoOnlinePaymentTransactionHistory
      */
-    public function __construct(array $midocoOnlinePaymentTransactionHistory = [])
+    public function __construct(?array $midocoOnlinePaymentTransactionHistory = null)
     {
         $this
             ->setMidocoOnlinePaymentTransactionHistory($midocoOnlinePaymentTransactionHistory);
@@ -37,18 +38,22 @@ class MidocoOnlinePaymentTransactionHistoryGetResponse extends AbstractStructBas
      * Get MidocoOnlinePaymentTransactionHistory value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoOnlinePaymentTransactionHistory[]
      */
-    public function getMidocoOnlinePaymentTransactionHistory(): array
+    public function getMidocoOnlinePaymentTransactionHistory(): ?array
     {
         return $this->MidocoOnlinePaymentTransactionHistory;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoOnlinePaymentTransactionHistory method
+     * This method is responsible for validating the value(s) passed to the setMidocoOnlinePaymentTransactionHistory method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoOnlinePaymentTransactionHistory method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoOnlinePaymentTransactionHistoryForArrayConstraintsFromSetMidocoOnlinePaymentTransactionHistory(array $values = []): string
+    public static function validateMidocoOnlinePaymentTransactionHistoryForArrayConstraintFromSetMidocoOnlinePaymentTransactionHistory(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoOnlinePaymentTransactionHistoryGetResponseMidocoOnlinePaymentTransactionHistoryItem) {
@@ -70,10 +75,10 @@ class MidocoOnlinePaymentTransactionHistoryGetResponse extends AbstractStructBas
      * @param \Pggns\MidocoApi\Order\StructType\MidocoOnlinePaymentTransactionHistory[] $midocoOnlinePaymentTransactionHistory
      * @return \Pggns\MidocoApi\Order\StructType\MidocoOnlinePaymentTransactionHistoryGetResponse
      */
-    public function setMidocoOnlinePaymentTransactionHistory(array $midocoOnlinePaymentTransactionHistory = []): self
+    public function setMidocoOnlinePaymentTransactionHistory(?array $midocoOnlinePaymentTransactionHistory = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoOnlinePaymentTransactionHistoryArrayErrorMessage = self::validateMidocoOnlinePaymentTransactionHistoryForArrayConstraintsFromSetMidocoOnlinePaymentTransactionHistory($midocoOnlinePaymentTransactionHistory))) {
+        if ('' !== ($midocoOnlinePaymentTransactionHistoryArrayErrorMessage = self::validateMidocoOnlinePaymentTransactionHistoryForArrayConstraintFromSetMidocoOnlinePaymentTransactionHistory($midocoOnlinePaymentTransactionHistory))) {
             throw new InvalidArgumentException($midocoOnlinePaymentTransactionHistoryArrayErrorMessage, __LINE__);
         }
         $this->MidocoOnlinePaymentTransactionHistory = $midocoOnlinePaymentTransactionHistory;

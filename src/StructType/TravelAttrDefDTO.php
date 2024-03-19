@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for TravelAttrDefDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class TravelAttrDefDTO extends AbstractStructBase
 {
     /**

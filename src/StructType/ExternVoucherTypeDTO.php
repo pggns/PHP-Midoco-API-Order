@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ExternVoucherTypeDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ExternVoucherTypeDTO extends AbstractStructBase
 {
     /**

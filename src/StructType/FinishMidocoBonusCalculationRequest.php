@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for FinishMidocoBonusCalculationRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class FinishMidocoBonusCalculationRequest extends AbstractStructBase
 {
     /**

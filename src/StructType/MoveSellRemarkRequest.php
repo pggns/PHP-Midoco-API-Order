@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MoveSellRemarkRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MoveSellRemarkRequest extends AbstractStructBase
 {
     /**

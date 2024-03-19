@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for UpdateSupplierAgencySettlementDetailRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class UpdateSupplierAgencySettlementDetailRequest extends AbstractStructBase
 {
     /**
@@ -28,7 +29,7 @@ class UpdateSupplierAgencySettlementDetailRequest extends AbstractStructBase
      * - ref: MidocoSupplierAgencySettlementDetails
      * @var \Pggns\MidocoApi\Order\StructType\SupplAgencySettlemDetDTO[]
      */
-    protected array $MidocoSupplierAgencySettlementDetails = [];
+    protected ?array $MidocoSupplierAgencySettlementDetails = null;
     /**
      * Constructor method for UpdateSupplierAgencySettlementDetailRequest
      * @uses UpdateSupplierAgencySettlementDetailRequest::setMidocoSupplierAgencySettlementDetail()
@@ -36,7 +37,7 @@ class UpdateSupplierAgencySettlementDetailRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\SupplAgencySettlemDetDTO $midocoSupplierAgencySettlementDetail
      * @param \Pggns\MidocoApi\Order\StructType\SupplAgencySettlemDetDTO[] $midocoSupplierAgencySettlementDetails
      */
-    public function __construct(?\Pggns\MidocoApi\Order\StructType\SupplAgencySettlemDetDTO $midocoSupplierAgencySettlementDetail = null, array $midocoSupplierAgencySettlementDetails = [])
+    public function __construct(?\Pggns\MidocoApi\Order\StructType\SupplAgencySettlemDetDTO $midocoSupplierAgencySettlementDetail = null, ?array $midocoSupplierAgencySettlementDetails = null)
     {
         $this
             ->setMidocoSupplierAgencySettlementDetail($midocoSupplierAgencySettlementDetail)
@@ -65,18 +66,22 @@ class UpdateSupplierAgencySettlementDetailRequest extends AbstractStructBase
      * Get MidocoSupplierAgencySettlementDetails value
      * @return \Pggns\MidocoApi\Order\StructType\SupplAgencySettlemDetDTO[]
      */
-    public function getMidocoSupplierAgencySettlementDetails(): array
+    public function getMidocoSupplierAgencySettlementDetails(): ?array
     {
         return $this->MidocoSupplierAgencySettlementDetails;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoSupplierAgencySettlementDetails method
+     * This method is responsible for validating the value(s) passed to the setMidocoSupplierAgencySettlementDetails method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoSupplierAgencySettlementDetails method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoSupplierAgencySettlementDetailsForArrayConstraintsFromSetMidocoSupplierAgencySettlementDetails(array $values = []): string
+    public static function validateMidocoSupplierAgencySettlementDetailsForArrayConstraintFromSetMidocoSupplierAgencySettlementDetails(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $updateSupplierAgencySettlementDetailRequestMidocoSupplierAgencySettlementDetailsItem) {
@@ -98,10 +103,10 @@ class UpdateSupplierAgencySettlementDetailRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\SupplAgencySettlemDetDTO[] $midocoSupplierAgencySettlementDetails
      * @return \Pggns\MidocoApi\Order\StructType\UpdateSupplierAgencySettlementDetailRequest
      */
-    public function setMidocoSupplierAgencySettlementDetails(array $midocoSupplierAgencySettlementDetails = []): self
+    public function setMidocoSupplierAgencySettlementDetails(?array $midocoSupplierAgencySettlementDetails = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoSupplierAgencySettlementDetailsArrayErrorMessage = self::validateMidocoSupplierAgencySettlementDetailsForArrayConstraintsFromSetMidocoSupplierAgencySettlementDetails($midocoSupplierAgencySettlementDetails))) {
+        if ('' !== ($midocoSupplierAgencySettlementDetailsArrayErrorMessage = self::validateMidocoSupplierAgencySettlementDetailsForArrayConstraintFromSetMidocoSupplierAgencySettlementDetails($midocoSupplierAgencySettlementDetails))) {
             throw new InvalidArgumentException($midocoSupplierAgencySettlementDetailsArrayErrorMessage, __LINE__);
         }
         $this->MidocoSupplierAgencySettlementDetails = $midocoSupplierAgencySettlementDetails;

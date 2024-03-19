@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CashTurnoverExportDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CashTurnoverExportDTO extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteCateringCodeRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteCateringCodeRequest extends AbstractStructBase
 {
     /**

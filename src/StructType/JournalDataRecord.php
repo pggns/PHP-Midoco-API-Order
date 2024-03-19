@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for JournalDataRecord StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class JournalDataRecord extends AbstractStructBase
 {
     /**
@@ -20,7 +21,7 @@ class JournalDataRecord extends AbstractStructBase
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\EntryBooking[]
      */
-    protected array $EntryBooking = [];
+    protected ?array $EntryBooking = null;
     /**
      * The CostCentreBooking
      * Meta information extracted from the WSDL
@@ -28,7 +29,7 @@ class JournalDataRecord extends AbstractStructBase
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\CostCentreBooking[]
      */
-    protected array $CostCentreBooking = [];
+    protected ?array $CostCentreBooking = null;
     /**
      * The journalId
      * Meta information extracted from the WSDL
@@ -185,7 +186,7 @@ class JournalDataRecord extends AbstractStructBase
      * @param int $bookingPeriod
      * @param int $bookingYear
      */
-    public function __construct(array $entryBooking = [], array $costCentreBooking = [], ?int $journalId = null, ?string $receiptNo = null, ?string $receiptDate = null, ?string $mainAccount = null, ?string $oppositeAccount = null, ?string $debitCreditIndicator = null, ?float $bookingAmount = null, ?string $vatType = null, ?float $vatPercent = null, ?float $vatAmount = null, ?string $vatCountry = null, ?float $reverseChargePercent = null, ?string $bookingText = null, ?string $originalcurrency = null, ?float $originalAmount = null, ?int $bookingPeriod = null, ?int $bookingYear = null)
+    public function __construct(?array $entryBooking = null, ?array $costCentreBooking = null, ?int $journalId = null, ?string $receiptNo = null, ?string $receiptDate = null, ?string $mainAccount = null, ?string $oppositeAccount = null, ?string $debitCreditIndicator = null, ?float $bookingAmount = null, ?string $vatType = null, ?float $vatPercent = null, ?float $vatAmount = null, ?string $vatCountry = null, ?float $reverseChargePercent = null, ?string $bookingText = null, ?string $originalcurrency = null, ?float $originalAmount = null, ?int $bookingPeriod = null, ?int $bookingYear = null)
     {
         $this
             ->setEntryBooking($entryBooking)
@@ -212,18 +213,22 @@ class JournalDataRecord extends AbstractStructBase
      * Get EntryBooking value
      * @return \Pggns\MidocoApi\Order\StructType\EntryBooking[]
      */
-    public function getEntryBooking(): array
+    public function getEntryBooking(): ?array
     {
         return $this->EntryBooking;
     }
     /**
-     * This method is responsible for validating the values passed to the setEntryBooking method
+     * This method is responsible for validating the value(s) passed to the setEntryBooking method
      * This method is willingly generated in order to preserve the one-line inline validation within the setEntryBooking method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateEntryBookingForArrayConstraintsFromSetEntryBooking(array $values = []): string
+    public static function validateEntryBookingForArrayConstraintFromSetEntryBooking(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $journalDataRecordEntryBookingItem) {
@@ -245,10 +250,10 @@ class JournalDataRecord extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\EntryBooking[] $entryBooking
      * @return \Pggns\MidocoApi\Order\StructType\JournalDataRecord
      */
-    public function setEntryBooking(array $entryBooking = []): self
+    public function setEntryBooking(?array $entryBooking = null): self
     {
         // validation for constraint: array
-        if ('' !== ($entryBookingArrayErrorMessage = self::validateEntryBookingForArrayConstraintsFromSetEntryBooking($entryBooking))) {
+        if ('' !== ($entryBookingArrayErrorMessage = self::validateEntryBookingForArrayConstraintFromSetEntryBooking($entryBooking))) {
             throw new InvalidArgumentException($entryBookingArrayErrorMessage, __LINE__);
         }
         $this->EntryBooking = $entryBooking;
@@ -275,18 +280,22 @@ class JournalDataRecord extends AbstractStructBase
      * Get CostCentreBooking value
      * @return \Pggns\MidocoApi\Order\StructType\CostCentreBooking[]
      */
-    public function getCostCentreBooking(): array
+    public function getCostCentreBooking(): ?array
     {
         return $this->CostCentreBooking;
     }
     /**
-     * This method is responsible for validating the values passed to the setCostCentreBooking method
+     * This method is responsible for validating the value(s) passed to the setCostCentreBooking method
      * This method is willingly generated in order to preserve the one-line inline validation within the setCostCentreBooking method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateCostCentreBookingForArrayConstraintsFromSetCostCentreBooking(array $values = []): string
+    public static function validateCostCentreBookingForArrayConstraintFromSetCostCentreBooking(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $journalDataRecordCostCentreBookingItem) {
@@ -308,10 +317,10 @@ class JournalDataRecord extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\CostCentreBooking[] $costCentreBooking
      * @return \Pggns\MidocoApi\Order\StructType\JournalDataRecord
      */
-    public function setCostCentreBooking(array $costCentreBooking = []): self
+    public function setCostCentreBooking(?array $costCentreBooking = null): self
     {
         // validation for constraint: array
-        if ('' !== ($costCentreBookingArrayErrorMessage = self::validateCostCentreBookingForArrayConstraintsFromSetCostCentreBooking($costCentreBooking))) {
+        if ('' !== ($costCentreBookingArrayErrorMessage = self::validateCostCentreBookingForArrayConstraintFromSetCostCentreBooking($costCentreBooking))) {
             throw new InvalidArgumentException($costCentreBookingArrayErrorMessage, __LINE__);
         }
         $this->CostCentreBooking = $costCentreBooking;

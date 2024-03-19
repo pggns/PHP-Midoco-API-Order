@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoSupplierCancelCondition StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoSupplierCancelCondition extends SupplierCancelConditionDTO
 {
     /**

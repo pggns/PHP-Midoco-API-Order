@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetOrderPaymentPaycodesResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetOrderPaymentPaycodesResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetOrderPaymentPaycodesResponse extends AbstractStructBase
      * - ref: MidocoOrderPaymentPaycode
      * @var \Pggns\MidocoApi\Order\StructType\OrderPaymentPaycodeDTO[]
      */
-    protected array $MidocoOrderPaymentPaycode = [];
+    protected ?array $MidocoOrderPaymentPaycode = null;
     /**
      * Constructor method for GetOrderPaymentPaycodesResponse
      * @uses GetOrderPaymentPaycodesResponse::setMidocoOrderPaymentPaycode()
      * @param \Pggns\MidocoApi\Order\StructType\OrderPaymentPaycodeDTO[] $midocoOrderPaymentPaycode
      */
-    public function __construct(array $midocoOrderPaymentPaycode = [])
+    public function __construct(?array $midocoOrderPaymentPaycode = null)
     {
         $this
             ->setMidocoOrderPaymentPaycode($midocoOrderPaymentPaycode);
@@ -36,18 +37,22 @@ class GetOrderPaymentPaycodesResponse extends AbstractStructBase
      * Get MidocoOrderPaymentPaycode value
      * @return \Pggns\MidocoApi\Order\StructType\OrderPaymentPaycodeDTO[]
      */
-    public function getMidocoOrderPaymentPaycode(): array
+    public function getMidocoOrderPaymentPaycode(): ?array
     {
         return $this->MidocoOrderPaymentPaycode;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoOrderPaymentPaycode method
+     * This method is responsible for validating the value(s) passed to the setMidocoOrderPaymentPaycode method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoOrderPaymentPaycode method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoOrderPaymentPaycodeForArrayConstraintsFromSetMidocoOrderPaymentPaycode(array $values = []): string
+    public static function validateMidocoOrderPaymentPaycodeForArrayConstraintFromSetMidocoOrderPaymentPaycode(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getOrderPaymentPaycodesResponseMidocoOrderPaymentPaycodeItem) {
@@ -69,10 +74,10 @@ class GetOrderPaymentPaycodesResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\OrderPaymentPaycodeDTO[] $midocoOrderPaymentPaycode
      * @return \Pggns\MidocoApi\Order\StructType\GetOrderPaymentPaycodesResponse
      */
-    public function setMidocoOrderPaymentPaycode(array $midocoOrderPaymentPaycode = []): self
+    public function setMidocoOrderPaymentPaycode(?array $midocoOrderPaymentPaycode = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoOrderPaymentPaycodeArrayErrorMessage = self::validateMidocoOrderPaymentPaycodeForArrayConstraintsFromSetMidocoOrderPaymentPaycode($midocoOrderPaymentPaycode))) {
+        if ('' !== ($midocoOrderPaymentPaycodeArrayErrorMessage = self::validateMidocoOrderPaymentPaycodeForArrayConstraintFromSetMidocoOrderPaymentPaycode($midocoOrderPaymentPaycode))) {
             throw new InvalidArgumentException($midocoOrderPaymentPaycodeArrayErrorMessage, __LINE__);
         }
         $this->MidocoOrderPaymentPaycode = $midocoOrderPaymentPaycode;

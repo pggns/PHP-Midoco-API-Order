@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for itemAttr StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ItemAttr extends AbstractStructBase
 {
     /**

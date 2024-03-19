@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetOrderAndCrmContactHistoryResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetOrderAndCrmContactHistoryResponse extends AbstractStructBase
 {
     /**
@@ -21,7 +22,7 @@ class GetOrderAndCrmContactHistoryResponse extends AbstractStructBase
      * - ref: MidocoOrderContactHistory
      * @var \Pggns\MidocoApi\Order\StructType\MidocoOrderContactHistory[]
      */
-    protected array $MidocoOrderContactHistory = [];
+    protected ?array $MidocoOrderContactHistory = null;
     /**
      * The MidocoContactHistory
      * Meta information extracted from the WSDL
@@ -30,7 +31,7 @@ class GetOrderAndCrmContactHistoryResponse extends AbstractStructBase
      * - ref: crm:MidocoContactHistory
      * @var \Pggns\MidocoApi\Order\StructType\MidocoContactHistory[]
      */
-    protected array $MidocoContactHistory = [];
+    protected ?array $MidocoContactHistory = null;
     /**
      * Constructor method for GetOrderAndCrmContactHistoryResponse
      * @uses GetOrderAndCrmContactHistoryResponse::setMidocoOrderContactHistory()
@@ -38,7 +39,7 @@ class GetOrderAndCrmContactHistoryResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoOrderContactHistory[] $midocoOrderContactHistory
      * @param \Pggns\MidocoApi\Order\StructType\MidocoContactHistory[] $midocoContactHistory
      */
-    public function __construct(array $midocoOrderContactHistory = [], array $midocoContactHistory = [])
+    public function __construct(?array $midocoOrderContactHistory = null, ?array $midocoContactHistory = null)
     {
         $this
             ->setMidocoOrderContactHistory($midocoOrderContactHistory)
@@ -48,18 +49,22 @@ class GetOrderAndCrmContactHistoryResponse extends AbstractStructBase
      * Get MidocoOrderContactHistory value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoOrderContactHistory[]
      */
-    public function getMidocoOrderContactHistory(): array
+    public function getMidocoOrderContactHistory(): ?array
     {
         return $this->MidocoOrderContactHistory;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoOrderContactHistory method
+     * This method is responsible for validating the value(s) passed to the setMidocoOrderContactHistory method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoOrderContactHistory method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoOrderContactHistoryForArrayConstraintsFromSetMidocoOrderContactHistory(array $values = []): string
+    public static function validateMidocoOrderContactHistoryForArrayConstraintFromSetMidocoOrderContactHistory(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getOrderAndCrmContactHistoryResponseMidocoOrderContactHistoryItem) {
@@ -81,10 +86,10 @@ class GetOrderAndCrmContactHistoryResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoOrderContactHistory[] $midocoOrderContactHistory
      * @return \Pggns\MidocoApi\Order\StructType\GetOrderAndCrmContactHistoryResponse
      */
-    public function setMidocoOrderContactHistory(array $midocoOrderContactHistory = []): self
+    public function setMidocoOrderContactHistory(?array $midocoOrderContactHistory = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoOrderContactHistoryArrayErrorMessage = self::validateMidocoOrderContactHistoryForArrayConstraintsFromSetMidocoOrderContactHistory($midocoOrderContactHistory))) {
+        if ('' !== ($midocoOrderContactHistoryArrayErrorMessage = self::validateMidocoOrderContactHistoryForArrayConstraintFromSetMidocoOrderContactHistory($midocoOrderContactHistory))) {
             throw new InvalidArgumentException($midocoOrderContactHistoryArrayErrorMessage, __LINE__);
         }
         $this->MidocoOrderContactHistory = $midocoOrderContactHistory;
@@ -111,18 +116,22 @@ class GetOrderAndCrmContactHistoryResponse extends AbstractStructBase
      * Get MidocoContactHistory value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoContactHistory[]
      */
-    public function getMidocoContactHistory(): array
+    public function getMidocoContactHistory(): ?array
     {
         return $this->MidocoContactHistory;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoContactHistory method
+     * This method is responsible for validating the value(s) passed to the setMidocoContactHistory method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoContactHistory method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoContactHistoryForArrayConstraintsFromSetMidocoContactHistory(array $values = []): string
+    public static function validateMidocoContactHistoryForArrayConstraintFromSetMidocoContactHistory(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getOrderAndCrmContactHistoryResponseMidocoContactHistoryItem) {
@@ -144,10 +153,10 @@ class GetOrderAndCrmContactHistoryResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoContactHistory[] $midocoContactHistory
      * @return \Pggns\MidocoApi\Order\StructType\GetOrderAndCrmContactHistoryResponse
      */
-    public function setMidocoContactHistory(array $midocoContactHistory = []): self
+    public function setMidocoContactHistory(?array $midocoContactHistory = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoContactHistoryArrayErrorMessage = self::validateMidocoContactHistoryForArrayConstraintsFromSetMidocoContactHistory($midocoContactHistory))) {
+        if ('' !== ($midocoContactHistoryArrayErrorMessage = self::validateMidocoContactHistoryForArrayConstraintFromSetMidocoContactHistory($midocoContactHistory))) {
             throw new InvalidArgumentException($midocoContactHistoryArrayErrorMessage, __LINE__);
         }
         $this->MidocoContactHistory = $midocoContactHistory;

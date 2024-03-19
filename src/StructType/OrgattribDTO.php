@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for OrgattribDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class OrgattribDTO extends AbstractStructBase
 {
     /**

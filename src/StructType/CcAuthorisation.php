@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: reference to external ccAuthorisation information, not executed inside of midoco, can be used in later capture using cc payment
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CcAuthorisation extends AbstractStructBase
 {
     /**

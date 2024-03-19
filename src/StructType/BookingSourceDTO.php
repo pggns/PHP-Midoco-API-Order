@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for BookingSourceDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class BookingSourceDTO extends AbstractStructBase
 {
     /**

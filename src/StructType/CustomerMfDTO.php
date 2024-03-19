@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CustomerMfDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CustomerMfDTO extends AbstractStructBase
 {
     /**
@@ -34,10 +35,30 @@ class CustomerMfDTO extends AbstractStructBase
      */
     protected ?int $customerId = null;
     /**
+     * The dataType
+     * @var int|null
+     */
+    protected ?int $dataType = null;
+    /**
+     * The hasAllowedValues
+     * @var bool|null
+     */
+    protected ?bool $hasAllowedValues = null;
+    /**
      * The isOptional
      * @var bool|null
      */
     protected ?bool $isOptional = null;
+    /**
+     * The maxLength
+     * @var int|null
+     */
+    protected ?int $maxLength = null;
+    /**
+     * The minLength
+     * @var int|null
+     */
+    protected ?int $minLength = null;
     /**
      * The onlyNumeric
      * @var bool|null
@@ -64,6 +85,11 @@ class CustomerMfDTO extends AbstractStructBase
      */
     protected ?string $printingLabel = null;
     /**
+     * The regexPattern
+     * @var string|null
+     */
+    protected ?string $regexPattern = null;
+    /**
      * The validFrom
      * @var string|null
      */
@@ -79,40 +105,55 @@ class CustomerMfDTO extends AbstractStructBase
      * @uses CustomerMfDTO::setBean()
      * @uses CustomerMfDTO::setClassName()
      * @uses CustomerMfDTO::setCustomerId()
+     * @uses CustomerMfDTO::setDataType()
+     * @uses CustomerMfDTO::setHasAllowedValues()
      * @uses CustomerMfDTO::setIsOptional()
+     * @uses CustomerMfDTO::setMaxLength()
+     * @uses CustomerMfDTO::setMinLength()
      * @uses CustomerMfDTO::setOnlyNumeric()
      * @uses CustomerMfDTO::setPresetContent()
      * @uses CustomerMfDTO::setPresetValue()
      * @uses CustomerMfDTO::setPrintEnforced()
      * @uses CustomerMfDTO::setPrintingLabel()
+     * @uses CustomerMfDTO::setRegexPattern()
      * @uses CustomerMfDTO::setValidFrom()
      * @uses CustomerMfDTO::setValidTo()
      * @param string $attrName
      * @param string $bean
      * @param string $className
      * @param int $customerId
+     * @param int $dataType
+     * @param bool $hasAllowedValues
      * @param bool $isOptional
+     * @param int $maxLength
+     * @param int $minLength
      * @param bool $onlyNumeric
      * @param bool $presetContent
      * @param string $presetValue
      * @param bool $printEnforced
      * @param string $printingLabel
+     * @param string $regexPattern
      * @param string $validFrom
      * @param string $validTo
      */
-    public function __construct(?string $attrName = null, ?string $bean = null, ?string $className = null, ?int $customerId = null, ?bool $isOptional = null, ?bool $onlyNumeric = null, ?bool $presetContent = null, ?string $presetValue = null, ?bool $printEnforced = null, ?string $printingLabel = null, ?string $validFrom = null, ?string $validTo = null)
+    public function __construct(?string $attrName = null, ?string $bean = null, ?string $className = null, ?int $customerId = null, ?int $dataType = null, ?bool $hasAllowedValues = null, ?bool $isOptional = null, ?int $maxLength = null, ?int $minLength = null, ?bool $onlyNumeric = null, ?bool $presetContent = null, ?string $presetValue = null, ?bool $printEnforced = null, ?string $printingLabel = null, ?string $regexPattern = null, ?string $validFrom = null, ?string $validTo = null)
     {
         $this
             ->setAttrName($attrName)
             ->setBean($bean)
             ->setClassName($className)
             ->setCustomerId($customerId)
+            ->setDataType($dataType)
+            ->setHasAllowedValues($hasAllowedValues)
             ->setIsOptional($isOptional)
+            ->setMaxLength($maxLength)
+            ->setMinLength($minLength)
             ->setOnlyNumeric($onlyNumeric)
             ->setPresetContent($presetContent)
             ->setPresetValue($presetValue)
             ->setPrintEnforced($printEnforced)
             ->setPrintingLabel($printingLabel)
+            ->setRegexPattern($regexPattern)
             ->setValidFrom($validFrom)
             ->setValidTo($validTo);
     }
@@ -209,6 +250,52 @@ class CustomerMfDTO extends AbstractStructBase
         return $this;
     }
     /**
+     * Get dataType value
+     * @return int|null
+     */
+    public function getDataType(): ?int
+    {
+        return $this->dataType;
+    }
+    /**
+     * Set dataType value
+     * @param int $dataType
+     * @return \Pggns\MidocoApi\Order\StructType\CustomerMfDTO
+     */
+    public function setDataType(?int $dataType = null): self
+    {
+        // validation for constraint: int
+        if (!is_null($dataType) && !(is_int($dataType) || ctype_digit($dataType))) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($dataType, true), gettype($dataType)), __LINE__);
+        }
+        $this->dataType = $dataType;
+        
+        return $this;
+    }
+    /**
+     * Get hasAllowedValues value
+     * @return bool|null
+     */
+    public function getHasAllowedValues(): ?bool
+    {
+        return $this->hasAllowedValues;
+    }
+    /**
+     * Set hasAllowedValues value
+     * @param bool $hasAllowedValues
+     * @return \Pggns\MidocoApi\Order\StructType\CustomerMfDTO
+     */
+    public function setHasAllowedValues(?bool $hasAllowedValues = null): self
+    {
+        // validation for constraint: boolean
+        if (!is_null($hasAllowedValues) && !is_bool($hasAllowedValues)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($hasAllowedValues, true), gettype($hasAllowedValues)), __LINE__);
+        }
+        $this->hasAllowedValues = $hasAllowedValues;
+        
+        return $this;
+    }
+    /**
      * Get isOptional value
      * @return bool|null
      */
@@ -228,6 +315,52 @@ class CustomerMfDTO extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($isOptional, true), gettype($isOptional)), __LINE__);
         }
         $this->isOptional = $isOptional;
+        
+        return $this;
+    }
+    /**
+     * Get maxLength value
+     * @return int|null
+     */
+    public function getMaxLength(): ?int
+    {
+        return $this->maxLength;
+    }
+    /**
+     * Set maxLength value
+     * @param int $maxLength
+     * @return \Pggns\MidocoApi\Order\StructType\CustomerMfDTO
+     */
+    public function setMaxLength(?int $maxLength = null): self
+    {
+        // validation for constraint: int
+        if (!is_null($maxLength) && !(is_int($maxLength) || ctype_digit($maxLength))) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($maxLength, true), gettype($maxLength)), __LINE__);
+        }
+        $this->maxLength = $maxLength;
+        
+        return $this;
+    }
+    /**
+     * Get minLength value
+     * @return int|null
+     */
+    public function getMinLength(): ?int
+    {
+        return $this->minLength;
+    }
+    /**
+     * Set minLength value
+     * @param int $minLength
+     * @return \Pggns\MidocoApi\Order\StructType\CustomerMfDTO
+     */
+    public function setMinLength(?int $minLength = null): self
+    {
+        // validation for constraint: int
+        if (!is_null($minLength) && !(is_int($minLength) || ctype_digit($minLength))) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($minLength, true), gettype($minLength)), __LINE__);
+        }
+        $this->minLength = $minLength;
         
         return $this;
     }
@@ -343,6 +476,29 @@ class CustomerMfDTO extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($printingLabel, true), gettype($printingLabel)), __LINE__);
         }
         $this->printingLabel = $printingLabel;
+        
+        return $this;
+    }
+    /**
+     * Get regexPattern value
+     * @return string|null
+     */
+    public function getRegexPattern(): ?string
+    {
+        return $this->regexPattern;
+    }
+    /**
+     * Set regexPattern value
+     * @param string $regexPattern
+     * @return \Pggns\MidocoApi\Order\StructType\CustomerMfDTO
+     */
+    public function setRegexPattern(?string $regexPattern = null): self
+    {
+        // validation for constraint: string
+        if (!is_null($regexPattern) && !is_string($regexPattern)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($regexPattern, true), gettype($regexPattern)), __LINE__);
+        }
+        $this->regexPattern = $regexPattern;
         
         return $this;
     }

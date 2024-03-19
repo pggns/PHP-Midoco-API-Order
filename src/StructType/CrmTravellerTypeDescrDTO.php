@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CrmTravellerTypeDescrDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CrmTravellerTypeDescrDTO extends AbstractStructBase
 {
     /**

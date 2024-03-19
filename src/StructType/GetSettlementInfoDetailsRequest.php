@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetSettlementInfoDetailsRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetSettlementInfoDetailsRequest extends AbstractStructBase
 {
     /**

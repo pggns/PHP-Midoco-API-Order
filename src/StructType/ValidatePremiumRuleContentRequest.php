@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ValidatePremiumRuleContentRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ValidatePremiumRuleContentRequest extends AbstractStructBase
 {
     /**
@@ -20,7 +21,7 @@ class ValidatePremiumRuleContentRequest extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $orgunit = [];
+    protected ?array $orgunit = null;
     /**
      * The rulebase
      * Meta information extracted from the WSDL
@@ -28,7 +29,7 @@ class ValidatePremiumRuleContentRequest extends AbstractStructBase
      * - minOccurs: 0
      * @var float[]
      */
-    protected array $rulebase = [];
+    protected ?array $rulebase = null;
     /**
      * The ruleContent
      * @var string|null
@@ -43,7 +44,7 @@ class ValidatePremiumRuleContentRequest extends AbstractStructBase
      * @param float[] $rulebase
      * @param string $ruleContent
      */
-    public function __construct(array $orgunit = [], array $rulebase = [], ?string $ruleContent = null)
+    public function __construct(?array $orgunit = null, ?array $rulebase = null, ?string $ruleContent = null)
     {
         $this
             ->setOrgunit($orgunit)
@@ -54,18 +55,22 @@ class ValidatePremiumRuleContentRequest extends AbstractStructBase
      * Get orgunit value
      * @return string[]
      */
-    public function getOrgunit(): array
+    public function getOrgunit(): ?array
     {
         return $this->orgunit;
     }
     /**
-     * This method is responsible for validating the values passed to the setOrgunit method
+     * This method is responsible for validating the value(s) passed to the setOrgunit method
      * This method is willingly generated in order to preserve the one-line inline validation within the setOrgunit method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateOrgunitForArrayConstraintsFromSetOrgunit(array $values = []): string
+    public static function validateOrgunitForArrayConstraintFromSetOrgunit(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $validatePremiumRuleContentRequestOrgunitItem) {
@@ -87,10 +92,10 @@ class ValidatePremiumRuleContentRequest extends AbstractStructBase
      * @param string[] $orgunit
      * @return \Pggns\MidocoApi\Order\StructType\ValidatePremiumRuleContentRequest
      */
-    public function setOrgunit(array $orgunit = []): self
+    public function setOrgunit(?array $orgunit = null): self
     {
         // validation for constraint: array
-        if ('' !== ($orgunitArrayErrorMessage = self::validateOrgunitForArrayConstraintsFromSetOrgunit($orgunit))) {
+        if ('' !== ($orgunitArrayErrorMessage = self::validateOrgunitForArrayConstraintFromSetOrgunit($orgunit))) {
             throw new InvalidArgumentException($orgunitArrayErrorMessage, __LINE__);
         }
         $this->orgunit = $orgunit;
@@ -117,18 +122,22 @@ class ValidatePremiumRuleContentRequest extends AbstractStructBase
      * Get rulebase value
      * @return float[]
      */
-    public function getRulebase(): array
+    public function getRulebase(): ?array
     {
         return $this->rulebase;
     }
     /**
-     * This method is responsible for validating the values passed to the setRulebase method
+     * This method is responsible for validating the value(s) passed to the setRulebase method
      * This method is willingly generated in order to preserve the one-line inline validation within the setRulebase method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateRulebaseForArrayConstraintsFromSetRulebase(array $values = []): string
+    public static function validateRulebaseForArrayConstraintFromSetRulebase(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $validatePremiumRuleContentRequestRulebaseItem) {
@@ -150,10 +159,10 @@ class ValidatePremiumRuleContentRequest extends AbstractStructBase
      * @param float[] $rulebase
      * @return \Pggns\MidocoApi\Order\StructType\ValidatePremiumRuleContentRequest
      */
-    public function setRulebase(array $rulebase = []): self
+    public function setRulebase(?array $rulebase = null): self
     {
         // validation for constraint: array
-        if ('' !== ($rulebaseArrayErrorMessage = self::validateRulebaseForArrayConstraintsFromSetRulebase($rulebase))) {
+        if ('' !== ($rulebaseArrayErrorMessage = self::validateRulebaseForArrayConstraintFromSetRulebase($rulebase))) {
             throw new InvalidArgumentException($rulebaseArrayErrorMessage, __LINE__);
         }
         $this->rulebase = $rulebase;

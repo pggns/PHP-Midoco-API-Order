@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: searchMediatorSettlementInfo - lists the settlements info
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchMediatorSettlementInfoRequest extends AbstractStructBase
 {
     /**
@@ -95,7 +96,7 @@ class SearchMediatorSettlementInfoRequest extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($fromDate, true), gettype($fromDate)), __LINE__);
         }
         // validation for constraint: pattern(dd.MM.yyyy)
-        if (!is_null($fromDate) && !preg_match('/dd.MM.yyyy/', $fromDate)) {
+        if (!is_null($fromDate) && !preg_match('/dd.MM.yyyy/', (string) $fromDate)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /dd.MM.yyyy/', var_export($fromDate, true)), __LINE__);
         }
         $this->fromDate = $fromDate;
@@ -122,7 +123,7 @@ class SearchMediatorSettlementInfoRequest extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($toDate, true), gettype($toDate)), __LINE__);
         }
         // validation for constraint: pattern(dd.MM.yyyy)
-        if (!is_null($toDate) && !preg_match('/dd.MM.yyyy/', $toDate)) {
+        if (!is_null($toDate) && !preg_match('/dd.MM.yyyy/', (string) $toDate)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /dd.MM.yyyy/', var_export($toDate, true)), __LINE__);
         }
         $this->toDate = $toDate;

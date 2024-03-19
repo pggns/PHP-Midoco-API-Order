@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for cc-token StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class Cc_token extends AbstractStructBase
 {
     /**
@@ -38,7 +39,7 @@ class Cc_token extends AbstractStructBase
      * - ref: token-attributes
      * @var \Pggns\MidocoApi\Order\StructType\Token_attributes[]
      */
-    protected array $token_attributes = [];
+    protected ?array $token_attributes = null;
     /**
      * Constructor method for cc-token
      * @uses Cc_token::setValue()
@@ -50,7 +51,7 @@ class Cc_token extends AbstractStructBase
      * @param bool $is_recurring
      * @param \Pggns\MidocoApi\Order\StructType\Token_attributes[] $token_attributes
      */
-    public function __construct(?string $value = null, ?string $cc_token_type = null, ?bool $is_recurring = null, array $token_attributes = [])
+    public function __construct(?string $value = null, ?string $cc_token_type = null, ?bool $is_recurring = null, ?array $token_attributes = null)
     {
         $this
             ->setValue($value)
@@ -134,18 +135,22 @@ class Cc_token extends AbstractStructBase
      * Get token_attributes value
      * @return \Pggns\MidocoApi\Order\StructType\Token_attributes[]
      */
-    public function getToken_attributes(): array
+    public function getToken_attributes(): ?array
     {
         return $this->{'token-attributes'};
     }
     /**
-     * This method is responsible for validating the values passed to the setToken_attributes method
+     * This method is responsible for validating the value(s) passed to the setToken_attributes method
      * This method is willingly generated in order to preserve the one-line inline validation within the setToken_attributes method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateToken_attributesForArrayConstraintsFromSetToken_attributes(array $values = []): string
+    public static function validateToken_attributesForArrayConstraintFromSetToken_attributes(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $cc_tokenToken_attributesItem) {
@@ -167,10 +172,10 @@ class Cc_token extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\Token_attributes[] $token_attributes
      * @return \Pggns\MidocoApi\Order\StructType\Cc_token
      */
-    public function setToken_attributes(array $token_attributes = []): self
+    public function setToken_attributes(?array $token_attributes = null): self
     {
         // validation for constraint: array
-        if ('' !== ($token_attributesArrayErrorMessage = self::validateToken_attributesForArrayConstraintsFromSetToken_attributes($token_attributes))) {
+        if ('' !== ($token_attributesArrayErrorMessage = self::validateToken_attributesForArrayConstraintFromSetToken_attributes($token_attributes))) {
             throw new InvalidArgumentException($token_attributesArrayErrorMessage, __LINE__);
         }
         // validation for constraint: maxOccurs(3)

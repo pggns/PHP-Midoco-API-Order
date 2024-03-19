@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetAllAssignedAdapters4OrgUnitResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetAllAssignedAdapters4OrgUnitResponse extends AbstractStructBase
 {
     /**
@@ -21,7 +22,7 @@ class GetAllAssignedAdapters4OrgUnitResponse extends AbstractStructBase
      * - ref: MidocoAdapter
      * @var \Pggns\MidocoApi\Order\StructType\MidocoAdapterType[]
      */
-    protected array $MidocoAdapter = [];
+    protected ?array $MidocoAdapter = null;
     /**
      * The MidocoAdapterAssign
      * Meta information extracted from the WSDL
@@ -30,7 +31,7 @@ class GetAllAssignedAdapters4OrgUnitResponse extends AbstractStructBase
      * - ref: MidocoAdapterAssign
      * @var \Pggns\MidocoApi\Order\StructType\AdapterAssignDTO[]
      */
-    protected array $MidocoAdapterAssign = [];
+    protected ?array $MidocoAdapterAssign = null;
     /**
      * Constructor method for GetAllAssignedAdapters4OrgUnitResponse
      * @uses GetAllAssignedAdapters4OrgUnitResponse::setMidocoAdapter()
@@ -38,7 +39,7 @@ class GetAllAssignedAdapters4OrgUnitResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoAdapterType[] $midocoAdapter
      * @param \Pggns\MidocoApi\Order\StructType\AdapterAssignDTO[] $midocoAdapterAssign
      */
-    public function __construct(array $midocoAdapter = [], array $midocoAdapterAssign = [])
+    public function __construct(?array $midocoAdapter = null, ?array $midocoAdapterAssign = null)
     {
         $this
             ->setMidocoAdapter($midocoAdapter)
@@ -48,18 +49,22 @@ class GetAllAssignedAdapters4OrgUnitResponse extends AbstractStructBase
      * Get MidocoAdapter value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoAdapterType[]
      */
-    public function getMidocoAdapter(): array
+    public function getMidocoAdapter(): ?array
     {
         return $this->MidocoAdapter;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoAdapter method
+     * This method is responsible for validating the value(s) passed to the setMidocoAdapter method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoAdapter method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoAdapterForArrayConstraintsFromSetMidocoAdapter(array $values = []): string
+    public static function validateMidocoAdapterForArrayConstraintFromSetMidocoAdapter(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getAllAssignedAdapters4OrgUnitResponseMidocoAdapterItem) {
@@ -81,10 +86,10 @@ class GetAllAssignedAdapters4OrgUnitResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoAdapterType[] $midocoAdapter
      * @return \Pggns\MidocoApi\Order\StructType\GetAllAssignedAdapters4OrgUnitResponse
      */
-    public function setMidocoAdapter(array $midocoAdapter = []): self
+    public function setMidocoAdapter(?array $midocoAdapter = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoAdapterArrayErrorMessage = self::validateMidocoAdapterForArrayConstraintsFromSetMidocoAdapter($midocoAdapter))) {
+        if ('' !== ($midocoAdapterArrayErrorMessage = self::validateMidocoAdapterForArrayConstraintFromSetMidocoAdapter($midocoAdapter))) {
             throw new InvalidArgumentException($midocoAdapterArrayErrorMessage, __LINE__);
         }
         $this->MidocoAdapter = $midocoAdapter;
@@ -111,18 +116,22 @@ class GetAllAssignedAdapters4OrgUnitResponse extends AbstractStructBase
      * Get MidocoAdapterAssign value
      * @return \Pggns\MidocoApi\Order\StructType\AdapterAssignDTO[]
      */
-    public function getMidocoAdapterAssign(): array
+    public function getMidocoAdapterAssign(): ?array
     {
         return $this->MidocoAdapterAssign;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoAdapterAssign method
+     * This method is responsible for validating the value(s) passed to the setMidocoAdapterAssign method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoAdapterAssign method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoAdapterAssignForArrayConstraintsFromSetMidocoAdapterAssign(array $values = []): string
+    public static function validateMidocoAdapterAssignForArrayConstraintFromSetMidocoAdapterAssign(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getAllAssignedAdapters4OrgUnitResponseMidocoAdapterAssignItem) {
@@ -144,10 +153,10 @@ class GetAllAssignedAdapters4OrgUnitResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\AdapterAssignDTO[] $midocoAdapterAssign
      * @return \Pggns\MidocoApi\Order\StructType\GetAllAssignedAdapters4OrgUnitResponse
      */
-    public function setMidocoAdapterAssign(array $midocoAdapterAssign = []): self
+    public function setMidocoAdapterAssign(?array $midocoAdapterAssign = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoAdapterAssignArrayErrorMessage = self::validateMidocoAdapterAssignForArrayConstraintsFromSetMidocoAdapterAssign($midocoAdapterAssign))) {
+        if ('' !== ($midocoAdapterAssignArrayErrorMessage = self::validateMidocoAdapterAssignForArrayConstraintFromSetMidocoAdapterAssign($midocoAdapterAssign))) {
             throw new InvalidArgumentException($midocoAdapterAssignArrayErrorMessage, __LINE__);
         }
         $this->MidocoAdapterAssign = $midocoAdapterAssign;

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SearchSupplierCcCardResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchSupplierCcCardResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class SearchSupplierCcCardResponse extends AbstractStructBase
      * - ref: MidocoSupplierCcCard
      * @var \Pggns\MidocoApi\Order\StructType\MidocoSupplierCcCard[]
      */
-    protected array $MidocoSupplierCcCard = [];
+    protected ?array $MidocoSupplierCcCard = null;
     /**
      * Constructor method for SearchSupplierCcCardResponse
      * @uses SearchSupplierCcCardResponse::setMidocoSupplierCcCard()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSupplierCcCard[] $midocoSupplierCcCard
      */
-    public function __construct(array $midocoSupplierCcCard = [])
+    public function __construct(?array $midocoSupplierCcCard = null)
     {
         $this
             ->setMidocoSupplierCcCard($midocoSupplierCcCard);
@@ -36,18 +37,22 @@ class SearchSupplierCcCardResponse extends AbstractStructBase
      * Get MidocoSupplierCcCard value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSupplierCcCard[]
      */
-    public function getMidocoSupplierCcCard(): array
+    public function getMidocoSupplierCcCard(): ?array
     {
         return $this->MidocoSupplierCcCard;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoSupplierCcCard method
+     * This method is responsible for validating the value(s) passed to the setMidocoSupplierCcCard method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoSupplierCcCard method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoSupplierCcCardForArrayConstraintsFromSetMidocoSupplierCcCard(array $values = []): string
+    public static function validateMidocoSupplierCcCardForArrayConstraintFromSetMidocoSupplierCcCard(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $searchSupplierCcCardResponseMidocoSupplierCcCardItem) {
@@ -69,10 +74,10 @@ class SearchSupplierCcCardResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSupplierCcCard[] $midocoSupplierCcCard
      * @return \Pggns\MidocoApi\Order\StructType\SearchSupplierCcCardResponse
      */
-    public function setMidocoSupplierCcCard(array $midocoSupplierCcCard = []): self
+    public function setMidocoSupplierCcCard(?array $midocoSupplierCcCard = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoSupplierCcCardArrayErrorMessage = self::validateMidocoSupplierCcCardForArrayConstraintsFromSetMidocoSupplierCcCard($midocoSupplierCcCard))) {
+        if ('' !== ($midocoSupplierCcCardArrayErrorMessage = self::validateMidocoSupplierCcCardForArrayConstraintFromSetMidocoSupplierCcCard($midocoSupplierCcCard))) {
             throw new InvalidArgumentException($midocoSupplierCcCardArrayErrorMessage, __LINE__);
         }
         $this->MidocoSupplierCcCard = $midocoSupplierCcCard;

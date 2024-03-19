@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SellItemHasPrinted StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SellItemHasPrinted extends AbstractStructBase
 {
     /**

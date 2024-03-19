@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ExecuteGroupAdvisorSettlementRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ExecuteGroupAdvisorSettlementRequest extends AbstractStructBase
 {
     /**

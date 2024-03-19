@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ExportTravelRegistrationResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ExportTravelRegistrationResponse extends AbstractStructBase
 {
     /**

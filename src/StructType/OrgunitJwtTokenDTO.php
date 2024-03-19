@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for OrgunitJwtTokenDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class OrgunitJwtTokenDTO extends AbstractStructBase
 {
     /**

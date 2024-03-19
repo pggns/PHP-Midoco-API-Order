@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetMidocoDestinationKeyResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetMidocoDestinationKeyResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetMidocoDestinationKeyResponse extends AbstractStructBase
      * - ref: MidocoDestinationKeyAssign
      * @var \Pggns\MidocoApi\Order\StructType\DestinationKeyAssignDTO[]
      */
-    protected array $MidocoDestinationKeyAssign = [];
+    protected ?array $MidocoDestinationKeyAssign = null;
     /**
      * Constructor method for GetMidocoDestinationKeyResponse
      * @uses GetMidocoDestinationKeyResponse::setMidocoDestinationKeyAssign()
      * @param \Pggns\MidocoApi\Order\StructType\DestinationKeyAssignDTO[] $midocoDestinationKeyAssign
      */
-    public function __construct(array $midocoDestinationKeyAssign = [])
+    public function __construct(?array $midocoDestinationKeyAssign = null)
     {
         $this
             ->setMidocoDestinationKeyAssign($midocoDestinationKeyAssign);
@@ -36,18 +37,22 @@ class GetMidocoDestinationKeyResponse extends AbstractStructBase
      * Get MidocoDestinationKeyAssign value
      * @return \Pggns\MidocoApi\Order\StructType\DestinationKeyAssignDTO[]
      */
-    public function getMidocoDestinationKeyAssign(): array
+    public function getMidocoDestinationKeyAssign(): ?array
     {
         return $this->MidocoDestinationKeyAssign;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoDestinationKeyAssign method
+     * This method is responsible for validating the value(s) passed to the setMidocoDestinationKeyAssign method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoDestinationKeyAssign method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoDestinationKeyAssignForArrayConstraintsFromSetMidocoDestinationKeyAssign(array $values = []): string
+    public static function validateMidocoDestinationKeyAssignForArrayConstraintFromSetMidocoDestinationKeyAssign(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getMidocoDestinationKeyResponseMidocoDestinationKeyAssignItem) {
@@ -69,10 +74,10 @@ class GetMidocoDestinationKeyResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\DestinationKeyAssignDTO[] $midocoDestinationKeyAssign
      * @return \Pggns\MidocoApi\Order\StructType\GetMidocoDestinationKeyResponse
      */
-    public function setMidocoDestinationKeyAssign(array $midocoDestinationKeyAssign = []): self
+    public function setMidocoDestinationKeyAssign(?array $midocoDestinationKeyAssign = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoDestinationKeyAssignArrayErrorMessage = self::validateMidocoDestinationKeyAssignForArrayConstraintsFromSetMidocoDestinationKeyAssign($midocoDestinationKeyAssign))) {
+        if ('' !== ($midocoDestinationKeyAssignArrayErrorMessage = self::validateMidocoDestinationKeyAssignForArrayConstraintFromSetMidocoDestinationKeyAssign($midocoDestinationKeyAssign))) {
             throw new InvalidArgumentException($midocoDestinationKeyAssignArrayErrorMessage, __LINE__);
         }
         $this->MidocoDestinationKeyAssign = $midocoDestinationKeyAssign;

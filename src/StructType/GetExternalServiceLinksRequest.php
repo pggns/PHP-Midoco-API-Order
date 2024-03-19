@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: Request all available ExternalServiceLinks based on the search criteria provided
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetExternalServiceLinksRequest extends AbstractStructBase
 {
     /**

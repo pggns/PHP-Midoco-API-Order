@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: Returns the requested and found Miles & More earn transactions. If none of the requested transactions can be found, an exception is thrown.
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetMilesAndMoreEarnTransactionResponse extends AbstractStructBase
 {
     /**
@@ -23,7 +24,7 @@ class GetMilesAndMoreEarnTransactionResponse extends AbstractStructBase
      * - ref: MidocoMilesAndMoreEarnTransaction
      * @var \Pggns\MidocoApi\Order\StructType\MidocoMilesAndMoreEarnTransaction[]
      */
-    protected array $MidocoMilesAndMoreEarnTransaction = [];
+    protected array $MidocoMilesAndMoreEarnTransaction;
     /**
      * Constructor method for GetMilesAndMoreEarnTransactionResponse
      * @uses GetMilesAndMoreEarnTransactionResponse::setMidocoMilesAndMoreEarnTransaction()
@@ -43,13 +44,17 @@ class GetMilesAndMoreEarnTransactionResponse extends AbstractStructBase
         return $this->MidocoMilesAndMoreEarnTransaction;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoMilesAndMoreEarnTransaction method
+     * This method is responsible for validating the value(s) passed to the setMidocoMilesAndMoreEarnTransaction method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoMilesAndMoreEarnTransaction method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoMilesAndMoreEarnTransactionForArrayConstraintsFromSetMidocoMilesAndMoreEarnTransaction(array $values = []): string
+    public static function validateMidocoMilesAndMoreEarnTransactionForArrayConstraintFromSetMidocoMilesAndMoreEarnTransaction(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getMilesAndMoreEarnTransactionResponseMidocoMilesAndMoreEarnTransactionItem) {
@@ -74,7 +79,7 @@ class GetMilesAndMoreEarnTransactionResponse extends AbstractStructBase
     public function setMidocoMilesAndMoreEarnTransaction(array $midocoMilesAndMoreEarnTransaction): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoMilesAndMoreEarnTransactionArrayErrorMessage = self::validateMidocoMilesAndMoreEarnTransactionForArrayConstraintsFromSetMidocoMilesAndMoreEarnTransaction($midocoMilesAndMoreEarnTransaction))) {
+        if ('' !== ($midocoMilesAndMoreEarnTransactionArrayErrorMessage = self::validateMidocoMilesAndMoreEarnTransactionForArrayConstraintFromSetMidocoMilesAndMoreEarnTransaction($midocoMilesAndMoreEarnTransaction))) {
             throw new InvalidArgumentException($midocoMilesAndMoreEarnTransactionArrayErrorMessage, __LINE__);
         }
         $this->MidocoMilesAndMoreEarnTransaction = $midocoMilesAndMoreEarnTransaction;

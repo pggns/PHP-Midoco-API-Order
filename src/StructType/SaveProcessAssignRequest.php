@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveProcessAssignRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveProcessAssignRequest extends AbstractStructBase
 {
     /**

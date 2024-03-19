@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for VoucherPaymentDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class VoucherPaymentDTO extends AbstractStructBase
 {
     /**

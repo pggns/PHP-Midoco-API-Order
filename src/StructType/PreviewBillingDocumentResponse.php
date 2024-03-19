@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: previewBillingDocument - the Printjob should be a preview on the screen. Only allowed if the document_no is not filled.
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class PreviewBillingDocumentResponse extends AbstractStructBase
 {
     /**

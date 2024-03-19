@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CrmBonusCardDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CrmBonusCardDTO extends AbstractStructBase
 {
     /**

@@ -12,6 +12,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteMidocoVatDivisionTemplatesForSupplierRequest extends AbstractStructBase
 {
     /**

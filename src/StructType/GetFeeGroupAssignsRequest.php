@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetFeeGroupAssignsRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetFeeGroupAssignsRequest extends AbstractStructBase
 {
     /**
@@ -27,7 +28,7 @@ class GetFeeGroupAssignsRequest extends AbstractStructBase
      * - minOccurs: 0
      * @var int[]
      */
-    protected array $groupId = [];
+    protected ?array $groupId = null;
     /**
      * The onlyFromOwnDb
      * Meta information extracted from the WSDL
@@ -44,7 +45,7 @@ class GetFeeGroupAssignsRequest extends AbstractStructBase
      * @param int[] $groupId
      * @param bool $onlyFromOwnDb
      */
-    public function __construct(?\Pggns\MidocoApi\Order\StructType\MidocoFeeGroupAssign $midocoFeeGroupAssign = null, array $groupId = [], ?bool $onlyFromOwnDb = false)
+    public function __construct(?\Pggns\MidocoApi\Order\StructType\MidocoFeeGroupAssign $midocoFeeGroupAssign = null, ?array $groupId = null, ?bool $onlyFromOwnDb = false)
     {
         $this
             ->setMidocoFeeGroupAssign($midocoFeeGroupAssign)
@@ -74,18 +75,22 @@ class GetFeeGroupAssignsRequest extends AbstractStructBase
      * Get groupId value
      * @return int[]
      */
-    public function getGroupId(): array
+    public function getGroupId(): ?array
     {
         return $this->groupId;
     }
     /**
-     * This method is responsible for validating the values passed to the setGroupId method
+     * This method is responsible for validating the value(s) passed to the setGroupId method
      * This method is willingly generated in order to preserve the one-line inline validation within the setGroupId method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateGroupIdForArrayConstraintsFromSetGroupId(array $values = []): string
+    public static function validateGroupIdForArrayConstraintFromSetGroupId(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getFeeGroupAssignsRequestGroupIdItem) {
@@ -107,10 +112,10 @@ class GetFeeGroupAssignsRequest extends AbstractStructBase
      * @param int[] $groupId
      * @return \Pggns\MidocoApi\Order\StructType\GetFeeGroupAssignsRequest
      */
-    public function setGroupId(array $groupId = []): self
+    public function setGroupId(?array $groupId = null): self
     {
         // validation for constraint: array
-        if ('' !== ($groupIdArrayErrorMessage = self::validateGroupIdForArrayConstraintsFromSetGroupId($groupId))) {
+        if ('' !== ($groupIdArrayErrorMessage = self::validateGroupIdForArrayConstraintFromSetGroupId($groupId))) {
             throw new InvalidArgumentException($groupIdArrayErrorMessage, __LINE__);
         }
         $this->groupId = $groupId;

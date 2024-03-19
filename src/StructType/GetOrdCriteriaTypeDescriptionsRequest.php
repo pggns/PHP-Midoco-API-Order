@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetOrdCriteriaTypeDescriptionsRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetOrdCriteriaTypeDescriptionsRequest extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetOrdCriteriaTypeDescriptionsRequest extends AbstractStructBase
      * - ref: MidocoOrdCriteriaType
      * @var \Pggns\MidocoApi\Order\StructType\MidocoOrdCriteriaType[]
      */
-    protected array $MidocoOrdCriteriaType = [];
+    protected ?array $MidocoOrdCriteriaType = null;
     /**
      * Constructor method for GetOrdCriteriaTypeDescriptionsRequest
      * @uses GetOrdCriteriaTypeDescriptionsRequest::setMidocoOrdCriteriaType()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoOrdCriteriaType[] $midocoOrdCriteriaType
      */
-    public function __construct(array $midocoOrdCriteriaType = [])
+    public function __construct(?array $midocoOrdCriteriaType = null)
     {
         $this
             ->setMidocoOrdCriteriaType($midocoOrdCriteriaType);
@@ -36,18 +37,22 @@ class GetOrdCriteriaTypeDescriptionsRequest extends AbstractStructBase
      * Get MidocoOrdCriteriaType value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoOrdCriteriaType[]
      */
-    public function getMidocoOrdCriteriaType(): array
+    public function getMidocoOrdCriteriaType(): ?array
     {
         return $this->MidocoOrdCriteriaType;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoOrdCriteriaType method
+     * This method is responsible for validating the value(s) passed to the setMidocoOrdCriteriaType method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoOrdCriteriaType method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoOrdCriteriaTypeForArrayConstraintsFromSetMidocoOrdCriteriaType(array $values = []): string
+    public static function validateMidocoOrdCriteriaTypeForArrayConstraintFromSetMidocoOrdCriteriaType(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getOrdCriteriaTypeDescriptionsRequestMidocoOrdCriteriaTypeItem) {
@@ -69,10 +74,10 @@ class GetOrdCriteriaTypeDescriptionsRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoOrdCriteriaType[] $midocoOrdCriteriaType
      * @return \Pggns\MidocoApi\Order\StructType\GetOrdCriteriaTypeDescriptionsRequest
      */
-    public function setMidocoOrdCriteriaType(array $midocoOrdCriteriaType = []): self
+    public function setMidocoOrdCriteriaType(?array $midocoOrdCriteriaType = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoOrdCriteriaTypeArrayErrorMessage = self::validateMidocoOrdCriteriaTypeForArrayConstraintsFromSetMidocoOrdCriteriaType($midocoOrdCriteriaType))) {
+        if ('' !== ($midocoOrdCriteriaTypeArrayErrorMessage = self::validateMidocoOrdCriteriaTypeForArrayConstraintFromSetMidocoOrdCriteriaType($midocoOrdCriteriaType))) {
             throw new InvalidArgumentException($midocoOrdCriteriaTypeArrayErrorMessage, __LINE__);
         }
         $this->MidocoOrdCriteriaType = $midocoOrdCriteriaType;

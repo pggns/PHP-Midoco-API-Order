@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MediatorSettlementPosiDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MediatorSettlementPosiDTO extends AbstractStructBase
 {
     /**

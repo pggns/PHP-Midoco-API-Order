@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteOrderLayoutRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteOrderLayoutRequest extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class DeleteOrderLayoutRequest extends AbstractStructBase
      * - ref: MidocoOrderLayout
      * @var \Pggns\MidocoApi\Order\StructType\MidocoOrderLayout[]
      */
-    protected array $MidocoOrderLayout = [];
+    protected ?array $MidocoOrderLayout = null;
     /**
      * Constructor method for DeleteOrderLayoutRequest
      * @uses DeleteOrderLayoutRequest::setMidocoOrderLayout()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoOrderLayout[] $midocoOrderLayout
      */
-    public function __construct(array $midocoOrderLayout = [])
+    public function __construct(?array $midocoOrderLayout = null)
     {
         $this
             ->setMidocoOrderLayout($midocoOrderLayout);
@@ -36,18 +37,22 @@ class DeleteOrderLayoutRequest extends AbstractStructBase
      * Get MidocoOrderLayout value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoOrderLayout[]
      */
-    public function getMidocoOrderLayout(): array
+    public function getMidocoOrderLayout(): ?array
     {
         return $this->MidocoOrderLayout;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoOrderLayout method
+     * This method is responsible for validating the value(s) passed to the setMidocoOrderLayout method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoOrderLayout method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoOrderLayoutForArrayConstraintsFromSetMidocoOrderLayout(array $values = []): string
+    public static function validateMidocoOrderLayoutForArrayConstraintFromSetMidocoOrderLayout(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $deleteOrderLayoutRequestMidocoOrderLayoutItem) {
@@ -69,10 +74,10 @@ class DeleteOrderLayoutRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoOrderLayout[] $midocoOrderLayout
      * @return \Pggns\MidocoApi\Order\StructType\DeleteOrderLayoutRequest
      */
-    public function setMidocoOrderLayout(array $midocoOrderLayout = []): self
+    public function setMidocoOrderLayout(?array $midocoOrderLayout = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoOrderLayoutArrayErrorMessage = self::validateMidocoOrderLayoutForArrayConstraintsFromSetMidocoOrderLayout($midocoOrderLayout))) {
+        if ('' !== ($midocoOrderLayoutArrayErrorMessage = self::validateMidocoOrderLayoutForArrayConstraintFromSetMidocoOrderLayout($midocoOrderLayout))) {
             throw new InvalidArgumentException($midocoOrderLayoutArrayErrorMessage, __LINE__);
         }
         $this->MidocoOrderLayout = $midocoOrderLayout;

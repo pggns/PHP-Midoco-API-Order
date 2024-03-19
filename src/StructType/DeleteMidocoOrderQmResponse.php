@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteMidocoOrderQmResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteMidocoOrderQmResponse extends AbstractStructBase
 {
 }

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteRevenueBookingVatDivRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteRevenueBookingVatDivRequest extends AbstractStructBase
 {
     /**

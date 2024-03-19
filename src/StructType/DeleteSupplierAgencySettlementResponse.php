@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteSupplierAgencySettlementResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteSupplierAgencySettlementResponse extends AbstractStructBase
 {
     /**
@@ -20,13 +21,13 @@ class DeleteSupplierAgencySettlementResponse extends AbstractStructBase
      * - minOccurs: 0
      * @var int[]
      */
-    protected array $errorSettlementIds = [];
+    protected ?array $errorSettlementIds = null;
     /**
      * Constructor method for DeleteSupplierAgencySettlementResponse
      * @uses DeleteSupplierAgencySettlementResponse::setErrorSettlementIds()
      * @param int[] $errorSettlementIds
      */
-    public function __construct(array $errorSettlementIds = [])
+    public function __construct(?array $errorSettlementIds = null)
     {
         $this
             ->setErrorSettlementIds($errorSettlementIds);
@@ -35,18 +36,22 @@ class DeleteSupplierAgencySettlementResponse extends AbstractStructBase
      * Get errorSettlementIds value
      * @return int[]
      */
-    public function getErrorSettlementIds(): array
+    public function getErrorSettlementIds(): ?array
     {
         return $this->errorSettlementIds;
     }
     /**
-     * This method is responsible for validating the values passed to the setErrorSettlementIds method
+     * This method is responsible for validating the value(s) passed to the setErrorSettlementIds method
      * This method is willingly generated in order to preserve the one-line inline validation within the setErrorSettlementIds method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateErrorSettlementIdsForArrayConstraintsFromSetErrorSettlementIds(array $values = []): string
+    public static function validateErrorSettlementIdsForArrayConstraintFromSetErrorSettlementIds(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $deleteSupplierAgencySettlementResponseErrorSettlementIdsItem) {
@@ -68,10 +73,10 @@ class DeleteSupplierAgencySettlementResponse extends AbstractStructBase
      * @param int[] $errorSettlementIds
      * @return \Pggns\MidocoApi\Order\StructType\DeleteSupplierAgencySettlementResponse
      */
-    public function setErrorSettlementIds(array $errorSettlementIds = []): self
+    public function setErrorSettlementIds(?array $errorSettlementIds = null): self
     {
         // validation for constraint: array
-        if ('' !== ($errorSettlementIdsArrayErrorMessage = self::validateErrorSettlementIdsForArrayConstraintsFromSetErrorSettlementIds($errorSettlementIds))) {
+        if ('' !== ($errorSettlementIdsArrayErrorMessage = self::validateErrorSettlementIdsForArrayConstraintFromSetErrorSettlementIds($errorSettlementIds))) {
             throw new InvalidArgumentException($errorSettlementIdsArrayErrorMessage, __LINE__);
         }
         $this->errorSettlementIds = $errorSettlementIds;

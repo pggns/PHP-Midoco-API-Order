@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoExternalCampaign StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoExternalCampaign extends ExternalCampaignDTO
 {
     /**
@@ -22,13 +23,13 @@ class MidocoExternalCampaign extends ExternalCampaignDTO
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\ExternalCampaignAssignDTO[]
      */
-    protected array $ExternalCampaignAssignment = [];
+    protected ?array $ExternalCampaignAssignment = null;
     /**
      * Constructor method for MidocoExternalCampaign
      * @uses MidocoExternalCampaign::setExternalCampaignAssignment()
      * @param \Pggns\MidocoApi\Order\StructType\ExternalCampaignAssignDTO[] $externalCampaignAssignment
      */
-    public function __construct(array $externalCampaignAssignment = [])
+    public function __construct(?array $externalCampaignAssignment = null)
     {
         $this
             ->setExternalCampaignAssignment($externalCampaignAssignment);
@@ -37,18 +38,22 @@ class MidocoExternalCampaign extends ExternalCampaignDTO
      * Get ExternalCampaignAssignment value
      * @return \Pggns\MidocoApi\Order\StructType\ExternalCampaignAssignDTO[]
      */
-    public function getExternalCampaignAssignment(): array
+    public function getExternalCampaignAssignment(): ?array
     {
         return $this->ExternalCampaignAssignment;
     }
     /**
-     * This method is responsible for validating the values passed to the setExternalCampaignAssignment method
+     * This method is responsible for validating the value(s) passed to the setExternalCampaignAssignment method
      * This method is willingly generated in order to preserve the one-line inline validation within the setExternalCampaignAssignment method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateExternalCampaignAssignmentForArrayConstraintsFromSetExternalCampaignAssignment(array $values = []): string
+    public static function validateExternalCampaignAssignmentForArrayConstraintFromSetExternalCampaignAssignment(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoExternalCampaignExternalCampaignAssignmentItem) {
@@ -70,10 +75,10 @@ class MidocoExternalCampaign extends ExternalCampaignDTO
      * @param \Pggns\MidocoApi\Order\StructType\ExternalCampaignAssignDTO[] $externalCampaignAssignment
      * @return \Pggns\MidocoApi\Order\StructType\MidocoExternalCampaign
      */
-    public function setExternalCampaignAssignment(array $externalCampaignAssignment = []): self
+    public function setExternalCampaignAssignment(?array $externalCampaignAssignment = null): self
     {
         // validation for constraint: array
-        if ('' !== ($externalCampaignAssignmentArrayErrorMessage = self::validateExternalCampaignAssignmentForArrayConstraintsFromSetExternalCampaignAssignment($externalCampaignAssignment))) {
+        if ('' !== ($externalCampaignAssignmentArrayErrorMessage = self::validateExternalCampaignAssignmentForArrayConstraintFromSetExternalCampaignAssignment($externalCampaignAssignment))) {
             throw new InvalidArgumentException($externalCampaignAssignmentArrayErrorMessage, __LINE__);
         }
         $this->ExternalCampaignAssignment = $externalCampaignAssignment;

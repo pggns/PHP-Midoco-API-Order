@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: A message to display in case crating a Miles & More transaction is not permitted.
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetMilesAndMorePayableResponse extends AbstractStructBase
 {
     /**
@@ -30,7 +31,7 @@ class GetMilesAndMorePayableResponse extends AbstractStructBase
      * - ref: system:LocalizableMessage
      * @var \Pggns\MidocoApi\Order\StructType\LocalizableMessageType[]
      */
-    protected array $LocalizableMessage = [];
+    protected ?array $LocalizableMessage = null;
     /**
      * Constructor method for GetMilesAndMorePayableResponse
      * @uses GetMilesAndMorePayableResponse::setTotalAmount()
@@ -38,7 +39,7 @@ class GetMilesAndMorePayableResponse extends AbstractStructBase
      * @param float $totalAmount
      * @param \Pggns\MidocoApi\Order\StructType\LocalizableMessageType[] $localizableMessage
      */
-    public function __construct(?float $totalAmount = null, array $localizableMessage = [])
+    public function __construct(?float $totalAmount = null, ?array $localizableMessage = null)
     {
         $this
             ->setTotalAmount($totalAmount)
@@ -71,18 +72,22 @@ class GetMilesAndMorePayableResponse extends AbstractStructBase
      * Get LocalizableMessage value
      * @return \Pggns\MidocoApi\Order\StructType\LocalizableMessageType[]
      */
-    public function getLocalizableMessage(): array
+    public function getLocalizableMessage(): ?array
     {
         return $this->LocalizableMessage;
     }
     /**
-     * This method is responsible for validating the values passed to the setLocalizableMessage method
+     * This method is responsible for validating the value(s) passed to the setLocalizableMessage method
      * This method is willingly generated in order to preserve the one-line inline validation within the setLocalizableMessage method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateLocalizableMessageForArrayConstraintsFromSetLocalizableMessage(array $values = []): string
+    public static function validateLocalizableMessageForArrayConstraintFromSetLocalizableMessage(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getMilesAndMorePayableResponseLocalizableMessageItem) {
@@ -104,10 +109,10 @@ class GetMilesAndMorePayableResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\LocalizableMessageType[] $localizableMessage
      * @return \Pggns\MidocoApi\Order\StructType\GetMilesAndMorePayableResponse
      */
-    public function setLocalizableMessage(array $localizableMessage = []): self
+    public function setLocalizableMessage(?array $localizableMessage = null): self
     {
         // validation for constraint: array
-        if ('' !== ($localizableMessageArrayErrorMessage = self::validateLocalizableMessageForArrayConstraintsFromSetLocalizableMessage($localizableMessage))) {
+        if ('' !== ($localizableMessageArrayErrorMessage = self::validateLocalizableMessageForArrayConstraintFromSetLocalizableMessage($localizableMessage))) {
             throw new InvalidArgumentException($localizableMessageArrayErrorMessage, __LINE__);
         }
         $this->LocalizableMessage = $localizableMessage;

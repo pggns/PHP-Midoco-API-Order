@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for NeedsToPrintCashReceiptRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class NeedsToPrintCashReceiptRequest extends AbstractStructBase
 {
 }

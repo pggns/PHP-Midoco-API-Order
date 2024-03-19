@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for BusDetailDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class BusDetailDTO extends AbstractStructBase
 {
     /**

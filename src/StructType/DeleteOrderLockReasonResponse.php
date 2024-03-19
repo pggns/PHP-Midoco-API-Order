@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteOrderLockReasonResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteOrderLockReasonResponse extends AbstractStructBase
 {
 }

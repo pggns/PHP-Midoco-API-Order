@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetBillingPositions4AgencyFeeTypeResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetBillingPositions4AgencyFeeTypeResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetBillingPositions4AgencyFeeTypeResponse extends AbstractStructBase
      * - ref: MidocoAgencyFeeTypeBillingPosition
      * @var \Pggns\MidocoApi\Order\StructType\MidocoAgencyFeeTypeBillingPosition[]
      */
-    protected array $MidocoAgencyFeeTypeBillingPosition = [];
+    protected ?array $MidocoAgencyFeeTypeBillingPosition = null;
     /**
      * Constructor method for GetBillingPositions4AgencyFeeTypeResponse
      * @uses GetBillingPositions4AgencyFeeTypeResponse::setMidocoAgencyFeeTypeBillingPosition()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoAgencyFeeTypeBillingPosition[] $midocoAgencyFeeTypeBillingPosition
      */
-    public function __construct(array $midocoAgencyFeeTypeBillingPosition = [])
+    public function __construct(?array $midocoAgencyFeeTypeBillingPosition = null)
     {
         $this
             ->setMidocoAgencyFeeTypeBillingPosition($midocoAgencyFeeTypeBillingPosition);
@@ -36,18 +37,22 @@ class GetBillingPositions4AgencyFeeTypeResponse extends AbstractStructBase
      * Get MidocoAgencyFeeTypeBillingPosition value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoAgencyFeeTypeBillingPosition[]
      */
-    public function getMidocoAgencyFeeTypeBillingPosition(): array
+    public function getMidocoAgencyFeeTypeBillingPosition(): ?array
     {
         return $this->MidocoAgencyFeeTypeBillingPosition;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoAgencyFeeTypeBillingPosition method
+     * This method is responsible for validating the value(s) passed to the setMidocoAgencyFeeTypeBillingPosition method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoAgencyFeeTypeBillingPosition method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoAgencyFeeTypeBillingPositionForArrayConstraintsFromSetMidocoAgencyFeeTypeBillingPosition(array $values = []): string
+    public static function validateMidocoAgencyFeeTypeBillingPositionForArrayConstraintFromSetMidocoAgencyFeeTypeBillingPosition(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getBillingPositions4AgencyFeeTypeResponseMidocoAgencyFeeTypeBillingPositionItem) {
@@ -69,10 +74,10 @@ class GetBillingPositions4AgencyFeeTypeResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoAgencyFeeTypeBillingPosition[] $midocoAgencyFeeTypeBillingPosition
      * @return \Pggns\MidocoApi\Order\StructType\GetBillingPositions4AgencyFeeTypeResponse
      */
-    public function setMidocoAgencyFeeTypeBillingPosition(array $midocoAgencyFeeTypeBillingPosition = []): self
+    public function setMidocoAgencyFeeTypeBillingPosition(?array $midocoAgencyFeeTypeBillingPosition = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoAgencyFeeTypeBillingPositionArrayErrorMessage = self::validateMidocoAgencyFeeTypeBillingPositionForArrayConstraintsFromSetMidocoAgencyFeeTypeBillingPosition($midocoAgencyFeeTypeBillingPosition))) {
+        if ('' !== ($midocoAgencyFeeTypeBillingPositionArrayErrorMessage = self::validateMidocoAgencyFeeTypeBillingPositionForArrayConstraintFromSetMidocoAgencyFeeTypeBillingPosition($midocoAgencyFeeTypeBillingPosition))) {
             throw new InvalidArgumentException($midocoAgencyFeeTypeBillingPositionArrayErrorMessage, __LINE__);
         }
         $this->MidocoAgencyFeeTypeBillingPosition = $midocoAgencyFeeTypeBillingPosition;

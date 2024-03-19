@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoOrdersDbiInfo StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoOrdersDbiInfo extends OrdersDbiInfoDTO
 {
 }

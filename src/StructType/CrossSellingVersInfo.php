@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CrossSellingVersInfo StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CrossSellingVersInfo extends AbstractStructBase
 {
     /**

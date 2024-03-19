@@ -15,6 +15,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * or tasks for the user to print other documents)
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class AnnounceBookingMessageNormResponse extends AbstractStructBase
 {
     /**

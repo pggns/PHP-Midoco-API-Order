@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetAutoRemarksResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetAutoRemarksResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetAutoRemarksResponse extends AbstractStructBase
      * - ref: MidocoSupplierAutoRemark
      * @var \Pggns\MidocoApi\Order\StructType\SupplierAutoRemarkDTO[]
      */
-    protected array $MidocoSupplierAutoRemark = [];
+    protected ?array $MidocoSupplierAutoRemark = null;
     /**
      * Constructor method for GetAutoRemarksResponse
      * @uses GetAutoRemarksResponse::setMidocoSupplierAutoRemark()
      * @param \Pggns\MidocoApi\Order\StructType\SupplierAutoRemarkDTO[] $midocoSupplierAutoRemark
      */
-    public function __construct(array $midocoSupplierAutoRemark = [])
+    public function __construct(?array $midocoSupplierAutoRemark = null)
     {
         $this
             ->setMidocoSupplierAutoRemark($midocoSupplierAutoRemark);
@@ -36,18 +37,22 @@ class GetAutoRemarksResponse extends AbstractStructBase
      * Get MidocoSupplierAutoRemark value
      * @return \Pggns\MidocoApi\Order\StructType\SupplierAutoRemarkDTO[]
      */
-    public function getMidocoSupplierAutoRemark(): array
+    public function getMidocoSupplierAutoRemark(): ?array
     {
         return $this->MidocoSupplierAutoRemark;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoSupplierAutoRemark method
+     * This method is responsible for validating the value(s) passed to the setMidocoSupplierAutoRemark method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoSupplierAutoRemark method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoSupplierAutoRemarkForArrayConstraintsFromSetMidocoSupplierAutoRemark(array $values = []): string
+    public static function validateMidocoSupplierAutoRemarkForArrayConstraintFromSetMidocoSupplierAutoRemark(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getAutoRemarksResponseMidocoSupplierAutoRemarkItem) {
@@ -69,10 +74,10 @@ class GetAutoRemarksResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\SupplierAutoRemarkDTO[] $midocoSupplierAutoRemark
      * @return \Pggns\MidocoApi\Order\StructType\GetAutoRemarksResponse
      */
-    public function setMidocoSupplierAutoRemark(array $midocoSupplierAutoRemark = []): self
+    public function setMidocoSupplierAutoRemark(?array $midocoSupplierAutoRemark = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoSupplierAutoRemarkArrayErrorMessage = self::validateMidocoSupplierAutoRemarkForArrayConstraintsFromSetMidocoSupplierAutoRemark($midocoSupplierAutoRemark))) {
+        if ('' !== ($midocoSupplierAutoRemarkArrayErrorMessage = self::validateMidocoSupplierAutoRemarkForArrayConstraintFromSetMidocoSupplierAutoRemark($midocoSupplierAutoRemark))) {
             throw new InvalidArgumentException($midocoSupplierAutoRemarkArrayErrorMessage, __LINE__);
         }
         $this->MidocoSupplierAutoRemark = $midocoSupplierAutoRemark;

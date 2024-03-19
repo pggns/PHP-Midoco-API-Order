@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SearchPackageMarginsResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchPackageMarginsResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class SearchPackageMarginsResponse extends AbstractStructBase
      * - ref: MidocoPackageMargin
      * @var \Pggns\MidocoApi\Order\StructType\MidocoPackageMargin[]
      */
-    protected array $MidocoPackageMargin = [];
+    protected ?array $MidocoPackageMargin = null;
     /**
      * Constructor method for SearchPackageMarginsResponse
      * @uses SearchPackageMarginsResponse::setMidocoPackageMargin()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoPackageMargin[] $midocoPackageMargin
      */
-    public function __construct(array $midocoPackageMargin = [])
+    public function __construct(?array $midocoPackageMargin = null)
     {
         $this
             ->setMidocoPackageMargin($midocoPackageMargin);
@@ -36,18 +37,22 @@ class SearchPackageMarginsResponse extends AbstractStructBase
      * Get MidocoPackageMargin value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoPackageMargin[]
      */
-    public function getMidocoPackageMargin(): array
+    public function getMidocoPackageMargin(): ?array
     {
         return $this->MidocoPackageMargin;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoPackageMargin method
+     * This method is responsible for validating the value(s) passed to the setMidocoPackageMargin method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoPackageMargin method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoPackageMarginForArrayConstraintsFromSetMidocoPackageMargin(array $values = []): string
+    public static function validateMidocoPackageMarginForArrayConstraintFromSetMidocoPackageMargin(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $searchPackageMarginsResponseMidocoPackageMarginItem) {
@@ -69,10 +74,10 @@ class SearchPackageMarginsResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoPackageMargin[] $midocoPackageMargin
      * @return \Pggns\MidocoApi\Order\StructType\SearchPackageMarginsResponse
      */
-    public function setMidocoPackageMargin(array $midocoPackageMargin = []): self
+    public function setMidocoPackageMargin(?array $midocoPackageMargin = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoPackageMarginArrayErrorMessage = self::validateMidocoPackageMarginForArrayConstraintsFromSetMidocoPackageMargin($midocoPackageMargin))) {
+        if ('' !== ($midocoPackageMarginArrayErrorMessage = self::validateMidocoPackageMarginForArrayConstraintFromSetMidocoPackageMargin($midocoPackageMargin))) {
             throw new InvalidArgumentException($midocoPackageMarginArrayErrorMessage, __LINE__);
         }
         $this->MidocoPackageMargin = $midocoPackageMargin;

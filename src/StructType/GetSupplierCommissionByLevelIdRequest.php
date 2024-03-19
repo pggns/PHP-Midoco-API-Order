@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetSupplierCommissionByLevelIdRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetSupplierCommissionByLevelIdRequest extends AbstractStructBase
 {
     /**

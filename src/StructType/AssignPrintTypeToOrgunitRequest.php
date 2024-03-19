@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for AssignPrintTypeToOrgunitRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class AssignPrintTypeToOrgunitRequest extends AbstractStructBase
 {
     /**

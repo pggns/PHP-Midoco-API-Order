@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CalculateEntryPeriodSumsResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CalculateEntryPeriodSumsResponse extends AbstractStructBase
 {
 }

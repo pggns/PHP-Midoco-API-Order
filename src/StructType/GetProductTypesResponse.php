@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetProductTypesResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetProductTypesResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetProductTypesResponse extends AbstractStructBase
      * - ref: MidocoProductType
      * @var \Pggns\MidocoApi\Order\StructType\MidocoProductTypeType[]
      */
-    protected array $MidocoProductType = [];
+    protected ?array $MidocoProductType = null;
     /**
      * Constructor method for GetProductTypesResponse
      * @uses GetProductTypesResponse::setMidocoProductType()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoProductTypeType[] $midocoProductType
      */
-    public function __construct(array $midocoProductType = [])
+    public function __construct(?array $midocoProductType = null)
     {
         $this
             ->setMidocoProductType($midocoProductType);
@@ -36,18 +37,22 @@ class GetProductTypesResponse extends AbstractStructBase
      * Get MidocoProductType value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoProductTypeType[]
      */
-    public function getMidocoProductType(): array
+    public function getMidocoProductType(): ?array
     {
         return $this->MidocoProductType;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoProductType method
+     * This method is responsible for validating the value(s) passed to the setMidocoProductType method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoProductType method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoProductTypeForArrayConstraintsFromSetMidocoProductType(array $values = []): string
+    public static function validateMidocoProductTypeForArrayConstraintFromSetMidocoProductType(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getProductTypesResponseMidocoProductTypeItem) {
@@ -69,10 +74,10 @@ class GetProductTypesResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoProductTypeType[] $midocoProductType
      * @return \Pggns\MidocoApi\Order\StructType\GetProductTypesResponse
      */
-    public function setMidocoProductType(array $midocoProductType = []): self
+    public function setMidocoProductType(?array $midocoProductType = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoProductTypeArrayErrorMessage = self::validateMidocoProductTypeForArrayConstraintsFromSetMidocoProductType($midocoProductType))) {
+        if ('' !== ($midocoProductTypeArrayErrorMessage = self::validateMidocoProductTypeForArrayConstraintFromSetMidocoProductType($midocoProductType))) {
             throw new InvalidArgumentException($midocoProductTypeArrayErrorMessage, __LINE__);
         }
         $this->MidocoProductType = $midocoProductType;

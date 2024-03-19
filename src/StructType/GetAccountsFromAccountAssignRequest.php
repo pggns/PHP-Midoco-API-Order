@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetAccountsFromAccountAssignRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetAccountsFromAccountAssignRequest extends AbstractStructBase
 {
     /**

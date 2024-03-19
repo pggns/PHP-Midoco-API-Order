@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DocumentNatureChgLogDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DocumentNatureChgLogDTO extends AbstractStructBase
 {
     /**

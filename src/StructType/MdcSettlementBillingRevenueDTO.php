@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MdcSettlementBillingRevenueDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MdcSettlementBillingRevenueDTO extends AbstractStructBase
 {
     /**

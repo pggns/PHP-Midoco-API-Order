@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoDocumentNatureType StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoDocumentNatureType extends DocumentNatureDTO
 {
     /**

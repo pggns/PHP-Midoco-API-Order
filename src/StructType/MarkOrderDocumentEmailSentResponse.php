@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MarkOrderDocumentEmailSentResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MarkOrderDocumentEmailSentResponse extends AbstractStructBase
 {
 }

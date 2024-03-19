@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for UpdateBookingStatusResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class UpdateBookingStatusResponse extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for RebookingSupplierInvoiceRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class RebookingSupplierInvoiceRequest extends AbstractStructBase
 {
     /**
@@ -20,7 +21,7 @@ class RebookingSupplierInvoiceRequest extends AbstractStructBase
      * - minOccurs: 0
      * @var int[]
      */
-    protected array $revenues = [];
+    protected ?array $revenues = null;
     /**
      * The receiptNo
      * @var string|null
@@ -47,7 +48,7 @@ class RebookingSupplierInvoiceRequest extends AbstractStructBase
      * @param string $accountNo
      * @param string $supplierId
      */
-    public function __construct(array $revenues = [], ?string $receiptNo = null, ?string $accountNo = null, ?string $supplierId = null)
+    public function __construct(?array $revenues = null, ?string $receiptNo = null, ?string $accountNo = null, ?string $supplierId = null)
     {
         $this
             ->setRevenues($revenues)
@@ -59,18 +60,22 @@ class RebookingSupplierInvoiceRequest extends AbstractStructBase
      * Get revenues value
      * @return int[]
      */
-    public function getRevenues(): array
+    public function getRevenues(): ?array
     {
         return $this->revenues;
     }
     /**
-     * This method is responsible for validating the values passed to the setRevenues method
+     * This method is responsible for validating the value(s) passed to the setRevenues method
      * This method is willingly generated in order to preserve the one-line inline validation within the setRevenues method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateRevenuesForArrayConstraintsFromSetRevenues(array $values = []): string
+    public static function validateRevenuesForArrayConstraintFromSetRevenues(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $rebookingSupplierInvoiceRequestRevenuesItem) {
@@ -92,10 +97,10 @@ class RebookingSupplierInvoiceRequest extends AbstractStructBase
      * @param int[] $revenues
      * @return \Pggns\MidocoApi\Order\StructType\RebookingSupplierInvoiceRequest
      */
-    public function setRevenues(array $revenues = []): self
+    public function setRevenues(?array $revenues = null): self
     {
         // validation for constraint: array
-        if ('' !== ($revenuesArrayErrorMessage = self::validateRevenuesForArrayConstraintsFromSetRevenues($revenues))) {
+        if ('' !== ($revenuesArrayErrorMessage = self::validateRevenuesForArrayConstraintFromSetRevenues($revenues))) {
             throw new InvalidArgumentException($revenuesArrayErrorMessage, __LINE__);
         }
         $this->revenues = $revenues;

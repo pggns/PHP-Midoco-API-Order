@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ProcessBillingDocsResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ProcessBillingDocsResponse extends AbstractStructBase
 {
 }

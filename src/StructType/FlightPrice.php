@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: prices for flights, split in tax and fare amount
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class FlightPrice extends AbstractStructBase
 {
     /**
@@ -105,6 +106,7 @@ class FlightPrice extends AbstractStructBase
     /**
      * The extPaymentType
      * Meta information extracted from the WSDL
+     * - documentation: default available values are: CASH,DEBIT,CC,FULL_CREDIT. More can be defined in org. unit attribute CUSTOM_EXTERN_PAYMENT_TYPES
      * - minOccurs: 0
      * @var string|null
      */
@@ -209,7 +211,7 @@ class FlightPrice extends AbstractStructBase
      * - ref: saving
      * @var \Pggns\MidocoApi\Order\StructType\Saving[]
      */
-    protected array $saving = [];
+    protected ?array $saving = null;
     /**
      * The cancellationFee
      * Meta information extracted from the WSDL
@@ -288,7 +290,7 @@ class FlightPrice extends AbstractStructBase
      * @param float $cancellationFee
      * @param \Pggns\MidocoApi\Order\StructType\CcInformation $ccInformation
      */
-    public function __construct(int $position, int $booking_position, ?string $ticketDesignator = null, ?float $baseFare = null, ?string $fareType = null, ?float $totalTax = null, ?float $totalPrice = null, ?string $currency = null, ?float $commissionPercent = null, ?float $commissionAmount = null, ?float $wholesalePrice = null, ?string $personAssignment = null, ?string $serviceAssignment = null, ?string $paymentType = null, ?string $extPaymentType = null, ?string $paymentInformation = null, ?string $ticketingDate = null, ?bool $is_domestic = null, ?bool $vatPrinted = false, ?float $vat_percent = null, ?bool $feeCalculated = null, ?float $feeAmountIncluded = null, ?float $feeTaxablePercent = null, ?string $feeCurrency = null, ?float $original_price = null, ?string $original_currency = null, ?float $exchangeRate = null, array $saving = [], ?float $cancellationFee = null, ?\Pggns\MidocoApi\Order\StructType\CcInformation $ccInformation = null)
+    public function __construct(int $position, int $booking_position, ?string $ticketDesignator = null, ?float $baseFare = null, ?string $fareType = null, ?float $totalTax = null, ?float $totalPrice = null, ?string $currency = null, ?float $commissionPercent = null, ?float $commissionAmount = null, ?float $wholesalePrice = null, ?string $personAssignment = null, ?string $serviceAssignment = null, ?string $paymentType = null, ?string $extPaymentType = null, ?string $paymentInformation = null, ?string $ticketingDate = null, ?bool $is_domestic = null, ?bool $vatPrinted = false, ?float $vat_percent = null, ?bool $feeCalculated = null, ?float $feeAmountIncluded = null, ?float $feeTaxablePercent = null, ?string $feeCurrency = null, ?float $original_price = null, ?string $original_currency = null, ?float $exchangeRate = null, ?array $saving = null, ?float $cancellationFee = null, ?\Pggns\MidocoApi\Order\StructType\CcInformation $ccInformation = null)
     {
         $this
             ->setPosition($position)
@@ -660,17 +662,14 @@ class FlightPrice extends AbstractStructBase
     }
     /**
      * Set extPaymentType value
-     * @uses \Pggns\MidocoApi\Order\EnumType\ExtPaymentType::valueIsValid()
-     * @uses \Pggns\MidocoApi\Order\EnumType\ExtPaymentType::getValidValues()
-     * @throws InvalidArgumentException
      * @param string $extPaymentType
      * @return \Pggns\MidocoApi\Order\StructType\FlightPrice
      */
     public function setExtPaymentType(?string $extPaymentType = null): self
     {
-        // validation for constraint: enumeration
-        if (!\Pggns\MidocoApi\Order\EnumType\ExtPaymentType::valueIsValid($extPaymentType)) {
-            throw new InvalidArgumentException(sprintf('Invalid value(s) %s, please use one of: %s from enumeration class \Pggns\MidocoApi\Order\EnumType\ExtPaymentType', is_array($extPaymentType) ? implode(', ', $extPaymentType) : var_export($extPaymentType, true), implode(', ', \Pggns\MidocoApi\Order\EnumType\ExtPaymentType::getValidValues())), __LINE__);
+        // validation for constraint: string
+        if (!is_null($extPaymentType) && !is_string($extPaymentType)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($extPaymentType, true), gettype($extPaymentType)), __LINE__);
         }
         $this->extPaymentType = $extPaymentType;
         
@@ -719,7 +718,7 @@ class FlightPrice extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($ticketingDate, true), gettype($ticketingDate)), __LINE__);
         }
         // validation for constraint: pattern([0-9]{4}-[0-9]{2}-[0-9]{2})
-        if (!is_null($ticketingDate) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', $ticketingDate)) {
+        if (!is_null($ticketingDate) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', (string) $ticketingDate)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[0-9]{4}-[0-9]{2}-[0-9]{2}/', var_export($ticketingDate, true)), __LINE__);
         }
         $this->ticketingDate = $ticketingDate;
@@ -960,18 +959,22 @@ class FlightPrice extends AbstractStructBase
      * Get saving value
      * @return \Pggns\MidocoApi\Order\StructType\Saving[]
      */
-    public function getSaving(): array
+    public function getSaving(): ?array
     {
         return $this->saving;
     }
     /**
-     * This method is responsible for validating the values passed to the setSaving method
+     * This method is responsible for validating the value(s) passed to the setSaving method
      * This method is willingly generated in order to preserve the one-line inline validation within the setSaving method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateSavingForArrayConstraintsFromSetSaving(array $values = []): string
+    public static function validateSavingForArrayConstraintFromSetSaving(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $flightPriceSavingItem) {
@@ -993,10 +996,10 @@ class FlightPrice extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\Saving[] $saving
      * @return \Pggns\MidocoApi\Order\StructType\FlightPrice
      */
-    public function setSaving(array $saving = []): self
+    public function setSaving(?array $saving = null): self
     {
         // validation for constraint: array
-        if ('' !== ($savingArrayErrorMessage = self::validateSavingForArrayConstraintsFromSetSaving($saving))) {
+        if ('' !== ($savingArrayErrorMessage = self::validateSavingForArrayConstraintFromSetSaving($saving))) {
             throw new InvalidArgumentException($savingArrayErrorMessage, __LINE__);
         }
         $this->saving = $saving;

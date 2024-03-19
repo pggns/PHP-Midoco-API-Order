@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetSupplierTraveltypesResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetSupplierTraveltypesResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetSupplierTraveltypesResponse extends AbstractStructBase
      * - ref: MidocoSupplierTraveltype
      * @var \Pggns\MidocoApi\Order\StructType\SupplierTraveltypeDTO[]
      */
-    protected array $MidocoSupplierTraveltype = [];
+    protected ?array $MidocoSupplierTraveltype = null;
     /**
      * Constructor method for GetSupplierTraveltypesResponse
      * @uses GetSupplierTraveltypesResponse::setMidocoSupplierTraveltype()
      * @param \Pggns\MidocoApi\Order\StructType\SupplierTraveltypeDTO[] $midocoSupplierTraveltype
      */
-    public function __construct(array $midocoSupplierTraveltype = [])
+    public function __construct(?array $midocoSupplierTraveltype = null)
     {
         $this
             ->setMidocoSupplierTraveltype($midocoSupplierTraveltype);
@@ -36,18 +37,22 @@ class GetSupplierTraveltypesResponse extends AbstractStructBase
      * Get MidocoSupplierTraveltype value
      * @return \Pggns\MidocoApi\Order\StructType\SupplierTraveltypeDTO[]
      */
-    public function getMidocoSupplierTraveltype(): array
+    public function getMidocoSupplierTraveltype(): ?array
     {
         return $this->MidocoSupplierTraveltype;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoSupplierTraveltype method
+     * This method is responsible for validating the value(s) passed to the setMidocoSupplierTraveltype method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoSupplierTraveltype method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoSupplierTraveltypeForArrayConstraintsFromSetMidocoSupplierTraveltype(array $values = []): string
+    public static function validateMidocoSupplierTraveltypeForArrayConstraintFromSetMidocoSupplierTraveltype(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getSupplierTraveltypesResponseMidocoSupplierTraveltypeItem) {
@@ -69,10 +74,10 @@ class GetSupplierTraveltypesResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\SupplierTraveltypeDTO[] $midocoSupplierTraveltype
      * @return \Pggns\MidocoApi\Order\StructType\GetSupplierTraveltypesResponse
      */
-    public function setMidocoSupplierTraveltype(array $midocoSupplierTraveltype = []): self
+    public function setMidocoSupplierTraveltype(?array $midocoSupplierTraveltype = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoSupplierTraveltypeArrayErrorMessage = self::validateMidocoSupplierTraveltypeForArrayConstraintsFromSetMidocoSupplierTraveltype($midocoSupplierTraveltype))) {
+        if ('' !== ($midocoSupplierTraveltypeArrayErrorMessage = self::validateMidocoSupplierTraveltypeForArrayConstraintFromSetMidocoSupplierTraveltype($midocoSupplierTraveltype))) {
             throw new InvalidArgumentException($midocoSupplierTraveltypeArrayErrorMessage, __LINE__);
         }
         $this->MidocoSupplierTraveltype = $midocoSupplierTraveltype;

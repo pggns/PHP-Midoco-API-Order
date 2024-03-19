@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteDunningTemplateRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteDunningTemplateRequest extends AbstractStructBase
 {
     /**

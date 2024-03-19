@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for AutoInvoiceConditionDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class AutoInvoiceConditionDTO extends AbstractStructBase
 {
     /**

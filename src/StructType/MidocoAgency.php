@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoAgency StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoAgency extends AgencyDetailDTO
 {
     /**
@@ -21,7 +22,7 @@ class MidocoAgency extends AgencyDetailDTO
      * - ref: MidocoAgencyCommission
      * @var \Pggns\MidocoApi\Order\StructType\AgencyCommissionDTO[]
      */
-    protected array $MidocoAgencyCommission = [];
+    protected ?array $MidocoAgencyCommission = null;
     /**
      * The MidocoCrmCustomer
      * Meta information extracted from the WSDL
@@ -52,7 +53,7 @@ class MidocoAgency extends AgencyDetailDTO
      * @param \Pggns\MidocoApi\Order\StructType\MidocoCrmCustomerPayment $midocoCrmCustomerPayment
      * @param string $cooperationName
      */
-    public function __construct(array $midocoAgencyCommission = [], ?\Pggns\MidocoApi\Order\StructType\CrmCustomerDTO $midocoCrmCustomer = null, ?\Pggns\MidocoApi\Order\StructType\MidocoCrmCustomerPayment $midocoCrmCustomerPayment = null, ?string $cooperationName = null)
+    public function __construct(?array $midocoAgencyCommission = null, ?\Pggns\MidocoApi\Order\StructType\CrmCustomerDTO $midocoCrmCustomer = null, ?\Pggns\MidocoApi\Order\StructType\MidocoCrmCustomerPayment $midocoCrmCustomerPayment = null, ?string $cooperationName = null)
     {
         $this
             ->setMidocoAgencyCommission($midocoAgencyCommission)
@@ -64,18 +65,22 @@ class MidocoAgency extends AgencyDetailDTO
      * Get MidocoAgencyCommission value
      * @return \Pggns\MidocoApi\Order\StructType\AgencyCommissionDTO[]
      */
-    public function getMidocoAgencyCommission(): array
+    public function getMidocoAgencyCommission(): ?array
     {
         return $this->MidocoAgencyCommission;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoAgencyCommission method
+     * This method is responsible for validating the value(s) passed to the setMidocoAgencyCommission method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoAgencyCommission method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoAgencyCommissionForArrayConstraintsFromSetMidocoAgencyCommission(array $values = []): string
+    public static function validateMidocoAgencyCommissionForArrayConstraintFromSetMidocoAgencyCommission(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoAgencyMidocoAgencyCommissionItem) {
@@ -97,10 +102,10 @@ class MidocoAgency extends AgencyDetailDTO
      * @param \Pggns\MidocoApi\Order\StructType\AgencyCommissionDTO[] $midocoAgencyCommission
      * @return \Pggns\MidocoApi\Order\StructType\MidocoAgency
      */
-    public function setMidocoAgencyCommission(array $midocoAgencyCommission = []): self
+    public function setMidocoAgencyCommission(?array $midocoAgencyCommission = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoAgencyCommissionArrayErrorMessage = self::validateMidocoAgencyCommissionForArrayConstraintsFromSetMidocoAgencyCommission($midocoAgencyCommission))) {
+        if ('' !== ($midocoAgencyCommissionArrayErrorMessage = self::validateMidocoAgencyCommissionForArrayConstraintFromSetMidocoAgencyCommission($midocoAgencyCommission))) {
             throw new InvalidArgumentException($midocoAgencyCommissionArrayErrorMessage, __LINE__);
         }
         $this->MidocoAgencyCommission = $midocoAgencyCommission;

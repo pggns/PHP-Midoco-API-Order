@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetSellItemVatDivisionsResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetSellItemVatDivisionsResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetSellItemVatDivisionsResponse extends AbstractStructBase
      * - ref: MidocoSellItemVatDivision
      * @var \Pggns\MidocoApi\Order\StructType\MidocoSellItemVatDivision[]
      */
-    protected array $MidocoSellItemVatDivision = [];
+    protected ?array $MidocoSellItemVatDivision = null;
     /**
      * Constructor method for GetSellItemVatDivisionsResponse
      * @uses GetSellItemVatDivisionsResponse::setMidocoSellItemVatDivision()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSellItemVatDivision[] $midocoSellItemVatDivision
      */
-    public function __construct(array $midocoSellItemVatDivision = [])
+    public function __construct(?array $midocoSellItemVatDivision = null)
     {
         $this
             ->setMidocoSellItemVatDivision($midocoSellItemVatDivision);
@@ -36,18 +37,22 @@ class GetSellItemVatDivisionsResponse extends AbstractStructBase
      * Get MidocoSellItemVatDivision value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSellItemVatDivision[]
      */
-    public function getMidocoSellItemVatDivision(): array
+    public function getMidocoSellItemVatDivision(): ?array
     {
         return $this->MidocoSellItemVatDivision;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoSellItemVatDivision method
+     * This method is responsible for validating the value(s) passed to the setMidocoSellItemVatDivision method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoSellItemVatDivision method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoSellItemVatDivisionForArrayConstraintsFromSetMidocoSellItemVatDivision(array $values = []): string
+    public static function validateMidocoSellItemVatDivisionForArrayConstraintFromSetMidocoSellItemVatDivision(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getSellItemVatDivisionsResponseMidocoSellItemVatDivisionItem) {
@@ -69,10 +74,10 @@ class GetSellItemVatDivisionsResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSellItemVatDivision[] $midocoSellItemVatDivision
      * @return \Pggns\MidocoApi\Order\StructType\GetSellItemVatDivisionsResponse
      */
-    public function setMidocoSellItemVatDivision(array $midocoSellItemVatDivision = []): self
+    public function setMidocoSellItemVatDivision(?array $midocoSellItemVatDivision = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoSellItemVatDivisionArrayErrorMessage = self::validateMidocoSellItemVatDivisionForArrayConstraintsFromSetMidocoSellItemVatDivision($midocoSellItemVatDivision))) {
+        if ('' !== ($midocoSellItemVatDivisionArrayErrorMessage = self::validateMidocoSellItemVatDivisionForArrayConstraintFromSetMidocoSellItemVatDivision($midocoSellItemVatDivision))) {
             throw new InvalidArgumentException($midocoSellItemVatDivisionArrayErrorMessage, __LINE__);
         }
         $this->MidocoSellItemVatDivision = $midocoSellItemVatDivision;

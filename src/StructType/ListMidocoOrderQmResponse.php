@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ListMidocoOrderQmResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ListMidocoOrderQmResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class ListMidocoOrderQmResponse extends AbstractStructBase
      * - ref: MidocoOrderQm
      * @var \Pggns\MidocoApi\Order\StructType\MidocoOrderQm[]
      */
-    protected array $MidocoOrderQm = [];
+    protected ?array $MidocoOrderQm = null;
     /**
      * Constructor method for ListMidocoOrderQmResponse
      * @uses ListMidocoOrderQmResponse::setMidocoOrderQm()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoOrderQm[] $midocoOrderQm
      */
-    public function __construct(array $midocoOrderQm = [])
+    public function __construct(?array $midocoOrderQm = null)
     {
         $this
             ->setMidocoOrderQm($midocoOrderQm);
@@ -36,18 +37,22 @@ class ListMidocoOrderQmResponse extends AbstractStructBase
      * Get MidocoOrderQm value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoOrderQm[]
      */
-    public function getMidocoOrderQm(): array
+    public function getMidocoOrderQm(): ?array
     {
         return $this->MidocoOrderQm;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoOrderQm method
+     * This method is responsible for validating the value(s) passed to the setMidocoOrderQm method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoOrderQm method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoOrderQmForArrayConstraintsFromSetMidocoOrderQm(array $values = []): string
+    public static function validateMidocoOrderQmForArrayConstraintFromSetMidocoOrderQm(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $listMidocoOrderQmResponseMidocoOrderQmItem) {
@@ -69,10 +74,10 @@ class ListMidocoOrderQmResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoOrderQm[] $midocoOrderQm
      * @return \Pggns\MidocoApi\Order\StructType\ListMidocoOrderQmResponse
      */
-    public function setMidocoOrderQm(array $midocoOrderQm = []): self
+    public function setMidocoOrderQm(?array $midocoOrderQm = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoOrderQmArrayErrorMessage = self::validateMidocoOrderQmForArrayConstraintsFromSetMidocoOrderQm($midocoOrderQm))) {
+        if ('' !== ($midocoOrderQmArrayErrorMessage = self::validateMidocoOrderQmForArrayConstraintFromSetMidocoOrderQm($midocoOrderQm))) {
             throw new InvalidArgumentException($midocoOrderQmArrayErrorMessage, __LINE__);
         }
         $this->MidocoOrderQm = $midocoOrderQm;

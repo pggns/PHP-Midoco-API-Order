@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoFlightDetail StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoFlightDetail extends FlightDetailDTO
 {
     /**
@@ -21,7 +22,7 @@ class MidocoFlightDetail extends FlightDetailDTO
      * - ref: MidocoFlightSegmentDetails
      * @var \Pggns\MidocoApi\Order\StructType\MidocoFlightSegmentDetails[]
      */
-    protected array $MidocoFlightSegmentDetails = [];
+    protected ?array $MidocoFlightSegmentDetails = null;
     /**
      * The route
      * @var string|null
@@ -41,7 +42,7 @@ class MidocoFlightDetail extends FlightDetailDTO
      * @param string $route
      * @param float $price
      */
-    public function __construct(array $midocoFlightSegmentDetails = [], ?string $route = null, ?float $price = null)
+    public function __construct(?array $midocoFlightSegmentDetails = null, ?string $route = null, ?float $price = null)
     {
         $this
             ->setMidocoFlightSegmentDetails($midocoFlightSegmentDetails)
@@ -52,18 +53,22 @@ class MidocoFlightDetail extends FlightDetailDTO
      * Get MidocoFlightSegmentDetails value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoFlightSegmentDetails[]
      */
-    public function getMidocoFlightSegmentDetails(): array
+    public function getMidocoFlightSegmentDetails(): ?array
     {
         return $this->MidocoFlightSegmentDetails;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoFlightSegmentDetails method
+     * This method is responsible for validating the value(s) passed to the setMidocoFlightSegmentDetails method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoFlightSegmentDetails method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoFlightSegmentDetailsForArrayConstraintsFromSetMidocoFlightSegmentDetails(array $values = []): string
+    public static function validateMidocoFlightSegmentDetailsForArrayConstraintFromSetMidocoFlightSegmentDetails(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoFlightDetailMidocoFlightSegmentDetailsItem) {
@@ -85,10 +90,10 @@ class MidocoFlightDetail extends FlightDetailDTO
      * @param \Pggns\MidocoApi\Order\StructType\MidocoFlightSegmentDetails[] $midocoFlightSegmentDetails
      * @return \Pggns\MidocoApi\Order\StructType\MidocoFlightDetail
      */
-    public function setMidocoFlightSegmentDetails(array $midocoFlightSegmentDetails = []): self
+    public function setMidocoFlightSegmentDetails(?array $midocoFlightSegmentDetails = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoFlightSegmentDetailsArrayErrorMessage = self::validateMidocoFlightSegmentDetailsForArrayConstraintsFromSetMidocoFlightSegmentDetails($midocoFlightSegmentDetails))) {
+        if ('' !== ($midocoFlightSegmentDetailsArrayErrorMessage = self::validateMidocoFlightSegmentDetailsForArrayConstraintFromSetMidocoFlightSegmentDetails($midocoFlightSegmentDetails))) {
             throw new InvalidArgumentException($midocoFlightSegmentDetailsArrayErrorMessage, __LINE__);
         }
         $this->MidocoFlightSegmentDetails = $midocoFlightSegmentDetails;

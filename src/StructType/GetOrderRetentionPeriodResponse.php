@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetOrderRetentionPeriodResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetOrderRetentionPeriodResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetOrderRetentionPeriodResponse extends AbstractStructBase
      * - ref: MidocoOrderRetentionPeriod
      * @var \Pggns\MidocoApi\Order\StructType\MidocoOrderRetentionPeriod[]
      */
-    protected array $MidocoOrderRetentionPeriod = [];
+    protected ?array $MidocoOrderRetentionPeriod = null;
     /**
      * Constructor method for GetOrderRetentionPeriodResponse
      * @uses GetOrderRetentionPeriodResponse::setMidocoOrderRetentionPeriod()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoOrderRetentionPeriod[] $midocoOrderRetentionPeriod
      */
-    public function __construct(array $midocoOrderRetentionPeriod = [])
+    public function __construct(?array $midocoOrderRetentionPeriod = null)
     {
         $this
             ->setMidocoOrderRetentionPeriod($midocoOrderRetentionPeriod);
@@ -36,18 +37,22 @@ class GetOrderRetentionPeriodResponse extends AbstractStructBase
      * Get MidocoOrderRetentionPeriod value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoOrderRetentionPeriod[]
      */
-    public function getMidocoOrderRetentionPeriod(): array
+    public function getMidocoOrderRetentionPeriod(): ?array
     {
         return $this->MidocoOrderRetentionPeriod;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoOrderRetentionPeriod method
+     * This method is responsible for validating the value(s) passed to the setMidocoOrderRetentionPeriod method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoOrderRetentionPeriod method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoOrderRetentionPeriodForArrayConstraintsFromSetMidocoOrderRetentionPeriod(array $values = []): string
+    public static function validateMidocoOrderRetentionPeriodForArrayConstraintFromSetMidocoOrderRetentionPeriod(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getOrderRetentionPeriodResponseMidocoOrderRetentionPeriodItem) {
@@ -69,10 +74,10 @@ class GetOrderRetentionPeriodResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoOrderRetentionPeriod[] $midocoOrderRetentionPeriod
      * @return \Pggns\MidocoApi\Order\StructType\GetOrderRetentionPeriodResponse
      */
-    public function setMidocoOrderRetentionPeriod(array $midocoOrderRetentionPeriod = []): self
+    public function setMidocoOrderRetentionPeriod(?array $midocoOrderRetentionPeriod = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoOrderRetentionPeriodArrayErrorMessage = self::validateMidocoOrderRetentionPeriodForArrayConstraintsFromSetMidocoOrderRetentionPeriod($midocoOrderRetentionPeriod))) {
+        if ('' !== ($midocoOrderRetentionPeriodArrayErrorMessage = self::validateMidocoOrderRetentionPeriodForArrayConstraintFromSetMidocoOrderRetentionPeriod($midocoOrderRetentionPeriod))) {
             throw new InvalidArgumentException($midocoOrderRetentionPeriodArrayErrorMessage, __LINE__);
         }
         $this->MidocoOrderRetentionPeriod = $midocoOrderRetentionPeriod;

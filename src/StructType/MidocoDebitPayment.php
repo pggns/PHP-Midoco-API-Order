@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoDebitPayment StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoDebitPayment extends DebitPaymentDTO
 {
     /**

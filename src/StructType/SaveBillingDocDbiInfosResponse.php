@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveBillingDocDbiInfosResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveBillingDocDbiInfosResponse extends AbstractStructBase
 {
     /**

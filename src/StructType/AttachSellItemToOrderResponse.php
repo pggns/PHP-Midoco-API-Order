@@ -15,6 +15,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * (compared to the last_inkasso value). The new inkasso_amount and deposit or final payment dates or amounts should be stored in the Order.
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class AttachSellItemToOrderResponse extends AbstractStructBase
 {
     /**

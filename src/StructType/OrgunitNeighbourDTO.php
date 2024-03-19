@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for OrgunitNeighbourDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class OrgunitNeighbourDTO extends AbstractStructBase
 {
     /**

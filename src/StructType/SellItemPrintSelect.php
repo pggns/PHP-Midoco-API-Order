@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SellItemPrintSelect StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SellItemPrintSelect extends AbstractStructBase
 {
     /**
@@ -20,7 +21,7 @@ class SellItemPrintSelect extends AbstractStructBase
      * - minOccurs: 0
      * @var int[]
      */
-    protected array $childrenIds = [];
+    protected ?array $childrenIds = null;
     /**
      * The confirmationGroup
      * @var string|null
@@ -69,6 +70,16 @@ class SellItemPrintSelect extends AbstractStructBase
      */
     protected ?string $supplierId = null;
     /**
+     * The atolIndex
+     * @var int|null
+     */
+    protected ?int $atolIndex = null;
+    /**
+     * The abtaSection
+     * @var string|null
+     */
+    protected ?string $abtaSection = null;
+    /**
      * The bookingId
      * @var string|null
      */
@@ -95,6 +106,8 @@ class SellItemPrintSelect extends AbstractStructBase
      * @uses SellItemPrintSelect::setSellingMode()
      * @uses SellItemPrintSelect::setStatus()
      * @uses SellItemPrintSelect::setSupplierId()
+     * @uses SellItemPrintSelect::setAtolIndex()
+     * @uses SellItemPrintSelect::setAbtaSection()
      * @uses SellItemPrintSelect::setBookingId()
      * @uses SellItemPrintSelect::setTotalPrice()
      * @uses SellItemPrintSelect::setParentId()
@@ -108,11 +121,13 @@ class SellItemPrintSelect extends AbstractStructBase
      * @param int $sellingMode
      * @param string $status
      * @param string $supplierId
+     * @param int $atolIndex
+     * @param string $abtaSection
      * @param string $bookingId
      * @param float $totalPrice
      * @param int $parentId
      */
-    public function __construct(array $childrenIds = [], ?string $confirmationGroup = null, ?bool $selected = null, ?bool $needsInvoicePrint = null, ?bool $editable = true, ?int $itemId = null, ?string $type = null, ?int $sellingMode = null, ?string $status = null, ?string $supplierId = null, ?string $bookingId = null, ?float $totalPrice = null, ?int $parentId = null)
+    public function __construct(?array $childrenIds = null, ?string $confirmationGroup = null, ?bool $selected = null, ?bool $needsInvoicePrint = null, ?bool $editable = true, ?int $itemId = null, ?string $type = null, ?int $sellingMode = null, ?string $status = null, ?string $supplierId = null, ?int $atolIndex = null, ?string $abtaSection = null, ?string $bookingId = null, ?float $totalPrice = null, ?int $parentId = null)
     {
         $this
             ->setChildrenIds($childrenIds)
@@ -125,6 +140,8 @@ class SellItemPrintSelect extends AbstractStructBase
             ->setSellingMode($sellingMode)
             ->setStatus($status)
             ->setSupplierId($supplierId)
+            ->setAtolIndex($atolIndex)
+            ->setAbtaSection($abtaSection)
             ->setBookingId($bookingId)
             ->setTotalPrice($totalPrice)
             ->setParentId($parentId);
@@ -133,18 +150,22 @@ class SellItemPrintSelect extends AbstractStructBase
      * Get childrenIds value
      * @return int[]
      */
-    public function getChildrenIds(): array
+    public function getChildrenIds(): ?array
     {
         return $this->childrenIds;
     }
     /**
-     * This method is responsible for validating the values passed to the setChildrenIds method
+     * This method is responsible for validating the value(s) passed to the setChildrenIds method
      * This method is willingly generated in order to preserve the one-line inline validation within the setChildrenIds method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateChildrenIdsForArrayConstraintsFromSetChildrenIds(array $values = []): string
+    public static function validateChildrenIdsForArrayConstraintFromSetChildrenIds(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $sellItemPrintSelectChildrenIdsItem) {
@@ -166,10 +187,10 @@ class SellItemPrintSelect extends AbstractStructBase
      * @param int[] $childrenIds
      * @return \Pggns\MidocoApi\Order\StructType\SellItemPrintSelect
      */
-    public function setChildrenIds(array $childrenIds = []): self
+    public function setChildrenIds(?array $childrenIds = null): self
     {
         // validation for constraint: array
-        if ('' !== ($childrenIdsArrayErrorMessage = self::validateChildrenIdsForArrayConstraintsFromSetChildrenIds($childrenIds))) {
+        if ('' !== ($childrenIdsArrayErrorMessage = self::validateChildrenIdsForArrayConstraintFromSetChildrenIds($childrenIds))) {
             throw new InvalidArgumentException($childrenIdsArrayErrorMessage, __LINE__);
         }
         $this->childrenIds = $childrenIds;
@@ -396,6 +417,52 @@ class SellItemPrintSelect extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($supplierId, true), gettype($supplierId)), __LINE__);
         }
         $this->supplierId = $supplierId;
+        
+        return $this;
+    }
+    /**
+     * Get atolIndex value
+     * @return int|null
+     */
+    public function getAtolIndex(): ?int
+    {
+        return $this->atolIndex;
+    }
+    /**
+     * Set atolIndex value
+     * @param int $atolIndex
+     * @return \Pggns\MidocoApi\Order\StructType\SellItemPrintSelect
+     */
+    public function setAtolIndex(?int $atolIndex = null): self
+    {
+        // validation for constraint: int
+        if (!is_null($atolIndex) && !(is_int($atolIndex) || ctype_digit($atolIndex))) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($atolIndex, true), gettype($atolIndex)), __LINE__);
+        }
+        $this->atolIndex = $atolIndex;
+        
+        return $this;
+    }
+    /**
+     * Get abtaSection value
+     * @return string|null
+     */
+    public function getAbtaSection(): ?string
+    {
+        return $this->abtaSection;
+    }
+    /**
+     * Set abtaSection value
+     * @param string $abtaSection
+     * @return \Pggns\MidocoApi\Order\StructType\SellItemPrintSelect
+     */
+    public function setAbtaSection(?string $abtaSection = null): self
+    {
+        // validation for constraint: string
+        if (!is_null($abtaSection) && !is_string($abtaSection)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($abtaSection, true), gettype($abtaSection)), __LINE__);
+        }
+        $this->abtaSection = $abtaSection;
         
         return $this;
     }

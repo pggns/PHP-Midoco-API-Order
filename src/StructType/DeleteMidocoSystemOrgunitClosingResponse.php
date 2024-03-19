@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteMidocoSystemOrgunitClosingResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteMidocoSystemOrgunitClosingResponse extends AbstractStructBase
 {
     /**

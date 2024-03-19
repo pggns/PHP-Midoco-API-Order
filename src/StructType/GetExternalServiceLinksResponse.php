@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: Response with all matched ExternalServiceLinks.
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetExternalServiceLinksResponse extends AbstractStructBase
 {
     /**
@@ -23,13 +24,13 @@ class GetExternalServiceLinksResponse extends AbstractStructBase
      * - ref: MidocoExternalServiceLink
      * @var \Pggns\MidocoApi\Order\StructType\ExternalServiceLinkDTO[]
      */
-    protected array $MidocoExternalServiceLink = [];
+    protected ?array $MidocoExternalServiceLink = null;
     /**
      * Constructor method for GetExternalServiceLinksResponse
      * @uses GetExternalServiceLinksResponse::setMidocoExternalServiceLink()
      * @param \Pggns\MidocoApi\Order\StructType\ExternalServiceLinkDTO[] $midocoExternalServiceLink
      */
-    public function __construct(array $midocoExternalServiceLink = [])
+    public function __construct(?array $midocoExternalServiceLink = null)
     {
         $this
             ->setMidocoExternalServiceLink($midocoExternalServiceLink);
@@ -38,18 +39,22 @@ class GetExternalServiceLinksResponse extends AbstractStructBase
      * Get MidocoExternalServiceLink value
      * @return \Pggns\MidocoApi\Order\StructType\ExternalServiceLinkDTO[]
      */
-    public function getMidocoExternalServiceLink(): array
+    public function getMidocoExternalServiceLink(): ?array
     {
         return $this->MidocoExternalServiceLink;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoExternalServiceLink method
+     * This method is responsible for validating the value(s) passed to the setMidocoExternalServiceLink method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoExternalServiceLink method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoExternalServiceLinkForArrayConstraintsFromSetMidocoExternalServiceLink(array $values = []): string
+    public static function validateMidocoExternalServiceLinkForArrayConstraintFromSetMidocoExternalServiceLink(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getExternalServiceLinksResponseMidocoExternalServiceLinkItem) {
@@ -71,10 +76,10 @@ class GetExternalServiceLinksResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\ExternalServiceLinkDTO[] $midocoExternalServiceLink
      * @return \Pggns\MidocoApi\Order\StructType\GetExternalServiceLinksResponse
      */
-    public function setMidocoExternalServiceLink(array $midocoExternalServiceLink = []): self
+    public function setMidocoExternalServiceLink(?array $midocoExternalServiceLink = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoExternalServiceLinkArrayErrorMessage = self::validateMidocoExternalServiceLinkForArrayConstraintsFromSetMidocoExternalServiceLink($midocoExternalServiceLink))) {
+        if ('' !== ($midocoExternalServiceLinkArrayErrorMessage = self::validateMidocoExternalServiceLinkForArrayConstraintFromSetMidocoExternalServiceLink($midocoExternalServiceLink))) {
             throw new InvalidArgumentException($midocoExternalServiceLinkArrayErrorMessage, __LINE__);
         }
         $this->MidocoExternalServiceLink = $midocoExternalServiceLink;

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetVatDivisionsResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetVatDivisionsResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetVatDivisionsResponse extends AbstractStructBase
      * - ref: MidocoVatDivision
      * @var \Pggns\MidocoApi\Order\StructType\VatDivisionDTO[]
      */
-    protected array $MidocoVatDivision = [];
+    protected ?array $MidocoVatDivision = null;
     /**
      * Constructor method for GetVatDivisionsResponse
      * @uses GetVatDivisionsResponse::setMidocoVatDivision()
      * @param \Pggns\MidocoApi\Order\StructType\VatDivisionDTO[] $midocoVatDivision
      */
-    public function __construct(array $midocoVatDivision = [])
+    public function __construct(?array $midocoVatDivision = null)
     {
         $this
             ->setMidocoVatDivision($midocoVatDivision);
@@ -36,18 +37,22 @@ class GetVatDivisionsResponse extends AbstractStructBase
      * Get MidocoVatDivision value
      * @return \Pggns\MidocoApi\Order\StructType\VatDivisionDTO[]
      */
-    public function getMidocoVatDivision(): array
+    public function getMidocoVatDivision(): ?array
     {
         return $this->MidocoVatDivision;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoVatDivision method
+     * This method is responsible for validating the value(s) passed to the setMidocoVatDivision method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoVatDivision method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoVatDivisionForArrayConstraintsFromSetMidocoVatDivision(array $values = []): string
+    public static function validateMidocoVatDivisionForArrayConstraintFromSetMidocoVatDivision(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getVatDivisionsResponseMidocoVatDivisionItem) {
@@ -69,10 +74,10 @@ class GetVatDivisionsResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\VatDivisionDTO[] $midocoVatDivision
      * @return \Pggns\MidocoApi\Order\StructType\GetVatDivisionsResponse
      */
-    public function setMidocoVatDivision(array $midocoVatDivision = []): self
+    public function setMidocoVatDivision(?array $midocoVatDivision = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoVatDivisionArrayErrorMessage = self::validateMidocoVatDivisionForArrayConstraintsFromSetMidocoVatDivision($midocoVatDivision))) {
+        if ('' !== ($midocoVatDivisionArrayErrorMessage = self::validateMidocoVatDivisionForArrayConstraintFromSetMidocoVatDivision($midocoVatDivision))) {
             throw new InvalidArgumentException($midocoVatDivisionArrayErrorMessage, __LINE__);
         }
         $this->MidocoVatDivision = $midocoVatDivision;

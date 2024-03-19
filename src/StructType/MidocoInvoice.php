@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoInvoice StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoInvoice extends InvoiceDTO
 {
     /**
@@ -21,7 +22,7 @@ class MidocoInvoice extends InvoiceDTO
      * - ref: MidocoInvoicePosition
      * @var \Pggns\MidocoApi\Order\StructType\MidocoInvoicePosition[]
      */
-    protected array $MidocoInvoicePosition = [];
+    protected ?array $MidocoInvoicePosition = null;
     /**
      * The MidocoInvoiceVatPosition
      * Meta information extracted from the WSDL
@@ -30,7 +31,7 @@ class MidocoInvoice extends InvoiceDTO
      * - ref: MidocoInvoiceVatPosition
      * @var \Pggns\MidocoApi\Order\StructType\MidocoInvoiceVatPosition[]
      */
-    protected array $MidocoInvoiceVatPosition = [];
+    protected ?array $MidocoInvoiceVatPosition = null;
     /**
      * The MidocoInvoiceVatCalculation
      * Meta information extracted from the WSDL
@@ -39,7 +40,7 @@ class MidocoInvoice extends InvoiceDTO
      * - ref: MidocoInvoiceVatCalculation
      * @var \Pggns\MidocoApi\Order\StructType\InvoiceVatCalculationDTO[]
      */
-    protected array $MidocoInvoiceVatCalculation = [];
+    protected ?array $MidocoInvoiceVatCalculation = null;
     /**
      * Constructor method for MidocoInvoice
      * @uses MidocoInvoice::setMidocoInvoicePosition()
@@ -49,7 +50,7 @@ class MidocoInvoice extends InvoiceDTO
      * @param \Pggns\MidocoApi\Order\StructType\MidocoInvoiceVatPosition[] $midocoInvoiceVatPosition
      * @param \Pggns\MidocoApi\Order\StructType\InvoiceVatCalculationDTO[] $midocoInvoiceVatCalculation
      */
-    public function __construct(array $midocoInvoicePosition = [], array $midocoInvoiceVatPosition = [], array $midocoInvoiceVatCalculation = [])
+    public function __construct(?array $midocoInvoicePosition = null, ?array $midocoInvoiceVatPosition = null, ?array $midocoInvoiceVatCalculation = null)
     {
         $this
             ->setMidocoInvoicePosition($midocoInvoicePosition)
@@ -60,18 +61,22 @@ class MidocoInvoice extends InvoiceDTO
      * Get MidocoInvoicePosition value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoInvoicePosition[]
      */
-    public function getMidocoInvoicePosition(): array
+    public function getMidocoInvoicePosition(): ?array
     {
         return $this->MidocoInvoicePosition;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoInvoicePosition method
+     * This method is responsible for validating the value(s) passed to the setMidocoInvoicePosition method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoInvoicePosition method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoInvoicePositionForArrayConstraintsFromSetMidocoInvoicePosition(array $values = []): string
+    public static function validateMidocoInvoicePositionForArrayConstraintFromSetMidocoInvoicePosition(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoInvoiceMidocoInvoicePositionItem) {
@@ -93,10 +98,10 @@ class MidocoInvoice extends InvoiceDTO
      * @param \Pggns\MidocoApi\Order\StructType\MidocoInvoicePosition[] $midocoInvoicePosition
      * @return \Pggns\MidocoApi\Order\StructType\MidocoInvoice
      */
-    public function setMidocoInvoicePosition(array $midocoInvoicePosition = []): self
+    public function setMidocoInvoicePosition(?array $midocoInvoicePosition = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoInvoicePositionArrayErrorMessage = self::validateMidocoInvoicePositionForArrayConstraintsFromSetMidocoInvoicePosition($midocoInvoicePosition))) {
+        if ('' !== ($midocoInvoicePositionArrayErrorMessage = self::validateMidocoInvoicePositionForArrayConstraintFromSetMidocoInvoicePosition($midocoInvoicePosition))) {
             throw new InvalidArgumentException($midocoInvoicePositionArrayErrorMessage, __LINE__);
         }
         $this->MidocoInvoicePosition = $midocoInvoicePosition;
@@ -123,18 +128,22 @@ class MidocoInvoice extends InvoiceDTO
      * Get MidocoInvoiceVatPosition value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoInvoiceVatPosition[]
      */
-    public function getMidocoInvoiceVatPosition(): array
+    public function getMidocoInvoiceVatPosition(): ?array
     {
         return $this->MidocoInvoiceVatPosition;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoInvoiceVatPosition method
+     * This method is responsible for validating the value(s) passed to the setMidocoInvoiceVatPosition method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoInvoiceVatPosition method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoInvoiceVatPositionForArrayConstraintsFromSetMidocoInvoiceVatPosition(array $values = []): string
+    public static function validateMidocoInvoiceVatPositionForArrayConstraintFromSetMidocoInvoiceVatPosition(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoInvoiceMidocoInvoiceVatPositionItem) {
@@ -156,10 +165,10 @@ class MidocoInvoice extends InvoiceDTO
      * @param \Pggns\MidocoApi\Order\StructType\MidocoInvoiceVatPosition[] $midocoInvoiceVatPosition
      * @return \Pggns\MidocoApi\Order\StructType\MidocoInvoice
      */
-    public function setMidocoInvoiceVatPosition(array $midocoInvoiceVatPosition = []): self
+    public function setMidocoInvoiceVatPosition(?array $midocoInvoiceVatPosition = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoInvoiceVatPositionArrayErrorMessage = self::validateMidocoInvoiceVatPositionForArrayConstraintsFromSetMidocoInvoiceVatPosition($midocoInvoiceVatPosition))) {
+        if ('' !== ($midocoInvoiceVatPositionArrayErrorMessage = self::validateMidocoInvoiceVatPositionForArrayConstraintFromSetMidocoInvoiceVatPosition($midocoInvoiceVatPosition))) {
             throw new InvalidArgumentException($midocoInvoiceVatPositionArrayErrorMessage, __LINE__);
         }
         $this->MidocoInvoiceVatPosition = $midocoInvoiceVatPosition;
@@ -186,18 +195,22 @@ class MidocoInvoice extends InvoiceDTO
      * Get MidocoInvoiceVatCalculation value
      * @return \Pggns\MidocoApi\Order\StructType\InvoiceVatCalculationDTO[]
      */
-    public function getMidocoInvoiceVatCalculation(): array
+    public function getMidocoInvoiceVatCalculation(): ?array
     {
         return $this->MidocoInvoiceVatCalculation;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoInvoiceVatCalculation method
+     * This method is responsible for validating the value(s) passed to the setMidocoInvoiceVatCalculation method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoInvoiceVatCalculation method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoInvoiceVatCalculationForArrayConstraintsFromSetMidocoInvoiceVatCalculation(array $values = []): string
+    public static function validateMidocoInvoiceVatCalculationForArrayConstraintFromSetMidocoInvoiceVatCalculation(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoInvoiceMidocoInvoiceVatCalculationItem) {
@@ -219,10 +232,10 @@ class MidocoInvoice extends InvoiceDTO
      * @param \Pggns\MidocoApi\Order\StructType\InvoiceVatCalculationDTO[] $midocoInvoiceVatCalculation
      * @return \Pggns\MidocoApi\Order\StructType\MidocoInvoice
      */
-    public function setMidocoInvoiceVatCalculation(array $midocoInvoiceVatCalculation = []): self
+    public function setMidocoInvoiceVatCalculation(?array $midocoInvoiceVatCalculation = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoInvoiceVatCalculationArrayErrorMessage = self::validateMidocoInvoiceVatCalculationForArrayConstraintsFromSetMidocoInvoiceVatCalculation($midocoInvoiceVatCalculation))) {
+        if ('' !== ($midocoInvoiceVatCalculationArrayErrorMessage = self::validateMidocoInvoiceVatCalculationForArrayConstraintFromSetMidocoInvoiceVatCalculation($midocoInvoiceVatCalculation))) {
             throw new InvalidArgumentException($midocoInvoiceVatCalculationArrayErrorMessage, __LINE__);
         }
         $this->MidocoInvoiceVatCalculation = $midocoInvoiceVatCalculation;

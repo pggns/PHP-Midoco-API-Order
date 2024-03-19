@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoSelectCustomerAddress StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoSelectCustomerAddress extends CrmAddressDTO
 {
 }

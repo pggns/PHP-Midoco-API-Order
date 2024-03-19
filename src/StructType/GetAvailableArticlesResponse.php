@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetAvailableArticlesResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetAvailableArticlesResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetAvailableArticlesResponse extends AbstractStructBase
      * - ref: MidocoArticle
      * @var \Pggns\MidocoApi\Order\StructType\ArticleDTO[]
      */
-    protected array $MidocoArticle = [];
+    protected ?array $MidocoArticle = null;
     /**
      * Constructor method for GetAvailableArticlesResponse
      * @uses GetAvailableArticlesResponse::setMidocoArticle()
      * @param \Pggns\MidocoApi\Order\StructType\ArticleDTO[] $midocoArticle
      */
-    public function __construct(array $midocoArticle = [])
+    public function __construct(?array $midocoArticle = null)
     {
         $this
             ->setMidocoArticle($midocoArticle);
@@ -36,18 +37,22 @@ class GetAvailableArticlesResponse extends AbstractStructBase
      * Get MidocoArticle value
      * @return \Pggns\MidocoApi\Order\StructType\ArticleDTO[]
      */
-    public function getMidocoArticle(): array
+    public function getMidocoArticle(): ?array
     {
         return $this->MidocoArticle;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoArticle method
+     * This method is responsible for validating the value(s) passed to the setMidocoArticle method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoArticle method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoArticleForArrayConstraintsFromSetMidocoArticle(array $values = []): string
+    public static function validateMidocoArticleForArrayConstraintFromSetMidocoArticle(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getAvailableArticlesResponseMidocoArticleItem) {
@@ -69,10 +74,10 @@ class GetAvailableArticlesResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\ArticleDTO[] $midocoArticle
      * @return \Pggns\MidocoApi\Order\StructType\GetAvailableArticlesResponse
      */
-    public function setMidocoArticle(array $midocoArticle = []): self
+    public function setMidocoArticle(?array $midocoArticle = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoArticleArrayErrorMessage = self::validateMidocoArticleForArrayConstraintsFromSetMidocoArticle($midocoArticle))) {
+        if ('' !== ($midocoArticleArrayErrorMessage = self::validateMidocoArticleForArrayConstraintFromSetMidocoArticle($midocoArticle))) {
             throw new InvalidArgumentException($midocoArticleArrayErrorMessage, __LINE__);
         }
         $this->MidocoArticle = $midocoArticle;

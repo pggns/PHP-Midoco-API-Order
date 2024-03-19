@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SellItemMarginDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SellItemMarginDTO extends AbstractStructBase
 {
     /**
@@ -74,6 +75,16 @@ class SellItemMarginDTO extends AbstractStructBase
      */
     protected ?bool $settlementDone = null;
     /**
+     * The supplierInvoice
+     * @var float|null
+     */
+    protected ?float $supplierInvoice = null;
+    /**
+     * The supplierInvoiceNet
+     * @var float|null
+     */
+    protected ?float $supplierInvoiceNet = null;
+    /**
      * The updatedAt
      * @var string|null
      */
@@ -92,6 +103,8 @@ class SellItemMarginDTO extends AbstractStructBase
      * @uses SellItemMarginDTO::setNeedsMarginBooking()
      * @uses SellItemMarginDTO::setSalePriceNet()
      * @uses SellItemMarginDTO::setSettlementDone()
+     * @uses SellItemMarginDTO::setSupplierInvoice()
+     * @uses SellItemMarginDTO::setSupplierInvoiceNet()
      * @uses SellItemMarginDTO::setUpdatedAt()
      * @param float $bookedMargin
      * @param float $bookedMarginVat
@@ -105,9 +118,11 @@ class SellItemMarginDTO extends AbstractStructBase
      * @param bool $needsMarginBooking
      * @param float $salePriceNet
      * @param bool $settlementDone
+     * @param float $supplierInvoice
+     * @param float $supplierInvoiceNet
      * @param string $updatedAt
      */
-    public function __construct(?float $bookedMargin = null, ?float $bookedMarginVat = null, ?float $buyPrice = null, ?float $buyPriceNet = null, ?float $calculatedMargin = null, ?float $calculatedMarginVat = null, ?float $feeNet = null, ?int $itemId = null, ?float $marginNet = null, ?bool $needsMarginBooking = null, ?float $salePriceNet = null, ?bool $settlementDone = null, ?string $updatedAt = null)
+    public function __construct(?float $bookedMargin = null, ?float $bookedMarginVat = null, ?float $buyPrice = null, ?float $buyPriceNet = null, ?float $calculatedMargin = null, ?float $calculatedMarginVat = null, ?float $feeNet = null, ?int $itemId = null, ?float $marginNet = null, ?bool $needsMarginBooking = null, ?float $salePriceNet = null, ?bool $settlementDone = null, ?float $supplierInvoice = null, ?float $supplierInvoiceNet = null, ?string $updatedAt = null)
     {
         $this
             ->setBookedMargin($bookedMargin)
@@ -122,6 +137,8 @@ class SellItemMarginDTO extends AbstractStructBase
             ->setNeedsMarginBooking($needsMarginBooking)
             ->setSalePriceNet($salePriceNet)
             ->setSettlementDone($settlementDone)
+            ->setSupplierInvoice($supplierInvoice)
+            ->setSupplierInvoiceNet($supplierInvoiceNet)
             ->setUpdatedAt($updatedAt);
     }
     /**
@@ -397,6 +414,52 @@ class SellItemMarginDTO extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($settlementDone, true), gettype($settlementDone)), __LINE__);
         }
         $this->settlementDone = $settlementDone;
+        
+        return $this;
+    }
+    /**
+     * Get supplierInvoice value
+     * @return float|null
+     */
+    public function getSupplierInvoice(): ?float
+    {
+        return $this->supplierInvoice;
+    }
+    /**
+     * Set supplierInvoice value
+     * @param float $supplierInvoice
+     * @return \Pggns\MidocoApi\Order\StructType\SellItemMarginDTO
+     */
+    public function setSupplierInvoice(?float $supplierInvoice = null): self
+    {
+        // validation for constraint: float
+        if (!is_null($supplierInvoice) && !(is_float($supplierInvoice) || is_numeric($supplierInvoice))) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a float value, %s given', var_export($supplierInvoice, true), gettype($supplierInvoice)), __LINE__);
+        }
+        $this->supplierInvoice = $supplierInvoice;
+        
+        return $this;
+    }
+    /**
+     * Get supplierInvoiceNet value
+     * @return float|null
+     */
+    public function getSupplierInvoiceNet(): ?float
+    {
+        return $this->supplierInvoiceNet;
+    }
+    /**
+     * Set supplierInvoiceNet value
+     * @param float $supplierInvoiceNet
+     * @return \Pggns\MidocoApi\Order\StructType\SellItemMarginDTO
+     */
+    public function setSupplierInvoiceNet(?float $supplierInvoiceNet = null): self
+    {
+        // validation for constraint: float
+        if (!is_null($supplierInvoiceNet) && !(is_float($supplierInvoiceNet) || is_numeric($supplierInvoiceNet))) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a float value, %s given', var_export($supplierInvoiceNet, true), gettype($supplierInvoiceNet)), __LINE__);
+        }
+        $this->supplierInvoiceNet = $supplierInvoiceNet;
         
         return $this;
     }

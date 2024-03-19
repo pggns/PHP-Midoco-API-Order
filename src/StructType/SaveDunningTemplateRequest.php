@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveDunningTemplateRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveDunningTemplateRequest extends AbstractStructBase
 {
     /**

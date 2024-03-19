@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for PrintQueueDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class PrintQueueDTO extends AbstractStructBase
 {
     /**

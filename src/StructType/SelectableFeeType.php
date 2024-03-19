@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SelectableFeeType StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SelectableFeeType extends FeeTypeDTO
 {
     /**

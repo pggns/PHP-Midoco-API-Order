@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteCashBookPrintResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteCashBookPrintResponse extends AbstractStructBase
 {
 }

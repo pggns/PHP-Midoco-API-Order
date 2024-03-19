@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetNeoExportStringResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetNeoExportStringResponse extends AbstractStructBase
 {
     /**

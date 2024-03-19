@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CreateAutomaticOrderNoticeResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CreateAutomaticOrderNoticeResponse extends AbstractStructBase
 {
 }

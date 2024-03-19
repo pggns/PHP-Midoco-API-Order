@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoPassengerInfo4Printing StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoPassengerInfo4Printing extends AbstractStructBase
 {
     /**
@@ -145,7 +146,7 @@ class MidocoPassengerInfo4Printing extends AbstractStructBase
      * - ref: MidocoFlightSegmentDetails4Printing
      * @var \Pggns\MidocoApi\Order\StructType\MidocoFlightSegmentDetails4Printing[]
      */
-    protected array $MidocoFlightSegmentDetails4Printing = [];
+    protected ?array $MidocoFlightSegmentDetails4Printing = null;
     /**
      * Constructor method for MidocoPassengerInfo4Printing
      * @uses MidocoPassengerInfo4Printing::setPositionNo()
@@ -199,7 +200,7 @@ class MidocoPassengerInfo4Printing extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\PassengerInfosRailDTO $midocoPassengerInfosRail
      * @param \Pggns\MidocoApi\Order\StructType\MidocoFlightSegmentDetails4Printing[] $midocoFlightSegmentDetails4Printing
      */
-    public function __construct(?int $positionNo = null, ?string $salutation = null, ?string $title = null, ?string $forename = null, ?string $middleName = null, ?string $name = null, ?string $age = null, ?float $singlePrice = null, ?string $ticketNumber = null, ?string $ticketType = null, ?string $ticketMedia = null, ?float $tax = null, ?float $farePrice = null, ?string $vatPercent = null, ?float $vatAmount = null, ?float $feeAmount = null, ?float $originalFarePrice = null, ?string $birthDate = null, ?bool $ignoreInPartialInvoice = null, ?string $nationality = null, ?int $midocoCustomerId = null, ?string $handicap = null, ?\Pggns\MidocoApi\Order\StructType\PassengerInfosFlightDTO $midocoPassengerInfosFlight = null, ?\Pggns\MidocoApi\Order\StructType\PassengerInfosRailDTO $midocoPassengerInfosRail = null, array $midocoFlightSegmentDetails4Printing = [])
+    public function __construct(?int $positionNo = null, ?string $salutation = null, ?string $title = null, ?string $forename = null, ?string $middleName = null, ?string $name = null, ?string $age = null, ?float $singlePrice = null, ?string $ticketNumber = null, ?string $ticketType = null, ?string $ticketMedia = null, ?float $tax = null, ?float $farePrice = null, ?string $vatPercent = null, ?float $vatAmount = null, ?float $feeAmount = null, ?float $originalFarePrice = null, ?string $birthDate = null, ?bool $ignoreInPartialInvoice = null, ?string $nationality = null, ?int $midocoCustomerId = null, ?string $handicap = null, ?\Pggns\MidocoApi\Order\StructType\PassengerInfosFlightDTO $midocoPassengerInfosFlight = null, ?\Pggns\MidocoApi\Order\StructType\PassengerInfosRailDTO $midocoPassengerInfosRail = null, ?array $midocoFlightSegmentDetails4Printing = null)
     {
         $this
             ->setPositionNo($positionNo)
@@ -776,18 +777,22 @@ class MidocoPassengerInfo4Printing extends AbstractStructBase
      * Get MidocoFlightSegmentDetails4Printing value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoFlightSegmentDetails4Printing[]
      */
-    public function getMidocoFlightSegmentDetails4Printing(): array
+    public function getMidocoFlightSegmentDetails4Printing(): ?array
     {
         return $this->MidocoFlightSegmentDetails4Printing;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoFlightSegmentDetails4Printing method
+     * This method is responsible for validating the value(s) passed to the setMidocoFlightSegmentDetails4Printing method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoFlightSegmentDetails4Printing method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoFlightSegmentDetails4PrintingForArrayConstraintsFromSetMidocoFlightSegmentDetails4Printing(array $values = []): string
+    public static function validateMidocoFlightSegmentDetails4PrintingForArrayConstraintFromSetMidocoFlightSegmentDetails4Printing(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoPassengerInfo4PrintingMidocoFlightSegmentDetails4PrintingItem) {
@@ -809,10 +814,10 @@ class MidocoPassengerInfo4Printing extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoFlightSegmentDetails4Printing[] $midocoFlightSegmentDetails4Printing
      * @return \Pggns\MidocoApi\Order\StructType\MidocoPassengerInfo4Printing
      */
-    public function setMidocoFlightSegmentDetails4Printing(array $midocoFlightSegmentDetails4Printing = []): self
+    public function setMidocoFlightSegmentDetails4Printing(?array $midocoFlightSegmentDetails4Printing = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoFlightSegmentDetails4PrintingArrayErrorMessage = self::validateMidocoFlightSegmentDetails4PrintingForArrayConstraintsFromSetMidocoFlightSegmentDetails4Printing($midocoFlightSegmentDetails4Printing))) {
+        if ('' !== ($midocoFlightSegmentDetails4PrintingArrayErrorMessage = self::validateMidocoFlightSegmentDetails4PrintingForArrayConstraintFromSetMidocoFlightSegmentDetails4Printing($midocoFlightSegmentDetails4Printing))) {
             throw new InvalidArgumentException($midocoFlightSegmentDetails4PrintingArrayErrorMessage, __LINE__);
         }
         $this->MidocoFlightSegmentDetails4Printing = $midocoFlightSegmentDetails4Printing;

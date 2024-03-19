@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for Info4OrderPayment StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class Info4OrderPayment extends AbstractStructBase
 {
     /**

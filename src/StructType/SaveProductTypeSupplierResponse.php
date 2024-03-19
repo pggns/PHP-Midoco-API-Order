@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveProductTypeSupplierResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveProductTypeSupplierResponse extends AbstractStructBase
 {
 }

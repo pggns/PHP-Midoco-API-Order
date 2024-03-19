@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for JournalAttributeDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class JournalAttributeDTO extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetEinvoiceDocumentRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetEinvoiceDocumentRequest extends AbstractStructBase
 {
     /**

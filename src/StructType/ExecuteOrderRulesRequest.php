@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ExecuteOrderRulesRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ExecuteOrderRulesRequest extends AbstractStructBase
 {
     /**
@@ -24,21 +25,21 @@ class ExecuteOrderRulesRequest extends AbstractStructBase
      * - maxOccurs: unbounded
      * @var string[]
      */
-    protected array $ruleName = [];
+    protected ?array $ruleName = null;
     /**
      * The infoKey
      * Meta information extracted from the WSDL
      * - maxOccurs: unbounded
      * @var string[]
      */
-    protected array $infoKey = [];
+    protected ?array $infoKey = null;
     /**
      * The infoValue
      * Meta information extracted from the WSDL
      * - maxOccurs: unbounded
-     * @var mixed[]
+     * @var string[]
      */
-    protected array $infoValue = [];
+    protected ?array $infoValue = null;
     /**
      * Constructor method for ExecuteOrderRulesRequest
      * @uses ExecuteOrderRulesRequest::setOrderId()
@@ -48,9 +49,9 @@ class ExecuteOrderRulesRequest extends AbstractStructBase
      * @param int $orderId
      * @param string[] $ruleName
      * @param string[] $infoKey
-     * @param mixed[] $infoValue
+     * @param string[] $infoValue
      */
-    public function __construct(?int $orderId = null, array $ruleName = [], array $infoKey = [], array $infoValue = [])
+    public function __construct(?int $orderId = null, ?array $ruleName = null, ?array $infoKey = null, ?array $infoValue = null)
     {
         $this
             ->setOrderId($orderId)
@@ -85,18 +86,22 @@ class ExecuteOrderRulesRequest extends AbstractStructBase
      * Get ruleName value
      * @return string[]
      */
-    public function getRuleName(): array
+    public function getRuleName(): ?array
     {
         return $this->ruleName;
     }
     /**
-     * This method is responsible for validating the values passed to the setRuleName method
+     * This method is responsible for validating the value(s) passed to the setRuleName method
      * This method is willingly generated in order to preserve the one-line inline validation within the setRuleName method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateRuleNameForArrayConstraintsFromSetRuleName(array $values = []): string
+    public static function validateRuleNameForArrayConstraintFromSetRuleName(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $executeOrderRulesRequestRuleNameItem) {
@@ -118,10 +123,10 @@ class ExecuteOrderRulesRequest extends AbstractStructBase
      * @param string[] $ruleName
      * @return \Pggns\MidocoApi\Order\StructType\ExecuteOrderRulesRequest
      */
-    public function setRuleName(array $ruleName = []): self
+    public function setRuleName(?array $ruleName = null): self
     {
         // validation for constraint: array
-        if ('' !== ($ruleNameArrayErrorMessage = self::validateRuleNameForArrayConstraintsFromSetRuleName($ruleName))) {
+        if ('' !== ($ruleNameArrayErrorMessage = self::validateRuleNameForArrayConstraintFromSetRuleName($ruleName))) {
             throw new InvalidArgumentException($ruleNameArrayErrorMessage, __LINE__);
         }
         $this->ruleName = $ruleName;
@@ -148,18 +153,22 @@ class ExecuteOrderRulesRequest extends AbstractStructBase
      * Get infoKey value
      * @return string[]
      */
-    public function getInfoKey(): array
+    public function getInfoKey(): ?array
     {
         return $this->infoKey;
     }
     /**
-     * This method is responsible for validating the values passed to the setInfoKey method
+     * This method is responsible for validating the value(s) passed to the setInfoKey method
      * This method is willingly generated in order to preserve the one-line inline validation within the setInfoKey method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateInfoKeyForArrayConstraintsFromSetInfoKey(array $values = []): string
+    public static function validateInfoKeyForArrayConstraintFromSetInfoKey(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $executeOrderRulesRequestInfoKeyItem) {
@@ -181,10 +190,10 @@ class ExecuteOrderRulesRequest extends AbstractStructBase
      * @param string[] $infoKey
      * @return \Pggns\MidocoApi\Order\StructType\ExecuteOrderRulesRequest
      */
-    public function setInfoKey(array $infoKey = []): self
+    public function setInfoKey(?array $infoKey = null): self
     {
         // validation for constraint: array
-        if ('' !== ($infoKeyArrayErrorMessage = self::validateInfoKeyForArrayConstraintsFromSetInfoKey($infoKey))) {
+        if ('' !== ($infoKeyArrayErrorMessage = self::validateInfoKeyForArrayConstraintFromSetInfoKey($infoKey))) {
             throw new InvalidArgumentException($infoKeyArrayErrorMessage, __LINE__);
         }
         $this->infoKey = $infoKey;
@@ -209,30 +218,34 @@ class ExecuteOrderRulesRequest extends AbstractStructBase
     }
     /**
      * Get infoValue value
-     * @return mixed[]
+     * @return string[]
      */
-    public function getInfoValue(): array
+    public function getInfoValue(): ?array
     {
         return $this->infoValue;
     }
     /**
-     * This method is responsible for validating the values passed to the setInfoValue method
+     * This method is responsible for validating the value(s) passed to the setInfoValue method
      * This method is willingly generated in order to preserve the one-line inline validation within the setInfoValue method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateInfoValueForArrayConstraintsFromSetInfoValue(array $values = []): string
+    public static function validateInfoValueForArrayConstraintFromSetInfoValue(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $executeOrderRulesRequestInfoValueItem) {
             // validation for constraint: itemType
-            if (false) {
+            if (!is_string($executeOrderRulesRequestInfoValueItem)) {
                 $invalidValues[] = is_object($executeOrderRulesRequestInfoValueItem) ? get_class($executeOrderRulesRequestInfoValueItem) : sprintf('%s(%s)', gettype($executeOrderRulesRequestInfoValueItem), var_export($executeOrderRulesRequestInfoValueItem, true));
             }
         }
         if (!empty($invalidValues)) {
-            $message = sprintf('The infoValue property can only contain items of type mixed, %s given', is_object($invalidValues) ? get_class($invalidValues) : (is_array($invalidValues) ? implode(', ', $invalidValues) : gettype($invalidValues)));
+            $message = sprintf('The infoValue property can only contain items of type string, %s given', is_object($invalidValues) ? get_class($invalidValues) : (is_array($invalidValues) ? implode(', ', $invalidValues) : gettype($invalidValues)));
         }
         unset($invalidValues);
         
@@ -241,13 +254,13 @@ class ExecuteOrderRulesRequest extends AbstractStructBase
     /**
      * Set infoValue value
      * @throws InvalidArgumentException
-     * @param mixed[] $infoValue
+     * @param string[] $infoValue
      * @return \Pggns\MidocoApi\Order\StructType\ExecuteOrderRulesRequest
      */
-    public function setInfoValue(array $infoValue = []): self
+    public function setInfoValue(?array $infoValue = null): self
     {
         // validation for constraint: array
-        if ('' !== ($infoValueArrayErrorMessage = self::validateInfoValueForArrayConstraintsFromSetInfoValue($infoValue))) {
+        if ('' !== ($infoValueArrayErrorMessage = self::validateInfoValueForArrayConstraintFromSetInfoValue($infoValue))) {
             throw new InvalidArgumentException($infoValueArrayErrorMessage, __LINE__);
         }
         $this->infoValue = $infoValue;
@@ -257,14 +270,14 @@ class ExecuteOrderRulesRequest extends AbstractStructBase
     /**
      * Add item to infoValue value
      * @throws InvalidArgumentException
-     * @param mixed $item
+     * @param string $item
      * @return \Pggns\MidocoApi\Order\StructType\ExecuteOrderRulesRequest
      */
-    public function addToInfoValue(mixed $item): self
+    public function addToInfoValue(string $item): self
     {
         // validation for constraint: itemType
-        if (false) {
-            throw new InvalidArgumentException(sprintf('The infoValue property can only contain items of type mixed, %s given', is_object($item) ? get_class($item) : (is_array($item) ? implode(', ', $item) : gettype($item))), __LINE__);
+        if (!is_string($item)) {
+            throw new InvalidArgumentException(sprintf('The infoValue property can only contain items of type string, %s given', is_object($item) ? get_class($item) : (is_array($item) ? implode(', ', $item) : gettype($item))), __LINE__);
         }
         $this->infoValue[] = $item;
         

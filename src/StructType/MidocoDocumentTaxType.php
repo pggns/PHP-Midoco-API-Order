@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoDocumentTaxType StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoDocumentTaxType extends DocumentTaxCalculationDTO
 {
 }

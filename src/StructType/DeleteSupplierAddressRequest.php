@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteSupplierAddressRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteSupplierAddressRequest extends AbstractStructBase
 {
     /**

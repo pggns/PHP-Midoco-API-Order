@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetDocumentIdForInvoiceResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetDocumentIdForInvoiceResponse extends AbstractStructBase
 {
     /**

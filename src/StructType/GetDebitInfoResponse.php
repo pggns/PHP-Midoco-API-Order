@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: getDebitInfo --- return the debit info for a given document id
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetDebitInfoResponse extends AbstractStructBase
 {
     /**

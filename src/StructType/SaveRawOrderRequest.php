@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveRawOrderRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveRawOrderRequest extends AbstractStructBase
 {
     /**
@@ -28,7 +29,7 @@ class SaveRawOrderRequest extends AbstractStructBase
      * - ref: MidocoOrderNotice
      * @var \Pggns\MidocoApi\Order\StructType\MidocoOrderNotice[]
      */
-    protected array $MidocoOrderNotice = [];
+    protected ?array $MidocoOrderNotice = null;
     /**
      * The MidocoOrderPayment
      * Meta information extracted from the WSDL
@@ -37,7 +38,7 @@ class SaveRawOrderRequest extends AbstractStructBase
      * - ref: MidocoOrderPayment
      * @var \Pggns\MidocoApi\Order\StructType\MidocoOrderPayment[]
      */
-    protected array $MidocoOrderPayment = [];
+    protected ?array $MidocoOrderPayment = null;
     /**
      * Constructor method for SaveRawOrderRequest
      * @uses SaveRawOrderRequest::setMidocoOrder()
@@ -47,7 +48,7 @@ class SaveRawOrderRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoOrderNotice[] $midocoOrderNotice
      * @param \Pggns\MidocoApi\Order\StructType\MidocoOrderPayment[] $midocoOrderPayment
      */
-    public function __construct(?\Pggns\MidocoApi\Order\StructType\MidocoOrderType $midocoOrder = null, array $midocoOrderNotice = [], array $midocoOrderPayment = [])
+    public function __construct(?\Pggns\MidocoApi\Order\StructType\MidocoOrderType $midocoOrder = null, ?array $midocoOrderNotice = null, ?array $midocoOrderPayment = null)
     {
         $this
             ->setMidocoOrder($midocoOrder)
@@ -77,18 +78,22 @@ class SaveRawOrderRequest extends AbstractStructBase
      * Get MidocoOrderNotice value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoOrderNotice[]
      */
-    public function getMidocoOrderNotice(): array
+    public function getMidocoOrderNotice(): ?array
     {
         return $this->MidocoOrderNotice;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoOrderNotice method
+     * This method is responsible for validating the value(s) passed to the setMidocoOrderNotice method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoOrderNotice method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoOrderNoticeForArrayConstraintsFromSetMidocoOrderNotice(array $values = []): string
+    public static function validateMidocoOrderNoticeForArrayConstraintFromSetMidocoOrderNotice(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $saveRawOrderRequestMidocoOrderNoticeItem) {
@@ -110,10 +115,10 @@ class SaveRawOrderRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoOrderNotice[] $midocoOrderNotice
      * @return \Pggns\MidocoApi\Order\StructType\SaveRawOrderRequest
      */
-    public function setMidocoOrderNotice(array $midocoOrderNotice = []): self
+    public function setMidocoOrderNotice(?array $midocoOrderNotice = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoOrderNoticeArrayErrorMessage = self::validateMidocoOrderNoticeForArrayConstraintsFromSetMidocoOrderNotice($midocoOrderNotice))) {
+        if ('' !== ($midocoOrderNoticeArrayErrorMessage = self::validateMidocoOrderNoticeForArrayConstraintFromSetMidocoOrderNotice($midocoOrderNotice))) {
             throw new InvalidArgumentException($midocoOrderNoticeArrayErrorMessage, __LINE__);
         }
         $this->MidocoOrderNotice = $midocoOrderNotice;
@@ -140,18 +145,22 @@ class SaveRawOrderRequest extends AbstractStructBase
      * Get MidocoOrderPayment value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoOrderPayment[]
      */
-    public function getMidocoOrderPayment(): array
+    public function getMidocoOrderPayment(): ?array
     {
         return $this->MidocoOrderPayment;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoOrderPayment method
+     * This method is responsible for validating the value(s) passed to the setMidocoOrderPayment method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoOrderPayment method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoOrderPaymentForArrayConstraintsFromSetMidocoOrderPayment(array $values = []): string
+    public static function validateMidocoOrderPaymentForArrayConstraintFromSetMidocoOrderPayment(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $saveRawOrderRequestMidocoOrderPaymentItem) {
@@ -173,10 +182,10 @@ class SaveRawOrderRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoOrderPayment[] $midocoOrderPayment
      * @return \Pggns\MidocoApi\Order\StructType\SaveRawOrderRequest
      */
-    public function setMidocoOrderPayment(array $midocoOrderPayment = []): self
+    public function setMidocoOrderPayment(?array $midocoOrderPayment = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoOrderPaymentArrayErrorMessage = self::validateMidocoOrderPaymentForArrayConstraintsFromSetMidocoOrderPayment($midocoOrderPayment))) {
+        if ('' !== ($midocoOrderPaymentArrayErrorMessage = self::validateMidocoOrderPaymentForArrayConstraintFromSetMidocoOrderPayment($midocoOrderPayment))) {
             throw new InvalidArgumentException($midocoOrderPaymentArrayErrorMessage, __LINE__);
         }
         $this->MidocoOrderPayment = $midocoOrderPayment;

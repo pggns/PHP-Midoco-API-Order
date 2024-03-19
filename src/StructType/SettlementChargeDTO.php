@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SettlementChargeDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SettlementChargeDTO extends AbstractStructBase
 {
     /**

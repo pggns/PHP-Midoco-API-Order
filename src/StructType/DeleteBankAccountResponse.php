@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: deletes a bank account
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteBankAccountResponse extends AbstractStructBase
 {
 }

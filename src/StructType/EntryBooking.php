@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for EntryBooking StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class EntryBooking extends AbstractStructBase
 {
     /**

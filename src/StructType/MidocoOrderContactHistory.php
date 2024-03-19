@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoOrderContactHistory StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoOrderContactHistory extends OrderContactHistoryDTO
 {
     /**

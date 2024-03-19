@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveOrderVoucherResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveOrderVoucherResponse extends AbstractStructBase
 {
     /**

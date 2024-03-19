@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveTravelCMSRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveTravelCMSRequest extends AbstractStructBase
 {
     /**
@@ -71,7 +72,7 @@ class SaveTravelCMSRequest extends AbstractStructBase
     /**
      * Get any value
      * @uses \DOMDocument::loadXML()
-     * @param bool $asString true: returns XML string, false: returns \DOMDocument
+     * @param bool $asDomDocument true: returns \DOMDocument, false: returns XML string
      * @return \DOMDocument|string|null
      */
     public function getAny(bool $asDomDocument = false)

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteOrderAdvisedPaymentResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteOrderAdvisedPaymentResponse extends AbstractStructBase
 {
 }

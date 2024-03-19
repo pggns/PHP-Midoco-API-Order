@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: The response provides the updated MidocoMilesAndMoreEarnInfo elements for the MidocoSellItems.
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveMilesAndMoreEarnSelectionResponse extends AbstractStructBase
 {
     /**
@@ -23,13 +24,13 @@ class SaveMilesAndMoreEarnSelectionResponse extends AbstractStructBase
      * - ref: MidocoMilesAndMoreEarnInfo
      * @var \Pggns\MidocoApi\Order\StructType\MidocoMilesAndMoreEarnInfoType[]
      */
-    protected array $MidocoMilesAndMoreEarnInfo = [];
+    protected ?array $MidocoMilesAndMoreEarnInfo = null;
     /**
      * Constructor method for SaveMilesAndMoreEarnSelectionResponse
      * @uses SaveMilesAndMoreEarnSelectionResponse::setMidocoMilesAndMoreEarnInfo()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoMilesAndMoreEarnInfoType[] $midocoMilesAndMoreEarnInfo
      */
-    public function __construct(array $midocoMilesAndMoreEarnInfo = [])
+    public function __construct(?array $midocoMilesAndMoreEarnInfo = null)
     {
         $this
             ->setMidocoMilesAndMoreEarnInfo($midocoMilesAndMoreEarnInfo);
@@ -38,18 +39,22 @@ class SaveMilesAndMoreEarnSelectionResponse extends AbstractStructBase
      * Get MidocoMilesAndMoreEarnInfo value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoMilesAndMoreEarnInfoType[]
      */
-    public function getMidocoMilesAndMoreEarnInfo(): array
+    public function getMidocoMilesAndMoreEarnInfo(): ?array
     {
         return $this->MidocoMilesAndMoreEarnInfo;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoMilesAndMoreEarnInfo method
+     * This method is responsible for validating the value(s) passed to the setMidocoMilesAndMoreEarnInfo method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoMilesAndMoreEarnInfo method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoMilesAndMoreEarnInfoForArrayConstraintsFromSetMidocoMilesAndMoreEarnInfo(array $values = []): string
+    public static function validateMidocoMilesAndMoreEarnInfoForArrayConstraintFromSetMidocoMilesAndMoreEarnInfo(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $saveMilesAndMoreEarnSelectionResponseMidocoMilesAndMoreEarnInfoItem) {
@@ -71,10 +76,10 @@ class SaveMilesAndMoreEarnSelectionResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoMilesAndMoreEarnInfoType[] $midocoMilesAndMoreEarnInfo
      * @return \Pggns\MidocoApi\Order\StructType\SaveMilesAndMoreEarnSelectionResponse
      */
-    public function setMidocoMilesAndMoreEarnInfo(array $midocoMilesAndMoreEarnInfo = []): self
+    public function setMidocoMilesAndMoreEarnInfo(?array $midocoMilesAndMoreEarnInfo = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoMilesAndMoreEarnInfoArrayErrorMessage = self::validateMidocoMilesAndMoreEarnInfoForArrayConstraintsFromSetMidocoMilesAndMoreEarnInfo($midocoMilesAndMoreEarnInfo))) {
+        if ('' !== ($midocoMilesAndMoreEarnInfoArrayErrorMessage = self::validateMidocoMilesAndMoreEarnInfoForArrayConstraintFromSetMidocoMilesAndMoreEarnInfo($midocoMilesAndMoreEarnInfo))) {
             throw new InvalidArgumentException($midocoMilesAndMoreEarnInfoArrayErrorMessage, __LINE__);
         }
         $this->MidocoMilesAndMoreEarnInfo = $midocoMilesAndMoreEarnInfo;

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for BookMidocoVoucher4KickbackRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class BookMidocoVoucher4KickbackRequest extends AbstractStructBase
 {
     /**

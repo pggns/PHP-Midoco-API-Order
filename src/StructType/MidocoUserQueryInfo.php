@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoUserQueryInfo StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoUserQueryInfo extends AbstractStructBase
 {
     /**

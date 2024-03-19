@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetMidocoUserIdForExternCredentialsResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetMidocoUserIdForExternCredentialsResponse extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetMdcSettlementBillingResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetMdcSettlementBillingResponse extends AbstractStructBase
 {
     /**
@@ -21,7 +22,7 @@ class GetMdcSettlementBillingResponse extends AbstractStructBase
      * - ref: MidocoMdcSettlementBillingRevenue
      * @var \Pggns\MidocoApi\Order\StructType\MdcSettlementBillingRevenueDTO[]
      */
-    protected array $MidocoMdcSettlementBillingRevenue = [];
+    protected ?array $MidocoMdcSettlementBillingRevenue = null;
     /**
      * The MidocoMdcSettlementBillingOrder
      * Meta information extracted from the WSDL
@@ -30,7 +31,7 @@ class GetMdcSettlementBillingResponse extends AbstractStructBase
      * - ref: MidocoMdcSettlementBillingOrder
      * @var \Pggns\MidocoApi\Order\StructType\MdcSettlementBillingOrderDTO[]
      */
-    protected array $MidocoMdcSettlementBillingOrder = [];
+    protected ?array $MidocoMdcSettlementBillingOrder = null;
     /**
      * The MidocoMdcSettlementBillingBooking
      * Meta information extracted from the WSDL
@@ -39,7 +40,7 @@ class GetMdcSettlementBillingResponse extends AbstractStructBase
      * - ref: MidocoMdcSettlementBillingBooking
      * @var \Pggns\MidocoApi\Order\StructType\MdcSettlementBillingBookingDTO[]
      */
-    protected array $MidocoMdcSettlementBillingBooking = [];
+    protected ?array $MidocoMdcSettlementBillingBooking = null;
     /**
      * The MidocoMdcSettlementBillingFee
      * Meta information extracted from the WSDL
@@ -48,7 +49,7 @@ class GetMdcSettlementBillingResponse extends AbstractStructBase
      * - ref: MidocoMdcSettlementBillingFee
      * @var \Pggns\MidocoApi\Order\StructType\MdcSettlementBillingFeeDTO[]
      */
-    protected array $MidocoMdcSettlementBillingFee = [];
+    protected ?array $MidocoMdcSettlementBillingFee = null;
     /**
      * The MidocoMdcSettlementBillingMdoc
      * Meta information extracted from the WSDL
@@ -57,7 +58,7 @@ class GetMdcSettlementBillingResponse extends AbstractStructBase
      * - ref: MidocoMdcSettlementBillingMdoc
      * @var \Pggns\MidocoApi\Order\StructType\MdcSettlementBillingMdocDTO[]
      */
-    protected array $MidocoMdcSettlementBillingMdoc = [];
+    protected ?array $MidocoMdcSettlementBillingMdoc = null;
     /**
      * The MidocoMdcSettlementCharge
      * Meta information extracted from the WSDL
@@ -66,7 +67,7 @@ class GetMdcSettlementBillingResponse extends AbstractStructBase
      * - ref: MidocoMdcSettlementCharge
      * @var \Pggns\MidocoApi\Order\StructType\MdcSettlementChargeDTO[]
      */
-    protected array $MidocoMdcSettlementCharge = [];
+    protected ?array $MidocoMdcSettlementCharge = null;
     /**
      * The totalChargeAmount
      * @var float|null
@@ -89,7 +90,7 @@ class GetMdcSettlementBillingResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MdcSettlementChargeDTO[] $midocoMdcSettlementCharge
      * @param float $totalChargeAmount
      */
-    public function __construct(array $midocoMdcSettlementBillingRevenue = [], array $midocoMdcSettlementBillingOrder = [], array $midocoMdcSettlementBillingBooking = [], array $midocoMdcSettlementBillingFee = [], array $midocoMdcSettlementBillingMdoc = [], array $midocoMdcSettlementCharge = [], ?float $totalChargeAmount = null)
+    public function __construct(?array $midocoMdcSettlementBillingRevenue = null, ?array $midocoMdcSettlementBillingOrder = null, ?array $midocoMdcSettlementBillingBooking = null, ?array $midocoMdcSettlementBillingFee = null, ?array $midocoMdcSettlementBillingMdoc = null, ?array $midocoMdcSettlementCharge = null, ?float $totalChargeAmount = null)
     {
         $this
             ->setMidocoMdcSettlementBillingRevenue($midocoMdcSettlementBillingRevenue)
@@ -104,18 +105,22 @@ class GetMdcSettlementBillingResponse extends AbstractStructBase
      * Get MidocoMdcSettlementBillingRevenue value
      * @return \Pggns\MidocoApi\Order\StructType\MdcSettlementBillingRevenueDTO[]
      */
-    public function getMidocoMdcSettlementBillingRevenue(): array
+    public function getMidocoMdcSettlementBillingRevenue(): ?array
     {
         return $this->MidocoMdcSettlementBillingRevenue;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoMdcSettlementBillingRevenue method
+     * This method is responsible for validating the value(s) passed to the setMidocoMdcSettlementBillingRevenue method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoMdcSettlementBillingRevenue method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoMdcSettlementBillingRevenueForArrayConstraintsFromSetMidocoMdcSettlementBillingRevenue(array $values = []): string
+    public static function validateMidocoMdcSettlementBillingRevenueForArrayConstraintFromSetMidocoMdcSettlementBillingRevenue(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getMdcSettlementBillingResponseMidocoMdcSettlementBillingRevenueItem) {
@@ -137,10 +142,10 @@ class GetMdcSettlementBillingResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MdcSettlementBillingRevenueDTO[] $midocoMdcSettlementBillingRevenue
      * @return \Pggns\MidocoApi\Order\StructType\GetMdcSettlementBillingResponse
      */
-    public function setMidocoMdcSettlementBillingRevenue(array $midocoMdcSettlementBillingRevenue = []): self
+    public function setMidocoMdcSettlementBillingRevenue(?array $midocoMdcSettlementBillingRevenue = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoMdcSettlementBillingRevenueArrayErrorMessage = self::validateMidocoMdcSettlementBillingRevenueForArrayConstraintsFromSetMidocoMdcSettlementBillingRevenue($midocoMdcSettlementBillingRevenue))) {
+        if ('' !== ($midocoMdcSettlementBillingRevenueArrayErrorMessage = self::validateMidocoMdcSettlementBillingRevenueForArrayConstraintFromSetMidocoMdcSettlementBillingRevenue($midocoMdcSettlementBillingRevenue))) {
             throw new InvalidArgumentException($midocoMdcSettlementBillingRevenueArrayErrorMessage, __LINE__);
         }
         $this->MidocoMdcSettlementBillingRevenue = $midocoMdcSettlementBillingRevenue;
@@ -167,18 +172,22 @@ class GetMdcSettlementBillingResponse extends AbstractStructBase
      * Get MidocoMdcSettlementBillingOrder value
      * @return \Pggns\MidocoApi\Order\StructType\MdcSettlementBillingOrderDTO[]
      */
-    public function getMidocoMdcSettlementBillingOrder(): array
+    public function getMidocoMdcSettlementBillingOrder(): ?array
     {
         return $this->MidocoMdcSettlementBillingOrder;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoMdcSettlementBillingOrder method
+     * This method is responsible for validating the value(s) passed to the setMidocoMdcSettlementBillingOrder method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoMdcSettlementBillingOrder method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoMdcSettlementBillingOrderForArrayConstraintsFromSetMidocoMdcSettlementBillingOrder(array $values = []): string
+    public static function validateMidocoMdcSettlementBillingOrderForArrayConstraintFromSetMidocoMdcSettlementBillingOrder(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getMdcSettlementBillingResponseMidocoMdcSettlementBillingOrderItem) {
@@ -200,10 +209,10 @@ class GetMdcSettlementBillingResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MdcSettlementBillingOrderDTO[] $midocoMdcSettlementBillingOrder
      * @return \Pggns\MidocoApi\Order\StructType\GetMdcSettlementBillingResponse
      */
-    public function setMidocoMdcSettlementBillingOrder(array $midocoMdcSettlementBillingOrder = []): self
+    public function setMidocoMdcSettlementBillingOrder(?array $midocoMdcSettlementBillingOrder = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoMdcSettlementBillingOrderArrayErrorMessage = self::validateMidocoMdcSettlementBillingOrderForArrayConstraintsFromSetMidocoMdcSettlementBillingOrder($midocoMdcSettlementBillingOrder))) {
+        if ('' !== ($midocoMdcSettlementBillingOrderArrayErrorMessage = self::validateMidocoMdcSettlementBillingOrderForArrayConstraintFromSetMidocoMdcSettlementBillingOrder($midocoMdcSettlementBillingOrder))) {
             throw new InvalidArgumentException($midocoMdcSettlementBillingOrderArrayErrorMessage, __LINE__);
         }
         $this->MidocoMdcSettlementBillingOrder = $midocoMdcSettlementBillingOrder;
@@ -230,18 +239,22 @@ class GetMdcSettlementBillingResponse extends AbstractStructBase
      * Get MidocoMdcSettlementBillingBooking value
      * @return \Pggns\MidocoApi\Order\StructType\MdcSettlementBillingBookingDTO[]
      */
-    public function getMidocoMdcSettlementBillingBooking(): array
+    public function getMidocoMdcSettlementBillingBooking(): ?array
     {
         return $this->MidocoMdcSettlementBillingBooking;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoMdcSettlementBillingBooking method
+     * This method is responsible for validating the value(s) passed to the setMidocoMdcSettlementBillingBooking method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoMdcSettlementBillingBooking method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoMdcSettlementBillingBookingForArrayConstraintsFromSetMidocoMdcSettlementBillingBooking(array $values = []): string
+    public static function validateMidocoMdcSettlementBillingBookingForArrayConstraintFromSetMidocoMdcSettlementBillingBooking(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getMdcSettlementBillingResponseMidocoMdcSettlementBillingBookingItem) {
@@ -263,10 +276,10 @@ class GetMdcSettlementBillingResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MdcSettlementBillingBookingDTO[] $midocoMdcSettlementBillingBooking
      * @return \Pggns\MidocoApi\Order\StructType\GetMdcSettlementBillingResponse
      */
-    public function setMidocoMdcSettlementBillingBooking(array $midocoMdcSettlementBillingBooking = []): self
+    public function setMidocoMdcSettlementBillingBooking(?array $midocoMdcSettlementBillingBooking = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoMdcSettlementBillingBookingArrayErrorMessage = self::validateMidocoMdcSettlementBillingBookingForArrayConstraintsFromSetMidocoMdcSettlementBillingBooking($midocoMdcSettlementBillingBooking))) {
+        if ('' !== ($midocoMdcSettlementBillingBookingArrayErrorMessage = self::validateMidocoMdcSettlementBillingBookingForArrayConstraintFromSetMidocoMdcSettlementBillingBooking($midocoMdcSettlementBillingBooking))) {
             throw new InvalidArgumentException($midocoMdcSettlementBillingBookingArrayErrorMessage, __LINE__);
         }
         $this->MidocoMdcSettlementBillingBooking = $midocoMdcSettlementBillingBooking;
@@ -293,18 +306,22 @@ class GetMdcSettlementBillingResponse extends AbstractStructBase
      * Get MidocoMdcSettlementBillingFee value
      * @return \Pggns\MidocoApi\Order\StructType\MdcSettlementBillingFeeDTO[]
      */
-    public function getMidocoMdcSettlementBillingFee(): array
+    public function getMidocoMdcSettlementBillingFee(): ?array
     {
         return $this->MidocoMdcSettlementBillingFee;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoMdcSettlementBillingFee method
+     * This method is responsible for validating the value(s) passed to the setMidocoMdcSettlementBillingFee method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoMdcSettlementBillingFee method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoMdcSettlementBillingFeeForArrayConstraintsFromSetMidocoMdcSettlementBillingFee(array $values = []): string
+    public static function validateMidocoMdcSettlementBillingFeeForArrayConstraintFromSetMidocoMdcSettlementBillingFee(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getMdcSettlementBillingResponseMidocoMdcSettlementBillingFeeItem) {
@@ -326,10 +343,10 @@ class GetMdcSettlementBillingResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MdcSettlementBillingFeeDTO[] $midocoMdcSettlementBillingFee
      * @return \Pggns\MidocoApi\Order\StructType\GetMdcSettlementBillingResponse
      */
-    public function setMidocoMdcSettlementBillingFee(array $midocoMdcSettlementBillingFee = []): self
+    public function setMidocoMdcSettlementBillingFee(?array $midocoMdcSettlementBillingFee = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoMdcSettlementBillingFeeArrayErrorMessage = self::validateMidocoMdcSettlementBillingFeeForArrayConstraintsFromSetMidocoMdcSettlementBillingFee($midocoMdcSettlementBillingFee))) {
+        if ('' !== ($midocoMdcSettlementBillingFeeArrayErrorMessage = self::validateMidocoMdcSettlementBillingFeeForArrayConstraintFromSetMidocoMdcSettlementBillingFee($midocoMdcSettlementBillingFee))) {
             throw new InvalidArgumentException($midocoMdcSettlementBillingFeeArrayErrorMessage, __LINE__);
         }
         $this->MidocoMdcSettlementBillingFee = $midocoMdcSettlementBillingFee;
@@ -356,18 +373,22 @@ class GetMdcSettlementBillingResponse extends AbstractStructBase
      * Get MidocoMdcSettlementBillingMdoc value
      * @return \Pggns\MidocoApi\Order\StructType\MdcSettlementBillingMdocDTO[]
      */
-    public function getMidocoMdcSettlementBillingMdoc(): array
+    public function getMidocoMdcSettlementBillingMdoc(): ?array
     {
         return $this->MidocoMdcSettlementBillingMdoc;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoMdcSettlementBillingMdoc method
+     * This method is responsible for validating the value(s) passed to the setMidocoMdcSettlementBillingMdoc method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoMdcSettlementBillingMdoc method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoMdcSettlementBillingMdocForArrayConstraintsFromSetMidocoMdcSettlementBillingMdoc(array $values = []): string
+    public static function validateMidocoMdcSettlementBillingMdocForArrayConstraintFromSetMidocoMdcSettlementBillingMdoc(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getMdcSettlementBillingResponseMidocoMdcSettlementBillingMdocItem) {
@@ -389,10 +410,10 @@ class GetMdcSettlementBillingResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MdcSettlementBillingMdocDTO[] $midocoMdcSettlementBillingMdoc
      * @return \Pggns\MidocoApi\Order\StructType\GetMdcSettlementBillingResponse
      */
-    public function setMidocoMdcSettlementBillingMdoc(array $midocoMdcSettlementBillingMdoc = []): self
+    public function setMidocoMdcSettlementBillingMdoc(?array $midocoMdcSettlementBillingMdoc = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoMdcSettlementBillingMdocArrayErrorMessage = self::validateMidocoMdcSettlementBillingMdocForArrayConstraintsFromSetMidocoMdcSettlementBillingMdoc($midocoMdcSettlementBillingMdoc))) {
+        if ('' !== ($midocoMdcSettlementBillingMdocArrayErrorMessage = self::validateMidocoMdcSettlementBillingMdocForArrayConstraintFromSetMidocoMdcSettlementBillingMdoc($midocoMdcSettlementBillingMdoc))) {
             throw new InvalidArgumentException($midocoMdcSettlementBillingMdocArrayErrorMessage, __LINE__);
         }
         $this->MidocoMdcSettlementBillingMdoc = $midocoMdcSettlementBillingMdoc;
@@ -419,18 +440,22 @@ class GetMdcSettlementBillingResponse extends AbstractStructBase
      * Get MidocoMdcSettlementCharge value
      * @return \Pggns\MidocoApi\Order\StructType\MdcSettlementChargeDTO[]
      */
-    public function getMidocoMdcSettlementCharge(): array
+    public function getMidocoMdcSettlementCharge(): ?array
     {
         return $this->MidocoMdcSettlementCharge;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoMdcSettlementCharge method
+     * This method is responsible for validating the value(s) passed to the setMidocoMdcSettlementCharge method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoMdcSettlementCharge method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoMdcSettlementChargeForArrayConstraintsFromSetMidocoMdcSettlementCharge(array $values = []): string
+    public static function validateMidocoMdcSettlementChargeForArrayConstraintFromSetMidocoMdcSettlementCharge(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getMdcSettlementBillingResponseMidocoMdcSettlementChargeItem) {
@@ -452,10 +477,10 @@ class GetMdcSettlementBillingResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MdcSettlementChargeDTO[] $midocoMdcSettlementCharge
      * @return \Pggns\MidocoApi\Order\StructType\GetMdcSettlementBillingResponse
      */
-    public function setMidocoMdcSettlementCharge(array $midocoMdcSettlementCharge = []): self
+    public function setMidocoMdcSettlementCharge(?array $midocoMdcSettlementCharge = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoMdcSettlementChargeArrayErrorMessage = self::validateMidocoMdcSettlementChargeForArrayConstraintsFromSetMidocoMdcSettlementCharge($midocoMdcSettlementCharge))) {
+        if ('' !== ($midocoMdcSettlementChargeArrayErrorMessage = self::validateMidocoMdcSettlementChargeForArrayConstraintFromSetMidocoMdcSettlementCharge($midocoMdcSettlementCharge))) {
             throw new InvalidArgumentException($midocoMdcSettlementChargeArrayErrorMessage, __LINE__);
         }
         $this->MidocoMdcSettlementCharge = $midocoMdcSettlementCharge;

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SuppAAssignChangeLogDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SuppAAssignChangeLogDTO extends AbstractStructBase
 {
     /**

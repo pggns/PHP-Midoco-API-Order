@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ccPayment StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CcPayment extends AbstractStructBase
 {
     /**
@@ -59,7 +60,7 @@ class CcPayment extends AbstractStructBase
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\CCPaymentAdditionalInfo[]
      */
-    protected array $ccAdditionalInfo = [];
+    protected ?array $ccAdditionalInfo = null;
     /**
      * The cardHolder
      * Meta information extracted from the WSDL
@@ -75,7 +76,7 @@ class CcPayment extends AbstractStructBase
      * - ref: ccToken
      * @var \Pggns\MidocoApi\Order\StructType\CcToken[]
      */
-    protected array $ccToken = [];
+    protected ?array $ccToken = null;
     /**
      * The paymentChannelIndicator
      * Meta information extracted from the WSDL
@@ -194,7 +195,7 @@ class CcPayment extends AbstractStructBase
      * @param string $initialEcomTransactionId
      * @param int $position
      */
-    public function __construct(?string $ccType = null, ?string $ccNumber = null, ?string $ccValidYear = null, ?string $ccValidMonth = null, ?string $cvcCode = null, array $ccAdditionalInfo = [], ?string $cardHolder = null, array $ccToken = [], ?string $paymentChannelIndicator = null, ?string $cardholderAuthVerification = null, ?string $electronicCommerceIndicator = null, ?string $xid = null, ?float $authAmount = null, ?float $remainingAuthAmount = null, ?string $v3ds = null, ?string $dstid = null, ?string $initialEcomTransactionId = null, ?int $position = null)
+    public function __construct(?string $ccType = null, ?string $ccNumber = null, ?string $ccValidYear = null, ?string $ccValidMonth = null, ?string $cvcCode = null, ?array $ccAdditionalInfo = null, ?string $cardHolder = null, ?array $ccToken = null, ?string $paymentChannelIndicator = null, ?string $cardholderAuthVerification = null, ?string $electronicCommerceIndicator = null, ?string $xid = null, ?float $authAmount = null, ?float $remainingAuthAmount = null, ?string $v3ds = null, ?string $dstid = null, ?string $initialEcomTransactionId = null, ?int $position = null)
     {
         $this
             ->setCcType($ccType)
@@ -282,7 +283,7 @@ class CcPayment extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($ccValidYear, true), gettype($ccValidYear)), __LINE__);
         }
         // validation for constraint: pattern([0-9]{4})
-        if (!is_null($ccValidYear) && !preg_match('/[0-9]{4}/', $ccValidYear)) {
+        if (!is_null($ccValidYear) && !preg_match('/[0-9]{4}/', (string) $ccValidYear)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[0-9]{4}/', var_export($ccValidYear, true)), __LINE__);
         }
         $this->ccValidYear = $ccValidYear;
@@ -309,7 +310,7 @@ class CcPayment extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($ccValidMonth, true), gettype($ccValidMonth)), __LINE__);
         }
         // validation for constraint: pattern([0-9]{2})
-        if (!is_null($ccValidMonth) && !preg_match('/[0-9]{2}/', $ccValidMonth)) {
+        if (!is_null($ccValidMonth) && !preg_match('/[0-9]{2}/', (string) $ccValidMonth)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[0-9]{2}/', var_export($ccValidMonth, true)), __LINE__);
         }
         $this->ccValidMonth = $ccValidMonth;
@@ -347,18 +348,22 @@ class CcPayment extends AbstractStructBase
      * Get ccAdditionalInfo value
      * @return \Pggns\MidocoApi\Order\StructType\CCPaymentAdditionalInfo[]
      */
-    public function getCcAdditionalInfo(): array
+    public function getCcAdditionalInfo(): ?array
     {
         return $this->ccAdditionalInfo;
     }
     /**
-     * This method is responsible for validating the values passed to the setCcAdditionalInfo method
+     * This method is responsible for validating the value(s) passed to the setCcAdditionalInfo method
      * This method is willingly generated in order to preserve the one-line inline validation within the setCcAdditionalInfo method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateCcAdditionalInfoForArrayConstraintsFromSetCcAdditionalInfo(array $values = []): string
+    public static function validateCcAdditionalInfoForArrayConstraintFromSetCcAdditionalInfo(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $ccPaymentCcAdditionalInfoItem) {
@@ -380,10 +385,10 @@ class CcPayment extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\CCPaymentAdditionalInfo[] $ccAdditionalInfo
      * @return \Pggns\MidocoApi\Order\StructType\CcPayment
      */
-    public function setCcAdditionalInfo(array $ccAdditionalInfo = []): self
+    public function setCcAdditionalInfo(?array $ccAdditionalInfo = null): self
     {
         // validation for constraint: array
-        if ('' !== ($ccAdditionalInfoArrayErrorMessage = self::validateCcAdditionalInfoForArrayConstraintsFromSetCcAdditionalInfo($ccAdditionalInfo))) {
+        if ('' !== ($ccAdditionalInfoArrayErrorMessage = self::validateCcAdditionalInfoForArrayConstraintFromSetCcAdditionalInfo($ccAdditionalInfo))) {
             throw new InvalidArgumentException($ccAdditionalInfoArrayErrorMessage, __LINE__);
         }
         $this->ccAdditionalInfo = $ccAdditionalInfo;
@@ -433,18 +438,22 @@ class CcPayment extends AbstractStructBase
      * Get ccToken value
      * @return \Pggns\MidocoApi\Order\StructType\CcToken[]
      */
-    public function getCcToken(): array
+    public function getCcToken(): ?array
     {
         return $this->ccToken;
     }
     /**
-     * This method is responsible for validating the values passed to the setCcToken method
+     * This method is responsible for validating the value(s) passed to the setCcToken method
      * This method is willingly generated in order to preserve the one-line inline validation within the setCcToken method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateCcTokenForArrayConstraintsFromSetCcToken(array $values = []): string
+    public static function validateCcTokenForArrayConstraintFromSetCcToken(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $ccPaymentCcTokenItem) {
@@ -466,10 +475,10 @@ class CcPayment extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\CcToken[] $ccToken
      * @return \Pggns\MidocoApi\Order\StructType\CcPayment
      */
-    public function setCcToken(array $ccToken = []): self
+    public function setCcToken(?array $ccToken = null): self
     {
         // validation for constraint: array
-        if ('' !== ($ccTokenArrayErrorMessage = self::validateCcTokenForArrayConstraintsFromSetCcToken($ccToken))) {
+        if ('' !== ($ccTokenArrayErrorMessage = self::validateCcTokenForArrayConstraintFromSetCcToken($ccToken))) {
             throw new InvalidArgumentException($ccTokenArrayErrorMessage, __LINE__);
         }
         $this->ccToken = $ccToken;

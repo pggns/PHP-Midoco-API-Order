@@ -11,12 +11,12 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetMergedMidocoPropertiesResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetMergedMidocoPropertiesResponse extends AbstractStructBase
 {
     /**
      * The MidocoProperties
      * Meta information extracted from the WSDL
-     * - maxOccurs: 1
      * - minOccurs: 0
      * - ref: MidocoProperties
      * @var \Pggns\MidocoApi\Order\StructType\MidocoProperties|null

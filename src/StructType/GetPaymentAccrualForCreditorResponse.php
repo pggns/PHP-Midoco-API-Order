@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetPaymentAccrualForCreditorResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetPaymentAccrualForCreditorResponse extends AbstractStructBase
 {
     /**
@@ -21,7 +22,7 @@ class GetPaymentAccrualForCreditorResponse extends AbstractStructBase
      * - ref: MidocoCreditorPaymentAccrual
      * @var \Pggns\MidocoApi\Order\StructType\MidocoCreditorPaymentAccrual[]
      */
-    protected array $MidocoCreditorPaymentAccrual = [];
+    protected ?array $MidocoCreditorPaymentAccrual = null;
     /**
      * The totalNoOfRecords
      * @var int|null
@@ -55,7 +56,7 @@ class GetPaymentAccrualForCreditorResponse extends AbstractStructBase
      * @param float $totalPaidAmount
      * @param float $totalDueAmount
      */
-    public function __construct(array $midocoCreditorPaymentAccrual = [], ?int $totalNoOfRecords = null, ?float $totalInvoicedAmount = null, ?float $totalPaidAmount = null, ?float $totalDueAmount = null)
+    public function __construct(?array $midocoCreditorPaymentAccrual = null, ?int $totalNoOfRecords = null, ?float $totalInvoicedAmount = null, ?float $totalPaidAmount = null, ?float $totalDueAmount = null)
     {
         $this
             ->setMidocoCreditorPaymentAccrual($midocoCreditorPaymentAccrual)
@@ -68,18 +69,22 @@ class GetPaymentAccrualForCreditorResponse extends AbstractStructBase
      * Get MidocoCreditorPaymentAccrual value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoCreditorPaymentAccrual[]
      */
-    public function getMidocoCreditorPaymentAccrual(): array
+    public function getMidocoCreditorPaymentAccrual(): ?array
     {
         return $this->MidocoCreditorPaymentAccrual;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoCreditorPaymentAccrual method
+     * This method is responsible for validating the value(s) passed to the setMidocoCreditorPaymentAccrual method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoCreditorPaymentAccrual method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoCreditorPaymentAccrualForArrayConstraintsFromSetMidocoCreditorPaymentAccrual(array $values = []): string
+    public static function validateMidocoCreditorPaymentAccrualForArrayConstraintFromSetMidocoCreditorPaymentAccrual(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getPaymentAccrualForCreditorResponseMidocoCreditorPaymentAccrualItem) {
@@ -101,10 +106,10 @@ class GetPaymentAccrualForCreditorResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoCreditorPaymentAccrual[] $midocoCreditorPaymentAccrual
      * @return \Pggns\MidocoApi\Order\StructType\GetPaymentAccrualForCreditorResponse
      */
-    public function setMidocoCreditorPaymentAccrual(array $midocoCreditorPaymentAccrual = []): self
+    public function setMidocoCreditorPaymentAccrual(?array $midocoCreditorPaymentAccrual = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoCreditorPaymentAccrualArrayErrorMessage = self::validateMidocoCreditorPaymentAccrualForArrayConstraintsFromSetMidocoCreditorPaymentAccrual($midocoCreditorPaymentAccrual))) {
+        if ('' !== ($midocoCreditorPaymentAccrualArrayErrorMessage = self::validateMidocoCreditorPaymentAccrualForArrayConstraintFromSetMidocoCreditorPaymentAccrual($midocoCreditorPaymentAccrual))) {
             throw new InvalidArgumentException($midocoCreditorPaymentAccrualArrayErrorMessage, __LINE__);
         }
         $this->MidocoCreditorPaymentAccrual = $midocoCreditorPaymentAccrual;

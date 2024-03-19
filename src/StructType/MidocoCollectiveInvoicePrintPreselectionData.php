@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoCollectiveInvoicePrintPreselectionData StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoCollectiveInvoicePrintPreselectionData extends AbstractStructBase
 {
     /**

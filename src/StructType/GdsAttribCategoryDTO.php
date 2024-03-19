@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GdsAttribCategoryDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GdsAttribCategoryDTO extends AbstractStructBase
 {
     /**

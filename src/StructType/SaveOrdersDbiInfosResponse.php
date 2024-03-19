@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveOrdersDbiInfosResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveOrdersDbiInfosResponse extends AbstractStructBase
 {
     /**

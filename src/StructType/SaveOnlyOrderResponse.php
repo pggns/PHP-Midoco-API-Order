@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveOnlyOrderResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveOnlyOrderResponse extends AbstractStructBase
 {
     /**
@@ -20,7 +21,7 @@ class SaveOnlyOrderResponse extends AbstractStructBase
      * - minOccurs: 0
      * @var int[]
      */
-    protected array $ToBeProcessedOrderId = [];
+    protected ?array $ToBeProcessedOrderId = null;
     /**
      * The mainOrderId
      * @var int|null
@@ -33,7 +34,7 @@ class SaveOnlyOrderResponse extends AbstractStructBase
      * @param int[] $toBeProcessedOrderId
      * @param int $mainOrderId
      */
-    public function __construct(array $toBeProcessedOrderId = [], ?int $mainOrderId = null)
+    public function __construct(?array $toBeProcessedOrderId = null, ?int $mainOrderId = null)
     {
         $this
             ->setToBeProcessedOrderId($toBeProcessedOrderId)
@@ -43,18 +44,22 @@ class SaveOnlyOrderResponse extends AbstractStructBase
      * Get ToBeProcessedOrderId value
      * @return int[]
      */
-    public function getToBeProcessedOrderId(): array
+    public function getToBeProcessedOrderId(): ?array
     {
         return $this->ToBeProcessedOrderId;
     }
     /**
-     * This method is responsible for validating the values passed to the setToBeProcessedOrderId method
+     * This method is responsible for validating the value(s) passed to the setToBeProcessedOrderId method
      * This method is willingly generated in order to preserve the one-line inline validation within the setToBeProcessedOrderId method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateToBeProcessedOrderIdForArrayConstraintsFromSetToBeProcessedOrderId(array $values = []): string
+    public static function validateToBeProcessedOrderIdForArrayConstraintFromSetToBeProcessedOrderId(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $saveOnlyOrderResponseToBeProcessedOrderIdItem) {
@@ -76,10 +81,10 @@ class SaveOnlyOrderResponse extends AbstractStructBase
      * @param int[] $toBeProcessedOrderId
      * @return \Pggns\MidocoApi\Order\StructType\SaveOnlyOrderResponse
      */
-    public function setToBeProcessedOrderId(array $toBeProcessedOrderId = []): self
+    public function setToBeProcessedOrderId(?array $toBeProcessedOrderId = null): self
     {
         // validation for constraint: array
-        if ('' !== ($toBeProcessedOrderIdArrayErrorMessage = self::validateToBeProcessedOrderIdForArrayConstraintsFromSetToBeProcessedOrderId($toBeProcessedOrderId))) {
+        if ('' !== ($toBeProcessedOrderIdArrayErrorMessage = self::validateToBeProcessedOrderIdForArrayConstraintFromSetToBeProcessedOrderId($toBeProcessedOrderId))) {
             throw new InvalidArgumentException($toBeProcessedOrderIdArrayErrorMessage, __LINE__);
         }
         $this->ToBeProcessedOrderId = $toBeProcessedOrderId;

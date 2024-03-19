@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ExportIbizaDataRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ExportIbizaDataRequest extends AbstractStructBase
 {
     /**

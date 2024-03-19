@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MediatorAttrListType StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MediatorAttrListType extends AbstractStructBase
 {
     /**
@@ -20,13 +21,13 @@ class MediatorAttrListType extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $mediatorAttr = [];
+    protected ?array $mediatorAttr = null;
     /**
      * Constructor method for MediatorAttrListType
      * @uses MediatorAttrListType::setMediatorAttr()
      * @param string[] $mediatorAttr
      */
-    public function __construct(array $mediatorAttr = [])
+    public function __construct(?array $mediatorAttr = null)
     {
         $this
             ->setMediatorAttr($mediatorAttr);
@@ -35,18 +36,22 @@ class MediatorAttrListType extends AbstractStructBase
      * Get mediatorAttr value
      * @return string[]
      */
-    public function getMediatorAttr(): array
+    public function getMediatorAttr(): ?array
     {
         return $this->mediatorAttr;
     }
     /**
-     * This method is responsible for validating the values passed to the setMediatorAttr method
+     * This method is responsible for validating the value(s) passed to the setMediatorAttr method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMediatorAttr method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMediatorAttrForArrayConstraintsFromSetMediatorAttr(array $values = []): string
+    public static function validateMediatorAttrForArrayConstraintFromSetMediatorAttr(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $mediatorAttrListTypeMediatorAttrItem) {
@@ -68,10 +73,10 @@ class MediatorAttrListType extends AbstractStructBase
      * @param string[] $mediatorAttr
      * @return \Pggns\MidocoApi\Order\StructType\MediatorAttrListType
      */
-    public function setMediatorAttr(array $mediatorAttr = []): self
+    public function setMediatorAttr(?array $mediatorAttr = null): self
     {
         // validation for constraint: array
-        if ('' !== ($mediatorAttrArrayErrorMessage = self::validateMediatorAttrForArrayConstraintsFromSetMediatorAttr($mediatorAttr))) {
+        if ('' !== ($mediatorAttrArrayErrorMessage = self::validateMediatorAttrForArrayConstraintFromSetMediatorAttr($mediatorAttr))) {
             throw new InvalidArgumentException($mediatorAttrArrayErrorMessage, __LINE__);
         }
         $this->mediatorAttr = $mediatorAttr;

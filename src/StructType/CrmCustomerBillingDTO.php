@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CrmCustomerBillingDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CrmCustomerBillingDTO extends AbstractStructBase
 {
     /**

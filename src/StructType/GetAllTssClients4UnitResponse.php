@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetAllTssClients4UnitResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetAllTssClients4UnitResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetAllTssClients4UnitResponse extends AbstractStructBase
      * - ref: MidocoTssClient
      * @var \Pggns\MidocoApi\Order\StructType\MidocoTssClient[]
      */
-    protected array $MidocoTssClient = [];
+    protected ?array $MidocoTssClient = null;
     /**
      * Constructor method for GetAllTssClients4UnitResponse
      * @uses GetAllTssClients4UnitResponse::setMidocoTssClient()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoTssClient[] $midocoTssClient
      */
-    public function __construct(array $midocoTssClient = [])
+    public function __construct(?array $midocoTssClient = null)
     {
         $this
             ->setMidocoTssClient($midocoTssClient);
@@ -36,18 +37,22 @@ class GetAllTssClients4UnitResponse extends AbstractStructBase
      * Get MidocoTssClient value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoTssClient[]
      */
-    public function getMidocoTssClient(): array
+    public function getMidocoTssClient(): ?array
     {
         return $this->MidocoTssClient;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoTssClient method
+     * This method is responsible for validating the value(s) passed to the setMidocoTssClient method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoTssClient method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoTssClientForArrayConstraintsFromSetMidocoTssClient(array $values = []): string
+    public static function validateMidocoTssClientForArrayConstraintFromSetMidocoTssClient(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getAllTssClients4UnitResponseMidocoTssClientItem) {
@@ -69,10 +74,10 @@ class GetAllTssClients4UnitResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoTssClient[] $midocoTssClient
      * @return \Pggns\MidocoApi\Order\StructType\GetAllTssClients4UnitResponse
      */
-    public function setMidocoTssClient(array $midocoTssClient = []): self
+    public function setMidocoTssClient(?array $midocoTssClient = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoTssClientArrayErrorMessage = self::validateMidocoTssClientForArrayConstraintsFromSetMidocoTssClient($midocoTssClient))) {
+        if ('' !== ($midocoTssClientArrayErrorMessage = self::validateMidocoTssClientForArrayConstraintFromSetMidocoTssClient($midocoTssClient))) {
             throw new InvalidArgumentException($midocoTssClientArrayErrorMessage, __LINE__);
         }
         $this->MidocoTssClient = $midocoTssClient;

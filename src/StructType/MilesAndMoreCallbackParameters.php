@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: Parameters from the callback servlet.
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MilesAndMoreCallbackParameters extends AbstractStructBase
 {
     /**

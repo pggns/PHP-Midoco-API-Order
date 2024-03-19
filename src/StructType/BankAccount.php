@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for BankAccount StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class BankAccount extends AbstractStructBase
 {
     /**
@@ -84,16 +85,16 @@ class BankAccount extends AbstractStructBase
      */
     public function getIbanBic(): ?\Pggns\MidocoApi\Order\StructType\IbanBic
     {
-        return isset($this->IbanBic) ? $this->IbanBic : null;
+        return $this->IbanBic ?? null;
     }
     /**
-     * This method is responsible for validating the value passed to the setIbanBic method
+     * This method is responsible for validating the value(s) passed to the setIbanBic method
      * This method is willingly generated in order to preserve the one-line inline validation within the setIbanBic method
      * This has to validate that the property which is being set is the only one among the given choices
      * @param mixed $value
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public function validateIbanBicForChoiceConstraintsFromSetIbanBic($value): string
+    public function validateIbanBicForChoiceConstraintFromSetIbanBic($value): string
     {
         $message = '';
         if (is_null($value)) {
@@ -126,7 +127,7 @@ class BankAccount extends AbstractStructBase
     public function setIbanBic(?\Pggns\MidocoApi\Order\StructType\IbanBic $ibanBic = null): self
     {
         // validation for constraint: choice(IbanBic, AccountNumberBankNumber)
-        if ('' !== ($ibanBicChoiceErrorMessage = self::validateIbanBicForChoiceConstraintsFromSetIbanBic($ibanBic))) {
+        if ('' !== ($ibanBicChoiceErrorMessage = self::validateIbanBicForChoiceConstraintFromSetIbanBic($ibanBic))) {
             throw new InvalidArgumentException($ibanBicChoiceErrorMessage, __LINE__);
         }
         if (is_null($ibanBic) || (is_array($ibanBic) && empty($ibanBic))) {
@@ -143,16 +144,16 @@ class BankAccount extends AbstractStructBase
      */
     public function getAccountNumberBankNumber(): ?\Pggns\MidocoApi\Order\StructType\AccountNumberBankNumber
     {
-        return isset($this->AccountNumberBankNumber) ? $this->AccountNumberBankNumber : null;
+        return $this->AccountNumberBankNumber ?? null;
     }
     /**
-     * This method is responsible for validating the value passed to the setAccountNumberBankNumber method
+     * This method is responsible for validating the value(s) passed to the setAccountNumberBankNumber method
      * This method is willingly generated in order to preserve the one-line inline validation within the setAccountNumberBankNumber method
      * This has to validate that the property which is being set is the only one among the given choices
      * @param mixed $value
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public function validateAccountNumberBankNumberForChoiceConstraintsFromSetAccountNumberBankNumber($value): string
+    public function validateAccountNumberBankNumberForChoiceConstraintFromSetAccountNumberBankNumber($value): string
     {
         $message = '';
         if (is_null($value)) {
@@ -185,7 +186,7 @@ class BankAccount extends AbstractStructBase
     public function setAccountNumberBankNumber(?\Pggns\MidocoApi\Order\StructType\AccountNumberBankNumber $accountNumberBankNumber = null): self
     {
         // validation for constraint: choice(IbanBic, AccountNumberBankNumber)
-        if ('' !== ($accountNumberBankNumberChoiceErrorMessage = self::validateAccountNumberBankNumberForChoiceConstraintsFromSetAccountNumberBankNumber($accountNumberBankNumber))) {
+        if ('' !== ($accountNumberBankNumberChoiceErrorMessage = self::validateAccountNumberBankNumberForChoiceConstraintFromSetAccountNumberBankNumber($accountNumberBankNumber))) {
             throw new InvalidArgumentException($accountNumberBankNumberChoiceErrorMessage, __LINE__);
         }
         if (is_null($accountNumberBankNumber) || (is_array($accountNumberBankNumber) && empty($accountNumberBankNumber))) {

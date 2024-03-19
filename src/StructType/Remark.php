@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: freetext info, markable for print on customer documents, or internal
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class Remark extends AbstractStructBase
 {
     /**

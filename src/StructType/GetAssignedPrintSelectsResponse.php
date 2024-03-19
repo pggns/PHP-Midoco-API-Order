@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetAssignedPrintSelectsResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetAssignedPrintSelectsResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetAssignedPrintSelectsResponse extends AbstractStructBase
      * - ref: MidocoPrintDescription
      * @var \Pggns\MidocoApi\Order\StructType\PrintDescriptionDTO[]
      */
-    protected array $MidocoPrintDescription = [];
+    protected ?array $MidocoPrintDescription = null;
     /**
      * Constructor method for GetAssignedPrintSelectsResponse
      * @uses GetAssignedPrintSelectsResponse::setMidocoPrintDescription()
      * @param \Pggns\MidocoApi\Order\StructType\PrintDescriptionDTO[] $midocoPrintDescription
      */
-    public function __construct(array $midocoPrintDescription = [])
+    public function __construct(?array $midocoPrintDescription = null)
     {
         $this
             ->setMidocoPrintDescription($midocoPrintDescription);
@@ -36,18 +37,22 @@ class GetAssignedPrintSelectsResponse extends AbstractStructBase
      * Get MidocoPrintDescription value
      * @return \Pggns\MidocoApi\Order\StructType\PrintDescriptionDTO[]
      */
-    public function getMidocoPrintDescription(): array
+    public function getMidocoPrintDescription(): ?array
     {
         return $this->MidocoPrintDescription;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoPrintDescription method
+     * This method is responsible for validating the value(s) passed to the setMidocoPrintDescription method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoPrintDescription method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoPrintDescriptionForArrayConstraintsFromSetMidocoPrintDescription(array $values = []): string
+    public static function validateMidocoPrintDescriptionForArrayConstraintFromSetMidocoPrintDescription(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getAssignedPrintSelectsResponseMidocoPrintDescriptionItem) {
@@ -69,10 +74,10 @@ class GetAssignedPrintSelectsResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\PrintDescriptionDTO[] $midocoPrintDescription
      * @return \Pggns\MidocoApi\Order\StructType\GetAssignedPrintSelectsResponse
      */
-    public function setMidocoPrintDescription(array $midocoPrintDescription = []): self
+    public function setMidocoPrintDescription(?array $midocoPrintDescription = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoPrintDescriptionArrayErrorMessage = self::validateMidocoPrintDescriptionForArrayConstraintsFromSetMidocoPrintDescription($midocoPrintDescription))) {
+        if ('' !== ($midocoPrintDescriptionArrayErrorMessage = self::validateMidocoPrintDescriptionForArrayConstraintFromSetMidocoPrintDescription($midocoPrintDescription))) {
             throw new InvalidArgumentException($midocoPrintDescriptionArrayErrorMessage, __LINE__);
         }
         $this->MidocoPrintDescription = $midocoPrintDescription;

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CancelKaeraInsuranceRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CancelKaeraInsuranceRequest extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GDSRemark StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GDSRemark extends AbstractStructBase
 {
     /**
@@ -21,7 +22,7 @@ class GDSRemark extends AbstractStructBase
      * - ref: TravelerRefId
      * @var int[]
      */
-    protected array $TravelerRefId = [];
+    protected ?array $TravelerRefId = null;
     /**
      * The BookingPositionRefId
      * Meta information extracted from the WSDL
@@ -30,7 +31,7 @@ class GDSRemark extends AbstractStructBase
      * - ref: BookingPositionRefId
      * @var int[]
      */
-    protected array $BookingPositionRefId = [];
+    protected ?array $BookingPositionRefId = null;
     /**
      * The BookingDetailRefId
      * Meta information extracted from the WSDL
@@ -39,7 +40,7 @@ class GDSRemark extends AbstractStructBase
      * - ref: BookingDetailRefId
      * @var int[]
      */
-    protected array $BookingDetailRefId = [];
+    protected ?array $BookingDetailRefId = null;
     /**
      * The syntaxType
      * @var string|null
@@ -63,7 +64,7 @@ class GDSRemark extends AbstractStructBase
      * @param string $syntaxType
      * @param string $text
      */
-    public function __construct(array $travelerRefId = [], array $bookingPositionRefId = [], array $bookingDetailRefId = [], ?string $syntaxType = null, ?string $text = null)
+    public function __construct(?array $travelerRefId = null, ?array $bookingPositionRefId = null, ?array $bookingDetailRefId = null, ?string $syntaxType = null, ?string $text = null)
     {
         $this
             ->setTravelerRefId($travelerRefId)
@@ -76,18 +77,22 @@ class GDSRemark extends AbstractStructBase
      * Get TravelerRefId value
      * @return int[]
      */
-    public function getTravelerRefId(): array
+    public function getTravelerRefId(): ?array
     {
         return $this->TravelerRefId;
     }
     /**
-     * This method is responsible for validating the values passed to the setTravelerRefId method
+     * This method is responsible for validating the value(s) passed to the setTravelerRefId method
      * This method is willingly generated in order to preserve the one-line inline validation within the setTravelerRefId method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateTravelerRefIdForArrayConstraintsFromSetTravelerRefId(array $values = []): string
+    public static function validateTravelerRefIdForArrayConstraintFromSetTravelerRefId(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $gDSRemarkTravelerRefIdItem) {
@@ -109,10 +114,10 @@ class GDSRemark extends AbstractStructBase
      * @param int[] $travelerRefId
      * @return \Pggns\MidocoApi\Order\StructType\GDSRemark
      */
-    public function setTravelerRefId(array $travelerRefId = []): self
+    public function setTravelerRefId(?array $travelerRefId = null): self
     {
         // validation for constraint: array
-        if ('' !== ($travelerRefIdArrayErrorMessage = self::validateTravelerRefIdForArrayConstraintsFromSetTravelerRefId($travelerRefId))) {
+        if ('' !== ($travelerRefIdArrayErrorMessage = self::validateTravelerRefIdForArrayConstraintFromSetTravelerRefId($travelerRefId))) {
             throw new InvalidArgumentException($travelerRefIdArrayErrorMessage, __LINE__);
         }
         $this->TravelerRefId = $travelerRefId;
@@ -139,18 +144,22 @@ class GDSRemark extends AbstractStructBase
      * Get BookingPositionRefId value
      * @return int[]
      */
-    public function getBookingPositionRefId(): array
+    public function getBookingPositionRefId(): ?array
     {
         return $this->BookingPositionRefId;
     }
     /**
-     * This method is responsible for validating the values passed to the setBookingPositionRefId method
+     * This method is responsible for validating the value(s) passed to the setBookingPositionRefId method
      * This method is willingly generated in order to preserve the one-line inline validation within the setBookingPositionRefId method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateBookingPositionRefIdForArrayConstraintsFromSetBookingPositionRefId(array $values = []): string
+    public static function validateBookingPositionRefIdForArrayConstraintFromSetBookingPositionRefId(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $gDSRemarkBookingPositionRefIdItem) {
@@ -172,10 +181,10 @@ class GDSRemark extends AbstractStructBase
      * @param int[] $bookingPositionRefId
      * @return \Pggns\MidocoApi\Order\StructType\GDSRemark
      */
-    public function setBookingPositionRefId(array $bookingPositionRefId = []): self
+    public function setBookingPositionRefId(?array $bookingPositionRefId = null): self
     {
         // validation for constraint: array
-        if ('' !== ($bookingPositionRefIdArrayErrorMessage = self::validateBookingPositionRefIdForArrayConstraintsFromSetBookingPositionRefId($bookingPositionRefId))) {
+        if ('' !== ($bookingPositionRefIdArrayErrorMessage = self::validateBookingPositionRefIdForArrayConstraintFromSetBookingPositionRefId($bookingPositionRefId))) {
             throw new InvalidArgumentException($bookingPositionRefIdArrayErrorMessage, __LINE__);
         }
         $this->BookingPositionRefId = $bookingPositionRefId;
@@ -202,18 +211,22 @@ class GDSRemark extends AbstractStructBase
      * Get BookingDetailRefId value
      * @return int[]
      */
-    public function getBookingDetailRefId(): array
+    public function getBookingDetailRefId(): ?array
     {
         return $this->BookingDetailRefId;
     }
     /**
-     * This method is responsible for validating the values passed to the setBookingDetailRefId method
+     * This method is responsible for validating the value(s) passed to the setBookingDetailRefId method
      * This method is willingly generated in order to preserve the one-line inline validation within the setBookingDetailRefId method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateBookingDetailRefIdForArrayConstraintsFromSetBookingDetailRefId(array $values = []): string
+    public static function validateBookingDetailRefIdForArrayConstraintFromSetBookingDetailRefId(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $gDSRemarkBookingDetailRefIdItem) {
@@ -235,10 +248,10 @@ class GDSRemark extends AbstractStructBase
      * @param int[] $bookingDetailRefId
      * @return \Pggns\MidocoApi\Order\StructType\GDSRemark
      */
-    public function setBookingDetailRefId(array $bookingDetailRefId = []): self
+    public function setBookingDetailRefId(?array $bookingDetailRefId = null): self
     {
         // validation for constraint: array
-        if ('' !== ($bookingDetailRefIdArrayErrorMessage = self::validateBookingDetailRefIdForArrayConstraintsFromSetBookingDetailRefId($bookingDetailRefId))) {
+        if ('' !== ($bookingDetailRefIdArrayErrorMessage = self::validateBookingDetailRefIdForArrayConstraintFromSetBookingDetailRefId($bookingDetailRefId))) {
             throw new InvalidArgumentException($bookingDetailRefIdArrayErrorMessage, __LINE__);
         }
         $this->BookingDetailRefId = $bookingDetailRefId;

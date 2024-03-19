@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetMfGroupRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetMfGroupRequest extends AbstractStructBase
 {
     /**

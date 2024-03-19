@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CreateDSFinVKExportRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CreateDSFinVKExportRequest extends AbstractStructBase
 {
     /**
@@ -25,7 +26,7 @@ class CreateDSFinVKExportRequest extends AbstractStructBase
      * - minOccurs: 0
      * @var int[]
      */
-    protected array $cashBookId = [];
+    protected ?array $cashBookId = null;
     /**
      * The tssId
      * Meta information extracted from the WSDL
@@ -77,7 +78,7 @@ class CreateDSFinVKExportRequest extends AbstractStructBase
      * @param int $cashBalanceNoFrom
      * @param int $cashBalanceNoTo
      */
-    public function __construct(?string $unitName = null, array $cashBookId = [], ?string $tssId = null, ?bool $complete = null, ?string $cashBalanceDateFrom = null, ?string $cashBalanceDateTo = null, ?int $cashBalanceNoFrom = null, ?int $cashBalanceNoTo = null)
+    public function __construct(?string $unitName = null, ?array $cashBookId = null, ?string $tssId = null, ?bool $complete = null, ?string $cashBalanceDateFrom = null, ?string $cashBalanceDateTo = null, ?int $cashBalanceNoFrom = null, ?int $cashBalanceNoTo = null)
     {
         $this
             ->setUnitName($unitName)
@@ -116,18 +117,22 @@ class CreateDSFinVKExportRequest extends AbstractStructBase
      * Get cashBookId value
      * @return int[]
      */
-    public function getCashBookId(): array
+    public function getCashBookId(): ?array
     {
         return $this->cashBookId;
     }
     /**
-     * This method is responsible for validating the values passed to the setCashBookId method
+     * This method is responsible for validating the value(s) passed to the setCashBookId method
      * This method is willingly generated in order to preserve the one-line inline validation within the setCashBookId method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateCashBookIdForArrayConstraintsFromSetCashBookId(array $values = []): string
+    public static function validateCashBookIdForArrayConstraintFromSetCashBookId(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $createDSFinVKExportRequestCashBookIdItem) {
@@ -149,10 +154,10 @@ class CreateDSFinVKExportRequest extends AbstractStructBase
      * @param int[] $cashBookId
      * @return \Pggns\MidocoApi\Order\StructType\CreateDSFinVKExportRequest
      */
-    public function setCashBookId(array $cashBookId = []): self
+    public function setCashBookId(?array $cashBookId = null): self
     {
         // validation for constraint: array
-        if ('' !== ($cashBookIdArrayErrorMessage = self::validateCashBookIdForArrayConstraintsFromSetCashBookId($cashBookId))) {
+        if ('' !== ($cashBookIdArrayErrorMessage = self::validateCashBookIdForArrayConstraintFromSetCashBookId($cashBookId))) {
             throw new InvalidArgumentException($cashBookIdArrayErrorMessage, __LINE__);
         }
         $this->cashBookId = $cashBookId;

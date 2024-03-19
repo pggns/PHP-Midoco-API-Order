@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveMfLocalRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveMfLocalRequest extends AbstractStructBase
 {
     /**

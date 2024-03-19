@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: saveManualItem --- saves a manual item
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveManualItemResponse extends AbstractStructBase
 {
 }

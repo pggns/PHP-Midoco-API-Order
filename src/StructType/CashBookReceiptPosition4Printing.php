@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CashBookReceiptPosition4Printing StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CashBookReceiptPosition4Printing extends ReceiptPositionDTO
 {
     /**

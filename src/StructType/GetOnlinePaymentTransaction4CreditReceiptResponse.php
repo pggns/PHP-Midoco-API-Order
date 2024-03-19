@@ -12,6 +12,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetOnlinePaymentTransaction4CreditReceiptResponse extends AbstractStructBase
 {
     /**
@@ -22,13 +23,13 @@ class GetOnlinePaymentTransaction4CreditReceiptResponse extends AbstractStructBa
      * - ref: MidocoCreditPosition
      * @var \Pggns\MidocoApi\Order\StructType\MidocoCreditPosition[]
      */
-    protected array $MidocoCreditPosition = [];
+    protected ?array $MidocoCreditPosition = null;
     /**
      * Constructor method for GetOnlinePaymentTransaction4CreditReceiptResponse
      * @uses GetOnlinePaymentTransaction4CreditReceiptResponse::setMidocoCreditPosition()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoCreditPosition[] $midocoCreditPosition
      */
-    public function __construct(array $midocoCreditPosition = [])
+    public function __construct(?array $midocoCreditPosition = null)
     {
         $this
             ->setMidocoCreditPosition($midocoCreditPosition);
@@ -37,18 +38,22 @@ class GetOnlinePaymentTransaction4CreditReceiptResponse extends AbstractStructBa
      * Get MidocoCreditPosition value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoCreditPosition[]
      */
-    public function getMidocoCreditPosition(): array
+    public function getMidocoCreditPosition(): ?array
     {
         return $this->MidocoCreditPosition;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoCreditPosition method
+     * This method is responsible for validating the value(s) passed to the setMidocoCreditPosition method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoCreditPosition method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoCreditPositionForArrayConstraintsFromSetMidocoCreditPosition(array $values = []): string
+    public static function validateMidocoCreditPositionForArrayConstraintFromSetMidocoCreditPosition(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getOnlinePaymentTransaction4CreditReceiptResponseMidocoCreditPositionItem) {
@@ -70,10 +75,10 @@ class GetOnlinePaymentTransaction4CreditReceiptResponse extends AbstractStructBa
      * @param \Pggns\MidocoApi\Order\StructType\MidocoCreditPosition[] $midocoCreditPosition
      * @return \Pggns\MidocoApi\Order\StructType\GetOnlinePaymentTransaction4CreditReceiptResponse
      */
-    public function setMidocoCreditPosition(array $midocoCreditPosition = []): self
+    public function setMidocoCreditPosition(?array $midocoCreditPosition = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoCreditPositionArrayErrorMessage = self::validateMidocoCreditPositionForArrayConstraintsFromSetMidocoCreditPosition($midocoCreditPosition))) {
+        if ('' !== ($midocoCreditPositionArrayErrorMessage = self::validateMidocoCreditPositionForArrayConstraintFromSetMidocoCreditPosition($midocoCreditPosition))) {
             throw new InvalidArgumentException($midocoCreditPositionArrayErrorMessage, __LINE__);
         }
         $this->MidocoCreditPosition = $midocoCreditPosition;

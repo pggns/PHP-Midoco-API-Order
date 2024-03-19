@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetBillingInternalVersionResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetBillingInternalVersionResponse extends AbstractStructBase
 {
     /**

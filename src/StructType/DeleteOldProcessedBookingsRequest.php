@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteOldProcessedBookingsRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteOldProcessedBookingsRequest extends AbstractStructBase
 {
     /**

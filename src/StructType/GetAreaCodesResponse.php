@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetAreaCodesResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetAreaCodesResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetAreaCodesResponse extends AbstractStructBase
      * - ref: MidocoAreaCode
      * @var \Pggns\MidocoApi\Order\StructType\MidocoAreaCode[]
      */
-    protected array $MidocoAreaCode = [];
+    protected ?array $MidocoAreaCode = null;
     /**
      * Constructor method for GetAreaCodesResponse
      * @uses GetAreaCodesResponse::setMidocoAreaCode()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoAreaCode[] $midocoAreaCode
      */
-    public function __construct(array $midocoAreaCode = [])
+    public function __construct(?array $midocoAreaCode = null)
     {
         $this
             ->setMidocoAreaCode($midocoAreaCode);
@@ -36,18 +37,22 @@ class GetAreaCodesResponse extends AbstractStructBase
      * Get MidocoAreaCode value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoAreaCode[]
      */
-    public function getMidocoAreaCode(): array
+    public function getMidocoAreaCode(): ?array
     {
         return $this->MidocoAreaCode;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoAreaCode method
+     * This method is responsible for validating the value(s) passed to the setMidocoAreaCode method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoAreaCode method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoAreaCodeForArrayConstraintsFromSetMidocoAreaCode(array $values = []): string
+    public static function validateMidocoAreaCodeForArrayConstraintFromSetMidocoAreaCode(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getAreaCodesResponseMidocoAreaCodeItem) {
@@ -69,10 +74,10 @@ class GetAreaCodesResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoAreaCode[] $midocoAreaCode
      * @return \Pggns\MidocoApi\Order\StructType\GetAreaCodesResponse
      */
-    public function setMidocoAreaCode(array $midocoAreaCode = []): self
+    public function setMidocoAreaCode(?array $midocoAreaCode = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoAreaCodeArrayErrorMessage = self::validateMidocoAreaCodeForArrayConstraintsFromSetMidocoAreaCode($midocoAreaCode))) {
+        if ('' !== ($midocoAreaCodeArrayErrorMessage = self::validateMidocoAreaCodeForArrayConstraintFromSetMidocoAreaCode($midocoAreaCode))) {
             throw new InvalidArgumentException($midocoAreaCodeArrayErrorMessage, __LINE__);
         }
         $this->MidocoAreaCode = $midocoAreaCode;

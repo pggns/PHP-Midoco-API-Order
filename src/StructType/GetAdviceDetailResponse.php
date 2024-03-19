@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetAdviceDetailResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetAdviceDetailResponse extends AbstractStructBase
 {
     /**

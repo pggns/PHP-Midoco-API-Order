@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoPaymentServiceInfos StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoPaymentServiceInfos extends AbstractStructBase
 {
     /**

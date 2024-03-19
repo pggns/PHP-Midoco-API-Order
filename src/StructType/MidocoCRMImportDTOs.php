@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoCRMImportDTOs StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoCRMImportDTOs extends AbstractStructBase
 {
     /**
@@ -21,7 +22,7 @@ class MidocoCRMImportDTOs extends AbstractStructBase
      * - ref: MidocoImportCustomer
      * @var \Pggns\MidocoApi\Order\StructType\MidocoImportCustomer[]
      */
-    protected array $MidocoImportCustomer = [];
+    protected ?array $MidocoImportCustomer = null;
     /**
      * The MidocoImportCCard
      * Meta information extracted from the WSDL
@@ -30,7 +31,7 @@ class MidocoCRMImportDTOs extends AbstractStructBase
      * - ref: MidocoImportCCard
      * @var \Pggns\MidocoApi\Order\StructType\MidocoImportCCard[]
      */
-    protected array $MidocoImportCCard = [];
+    protected ?array $MidocoImportCCard = null;
     /**
      * The MidocoImportAttribute
      * Meta information extracted from the WSDL
@@ -39,7 +40,7 @@ class MidocoCRMImportDTOs extends AbstractStructBase
      * - ref: MidocoImportAttribute
      * @var \Pggns\MidocoApi\Order\StructType\MidocoImportAttribute[]
      */
-    protected array $MidocoImportAttribute = [];
+    protected ?array $MidocoImportAttribute = null;
     /**
      * The MidocoImportNotice
      * Meta information extracted from the WSDL
@@ -48,7 +49,7 @@ class MidocoCRMImportDTOs extends AbstractStructBase
      * - ref: MidocoImportNotice
      * @var \Pggns\MidocoApi\Order\StructType\MidocoImportNotice[]
      */
-    protected array $MidocoImportNotice = [];
+    protected ?array $MidocoImportNotice = null;
     /**
      * The MidocoImportDebitor
      * Meta information extracted from the WSDL
@@ -57,7 +58,7 @@ class MidocoCRMImportDTOs extends AbstractStructBase
      * - ref: MidocoImportDebitor
      * @var \Pggns\MidocoApi\Order\StructType\MidocoImportDebitor[]
      */
-    protected array $MidocoImportDebitor = [];
+    protected ?array $MidocoImportDebitor = null;
     /**
      * The MidocoImportHistory
      * Meta information extracted from the WSDL
@@ -66,7 +67,7 @@ class MidocoCRMImportDTOs extends AbstractStructBase
      * - ref: MidocoImportHistory
      * @var \Pggns\MidocoApi\Order\StructType\MidocoImportHistory[]
      */
-    protected array $MidocoImportHistory = [];
+    protected ?array $MidocoImportHistory = null;
     /**
      * The MidocoImportContactHistory
      * Meta information extracted from the WSDL
@@ -75,7 +76,7 @@ class MidocoCRMImportDTOs extends AbstractStructBase
      * - ref: MidocoImportContactHistory
      * @var \Pggns\MidocoApi\Order\StructType\MidocoImportContactHistory[]
      */
-    protected array $MidocoImportContactHistory = [];
+    protected ?array $MidocoImportContactHistory = null;
     /**
      * The MidocoImportAddress
      * Meta information extracted from the WSDL
@@ -84,7 +85,7 @@ class MidocoCRMImportDTOs extends AbstractStructBase
      * - ref: MidocoImportAddress
      * @var \Pggns\MidocoApi\Order\StructType\MidocoImportAddress[]
      */
-    protected array $MidocoImportAddress = [];
+    protected ?array $MidocoImportAddress = null;
     /**
      * The MidocoImportContactType
      * Meta information extracted from the WSDL
@@ -93,7 +94,7 @@ class MidocoCRMImportDTOs extends AbstractStructBase
      * - ref: MidocoImportContactType
      * @var \Pggns\MidocoApi\Order\StructType\MidocoImportContactType[]
      */
-    protected array $MidocoImportContactType = [];
+    protected ?array $MidocoImportContactType = null;
     /**
      * The MidocoImportAgencyInfo
      * Meta information extracted from the WSDL
@@ -102,7 +103,7 @@ class MidocoCRMImportDTOs extends AbstractStructBase
      * - ref: MidocoImportAgencyInfo
      * @var \Pggns\MidocoApi\Order\StructType\MidocoImportAgencyInfo[]
      */
-    protected array $MidocoImportAgencyInfo = [];
+    protected ?array $MidocoImportAgencyInfo = null;
     /**
      * Constructor method for MidocoCRMImportDTOs
      * @uses MidocoCRMImportDTOs::setMidocoImportCustomer()
@@ -126,7 +127,7 @@ class MidocoCRMImportDTOs extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoImportContactType[] $midocoImportContactType
      * @param \Pggns\MidocoApi\Order\StructType\MidocoImportAgencyInfo[] $midocoImportAgencyInfo
      */
-    public function __construct(array $midocoImportCustomer = [], array $midocoImportCCard = [], array $midocoImportAttribute = [], array $midocoImportNotice = [], array $midocoImportDebitor = [], array $midocoImportHistory = [], array $midocoImportContactHistory = [], array $midocoImportAddress = [], array $midocoImportContactType = [], array $midocoImportAgencyInfo = [])
+    public function __construct(?array $midocoImportCustomer = null, ?array $midocoImportCCard = null, ?array $midocoImportAttribute = null, ?array $midocoImportNotice = null, ?array $midocoImportDebitor = null, ?array $midocoImportHistory = null, ?array $midocoImportContactHistory = null, ?array $midocoImportAddress = null, ?array $midocoImportContactType = null, ?array $midocoImportAgencyInfo = null)
     {
         $this
             ->setMidocoImportCustomer($midocoImportCustomer)
@@ -144,18 +145,22 @@ class MidocoCRMImportDTOs extends AbstractStructBase
      * Get MidocoImportCustomer value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoImportCustomer[]
      */
-    public function getMidocoImportCustomer(): array
+    public function getMidocoImportCustomer(): ?array
     {
         return $this->MidocoImportCustomer;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoImportCustomer method
+     * This method is responsible for validating the value(s) passed to the setMidocoImportCustomer method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoImportCustomer method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoImportCustomerForArrayConstraintsFromSetMidocoImportCustomer(array $values = []): string
+    public static function validateMidocoImportCustomerForArrayConstraintFromSetMidocoImportCustomer(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoCRMImportDTOsMidocoImportCustomerItem) {
@@ -177,10 +182,10 @@ class MidocoCRMImportDTOs extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoImportCustomer[] $midocoImportCustomer
      * @return \Pggns\MidocoApi\Order\StructType\MidocoCRMImportDTOs
      */
-    public function setMidocoImportCustomer(array $midocoImportCustomer = []): self
+    public function setMidocoImportCustomer(?array $midocoImportCustomer = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoImportCustomerArrayErrorMessage = self::validateMidocoImportCustomerForArrayConstraintsFromSetMidocoImportCustomer($midocoImportCustomer))) {
+        if ('' !== ($midocoImportCustomerArrayErrorMessage = self::validateMidocoImportCustomerForArrayConstraintFromSetMidocoImportCustomer($midocoImportCustomer))) {
             throw new InvalidArgumentException($midocoImportCustomerArrayErrorMessage, __LINE__);
         }
         $this->MidocoImportCustomer = $midocoImportCustomer;
@@ -207,18 +212,22 @@ class MidocoCRMImportDTOs extends AbstractStructBase
      * Get MidocoImportCCard value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoImportCCard[]
      */
-    public function getMidocoImportCCard(): array
+    public function getMidocoImportCCard(): ?array
     {
         return $this->MidocoImportCCard;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoImportCCard method
+     * This method is responsible for validating the value(s) passed to the setMidocoImportCCard method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoImportCCard method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoImportCCardForArrayConstraintsFromSetMidocoImportCCard(array $values = []): string
+    public static function validateMidocoImportCCardForArrayConstraintFromSetMidocoImportCCard(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoCRMImportDTOsMidocoImportCCardItem) {
@@ -240,10 +249,10 @@ class MidocoCRMImportDTOs extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoImportCCard[] $midocoImportCCard
      * @return \Pggns\MidocoApi\Order\StructType\MidocoCRMImportDTOs
      */
-    public function setMidocoImportCCard(array $midocoImportCCard = []): self
+    public function setMidocoImportCCard(?array $midocoImportCCard = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoImportCCardArrayErrorMessage = self::validateMidocoImportCCardForArrayConstraintsFromSetMidocoImportCCard($midocoImportCCard))) {
+        if ('' !== ($midocoImportCCardArrayErrorMessage = self::validateMidocoImportCCardForArrayConstraintFromSetMidocoImportCCard($midocoImportCCard))) {
             throw new InvalidArgumentException($midocoImportCCardArrayErrorMessage, __LINE__);
         }
         $this->MidocoImportCCard = $midocoImportCCard;
@@ -270,18 +279,22 @@ class MidocoCRMImportDTOs extends AbstractStructBase
      * Get MidocoImportAttribute value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoImportAttribute[]
      */
-    public function getMidocoImportAttribute(): array
+    public function getMidocoImportAttribute(): ?array
     {
         return $this->MidocoImportAttribute;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoImportAttribute method
+     * This method is responsible for validating the value(s) passed to the setMidocoImportAttribute method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoImportAttribute method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoImportAttributeForArrayConstraintsFromSetMidocoImportAttribute(array $values = []): string
+    public static function validateMidocoImportAttributeForArrayConstraintFromSetMidocoImportAttribute(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoCRMImportDTOsMidocoImportAttributeItem) {
@@ -303,10 +316,10 @@ class MidocoCRMImportDTOs extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoImportAttribute[] $midocoImportAttribute
      * @return \Pggns\MidocoApi\Order\StructType\MidocoCRMImportDTOs
      */
-    public function setMidocoImportAttribute(array $midocoImportAttribute = []): self
+    public function setMidocoImportAttribute(?array $midocoImportAttribute = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoImportAttributeArrayErrorMessage = self::validateMidocoImportAttributeForArrayConstraintsFromSetMidocoImportAttribute($midocoImportAttribute))) {
+        if ('' !== ($midocoImportAttributeArrayErrorMessage = self::validateMidocoImportAttributeForArrayConstraintFromSetMidocoImportAttribute($midocoImportAttribute))) {
             throw new InvalidArgumentException($midocoImportAttributeArrayErrorMessage, __LINE__);
         }
         $this->MidocoImportAttribute = $midocoImportAttribute;
@@ -333,18 +346,22 @@ class MidocoCRMImportDTOs extends AbstractStructBase
      * Get MidocoImportNotice value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoImportNotice[]
      */
-    public function getMidocoImportNotice(): array
+    public function getMidocoImportNotice(): ?array
     {
         return $this->MidocoImportNotice;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoImportNotice method
+     * This method is responsible for validating the value(s) passed to the setMidocoImportNotice method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoImportNotice method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoImportNoticeForArrayConstraintsFromSetMidocoImportNotice(array $values = []): string
+    public static function validateMidocoImportNoticeForArrayConstraintFromSetMidocoImportNotice(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoCRMImportDTOsMidocoImportNoticeItem) {
@@ -366,10 +383,10 @@ class MidocoCRMImportDTOs extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoImportNotice[] $midocoImportNotice
      * @return \Pggns\MidocoApi\Order\StructType\MidocoCRMImportDTOs
      */
-    public function setMidocoImportNotice(array $midocoImportNotice = []): self
+    public function setMidocoImportNotice(?array $midocoImportNotice = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoImportNoticeArrayErrorMessage = self::validateMidocoImportNoticeForArrayConstraintsFromSetMidocoImportNotice($midocoImportNotice))) {
+        if ('' !== ($midocoImportNoticeArrayErrorMessage = self::validateMidocoImportNoticeForArrayConstraintFromSetMidocoImportNotice($midocoImportNotice))) {
             throw new InvalidArgumentException($midocoImportNoticeArrayErrorMessage, __LINE__);
         }
         $this->MidocoImportNotice = $midocoImportNotice;
@@ -396,18 +413,22 @@ class MidocoCRMImportDTOs extends AbstractStructBase
      * Get MidocoImportDebitor value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoImportDebitor[]
      */
-    public function getMidocoImportDebitor(): array
+    public function getMidocoImportDebitor(): ?array
     {
         return $this->MidocoImportDebitor;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoImportDebitor method
+     * This method is responsible for validating the value(s) passed to the setMidocoImportDebitor method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoImportDebitor method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoImportDebitorForArrayConstraintsFromSetMidocoImportDebitor(array $values = []): string
+    public static function validateMidocoImportDebitorForArrayConstraintFromSetMidocoImportDebitor(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoCRMImportDTOsMidocoImportDebitorItem) {
@@ -429,10 +450,10 @@ class MidocoCRMImportDTOs extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoImportDebitor[] $midocoImportDebitor
      * @return \Pggns\MidocoApi\Order\StructType\MidocoCRMImportDTOs
      */
-    public function setMidocoImportDebitor(array $midocoImportDebitor = []): self
+    public function setMidocoImportDebitor(?array $midocoImportDebitor = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoImportDebitorArrayErrorMessage = self::validateMidocoImportDebitorForArrayConstraintsFromSetMidocoImportDebitor($midocoImportDebitor))) {
+        if ('' !== ($midocoImportDebitorArrayErrorMessage = self::validateMidocoImportDebitorForArrayConstraintFromSetMidocoImportDebitor($midocoImportDebitor))) {
             throw new InvalidArgumentException($midocoImportDebitorArrayErrorMessage, __LINE__);
         }
         $this->MidocoImportDebitor = $midocoImportDebitor;
@@ -459,18 +480,22 @@ class MidocoCRMImportDTOs extends AbstractStructBase
      * Get MidocoImportHistory value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoImportHistory[]
      */
-    public function getMidocoImportHistory(): array
+    public function getMidocoImportHistory(): ?array
     {
         return $this->MidocoImportHistory;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoImportHistory method
+     * This method is responsible for validating the value(s) passed to the setMidocoImportHistory method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoImportHistory method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoImportHistoryForArrayConstraintsFromSetMidocoImportHistory(array $values = []): string
+    public static function validateMidocoImportHistoryForArrayConstraintFromSetMidocoImportHistory(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoCRMImportDTOsMidocoImportHistoryItem) {
@@ -492,10 +517,10 @@ class MidocoCRMImportDTOs extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoImportHistory[] $midocoImportHistory
      * @return \Pggns\MidocoApi\Order\StructType\MidocoCRMImportDTOs
      */
-    public function setMidocoImportHistory(array $midocoImportHistory = []): self
+    public function setMidocoImportHistory(?array $midocoImportHistory = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoImportHistoryArrayErrorMessage = self::validateMidocoImportHistoryForArrayConstraintsFromSetMidocoImportHistory($midocoImportHistory))) {
+        if ('' !== ($midocoImportHistoryArrayErrorMessage = self::validateMidocoImportHistoryForArrayConstraintFromSetMidocoImportHistory($midocoImportHistory))) {
             throw new InvalidArgumentException($midocoImportHistoryArrayErrorMessage, __LINE__);
         }
         $this->MidocoImportHistory = $midocoImportHistory;
@@ -522,18 +547,22 @@ class MidocoCRMImportDTOs extends AbstractStructBase
      * Get MidocoImportContactHistory value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoImportContactHistory[]
      */
-    public function getMidocoImportContactHistory(): array
+    public function getMidocoImportContactHistory(): ?array
     {
         return $this->MidocoImportContactHistory;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoImportContactHistory method
+     * This method is responsible for validating the value(s) passed to the setMidocoImportContactHistory method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoImportContactHistory method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoImportContactHistoryForArrayConstraintsFromSetMidocoImportContactHistory(array $values = []): string
+    public static function validateMidocoImportContactHistoryForArrayConstraintFromSetMidocoImportContactHistory(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoCRMImportDTOsMidocoImportContactHistoryItem) {
@@ -555,10 +584,10 @@ class MidocoCRMImportDTOs extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoImportContactHistory[] $midocoImportContactHistory
      * @return \Pggns\MidocoApi\Order\StructType\MidocoCRMImportDTOs
      */
-    public function setMidocoImportContactHistory(array $midocoImportContactHistory = []): self
+    public function setMidocoImportContactHistory(?array $midocoImportContactHistory = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoImportContactHistoryArrayErrorMessage = self::validateMidocoImportContactHistoryForArrayConstraintsFromSetMidocoImportContactHistory($midocoImportContactHistory))) {
+        if ('' !== ($midocoImportContactHistoryArrayErrorMessage = self::validateMidocoImportContactHistoryForArrayConstraintFromSetMidocoImportContactHistory($midocoImportContactHistory))) {
             throw new InvalidArgumentException($midocoImportContactHistoryArrayErrorMessage, __LINE__);
         }
         $this->MidocoImportContactHistory = $midocoImportContactHistory;
@@ -585,18 +614,22 @@ class MidocoCRMImportDTOs extends AbstractStructBase
      * Get MidocoImportAddress value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoImportAddress[]
      */
-    public function getMidocoImportAddress(): array
+    public function getMidocoImportAddress(): ?array
     {
         return $this->MidocoImportAddress;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoImportAddress method
+     * This method is responsible for validating the value(s) passed to the setMidocoImportAddress method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoImportAddress method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoImportAddressForArrayConstraintsFromSetMidocoImportAddress(array $values = []): string
+    public static function validateMidocoImportAddressForArrayConstraintFromSetMidocoImportAddress(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoCRMImportDTOsMidocoImportAddressItem) {
@@ -618,10 +651,10 @@ class MidocoCRMImportDTOs extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoImportAddress[] $midocoImportAddress
      * @return \Pggns\MidocoApi\Order\StructType\MidocoCRMImportDTOs
      */
-    public function setMidocoImportAddress(array $midocoImportAddress = []): self
+    public function setMidocoImportAddress(?array $midocoImportAddress = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoImportAddressArrayErrorMessage = self::validateMidocoImportAddressForArrayConstraintsFromSetMidocoImportAddress($midocoImportAddress))) {
+        if ('' !== ($midocoImportAddressArrayErrorMessage = self::validateMidocoImportAddressForArrayConstraintFromSetMidocoImportAddress($midocoImportAddress))) {
             throw new InvalidArgumentException($midocoImportAddressArrayErrorMessage, __LINE__);
         }
         $this->MidocoImportAddress = $midocoImportAddress;
@@ -648,18 +681,22 @@ class MidocoCRMImportDTOs extends AbstractStructBase
      * Get MidocoImportContactType value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoImportContactType[]
      */
-    public function getMidocoImportContactType(): array
+    public function getMidocoImportContactType(): ?array
     {
         return $this->MidocoImportContactType;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoImportContactType method
+     * This method is responsible for validating the value(s) passed to the setMidocoImportContactType method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoImportContactType method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoImportContactTypeForArrayConstraintsFromSetMidocoImportContactType(array $values = []): string
+    public static function validateMidocoImportContactTypeForArrayConstraintFromSetMidocoImportContactType(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoCRMImportDTOsMidocoImportContactTypeItem) {
@@ -681,10 +718,10 @@ class MidocoCRMImportDTOs extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoImportContactType[] $midocoImportContactType
      * @return \Pggns\MidocoApi\Order\StructType\MidocoCRMImportDTOs
      */
-    public function setMidocoImportContactType(array $midocoImportContactType = []): self
+    public function setMidocoImportContactType(?array $midocoImportContactType = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoImportContactTypeArrayErrorMessage = self::validateMidocoImportContactTypeForArrayConstraintsFromSetMidocoImportContactType($midocoImportContactType))) {
+        if ('' !== ($midocoImportContactTypeArrayErrorMessage = self::validateMidocoImportContactTypeForArrayConstraintFromSetMidocoImportContactType($midocoImportContactType))) {
             throw new InvalidArgumentException($midocoImportContactTypeArrayErrorMessage, __LINE__);
         }
         $this->MidocoImportContactType = $midocoImportContactType;
@@ -711,18 +748,22 @@ class MidocoCRMImportDTOs extends AbstractStructBase
      * Get MidocoImportAgencyInfo value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoImportAgencyInfo[]
      */
-    public function getMidocoImportAgencyInfo(): array
+    public function getMidocoImportAgencyInfo(): ?array
     {
         return $this->MidocoImportAgencyInfo;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoImportAgencyInfo method
+     * This method is responsible for validating the value(s) passed to the setMidocoImportAgencyInfo method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoImportAgencyInfo method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoImportAgencyInfoForArrayConstraintsFromSetMidocoImportAgencyInfo(array $values = []): string
+    public static function validateMidocoImportAgencyInfoForArrayConstraintFromSetMidocoImportAgencyInfo(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoCRMImportDTOsMidocoImportAgencyInfoItem) {
@@ -744,10 +785,10 @@ class MidocoCRMImportDTOs extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoImportAgencyInfo[] $midocoImportAgencyInfo
      * @return \Pggns\MidocoApi\Order\StructType\MidocoCRMImportDTOs
      */
-    public function setMidocoImportAgencyInfo(array $midocoImportAgencyInfo = []): self
+    public function setMidocoImportAgencyInfo(?array $midocoImportAgencyInfo = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoImportAgencyInfoArrayErrorMessage = self::validateMidocoImportAgencyInfoForArrayConstraintsFromSetMidocoImportAgencyInfo($midocoImportAgencyInfo))) {
+        if ('' !== ($midocoImportAgencyInfoArrayErrorMessage = self::validateMidocoImportAgencyInfoForArrayConstraintFromSetMidocoImportAgencyInfo($midocoImportAgencyInfo))) {
             throw new InvalidArgumentException($midocoImportAgencyInfoArrayErrorMessage, __LINE__);
         }
         $this->MidocoImportAgencyInfo = $midocoImportAgencyInfo;

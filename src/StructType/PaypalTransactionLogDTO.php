@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for PaypalTransactionLogDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class PaypalTransactionLogDTO extends AbstractStructBase
 {
     /**

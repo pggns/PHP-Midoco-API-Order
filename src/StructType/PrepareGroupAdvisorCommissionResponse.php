@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for PrepareGroupAdvisorCommissionResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class PrepareGroupAdvisorCommissionResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class PrepareGroupAdvisorCommissionResponse extends AbstractStructBase
      * - ref: GroupAdvisorSettlement
      * @var \Pggns\MidocoApi\Order\StructType\GroupAdvisorSettlement[]
      */
-    protected array $GroupAdvisorSettlement = [];
+    protected ?array $GroupAdvisorSettlement = null;
     /**
      * Constructor method for PrepareGroupAdvisorCommissionResponse
      * @uses PrepareGroupAdvisorCommissionResponse::setGroupAdvisorSettlement()
      * @param \Pggns\MidocoApi\Order\StructType\GroupAdvisorSettlement[] $groupAdvisorSettlement
      */
-    public function __construct(array $groupAdvisorSettlement = [])
+    public function __construct(?array $groupAdvisorSettlement = null)
     {
         $this
             ->setGroupAdvisorSettlement($groupAdvisorSettlement);
@@ -36,18 +37,22 @@ class PrepareGroupAdvisorCommissionResponse extends AbstractStructBase
      * Get GroupAdvisorSettlement value
      * @return \Pggns\MidocoApi\Order\StructType\GroupAdvisorSettlement[]
      */
-    public function getGroupAdvisorSettlement(): array
+    public function getGroupAdvisorSettlement(): ?array
     {
         return $this->GroupAdvisorSettlement;
     }
     /**
-     * This method is responsible for validating the values passed to the setGroupAdvisorSettlement method
+     * This method is responsible for validating the value(s) passed to the setGroupAdvisorSettlement method
      * This method is willingly generated in order to preserve the one-line inline validation within the setGroupAdvisorSettlement method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateGroupAdvisorSettlementForArrayConstraintsFromSetGroupAdvisorSettlement(array $values = []): string
+    public static function validateGroupAdvisorSettlementForArrayConstraintFromSetGroupAdvisorSettlement(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $prepareGroupAdvisorCommissionResponseGroupAdvisorSettlementItem) {
@@ -69,10 +74,10 @@ class PrepareGroupAdvisorCommissionResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\GroupAdvisorSettlement[] $groupAdvisorSettlement
      * @return \Pggns\MidocoApi\Order\StructType\PrepareGroupAdvisorCommissionResponse
      */
-    public function setGroupAdvisorSettlement(array $groupAdvisorSettlement = []): self
+    public function setGroupAdvisorSettlement(?array $groupAdvisorSettlement = null): self
     {
         // validation for constraint: array
-        if ('' !== ($groupAdvisorSettlementArrayErrorMessage = self::validateGroupAdvisorSettlementForArrayConstraintsFromSetGroupAdvisorSettlement($groupAdvisorSettlement))) {
+        if ('' !== ($groupAdvisorSettlementArrayErrorMessage = self::validateGroupAdvisorSettlementForArrayConstraintFromSetGroupAdvisorSettlement($groupAdvisorSettlement))) {
             throw new InvalidArgumentException($groupAdvisorSettlementArrayErrorMessage, __LINE__);
         }
         $this->GroupAdvisorSettlement = $groupAdvisorSettlement;

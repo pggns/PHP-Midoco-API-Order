@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoHintType StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoHintType extends HintDTO
 {
 }

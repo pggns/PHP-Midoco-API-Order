@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CalculateBookingPeriodResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CalculateBookingPeriodResponse extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetTravelNumberRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetTravelNumberRequest extends AbstractStructBase
 {
     /**

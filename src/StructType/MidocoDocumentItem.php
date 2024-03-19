@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoDocumentItem StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoDocumentItem extends DocumentitemDTO
 {
     /**
@@ -21,7 +22,7 @@ class MidocoDocumentItem extends DocumentitemDTO
      * - ref: MidocoDocumentTax
      * @var \Pggns\MidocoApi\Order\StructType\MidocoDocumentTaxType[]
      */
-    protected array $MidocoDocumentTax = [];
+    protected ?array $MidocoDocumentTax = null;
     /**
      * The MidocoDocFlightDetail
      * Meta information extracted from the WSDL
@@ -30,7 +31,7 @@ class MidocoDocumentItem extends DocumentitemDTO
      * - ref: MidocoDocFlightDetail
      * @var \Pggns\MidocoApi\Order\StructType\DocFlightDetailDTO[]
      */
-    protected array $MidocoDocFlightDetail = [];
+    protected ?array $MidocoDocFlightDetail = null;
     /**
      * Constructor method for MidocoDocumentItem
      * @uses MidocoDocumentItem::setMidocoDocumentTax()
@@ -38,7 +39,7 @@ class MidocoDocumentItem extends DocumentitemDTO
      * @param \Pggns\MidocoApi\Order\StructType\MidocoDocumentTaxType[] $midocoDocumentTax
      * @param \Pggns\MidocoApi\Order\StructType\DocFlightDetailDTO[] $midocoDocFlightDetail
      */
-    public function __construct(array $midocoDocumentTax = [], array $midocoDocFlightDetail = [])
+    public function __construct(?array $midocoDocumentTax = null, ?array $midocoDocFlightDetail = null)
     {
         $this
             ->setMidocoDocumentTax($midocoDocumentTax)
@@ -48,18 +49,22 @@ class MidocoDocumentItem extends DocumentitemDTO
      * Get MidocoDocumentTax value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoDocumentTaxType[]
      */
-    public function getMidocoDocumentTax(): array
+    public function getMidocoDocumentTax(): ?array
     {
         return $this->MidocoDocumentTax;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoDocumentTax method
+     * This method is responsible for validating the value(s) passed to the setMidocoDocumentTax method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoDocumentTax method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoDocumentTaxForArrayConstraintsFromSetMidocoDocumentTax(array $values = []): string
+    public static function validateMidocoDocumentTaxForArrayConstraintFromSetMidocoDocumentTax(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoDocumentItemMidocoDocumentTaxItem) {
@@ -81,10 +86,10 @@ class MidocoDocumentItem extends DocumentitemDTO
      * @param \Pggns\MidocoApi\Order\StructType\MidocoDocumentTaxType[] $midocoDocumentTax
      * @return \Pggns\MidocoApi\Order\StructType\MidocoDocumentItem
      */
-    public function setMidocoDocumentTax(array $midocoDocumentTax = []): self
+    public function setMidocoDocumentTax(?array $midocoDocumentTax = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoDocumentTaxArrayErrorMessage = self::validateMidocoDocumentTaxForArrayConstraintsFromSetMidocoDocumentTax($midocoDocumentTax))) {
+        if ('' !== ($midocoDocumentTaxArrayErrorMessage = self::validateMidocoDocumentTaxForArrayConstraintFromSetMidocoDocumentTax($midocoDocumentTax))) {
             throw new InvalidArgumentException($midocoDocumentTaxArrayErrorMessage, __LINE__);
         }
         $this->MidocoDocumentTax = $midocoDocumentTax;
@@ -111,18 +116,22 @@ class MidocoDocumentItem extends DocumentitemDTO
      * Get MidocoDocFlightDetail value
      * @return \Pggns\MidocoApi\Order\StructType\DocFlightDetailDTO[]
      */
-    public function getMidocoDocFlightDetail(): array
+    public function getMidocoDocFlightDetail(): ?array
     {
         return $this->MidocoDocFlightDetail;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoDocFlightDetail method
+     * This method is responsible for validating the value(s) passed to the setMidocoDocFlightDetail method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoDocFlightDetail method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoDocFlightDetailForArrayConstraintsFromSetMidocoDocFlightDetail(array $values = []): string
+    public static function validateMidocoDocFlightDetailForArrayConstraintFromSetMidocoDocFlightDetail(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoDocumentItemMidocoDocFlightDetailItem) {
@@ -144,10 +153,10 @@ class MidocoDocumentItem extends DocumentitemDTO
      * @param \Pggns\MidocoApi\Order\StructType\DocFlightDetailDTO[] $midocoDocFlightDetail
      * @return \Pggns\MidocoApi\Order\StructType\MidocoDocumentItem
      */
-    public function setMidocoDocFlightDetail(array $midocoDocFlightDetail = []): self
+    public function setMidocoDocFlightDetail(?array $midocoDocFlightDetail = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoDocFlightDetailArrayErrorMessage = self::validateMidocoDocFlightDetailForArrayConstraintsFromSetMidocoDocFlightDetail($midocoDocFlightDetail))) {
+        if ('' !== ($midocoDocFlightDetailArrayErrorMessage = self::validateMidocoDocFlightDetailForArrayConstraintFromSetMidocoDocFlightDetail($midocoDocFlightDetail))) {
             throw new InvalidArgumentException($midocoDocFlightDetailArrayErrorMessage, __LINE__);
         }
         $this->MidocoDocFlightDetail = $midocoDocFlightDetail;

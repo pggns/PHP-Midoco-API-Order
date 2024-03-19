@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetBookingMessage4TakeoffRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetBookingMessage4TakeoffRequest extends AbstractStructBase
 {
     /**

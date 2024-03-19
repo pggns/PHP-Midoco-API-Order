@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: CancelSubscription Webservice to cancel customer subscription of the annual service fees
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CancelSubscriptionRequest extends AbstractStructBase
 {
     /**

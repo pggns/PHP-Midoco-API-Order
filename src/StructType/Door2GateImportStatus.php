@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for Door2GateImportStatus StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class Door2GateImportStatus extends ImportHandlerResponseType
 {
     /**

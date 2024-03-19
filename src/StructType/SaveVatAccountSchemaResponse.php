@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveVatAccountSchemaResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveVatAccountSchemaResponse extends AbstractStructBase
 {
 }

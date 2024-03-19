@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveBillingDocDbiInfosRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveBillingDocDbiInfosRequest extends AbstractStructBase
 {
     /**
@@ -48,7 +49,7 @@ class SaveBillingDocDbiInfosRequest extends AbstractStructBase
      * - ref: MidocoBillingDocDbiInfo
      * @var \Pggns\MidocoApi\Order\StructType\MidocoBillingDocDbiInfo[]
      */
-    protected array $MidocoBillingDocDbiInfo = [];
+    protected ?array $MidocoBillingDocDbiInfo = null;
     /**
      * Constructor method for SaveBillingDocDbiInfosRequest
      * @uses SaveBillingDocDbiInfosRequest::setDbiInfoType()
@@ -64,7 +65,7 @@ class SaveBillingDocDbiInfosRequest extends AbstractStructBase
      * @param bool $executeWorkflow
      * @param \Pggns\MidocoApi\Order\StructType\MidocoBillingDocDbiInfo[] $midocoBillingDocDbiInfo
      */
-    public function __construct(?string $dbiInfoType = null, ?int $documentId = null, ?int $itemId = null, ?int $passengerAssignment = null, ?bool $executeWorkflow = true, array $midocoBillingDocDbiInfo = [])
+    public function __construct(?string $dbiInfoType = null, ?int $documentId = null, ?int $itemId = null, ?int $passengerAssignment = null, ?bool $executeWorkflow = true, ?array $midocoBillingDocDbiInfo = null)
     {
         $this
             ->setDbiInfoType($dbiInfoType)
@@ -193,18 +194,22 @@ class SaveBillingDocDbiInfosRequest extends AbstractStructBase
      * Get MidocoBillingDocDbiInfo value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoBillingDocDbiInfo[]
      */
-    public function getMidocoBillingDocDbiInfo(): array
+    public function getMidocoBillingDocDbiInfo(): ?array
     {
         return $this->MidocoBillingDocDbiInfo;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoBillingDocDbiInfo method
+     * This method is responsible for validating the value(s) passed to the setMidocoBillingDocDbiInfo method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoBillingDocDbiInfo method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoBillingDocDbiInfoForArrayConstraintsFromSetMidocoBillingDocDbiInfo(array $values = []): string
+    public static function validateMidocoBillingDocDbiInfoForArrayConstraintFromSetMidocoBillingDocDbiInfo(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $saveBillingDocDbiInfosRequestMidocoBillingDocDbiInfoItem) {
@@ -226,10 +231,10 @@ class SaveBillingDocDbiInfosRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoBillingDocDbiInfo[] $midocoBillingDocDbiInfo
      * @return \Pggns\MidocoApi\Order\StructType\SaveBillingDocDbiInfosRequest
      */
-    public function setMidocoBillingDocDbiInfo(array $midocoBillingDocDbiInfo = []): self
+    public function setMidocoBillingDocDbiInfo(?array $midocoBillingDocDbiInfo = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoBillingDocDbiInfoArrayErrorMessage = self::validateMidocoBillingDocDbiInfoForArrayConstraintsFromSetMidocoBillingDocDbiInfo($midocoBillingDocDbiInfo))) {
+        if ('' !== ($midocoBillingDocDbiInfoArrayErrorMessage = self::validateMidocoBillingDocDbiInfoForArrayConstraintFromSetMidocoBillingDocDbiInfo($midocoBillingDocDbiInfo))) {
             throw new InvalidArgumentException($midocoBillingDocDbiInfoArrayErrorMessage, __LINE__);
         }
         $this->MidocoBillingDocDbiInfo = $midocoBillingDocDbiInfo;

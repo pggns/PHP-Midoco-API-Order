@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SellItemAttributeDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SellItemAttributeDTO extends AbstractStructBase
 {
     /**

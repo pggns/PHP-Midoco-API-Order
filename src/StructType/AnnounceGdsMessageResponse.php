@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for AnnounceGdsMessageResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class AnnounceGdsMessageResponse extends AbstractStructBase
 {
     /**

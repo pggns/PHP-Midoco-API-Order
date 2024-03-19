@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoSellItemPricing StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoSellItemPricing extends SellItemPricingDTO
 {
     /**

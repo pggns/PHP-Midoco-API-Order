@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SellItemProvisionSearchCriteriaType StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SellItemProvisionSearchCriteriaType extends AbstractStructBase
 {
     /**

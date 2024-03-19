@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CrmCcCardsDbiInfoDefDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CrmCcCardsDbiInfoDefDTO extends AbstractStructBase
 {
     /**

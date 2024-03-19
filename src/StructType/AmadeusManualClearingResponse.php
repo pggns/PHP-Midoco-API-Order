@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for AmadeusManualClearingResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class AmadeusManualClearingResponse extends AbstractStructBase
 {
     /**

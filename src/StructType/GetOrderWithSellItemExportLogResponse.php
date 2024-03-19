@@ -14,6 +14,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * (previous, zero or more)
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetOrderWithSellItemExportLogResponse extends AbstractStructBase
 {
     /**
@@ -30,7 +31,7 @@ class GetOrderWithSellItemExportLogResponse extends AbstractStructBase
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\SellItemExportDTO[]
      */
-    protected array $currentSellItemExport = [];
+    protected ?array $currentSellItemExport = null;
     /**
      * The previousSellItemExport
      * Meta information extracted from the WSDL
@@ -38,7 +39,7 @@ class GetOrderWithSellItemExportLogResponse extends AbstractStructBase
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\SellItemExportDTO[]
      */
-    protected array $previousSellItemExport = [];
+    protected ?array $previousSellItemExport = null;
     /**
      * The isReadOnlyByLockPeriod
      * Meta information extracted from the WSDL
@@ -57,7 +58,7 @@ class GetOrderWithSellItemExportLogResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\SellItemExportDTO[] $previousSellItemExport
      * @param bool $isReadOnlyByLockPeriod
      */
-    public function __construct(?\Pggns\MidocoApi\Order\StructType\MidocoOrderType $midocoOrder = null, array $currentSellItemExport = [], array $previousSellItemExport = [], ?bool $isReadOnlyByLockPeriod = false)
+    public function __construct(?\Pggns\MidocoApi\Order\StructType\MidocoOrderType $midocoOrder = null, ?array $currentSellItemExport = null, ?array $previousSellItemExport = null, ?bool $isReadOnlyByLockPeriod = false)
     {
         $this
             ->setMidocoOrder($midocoOrder)
@@ -88,18 +89,22 @@ class GetOrderWithSellItemExportLogResponse extends AbstractStructBase
      * Get currentSellItemExport value
      * @return \Pggns\MidocoApi\Order\StructType\SellItemExportDTO[]
      */
-    public function getCurrentSellItemExport(): array
+    public function getCurrentSellItemExport(): ?array
     {
         return $this->currentSellItemExport;
     }
     /**
-     * This method is responsible for validating the values passed to the setCurrentSellItemExport method
+     * This method is responsible for validating the value(s) passed to the setCurrentSellItemExport method
      * This method is willingly generated in order to preserve the one-line inline validation within the setCurrentSellItemExport method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateCurrentSellItemExportForArrayConstraintsFromSetCurrentSellItemExport(array $values = []): string
+    public static function validateCurrentSellItemExportForArrayConstraintFromSetCurrentSellItemExport(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getOrderWithSellItemExportLogResponseCurrentSellItemExportItem) {
@@ -121,10 +126,10 @@ class GetOrderWithSellItemExportLogResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\SellItemExportDTO[] $currentSellItemExport
      * @return \Pggns\MidocoApi\Order\StructType\GetOrderWithSellItemExportLogResponse
      */
-    public function setCurrentSellItemExport(array $currentSellItemExport = []): self
+    public function setCurrentSellItemExport(?array $currentSellItemExport = null): self
     {
         // validation for constraint: array
-        if ('' !== ($currentSellItemExportArrayErrorMessage = self::validateCurrentSellItemExportForArrayConstraintsFromSetCurrentSellItemExport($currentSellItemExport))) {
+        if ('' !== ($currentSellItemExportArrayErrorMessage = self::validateCurrentSellItemExportForArrayConstraintFromSetCurrentSellItemExport($currentSellItemExport))) {
             throw new InvalidArgumentException($currentSellItemExportArrayErrorMessage, __LINE__);
         }
         $this->currentSellItemExport = $currentSellItemExport;
@@ -151,18 +156,22 @@ class GetOrderWithSellItemExportLogResponse extends AbstractStructBase
      * Get previousSellItemExport value
      * @return \Pggns\MidocoApi\Order\StructType\SellItemExportDTO[]
      */
-    public function getPreviousSellItemExport(): array
+    public function getPreviousSellItemExport(): ?array
     {
         return $this->previousSellItemExport;
     }
     /**
-     * This method is responsible for validating the values passed to the setPreviousSellItemExport method
+     * This method is responsible for validating the value(s) passed to the setPreviousSellItemExport method
      * This method is willingly generated in order to preserve the one-line inline validation within the setPreviousSellItemExport method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validatePreviousSellItemExportForArrayConstraintsFromSetPreviousSellItemExport(array $values = []): string
+    public static function validatePreviousSellItemExportForArrayConstraintFromSetPreviousSellItemExport(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getOrderWithSellItemExportLogResponsePreviousSellItemExportItem) {
@@ -184,10 +193,10 @@ class GetOrderWithSellItemExportLogResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\SellItemExportDTO[] $previousSellItemExport
      * @return \Pggns\MidocoApi\Order\StructType\GetOrderWithSellItemExportLogResponse
      */
-    public function setPreviousSellItemExport(array $previousSellItemExport = []): self
+    public function setPreviousSellItemExport(?array $previousSellItemExport = null): self
     {
         // validation for constraint: array
-        if ('' !== ($previousSellItemExportArrayErrorMessage = self::validatePreviousSellItemExportForArrayConstraintsFromSetPreviousSellItemExport($previousSellItemExport))) {
+        if ('' !== ($previousSellItemExportArrayErrorMessage = self::validatePreviousSellItemExportForArrayConstraintFromSetPreviousSellItemExport($previousSellItemExport))) {
             throw new InvalidArgumentException($previousSellItemExportArrayErrorMessage, __LINE__);
         }
         $this->previousSellItemExport = $previousSellItemExport;

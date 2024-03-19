@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoMandate StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoMandate extends SepaMandateDTO
 {
     /**

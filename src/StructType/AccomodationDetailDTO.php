@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for AccomodationDetailDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class AccomodationDetailDTO extends AbstractStructBase
 {
     /**

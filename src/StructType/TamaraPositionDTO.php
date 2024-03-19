@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for TamaraPositionDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class TamaraPositionDTO extends AbstractStructBase
 {
     /**

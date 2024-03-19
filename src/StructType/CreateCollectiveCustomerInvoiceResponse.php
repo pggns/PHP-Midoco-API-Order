@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CreateCollectiveCustomerInvoiceResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CreateCollectiveCustomerInvoiceResponse extends AbstractStructBase
 {
     /**
@@ -20,7 +21,7 @@ class CreateCollectiveCustomerInvoiceResponse extends AbstractStructBase
      * - minOccurs: 0
      * @var int[]
      */
-    protected array $PrintjobId = [];
+    protected ?array $PrintjobId = null;
     /**
      * The Errormessage
      * Meta information extracted from the WSDL
@@ -35,7 +36,7 @@ class CreateCollectiveCustomerInvoiceResponse extends AbstractStructBase
      * @param int[] $printjobId
      * @param string $errormessage
      */
-    public function __construct(array $printjobId = [], ?string $errormessage = null)
+    public function __construct(?array $printjobId = null, ?string $errormessage = null)
     {
         $this
             ->setPrintjobId($printjobId)
@@ -45,18 +46,22 @@ class CreateCollectiveCustomerInvoiceResponse extends AbstractStructBase
      * Get PrintjobId value
      * @return int[]
      */
-    public function getPrintjobId(): array
+    public function getPrintjobId(): ?array
     {
         return $this->PrintjobId;
     }
     /**
-     * This method is responsible for validating the values passed to the setPrintjobId method
+     * This method is responsible for validating the value(s) passed to the setPrintjobId method
      * This method is willingly generated in order to preserve the one-line inline validation within the setPrintjobId method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validatePrintjobIdForArrayConstraintsFromSetPrintjobId(array $values = []): string
+    public static function validatePrintjobIdForArrayConstraintFromSetPrintjobId(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $createCollectiveCustomerInvoiceResponsePrintjobIdItem) {
@@ -78,10 +83,10 @@ class CreateCollectiveCustomerInvoiceResponse extends AbstractStructBase
      * @param int[] $printjobId
      * @return \Pggns\MidocoApi\Order\StructType\CreateCollectiveCustomerInvoiceResponse
      */
-    public function setPrintjobId(array $printjobId = []): self
+    public function setPrintjobId(?array $printjobId = null): self
     {
         // validation for constraint: array
-        if ('' !== ($printjobIdArrayErrorMessage = self::validatePrintjobIdForArrayConstraintsFromSetPrintjobId($printjobId))) {
+        if ('' !== ($printjobIdArrayErrorMessage = self::validatePrintjobIdForArrayConstraintFromSetPrintjobId($printjobId))) {
             throw new InvalidArgumentException($printjobIdArrayErrorMessage, __LINE__);
         }
         $this->PrintjobId = $printjobId;

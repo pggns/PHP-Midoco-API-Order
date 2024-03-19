@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveCheckDtdAnswerRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveCheckDtdAnswerRequest extends AbstractStructBase
 {
     /**

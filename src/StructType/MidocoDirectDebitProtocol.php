@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoDirectDebitProtocol StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoDirectDebitProtocol extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteMergedMfResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteMergedMfResponse extends AbstractStructBase
 {
 }

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for UploadPaymentDataResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class UploadPaymentDataResponse extends AbstractStructBase
 {
     /**

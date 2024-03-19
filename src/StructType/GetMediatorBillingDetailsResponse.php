@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetMediatorBillingDetailsResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetMediatorBillingDetailsResponse extends AbstractStructBase
 {
     /**
@@ -21,7 +22,7 @@ class GetMediatorBillingDetailsResponse extends AbstractStructBase
      * - ref: MidocoMediatorBillingDetail
      * @var \Pggns\MidocoApi\Order\StructType\MidocoMediatorBillingDetail[]
      */
-    protected array $MidocoMediatorBillingDetail = [];
+    protected ?array $MidocoMediatorBillingDetail = null;
     /**
      * The MidocoMediatorCharge
      * Meta information extracted from the WSDL
@@ -30,7 +31,7 @@ class GetMediatorBillingDetailsResponse extends AbstractStructBase
      * - ref: MidocoMediatorCharge
      * @var \Pggns\MidocoApi\Order\StructType\MediatorChargeDTO[]
      */
-    protected array $MidocoMediatorCharge = [];
+    protected ?array $MidocoMediatorCharge = null;
     /**
      * Constructor method for GetMediatorBillingDetailsResponse
      * @uses GetMediatorBillingDetailsResponse::setMidocoMediatorBillingDetail()
@@ -38,7 +39,7 @@ class GetMediatorBillingDetailsResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoMediatorBillingDetail[] $midocoMediatorBillingDetail
      * @param \Pggns\MidocoApi\Order\StructType\MediatorChargeDTO[] $midocoMediatorCharge
      */
-    public function __construct(array $midocoMediatorBillingDetail = [], array $midocoMediatorCharge = [])
+    public function __construct(?array $midocoMediatorBillingDetail = null, ?array $midocoMediatorCharge = null)
     {
         $this
             ->setMidocoMediatorBillingDetail($midocoMediatorBillingDetail)
@@ -48,18 +49,22 @@ class GetMediatorBillingDetailsResponse extends AbstractStructBase
      * Get MidocoMediatorBillingDetail value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoMediatorBillingDetail[]
      */
-    public function getMidocoMediatorBillingDetail(): array
+    public function getMidocoMediatorBillingDetail(): ?array
     {
         return $this->MidocoMediatorBillingDetail;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoMediatorBillingDetail method
+     * This method is responsible for validating the value(s) passed to the setMidocoMediatorBillingDetail method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoMediatorBillingDetail method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoMediatorBillingDetailForArrayConstraintsFromSetMidocoMediatorBillingDetail(array $values = []): string
+    public static function validateMidocoMediatorBillingDetailForArrayConstraintFromSetMidocoMediatorBillingDetail(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getMediatorBillingDetailsResponseMidocoMediatorBillingDetailItem) {
@@ -81,10 +86,10 @@ class GetMediatorBillingDetailsResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoMediatorBillingDetail[] $midocoMediatorBillingDetail
      * @return \Pggns\MidocoApi\Order\StructType\GetMediatorBillingDetailsResponse
      */
-    public function setMidocoMediatorBillingDetail(array $midocoMediatorBillingDetail = []): self
+    public function setMidocoMediatorBillingDetail(?array $midocoMediatorBillingDetail = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoMediatorBillingDetailArrayErrorMessage = self::validateMidocoMediatorBillingDetailForArrayConstraintsFromSetMidocoMediatorBillingDetail($midocoMediatorBillingDetail))) {
+        if ('' !== ($midocoMediatorBillingDetailArrayErrorMessage = self::validateMidocoMediatorBillingDetailForArrayConstraintFromSetMidocoMediatorBillingDetail($midocoMediatorBillingDetail))) {
             throw new InvalidArgumentException($midocoMediatorBillingDetailArrayErrorMessage, __LINE__);
         }
         $this->MidocoMediatorBillingDetail = $midocoMediatorBillingDetail;
@@ -111,18 +116,22 @@ class GetMediatorBillingDetailsResponse extends AbstractStructBase
      * Get MidocoMediatorCharge value
      * @return \Pggns\MidocoApi\Order\StructType\MediatorChargeDTO[]
      */
-    public function getMidocoMediatorCharge(): array
+    public function getMidocoMediatorCharge(): ?array
     {
         return $this->MidocoMediatorCharge;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoMediatorCharge method
+     * This method is responsible for validating the value(s) passed to the setMidocoMediatorCharge method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoMediatorCharge method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoMediatorChargeForArrayConstraintsFromSetMidocoMediatorCharge(array $values = []): string
+    public static function validateMidocoMediatorChargeForArrayConstraintFromSetMidocoMediatorCharge(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getMediatorBillingDetailsResponseMidocoMediatorChargeItem) {
@@ -144,10 +153,10 @@ class GetMediatorBillingDetailsResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MediatorChargeDTO[] $midocoMediatorCharge
      * @return \Pggns\MidocoApi\Order\StructType\GetMediatorBillingDetailsResponse
      */
-    public function setMidocoMediatorCharge(array $midocoMediatorCharge = []): self
+    public function setMidocoMediatorCharge(?array $midocoMediatorCharge = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoMediatorChargeArrayErrorMessage = self::validateMidocoMediatorChargeForArrayConstraintsFromSetMidocoMediatorCharge($midocoMediatorCharge))) {
+        if ('' !== ($midocoMediatorChargeArrayErrorMessage = self::validateMidocoMediatorChargeForArrayConstraintFromSetMidocoMediatorCharge($midocoMediatorCharge))) {
             throw new InvalidArgumentException($midocoMediatorChargeArrayErrorMessage, __LINE__);
         }
         $this->MidocoMediatorCharge = $midocoMediatorCharge;

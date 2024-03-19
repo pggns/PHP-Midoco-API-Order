@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetOrdersDbiInfosResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetOrdersDbiInfosResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetOrdersDbiInfosResponse extends AbstractStructBase
      * - ref: MidocoOrdersDbiInfo
      * @var \Pggns\MidocoApi\Order\StructType\MidocoOrdersDbiInfo[]
      */
-    protected array $MidocoOrdersDbiInfo = [];
+    protected ?array $MidocoOrdersDbiInfo = null;
     /**
      * Constructor method for GetOrdersDbiInfosResponse
      * @uses GetOrdersDbiInfosResponse::setMidocoOrdersDbiInfo()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoOrdersDbiInfo[] $midocoOrdersDbiInfo
      */
-    public function __construct(array $midocoOrdersDbiInfo = [])
+    public function __construct(?array $midocoOrdersDbiInfo = null)
     {
         $this
             ->setMidocoOrdersDbiInfo($midocoOrdersDbiInfo);
@@ -36,18 +37,22 @@ class GetOrdersDbiInfosResponse extends AbstractStructBase
      * Get MidocoOrdersDbiInfo value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoOrdersDbiInfo[]
      */
-    public function getMidocoOrdersDbiInfo(): array
+    public function getMidocoOrdersDbiInfo(): ?array
     {
         return $this->MidocoOrdersDbiInfo;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoOrdersDbiInfo method
+     * This method is responsible for validating the value(s) passed to the setMidocoOrdersDbiInfo method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoOrdersDbiInfo method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoOrdersDbiInfoForArrayConstraintsFromSetMidocoOrdersDbiInfo(array $values = []): string
+    public static function validateMidocoOrdersDbiInfoForArrayConstraintFromSetMidocoOrdersDbiInfo(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getOrdersDbiInfosResponseMidocoOrdersDbiInfoItem) {
@@ -69,10 +74,10 @@ class GetOrdersDbiInfosResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoOrdersDbiInfo[] $midocoOrdersDbiInfo
      * @return \Pggns\MidocoApi\Order\StructType\GetOrdersDbiInfosResponse
      */
-    public function setMidocoOrdersDbiInfo(array $midocoOrdersDbiInfo = []): self
+    public function setMidocoOrdersDbiInfo(?array $midocoOrdersDbiInfo = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoOrdersDbiInfoArrayErrorMessage = self::validateMidocoOrdersDbiInfoForArrayConstraintsFromSetMidocoOrdersDbiInfo($midocoOrdersDbiInfo))) {
+        if ('' !== ($midocoOrdersDbiInfoArrayErrorMessage = self::validateMidocoOrdersDbiInfoForArrayConstraintFromSetMidocoOrdersDbiInfo($midocoOrdersDbiInfo))) {
             throw new InvalidArgumentException($midocoOrdersDbiInfoArrayErrorMessage, __LINE__);
         }
         $this->MidocoOrdersDbiInfo = $midocoOrdersDbiInfo;

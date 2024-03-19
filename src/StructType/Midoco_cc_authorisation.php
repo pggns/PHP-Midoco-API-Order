@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: reference to previously executed cc authorisation over midoco Onlinepayment service (only transactionId is needed for reference)
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class Midoco_cc_authorisation extends AbstractStructBase
 {
     /**

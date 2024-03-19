@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveUnitNoticeRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveUnitNoticeRequest extends AbstractStructBase
 {
     /**

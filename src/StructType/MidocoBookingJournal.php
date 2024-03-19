@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoBookingJournal StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoBookingJournal extends BookingJournalDTO
 {
     /**
@@ -21,7 +22,7 @@ class MidocoBookingJournal extends BookingJournalDTO
      * - ref: MidocoJournalAttribute
      * @var \Pggns\MidocoApi\Order\StructType\JournalAttributeDTO[]
      */
-    protected array $MidocoJournalAttribute = [];
+    protected ?array $MidocoJournalAttribute = null;
     /**
      * The customerId
      * Meta information extracted from the WSDL
@@ -92,7 +93,7 @@ class MidocoBookingJournal extends BookingJournalDTO
      * @param string $accountDescDebit
      * @param string $accountDescCredit
      */
-    public function __construct(array $midocoJournalAttribute = [], ?int $customerId = null, ?int $voidJournalId = null, ?int $invoiceId = null, ?int $position = null, ?int $displayOrderNo = null, ?int $displayOrderId = null, ?int $displayItemId = null, ?string $accountDescDebit = null, ?string $accountDescCredit = null)
+    public function __construct(?array $midocoJournalAttribute = null, ?int $customerId = null, ?int $voidJournalId = null, ?int $invoiceId = null, ?int $position = null, ?int $displayOrderNo = null, ?int $displayOrderId = null, ?int $displayItemId = null, ?string $accountDescDebit = null, ?string $accountDescCredit = null)
     {
         $this
             ->setMidocoJournalAttribute($midocoJournalAttribute)
@@ -110,18 +111,22 @@ class MidocoBookingJournal extends BookingJournalDTO
      * Get MidocoJournalAttribute value
      * @return \Pggns\MidocoApi\Order\StructType\JournalAttributeDTO[]
      */
-    public function getMidocoJournalAttribute(): array
+    public function getMidocoJournalAttribute(): ?array
     {
         return $this->MidocoJournalAttribute;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoJournalAttribute method
+     * This method is responsible for validating the value(s) passed to the setMidocoJournalAttribute method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoJournalAttribute method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoJournalAttributeForArrayConstraintsFromSetMidocoJournalAttribute(array $values = []): string
+    public static function validateMidocoJournalAttributeForArrayConstraintFromSetMidocoJournalAttribute(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoBookingJournalMidocoJournalAttributeItem) {
@@ -143,10 +148,10 @@ class MidocoBookingJournal extends BookingJournalDTO
      * @param \Pggns\MidocoApi\Order\StructType\JournalAttributeDTO[] $midocoJournalAttribute
      * @return \Pggns\MidocoApi\Order\StructType\MidocoBookingJournal
      */
-    public function setMidocoJournalAttribute(array $midocoJournalAttribute = []): self
+    public function setMidocoJournalAttribute(?array $midocoJournalAttribute = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoJournalAttributeArrayErrorMessage = self::validateMidocoJournalAttributeForArrayConstraintsFromSetMidocoJournalAttribute($midocoJournalAttribute))) {
+        if ('' !== ($midocoJournalAttributeArrayErrorMessage = self::validateMidocoJournalAttributeForArrayConstraintFromSetMidocoJournalAttribute($midocoJournalAttribute))) {
             throw new InvalidArgumentException($midocoJournalAttributeArrayErrorMessage, __LINE__);
         }
         $this->MidocoJournalAttribute = $midocoJournalAttribute;

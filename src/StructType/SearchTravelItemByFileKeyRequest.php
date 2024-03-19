@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SearchTravelItemByFileKeyRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchTravelItemByFileKeyRequest extends AbstractStructBase
 {
     /**

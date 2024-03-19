@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveAccountPeriodResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveAccountPeriodResponse extends AbstractStructBase
 {
 }

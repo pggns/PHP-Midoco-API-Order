@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for PrintTravelPlanPrintjobRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class PrintTravelPlanPrintjobRequest extends AbstractStructBase
 {
     /**

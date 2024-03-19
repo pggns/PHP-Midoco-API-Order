@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CreateKSichVExportResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CreateKSichVExportResponse extends AbstractStructBase
 {
     /**
@@ -18,45 +19,49 @@ class CreateKSichVExportResponse extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: unbounded
      * - minOccurs: 0
-     * @var mixed[]
+     * @var string[]
      */
-    protected array $MidocoTssExport = [];
+    protected ?array $MidocoTssExport = null;
     /**
      * Constructor method for CreateKSichVExportResponse
      * @uses CreateKSichVExportResponse::setMidocoTssExport()
-     * @param mixed[] $midocoTssExport
+     * @param string[] $midocoTssExport
      */
-    public function __construct(array $midocoTssExport = [])
+    public function __construct(?array $midocoTssExport = null)
     {
         $this
             ->setMidocoTssExport($midocoTssExport);
     }
     /**
      * Get MidocoTssExport value
-     * @return mixed[]
+     * @return string[]
      */
-    public function getMidocoTssExport(): array
+    public function getMidocoTssExport(): ?array
     {
         return $this->MidocoTssExport;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoTssExport method
+     * This method is responsible for validating the value(s) passed to the setMidocoTssExport method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoTssExport method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoTssExportForArrayConstraintsFromSetMidocoTssExport(array $values = []): string
+    public static function validateMidocoTssExportForArrayConstraintFromSetMidocoTssExport(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $createKSichVExportResponseMidocoTssExportItem) {
             // validation for constraint: itemType
-            if (false) {
+            if (!is_string($createKSichVExportResponseMidocoTssExportItem)) {
                 $invalidValues[] = is_object($createKSichVExportResponseMidocoTssExportItem) ? get_class($createKSichVExportResponseMidocoTssExportItem) : sprintf('%s(%s)', gettype($createKSichVExportResponseMidocoTssExportItem), var_export($createKSichVExportResponseMidocoTssExportItem, true));
             }
         }
         if (!empty($invalidValues)) {
-            $message = sprintf('The MidocoTssExport property can only contain items of type mixed, %s given', is_object($invalidValues) ? get_class($invalidValues) : (is_array($invalidValues) ? implode(', ', $invalidValues) : gettype($invalidValues)));
+            $message = sprintf('The MidocoTssExport property can only contain items of type string, %s given', is_object($invalidValues) ? get_class($invalidValues) : (is_array($invalidValues) ? implode(', ', $invalidValues) : gettype($invalidValues)));
         }
         unset($invalidValues);
         
@@ -65,13 +70,13 @@ class CreateKSichVExportResponse extends AbstractStructBase
     /**
      * Set MidocoTssExport value
      * @throws InvalidArgumentException
-     * @param mixed[] $midocoTssExport
+     * @param string[] $midocoTssExport
      * @return \Pggns\MidocoApi\Order\StructType\CreateKSichVExportResponse
      */
-    public function setMidocoTssExport(array $midocoTssExport = []): self
+    public function setMidocoTssExport(?array $midocoTssExport = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoTssExportArrayErrorMessage = self::validateMidocoTssExportForArrayConstraintsFromSetMidocoTssExport($midocoTssExport))) {
+        if ('' !== ($midocoTssExportArrayErrorMessage = self::validateMidocoTssExportForArrayConstraintFromSetMidocoTssExport($midocoTssExport))) {
             throw new InvalidArgumentException($midocoTssExportArrayErrorMessage, __LINE__);
         }
         $this->MidocoTssExport = $midocoTssExport;
@@ -81,14 +86,14 @@ class CreateKSichVExportResponse extends AbstractStructBase
     /**
      * Add item to MidocoTssExport value
      * @throws InvalidArgumentException
-     * @param mixed $item
+     * @param string $item
      * @return \Pggns\MidocoApi\Order\StructType\CreateKSichVExportResponse
      */
-    public function addToMidocoTssExport(mixed $item): self
+    public function addToMidocoTssExport(string $item): self
     {
         // validation for constraint: itemType
-        if (false) {
-            throw new InvalidArgumentException(sprintf('The MidocoTssExport property can only contain items of type mixed, %s given', is_object($item) ? get_class($item) : (is_array($item) ? implode(', ', $item) : gettype($item))), __LINE__);
+        if (!is_string($item)) {
+            throw new InvalidArgumentException(sprintf('The MidocoTssExport property can only contain items of type string, %s given', is_object($item) ? get_class($item) : (is_array($item) ? implode(', ', $item) : gettype($item))), __LINE__);
         }
         $this->MidocoTssExport[] = $item;
         

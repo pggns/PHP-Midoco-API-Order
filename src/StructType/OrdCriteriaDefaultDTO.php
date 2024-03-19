@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for OrdCriteriaDefaultDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class OrdCriteriaDefaultDTO extends AbstractStructBase
 {
     /**

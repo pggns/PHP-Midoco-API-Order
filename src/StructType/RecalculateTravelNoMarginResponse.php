@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for RecalculateTravelNoMarginResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class RecalculateTravelNoMarginResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class RecalculateTravelNoMarginResponse extends AbstractStructBase
      * - ref: system:Error
      * @var \Pggns\MidocoApi\Order\StructType\Error[]
      */
-    protected array $Error = [];
+    protected ?array $Error = null;
     /**
      * Constructor method for RecalculateTravelNoMarginResponse
      * @uses RecalculateTravelNoMarginResponse::setError()
      * @param \Pggns\MidocoApi\Order\StructType\Error[] $error
      */
-    public function __construct(array $error = [])
+    public function __construct(?array $error = null)
     {
         $this
             ->setError($error);
@@ -36,18 +37,22 @@ class RecalculateTravelNoMarginResponse extends AbstractStructBase
      * Get Error value
      * @return \Pggns\MidocoApi\Order\StructType\Error[]
      */
-    public function getError(): array
+    public function getError(): ?array
     {
         return $this->Error;
     }
     /**
-     * This method is responsible for validating the values passed to the setError method
+     * This method is responsible for validating the value(s) passed to the setError method
      * This method is willingly generated in order to preserve the one-line inline validation within the setError method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateErrorForArrayConstraintsFromSetError(array $values = []): string
+    public static function validateErrorForArrayConstraintFromSetError(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $recalculateTravelNoMarginResponseErrorItem) {
@@ -69,10 +74,10 @@ class RecalculateTravelNoMarginResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\Error[] $error
      * @return \Pggns\MidocoApi\Order\StructType\RecalculateTravelNoMarginResponse
      */
-    public function setError(array $error = []): self
+    public function setError(?array $error = null): self
     {
         // validation for constraint: array
-        if ('' !== ($errorArrayErrorMessage = self::validateErrorForArrayConstraintsFromSetError($error))) {
+        if ('' !== ($errorArrayErrorMessage = self::validateErrorForArrayConstraintFromSetError($error))) {
             throw new InvalidArgumentException($errorArrayErrorMessage, __LINE__);
         }
         $this->Error = $error;

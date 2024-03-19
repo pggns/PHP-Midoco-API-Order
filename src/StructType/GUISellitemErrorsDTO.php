@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GUISellitemErrorsDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GUISellitemErrorsDTO extends AbstractStructBase
 {
     /**

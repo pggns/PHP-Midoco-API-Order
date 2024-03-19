@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveAccomodationCodeRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveAccomodationCodeRequest extends AbstractStructBase
 {
     /**

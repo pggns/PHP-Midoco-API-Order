@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoFlightDetailsInfo4Printing StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoFlightDetailsInfo4Printing extends FlightDetailDTO
 {
     /**
@@ -21,7 +22,7 @@ class MidocoFlightDetailsInfo4Printing extends FlightDetailDTO
      * - ref: MidocoFlightSegmentDetails4Printing
      * @var \Pggns\MidocoApi\Order\StructType\MidocoFlightSegmentDetails4Printing[]
      */
-    protected array $MidocoFlightSegmentDetails4Printing = [];
+    protected ?array $MidocoFlightSegmentDetails4Printing = null;
     /**
      * The MidocoFlightDuration
      * Meta information extracted from the WSDL
@@ -37,7 +38,7 @@ class MidocoFlightDetailsInfo4Printing extends FlightDetailDTO
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\MidocoRemarkType[]
      */
-    protected array $MidocoRemarks = [];
+    protected ?array $MidocoRemarks = null;
     /**
      * The carrierName
      * @var string|null
@@ -96,7 +97,7 @@ class MidocoFlightDetailsInfo4Printing extends FlightDetailDTO
      * @param string $operatingCarrierVatId
      * @param string $operatingCarrierAddress
      */
-    public function __construct(array $midocoFlightSegmentDetails4Printing = [], ?\Pggns\MidocoApi\Order\StructType\MidocoFlightDuration $midocoFlightDuration = null, array $midocoRemarks = [], ?string $carrierName = null, ?string $carrierVatId = null, ?string $carrierAddress = null, ?string $days = null, ?string $operatingCarrierName = null, ?string $operatingCarrierVatId = null, ?string $operatingCarrierAddress = null)
+    public function __construct(?array $midocoFlightSegmentDetails4Printing = null, ?\Pggns\MidocoApi\Order\StructType\MidocoFlightDuration $midocoFlightDuration = null, ?array $midocoRemarks = null, ?string $carrierName = null, ?string $carrierVatId = null, ?string $carrierAddress = null, ?string $days = null, ?string $operatingCarrierName = null, ?string $operatingCarrierVatId = null, ?string $operatingCarrierAddress = null)
     {
         $this
             ->setMidocoFlightSegmentDetails4Printing($midocoFlightSegmentDetails4Printing)
@@ -114,18 +115,22 @@ class MidocoFlightDetailsInfo4Printing extends FlightDetailDTO
      * Get MidocoFlightSegmentDetails4Printing value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoFlightSegmentDetails4Printing[]
      */
-    public function getMidocoFlightSegmentDetails4Printing(): array
+    public function getMidocoFlightSegmentDetails4Printing(): ?array
     {
         return $this->MidocoFlightSegmentDetails4Printing;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoFlightSegmentDetails4Printing method
+     * This method is responsible for validating the value(s) passed to the setMidocoFlightSegmentDetails4Printing method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoFlightSegmentDetails4Printing method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoFlightSegmentDetails4PrintingForArrayConstraintsFromSetMidocoFlightSegmentDetails4Printing(array $values = []): string
+    public static function validateMidocoFlightSegmentDetails4PrintingForArrayConstraintFromSetMidocoFlightSegmentDetails4Printing(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoFlightDetailsInfo4PrintingMidocoFlightSegmentDetails4PrintingItem) {
@@ -147,10 +152,10 @@ class MidocoFlightDetailsInfo4Printing extends FlightDetailDTO
      * @param \Pggns\MidocoApi\Order\StructType\MidocoFlightSegmentDetails4Printing[] $midocoFlightSegmentDetails4Printing
      * @return \Pggns\MidocoApi\Order\StructType\MidocoFlightDetailsInfo4Printing
      */
-    public function setMidocoFlightSegmentDetails4Printing(array $midocoFlightSegmentDetails4Printing = []): self
+    public function setMidocoFlightSegmentDetails4Printing(?array $midocoFlightSegmentDetails4Printing = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoFlightSegmentDetails4PrintingArrayErrorMessage = self::validateMidocoFlightSegmentDetails4PrintingForArrayConstraintsFromSetMidocoFlightSegmentDetails4Printing($midocoFlightSegmentDetails4Printing))) {
+        if ('' !== ($midocoFlightSegmentDetails4PrintingArrayErrorMessage = self::validateMidocoFlightSegmentDetails4PrintingForArrayConstraintFromSetMidocoFlightSegmentDetails4Printing($midocoFlightSegmentDetails4Printing))) {
             throw new InvalidArgumentException($midocoFlightSegmentDetails4PrintingArrayErrorMessage, __LINE__);
         }
         $this->MidocoFlightSegmentDetails4Printing = $midocoFlightSegmentDetails4Printing;
@@ -196,18 +201,22 @@ class MidocoFlightDetailsInfo4Printing extends FlightDetailDTO
      * Get MidocoRemarks value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoRemarkType[]
      */
-    public function getMidocoRemarks(): array
+    public function getMidocoRemarks(): ?array
     {
         return $this->MidocoRemarks;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoRemarks method
+     * This method is responsible for validating the value(s) passed to the setMidocoRemarks method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoRemarks method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoRemarksForArrayConstraintsFromSetMidocoRemarks(array $values = []): string
+    public static function validateMidocoRemarksForArrayConstraintFromSetMidocoRemarks(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoFlightDetailsInfo4PrintingMidocoRemarksItem) {
@@ -229,10 +238,10 @@ class MidocoFlightDetailsInfo4Printing extends FlightDetailDTO
      * @param \Pggns\MidocoApi\Order\StructType\MidocoRemarkType[] $midocoRemarks
      * @return \Pggns\MidocoApi\Order\StructType\MidocoFlightDetailsInfo4Printing
      */
-    public function setMidocoRemarks(array $midocoRemarks = []): self
+    public function setMidocoRemarks(?array $midocoRemarks = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoRemarksArrayErrorMessage = self::validateMidocoRemarksForArrayConstraintsFromSetMidocoRemarks($midocoRemarks))) {
+        if ('' !== ($midocoRemarksArrayErrorMessage = self::validateMidocoRemarksForArrayConstraintFromSetMidocoRemarks($midocoRemarks))) {
             throw new InvalidArgumentException($midocoRemarksArrayErrorMessage, __LINE__);
         }
         $this->MidocoRemarks = $midocoRemarks;

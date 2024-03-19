@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for TravelNumberAutoRemarkDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class TravelNumberAutoRemarkDTO extends AbstractStructBase
 {
     /**

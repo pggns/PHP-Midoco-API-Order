@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for A3MAdapterValue StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class A3MAdapterValue extends AbstractStructBase
 {
     /**

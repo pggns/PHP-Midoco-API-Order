@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoAdviceDetails4Printing StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoAdviceDetails4Printing extends AbstractStructBase
 {
     /**
@@ -20,13 +21,13 @@ class MidocoAdviceDetails4Printing extends AbstractStructBase
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\AdviceDetails[]
      */
-    protected array $AdviceDetails = [];
+    protected ?array $AdviceDetails = null;
     /**
      * Constructor method for MidocoAdviceDetails4Printing
      * @uses MidocoAdviceDetails4Printing::setAdviceDetails()
      * @param \Pggns\MidocoApi\Order\StructType\AdviceDetails[] $adviceDetails
      */
-    public function __construct(array $adviceDetails = [])
+    public function __construct(?array $adviceDetails = null)
     {
         $this
             ->setAdviceDetails($adviceDetails);
@@ -35,18 +36,22 @@ class MidocoAdviceDetails4Printing extends AbstractStructBase
      * Get AdviceDetails value
      * @return \Pggns\MidocoApi\Order\StructType\AdviceDetails[]
      */
-    public function getAdviceDetails(): array
+    public function getAdviceDetails(): ?array
     {
         return $this->AdviceDetails;
     }
     /**
-     * This method is responsible for validating the values passed to the setAdviceDetails method
+     * This method is responsible for validating the value(s) passed to the setAdviceDetails method
      * This method is willingly generated in order to preserve the one-line inline validation within the setAdviceDetails method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateAdviceDetailsForArrayConstraintsFromSetAdviceDetails(array $values = []): string
+    public static function validateAdviceDetailsForArrayConstraintFromSetAdviceDetails(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoAdviceDetails4PrintingAdviceDetailsItem) {
@@ -68,10 +73,10 @@ class MidocoAdviceDetails4Printing extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\AdviceDetails[] $adviceDetails
      * @return \Pggns\MidocoApi\Order\StructType\MidocoAdviceDetails4Printing
      */
-    public function setAdviceDetails(array $adviceDetails = []): self
+    public function setAdviceDetails(?array $adviceDetails = null): self
     {
         // validation for constraint: array
-        if ('' !== ($adviceDetailsArrayErrorMessage = self::validateAdviceDetailsForArrayConstraintsFromSetAdviceDetails($adviceDetails))) {
+        if ('' !== ($adviceDetailsArrayErrorMessage = self::validateAdviceDetailsForArrayConstraintFromSetAdviceDetails($adviceDetails))) {
             throw new InvalidArgumentException($adviceDetailsArrayErrorMessage, __LINE__);
         }
         $this->AdviceDetails = $adviceDetails;

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoSupplierPaymentCondition StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoSupplierPaymentCondition extends SupplierPaymentCondDTO
 {
     /**

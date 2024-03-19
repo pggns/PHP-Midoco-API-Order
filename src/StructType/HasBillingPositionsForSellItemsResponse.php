@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: HasBillingPositionsForSellItems --- checks for each sellItem if the sellItem or one of his children have BillingPositions. return list with SellItemIds and hasPrinted
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class HasBillingPositionsForSellItemsResponse extends AbstractStructBase
 {
     /**
@@ -22,13 +23,13 @@ class HasBillingPositionsForSellItemsResponse extends AbstractStructBase
      * - ref: SellItemHasPrinted
      * @var \Pggns\MidocoApi\Order\StructType\SellItemHasPrinted[]
      */
-    protected array $SellItemHasPrinted = [];
+    protected ?array $SellItemHasPrinted = null;
     /**
      * Constructor method for HasBillingPositionsForSellItemsResponse
      * @uses HasBillingPositionsForSellItemsResponse::setSellItemHasPrinted()
      * @param \Pggns\MidocoApi\Order\StructType\SellItemHasPrinted[] $sellItemHasPrinted
      */
-    public function __construct(array $sellItemHasPrinted = [])
+    public function __construct(?array $sellItemHasPrinted = null)
     {
         $this
             ->setSellItemHasPrinted($sellItemHasPrinted);
@@ -37,18 +38,22 @@ class HasBillingPositionsForSellItemsResponse extends AbstractStructBase
      * Get SellItemHasPrinted value
      * @return \Pggns\MidocoApi\Order\StructType\SellItemHasPrinted[]
      */
-    public function getSellItemHasPrinted(): array
+    public function getSellItemHasPrinted(): ?array
     {
         return $this->SellItemHasPrinted;
     }
     /**
-     * This method is responsible for validating the values passed to the setSellItemHasPrinted method
+     * This method is responsible for validating the value(s) passed to the setSellItemHasPrinted method
      * This method is willingly generated in order to preserve the one-line inline validation within the setSellItemHasPrinted method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateSellItemHasPrintedForArrayConstraintsFromSetSellItemHasPrinted(array $values = []): string
+    public static function validateSellItemHasPrintedForArrayConstraintFromSetSellItemHasPrinted(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $hasBillingPositionsForSellItemsResponseSellItemHasPrintedItem) {
@@ -70,10 +75,10 @@ class HasBillingPositionsForSellItemsResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\SellItemHasPrinted[] $sellItemHasPrinted
      * @return \Pggns\MidocoApi\Order\StructType\HasBillingPositionsForSellItemsResponse
      */
-    public function setSellItemHasPrinted(array $sellItemHasPrinted = []): self
+    public function setSellItemHasPrinted(?array $sellItemHasPrinted = null): self
     {
         // validation for constraint: array
-        if ('' !== ($sellItemHasPrintedArrayErrorMessage = self::validateSellItemHasPrintedForArrayConstraintsFromSetSellItemHasPrinted($sellItemHasPrinted))) {
+        if ('' !== ($sellItemHasPrintedArrayErrorMessage = self::validateSellItemHasPrintedForArrayConstraintFromSetSellItemHasPrinted($sellItemHasPrinted))) {
             throw new InvalidArgumentException($sellItemHasPrintedArrayErrorMessage, __LINE__);
         }
         $this->SellItemHasPrinted = $sellItemHasPrinted;

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for TouroperatorDisabledUnitDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class TouroperatorDisabledUnitDTO extends AbstractStructBase
 {
     /**

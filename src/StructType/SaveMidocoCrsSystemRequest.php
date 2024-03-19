@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveMidocoCrsSystemRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveMidocoCrsSystemRequest extends AbstractStructBase
 {
     /**

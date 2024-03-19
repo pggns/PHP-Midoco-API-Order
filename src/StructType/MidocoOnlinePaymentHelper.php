@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoOnlinePaymentHelper StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoOnlinePaymentHelper extends OnlinePaymentInfoType
 {
     /**

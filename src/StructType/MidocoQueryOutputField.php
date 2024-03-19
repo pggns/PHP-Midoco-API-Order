@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoQueryOutputField StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoQueryOutputField extends AbstractStructBase
 {
     /**

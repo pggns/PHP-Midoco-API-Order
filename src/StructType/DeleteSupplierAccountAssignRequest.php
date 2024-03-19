@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteSupplierAccountAssignRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteSupplierAccountAssignRequest extends AbstractStructBase
 {
     /**

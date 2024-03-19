@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetDocumentNatureDescriptionsResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetDocumentNatureDescriptionsResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetDocumentNatureDescriptionsResponse extends AbstractStructBase
      * - ref: MidocoDocumentNatureDescription
      * @var \Pggns\MidocoApi\Order\StructType\MidocoDocumentNatureDescriptionType[]
      */
-    protected array $MidocoDocumentNatureDescription = [];
+    protected ?array $MidocoDocumentNatureDescription = null;
     /**
      * Constructor method for GetDocumentNatureDescriptionsResponse
      * @uses GetDocumentNatureDescriptionsResponse::setMidocoDocumentNatureDescription()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoDocumentNatureDescriptionType[] $midocoDocumentNatureDescription
      */
-    public function __construct(array $midocoDocumentNatureDescription = [])
+    public function __construct(?array $midocoDocumentNatureDescription = null)
     {
         $this
             ->setMidocoDocumentNatureDescription($midocoDocumentNatureDescription);
@@ -36,18 +37,22 @@ class GetDocumentNatureDescriptionsResponse extends AbstractStructBase
      * Get MidocoDocumentNatureDescription value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoDocumentNatureDescriptionType[]
      */
-    public function getMidocoDocumentNatureDescription(): array
+    public function getMidocoDocumentNatureDescription(): ?array
     {
         return $this->MidocoDocumentNatureDescription;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoDocumentNatureDescription method
+     * This method is responsible for validating the value(s) passed to the setMidocoDocumentNatureDescription method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoDocumentNatureDescription method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoDocumentNatureDescriptionForArrayConstraintsFromSetMidocoDocumentNatureDescription(array $values = []): string
+    public static function validateMidocoDocumentNatureDescriptionForArrayConstraintFromSetMidocoDocumentNatureDescription(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getDocumentNatureDescriptionsResponseMidocoDocumentNatureDescriptionItem) {
@@ -69,10 +74,10 @@ class GetDocumentNatureDescriptionsResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoDocumentNatureDescriptionType[] $midocoDocumentNatureDescription
      * @return \Pggns\MidocoApi\Order\StructType\GetDocumentNatureDescriptionsResponse
      */
-    public function setMidocoDocumentNatureDescription(array $midocoDocumentNatureDescription = []): self
+    public function setMidocoDocumentNatureDescription(?array $midocoDocumentNatureDescription = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoDocumentNatureDescriptionArrayErrorMessage = self::validateMidocoDocumentNatureDescriptionForArrayConstraintsFromSetMidocoDocumentNatureDescription($midocoDocumentNatureDescription))) {
+        if ('' !== ($midocoDocumentNatureDescriptionArrayErrorMessage = self::validateMidocoDocumentNatureDescriptionForArrayConstraintFromSetMidocoDocumentNatureDescription($midocoDocumentNatureDescription))) {
             throw new InvalidArgumentException($midocoDocumentNatureDescriptionArrayErrorMessage, __LINE__);
         }
         $this->MidocoDocumentNatureDescription = $midocoDocumentNatureDescription;

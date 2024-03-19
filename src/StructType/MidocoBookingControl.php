@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoBookingControl StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoBookingControl extends AbstractStructBase
 {
     /**

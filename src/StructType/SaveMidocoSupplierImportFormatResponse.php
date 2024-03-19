@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveMidocoSupplierImportFormatResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveMidocoSupplierImportFormatResponse extends AbstractStructBase
 {
 }

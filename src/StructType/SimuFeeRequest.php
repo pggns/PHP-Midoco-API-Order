@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SimuFeeRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SimuFeeRequest extends AbstractStructBase
 {
     /**

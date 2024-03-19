@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GroupConsentDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GroupConsentDTO extends AbstractStructBase
 {
     /**

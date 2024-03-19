@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetGeographicalCategoryRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetGeographicalCategoryRequest extends AbstractStructBase
 {
     /**
@@ -20,7 +21,7 @@ class GetGeographicalCategoryRequest extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $countryCode = [];
+    protected ?array $countryCode = null;
     /**
      * The travelDate
      * Meta information extracted from the WSDL
@@ -36,7 +37,7 @@ class GetGeographicalCategoryRequest extends AbstractStructBase
      * @param string[] $countryCode
      * @param string $travelDate
      */
-    public function __construct(array $countryCode = [], ?string $travelDate = null)
+    public function __construct(?array $countryCode = null, ?string $travelDate = null)
     {
         $this
             ->setCountryCode($countryCode)
@@ -46,18 +47,22 @@ class GetGeographicalCategoryRequest extends AbstractStructBase
      * Get countryCode value
      * @return string[]
      */
-    public function getCountryCode(): array
+    public function getCountryCode(): ?array
     {
         return $this->countryCode;
     }
     /**
-     * This method is responsible for validating the values passed to the setCountryCode method
+     * This method is responsible for validating the value(s) passed to the setCountryCode method
      * This method is willingly generated in order to preserve the one-line inline validation within the setCountryCode method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateCountryCodeForArrayConstraintsFromSetCountryCode(array $values = []): string
+    public static function validateCountryCodeForArrayConstraintFromSetCountryCode(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getGeographicalCategoryRequestCountryCodeItem) {
@@ -79,10 +84,10 @@ class GetGeographicalCategoryRequest extends AbstractStructBase
      * @param string[] $countryCode
      * @return \Pggns\MidocoApi\Order\StructType\GetGeographicalCategoryRequest
      */
-    public function setCountryCode(array $countryCode = []): self
+    public function setCountryCode(?array $countryCode = null): self
     {
         // validation for constraint: array
-        if ('' !== ($countryCodeArrayErrorMessage = self::validateCountryCodeForArrayConstraintsFromSetCountryCode($countryCode))) {
+        if ('' !== ($countryCodeArrayErrorMessage = self::validateCountryCodeForArrayConstraintFromSetCountryCode($countryCode))) {
             throw new InvalidArgumentException($countryCodeArrayErrorMessage, __LINE__);
         }
         $this->countryCode = $countryCode;

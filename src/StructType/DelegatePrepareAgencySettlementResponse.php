@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DelegatePrepareAgencySettlementResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DelegatePrepareAgencySettlementResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class DelegatePrepareAgencySettlementResponse extends AbstractStructBase
      * - ref: MidocoAgencyProvisionInfo
      * @var \Pggns\MidocoApi\Order\StructType\MidocoAgencyProvisionInfo[]
      */
-    protected array $MidocoAgencyProvisionInfo = [];
+    protected ?array $MidocoAgencyProvisionInfo = null;
     /**
      * Constructor method for DelegatePrepareAgencySettlementResponse
      * @uses DelegatePrepareAgencySettlementResponse::setMidocoAgencyProvisionInfo()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoAgencyProvisionInfo[] $midocoAgencyProvisionInfo
      */
-    public function __construct(array $midocoAgencyProvisionInfo = [])
+    public function __construct(?array $midocoAgencyProvisionInfo = null)
     {
         $this
             ->setMidocoAgencyProvisionInfo($midocoAgencyProvisionInfo);
@@ -36,18 +37,22 @@ class DelegatePrepareAgencySettlementResponse extends AbstractStructBase
      * Get MidocoAgencyProvisionInfo value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoAgencyProvisionInfo[]
      */
-    public function getMidocoAgencyProvisionInfo(): array
+    public function getMidocoAgencyProvisionInfo(): ?array
     {
         return $this->MidocoAgencyProvisionInfo;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoAgencyProvisionInfo method
+     * This method is responsible for validating the value(s) passed to the setMidocoAgencyProvisionInfo method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoAgencyProvisionInfo method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoAgencyProvisionInfoForArrayConstraintsFromSetMidocoAgencyProvisionInfo(array $values = []): string
+    public static function validateMidocoAgencyProvisionInfoForArrayConstraintFromSetMidocoAgencyProvisionInfo(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $delegatePrepareAgencySettlementResponseMidocoAgencyProvisionInfoItem) {
@@ -69,10 +74,10 @@ class DelegatePrepareAgencySettlementResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoAgencyProvisionInfo[] $midocoAgencyProvisionInfo
      * @return \Pggns\MidocoApi\Order\StructType\DelegatePrepareAgencySettlementResponse
      */
-    public function setMidocoAgencyProvisionInfo(array $midocoAgencyProvisionInfo = []): self
+    public function setMidocoAgencyProvisionInfo(?array $midocoAgencyProvisionInfo = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoAgencyProvisionInfoArrayErrorMessage = self::validateMidocoAgencyProvisionInfoForArrayConstraintsFromSetMidocoAgencyProvisionInfo($midocoAgencyProvisionInfo))) {
+        if ('' !== ($midocoAgencyProvisionInfoArrayErrorMessage = self::validateMidocoAgencyProvisionInfoForArrayConstraintFromSetMidocoAgencyProvisionInfo($midocoAgencyProvisionInfo))) {
             throw new InvalidArgumentException($midocoAgencyProvisionInfoArrayErrorMessage, __LINE__);
         }
         $this->MidocoAgencyProvisionInfo = $midocoAgencyProvisionInfo;

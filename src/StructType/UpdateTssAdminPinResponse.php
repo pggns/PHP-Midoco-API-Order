@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: The updated MidocoTssClient.
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class UpdateTssAdminPinResponse extends AbstractStructBase
 {
     /**

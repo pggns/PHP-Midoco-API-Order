@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for details-price StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class Details_price extends AbstractStructBase
 {
     /**

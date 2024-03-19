@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetOrderLayoutResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetOrderLayoutResponse extends AbstractStructBase
 {
     /**

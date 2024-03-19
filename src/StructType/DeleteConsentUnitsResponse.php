@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteConsentUnitsResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteConsentUnitsResponse extends AbstractStructBase
 {
 }

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MarkTravelplanHistoryEmailsSentRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MarkTravelplanHistoryEmailsSentRequest extends AbstractStructBase
 {
     /**
@@ -19,7 +20,7 @@ class MarkTravelplanHistoryEmailsSentRequest extends AbstractStructBase
      * - maxOccurs: unbounded
      * @var int[]
      */
-    protected array $historyId = [];
+    protected ?array $historyId = null;
     /**
      * The MidocoMailMessage
      * Meta information extracted from the WSDL
@@ -35,7 +36,7 @@ class MarkTravelplanHistoryEmailsSentRequest extends AbstractStructBase
      * @param int[] $historyId
      * @param \Pggns\MidocoApi\Order\StructType\MidocoMailMessageType $midocoMailMessage
      */
-    public function __construct(array $historyId = [], ?\Pggns\MidocoApi\Order\StructType\MidocoMailMessageType $midocoMailMessage = null)
+    public function __construct(?array $historyId = null, ?\Pggns\MidocoApi\Order\StructType\MidocoMailMessageType $midocoMailMessage = null)
     {
         $this
             ->setHistoryId($historyId)
@@ -45,18 +46,22 @@ class MarkTravelplanHistoryEmailsSentRequest extends AbstractStructBase
      * Get historyId value
      * @return int[]
      */
-    public function getHistoryId(): array
+    public function getHistoryId(): ?array
     {
         return $this->historyId;
     }
     /**
-     * This method is responsible for validating the values passed to the setHistoryId method
+     * This method is responsible for validating the value(s) passed to the setHistoryId method
      * This method is willingly generated in order to preserve the one-line inline validation within the setHistoryId method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateHistoryIdForArrayConstraintsFromSetHistoryId(array $values = []): string
+    public static function validateHistoryIdForArrayConstraintFromSetHistoryId(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $markTravelplanHistoryEmailsSentRequestHistoryIdItem) {
@@ -78,10 +83,10 @@ class MarkTravelplanHistoryEmailsSentRequest extends AbstractStructBase
      * @param int[] $historyId
      * @return \Pggns\MidocoApi\Order\StructType\MarkTravelplanHistoryEmailsSentRequest
      */
-    public function setHistoryId(array $historyId = []): self
+    public function setHistoryId(?array $historyId = null): self
     {
         // validation for constraint: array
-        if ('' !== ($historyIdArrayErrorMessage = self::validateHistoryIdForArrayConstraintsFromSetHistoryId($historyId))) {
+        if ('' !== ($historyIdArrayErrorMessage = self::validateHistoryIdForArrayConstraintFromSetHistoryId($historyId))) {
             throw new InvalidArgumentException($historyIdArrayErrorMessage, __LINE__);
         }
         $this->historyId = $historyId;

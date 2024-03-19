@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetOrderStatusRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetOrderStatusRequest extends AbstractStructBase
 {
     /**
@@ -20,13 +21,13 @@ class GetOrderStatusRequest extends AbstractStructBase
      * - minOccurs: 0
      * @var int[]
      */
-    protected array $orderId = [];
+    protected ?array $orderId = null;
     /**
      * Constructor method for GetOrderStatusRequest
      * @uses GetOrderStatusRequest::setOrderId()
      * @param int[] $orderId
      */
-    public function __construct(array $orderId = [])
+    public function __construct(?array $orderId = null)
     {
         $this
             ->setOrderId($orderId);
@@ -35,18 +36,22 @@ class GetOrderStatusRequest extends AbstractStructBase
      * Get orderId value
      * @return int[]
      */
-    public function getOrderId(): array
+    public function getOrderId(): ?array
     {
         return $this->orderId;
     }
     /**
-     * This method is responsible for validating the values passed to the setOrderId method
+     * This method is responsible for validating the value(s) passed to the setOrderId method
      * This method is willingly generated in order to preserve the one-line inline validation within the setOrderId method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateOrderIdForArrayConstraintsFromSetOrderId(array $values = []): string
+    public static function validateOrderIdForArrayConstraintFromSetOrderId(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getOrderStatusRequestOrderIdItem) {
@@ -68,10 +73,10 @@ class GetOrderStatusRequest extends AbstractStructBase
      * @param int[] $orderId
      * @return \Pggns\MidocoApi\Order\StructType\GetOrderStatusRequest
      */
-    public function setOrderId(array $orderId = []): self
+    public function setOrderId(?array $orderId = null): self
     {
         // validation for constraint: array
-        if ('' !== ($orderIdArrayErrorMessage = self::validateOrderIdForArrayConstraintsFromSetOrderId($orderId))) {
+        if ('' !== ($orderIdArrayErrorMessage = self::validateOrderIdForArrayConstraintFromSetOrderId($orderId))) {
             throw new InvalidArgumentException($orderIdArrayErrorMessage, __LINE__);
         }
         $this->orderId = $orderId;

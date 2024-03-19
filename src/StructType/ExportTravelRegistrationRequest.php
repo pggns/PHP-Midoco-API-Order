@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: exportTravelRegistration --- exports a travel registration document as PDF. If isPreview is false the travel registration document will be saved in the repository.
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ExportTravelRegistrationRequest extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetWSGroupsForUserResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetWSGroupsForUserResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetWSGroupsForUserResponse extends AbstractStructBase
      * - ref: MidocoWsGroup
      * @var \Pggns\MidocoApi\Order\StructType\WsgroupDTO[]
      */
-    protected array $MidocoWsGroup = [];
+    protected ?array $MidocoWsGroup = null;
     /**
      * Constructor method for GetWSGroupsForUserResponse
      * @uses GetWSGroupsForUserResponse::setMidocoWsGroup()
      * @param \Pggns\MidocoApi\Order\StructType\WsgroupDTO[] $midocoWsGroup
      */
-    public function __construct(array $midocoWsGroup = [])
+    public function __construct(?array $midocoWsGroup = null)
     {
         $this
             ->setMidocoWsGroup($midocoWsGroup);
@@ -36,18 +37,22 @@ class GetWSGroupsForUserResponse extends AbstractStructBase
      * Get MidocoWsGroup value
      * @return \Pggns\MidocoApi\Order\StructType\WsgroupDTO[]
      */
-    public function getMidocoWsGroup(): array
+    public function getMidocoWsGroup(): ?array
     {
         return $this->MidocoWsGroup;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoWsGroup method
+     * This method is responsible for validating the value(s) passed to the setMidocoWsGroup method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoWsGroup method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoWsGroupForArrayConstraintsFromSetMidocoWsGroup(array $values = []): string
+    public static function validateMidocoWsGroupForArrayConstraintFromSetMidocoWsGroup(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getWSGroupsForUserResponseMidocoWsGroupItem) {
@@ -69,10 +74,10 @@ class GetWSGroupsForUserResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\WsgroupDTO[] $midocoWsGroup
      * @return \Pggns\MidocoApi\Order\StructType\GetWSGroupsForUserResponse
      */
-    public function setMidocoWsGroup(array $midocoWsGroup = []): self
+    public function setMidocoWsGroup(?array $midocoWsGroup = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoWsGroupArrayErrorMessage = self::validateMidocoWsGroupForArrayConstraintsFromSetMidocoWsGroup($midocoWsGroup))) {
+        if ('' !== ($midocoWsGroupArrayErrorMessage = self::validateMidocoWsGroupForArrayConstraintFromSetMidocoWsGroup($midocoWsGroup))) {
             throw new InvalidArgumentException($midocoWsGroupArrayErrorMessage, __LINE__);
         }
         $this->MidocoWsGroup = $midocoWsGroup;

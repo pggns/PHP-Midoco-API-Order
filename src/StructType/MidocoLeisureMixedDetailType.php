@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoLeisureMixedDetailType StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoLeisureMixedDetailType extends TravelDetailDTO
 {
     /**
@@ -21,7 +22,7 @@ class MidocoLeisureMixedDetailType extends TravelDetailDTO
      * - ref: MidocoFlightDetail
      * @var \Pggns\MidocoApi\Order\StructType\MidocoFlightDetail[]
      */
-    protected array $MidocoFlightDetail = [];
+    protected ?array $MidocoFlightDetail = null;
     /**
      * The MidocoAccomodationDetail
      * Meta information extracted from the WSDL
@@ -30,7 +31,7 @@ class MidocoLeisureMixedDetailType extends TravelDetailDTO
      * - ref: MidocoAccomodationDetail
      * @var \Pggns\MidocoApi\Order\StructType\AccomodationDetailDTO[]
      */
-    protected array $MidocoAccomodationDetail = [];
+    protected ?array $MidocoAccomodationDetail = null;
     /**
      * The MidocoCarDetail
      * Meta information extracted from the WSDL
@@ -39,7 +40,7 @@ class MidocoLeisureMixedDetailType extends TravelDetailDTO
      * - ref: MidocoCarDetail
      * @var \Pggns\MidocoApi\Order\StructType\CarDetailDTO[]
      */
-    protected array $MidocoCarDetail = [];
+    protected ?array $MidocoCarDetail = null;
     /**
      * The MidocoCruiseDetail
      * Meta information extracted from the WSDL
@@ -48,7 +49,7 @@ class MidocoLeisureMixedDetailType extends TravelDetailDTO
      * - ref: MidocoCruiseDetail
      * @var \Pggns\MidocoApi\Order\StructType\CruiseDetailDTO[]
      */
-    protected array $MidocoCruiseDetail = [];
+    protected ?array $MidocoCruiseDetail = null;
     /**
      * The MidocoInsuranceDetail
      * Meta information extracted from the WSDL
@@ -57,7 +58,7 @@ class MidocoLeisureMixedDetailType extends TravelDetailDTO
      * - ref: MidocoInsuranceDetail
      * @var \Pggns\MidocoApi\Order\StructType\MidocoInsuranceDetail[]
      */
-    protected array $MidocoInsuranceDetail = [];
+    protected ?array $MidocoInsuranceDetail = null;
     /**
      * The MidocoBusDetail
      * Meta information extracted from the WSDL
@@ -66,7 +67,7 @@ class MidocoLeisureMixedDetailType extends TravelDetailDTO
      * - ref: MidocoBusDetail
      * @var \Pggns\MidocoApi\Order\StructType\BusDetailDTO[]
      */
-    protected array $MidocoBusDetail = [];
+    protected ?array $MidocoBusDetail = null;
     /**
      * The MidocoRailDetail
      * Meta information extracted from the WSDL
@@ -75,7 +76,7 @@ class MidocoLeisureMixedDetailType extends TravelDetailDTO
      * - ref: MidocoRailDetail
      * @var \Pggns\MidocoApi\Order\StructType\RailDetailDTO[]
      */
-    protected array $MidocoRailDetail = [];
+    protected ?array $MidocoRailDetail = null;
     /**
      * The MidocoTransferDetail
      * Meta information extracted from the WSDL
@@ -84,7 +85,7 @@ class MidocoLeisureMixedDetailType extends TravelDetailDTO
      * - ref: MidocoTransferDetail
      * @var \Pggns\MidocoApi\Order\StructType\MidocoTransferDetailType[]
      */
-    protected array $MidocoTransferDetail = [];
+    protected ?array $MidocoTransferDetail = null;
     /**
      * The MidocoGenericDetail
      * Meta information extracted from the WSDL
@@ -93,7 +94,7 @@ class MidocoLeisureMixedDetailType extends TravelDetailDTO
      * - ref: MidocoGenericDetail
      * @var \Pggns\MidocoApi\Order\StructType\MidocoGenericDetailType[]
      */
-    protected array $MidocoGenericDetail = [];
+    protected ?array $MidocoGenericDetail = null;
     /**
      * The MidocoEventDetail
      * Meta information extracted from the WSDL
@@ -102,7 +103,7 @@ class MidocoLeisureMixedDetailType extends TravelDetailDTO
      * - ref: MidocoEventDetail
      * @var \Pggns\MidocoApi\Order\StructType\EventDetailDTO[]
      */
-    protected array $MidocoEventDetail = [];
+    protected ?array $MidocoEventDetail = null;
     /**
      * Constructor method for MidocoLeisureMixedDetailType
      * @uses MidocoLeisureMixedDetailType::setMidocoFlightDetail()
@@ -126,7 +127,7 @@ class MidocoLeisureMixedDetailType extends TravelDetailDTO
      * @param \Pggns\MidocoApi\Order\StructType\MidocoGenericDetailType[] $midocoGenericDetail
      * @param \Pggns\MidocoApi\Order\StructType\EventDetailDTO[] $midocoEventDetail
      */
-    public function __construct(array $midocoFlightDetail = [], array $midocoAccomodationDetail = [], array $midocoCarDetail = [], array $midocoCruiseDetail = [], array $midocoInsuranceDetail = [], array $midocoBusDetail = [], array $midocoRailDetail = [], array $midocoTransferDetail = [], array $midocoGenericDetail = [], array $midocoEventDetail = [])
+    public function __construct(?array $midocoFlightDetail = null, ?array $midocoAccomodationDetail = null, ?array $midocoCarDetail = null, ?array $midocoCruiseDetail = null, ?array $midocoInsuranceDetail = null, ?array $midocoBusDetail = null, ?array $midocoRailDetail = null, ?array $midocoTransferDetail = null, ?array $midocoGenericDetail = null, ?array $midocoEventDetail = null)
     {
         $this
             ->setMidocoFlightDetail($midocoFlightDetail)
@@ -144,18 +145,22 @@ class MidocoLeisureMixedDetailType extends TravelDetailDTO
      * Get MidocoFlightDetail value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoFlightDetail[]
      */
-    public function getMidocoFlightDetail(): array
+    public function getMidocoFlightDetail(): ?array
     {
         return $this->MidocoFlightDetail;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoFlightDetail method
+     * This method is responsible for validating the value(s) passed to the setMidocoFlightDetail method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoFlightDetail method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoFlightDetailForArrayConstraintsFromSetMidocoFlightDetail(array $values = []): string
+    public static function validateMidocoFlightDetailForArrayConstraintFromSetMidocoFlightDetail(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoLeisureMixedDetailTypeMidocoFlightDetailItem) {
@@ -177,10 +182,10 @@ class MidocoLeisureMixedDetailType extends TravelDetailDTO
      * @param \Pggns\MidocoApi\Order\StructType\MidocoFlightDetail[] $midocoFlightDetail
      * @return \Pggns\MidocoApi\Order\StructType\MidocoLeisureMixedDetailType
      */
-    public function setMidocoFlightDetail(array $midocoFlightDetail = []): self
+    public function setMidocoFlightDetail(?array $midocoFlightDetail = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoFlightDetailArrayErrorMessage = self::validateMidocoFlightDetailForArrayConstraintsFromSetMidocoFlightDetail($midocoFlightDetail))) {
+        if ('' !== ($midocoFlightDetailArrayErrorMessage = self::validateMidocoFlightDetailForArrayConstraintFromSetMidocoFlightDetail($midocoFlightDetail))) {
             throw new InvalidArgumentException($midocoFlightDetailArrayErrorMessage, __LINE__);
         }
         $this->MidocoFlightDetail = $midocoFlightDetail;
@@ -207,18 +212,22 @@ class MidocoLeisureMixedDetailType extends TravelDetailDTO
      * Get MidocoAccomodationDetail value
      * @return \Pggns\MidocoApi\Order\StructType\AccomodationDetailDTO[]
      */
-    public function getMidocoAccomodationDetail(): array
+    public function getMidocoAccomodationDetail(): ?array
     {
         return $this->MidocoAccomodationDetail;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoAccomodationDetail method
+     * This method is responsible for validating the value(s) passed to the setMidocoAccomodationDetail method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoAccomodationDetail method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoAccomodationDetailForArrayConstraintsFromSetMidocoAccomodationDetail(array $values = []): string
+    public static function validateMidocoAccomodationDetailForArrayConstraintFromSetMidocoAccomodationDetail(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoLeisureMixedDetailTypeMidocoAccomodationDetailItem) {
@@ -240,10 +249,10 @@ class MidocoLeisureMixedDetailType extends TravelDetailDTO
      * @param \Pggns\MidocoApi\Order\StructType\AccomodationDetailDTO[] $midocoAccomodationDetail
      * @return \Pggns\MidocoApi\Order\StructType\MidocoLeisureMixedDetailType
      */
-    public function setMidocoAccomodationDetail(array $midocoAccomodationDetail = []): self
+    public function setMidocoAccomodationDetail(?array $midocoAccomodationDetail = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoAccomodationDetailArrayErrorMessage = self::validateMidocoAccomodationDetailForArrayConstraintsFromSetMidocoAccomodationDetail($midocoAccomodationDetail))) {
+        if ('' !== ($midocoAccomodationDetailArrayErrorMessage = self::validateMidocoAccomodationDetailForArrayConstraintFromSetMidocoAccomodationDetail($midocoAccomodationDetail))) {
             throw new InvalidArgumentException($midocoAccomodationDetailArrayErrorMessage, __LINE__);
         }
         $this->MidocoAccomodationDetail = $midocoAccomodationDetail;
@@ -270,18 +279,22 @@ class MidocoLeisureMixedDetailType extends TravelDetailDTO
      * Get MidocoCarDetail value
      * @return \Pggns\MidocoApi\Order\StructType\CarDetailDTO[]
      */
-    public function getMidocoCarDetail(): array
+    public function getMidocoCarDetail(): ?array
     {
         return $this->MidocoCarDetail;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoCarDetail method
+     * This method is responsible for validating the value(s) passed to the setMidocoCarDetail method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoCarDetail method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoCarDetailForArrayConstraintsFromSetMidocoCarDetail(array $values = []): string
+    public static function validateMidocoCarDetailForArrayConstraintFromSetMidocoCarDetail(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoLeisureMixedDetailTypeMidocoCarDetailItem) {
@@ -303,10 +316,10 @@ class MidocoLeisureMixedDetailType extends TravelDetailDTO
      * @param \Pggns\MidocoApi\Order\StructType\CarDetailDTO[] $midocoCarDetail
      * @return \Pggns\MidocoApi\Order\StructType\MidocoLeisureMixedDetailType
      */
-    public function setMidocoCarDetail(array $midocoCarDetail = []): self
+    public function setMidocoCarDetail(?array $midocoCarDetail = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoCarDetailArrayErrorMessage = self::validateMidocoCarDetailForArrayConstraintsFromSetMidocoCarDetail($midocoCarDetail))) {
+        if ('' !== ($midocoCarDetailArrayErrorMessage = self::validateMidocoCarDetailForArrayConstraintFromSetMidocoCarDetail($midocoCarDetail))) {
             throw new InvalidArgumentException($midocoCarDetailArrayErrorMessage, __LINE__);
         }
         $this->MidocoCarDetail = $midocoCarDetail;
@@ -333,18 +346,22 @@ class MidocoLeisureMixedDetailType extends TravelDetailDTO
      * Get MidocoCruiseDetail value
      * @return \Pggns\MidocoApi\Order\StructType\CruiseDetailDTO[]
      */
-    public function getMidocoCruiseDetail(): array
+    public function getMidocoCruiseDetail(): ?array
     {
         return $this->MidocoCruiseDetail;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoCruiseDetail method
+     * This method is responsible for validating the value(s) passed to the setMidocoCruiseDetail method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoCruiseDetail method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoCruiseDetailForArrayConstraintsFromSetMidocoCruiseDetail(array $values = []): string
+    public static function validateMidocoCruiseDetailForArrayConstraintFromSetMidocoCruiseDetail(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoLeisureMixedDetailTypeMidocoCruiseDetailItem) {
@@ -366,10 +383,10 @@ class MidocoLeisureMixedDetailType extends TravelDetailDTO
      * @param \Pggns\MidocoApi\Order\StructType\CruiseDetailDTO[] $midocoCruiseDetail
      * @return \Pggns\MidocoApi\Order\StructType\MidocoLeisureMixedDetailType
      */
-    public function setMidocoCruiseDetail(array $midocoCruiseDetail = []): self
+    public function setMidocoCruiseDetail(?array $midocoCruiseDetail = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoCruiseDetailArrayErrorMessage = self::validateMidocoCruiseDetailForArrayConstraintsFromSetMidocoCruiseDetail($midocoCruiseDetail))) {
+        if ('' !== ($midocoCruiseDetailArrayErrorMessage = self::validateMidocoCruiseDetailForArrayConstraintFromSetMidocoCruiseDetail($midocoCruiseDetail))) {
             throw new InvalidArgumentException($midocoCruiseDetailArrayErrorMessage, __LINE__);
         }
         $this->MidocoCruiseDetail = $midocoCruiseDetail;
@@ -396,18 +413,22 @@ class MidocoLeisureMixedDetailType extends TravelDetailDTO
      * Get MidocoInsuranceDetail value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoInsuranceDetail[]
      */
-    public function getMidocoInsuranceDetail(): array
+    public function getMidocoInsuranceDetail(): ?array
     {
         return $this->MidocoInsuranceDetail;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoInsuranceDetail method
+     * This method is responsible for validating the value(s) passed to the setMidocoInsuranceDetail method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoInsuranceDetail method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoInsuranceDetailForArrayConstraintsFromSetMidocoInsuranceDetail(array $values = []): string
+    public static function validateMidocoInsuranceDetailForArrayConstraintFromSetMidocoInsuranceDetail(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoLeisureMixedDetailTypeMidocoInsuranceDetailItem) {
@@ -429,10 +450,10 @@ class MidocoLeisureMixedDetailType extends TravelDetailDTO
      * @param \Pggns\MidocoApi\Order\StructType\MidocoInsuranceDetail[] $midocoInsuranceDetail
      * @return \Pggns\MidocoApi\Order\StructType\MidocoLeisureMixedDetailType
      */
-    public function setMidocoInsuranceDetail(array $midocoInsuranceDetail = []): self
+    public function setMidocoInsuranceDetail(?array $midocoInsuranceDetail = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoInsuranceDetailArrayErrorMessage = self::validateMidocoInsuranceDetailForArrayConstraintsFromSetMidocoInsuranceDetail($midocoInsuranceDetail))) {
+        if ('' !== ($midocoInsuranceDetailArrayErrorMessage = self::validateMidocoInsuranceDetailForArrayConstraintFromSetMidocoInsuranceDetail($midocoInsuranceDetail))) {
             throw new InvalidArgumentException($midocoInsuranceDetailArrayErrorMessage, __LINE__);
         }
         $this->MidocoInsuranceDetail = $midocoInsuranceDetail;
@@ -459,18 +480,22 @@ class MidocoLeisureMixedDetailType extends TravelDetailDTO
      * Get MidocoBusDetail value
      * @return \Pggns\MidocoApi\Order\StructType\BusDetailDTO[]
      */
-    public function getMidocoBusDetail(): array
+    public function getMidocoBusDetail(): ?array
     {
         return $this->MidocoBusDetail;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoBusDetail method
+     * This method is responsible for validating the value(s) passed to the setMidocoBusDetail method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoBusDetail method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoBusDetailForArrayConstraintsFromSetMidocoBusDetail(array $values = []): string
+    public static function validateMidocoBusDetailForArrayConstraintFromSetMidocoBusDetail(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoLeisureMixedDetailTypeMidocoBusDetailItem) {
@@ -492,10 +517,10 @@ class MidocoLeisureMixedDetailType extends TravelDetailDTO
      * @param \Pggns\MidocoApi\Order\StructType\BusDetailDTO[] $midocoBusDetail
      * @return \Pggns\MidocoApi\Order\StructType\MidocoLeisureMixedDetailType
      */
-    public function setMidocoBusDetail(array $midocoBusDetail = []): self
+    public function setMidocoBusDetail(?array $midocoBusDetail = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoBusDetailArrayErrorMessage = self::validateMidocoBusDetailForArrayConstraintsFromSetMidocoBusDetail($midocoBusDetail))) {
+        if ('' !== ($midocoBusDetailArrayErrorMessage = self::validateMidocoBusDetailForArrayConstraintFromSetMidocoBusDetail($midocoBusDetail))) {
             throw new InvalidArgumentException($midocoBusDetailArrayErrorMessage, __LINE__);
         }
         $this->MidocoBusDetail = $midocoBusDetail;
@@ -522,18 +547,22 @@ class MidocoLeisureMixedDetailType extends TravelDetailDTO
      * Get MidocoRailDetail value
      * @return \Pggns\MidocoApi\Order\StructType\RailDetailDTO[]
      */
-    public function getMidocoRailDetail(): array
+    public function getMidocoRailDetail(): ?array
     {
         return $this->MidocoRailDetail;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoRailDetail method
+     * This method is responsible for validating the value(s) passed to the setMidocoRailDetail method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoRailDetail method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoRailDetailForArrayConstraintsFromSetMidocoRailDetail(array $values = []): string
+    public static function validateMidocoRailDetailForArrayConstraintFromSetMidocoRailDetail(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoLeisureMixedDetailTypeMidocoRailDetailItem) {
@@ -555,10 +584,10 @@ class MidocoLeisureMixedDetailType extends TravelDetailDTO
      * @param \Pggns\MidocoApi\Order\StructType\RailDetailDTO[] $midocoRailDetail
      * @return \Pggns\MidocoApi\Order\StructType\MidocoLeisureMixedDetailType
      */
-    public function setMidocoRailDetail(array $midocoRailDetail = []): self
+    public function setMidocoRailDetail(?array $midocoRailDetail = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoRailDetailArrayErrorMessage = self::validateMidocoRailDetailForArrayConstraintsFromSetMidocoRailDetail($midocoRailDetail))) {
+        if ('' !== ($midocoRailDetailArrayErrorMessage = self::validateMidocoRailDetailForArrayConstraintFromSetMidocoRailDetail($midocoRailDetail))) {
             throw new InvalidArgumentException($midocoRailDetailArrayErrorMessage, __LINE__);
         }
         $this->MidocoRailDetail = $midocoRailDetail;
@@ -585,18 +614,22 @@ class MidocoLeisureMixedDetailType extends TravelDetailDTO
      * Get MidocoTransferDetail value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoTransferDetailType[]
      */
-    public function getMidocoTransferDetail(): array
+    public function getMidocoTransferDetail(): ?array
     {
         return $this->MidocoTransferDetail;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoTransferDetail method
+     * This method is responsible for validating the value(s) passed to the setMidocoTransferDetail method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoTransferDetail method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoTransferDetailForArrayConstraintsFromSetMidocoTransferDetail(array $values = []): string
+    public static function validateMidocoTransferDetailForArrayConstraintFromSetMidocoTransferDetail(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoLeisureMixedDetailTypeMidocoTransferDetailItem) {
@@ -618,10 +651,10 @@ class MidocoLeisureMixedDetailType extends TravelDetailDTO
      * @param \Pggns\MidocoApi\Order\StructType\MidocoTransferDetailType[] $midocoTransferDetail
      * @return \Pggns\MidocoApi\Order\StructType\MidocoLeisureMixedDetailType
      */
-    public function setMidocoTransferDetail(array $midocoTransferDetail = []): self
+    public function setMidocoTransferDetail(?array $midocoTransferDetail = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoTransferDetailArrayErrorMessage = self::validateMidocoTransferDetailForArrayConstraintsFromSetMidocoTransferDetail($midocoTransferDetail))) {
+        if ('' !== ($midocoTransferDetailArrayErrorMessage = self::validateMidocoTransferDetailForArrayConstraintFromSetMidocoTransferDetail($midocoTransferDetail))) {
             throw new InvalidArgumentException($midocoTransferDetailArrayErrorMessage, __LINE__);
         }
         $this->MidocoTransferDetail = $midocoTransferDetail;
@@ -648,18 +681,22 @@ class MidocoLeisureMixedDetailType extends TravelDetailDTO
      * Get MidocoGenericDetail value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoGenericDetailType[]
      */
-    public function getMidocoGenericDetail(): array
+    public function getMidocoGenericDetail(): ?array
     {
         return $this->MidocoGenericDetail;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoGenericDetail method
+     * This method is responsible for validating the value(s) passed to the setMidocoGenericDetail method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoGenericDetail method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoGenericDetailForArrayConstraintsFromSetMidocoGenericDetail(array $values = []): string
+    public static function validateMidocoGenericDetailForArrayConstraintFromSetMidocoGenericDetail(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoLeisureMixedDetailTypeMidocoGenericDetailItem) {
@@ -681,10 +718,10 @@ class MidocoLeisureMixedDetailType extends TravelDetailDTO
      * @param \Pggns\MidocoApi\Order\StructType\MidocoGenericDetailType[] $midocoGenericDetail
      * @return \Pggns\MidocoApi\Order\StructType\MidocoLeisureMixedDetailType
      */
-    public function setMidocoGenericDetail(array $midocoGenericDetail = []): self
+    public function setMidocoGenericDetail(?array $midocoGenericDetail = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoGenericDetailArrayErrorMessage = self::validateMidocoGenericDetailForArrayConstraintsFromSetMidocoGenericDetail($midocoGenericDetail))) {
+        if ('' !== ($midocoGenericDetailArrayErrorMessage = self::validateMidocoGenericDetailForArrayConstraintFromSetMidocoGenericDetail($midocoGenericDetail))) {
             throw new InvalidArgumentException($midocoGenericDetailArrayErrorMessage, __LINE__);
         }
         $this->MidocoGenericDetail = $midocoGenericDetail;
@@ -711,18 +748,22 @@ class MidocoLeisureMixedDetailType extends TravelDetailDTO
      * Get MidocoEventDetail value
      * @return \Pggns\MidocoApi\Order\StructType\EventDetailDTO[]
      */
-    public function getMidocoEventDetail(): array
+    public function getMidocoEventDetail(): ?array
     {
         return $this->MidocoEventDetail;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoEventDetail method
+     * This method is responsible for validating the value(s) passed to the setMidocoEventDetail method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoEventDetail method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoEventDetailForArrayConstraintsFromSetMidocoEventDetail(array $values = []): string
+    public static function validateMidocoEventDetailForArrayConstraintFromSetMidocoEventDetail(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoLeisureMixedDetailTypeMidocoEventDetailItem) {
@@ -744,10 +785,10 @@ class MidocoLeisureMixedDetailType extends TravelDetailDTO
      * @param \Pggns\MidocoApi\Order\StructType\EventDetailDTO[] $midocoEventDetail
      * @return \Pggns\MidocoApi\Order\StructType\MidocoLeisureMixedDetailType
      */
-    public function setMidocoEventDetail(array $midocoEventDetail = []): self
+    public function setMidocoEventDetail(?array $midocoEventDetail = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoEventDetailArrayErrorMessage = self::validateMidocoEventDetailForArrayConstraintsFromSetMidocoEventDetail($midocoEventDetail))) {
+        if ('' !== ($midocoEventDetailArrayErrorMessage = self::validateMidocoEventDetailForArrayConstraintFromSetMidocoEventDetail($midocoEventDetail))) {
             throw new InvalidArgumentException($midocoEventDetailArrayErrorMessage, __LINE__);
         }
         $this->MidocoEventDetail = $midocoEventDetail;

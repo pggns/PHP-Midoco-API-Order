@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for StatistikAtLoadDataResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class StatistikAtLoadDataResponse extends AbstractStructBase
 {
     /**
@@ -20,13 +21,13 @@ class StatistikAtLoadDataResponse extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $data = [];
+    protected ?array $data = null;
     /**
      * Constructor method for StatistikAtLoadDataResponse
      * @uses StatistikAtLoadDataResponse::setData()
      * @param string[] $data
      */
-    public function __construct(array $data = [])
+    public function __construct(?array $data = null)
     {
         $this
             ->setData($data);
@@ -35,18 +36,22 @@ class StatistikAtLoadDataResponse extends AbstractStructBase
      * Get data value
      * @return string[]
      */
-    public function getData(): array
+    public function getData(): ?array
     {
         return $this->data;
     }
     /**
-     * This method is responsible for validating the values passed to the setData method
+     * This method is responsible for validating the value(s) passed to the setData method
      * This method is willingly generated in order to preserve the one-line inline validation within the setData method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateDataForArrayConstraintsFromSetData(array $values = []): string
+    public static function validateDataForArrayConstraintFromSetData(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $statistikAtLoadDataResponseDataItem) {
@@ -68,10 +73,10 @@ class StatistikAtLoadDataResponse extends AbstractStructBase
      * @param string[] $data
      * @return \Pggns\MidocoApi\Order\StructType\StatistikAtLoadDataResponse
      */
-    public function setData(array $data = []): self
+    public function setData(?array $data = null): self
     {
         // validation for constraint: array
-        if ('' !== ($dataArrayErrorMessage = self::validateDataForArrayConstraintsFromSetData($data))) {
+        if ('' !== ($dataArrayErrorMessage = self::validateDataForArrayConstraintFromSetData($data))) {
             throw new InvalidArgumentException($dataArrayErrorMessage, __LINE__);
         }
         $this->data = $data;

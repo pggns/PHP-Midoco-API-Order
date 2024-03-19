@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoEmailList StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoEmailList extends AbstractStructBase
 {
     /**
@@ -18,9 +19,9 @@ class MidocoEmailList extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: unbounded
      * - minOccurs: 0
-     * @var mixed[]
+     * @var string[]
      */
-    protected array $MidocoEmail = [];
+    protected ?array $MidocoEmail = null;
     /**
      * The EmailType
      * @var string|null
@@ -30,10 +31,10 @@ class MidocoEmailList extends AbstractStructBase
      * Constructor method for MidocoEmailList
      * @uses MidocoEmailList::setMidocoEmail()
      * @uses MidocoEmailList::setEmailType()
-     * @param mixed[] $midocoEmail
+     * @param string[] $midocoEmail
      * @param string $emailType
      */
-    public function __construct(array $midocoEmail = [], ?string $emailType = null)
+    public function __construct(?array $midocoEmail = null, ?string $emailType = null)
     {
         $this
             ->setMidocoEmail($midocoEmail)
@@ -41,30 +42,34 @@ class MidocoEmailList extends AbstractStructBase
     }
     /**
      * Get MidocoEmail value
-     * @return mixed[]
+     * @return string[]
      */
-    public function getMidocoEmail(): array
+    public function getMidocoEmail(): ?array
     {
         return $this->MidocoEmail;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoEmail method
+     * This method is responsible for validating the value(s) passed to the setMidocoEmail method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoEmail method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoEmailForArrayConstraintsFromSetMidocoEmail(array $values = []): string
+    public static function validateMidocoEmailForArrayConstraintFromSetMidocoEmail(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoEmailListMidocoEmailItem) {
             // validation for constraint: itemType
-            if (false) {
+            if (!is_string($midocoEmailListMidocoEmailItem)) {
                 $invalidValues[] = is_object($midocoEmailListMidocoEmailItem) ? get_class($midocoEmailListMidocoEmailItem) : sprintf('%s(%s)', gettype($midocoEmailListMidocoEmailItem), var_export($midocoEmailListMidocoEmailItem, true));
             }
         }
         if (!empty($invalidValues)) {
-            $message = sprintf('The MidocoEmail property can only contain items of type mixed, %s given', is_object($invalidValues) ? get_class($invalidValues) : (is_array($invalidValues) ? implode(', ', $invalidValues) : gettype($invalidValues)));
+            $message = sprintf('The MidocoEmail property can only contain items of type string, %s given', is_object($invalidValues) ? get_class($invalidValues) : (is_array($invalidValues) ? implode(', ', $invalidValues) : gettype($invalidValues)));
         }
         unset($invalidValues);
         
@@ -73,13 +78,13 @@ class MidocoEmailList extends AbstractStructBase
     /**
      * Set MidocoEmail value
      * @throws InvalidArgumentException
-     * @param mixed[] $midocoEmail
+     * @param string[] $midocoEmail
      * @return \Pggns\MidocoApi\Order\StructType\MidocoEmailList
      */
-    public function setMidocoEmail(array $midocoEmail = []): self
+    public function setMidocoEmail(?array $midocoEmail = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoEmailArrayErrorMessage = self::validateMidocoEmailForArrayConstraintsFromSetMidocoEmail($midocoEmail))) {
+        if ('' !== ($midocoEmailArrayErrorMessage = self::validateMidocoEmailForArrayConstraintFromSetMidocoEmail($midocoEmail))) {
             throw new InvalidArgumentException($midocoEmailArrayErrorMessage, __LINE__);
         }
         $this->MidocoEmail = $midocoEmail;
@@ -89,14 +94,14 @@ class MidocoEmailList extends AbstractStructBase
     /**
      * Add item to MidocoEmail value
      * @throws InvalidArgumentException
-     * @param mixed $item
+     * @param string $item
      * @return \Pggns\MidocoApi\Order\StructType\MidocoEmailList
      */
-    public function addToMidocoEmail(mixed $item): self
+    public function addToMidocoEmail(string $item): self
     {
         // validation for constraint: itemType
-        if (false) {
-            throw new InvalidArgumentException(sprintf('The MidocoEmail property can only contain items of type mixed, %s given', is_object($item) ? get_class($item) : (is_array($item) ? implode(', ', $item) : gettype($item))), __LINE__);
+        if (!is_string($item)) {
+            throw new InvalidArgumentException(sprintf('The MidocoEmail property can only contain items of type string, %s given', is_object($item) ? get_class($item) : (is_array($item) ? implode(', ', $item) : gettype($item))), __LINE__);
         }
         $this->MidocoEmail[] = $item;
         

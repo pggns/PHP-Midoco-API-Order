@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DunningLetterDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DunningLetterDTO extends AbstractStructBase
 {
     /**

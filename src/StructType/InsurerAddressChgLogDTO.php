@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for InsurerAddressChgLogDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class InsurerAddressChgLogDTO extends AbstractStructBase
 {
     /**

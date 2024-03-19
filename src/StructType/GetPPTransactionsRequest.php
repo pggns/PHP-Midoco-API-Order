@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetPPTransactionsRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetPPTransactionsRequest extends AbstractStructBase
 {
     /**

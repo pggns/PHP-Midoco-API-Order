@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteVerkDataPrintResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteVerkDataPrintResponse extends AbstractStructBase
 {
 }

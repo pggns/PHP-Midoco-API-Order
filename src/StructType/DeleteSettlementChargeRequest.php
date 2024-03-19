@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteSettlementChargeRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteSettlementChargeRequest extends AbstractStructBase
 {
     /**

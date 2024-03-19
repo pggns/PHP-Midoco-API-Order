@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: getSellItem --- retrieves a sellitem from the database
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetSellItemResponse extends AbstractStructBase
 {
     /**

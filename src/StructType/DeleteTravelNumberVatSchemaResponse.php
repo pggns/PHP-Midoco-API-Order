@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteTravelNumberVatSchemaResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteTravelNumberVatSchemaResponse extends AbstractStructBase
 {
 }

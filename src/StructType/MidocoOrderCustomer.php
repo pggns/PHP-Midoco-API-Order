@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoOrderCustomer StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoOrderCustomer extends OrderCustomerDTO
 {
     /**
@@ -21,7 +22,7 @@ class MidocoOrderCustomer extends OrderCustomerDTO
      * - ref: MidocoCommunication
      * @var \Pggns\MidocoApi\Order\StructType\MidocoCommunication[]
      */
-    protected array $MidocoCommunication = [];
+    protected ?array $MidocoCommunication = null;
     /**
      * The MidocoConsentCustomer
      * Meta information extracted from the WSDL
@@ -51,7 +52,7 @@ class MidocoOrderCustomer extends OrderCustomerDTO
      * @param bool $overrideExistingOrderCustomer
      * @param string $language
      */
-    public function __construct(array $midocoCommunication = [], ?\Pggns\MidocoApi\Order\StructType\MidocoConsentCommunicationType $midocoConsentCustomer = null, ?bool $overrideExistingOrderCustomer = null, ?string $language = null)
+    public function __construct(?array $midocoCommunication = null, ?\Pggns\MidocoApi\Order\StructType\MidocoConsentCommunicationType $midocoConsentCustomer = null, ?bool $overrideExistingOrderCustomer = null, ?string $language = null)
     {
         $this
             ->setMidocoCommunication($midocoCommunication)
@@ -63,18 +64,22 @@ class MidocoOrderCustomer extends OrderCustomerDTO
      * Get MidocoCommunication value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoCommunication[]
      */
-    public function getMidocoCommunication(): array
+    public function getMidocoCommunication(): ?array
     {
         return $this->MidocoCommunication;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoCommunication method
+     * This method is responsible for validating the value(s) passed to the setMidocoCommunication method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoCommunication method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoCommunicationForArrayConstraintsFromSetMidocoCommunication(array $values = []): string
+    public static function validateMidocoCommunicationForArrayConstraintFromSetMidocoCommunication(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoOrderCustomerMidocoCommunicationItem) {
@@ -96,10 +101,10 @@ class MidocoOrderCustomer extends OrderCustomerDTO
      * @param \Pggns\MidocoApi\Order\StructType\MidocoCommunication[] $midocoCommunication
      * @return \Pggns\MidocoApi\Order\StructType\MidocoOrderCustomer
      */
-    public function setMidocoCommunication(array $midocoCommunication = []): self
+    public function setMidocoCommunication(?array $midocoCommunication = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoCommunicationArrayErrorMessage = self::validateMidocoCommunicationForArrayConstraintsFromSetMidocoCommunication($midocoCommunication))) {
+        if ('' !== ($midocoCommunicationArrayErrorMessage = self::validateMidocoCommunicationForArrayConstraintFromSetMidocoCommunication($midocoCommunication))) {
             throw new InvalidArgumentException($midocoCommunicationArrayErrorMessage, __LINE__);
         }
         $this->MidocoCommunication = $midocoCommunication;

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for PrintBillingPrintjobRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class PrintBillingPrintjobRequest extends AbstractStructBase
 {
     /**
@@ -40,23 +41,33 @@ class PrintBillingPrintjobRequest extends AbstractStructBase
      */
     protected ?string $receiptDate = null;
     /**
+     * The hasPayByLink
+     * Meta information extracted from the WSDL
+     * - default: false
+     * @var bool|null
+     */
+    protected ?bool $hasPayByLink = null;
+    /**
      * Constructor method for PrintBillingPrintjobRequest
      * @uses PrintBillingPrintjobRequest::setCreateBillingPrintjobRequest()
      * @uses PrintBillingPrintjobRequest::setPreview()
      * @uses PrintBillingPrintjobRequest::setInvokeFinishDocument()
      * @uses PrintBillingPrintjobRequest::setReceiptDate()
+     * @uses PrintBillingPrintjobRequest::setHasPayByLink()
      * @param \Pggns\MidocoApi\Order\StructType\CreateBillingPrintjobRequest $createBillingPrintjobRequest
      * @param bool $preview
      * @param bool $invokeFinishDocument
      * @param string $receiptDate
+     * @param bool $hasPayByLink
      */
-    public function __construct(?\Pggns\MidocoApi\Order\StructType\CreateBillingPrintjobRequest $createBillingPrintjobRequest = null, ?bool $preview = false, ?bool $invokeFinishDocument = false, ?string $receiptDate = null)
+    public function __construct(?\Pggns\MidocoApi\Order\StructType\CreateBillingPrintjobRequest $createBillingPrintjobRequest = null, ?bool $preview = false, ?bool $invokeFinishDocument = false, ?string $receiptDate = null, ?bool $hasPayByLink = false)
     {
         $this
             ->setCreateBillingPrintjobRequest($createBillingPrintjobRequest)
             ->setPreview($preview)
             ->setInvokeFinishDocument($invokeFinishDocument)
-            ->setReceiptDate($receiptDate);
+            ->setReceiptDate($receiptDate)
+            ->setHasPayByLink($hasPayByLink);
     }
     /**
      * Get CreateBillingPrintjobRequest value
@@ -143,6 +154,29 @@ class PrintBillingPrintjobRequest extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($receiptDate, true), gettype($receiptDate)), __LINE__);
         }
         $this->receiptDate = $receiptDate;
+        
+        return $this;
+    }
+    /**
+     * Get hasPayByLink value
+     * @return bool|null
+     */
+    public function getHasPayByLink(): ?bool
+    {
+        return $this->hasPayByLink;
+    }
+    /**
+     * Set hasPayByLink value
+     * @param bool $hasPayByLink
+     * @return \Pggns\MidocoApi\Order\StructType\PrintBillingPrintjobRequest
+     */
+    public function setHasPayByLink(?bool $hasPayByLink = false): self
+    {
+        // validation for constraint: boolean
+        if (!is_null($hasPayByLink) && !is_bool($hasPayByLink)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($hasPayByLink, true), gettype($hasPayByLink)), __LINE__);
+        }
+        $this->hasPayByLink = $hasPayByLink;
         
         return $this;
     }

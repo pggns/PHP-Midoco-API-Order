@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetMidocoRuleTypesResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetMidocoRuleTypesResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetMidocoRuleTypesResponse extends AbstractStructBase
      * - ref: MidocoRuleType
      * @var \Pggns\MidocoApi\Order\StructType\RuleTypeDTO[]
      */
-    protected array $MidocoRuleType = [];
+    protected ?array $MidocoRuleType = null;
     /**
      * Constructor method for GetMidocoRuleTypesResponse
      * @uses GetMidocoRuleTypesResponse::setMidocoRuleType()
      * @param \Pggns\MidocoApi\Order\StructType\RuleTypeDTO[] $midocoRuleType
      */
-    public function __construct(array $midocoRuleType = [])
+    public function __construct(?array $midocoRuleType = null)
     {
         $this
             ->setMidocoRuleType($midocoRuleType);
@@ -36,18 +37,22 @@ class GetMidocoRuleTypesResponse extends AbstractStructBase
      * Get MidocoRuleType value
      * @return \Pggns\MidocoApi\Order\StructType\RuleTypeDTO[]
      */
-    public function getMidocoRuleType(): array
+    public function getMidocoRuleType(): ?array
     {
         return $this->MidocoRuleType;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoRuleType method
+     * This method is responsible for validating the value(s) passed to the setMidocoRuleType method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoRuleType method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoRuleTypeForArrayConstraintsFromSetMidocoRuleType(array $values = []): string
+    public static function validateMidocoRuleTypeForArrayConstraintFromSetMidocoRuleType(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getMidocoRuleTypesResponseMidocoRuleTypeItem) {
@@ -69,10 +74,10 @@ class GetMidocoRuleTypesResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\RuleTypeDTO[] $midocoRuleType
      * @return \Pggns\MidocoApi\Order\StructType\GetMidocoRuleTypesResponse
      */
-    public function setMidocoRuleType(array $midocoRuleType = []): self
+    public function setMidocoRuleType(?array $midocoRuleType = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoRuleTypeArrayErrorMessage = self::validateMidocoRuleTypeForArrayConstraintsFromSetMidocoRuleType($midocoRuleType))) {
+        if ('' !== ($midocoRuleTypeArrayErrorMessage = self::validateMidocoRuleTypeForArrayConstraintFromSetMidocoRuleType($midocoRuleType))) {
             throw new InvalidArgumentException($midocoRuleTypeArrayErrorMessage, __LINE__);
         }
         $this->MidocoRuleType = $midocoRuleType;

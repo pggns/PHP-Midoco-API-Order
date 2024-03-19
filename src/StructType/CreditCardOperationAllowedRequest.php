@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CreditCardOperationAllowedRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CreditCardOperationAllowedRequest extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoBookingInfo4Kickback StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoBookingInfo4Kickback extends AbstractStructBase
 {
     /**

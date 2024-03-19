@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CateringDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CateringDTO extends AbstractStructBase
 {
     /**

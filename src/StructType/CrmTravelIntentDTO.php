@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CrmTravelIntentDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CrmTravelIntentDTO extends AbstractStructBase
 {
     /**

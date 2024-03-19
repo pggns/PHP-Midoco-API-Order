@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoAccomodationCode StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoAccomodationCode extends AccomodationDTO
 {
     /**
@@ -21,7 +22,7 @@ class MidocoAccomodationCode extends AccomodationDTO
      * - ref: MidocoAccomodationDescription
      * @var \Pggns\MidocoApi\Order\StructType\AccomodationDescriptionDTO[]
      */
-    protected array $MidocoAccomodationDescription = [];
+    protected ?array $MidocoAccomodationDescription = null;
     /**
      * The unitName
      * Meta information extracted from the WSDL
@@ -45,7 +46,7 @@ class MidocoAccomodationCode extends AccomodationDTO
      * @param string $unitName
      * @param string $displayDescription
      */
-    public function __construct(array $midocoAccomodationDescription = [], ?string $unitName = null, ?string $displayDescription = null)
+    public function __construct(?array $midocoAccomodationDescription = null, ?string $unitName = null, ?string $displayDescription = null)
     {
         $this
             ->setMidocoAccomodationDescription($midocoAccomodationDescription)
@@ -56,18 +57,22 @@ class MidocoAccomodationCode extends AccomodationDTO
      * Get MidocoAccomodationDescription value
      * @return \Pggns\MidocoApi\Order\StructType\AccomodationDescriptionDTO[]
      */
-    public function getMidocoAccomodationDescription(): array
+    public function getMidocoAccomodationDescription(): ?array
     {
         return $this->MidocoAccomodationDescription;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoAccomodationDescription method
+     * This method is responsible for validating the value(s) passed to the setMidocoAccomodationDescription method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoAccomodationDescription method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoAccomodationDescriptionForArrayConstraintsFromSetMidocoAccomodationDescription(array $values = []): string
+    public static function validateMidocoAccomodationDescriptionForArrayConstraintFromSetMidocoAccomodationDescription(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoAccomodationCodeMidocoAccomodationDescriptionItem) {
@@ -89,10 +94,10 @@ class MidocoAccomodationCode extends AccomodationDTO
      * @param \Pggns\MidocoApi\Order\StructType\AccomodationDescriptionDTO[] $midocoAccomodationDescription
      * @return \Pggns\MidocoApi\Order\StructType\MidocoAccomodationCode
      */
-    public function setMidocoAccomodationDescription(array $midocoAccomodationDescription = []): self
+    public function setMidocoAccomodationDescription(?array $midocoAccomodationDescription = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoAccomodationDescriptionArrayErrorMessage = self::validateMidocoAccomodationDescriptionForArrayConstraintsFromSetMidocoAccomodationDescription($midocoAccomodationDescription))) {
+        if ('' !== ($midocoAccomodationDescriptionArrayErrorMessage = self::validateMidocoAccomodationDescriptionForArrayConstraintFromSetMidocoAccomodationDescription($midocoAccomodationDescription))) {
             throw new InvalidArgumentException($midocoAccomodationDescriptionArrayErrorMessage, __LINE__);
         }
         $this->MidocoAccomodationDescription = $midocoAccomodationDescription;

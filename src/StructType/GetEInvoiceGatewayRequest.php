@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: Request all available e-invoice gateway configurations of the current or given org unit.
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetEInvoiceGatewayRequest extends AbstractStructBase
 {
     /**

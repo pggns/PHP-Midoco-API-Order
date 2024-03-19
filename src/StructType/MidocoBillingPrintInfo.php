@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoBillingPrintInfo StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoBillingPrintInfo extends AbstractStructBase
 {
     /**
@@ -59,7 +60,7 @@ class MidocoBillingPrintInfo extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($printDate, true), gettype($printDate)), __LINE__);
         }
         // validation for constraint: pattern(dd.MM.yyyy)
-        if (!is_null($printDate) && !preg_match('/dd.MM.yyyy/', $printDate)) {
+        if (!is_null($printDate) && !preg_match('/dd.MM.yyyy/', (string) $printDate)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /dd.MM.yyyy/', var_export($printDate, true)), __LINE__);
         }
         $this->printDate = $printDate;

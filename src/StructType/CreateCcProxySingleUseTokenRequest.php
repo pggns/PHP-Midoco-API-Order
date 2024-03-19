@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CreateCcProxySingleUseTokenRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CreateCcProxySingleUseTokenRequest extends AbstractStructBase
 {
     /**

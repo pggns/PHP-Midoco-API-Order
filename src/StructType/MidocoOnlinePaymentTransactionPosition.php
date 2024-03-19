@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoOnlinePaymentTransactionPosition StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoOnlinePaymentTransactionPosition extends AbstractStructBase
 {
     /**
@@ -151,7 +152,7 @@ class MidocoOnlinePaymentTransactionPosition extends AbstractStructBase
      * - ref: Usage
      * @var \Pggns\MidocoApi\Order\StructType\Usage[]
      */
-    protected array $Usage = [];
+    protected ?array $Usage = null;
     /**
      * The isManual
      * @var bool|null
@@ -221,7 +222,7 @@ class MidocoOnlinePaymentTransactionPosition extends AbstractStructBase
      * @param float $originalAmount
      * @param string $originalCurrency
      */
-    public function __construct(?int $customerId = null, ?string $foreName = null, ?string $name = null, ?int $debitType = null, ?float $amount = null, ?int $invoiceId = null, ?string $invoiceNo = null, ?int $orderNo = null, ?int $orderId = null, ?string $date = null, ?bool $isDeposit = null, ?string $invoiceType = null, ?string $departureDate = null, ?string $debitorNo = null, ?string $errorCode = null, ?string $errorBundle = null, ?string $errorArgs = null, ?string $errorDescription = null, array $usage = [], ?bool $isManual = null, ?string $currency = null, ?float $originalAmount = null, ?string $originalCurrency = null)
+    public function __construct(?int $customerId = null, ?string $foreName = null, ?string $name = null, ?int $debitType = null, ?float $amount = null, ?int $invoiceId = null, ?string $invoiceNo = null, ?int $orderNo = null, ?int $orderId = null, ?string $date = null, ?bool $isDeposit = null, ?string $invoiceType = null, ?string $departureDate = null, ?string $debitorNo = null, ?string $errorCode = null, ?string $errorBundle = null, ?string $errorArgs = null, ?string $errorDescription = null, ?array $usage = null, ?bool $isManual = null, ?string $currency = null, ?float $originalAmount = null, ?string $originalCurrency = null)
     {
         $this
             ->setCustomerId($customerId)
@@ -666,18 +667,22 @@ class MidocoOnlinePaymentTransactionPosition extends AbstractStructBase
      * Get Usage value
      * @return \Pggns\MidocoApi\Order\StructType\Usage[]
      */
-    public function getUsage(): array
+    public function getUsage(): ?array
     {
         return $this->Usage;
     }
     /**
-     * This method is responsible for validating the values passed to the setUsage method
+     * This method is responsible for validating the value(s) passed to the setUsage method
      * This method is willingly generated in order to preserve the one-line inline validation within the setUsage method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateUsageForArrayConstraintsFromSetUsage(array $values = []): string
+    public static function validateUsageForArrayConstraintFromSetUsage(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoOnlinePaymentTransactionPositionUsageItem) {
@@ -699,10 +704,10 @@ class MidocoOnlinePaymentTransactionPosition extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\Usage[] $usage
      * @return \Pggns\MidocoApi\Order\StructType\MidocoOnlinePaymentTransactionPosition
      */
-    public function setUsage(array $usage = []): self
+    public function setUsage(?array $usage = null): self
     {
         // validation for constraint: array
-        if ('' !== ($usageArrayErrorMessage = self::validateUsageForArrayConstraintsFromSetUsage($usage))) {
+        if ('' !== ($usageArrayErrorMessage = self::validateUsageForArrayConstraintFromSetUsage($usage))) {
             throw new InvalidArgumentException($usageArrayErrorMessage, __LINE__);
         }
         $this->Usage = $usage;

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoImportCrmCampaign StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoImportCrmCampaign extends AbstractStructBase
 {
     /**

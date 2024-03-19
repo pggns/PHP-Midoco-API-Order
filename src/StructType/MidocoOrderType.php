@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoOrderType StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoOrderType extends OrderDTO
 {
     /**
@@ -45,7 +46,7 @@ class MidocoOrderType extends OrderDTO
      * - ref: MidocoSellItem
      * @var \Pggns\MidocoApi\Order\StructType\MidocoSellItemType[]
      */
-    protected array $MidocoSellItem = [];
+    protected ?array $MidocoSellItem = null;
     /**
      * The MidocoOrderCustomer
      * Meta information extracted from the WSDL
@@ -54,7 +55,7 @@ class MidocoOrderType extends OrderDTO
      * - ref: MidocoOrderCustomer
      * @var \Pggns\MidocoApi\Order\StructType\MidocoOrderCustomer[]
      */
-    protected array $MidocoOrderCustomer = [];
+    protected ?array $MidocoOrderCustomer = null;
     /**
      * The MidocoOrdersDbiInfo
      * Meta information extracted from the WSDL
@@ -63,7 +64,7 @@ class MidocoOrderType extends OrderDTO
      * - ref: MidocoOrdersDbiInfo
      * @var \Pggns\MidocoApi\Order\StructType\MidocoOrdersDbiInfo[]
      */
-    protected array $MidocoOrdersDbiInfo = [];
+    protected ?array $MidocoOrdersDbiInfo = null;
     /**
      * The ExternalPayment
      * Meta information extracted from the WSDL
@@ -72,7 +73,7 @@ class MidocoOrderType extends OrderDTO
      * - ref: mbm:ExternalPayment
      * @var \Pggns\MidocoApi\Order\StructType\ExternalPayment[]
      */
-    protected array $ExternalPayment = [];
+    protected ?array $ExternalPayment = null;
     /**
      * The MidocoOrderNotice
      * Meta information extracted from the WSDL
@@ -81,7 +82,7 @@ class MidocoOrderType extends OrderDTO
      * - ref: MidocoOrderNotice
      * @var \Pggns\MidocoApi\Order\StructType\MidocoOrderNotice[]
      */
-    protected array $MidocoOrderNotice = [];
+    protected ?array $MidocoOrderNotice = null;
     /**
      * The calculatedMarginServices
      * @var float|null
@@ -185,7 +186,7 @@ class MidocoOrderType extends OrderDTO
      * @param bool $existPaymentPaycodes
      * @param bool $existOrderBillings
      */
-    public function __construct(?\Pggns\MidocoApi\Order\StructType\MidocoOnlinePayment $midocoOnlinePayment = null, ?\Pggns\MidocoApi\Order\StructType\AdvisedPaymentDTO $midocoAdvisedPayment = null, ?\Pggns\MidocoApi\Order\StructType\MidocoDebitPayment $midocoDebitPayment = null, array $midocoSellItem = [], array $midocoOrderCustomer = [], array $midocoOrdersDbiInfo = [], array $externalPayment = [], array $midocoOrderNotice = [], ?float $calculatedMarginServices = null, ?string $unitAlias = null, ?string $mediatorPortal = null, ?bool $isModified = null, ?string $preferredPaymentType = null, ?string $paymentTypeInfo = null, ?bool $existTravelPlans = null, ?bool $existOrderDocuments = null, ?bool $existOrderNotices = null, ?bool $existOrderRemarks = null, ?bool $existPaymentPaycodes = null, ?bool $existOrderBillings = null)
+    public function __construct(?\Pggns\MidocoApi\Order\StructType\MidocoOnlinePayment $midocoOnlinePayment = null, ?\Pggns\MidocoApi\Order\StructType\AdvisedPaymentDTO $midocoAdvisedPayment = null, ?\Pggns\MidocoApi\Order\StructType\MidocoDebitPayment $midocoDebitPayment = null, ?array $midocoSellItem = null, ?array $midocoOrderCustomer = null, ?array $midocoOrdersDbiInfo = null, ?array $externalPayment = null, ?array $midocoOrderNotice = null, ?float $calculatedMarginServices = null, ?string $unitAlias = null, ?string $mediatorPortal = null, ?bool $isModified = null, ?string $preferredPaymentType = null, ?string $paymentTypeInfo = null, ?bool $existTravelPlans = null, ?bool $existOrderDocuments = null, ?bool $existOrderNotices = null, ?bool $existOrderRemarks = null, ?bool $existPaymentPaycodes = null, ?bool $existOrderBillings = null)
     {
         $this
             ->setMidocoOnlinePayment($midocoOnlinePayment)
@@ -270,18 +271,22 @@ class MidocoOrderType extends OrderDTO
      * Get MidocoSellItem value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSellItemType[]
      */
-    public function getMidocoSellItem(): array
+    public function getMidocoSellItem(): ?array
     {
         return $this->MidocoSellItem;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoSellItem method
+     * This method is responsible for validating the value(s) passed to the setMidocoSellItem method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoSellItem method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoSellItemForArrayConstraintsFromSetMidocoSellItem(array $values = []): string
+    public static function validateMidocoSellItemForArrayConstraintFromSetMidocoSellItem(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoOrderTypeMidocoSellItemItem) {
@@ -303,10 +308,10 @@ class MidocoOrderType extends OrderDTO
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSellItemType[] $midocoSellItem
      * @return \Pggns\MidocoApi\Order\StructType\MidocoOrderType
      */
-    public function setMidocoSellItem(array $midocoSellItem = []): self
+    public function setMidocoSellItem(?array $midocoSellItem = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoSellItemArrayErrorMessage = self::validateMidocoSellItemForArrayConstraintsFromSetMidocoSellItem($midocoSellItem))) {
+        if ('' !== ($midocoSellItemArrayErrorMessage = self::validateMidocoSellItemForArrayConstraintFromSetMidocoSellItem($midocoSellItem))) {
             throw new InvalidArgumentException($midocoSellItemArrayErrorMessage, __LINE__);
         }
         $this->MidocoSellItem = $midocoSellItem;
@@ -333,18 +338,22 @@ class MidocoOrderType extends OrderDTO
      * Get MidocoOrderCustomer value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoOrderCustomer[]
      */
-    public function getMidocoOrderCustomer(): array
+    public function getMidocoOrderCustomer(): ?array
     {
         return $this->MidocoOrderCustomer;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoOrderCustomer method
+     * This method is responsible for validating the value(s) passed to the setMidocoOrderCustomer method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoOrderCustomer method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoOrderCustomerForArrayConstraintsFromSetMidocoOrderCustomer(array $values = []): string
+    public static function validateMidocoOrderCustomerForArrayConstraintFromSetMidocoOrderCustomer(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoOrderTypeMidocoOrderCustomerItem) {
@@ -366,10 +375,10 @@ class MidocoOrderType extends OrderDTO
      * @param \Pggns\MidocoApi\Order\StructType\MidocoOrderCustomer[] $midocoOrderCustomer
      * @return \Pggns\MidocoApi\Order\StructType\MidocoOrderType
      */
-    public function setMidocoOrderCustomer(array $midocoOrderCustomer = []): self
+    public function setMidocoOrderCustomer(?array $midocoOrderCustomer = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoOrderCustomerArrayErrorMessage = self::validateMidocoOrderCustomerForArrayConstraintsFromSetMidocoOrderCustomer($midocoOrderCustomer))) {
+        if ('' !== ($midocoOrderCustomerArrayErrorMessage = self::validateMidocoOrderCustomerForArrayConstraintFromSetMidocoOrderCustomer($midocoOrderCustomer))) {
             throw new InvalidArgumentException($midocoOrderCustomerArrayErrorMessage, __LINE__);
         }
         // validation for constraint: maxOccurs(3)
@@ -404,18 +413,22 @@ class MidocoOrderType extends OrderDTO
      * Get MidocoOrdersDbiInfo value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoOrdersDbiInfo[]
      */
-    public function getMidocoOrdersDbiInfo(): array
+    public function getMidocoOrdersDbiInfo(): ?array
     {
         return $this->MidocoOrdersDbiInfo;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoOrdersDbiInfo method
+     * This method is responsible for validating the value(s) passed to the setMidocoOrdersDbiInfo method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoOrdersDbiInfo method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoOrdersDbiInfoForArrayConstraintsFromSetMidocoOrdersDbiInfo(array $values = []): string
+    public static function validateMidocoOrdersDbiInfoForArrayConstraintFromSetMidocoOrdersDbiInfo(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoOrderTypeMidocoOrdersDbiInfoItem) {
@@ -437,10 +450,10 @@ class MidocoOrderType extends OrderDTO
      * @param \Pggns\MidocoApi\Order\StructType\MidocoOrdersDbiInfo[] $midocoOrdersDbiInfo
      * @return \Pggns\MidocoApi\Order\StructType\MidocoOrderType
      */
-    public function setMidocoOrdersDbiInfo(array $midocoOrdersDbiInfo = []): self
+    public function setMidocoOrdersDbiInfo(?array $midocoOrdersDbiInfo = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoOrdersDbiInfoArrayErrorMessage = self::validateMidocoOrdersDbiInfoForArrayConstraintsFromSetMidocoOrdersDbiInfo($midocoOrdersDbiInfo))) {
+        if ('' !== ($midocoOrdersDbiInfoArrayErrorMessage = self::validateMidocoOrdersDbiInfoForArrayConstraintFromSetMidocoOrdersDbiInfo($midocoOrdersDbiInfo))) {
             throw new InvalidArgumentException($midocoOrdersDbiInfoArrayErrorMessage, __LINE__);
         }
         $this->MidocoOrdersDbiInfo = $midocoOrdersDbiInfo;
@@ -467,18 +480,22 @@ class MidocoOrderType extends OrderDTO
      * Get ExternalPayment value
      * @return \Pggns\MidocoApi\Order\StructType\ExternalPayment[]
      */
-    public function getExternalPayment(): array
+    public function getExternalPayment(): ?array
     {
         return $this->ExternalPayment;
     }
     /**
-     * This method is responsible for validating the values passed to the setExternalPayment method
+     * This method is responsible for validating the value(s) passed to the setExternalPayment method
      * This method is willingly generated in order to preserve the one-line inline validation within the setExternalPayment method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateExternalPaymentForArrayConstraintsFromSetExternalPayment(array $values = []): string
+    public static function validateExternalPaymentForArrayConstraintFromSetExternalPayment(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoOrderTypeExternalPaymentItem) {
@@ -500,10 +517,10 @@ class MidocoOrderType extends OrderDTO
      * @param \Pggns\MidocoApi\Order\StructType\ExternalPayment[] $externalPayment
      * @return \Pggns\MidocoApi\Order\StructType\MidocoOrderType
      */
-    public function setExternalPayment(array $externalPayment = []): self
+    public function setExternalPayment(?array $externalPayment = null): self
     {
         // validation for constraint: array
-        if ('' !== ($externalPaymentArrayErrorMessage = self::validateExternalPaymentForArrayConstraintsFromSetExternalPayment($externalPayment))) {
+        if ('' !== ($externalPaymentArrayErrorMessage = self::validateExternalPaymentForArrayConstraintFromSetExternalPayment($externalPayment))) {
             throw new InvalidArgumentException($externalPaymentArrayErrorMessage, __LINE__);
         }
         $this->ExternalPayment = $externalPayment;
@@ -530,18 +547,22 @@ class MidocoOrderType extends OrderDTO
      * Get MidocoOrderNotice value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoOrderNotice[]
      */
-    public function getMidocoOrderNotice(): array
+    public function getMidocoOrderNotice(): ?array
     {
         return $this->MidocoOrderNotice;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoOrderNotice method
+     * This method is responsible for validating the value(s) passed to the setMidocoOrderNotice method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoOrderNotice method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoOrderNoticeForArrayConstraintsFromSetMidocoOrderNotice(array $values = []): string
+    public static function validateMidocoOrderNoticeForArrayConstraintFromSetMidocoOrderNotice(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoOrderTypeMidocoOrderNoticeItem) {
@@ -563,10 +584,10 @@ class MidocoOrderType extends OrderDTO
      * @param \Pggns\MidocoApi\Order\StructType\MidocoOrderNotice[] $midocoOrderNotice
      * @return \Pggns\MidocoApi\Order\StructType\MidocoOrderType
      */
-    public function setMidocoOrderNotice(array $midocoOrderNotice = []): self
+    public function setMidocoOrderNotice(?array $midocoOrderNotice = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoOrderNoticeArrayErrorMessage = self::validateMidocoOrderNoticeForArrayConstraintsFromSetMidocoOrderNotice($midocoOrderNotice))) {
+        if ('' !== ($midocoOrderNoticeArrayErrorMessage = self::validateMidocoOrderNoticeForArrayConstraintFromSetMidocoOrderNotice($midocoOrderNotice))) {
             throw new InvalidArgumentException($midocoOrderNoticeArrayErrorMessage, __LINE__);
         }
         $this->MidocoOrderNotice = $midocoOrderNotice;

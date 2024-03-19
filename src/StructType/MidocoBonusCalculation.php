@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoBonusCalculation StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoBonusCalculation extends BonusCalculationDTO
 {
     /**

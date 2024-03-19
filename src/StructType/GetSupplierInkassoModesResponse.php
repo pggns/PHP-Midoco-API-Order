@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetSupplierInkassoModesResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetSupplierInkassoModesResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetSupplierInkassoModesResponse extends AbstractStructBase
      * - ref: SupplierInkassoMode
      * @var \Pggns\MidocoApi\Order\StructType\SupplierInkassoModeType[]
      */
-    protected array $SupplierInkassoMode = [];
+    protected ?array $SupplierInkassoMode = null;
     /**
      * Constructor method for GetSupplierInkassoModesResponse
      * @uses GetSupplierInkassoModesResponse::setSupplierInkassoMode()
      * @param \Pggns\MidocoApi\Order\StructType\SupplierInkassoModeType[] $supplierInkassoMode
      */
-    public function __construct(array $supplierInkassoMode = [])
+    public function __construct(?array $supplierInkassoMode = null)
     {
         $this
             ->setSupplierInkassoMode($supplierInkassoMode);
@@ -36,18 +37,22 @@ class GetSupplierInkassoModesResponse extends AbstractStructBase
      * Get SupplierInkassoMode value
      * @return \Pggns\MidocoApi\Order\StructType\SupplierInkassoModeType[]
      */
-    public function getSupplierInkassoMode(): array
+    public function getSupplierInkassoMode(): ?array
     {
         return $this->SupplierInkassoMode;
     }
     /**
-     * This method is responsible for validating the values passed to the setSupplierInkassoMode method
+     * This method is responsible for validating the value(s) passed to the setSupplierInkassoMode method
      * This method is willingly generated in order to preserve the one-line inline validation within the setSupplierInkassoMode method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateSupplierInkassoModeForArrayConstraintsFromSetSupplierInkassoMode(array $values = []): string
+    public static function validateSupplierInkassoModeForArrayConstraintFromSetSupplierInkassoMode(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getSupplierInkassoModesResponseSupplierInkassoModeItem) {
@@ -69,10 +74,10 @@ class GetSupplierInkassoModesResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\SupplierInkassoModeType[] $supplierInkassoMode
      * @return \Pggns\MidocoApi\Order\StructType\GetSupplierInkassoModesResponse
      */
-    public function setSupplierInkassoMode(array $supplierInkassoMode = []): self
+    public function setSupplierInkassoMode(?array $supplierInkassoMode = null): self
     {
         // validation for constraint: array
-        if ('' !== ($supplierInkassoModeArrayErrorMessage = self::validateSupplierInkassoModeForArrayConstraintsFromSetSupplierInkassoMode($supplierInkassoMode))) {
+        if ('' !== ($supplierInkassoModeArrayErrorMessage = self::validateSupplierInkassoModeForArrayConstraintFromSetSupplierInkassoMode($supplierInkassoMode))) {
             throw new InvalidArgumentException($supplierInkassoModeArrayErrorMessage, __LINE__);
         }
         $this->SupplierInkassoMode = $supplierInkassoMode;

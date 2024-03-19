@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetMergedBillingDunningRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetMergedBillingDunningRequest extends AbstractStructBase
 {
     /**

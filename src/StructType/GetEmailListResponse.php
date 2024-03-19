@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetEmailListResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetEmailListResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetEmailListResponse extends AbstractStructBase
      * - ref: MidocoEmailList
      * @var \Pggns\MidocoApi\Order\StructType\MidocoEmailList[]
      */
-    protected array $MidocoEmailList = [];
+    protected ?array $MidocoEmailList = null;
     /**
      * Constructor method for GetEmailListResponse
      * @uses GetEmailListResponse::setMidocoEmailList()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoEmailList[] $midocoEmailList
      */
-    public function __construct(array $midocoEmailList = [])
+    public function __construct(?array $midocoEmailList = null)
     {
         $this
             ->setMidocoEmailList($midocoEmailList);
@@ -36,18 +37,22 @@ class GetEmailListResponse extends AbstractStructBase
      * Get MidocoEmailList value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoEmailList[]
      */
-    public function getMidocoEmailList(): array
+    public function getMidocoEmailList(): ?array
     {
         return $this->MidocoEmailList;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoEmailList method
+     * This method is responsible for validating the value(s) passed to the setMidocoEmailList method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoEmailList method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoEmailListForArrayConstraintsFromSetMidocoEmailList(array $values = []): string
+    public static function validateMidocoEmailListForArrayConstraintFromSetMidocoEmailList(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getEmailListResponseMidocoEmailListItem) {
@@ -69,10 +74,10 @@ class GetEmailListResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoEmailList[] $midocoEmailList
      * @return \Pggns\MidocoApi\Order\StructType\GetEmailListResponse
      */
-    public function setMidocoEmailList(array $midocoEmailList = []): self
+    public function setMidocoEmailList(?array $midocoEmailList = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoEmailListArrayErrorMessage = self::validateMidocoEmailListForArrayConstraintsFromSetMidocoEmailList($midocoEmailList))) {
+        if ('' !== ($midocoEmailListArrayErrorMessage = self::validateMidocoEmailListForArrayConstraintFromSetMidocoEmailList($midocoEmailList))) {
             throw new InvalidArgumentException($midocoEmailListArrayErrorMessage, __LINE__);
         }
         $this->MidocoEmailList = $midocoEmailList;

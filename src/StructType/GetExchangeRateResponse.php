@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetExchangeRateResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetExchangeRateResponse extends AbstractStructBase
 {
     /**

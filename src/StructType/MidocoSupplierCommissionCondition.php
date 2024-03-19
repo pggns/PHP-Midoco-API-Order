@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoSupplierCommissionCondition StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoSupplierCommissionCondition extends SupplierCommissionCondDTO
 {
     /**

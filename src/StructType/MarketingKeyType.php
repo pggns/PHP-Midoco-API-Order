@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MarketingKeyType StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MarketingKeyType extends MarketingKeyDTO
 {
     /**
@@ -21,13 +22,13 @@ class MarketingKeyType extends MarketingKeyDTO
      * - ref: MidocoMarketingKeyDescription
      * @var \Pggns\MidocoApi\Order\StructType\MarketingKeyDescriptionType[]
      */
-    protected array $MidocoMarketingKeyDescription = [];
+    protected ?array $MidocoMarketingKeyDescription = null;
     /**
      * Constructor method for MarketingKeyType
      * @uses MarketingKeyType::setMidocoMarketingKeyDescription()
      * @param \Pggns\MidocoApi\Order\StructType\MarketingKeyDescriptionType[] $midocoMarketingKeyDescription
      */
-    public function __construct(array $midocoMarketingKeyDescription = [])
+    public function __construct(?array $midocoMarketingKeyDescription = null)
     {
         $this
             ->setMidocoMarketingKeyDescription($midocoMarketingKeyDescription);
@@ -36,18 +37,22 @@ class MarketingKeyType extends MarketingKeyDTO
      * Get MidocoMarketingKeyDescription value
      * @return \Pggns\MidocoApi\Order\StructType\MarketingKeyDescriptionType[]
      */
-    public function getMidocoMarketingKeyDescription(): array
+    public function getMidocoMarketingKeyDescription(): ?array
     {
         return $this->MidocoMarketingKeyDescription;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoMarketingKeyDescription method
+     * This method is responsible for validating the value(s) passed to the setMidocoMarketingKeyDescription method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoMarketingKeyDescription method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoMarketingKeyDescriptionForArrayConstraintsFromSetMidocoMarketingKeyDescription(array $values = []): string
+    public static function validateMidocoMarketingKeyDescriptionForArrayConstraintFromSetMidocoMarketingKeyDescription(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $marketingKeyTypeMidocoMarketingKeyDescriptionItem) {
@@ -69,10 +74,10 @@ class MarketingKeyType extends MarketingKeyDTO
      * @param \Pggns\MidocoApi\Order\StructType\MarketingKeyDescriptionType[] $midocoMarketingKeyDescription
      * @return \Pggns\MidocoApi\Order\StructType\MarketingKeyType
      */
-    public function setMidocoMarketingKeyDescription(array $midocoMarketingKeyDescription = []): self
+    public function setMidocoMarketingKeyDescription(?array $midocoMarketingKeyDescription = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoMarketingKeyDescriptionArrayErrorMessage = self::validateMidocoMarketingKeyDescriptionForArrayConstraintsFromSetMidocoMarketingKeyDescription($midocoMarketingKeyDescription))) {
+        if ('' !== ($midocoMarketingKeyDescriptionArrayErrorMessage = self::validateMidocoMarketingKeyDescriptionForArrayConstraintFromSetMidocoMarketingKeyDescription($midocoMarketingKeyDescription))) {
             throw new InvalidArgumentException($midocoMarketingKeyDescriptionArrayErrorMessage, __LINE__);
         }
         $this->MidocoMarketingKeyDescription = $midocoMarketingKeyDescription;

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveBillingDocumentPositionRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveBillingDocumentPositionRequest extends AbstractStructBase
 {
     /**

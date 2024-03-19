@@ -11,12 +11,12 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveOrderRetentionPeriodResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveOrderRetentionPeriodResponse extends AbstractStructBase
 {
     /**
      * The MidocoOrderRetentionPeriod
      * Meta information extracted from the WSDL
-     * - maxOccurs: 1
      * - minOccurs: 0
      * - ref: MidocoOrderRetentionPeriod
      * @var \Pggns\MidocoApi\Order\StructType\MidocoOrderRetentionPeriod|null

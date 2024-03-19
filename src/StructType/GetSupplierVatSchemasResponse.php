@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetSupplierVatSchemasResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetSupplierVatSchemasResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetSupplierVatSchemasResponse extends AbstractStructBase
      * - ref: MidocoSupplierVatSchema
      * @var \Pggns\MidocoApi\Order\StructType\SupplierVatSchemaDTO[]
      */
-    protected array $MidocoSupplierVatSchema = [];
+    protected ?array $MidocoSupplierVatSchema = null;
     /**
      * Constructor method for GetSupplierVatSchemasResponse
      * @uses GetSupplierVatSchemasResponse::setMidocoSupplierVatSchema()
      * @param \Pggns\MidocoApi\Order\StructType\SupplierVatSchemaDTO[] $midocoSupplierVatSchema
      */
-    public function __construct(array $midocoSupplierVatSchema = [])
+    public function __construct(?array $midocoSupplierVatSchema = null)
     {
         $this
             ->setMidocoSupplierVatSchema($midocoSupplierVatSchema);
@@ -36,18 +37,22 @@ class GetSupplierVatSchemasResponse extends AbstractStructBase
      * Get MidocoSupplierVatSchema value
      * @return \Pggns\MidocoApi\Order\StructType\SupplierVatSchemaDTO[]
      */
-    public function getMidocoSupplierVatSchema(): array
+    public function getMidocoSupplierVatSchema(): ?array
     {
         return $this->MidocoSupplierVatSchema;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoSupplierVatSchema method
+     * This method is responsible for validating the value(s) passed to the setMidocoSupplierVatSchema method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoSupplierVatSchema method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoSupplierVatSchemaForArrayConstraintsFromSetMidocoSupplierVatSchema(array $values = []): string
+    public static function validateMidocoSupplierVatSchemaForArrayConstraintFromSetMidocoSupplierVatSchema(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getSupplierVatSchemasResponseMidocoSupplierVatSchemaItem) {
@@ -69,10 +74,10 @@ class GetSupplierVatSchemasResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\SupplierVatSchemaDTO[] $midocoSupplierVatSchema
      * @return \Pggns\MidocoApi\Order\StructType\GetSupplierVatSchemasResponse
      */
-    public function setMidocoSupplierVatSchema(array $midocoSupplierVatSchema = []): self
+    public function setMidocoSupplierVatSchema(?array $midocoSupplierVatSchema = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoSupplierVatSchemaArrayErrorMessage = self::validateMidocoSupplierVatSchemaForArrayConstraintsFromSetMidocoSupplierVatSchema($midocoSupplierVatSchema))) {
+        if ('' !== ($midocoSupplierVatSchemaArrayErrorMessage = self::validateMidocoSupplierVatSchemaForArrayConstraintFromSetMidocoSupplierVatSchema($midocoSupplierVatSchema))) {
             throw new InvalidArgumentException($midocoSupplierVatSchemaArrayErrorMessage, __LINE__);
         }
         $this->MidocoSupplierVatSchema = $midocoSupplierVatSchema;

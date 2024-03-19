@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: deleteBillingDocRemark --- delete a given remark
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteBillingDocRemarkResponse extends AbstractStructBase
 {
 }

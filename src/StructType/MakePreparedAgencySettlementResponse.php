@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MakePreparedAgencySettlementResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MakePreparedAgencySettlementResponse extends AbstractStructBase
 {
     /**

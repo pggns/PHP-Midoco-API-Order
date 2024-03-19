@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetDoor2GateLinkRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetDoor2GateLinkRequest extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoAdditionalInfoForReceipt StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoAdditionalInfoForReceipt extends ReceiptAdditionalInfoDTO
 {
 }

@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: getTravelPlans --- returns the list of travel plans for an order
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetTravelPlansResponse extends AbstractStructBase
 {
     /**
@@ -23,13 +24,13 @@ class GetTravelPlansResponse extends AbstractStructBase
      * - ref: MidocoTravelPlan
      * @var \Pggns\MidocoApi\Order\StructType\MidocoTravelPlan[]
      */
-    protected array $MidocoTravelPlan = [];
+    protected ?array $MidocoTravelPlan = null;
     /**
      * Constructor method for GetTravelPlansResponse
      * @uses GetTravelPlansResponse::setMidocoTravelPlan()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoTravelPlan[] $midocoTravelPlan
      */
-    public function __construct(array $midocoTravelPlan = [])
+    public function __construct(?array $midocoTravelPlan = null)
     {
         $this
             ->setMidocoTravelPlan($midocoTravelPlan);
@@ -38,18 +39,22 @@ class GetTravelPlansResponse extends AbstractStructBase
      * Get MidocoTravelPlan value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoTravelPlan[]
      */
-    public function getMidocoTravelPlan(): array
+    public function getMidocoTravelPlan(): ?array
     {
         return $this->MidocoTravelPlan;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoTravelPlan method
+     * This method is responsible for validating the value(s) passed to the setMidocoTravelPlan method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoTravelPlan method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoTravelPlanForArrayConstraintsFromSetMidocoTravelPlan(array $values = []): string
+    public static function validateMidocoTravelPlanForArrayConstraintFromSetMidocoTravelPlan(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getTravelPlansResponseMidocoTravelPlanItem) {
@@ -71,10 +76,10 @@ class GetTravelPlansResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoTravelPlan[] $midocoTravelPlan
      * @return \Pggns\MidocoApi\Order\StructType\GetTravelPlansResponse
      */
-    public function setMidocoTravelPlan(array $midocoTravelPlan = []): self
+    public function setMidocoTravelPlan(?array $midocoTravelPlan = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoTravelPlanArrayErrorMessage = self::validateMidocoTravelPlanForArrayConstraintsFromSetMidocoTravelPlan($midocoTravelPlan))) {
+        if ('' !== ($midocoTravelPlanArrayErrorMessage = self::validateMidocoTravelPlanForArrayConstraintFromSetMidocoTravelPlan($midocoTravelPlan))) {
             throw new InvalidArgumentException($midocoTravelPlanArrayErrorMessage, __LINE__);
         }
         $this->MidocoTravelPlan = $midocoTravelPlan;

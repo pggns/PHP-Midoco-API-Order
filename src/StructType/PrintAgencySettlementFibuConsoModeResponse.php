@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for PrintAgencySettlementFibuConsoModeResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class PrintAgencySettlementFibuConsoModeResponse extends AbstractStructBase
 {
     /**

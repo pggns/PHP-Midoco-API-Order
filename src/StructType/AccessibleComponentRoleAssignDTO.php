@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for AccessibleComponentRoleAssignDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class AccessibleComponentRoleAssignDTO extends AbstractStructBase
 {
     /**

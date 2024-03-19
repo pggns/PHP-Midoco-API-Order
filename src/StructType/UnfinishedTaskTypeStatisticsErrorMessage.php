@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for UnfinishedTaskTypeStatisticsErrorMessage StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class UnfinishedTaskTypeStatisticsErrorMessage extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetSellItemSavingsResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetSellItemSavingsResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetSellItemSavingsResponse extends AbstractStructBase
      * - ref: MidocoSellItemSaving
      * @var \Pggns\MidocoApi\Order\StructType\SellItemSavingDTO[]
      */
-    protected array $MidocoSellItemSaving = [];
+    protected ?array $MidocoSellItemSaving = null;
     /**
      * Constructor method for GetSellItemSavingsResponse
      * @uses GetSellItemSavingsResponse::setMidocoSellItemSaving()
      * @param \Pggns\MidocoApi\Order\StructType\SellItemSavingDTO[] $midocoSellItemSaving
      */
-    public function __construct(array $midocoSellItemSaving = [])
+    public function __construct(?array $midocoSellItemSaving = null)
     {
         $this
             ->setMidocoSellItemSaving($midocoSellItemSaving);
@@ -36,18 +37,22 @@ class GetSellItemSavingsResponse extends AbstractStructBase
      * Get MidocoSellItemSaving value
      * @return \Pggns\MidocoApi\Order\StructType\SellItemSavingDTO[]
      */
-    public function getMidocoSellItemSaving(): array
+    public function getMidocoSellItemSaving(): ?array
     {
         return $this->MidocoSellItemSaving;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoSellItemSaving method
+     * This method is responsible for validating the value(s) passed to the setMidocoSellItemSaving method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoSellItemSaving method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoSellItemSavingForArrayConstraintsFromSetMidocoSellItemSaving(array $values = []): string
+    public static function validateMidocoSellItemSavingForArrayConstraintFromSetMidocoSellItemSaving(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getSellItemSavingsResponseMidocoSellItemSavingItem) {
@@ -69,10 +74,10 @@ class GetSellItemSavingsResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\SellItemSavingDTO[] $midocoSellItemSaving
      * @return \Pggns\MidocoApi\Order\StructType\GetSellItemSavingsResponse
      */
-    public function setMidocoSellItemSaving(array $midocoSellItemSaving = []): self
+    public function setMidocoSellItemSaving(?array $midocoSellItemSaving = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoSellItemSavingArrayErrorMessage = self::validateMidocoSellItemSavingForArrayConstraintsFromSetMidocoSellItemSaving($midocoSellItemSaving))) {
+        if ('' !== ($midocoSellItemSavingArrayErrorMessage = self::validateMidocoSellItemSavingForArrayConstraintFromSetMidocoSellItemSaving($midocoSellItemSaving))) {
             throw new InvalidArgumentException($midocoSellItemSavingArrayErrorMessage, __LINE__);
         }
         $this->MidocoSellItemSaving = $midocoSellItemSaving;

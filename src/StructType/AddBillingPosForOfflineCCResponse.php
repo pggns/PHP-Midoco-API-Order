@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: addBillingPosForOfflineCC --- returns the new billing position that should be added to the givem billing document that corresponds to the amount given with the offline CC information
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class AddBillingPosForOfflineCCResponse extends AbstractStructBase
 {
     /**

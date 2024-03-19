@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for taxInformation StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class TaxInformation extends AbstractStructBase
 {
     /**

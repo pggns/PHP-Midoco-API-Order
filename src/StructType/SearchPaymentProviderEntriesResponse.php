@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SearchPaymentProviderEntriesResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchPaymentProviderEntriesResponse extends AbstractStructBase
 {
     /**
@@ -20,13 +21,13 @@ class SearchPaymentProviderEntriesResponse extends AbstractStructBase
      * - ref: PaymentProviderEntry
      * @var \Pggns\MidocoApi\Order\StructType\PaymentProviderEntryType[]
      */
-    protected array $PaymentProviderEntry = [];
+    protected ?array $PaymentProviderEntry = null;
     /**
      * Constructor method for SearchPaymentProviderEntriesResponse
      * @uses SearchPaymentProviderEntriesResponse::setPaymentProviderEntry()
      * @param \Pggns\MidocoApi\Order\StructType\PaymentProviderEntryType[] $paymentProviderEntry
      */
-    public function __construct(array $paymentProviderEntry = [])
+    public function __construct(?array $paymentProviderEntry = null)
     {
         $this
             ->setPaymentProviderEntry($paymentProviderEntry);
@@ -35,18 +36,22 @@ class SearchPaymentProviderEntriesResponse extends AbstractStructBase
      * Get PaymentProviderEntry value
      * @return \Pggns\MidocoApi\Order\StructType\PaymentProviderEntryType[]
      */
-    public function getPaymentProviderEntry(): array
+    public function getPaymentProviderEntry(): ?array
     {
         return $this->PaymentProviderEntry;
     }
     /**
-     * This method is responsible for validating the values passed to the setPaymentProviderEntry method
+     * This method is responsible for validating the value(s) passed to the setPaymentProviderEntry method
      * This method is willingly generated in order to preserve the one-line inline validation within the setPaymentProviderEntry method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validatePaymentProviderEntryForArrayConstraintsFromSetPaymentProviderEntry(array $values = []): string
+    public static function validatePaymentProviderEntryForArrayConstraintFromSetPaymentProviderEntry(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $searchPaymentProviderEntriesResponsePaymentProviderEntryItem) {
@@ -68,10 +73,10 @@ class SearchPaymentProviderEntriesResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\PaymentProviderEntryType[] $paymentProviderEntry
      * @return \Pggns\MidocoApi\Order\StructType\SearchPaymentProviderEntriesResponse
      */
-    public function setPaymentProviderEntry(array $paymentProviderEntry = []): self
+    public function setPaymentProviderEntry(?array $paymentProviderEntry = null): self
     {
         // validation for constraint: array
-        if ('' !== ($paymentProviderEntryArrayErrorMessage = self::validatePaymentProviderEntryForArrayConstraintsFromSetPaymentProviderEntry($paymentProviderEntry))) {
+        if ('' !== ($paymentProviderEntryArrayErrorMessage = self::validatePaymentProviderEntryForArrayConstraintFromSetPaymentProviderEntry($paymentProviderEntry))) {
             throw new InvalidArgumentException($paymentProviderEntryArrayErrorMessage, __LINE__);
         }
         $this->PaymentProviderEntry = $paymentProviderEntry;

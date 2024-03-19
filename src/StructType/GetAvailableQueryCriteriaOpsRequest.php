@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetAvailableQueryCriteriaOpsRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetAvailableQueryCriteriaOpsRequest extends AbstractStructBase
 {
 }

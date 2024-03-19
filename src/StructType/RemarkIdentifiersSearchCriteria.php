@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for RemarkIdentifiersSearchCriteria StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class RemarkIdentifiersSearchCriteria extends AbstractStructBase
 {
     /**
@@ -20,7 +21,7 @@ class RemarkIdentifiersSearchCriteria extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $supplierIds = [];
+    protected ?array $supplierIds = null;
     /**
      * The orgunit
      * @var string|null
@@ -47,7 +48,7 @@ class RemarkIdentifiersSearchCriteria extends AbstractStructBase
      * @param string $type
      * @param string $cultureID
      */
-    public function __construct(array $supplierIds = [], ?string $orgunit = null, ?string $type = null, ?string $cultureID = null)
+    public function __construct(?array $supplierIds = null, ?string $orgunit = null, ?string $type = null, ?string $cultureID = null)
     {
         $this
             ->setSupplierIds($supplierIds)
@@ -59,18 +60,22 @@ class RemarkIdentifiersSearchCriteria extends AbstractStructBase
      * Get supplierIds value
      * @return string[]
      */
-    public function getSupplierIds(): array
+    public function getSupplierIds(): ?array
     {
         return $this->supplierIds;
     }
     /**
-     * This method is responsible for validating the values passed to the setSupplierIds method
+     * This method is responsible for validating the value(s) passed to the setSupplierIds method
      * This method is willingly generated in order to preserve the one-line inline validation within the setSupplierIds method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateSupplierIdsForArrayConstraintsFromSetSupplierIds(array $values = []): string
+    public static function validateSupplierIdsForArrayConstraintFromSetSupplierIds(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $remarkIdentifiersSearchCriteriaSupplierIdsItem) {
@@ -92,10 +97,10 @@ class RemarkIdentifiersSearchCriteria extends AbstractStructBase
      * @param string[] $supplierIds
      * @return \Pggns\MidocoApi\Order\StructType\RemarkIdentifiersSearchCriteria
      */
-    public function setSupplierIds(array $supplierIds = []): self
+    public function setSupplierIds(?array $supplierIds = null): self
     {
         // validation for constraint: array
-        if ('' !== ($supplierIdsArrayErrorMessage = self::validateSupplierIdsForArrayConstraintsFromSetSupplierIds($supplierIds))) {
+        if ('' !== ($supplierIdsArrayErrorMessage = self::validateSupplierIdsForArrayConstraintFromSetSupplierIds($supplierIds))) {
             throw new InvalidArgumentException($supplierIdsArrayErrorMessage, __LINE__);
         }
         $this->supplierIds = $supplierIds;

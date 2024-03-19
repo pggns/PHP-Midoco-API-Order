@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: imports an Ama TIR message.
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class AnnounceAmaTirMessageRequest extends AbstractStructBase
 {
     /**

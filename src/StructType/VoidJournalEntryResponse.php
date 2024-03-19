@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for VoidJournalEntryResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class VoidJournalEntryResponse extends AbstractStructBase
 {
     /**

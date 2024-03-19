@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for BillingReportDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class BillingReportDTO extends AbstractStructBase
 {
     /**

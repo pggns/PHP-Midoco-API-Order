@@ -14,6 +14,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * sell item.
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoMilesAndMoreEarnTransactionReference extends AbstractStructBase
 {
     /**
@@ -148,7 +149,7 @@ class MidocoMilesAndMoreEarnTransactionReference extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($transactionId, true), gettype($transactionId)), __LINE__);
         }
         // validation for constraint: pattern([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})
-        if (!is_null($transactionId) && !preg_match('/[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}/', $transactionId)) {
+        if (!is_null($transactionId) && !preg_match('/[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}/', (string) $transactionId)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}/', var_export($transactionId, true)), __LINE__);
         }
         $this->transactionId = $transactionId;

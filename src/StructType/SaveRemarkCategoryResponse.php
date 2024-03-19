@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveRemarkCategoryResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveRemarkCategoryResponse extends AbstractStructBase
 {
 }

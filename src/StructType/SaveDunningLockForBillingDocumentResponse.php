@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveDunningLockForBillingDocumentResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveDunningLockForBillingDocumentResponse extends AbstractStructBase
 {
 }

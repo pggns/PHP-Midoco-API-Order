@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoCcInfo StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoCcInfo extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetBillingPaymentResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetBillingPaymentResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetBillingPaymentResponse extends AbstractStructBase
      * - ref: MidocoBillingPayment
      * @var \Pggns\MidocoApi\Order\StructType\BillingPaymentDTO[]
      */
-    protected array $MidocoBillingPayment = [];
+    protected ?array $MidocoBillingPayment = null;
     /**
      * Constructor method for GetBillingPaymentResponse
      * @uses GetBillingPaymentResponse::setMidocoBillingPayment()
      * @param \Pggns\MidocoApi\Order\StructType\BillingPaymentDTO[] $midocoBillingPayment
      */
-    public function __construct(array $midocoBillingPayment = [])
+    public function __construct(?array $midocoBillingPayment = null)
     {
         $this
             ->setMidocoBillingPayment($midocoBillingPayment);
@@ -36,18 +37,22 @@ class GetBillingPaymentResponse extends AbstractStructBase
      * Get MidocoBillingPayment value
      * @return \Pggns\MidocoApi\Order\StructType\BillingPaymentDTO[]
      */
-    public function getMidocoBillingPayment(): array
+    public function getMidocoBillingPayment(): ?array
     {
         return $this->MidocoBillingPayment;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoBillingPayment method
+     * This method is responsible for validating the value(s) passed to the setMidocoBillingPayment method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoBillingPayment method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoBillingPaymentForArrayConstraintsFromSetMidocoBillingPayment(array $values = []): string
+    public static function validateMidocoBillingPaymentForArrayConstraintFromSetMidocoBillingPayment(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getBillingPaymentResponseMidocoBillingPaymentItem) {
@@ -69,10 +74,10 @@ class GetBillingPaymentResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\BillingPaymentDTO[] $midocoBillingPayment
      * @return \Pggns\MidocoApi\Order\StructType\GetBillingPaymentResponse
      */
-    public function setMidocoBillingPayment(array $midocoBillingPayment = []): self
+    public function setMidocoBillingPayment(?array $midocoBillingPayment = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoBillingPaymentArrayErrorMessage = self::validateMidocoBillingPaymentForArrayConstraintsFromSetMidocoBillingPayment($midocoBillingPayment))) {
+        if ('' !== ($midocoBillingPaymentArrayErrorMessage = self::validateMidocoBillingPaymentForArrayConstraintFromSetMidocoBillingPayment($midocoBillingPayment))) {
             throw new InvalidArgumentException($midocoBillingPaymentArrayErrorMessage, __LINE__);
         }
         $this->MidocoBillingPayment = $midocoBillingPayment;

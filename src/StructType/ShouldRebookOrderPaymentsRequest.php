@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ShouldRebookOrderPaymentsRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ShouldRebookOrderPaymentsRequest extends AbstractStructBase
 {
     /**

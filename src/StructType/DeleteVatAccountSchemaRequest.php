@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteVatAccountSchemaRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteVatAccountSchemaRequest extends AbstractStructBase
 {
     /**

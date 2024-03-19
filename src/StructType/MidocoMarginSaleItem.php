@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoMarginSaleItem StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoMarginSaleItem extends AbstractStructBase
 {
     /**

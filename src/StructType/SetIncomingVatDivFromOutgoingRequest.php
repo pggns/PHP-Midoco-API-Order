@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SetIncomingVatDivFromOutgoingRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SetIncomingVatDivFromOutgoingRequest extends AbstractStructBase
 {
     /**

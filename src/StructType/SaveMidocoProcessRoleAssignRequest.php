@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveMidocoProcessRoleAssignRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveMidocoProcessRoleAssignRequest extends AbstractStructBase
 {
     /**

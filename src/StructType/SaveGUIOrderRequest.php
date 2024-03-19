@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: save a GUI order and returns the updated Order
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveGUIOrderRequest extends AbstractStructBase
 {
     /**

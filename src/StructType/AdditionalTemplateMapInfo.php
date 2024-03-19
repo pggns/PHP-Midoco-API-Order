@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for AdditionalTemplateMapInfo StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class AdditionalTemplateMapInfo extends AbstractStructBase
 {
     /**

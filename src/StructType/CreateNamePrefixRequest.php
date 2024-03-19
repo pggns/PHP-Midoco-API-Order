@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CreateNamePrefixRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CreateNamePrefixRequest extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveManualItemRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveManualItemRequest extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for IsPrintRequiredForPassengersRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class IsPrintRequiredForPassengersRequest extends AbstractStructBase
 {
     /**
@@ -21,7 +22,7 @@ class IsPrintRequiredForPassengersRequest extends AbstractStructBase
      * - ref: MidocoSellPassenger
      * @var \Pggns\MidocoApi\Order\StructType\MidocoSellPassenger[]
      */
-    protected array $MidocoSellPassenger = [];
+    protected ?array $MidocoSellPassenger = null;
     /**
      * The orderId
      * @var int|null
@@ -41,7 +42,7 @@ class IsPrintRequiredForPassengersRequest extends AbstractStructBase
      * @param int $orderId
      * @param string $calculatedPrintDate
      */
-    public function __construct(array $midocoSellPassenger = [], ?int $orderId = null, ?string $calculatedPrintDate = null)
+    public function __construct(?array $midocoSellPassenger = null, ?int $orderId = null, ?string $calculatedPrintDate = null)
     {
         $this
             ->setMidocoSellPassenger($midocoSellPassenger)
@@ -52,18 +53,22 @@ class IsPrintRequiredForPassengersRequest extends AbstractStructBase
      * Get MidocoSellPassenger value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSellPassenger[]
      */
-    public function getMidocoSellPassenger(): array
+    public function getMidocoSellPassenger(): ?array
     {
         return $this->MidocoSellPassenger;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoSellPassenger method
+     * This method is responsible for validating the value(s) passed to the setMidocoSellPassenger method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoSellPassenger method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoSellPassengerForArrayConstraintsFromSetMidocoSellPassenger(array $values = []): string
+    public static function validateMidocoSellPassengerForArrayConstraintFromSetMidocoSellPassenger(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $isPrintRequiredForPassengersRequestMidocoSellPassengerItem) {
@@ -85,10 +90,10 @@ class IsPrintRequiredForPassengersRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSellPassenger[] $midocoSellPassenger
      * @return \Pggns\MidocoApi\Order\StructType\IsPrintRequiredForPassengersRequest
      */
-    public function setMidocoSellPassenger(array $midocoSellPassenger = []): self
+    public function setMidocoSellPassenger(?array $midocoSellPassenger = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoSellPassengerArrayErrorMessage = self::validateMidocoSellPassengerForArrayConstraintsFromSetMidocoSellPassenger($midocoSellPassenger))) {
+        if ('' !== ($midocoSellPassengerArrayErrorMessage = self::validateMidocoSellPassengerForArrayConstraintFromSetMidocoSellPassenger($midocoSellPassenger))) {
             throw new InvalidArgumentException($midocoSellPassengerArrayErrorMessage, __LINE__);
         }
         $this->MidocoSellPassenger = $midocoSellPassenger;

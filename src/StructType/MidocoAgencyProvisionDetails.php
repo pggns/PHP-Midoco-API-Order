@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoAgencyProvisionDetails StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoAgencyProvisionDetails extends AbstractStructBase
 {
     /**
@@ -19,7 +20,7 @@ class MidocoAgencyProvisionDetails extends AbstractStructBase
      * - maxOccurs: unbounded
      * @var \Pggns\MidocoApi\Order\StructType\Attribute_1[]
      */
-    protected array $Attribute = [];
+    protected ?array $Attribute = null;
     /**
      * The orderNo
      * @var int|null
@@ -207,7 +208,7 @@ class MidocoAgencyProvisionDetails extends AbstractStructBase
      * @param float $provisionBaseAmount
      * @param string $supplierId
      */
-    public function __construct(array $attribute = [], ?int $orderNo = null, ?string $customerName = null, ?string $inkassoType = null, ?string $travelDate = null, ?string $creationDate = null, ?float $provisionAmount = null, ?float $provisionVatAmount = null, ?float $totalPrice = null, ?float $inkassoPrice = null, ?int $orderId = null, ?float $totalAmount = null, ?float $provisionInsuranceAmount = null, ?bool $isStorno = null, ?string $bookingId = null, ?string $description = null, ?float $vatPercent = null, ?string $extId = null, ?float $includedVatAmount = null, ?string $filekey = null, ?float $taxPercent = null, ?string $productType = null, ?string $areaDescription = null, ?string $externalId = null, ?string $destinationCode = null, ?float $provisionBaseAmount = null, ?string $supplierId = null)
+    public function __construct(?array $attribute = null, ?int $orderNo = null, ?string $customerName = null, ?string $inkassoType = null, ?string $travelDate = null, ?string $creationDate = null, ?float $provisionAmount = null, ?float $provisionVatAmount = null, ?float $totalPrice = null, ?float $inkassoPrice = null, ?int $orderId = null, ?float $totalAmount = null, ?float $provisionInsuranceAmount = null, ?bool $isStorno = null, ?string $bookingId = null, ?string $description = null, ?float $vatPercent = null, ?string $extId = null, ?float $includedVatAmount = null, ?string $filekey = null, ?float $taxPercent = null, ?string $productType = null, ?string $areaDescription = null, ?string $externalId = null, ?string $destinationCode = null, ?float $provisionBaseAmount = null, ?string $supplierId = null)
     {
         $this
             ->setAttribute($attribute)
@@ -242,18 +243,22 @@ class MidocoAgencyProvisionDetails extends AbstractStructBase
      * Get Attribute value
      * @return \Pggns\MidocoApi\Order\StructType\Attribute_1[]
      */
-    public function getAttribute(): array
+    public function getAttribute(): ?array
     {
         return $this->Attribute;
     }
     /**
-     * This method is responsible for validating the values passed to the setAttribute method
+     * This method is responsible for validating the value(s) passed to the setAttribute method
      * This method is willingly generated in order to preserve the one-line inline validation within the setAttribute method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateAttributeForArrayConstraintsFromSetAttribute(array $values = []): string
+    public static function validateAttributeForArrayConstraintFromSetAttribute(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoAgencyProvisionDetailsAttributeItem) {
@@ -275,10 +280,10 @@ class MidocoAgencyProvisionDetails extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\Attribute_1[] $attribute
      * @return \Pggns\MidocoApi\Order\StructType\MidocoAgencyProvisionDetails
      */
-    public function setAttribute(array $attribute = []): self
+    public function setAttribute(?array $attribute = null): self
     {
         // validation for constraint: array
-        if ('' !== ($attributeArrayErrorMessage = self::validateAttributeForArrayConstraintsFromSetAttribute($attribute))) {
+        if ('' !== ($attributeArrayErrorMessage = self::validateAttributeForArrayConstraintFromSetAttribute($attribute))) {
             throw new InvalidArgumentException($attributeArrayErrorMessage, __LINE__);
         }
         $this->Attribute = $attribute;

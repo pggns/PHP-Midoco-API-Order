@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetDestinationAutoRemarksResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetDestinationAutoRemarksResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetDestinationAutoRemarksResponse extends AbstractStructBase
      * - ref: MidocoDestinationAutoRemark
      * @var \Pggns\MidocoApi\Order\StructType\DestinationAutoRemarkDTO[]
      */
-    protected array $MidocoDestinationAutoRemark = [];
+    protected ?array $MidocoDestinationAutoRemark = null;
     /**
      * Constructor method for GetDestinationAutoRemarksResponse
      * @uses GetDestinationAutoRemarksResponse::setMidocoDestinationAutoRemark()
      * @param \Pggns\MidocoApi\Order\StructType\DestinationAutoRemarkDTO[] $midocoDestinationAutoRemark
      */
-    public function __construct(array $midocoDestinationAutoRemark = [])
+    public function __construct(?array $midocoDestinationAutoRemark = null)
     {
         $this
             ->setMidocoDestinationAutoRemark($midocoDestinationAutoRemark);
@@ -36,18 +37,22 @@ class GetDestinationAutoRemarksResponse extends AbstractStructBase
      * Get MidocoDestinationAutoRemark value
      * @return \Pggns\MidocoApi\Order\StructType\DestinationAutoRemarkDTO[]
      */
-    public function getMidocoDestinationAutoRemark(): array
+    public function getMidocoDestinationAutoRemark(): ?array
     {
         return $this->MidocoDestinationAutoRemark;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoDestinationAutoRemark method
+     * This method is responsible for validating the value(s) passed to the setMidocoDestinationAutoRemark method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoDestinationAutoRemark method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoDestinationAutoRemarkForArrayConstraintsFromSetMidocoDestinationAutoRemark(array $values = []): string
+    public static function validateMidocoDestinationAutoRemarkForArrayConstraintFromSetMidocoDestinationAutoRemark(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getDestinationAutoRemarksResponseMidocoDestinationAutoRemarkItem) {
@@ -69,10 +74,10 @@ class GetDestinationAutoRemarksResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\DestinationAutoRemarkDTO[] $midocoDestinationAutoRemark
      * @return \Pggns\MidocoApi\Order\StructType\GetDestinationAutoRemarksResponse
      */
-    public function setMidocoDestinationAutoRemark(array $midocoDestinationAutoRemark = []): self
+    public function setMidocoDestinationAutoRemark(?array $midocoDestinationAutoRemark = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoDestinationAutoRemarkArrayErrorMessage = self::validateMidocoDestinationAutoRemarkForArrayConstraintsFromSetMidocoDestinationAutoRemark($midocoDestinationAutoRemark))) {
+        if ('' !== ($midocoDestinationAutoRemarkArrayErrorMessage = self::validateMidocoDestinationAutoRemarkForArrayConstraintFromSetMidocoDestinationAutoRemark($midocoDestinationAutoRemark))) {
             throw new InvalidArgumentException($midocoDestinationAutoRemarkArrayErrorMessage, __LINE__);
         }
         $this->MidocoDestinationAutoRemark = $midocoDestinationAutoRemark;

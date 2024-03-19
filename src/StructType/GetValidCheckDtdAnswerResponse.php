@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetValidCheckDtdAnswerResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetValidCheckDtdAnswerResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetValidCheckDtdAnswerResponse extends AbstractStructBase
      * - ref: MidocoCheckDtdAnswer
      * @var \Pggns\MidocoApi\Order\StructType\MidocoCheckDtdAnswer[]
      */
-    protected array $MidocoCheckDtdAnswer = [];
+    protected ?array $MidocoCheckDtdAnswer = null;
     /**
      * Constructor method for GetValidCheckDtdAnswerResponse
      * @uses GetValidCheckDtdAnswerResponse::setMidocoCheckDtdAnswer()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoCheckDtdAnswer[] $midocoCheckDtdAnswer
      */
-    public function __construct(array $midocoCheckDtdAnswer = [])
+    public function __construct(?array $midocoCheckDtdAnswer = null)
     {
         $this
             ->setMidocoCheckDtdAnswer($midocoCheckDtdAnswer);
@@ -36,18 +37,22 @@ class GetValidCheckDtdAnswerResponse extends AbstractStructBase
      * Get MidocoCheckDtdAnswer value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoCheckDtdAnswer[]
      */
-    public function getMidocoCheckDtdAnswer(): array
+    public function getMidocoCheckDtdAnswer(): ?array
     {
         return $this->MidocoCheckDtdAnswer;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoCheckDtdAnswer method
+     * This method is responsible for validating the value(s) passed to the setMidocoCheckDtdAnswer method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoCheckDtdAnswer method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoCheckDtdAnswerForArrayConstraintsFromSetMidocoCheckDtdAnswer(array $values = []): string
+    public static function validateMidocoCheckDtdAnswerForArrayConstraintFromSetMidocoCheckDtdAnswer(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getValidCheckDtdAnswerResponseMidocoCheckDtdAnswerItem) {
@@ -69,10 +74,10 @@ class GetValidCheckDtdAnswerResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoCheckDtdAnswer[] $midocoCheckDtdAnswer
      * @return \Pggns\MidocoApi\Order\StructType\GetValidCheckDtdAnswerResponse
      */
-    public function setMidocoCheckDtdAnswer(array $midocoCheckDtdAnswer = []): self
+    public function setMidocoCheckDtdAnswer(?array $midocoCheckDtdAnswer = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoCheckDtdAnswerArrayErrorMessage = self::validateMidocoCheckDtdAnswerForArrayConstraintsFromSetMidocoCheckDtdAnswer($midocoCheckDtdAnswer))) {
+        if ('' !== ($midocoCheckDtdAnswerArrayErrorMessage = self::validateMidocoCheckDtdAnswerForArrayConstraintFromSetMidocoCheckDtdAnswer($midocoCheckDtdAnswer))) {
             throw new InvalidArgumentException($midocoCheckDtdAnswerArrayErrorMessage, __LINE__);
         }
         $this->MidocoCheckDtdAnswer = $midocoCheckDtdAnswer;

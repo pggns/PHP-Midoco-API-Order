@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: addOrderContactHistoryEntry --- adds an order contact history entry for an order id
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class AddOrderContactHistoryEntryResponse extends AbstractStructBase
 {
 }

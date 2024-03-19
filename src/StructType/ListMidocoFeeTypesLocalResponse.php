@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: return the fee types localizations that match the criteria
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ListMidocoFeeTypesLocalResponse extends AbstractStructBase
 {
     /**
@@ -23,13 +24,13 @@ class ListMidocoFeeTypesLocalResponse extends AbstractStructBase
      * - ref: MidocoFeeTypeLocal
      * @var \Pggns\MidocoApi\Order\StructType\FeeTypeLocalDTO[]
      */
-    protected array $MidocoFeeTypeLocal = [];
+    protected ?array $MidocoFeeTypeLocal = null;
     /**
      * Constructor method for ListMidocoFeeTypesLocalResponse
      * @uses ListMidocoFeeTypesLocalResponse::setMidocoFeeTypeLocal()
      * @param \Pggns\MidocoApi\Order\StructType\FeeTypeLocalDTO[] $midocoFeeTypeLocal
      */
-    public function __construct(array $midocoFeeTypeLocal = [])
+    public function __construct(?array $midocoFeeTypeLocal = null)
     {
         $this
             ->setMidocoFeeTypeLocal($midocoFeeTypeLocal);
@@ -38,18 +39,22 @@ class ListMidocoFeeTypesLocalResponse extends AbstractStructBase
      * Get MidocoFeeTypeLocal value
      * @return \Pggns\MidocoApi\Order\StructType\FeeTypeLocalDTO[]
      */
-    public function getMidocoFeeTypeLocal(): array
+    public function getMidocoFeeTypeLocal(): ?array
     {
         return $this->MidocoFeeTypeLocal;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoFeeTypeLocal method
+     * This method is responsible for validating the value(s) passed to the setMidocoFeeTypeLocal method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoFeeTypeLocal method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoFeeTypeLocalForArrayConstraintsFromSetMidocoFeeTypeLocal(array $values = []): string
+    public static function validateMidocoFeeTypeLocalForArrayConstraintFromSetMidocoFeeTypeLocal(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $listMidocoFeeTypesLocalResponseMidocoFeeTypeLocalItem) {
@@ -71,10 +76,10 @@ class ListMidocoFeeTypesLocalResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\FeeTypeLocalDTO[] $midocoFeeTypeLocal
      * @return \Pggns\MidocoApi\Order\StructType\ListMidocoFeeTypesLocalResponse
      */
-    public function setMidocoFeeTypeLocal(array $midocoFeeTypeLocal = []): self
+    public function setMidocoFeeTypeLocal(?array $midocoFeeTypeLocal = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoFeeTypeLocalArrayErrorMessage = self::validateMidocoFeeTypeLocalForArrayConstraintsFromSetMidocoFeeTypeLocal($midocoFeeTypeLocal))) {
+        if ('' !== ($midocoFeeTypeLocalArrayErrorMessage = self::validateMidocoFeeTypeLocalForArrayConstraintFromSetMidocoFeeTypeLocal($midocoFeeTypeLocal))) {
             throw new InvalidArgumentException($midocoFeeTypeLocalArrayErrorMessage, __LINE__);
         }
         $this->MidocoFeeTypeLocal = $midocoFeeTypeLocal;

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MfLocalDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MfLocalDTO extends AbstractStructBase
 {
     /**

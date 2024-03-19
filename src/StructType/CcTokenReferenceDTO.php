@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CcTokenReferenceDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CcTokenReferenceDTO extends AbstractStructBase
 {
     /**

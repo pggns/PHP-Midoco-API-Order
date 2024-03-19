@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetAvailableSupplierRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetAvailableSupplierRequest extends AbstractStructBase
 {
     /**

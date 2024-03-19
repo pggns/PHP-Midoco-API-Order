@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: create deeplink for Unister VERMI
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CreateVermiLinkRequest extends AbstractStructBase
 {
     /**

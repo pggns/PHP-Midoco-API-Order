@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetRevenueBookingForSellitemResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetRevenueBookingForSellitemResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetRevenueBookingForSellitemResponse extends AbstractStructBase
      * - ref: RevenueBookingInfo
      * @var \Pggns\MidocoApi\Order\StructType\RevenueBookingInfoType[]
      */
-    protected array $RevenueBookingInfo = [];
+    protected ?array $RevenueBookingInfo = null;
     /**
      * Constructor method for GetRevenueBookingForSellitemResponse
      * @uses GetRevenueBookingForSellitemResponse::setRevenueBookingInfo()
      * @param \Pggns\MidocoApi\Order\StructType\RevenueBookingInfoType[] $revenueBookingInfo
      */
-    public function __construct(array $revenueBookingInfo = [])
+    public function __construct(?array $revenueBookingInfo = null)
     {
         $this
             ->setRevenueBookingInfo($revenueBookingInfo);
@@ -36,18 +37,22 @@ class GetRevenueBookingForSellitemResponse extends AbstractStructBase
      * Get RevenueBookingInfo value
      * @return \Pggns\MidocoApi\Order\StructType\RevenueBookingInfoType[]
      */
-    public function getRevenueBookingInfo(): array
+    public function getRevenueBookingInfo(): ?array
     {
         return $this->RevenueBookingInfo;
     }
     /**
-     * This method is responsible for validating the values passed to the setRevenueBookingInfo method
+     * This method is responsible for validating the value(s) passed to the setRevenueBookingInfo method
      * This method is willingly generated in order to preserve the one-line inline validation within the setRevenueBookingInfo method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateRevenueBookingInfoForArrayConstraintsFromSetRevenueBookingInfo(array $values = []): string
+    public static function validateRevenueBookingInfoForArrayConstraintFromSetRevenueBookingInfo(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getRevenueBookingForSellitemResponseRevenueBookingInfoItem) {
@@ -69,10 +74,10 @@ class GetRevenueBookingForSellitemResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\RevenueBookingInfoType[] $revenueBookingInfo
      * @return \Pggns\MidocoApi\Order\StructType\GetRevenueBookingForSellitemResponse
      */
-    public function setRevenueBookingInfo(array $revenueBookingInfo = []): self
+    public function setRevenueBookingInfo(?array $revenueBookingInfo = null): self
     {
         // validation for constraint: array
-        if ('' !== ($revenueBookingInfoArrayErrorMessage = self::validateRevenueBookingInfoForArrayConstraintsFromSetRevenueBookingInfo($revenueBookingInfo))) {
+        if ('' !== ($revenueBookingInfoArrayErrorMessage = self::validateRevenueBookingInfoForArrayConstraintFromSetRevenueBookingInfo($revenueBookingInfo))) {
             throw new InvalidArgumentException($revenueBookingInfoArrayErrorMessage, __LINE__);
         }
         $this->RevenueBookingInfo = $revenueBookingInfo;

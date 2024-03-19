@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetTravelDocsPrintInfoResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetTravelDocsPrintInfoResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetTravelDocsPrintInfoResponse extends AbstractStructBase
      * - ref: MidocoTravelDocsPrintInfo
      * @var \Pggns\MidocoApi\Order\StructType\MidocoTravelDocsPrintInfo[]
      */
-    protected array $MidocoTravelDocsPrintInfo = [];
+    protected ?array $MidocoTravelDocsPrintInfo = null;
     /**
      * Constructor method for GetTravelDocsPrintInfoResponse
      * @uses GetTravelDocsPrintInfoResponse::setMidocoTravelDocsPrintInfo()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoTravelDocsPrintInfo[] $midocoTravelDocsPrintInfo
      */
-    public function __construct(array $midocoTravelDocsPrintInfo = [])
+    public function __construct(?array $midocoTravelDocsPrintInfo = null)
     {
         $this
             ->setMidocoTravelDocsPrintInfo($midocoTravelDocsPrintInfo);
@@ -36,18 +37,22 @@ class GetTravelDocsPrintInfoResponse extends AbstractStructBase
      * Get MidocoTravelDocsPrintInfo value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoTravelDocsPrintInfo[]
      */
-    public function getMidocoTravelDocsPrintInfo(): array
+    public function getMidocoTravelDocsPrintInfo(): ?array
     {
         return $this->MidocoTravelDocsPrintInfo;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoTravelDocsPrintInfo method
+     * This method is responsible for validating the value(s) passed to the setMidocoTravelDocsPrintInfo method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoTravelDocsPrintInfo method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoTravelDocsPrintInfoForArrayConstraintsFromSetMidocoTravelDocsPrintInfo(array $values = []): string
+    public static function validateMidocoTravelDocsPrintInfoForArrayConstraintFromSetMidocoTravelDocsPrintInfo(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getTravelDocsPrintInfoResponseMidocoTravelDocsPrintInfoItem) {
@@ -69,10 +74,10 @@ class GetTravelDocsPrintInfoResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoTravelDocsPrintInfo[] $midocoTravelDocsPrintInfo
      * @return \Pggns\MidocoApi\Order\StructType\GetTravelDocsPrintInfoResponse
      */
-    public function setMidocoTravelDocsPrintInfo(array $midocoTravelDocsPrintInfo = []): self
+    public function setMidocoTravelDocsPrintInfo(?array $midocoTravelDocsPrintInfo = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoTravelDocsPrintInfoArrayErrorMessage = self::validateMidocoTravelDocsPrintInfoForArrayConstraintsFromSetMidocoTravelDocsPrintInfo($midocoTravelDocsPrintInfo))) {
+        if ('' !== ($midocoTravelDocsPrintInfoArrayErrorMessage = self::validateMidocoTravelDocsPrintInfoForArrayConstraintFromSetMidocoTravelDocsPrintInfo($midocoTravelDocsPrintInfo))) {
             throw new InvalidArgumentException($midocoTravelDocsPrintInfoArrayErrorMessage, __LINE__);
         }
         $this->MidocoTravelDocsPrintInfo = $midocoTravelDocsPrintInfo;

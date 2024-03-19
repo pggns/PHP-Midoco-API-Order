@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetSupplierMappingResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetSupplierMappingResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetSupplierMappingResponse extends AbstractStructBase
      * - ref: MidocoSupplierMapping
      * @var \Pggns\MidocoApi\Order\StructType\MidocoSupplierMapping[]
      */
-    protected array $MidocoSupplierMapping = [];
+    protected ?array $MidocoSupplierMapping = null;
     /**
      * Constructor method for GetSupplierMappingResponse
      * @uses GetSupplierMappingResponse::setMidocoSupplierMapping()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSupplierMapping[] $midocoSupplierMapping
      */
-    public function __construct(array $midocoSupplierMapping = [])
+    public function __construct(?array $midocoSupplierMapping = null)
     {
         $this
             ->setMidocoSupplierMapping($midocoSupplierMapping);
@@ -36,18 +37,22 @@ class GetSupplierMappingResponse extends AbstractStructBase
      * Get MidocoSupplierMapping value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSupplierMapping[]
      */
-    public function getMidocoSupplierMapping(): array
+    public function getMidocoSupplierMapping(): ?array
     {
         return $this->MidocoSupplierMapping;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoSupplierMapping method
+     * This method is responsible for validating the value(s) passed to the setMidocoSupplierMapping method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoSupplierMapping method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoSupplierMappingForArrayConstraintsFromSetMidocoSupplierMapping(array $values = []): string
+    public static function validateMidocoSupplierMappingForArrayConstraintFromSetMidocoSupplierMapping(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getSupplierMappingResponseMidocoSupplierMappingItem) {
@@ -69,10 +74,10 @@ class GetSupplierMappingResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSupplierMapping[] $midocoSupplierMapping
      * @return \Pggns\MidocoApi\Order\StructType\GetSupplierMappingResponse
      */
-    public function setMidocoSupplierMapping(array $midocoSupplierMapping = []): self
+    public function setMidocoSupplierMapping(?array $midocoSupplierMapping = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoSupplierMappingArrayErrorMessage = self::validateMidocoSupplierMappingForArrayConstraintsFromSetMidocoSupplierMapping($midocoSupplierMapping))) {
+        if ('' !== ($midocoSupplierMappingArrayErrorMessage = self::validateMidocoSupplierMappingForArrayConstraintFromSetMidocoSupplierMapping($midocoSupplierMapping))) {
             throw new InvalidArgumentException($midocoSupplierMappingArrayErrorMessage, __LINE__);
         }
         $this->MidocoSupplierMapping = $midocoSupplierMapping;

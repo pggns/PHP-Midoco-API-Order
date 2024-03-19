@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for VoidAndRebookForeignCurrencyEntryHistoryRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class VoidAndRebookForeignCurrencyEntryHistoryRequest extends AbstractStructBase
 {
     /**
@@ -19,7 +20,7 @@ class VoidAndRebookForeignCurrencyEntryHistoryRequest extends AbstractStructBase
      * - maxOccurs: unbounded
      * @var int[]
      */
-    protected array $entryHistoryId = [];
+    protected ?array $entryHistoryId = null;
     /**
      * The newInvoicedAmount
      * @var float|null
@@ -32,7 +33,7 @@ class VoidAndRebookForeignCurrencyEntryHistoryRequest extends AbstractStructBase
      * @param int[] $entryHistoryId
      * @param float $newInvoicedAmount
      */
-    public function __construct(array $entryHistoryId = [], ?float $newInvoicedAmount = null)
+    public function __construct(?array $entryHistoryId = null, ?float $newInvoicedAmount = null)
     {
         $this
             ->setEntryHistoryId($entryHistoryId)
@@ -42,18 +43,22 @@ class VoidAndRebookForeignCurrencyEntryHistoryRequest extends AbstractStructBase
      * Get entryHistoryId value
      * @return int[]
      */
-    public function getEntryHistoryId(): array
+    public function getEntryHistoryId(): ?array
     {
         return $this->entryHistoryId;
     }
     /**
-     * This method is responsible for validating the values passed to the setEntryHistoryId method
+     * This method is responsible for validating the value(s) passed to the setEntryHistoryId method
      * This method is willingly generated in order to preserve the one-line inline validation within the setEntryHistoryId method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateEntryHistoryIdForArrayConstraintsFromSetEntryHistoryId(array $values = []): string
+    public static function validateEntryHistoryIdForArrayConstraintFromSetEntryHistoryId(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $voidAndRebookForeignCurrencyEntryHistoryRequestEntryHistoryIdItem) {
@@ -75,10 +80,10 @@ class VoidAndRebookForeignCurrencyEntryHistoryRequest extends AbstractStructBase
      * @param int[] $entryHistoryId
      * @return \Pggns\MidocoApi\Order\StructType\VoidAndRebookForeignCurrencyEntryHistoryRequest
      */
-    public function setEntryHistoryId(array $entryHistoryId = []): self
+    public function setEntryHistoryId(?array $entryHistoryId = null): self
     {
         // validation for constraint: array
-        if ('' !== ($entryHistoryIdArrayErrorMessage = self::validateEntryHistoryIdForArrayConstraintsFromSetEntryHistoryId($entryHistoryId))) {
+        if ('' !== ($entryHistoryIdArrayErrorMessage = self::validateEntryHistoryIdForArrayConstraintFromSetEntryHistoryId($entryHistoryId))) {
             throw new InvalidArgumentException($entryHistoryIdArrayErrorMessage, __LINE__);
         }
         $this->entryHistoryId = $entryHistoryId;

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetSellitemDetailsForBonusEmployeeRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetSellitemDetailsForBonusEmployeeRequest extends AbstractStructBase
 {
     /**

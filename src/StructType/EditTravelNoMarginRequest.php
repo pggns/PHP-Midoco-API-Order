@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for EditTravelNoMarginRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class EditTravelNoMarginRequest extends AbstractStructBase
 {
     /**
@@ -29,7 +30,7 @@ class EditTravelNoMarginRequest extends AbstractStructBase
      * - ref: MidocoTravelNoMarginSettlType
      * @var \Pggns\MidocoApi\Order\StructType\MidocoTravelNoMarginSettlType[]
      */
-    protected array $MidocoTravelNoMarginSettlType = [];
+    protected ?array $MidocoTravelNoMarginSettlType = null;
     /**
      * Constructor method for EditTravelNoMarginRequest
      * @uses EditTravelNoMarginRequest::setMidocoTravelNoMargin()
@@ -37,7 +38,7 @@ class EditTravelNoMarginRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoTravelNoMargin $midocoTravelNoMargin
      * @param \Pggns\MidocoApi\Order\StructType\MidocoTravelNoMarginSettlType[] $midocoTravelNoMarginSettlType
      */
-    public function __construct(?\Pggns\MidocoApi\Order\StructType\MidocoTravelNoMargin $midocoTravelNoMargin = null, array $midocoTravelNoMarginSettlType = [])
+    public function __construct(?\Pggns\MidocoApi\Order\StructType\MidocoTravelNoMargin $midocoTravelNoMargin = null, ?array $midocoTravelNoMarginSettlType = null)
     {
         $this
             ->setMidocoTravelNoMargin($midocoTravelNoMargin)
@@ -66,18 +67,22 @@ class EditTravelNoMarginRequest extends AbstractStructBase
      * Get MidocoTravelNoMarginSettlType value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoTravelNoMarginSettlType[]
      */
-    public function getMidocoTravelNoMarginSettlType(): array
+    public function getMidocoTravelNoMarginSettlType(): ?array
     {
         return $this->MidocoTravelNoMarginSettlType;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoTravelNoMarginSettlType method
+     * This method is responsible for validating the value(s) passed to the setMidocoTravelNoMarginSettlType method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoTravelNoMarginSettlType method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoTravelNoMarginSettlTypeForArrayConstraintsFromSetMidocoTravelNoMarginSettlType(array $values = []): string
+    public static function validateMidocoTravelNoMarginSettlTypeForArrayConstraintFromSetMidocoTravelNoMarginSettlType(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $editTravelNoMarginRequestMidocoTravelNoMarginSettlTypeItem) {
@@ -99,10 +104,10 @@ class EditTravelNoMarginRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoTravelNoMarginSettlType[] $midocoTravelNoMarginSettlType
      * @return \Pggns\MidocoApi\Order\StructType\EditTravelNoMarginRequest
      */
-    public function setMidocoTravelNoMarginSettlType(array $midocoTravelNoMarginSettlType = []): self
+    public function setMidocoTravelNoMarginSettlType(?array $midocoTravelNoMarginSettlType = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoTravelNoMarginSettlTypeArrayErrorMessage = self::validateMidocoTravelNoMarginSettlTypeForArrayConstraintsFromSetMidocoTravelNoMarginSettlType($midocoTravelNoMarginSettlType))) {
+        if ('' !== ($midocoTravelNoMarginSettlTypeArrayErrorMessage = self::validateMidocoTravelNoMarginSettlTypeForArrayConstraintFromSetMidocoTravelNoMarginSettlType($midocoTravelNoMarginSettlType))) {
             throw new InvalidArgumentException($midocoTravelNoMarginSettlTypeArrayErrorMessage, __LINE__);
         }
         $this->MidocoTravelNoMarginSettlType = $midocoTravelNoMarginSettlType;

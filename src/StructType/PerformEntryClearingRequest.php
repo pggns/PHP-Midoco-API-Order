@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for PerformEntryClearingRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class PerformEntryClearingRequest extends AbstractStructBase
 {
     /**
@@ -19,7 +20,7 @@ class PerformEntryClearingRequest extends AbstractStructBase
      * - maxOccurs: unbounded
      * @var \Pggns\MidocoApi\Order\StructType\EntryDTO[]
      */
-    protected array $clearingEntry = [];
+    protected ?array $clearingEntry = null;
     /**
      * The receiptNo
      * @var string|null
@@ -67,7 +68,7 @@ class PerformEntryClearingRequest extends AbstractStructBase
      * @param string $currency
      * @param float $exchangeRate
      */
-    public function __construct(array $clearingEntry = [], ?string $receiptNo = null, ?string $receiptDate = null, ?string $accountId = null, ?string $bookingText = null, ?string $currency = null, ?float $exchangeRate = null)
+    public function __construct(?array $clearingEntry = null, ?string $receiptNo = null, ?string $receiptDate = null, ?string $accountId = null, ?string $bookingText = null, ?string $currency = null, ?float $exchangeRate = null)
     {
         $this
             ->setClearingEntry($clearingEntry)
@@ -82,18 +83,22 @@ class PerformEntryClearingRequest extends AbstractStructBase
      * Get clearingEntry value
      * @return \Pggns\MidocoApi\Order\StructType\EntryDTO[]
      */
-    public function getClearingEntry(): array
+    public function getClearingEntry(): ?array
     {
         return $this->clearingEntry;
     }
     /**
-     * This method is responsible for validating the values passed to the setClearingEntry method
+     * This method is responsible for validating the value(s) passed to the setClearingEntry method
      * This method is willingly generated in order to preserve the one-line inline validation within the setClearingEntry method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateClearingEntryForArrayConstraintsFromSetClearingEntry(array $values = []): string
+    public static function validateClearingEntryForArrayConstraintFromSetClearingEntry(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $performEntryClearingRequestClearingEntryItem) {
@@ -115,10 +120,10 @@ class PerformEntryClearingRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\EntryDTO[] $clearingEntry
      * @return \Pggns\MidocoApi\Order\StructType\PerformEntryClearingRequest
      */
-    public function setClearingEntry(array $clearingEntry = []): self
+    public function setClearingEntry(?array $clearingEntry = null): self
     {
         // validation for constraint: array
-        if ('' !== ($clearingEntryArrayErrorMessage = self::validateClearingEntryForArrayConstraintsFromSetClearingEntry($clearingEntry))) {
+        if ('' !== ($clearingEntryArrayErrorMessage = self::validateClearingEntryForArrayConstraintFromSetClearingEntry($clearingEntry))) {
             throw new InvalidArgumentException($clearingEntryArrayErrorMessage, __LINE__);
         }
         $this->clearingEntry = $clearingEntry;

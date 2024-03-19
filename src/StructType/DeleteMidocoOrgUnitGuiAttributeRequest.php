@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteMidocoOrgUnitGuiAttributeRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteMidocoOrgUnitGuiAttributeRequest extends AbstractStructBase
 {
     /**

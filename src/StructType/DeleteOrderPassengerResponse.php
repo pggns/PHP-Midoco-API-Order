@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteOrderPassengerResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteOrderPassengerResponse extends AbstractStructBase
 {
     /**

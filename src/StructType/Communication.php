@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: How to communicate with the customer (telephone, email, fax etc).
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class Communication extends AbstractStructBase
 {
     /**

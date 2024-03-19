@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: create http link for accessing documents from Accon
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CreateAcconLinkRequest extends AbstractStructBase
 {
     /**

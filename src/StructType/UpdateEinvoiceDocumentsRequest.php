@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for UpdateEinvoiceDocumentsRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class UpdateEinvoiceDocumentsRequest extends AbstractStructBase
 {
     /**
@@ -20,7 +21,7 @@ class UpdateEinvoiceDocumentsRequest extends AbstractStructBase
      * - minOccurs: 0
      * @var int[]
      */
-    protected array $einvoiceId = [];
+    protected ?array $einvoiceId = null;
     /**
      * The provisionBy
      * @var int|null
@@ -40,7 +41,7 @@ class UpdateEinvoiceDocumentsRequest extends AbstractStructBase
      * @param int $provisionBy
      * @param string $provisionTimestamp
      */
-    public function __construct(array $einvoiceId = [], ?int $provisionBy = null, ?string $provisionTimestamp = null)
+    public function __construct(?array $einvoiceId = null, ?int $provisionBy = null, ?string $provisionTimestamp = null)
     {
         $this
             ->setEinvoiceId($einvoiceId)
@@ -51,18 +52,22 @@ class UpdateEinvoiceDocumentsRequest extends AbstractStructBase
      * Get einvoiceId value
      * @return int[]
      */
-    public function getEinvoiceId(): array
+    public function getEinvoiceId(): ?array
     {
         return $this->einvoiceId;
     }
     /**
-     * This method is responsible for validating the values passed to the setEinvoiceId method
+     * This method is responsible for validating the value(s) passed to the setEinvoiceId method
      * This method is willingly generated in order to preserve the one-line inline validation within the setEinvoiceId method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateEinvoiceIdForArrayConstraintsFromSetEinvoiceId(array $values = []): string
+    public static function validateEinvoiceIdForArrayConstraintFromSetEinvoiceId(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $updateEinvoiceDocumentsRequestEinvoiceIdItem) {
@@ -84,10 +89,10 @@ class UpdateEinvoiceDocumentsRequest extends AbstractStructBase
      * @param int[] $einvoiceId
      * @return \Pggns\MidocoApi\Order\StructType\UpdateEinvoiceDocumentsRequest
      */
-    public function setEinvoiceId(array $einvoiceId = []): self
+    public function setEinvoiceId(?array $einvoiceId = null): self
     {
         // validation for constraint: array
-        if ('' !== ($einvoiceIdArrayErrorMessage = self::validateEinvoiceIdForArrayConstraintsFromSetEinvoiceId($einvoiceId))) {
+        if ('' !== ($einvoiceIdArrayErrorMessage = self::validateEinvoiceIdForArrayConstraintFromSetEinvoiceId($einvoiceId))) {
             throw new InvalidArgumentException($einvoiceIdArrayErrorMessage, __LINE__);
         }
         $this->einvoiceId = $einvoiceId;

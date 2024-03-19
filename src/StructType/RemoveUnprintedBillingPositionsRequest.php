@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for RemoveUnprintedBillingPositionsRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class RemoveUnprintedBillingPositionsRequest extends AbstractStructBase
 {
     /**

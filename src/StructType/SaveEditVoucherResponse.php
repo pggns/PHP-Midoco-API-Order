@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveEditVoucherResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveEditVoucherResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class SaveEditVoucherResponse extends AbstractStructBase
      * - ref: MidocoVoucher
      * @var \Pggns\MidocoApi\Order\StructType\MidocoVoucher[]
      */
-    protected array $MidocoVoucher = [];
+    protected ?array $MidocoVoucher = null;
     /**
      * Constructor method for SaveEditVoucherResponse
      * @uses SaveEditVoucherResponse::setMidocoVoucher()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoVoucher[] $midocoVoucher
      */
-    public function __construct(array $midocoVoucher = [])
+    public function __construct(?array $midocoVoucher = null)
     {
         $this
             ->setMidocoVoucher($midocoVoucher);
@@ -36,18 +37,22 @@ class SaveEditVoucherResponse extends AbstractStructBase
      * Get MidocoVoucher value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoVoucher[]
      */
-    public function getMidocoVoucher(): array
+    public function getMidocoVoucher(): ?array
     {
         return $this->MidocoVoucher;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoVoucher method
+     * This method is responsible for validating the value(s) passed to the setMidocoVoucher method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoVoucher method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoVoucherForArrayConstraintsFromSetMidocoVoucher(array $values = []): string
+    public static function validateMidocoVoucherForArrayConstraintFromSetMidocoVoucher(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $saveEditVoucherResponseMidocoVoucherItem) {
@@ -69,10 +74,10 @@ class SaveEditVoucherResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoVoucher[] $midocoVoucher
      * @return \Pggns\MidocoApi\Order\StructType\SaveEditVoucherResponse
      */
-    public function setMidocoVoucher(array $midocoVoucher = []): self
+    public function setMidocoVoucher(?array $midocoVoucher = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoVoucherArrayErrorMessage = self::validateMidocoVoucherForArrayConstraintsFromSetMidocoVoucher($midocoVoucher))) {
+        if ('' !== ($midocoVoucherArrayErrorMessage = self::validateMidocoVoucherForArrayConstraintFromSetMidocoVoucher($midocoVoucher))) {
             throw new InvalidArgumentException($midocoVoucherArrayErrorMessage, __LINE__);
         }
         $this->MidocoVoucher = $midocoVoucher;

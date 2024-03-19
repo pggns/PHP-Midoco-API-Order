@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteDocumentNatureResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteDocumentNatureResponse extends AbstractStructBase
 {
 }

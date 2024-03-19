@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: In case of a package booking, this section contains the necessary information about the selling supplier and additional fee
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class Package_info extends AbstractStructBase
 {
     /**
@@ -54,7 +55,7 @@ class Package_info extends AbstractStructBase
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\Price_calculation[]
      */
-    protected array $price_calculation = [];
+    protected ?array $price_calculation = null;
     /**
      * The packagefee
      * Meta information extracted from the WSDL
@@ -62,7 +63,7 @@ class Package_info extends AbstractStructBase
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\Packagefee[]
      */
-    protected array $packagefee = [];
+    protected ?array $packagefee = null;
     /**
      * The person
      * Meta information extracted from the WSDL
@@ -71,7 +72,7 @@ class Package_info extends AbstractStructBase
      * - ref: person
      * @var \Pggns\MidocoApi\Order\StructType\Person[]
      */
-    protected array $person = [];
+    protected ?array $person = null;
     /**
      * The attribute
      * Meta information extracted from the WSDL
@@ -79,7 +80,14 @@ class Package_info extends AbstractStructBase
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\Attribute[]
      */
-    protected array $attribute = [];
+    protected ?array $attribute = null;
+    /**
+     * The configuration_ref
+     * Meta information extracted from the WSDL
+     * - documentation: Reference this package to a special import behaviour
+     * @var int|null
+     */
+    protected ?int $configuration_ref = null;
     /**
      * The destination
      * Meta information extracted from the WSDL
@@ -172,6 +180,7 @@ class Package_info extends AbstractStructBase
      * @uses Package_info::setPackagefee()
      * @uses Package_info::setPerson()
      * @uses Package_info::setAttribute()
+     * @uses Package_info::setConfiguration_ref()
      * @uses Package_info::setDestination()
      * @uses Package_info::setCreation_date()
      * @uses Package_info::setCatalog()
@@ -192,6 +201,7 @@ class Package_info extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\Packagefee[] $packagefee
      * @param \Pggns\MidocoApi\Order\StructType\Person[] $person
      * @param \Pggns\MidocoApi\Order\StructType\Attribute[] $attribute
+     * @param int $configuration_ref
      * @param string $destination
      * @param string $creation_date
      * @param string $catalog
@@ -205,7 +215,7 @@ class Package_info extends AbstractStructBase
      * @param string $reference_type
      * @param string $settlement_type
      */
-    public function __construct(string $package_id, string $package_supplier_id, int $package_position, int $price_ref, array $price_calculation = [], array $packagefee = [], array $person = [], array $attribute = [], ?string $destination = null, ?string $creation_date = null, ?string $catalog = null, ?string $product_type = null, ?string $travel_no = null, ?string $travel_no_description = null, ?string $selling_mode = null, ?string $confirmation_group = null, ?bool $mobility_indicator = null, ?string $contract_time = null, ?string $reference_type = null, ?string $settlement_type = null)
+    public function __construct(string $package_id, string $package_supplier_id, int $package_position, int $price_ref, ?array $price_calculation = null, ?array $packagefee = null, ?array $person = null, ?array $attribute = null, ?int $configuration_ref = null, ?string $destination = null, ?string $creation_date = null, ?string $catalog = null, ?string $product_type = null, ?string $travel_no = null, ?string $travel_no_description = null, ?string $selling_mode = null, ?string $confirmation_group = null, ?bool $mobility_indicator = null, ?string $contract_time = null, ?string $reference_type = null, ?string $settlement_type = null)
     {
         $this
             ->setPackage_id($package_id)
@@ -216,6 +226,7 @@ class Package_info extends AbstractStructBase
             ->setPackagefee($packagefee)
             ->setPerson($person)
             ->setAttribute($attribute)
+            ->setConfiguration_ref($configuration_ref)
             ->setDestination($destination)
             ->setCreation_date($creation_date)
             ->setCatalog($catalog)
@@ -325,18 +336,22 @@ class Package_info extends AbstractStructBase
      * Get price_calculation value
      * @return \Pggns\MidocoApi\Order\StructType\Price_calculation[]
      */
-    public function getPrice_calculation(): array
+    public function getPrice_calculation(): ?array
     {
         return $this->price_calculation;
     }
     /**
-     * This method is responsible for validating the values passed to the setPrice_calculation method
+     * This method is responsible for validating the value(s) passed to the setPrice_calculation method
      * This method is willingly generated in order to preserve the one-line inline validation within the setPrice_calculation method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validatePrice_calculationForArrayConstraintsFromSetPrice_calculation(array $values = []): string
+    public static function validatePrice_calculationForArrayConstraintFromSetPrice_calculation(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $package_infoPrice_calculationItem) {
@@ -358,10 +373,10 @@ class Package_info extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\Price_calculation[] $price_calculation
      * @return \Pggns\MidocoApi\Order\StructType\Package_info
      */
-    public function setPrice_calculation(array $price_calculation = []): self
+    public function setPrice_calculation(?array $price_calculation = null): self
     {
         // validation for constraint: array
-        if ('' !== ($price_calculationArrayErrorMessage = self::validatePrice_calculationForArrayConstraintsFromSetPrice_calculation($price_calculation))) {
+        if ('' !== ($price_calculationArrayErrorMessage = self::validatePrice_calculationForArrayConstraintFromSetPrice_calculation($price_calculation))) {
             throw new InvalidArgumentException($price_calculationArrayErrorMessage, __LINE__);
         }
         $this->price_calculation = $price_calculation;
@@ -388,18 +403,22 @@ class Package_info extends AbstractStructBase
      * Get packagefee value
      * @return \Pggns\MidocoApi\Order\StructType\Packagefee[]
      */
-    public function getPackagefee(): array
+    public function getPackagefee(): ?array
     {
         return $this->packagefee;
     }
     /**
-     * This method is responsible for validating the values passed to the setPackagefee method
+     * This method is responsible for validating the value(s) passed to the setPackagefee method
      * This method is willingly generated in order to preserve the one-line inline validation within the setPackagefee method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validatePackagefeeForArrayConstraintsFromSetPackagefee(array $values = []): string
+    public static function validatePackagefeeForArrayConstraintFromSetPackagefee(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $package_infoPackagefeeItem) {
@@ -421,10 +440,10 @@ class Package_info extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\Packagefee[] $packagefee
      * @return \Pggns\MidocoApi\Order\StructType\Package_info
      */
-    public function setPackagefee(array $packagefee = []): self
+    public function setPackagefee(?array $packagefee = null): self
     {
         // validation for constraint: array
-        if ('' !== ($packagefeeArrayErrorMessage = self::validatePackagefeeForArrayConstraintsFromSetPackagefee($packagefee))) {
+        if ('' !== ($packagefeeArrayErrorMessage = self::validatePackagefeeForArrayConstraintFromSetPackagefee($packagefee))) {
             throw new InvalidArgumentException($packagefeeArrayErrorMessage, __LINE__);
         }
         $this->packagefee = $packagefee;
@@ -451,18 +470,22 @@ class Package_info extends AbstractStructBase
      * Get person value
      * @return \Pggns\MidocoApi\Order\StructType\Person[]
      */
-    public function getPerson(): array
+    public function getPerson(): ?array
     {
         return $this->person;
     }
     /**
-     * This method is responsible for validating the values passed to the setPerson method
+     * This method is responsible for validating the value(s) passed to the setPerson method
      * This method is willingly generated in order to preserve the one-line inline validation within the setPerson method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validatePersonForArrayConstraintsFromSetPerson(array $values = []): string
+    public static function validatePersonForArrayConstraintFromSetPerson(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $package_infoPersonItem) {
@@ -484,10 +507,10 @@ class Package_info extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\Person[] $person
      * @return \Pggns\MidocoApi\Order\StructType\Package_info
      */
-    public function setPerson(array $person = []): self
+    public function setPerson(?array $person = null): self
     {
         // validation for constraint: array
-        if ('' !== ($personArrayErrorMessage = self::validatePersonForArrayConstraintsFromSetPerson($person))) {
+        if ('' !== ($personArrayErrorMessage = self::validatePersonForArrayConstraintFromSetPerson($person))) {
             throw new InvalidArgumentException($personArrayErrorMessage, __LINE__);
         }
         $this->person = $person;
@@ -514,18 +537,22 @@ class Package_info extends AbstractStructBase
      * Get attribute value
      * @return \Pggns\MidocoApi\Order\StructType\Attribute[]
      */
-    public function getAttribute(): array
+    public function getAttribute(): ?array
     {
         return $this->attribute;
     }
     /**
-     * This method is responsible for validating the values passed to the setAttribute method
+     * This method is responsible for validating the value(s) passed to the setAttribute method
      * This method is willingly generated in order to preserve the one-line inline validation within the setAttribute method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateAttributeForArrayConstraintsFromSetAttribute(array $values = []): string
+    public static function validateAttributeForArrayConstraintFromSetAttribute(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $package_infoAttributeItem) {
@@ -547,10 +574,10 @@ class Package_info extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\Attribute[] $attribute
      * @return \Pggns\MidocoApi\Order\StructType\Package_info
      */
-    public function setAttribute(array $attribute = []): self
+    public function setAttribute(?array $attribute = null): self
     {
         // validation for constraint: array
-        if ('' !== ($attributeArrayErrorMessage = self::validateAttributeForArrayConstraintsFromSetAttribute($attribute))) {
+        if ('' !== ($attributeArrayErrorMessage = self::validateAttributeForArrayConstraintFromSetAttribute($attribute))) {
             throw new InvalidArgumentException($attributeArrayErrorMessage, __LINE__);
         }
         $this->attribute = $attribute;
@@ -570,6 +597,29 @@ class Package_info extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('The attribute property can only contain items of type \Pggns\MidocoApi\Order\StructType\Attribute, %s given', is_object($item) ? get_class($item) : (is_array($item) ? implode(', ', $item) : gettype($item))), __LINE__);
         }
         $this->attribute[] = $item;
+        
+        return $this;
+    }
+    /**
+     * Get configuration_ref value
+     * @return int|null
+     */
+    public function getConfiguration_ref(): ?int
+    {
+        return $this->{'configuration-ref'};
+    }
+    /**
+     * Set configuration_ref value
+     * @param int $configuration_ref
+     * @return \Pggns\MidocoApi\Order\StructType\Package_info
+     */
+    public function setConfiguration_ref(?int $configuration_ref = null): self
+    {
+        // validation for constraint: int
+        if (!is_null($configuration_ref) && !(is_int($configuration_ref) || ctype_digit($configuration_ref))) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($configuration_ref, true), gettype($configuration_ref)), __LINE__);
+        }
+        $this->configuration_ref = $this->{'configuration-ref'} = $configuration_ref;
         
         return $this;
     }

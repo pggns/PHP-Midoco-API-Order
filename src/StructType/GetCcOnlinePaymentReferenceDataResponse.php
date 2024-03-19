@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetCcOnlinePaymentReferenceDataResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetCcOnlinePaymentReferenceDataResponse extends AbstractStructBase
 {
     /**

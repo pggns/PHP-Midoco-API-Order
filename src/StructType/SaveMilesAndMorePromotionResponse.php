@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: The promotion as it was saved
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveMilesAndMorePromotionResponse extends AbstractStructBase
 {
     /**

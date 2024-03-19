@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SearchTravelNoSalesResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchTravelNoSalesResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class SearchTravelNoSalesResponse extends AbstractStructBase
      * - ref: MidocoBookingInfo
      * @var \Pggns\MidocoApi\Order\StructType\MidocoBookingInfoType[]
      */
-    protected array $MidocoBookingInfo = [];
+    protected ?array $MidocoBookingInfo = null;
     /**
      * Constructor method for SearchTravelNoSalesResponse
      * @uses SearchTravelNoSalesResponse::setMidocoBookingInfo()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoBookingInfoType[] $midocoBookingInfo
      */
-    public function __construct(array $midocoBookingInfo = [])
+    public function __construct(?array $midocoBookingInfo = null)
     {
         $this
             ->setMidocoBookingInfo($midocoBookingInfo);
@@ -36,18 +37,22 @@ class SearchTravelNoSalesResponse extends AbstractStructBase
      * Get MidocoBookingInfo value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoBookingInfoType[]
      */
-    public function getMidocoBookingInfo(): array
+    public function getMidocoBookingInfo(): ?array
     {
         return $this->MidocoBookingInfo;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoBookingInfo method
+     * This method is responsible for validating the value(s) passed to the setMidocoBookingInfo method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoBookingInfo method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoBookingInfoForArrayConstraintsFromSetMidocoBookingInfo(array $values = []): string
+    public static function validateMidocoBookingInfoForArrayConstraintFromSetMidocoBookingInfo(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $searchTravelNoSalesResponseMidocoBookingInfoItem) {
@@ -69,10 +74,10 @@ class SearchTravelNoSalesResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoBookingInfoType[] $midocoBookingInfo
      * @return \Pggns\MidocoApi\Order\StructType\SearchTravelNoSalesResponse
      */
-    public function setMidocoBookingInfo(array $midocoBookingInfo = []): self
+    public function setMidocoBookingInfo(?array $midocoBookingInfo = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoBookingInfoArrayErrorMessage = self::validateMidocoBookingInfoForArrayConstraintsFromSetMidocoBookingInfo($midocoBookingInfo))) {
+        if ('' !== ($midocoBookingInfoArrayErrorMessage = self::validateMidocoBookingInfoForArrayConstraintFromSetMidocoBookingInfo($midocoBookingInfo))) {
             throw new InvalidArgumentException($midocoBookingInfoArrayErrorMessage, __LINE__);
         }
         $this->MidocoBookingInfo = $midocoBookingInfo;

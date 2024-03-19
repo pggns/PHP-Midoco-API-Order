@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetCmsHotelDataResponseType StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetCmsHotelDataResponseType extends AbstractStructBase
 {
     /**

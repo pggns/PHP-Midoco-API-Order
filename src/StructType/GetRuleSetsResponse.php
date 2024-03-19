@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetRuleSetsResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetRuleSetsResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetRuleSetsResponse extends AbstractStructBase
      * - ref: MidocoRuleSet
      * @var \Pggns\MidocoApi\Order\StructType\RulesetDTO[]
      */
-    protected array $MidocoRuleSet = [];
+    protected ?array $MidocoRuleSet = null;
     /**
      * Constructor method for GetRuleSetsResponse
      * @uses GetRuleSetsResponse::setMidocoRuleSet()
      * @param \Pggns\MidocoApi\Order\StructType\RulesetDTO[] $midocoRuleSet
      */
-    public function __construct(array $midocoRuleSet = [])
+    public function __construct(?array $midocoRuleSet = null)
     {
         $this
             ->setMidocoRuleSet($midocoRuleSet);
@@ -36,18 +37,22 @@ class GetRuleSetsResponse extends AbstractStructBase
      * Get MidocoRuleSet value
      * @return \Pggns\MidocoApi\Order\StructType\RulesetDTO[]
      */
-    public function getMidocoRuleSet(): array
+    public function getMidocoRuleSet(): ?array
     {
         return $this->MidocoRuleSet;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoRuleSet method
+     * This method is responsible for validating the value(s) passed to the setMidocoRuleSet method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoRuleSet method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoRuleSetForArrayConstraintsFromSetMidocoRuleSet(array $values = []): string
+    public static function validateMidocoRuleSetForArrayConstraintFromSetMidocoRuleSet(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getRuleSetsResponseMidocoRuleSetItem) {
@@ -69,10 +74,10 @@ class GetRuleSetsResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\RulesetDTO[] $midocoRuleSet
      * @return \Pggns\MidocoApi\Order\StructType\GetRuleSetsResponse
      */
-    public function setMidocoRuleSet(array $midocoRuleSet = []): self
+    public function setMidocoRuleSet(?array $midocoRuleSet = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoRuleSetArrayErrorMessage = self::validateMidocoRuleSetForArrayConstraintsFromSetMidocoRuleSet($midocoRuleSet))) {
+        if ('' !== ($midocoRuleSetArrayErrorMessage = self::validateMidocoRuleSetForArrayConstraintFromSetMidocoRuleSet($midocoRuleSet))) {
             throw new InvalidArgumentException($midocoRuleSetArrayErrorMessage, __LINE__);
         }
         $this->MidocoRuleSet = $midocoRuleSet;

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for OrderQmDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class OrderQmDTO extends AbstractStructBase
 {
     /**

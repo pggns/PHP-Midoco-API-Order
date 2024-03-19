@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetBillingLayoutResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetBillingLayoutResponse extends AbstractStructBase
 {
     /**

@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: getBillingPositionsForOrder -- retrieve the billing positions for the order
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetBillingPositionsForOrderRequest extends AbstractStructBase
 {
     /**

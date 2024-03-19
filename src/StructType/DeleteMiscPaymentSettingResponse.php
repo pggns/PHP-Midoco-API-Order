@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteMiscPaymentSettingResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteMiscPaymentSettingResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class DeleteMiscPaymentSettingResponse extends AbstractStructBase
      * - ref: MidocoMiscPaymentSetting
      * @var \Pggns\MidocoApi\Order\StructType\CashPaymentSettingDTO[]
      */
-    protected array $MidocoMiscPaymentSetting = [];
+    protected ?array $MidocoMiscPaymentSetting = null;
     /**
      * Constructor method for DeleteMiscPaymentSettingResponse
      * @uses DeleteMiscPaymentSettingResponse::setMidocoMiscPaymentSetting()
      * @param \Pggns\MidocoApi\Order\StructType\CashPaymentSettingDTO[] $midocoMiscPaymentSetting
      */
-    public function __construct(array $midocoMiscPaymentSetting = [])
+    public function __construct(?array $midocoMiscPaymentSetting = null)
     {
         $this
             ->setMidocoMiscPaymentSetting($midocoMiscPaymentSetting);
@@ -36,18 +37,22 @@ class DeleteMiscPaymentSettingResponse extends AbstractStructBase
      * Get MidocoMiscPaymentSetting value
      * @return \Pggns\MidocoApi\Order\StructType\CashPaymentSettingDTO[]
      */
-    public function getMidocoMiscPaymentSetting(): array
+    public function getMidocoMiscPaymentSetting(): ?array
     {
         return $this->MidocoMiscPaymentSetting;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoMiscPaymentSetting method
+     * This method is responsible for validating the value(s) passed to the setMidocoMiscPaymentSetting method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoMiscPaymentSetting method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoMiscPaymentSettingForArrayConstraintsFromSetMidocoMiscPaymentSetting(array $values = []): string
+    public static function validateMidocoMiscPaymentSettingForArrayConstraintFromSetMidocoMiscPaymentSetting(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $deleteMiscPaymentSettingResponseMidocoMiscPaymentSettingItem) {
@@ -69,10 +74,10 @@ class DeleteMiscPaymentSettingResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\CashPaymentSettingDTO[] $midocoMiscPaymentSetting
      * @return \Pggns\MidocoApi\Order\StructType\DeleteMiscPaymentSettingResponse
      */
-    public function setMidocoMiscPaymentSetting(array $midocoMiscPaymentSetting = []): self
+    public function setMidocoMiscPaymentSetting(?array $midocoMiscPaymentSetting = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoMiscPaymentSettingArrayErrorMessage = self::validateMidocoMiscPaymentSettingForArrayConstraintsFromSetMidocoMiscPaymentSetting($midocoMiscPaymentSetting))) {
+        if ('' !== ($midocoMiscPaymentSettingArrayErrorMessage = self::validateMidocoMiscPaymentSettingForArrayConstraintFromSetMidocoMiscPaymentSetting($midocoMiscPaymentSetting))) {
             throw new InvalidArgumentException($midocoMiscPaymentSettingArrayErrorMessage, __LINE__);
         }
         $this->MidocoMiscPaymentSetting = $midocoMiscPaymentSetting;

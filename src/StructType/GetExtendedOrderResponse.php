@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: getExtendedOrder --- retrieve an Order response is constructed as: - one OrderDTO - SellItemList (zero or more) -
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetExtendedOrderResponse extends AbstractStructBase
 {
     /**
@@ -30,7 +31,7 @@ class GetExtendedOrderResponse extends AbstractStructBase
      * - ref: MidocoInvoiceInfo
      * @var \Pggns\MidocoApi\Order\StructType\MidocoInvoiceInfo[]
      */
-    protected array $MidocoInvoiceInfo = [];
+    protected ?array $MidocoInvoiceInfo = null;
     /**
      * The MidocoMandate
      * Meta information extracted from the WSDL
@@ -39,7 +40,7 @@ class GetExtendedOrderResponse extends AbstractStructBase
      * - ref: crm:MidocoMandate
      * @var \Pggns\MidocoApi\Order\StructType\MidocoMandate[]
      */
-    protected array $MidocoMandate = [];
+    protected ?array $MidocoMandate = null;
     /**
      * The MidocoOrderAttributeValue
      * Meta information extracted from the WSDL
@@ -47,7 +48,7 @@ class GetExtendedOrderResponse extends AbstractStructBase
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\MidocoAttributeType[]
      */
-    protected array $MidocoOrderAttributeValue = [];
+    protected ?array $MidocoOrderAttributeValue = null;
     /**
      * The MidocoOrderMargin
      * Meta information extracted from the WSDL
@@ -64,7 +65,7 @@ class GetExtendedOrderResponse extends AbstractStructBase
      * - ref: MidocoOrderNotice
      * @var \Pggns\MidocoApi\Order\StructType\MidocoOrderNotice[]
      */
-    protected array $MidocoOrderNotice = [];
+    protected ?array $MidocoOrderNotice = null;
     /**
      * The MidocoSellItemAttributeValue
      * Meta information extracted from the WSDL
@@ -72,7 +73,7 @@ class GetExtendedOrderResponse extends AbstractStructBase
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\MidocoAttributeType[]
      */
-    protected array $MidocoSellItemAttributeValue = [];
+    protected ?array $MidocoSellItemAttributeValue = null;
     /**
      * The isReadOnlyByLockPeriod
      * Meta information extracted from the WSDL
@@ -99,7 +100,7 @@ class GetExtendedOrderResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoAttributeType[] $midocoSellItemAttributeValue
      * @param bool $isReadOnlyByLockPeriod
      */
-    public function __construct(?\Pggns\MidocoApi\Order\StructType\MidocoOrderType $midocoOrder = null, array $midocoInvoiceInfo = [], array $midocoMandate = [], array $midocoOrderAttributeValue = [], ?\Pggns\MidocoApi\Order\StructType\OrderMarginDTO $midocoOrderMargin = null, array $midocoOrderNotice = [], array $midocoSellItemAttributeValue = [], ?bool $isReadOnlyByLockPeriod = false)
+    public function __construct(?\Pggns\MidocoApi\Order\StructType\MidocoOrderType $midocoOrder = null, ?array $midocoInvoiceInfo = null, ?array $midocoMandate = null, ?array $midocoOrderAttributeValue = null, ?\Pggns\MidocoApi\Order\StructType\OrderMarginDTO $midocoOrderMargin = null, ?array $midocoOrderNotice = null, ?array $midocoSellItemAttributeValue = null, ?bool $isReadOnlyByLockPeriod = false)
     {
         $this
             ->setMidocoOrder($midocoOrder)
@@ -134,18 +135,22 @@ class GetExtendedOrderResponse extends AbstractStructBase
      * Get MidocoInvoiceInfo value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoInvoiceInfo[]
      */
-    public function getMidocoInvoiceInfo(): array
+    public function getMidocoInvoiceInfo(): ?array
     {
         return $this->MidocoInvoiceInfo;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoInvoiceInfo method
+     * This method is responsible for validating the value(s) passed to the setMidocoInvoiceInfo method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoInvoiceInfo method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoInvoiceInfoForArrayConstraintsFromSetMidocoInvoiceInfo(array $values = []): string
+    public static function validateMidocoInvoiceInfoForArrayConstraintFromSetMidocoInvoiceInfo(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getExtendedOrderResponseMidocoInvoiceInfoItem) {
@@ -167,10 +172,10 @@ class GetExtendedOrderResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoInvoiceInfo[] $midocoInvoiceInfo
      * @return \Pggns\MidocoApi\Order\StructType\GetExtendedOrderResponse
      */
-    public function setMidocoInvoiceInfo(array $midocoInvoiceInfo = []): self
+    public function setMidocoInvoiceInfo(?array $midocoInvoiceInfo = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoInvoiceInfoArrayErrorMessage = self::validateMidocoInvoiceInfoForArrayConstraintsFromSetMidocoInvoiceInfo($midocoInvoiceInfo))) {
+        if ('' !== ($midocoInvoiceInfoArrayErrorMessage = self::validateMidocoInvoiceInfoForArrayConstraintFromSetMidocoInvoiceInfo($midocoInvoiceInfo))) {
             throw new InvalidArgumentException($midocoInvoiceInfoArrayErrorMessage, __LINE__);
         }
         $this->MidocoInvoiceInfo = $midocoInvoiceInfo;
@@ -197,18 +202,22 @@ class GetExtendedOrderResponse extends AbstractStructBase
      * Get MidocoMandate value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoMandate[]
      */
-    public function getMidocoMandate(): array
+    public function getMidocoMandate(): ?array
     {
         return $this->MidocoMandate;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoMandate method
+     * This method is responsible for validating the value(s) passed to the setMidocoMandate method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoMandate method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoMandateForArrayConstraintsFromSetMidocoMandate(array $values = []): string
+    public static function validateMidocoMandateForArrayConstraintFromSetMidocoMandate(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getExtendedOrderResponseMidocoMandateItem) {
@@ -230,10 +239,10 @@ class GetExtendedOrderResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoMandate[] $midocoMandate
      * @return \Pggns\MidocoApi\Order\StructType\GetExtendedOrderResponse
      */
-    public function setMidocoMandate(array $midocoMandate = []): self
+    public function setMidocoMandate(?array $midocoMandate = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoMandateArrayErrorMessage = self::validateMidocoMandateForArrayConstraintsFromSetMidocoMandate($midocoMandate))) {
+        if ('' !== ($midocoMandateArrayErrorMessage = self::validateMidocoMandateForArrayConstraintFromSetMidocoMandate($midocoMandate))) {
             throw new InvalidArgumentException($midocoMandateArrayErrorMessage, __LINE__);
         }
         $this->MidocoMandate = $midocoMandate;
@@ -260,18 +269,22 @@ class GetExtendedOrderResponse extends AbstractStructBase
      * Get MidocoOrderAttributeValue value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoAttributeType[]
      */
-    public function getMidocoOrderAttributeValue(): array
+    public function getMidocoOrderAttributeValue(): ?array
     {
         return $this->MidocoOrderAttributeValue;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoOrderAttributeValue method
+     * This method is responsible for validating the value(s) passed to the setMidocoOrderAttributeValue method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoOrderAttributeValue method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoOrderAttributeValueForArrayConstraintsFromSetMidocoOrderAttributeValue(array $values = []): string
+    public static function validateMidocoOrderAttributeValueForArrayConstraintFromSetMidocoOrderAttributeValue(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getExtendedOrderResponseMidocoOrderAttributeValueItem) {
@@ -293,10 +306,10 @@ class GetExtendedOrderResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoAttributeType[] $midocoOrderAttributeValue
      * @return \Pggns\MidocoApi\Order\StructType\GetExtendedOrderResponse
      */
-    public function setMidocoOrderAttributeValue(array $midocoOrderAttributeValue = []): self
+    public function setMidocoOrderAttributeValue(?array $midocoOrderAttributeValue = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoOrderAttributeValueArrayErrorMessage = self::validateMidocoOrderAttributeValueForArrayConstraintsFromSetMidocoOrderAttributeValue($midocoOrderAttributeValue))) {
+        if ('' !== ($midocoOrderAttributeValueArrayErrorMessage = self::validateMidocoOrderAttributeValueForArrayConstraintFromSetMidocoOrderAttributeValue($midocoOrderAttributeValue))) {
             throw new InvalidArgumentException($midocoOrderAttributeValueArrayErrorMessage, __LINE__);
         }
         $this->MidocoOrderAttributeValue = $midocoOrderAttributeValue;
@@ -342,18 +355,22 @@ class GetExtendedOrderResponse extends AbstractStructBase
      * Get MidocoOrderNotice value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoOrderNotice[]
      */
-    public function getMidocoOrderNotice(): array
+    public function getMidocoOrderNotice(): ?array
     {
         return $this->MidocoOrderNotice;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoOrderNotice method
+     * This method is responsible for validating the value(s) passed to the setMidocoOrderNotice method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoOrderNotice method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoOrderNoticeForArrayConstraintsFromSetMidocoOrderNotice(array $values = []): string
+    public static function validateMidocoOrderNoticeForArrayConstraintFromSetMidocoOrderNotice(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getExtendedOrderResponseMidocoOrderNoticeItem) {
@@ -375,10 +392,10 @@ class GetExtendedOrderResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoOrderNotice[] $midocoOrderNotice
      * @return \Pggns\MidocoApi\Order\StructType\GetExtendedOrderResponse
      */
-    public function setMidocoOrderNotice(array $midocoOrderNotice = []): self
+    public function setMidocoOrderNotice(?array $midocoOrderNotice = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoOrderNoticeArrayErrorMessage = self::validateMidocoOrderNoticeForArrayConstraintsFromSetMidocoOrderNotice($midocoOrderNotice))) {
+        if ('' !== ($midocoOrderNoticeArrayErrorMessage = self::validateMidocoOrderNoticeForArrayConstraintFromSetMidocoOrderNotice($midocoOrderNotice))) {
             throw new InvalidArgumentException($midocoOrderNoticeArrayErrorMessage, __LINE__);
         }
         $this->MidocoOrderNotice = $midocoOrderNotice;
@@ -405,18 +422,22 @@ class GetExtendedOrderResponse extends AbstractStructBase
      * Get MidocoSellItemAttributeValue value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoAttributeType[]
      */
-    public function getMidocoSellItemAttributeValue(): array
+    public function getMidocoSellItemAttributeValue(): ?array
     {
         return $this->MidocoSellItemAttributeValue;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoSellItemAttributeValue method
+     * This method is responsible for validating the value(s) passed to the setMidocoSellItemAttributeValue method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoSellItemAttributeValue method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoSellItemAttributeValueForArrayConstraintsFromSetMidocoSellItemAttributeValue(array $values = []): string
+    public static function validateMidocoSellItemAttributeValueForArrayConstraintFromSetMidocoSellItemAttributeValue(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getExtendedOrderResponseMidocoSellItemAttributeValueItem) {
@@ -438,10 +459,10 @@ class GetExtendedOrderResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoAttributeType[] $midocoSellItemAttributeValue
      * @return \Pggns\MidocoApi\Order\StructType\GetExtendedOrderResponse
      */
-    public function setMidocoSellItemAttributeValue(array $midocoSellItemAttributeValue = []): self
+    public function setMidocoSellItemAttributeValue(?array $midocoSellItemAttributeValue = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoSellItemAttributeValueArrayErrorMessage = self::validateMidocoSellItemAttributeValueForArrayConstraintsFromSetMidocoSellItemAttributeValue($midocoSellItemAttributeValue))) {
+        if ('' !== ($midocoSellItemAttributeValueArrayErrorMessage = self::validateMidocoSellItemAttributeValueForArrayConstraintFromSetMidocoSellItemAttributeValue($midocoSellItemAttributeValue))) {
             throw new InvalidArgumentException($midocoSellItemAttributeValueArrayErrorMessage, __LINE__);
         }
         $this->MidocoSellItemAttributeValue = $midocoSellItemAttributeValue;

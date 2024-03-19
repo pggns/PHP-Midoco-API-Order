@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ModifyTssClientResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ModifyTssClientResponse extends TssApiErrorConveyingResponse
 {
     /**

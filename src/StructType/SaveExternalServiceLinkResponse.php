@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: Return the saved ExternalServiceLink.
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveExternalServiceLinkResponse extends AbstractStructBase
 {
     /**

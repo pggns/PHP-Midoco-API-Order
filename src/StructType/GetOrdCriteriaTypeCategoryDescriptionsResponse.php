@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetOrdCriteriaTypeCategoryDescriptionsResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetOrdCriteriaTypeCategoryDescriptionsResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetOrdCriteriaTypeCategoryDescriptionsResponse extends AbstractStructBase
      * - ref: MidocoOrdCriteriaTypeCategoryDescription
      * @var \Pggns\MidocoApi\Order\StructType\OrdCritTypeCatDescrDTO[]
      */
-    protected array $MidocoOrdCriteriaTypeCategoryDescription = [];
+    protected ?array $MidocoOrdCriteriaTypeCategoryDescription = null;
     /**
      * Constructor method for GetOrdCriteriaTypeCategoryDescriptionsResponse
      * @uses GetOrdCriteriaTypeCategoryDescriptionsResponse::setMidocoOrdCriteriaTypeCategoryDescription()
      * @param \Pggns\MidocoApi\Order\StructType\OrdCritTypeCatDescrDTO[] $midocoOrdCriteriaTypeCategoryDescription
      */
-    public function __construct(array $midocoOrdCriteriaTypeCategoryDescription = [])
+    public function __construct(?array $midocoOrdCriteriaTypeCategoryDescription = null)
     {
         $this
             ->setMidocoOrdCriteriaTypeCategoryDescription($midocoOrdCriteriaTypeCategoryDescription);
@@ -36,18 +37,22 @@ class GetOrdCriteriaTypeCategoryDescriptionsResponse extends AbstractStructBase
      * Get MidocoOrdCriteriaTypeCategoryDescription value
      * @return \Pggns\MidocoApi\Order\StructType\OrdCritTypeCatDescrDTO[]
      */
-    public function getMidocoOrdCriteriaTypeCategoryDescription(): array
+    public function getMidocoOrdCriteriaTypeCategoryDescription(): ?array
     {
         return $this->MidocoOrdCriteriaTypeCategoryDescription;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoOrdCriteriaTypeCategoryDescription method
+     * This method is responsible for validating the value(s) passed to the setMidocoOrdCriteriaTypeCategoryDescription method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoOrdCriteriaTypeCategoryDescription method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoOrdCriteriaTypeCategoryDescriptionForArrayConstraintsFromSetMidocoOrdCriteriaTypeCategoryDescription(array $values = []): string
+    public static function validateMidocoOrdCriteriaTypeCategoryDescriptionForArrayConstraintFromSetMidocoOrdCriteriaTypeCategoryDescription(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getOrdCriteriaTypeCategoryDescriptionsResponseMidocoOrdCriteriaTypeCategoryDescriptionItem) {
@@ -69,10 +74,10 @@ class GetOrdCriteriaTypeCategoryDescriptionsResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\OrdCritTypeCatDescrDTO[] $midocoOrdCriteriaTypeCategoryDescription
      * @return \Pggns\MidocoApi\Order\StructType\GetOrdCriteriaTypeCategoryDescriptionsResponse
      */
-    public function setMidocoOrdCriteriaTypeCategoryDescription(array $midocoOrdCriteriaTypeCategoryDescription = []): self
+    public function setMidocoOrdCriteriaTypeCategoryDescription(?array $midocoOrdCriteriaTypeCategoryDescription = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoOrdCriteriaTypeCategoryDescriptionArrayErrorMessage = self::validateMidocoOrdCriteriaTypeCategoryDescriptionForArrayConstraintsFromSetMidocoOrdCriteriaTypeCategoryDescription($midocoOrdCriteriaTypeCategoryDescription))) {
+        if ('' !== ($midocoOrdCriteriaTypeCategoryDescriptionArrayErrorMessage = self::validateMidocoOrdCriteriaTypeCategoryDescriptionForArrayConstraintFromSetMidocoOrdCriteriaTypeCategoryDescription($midocoOrdCriteriaTypeCategoryDescription))) {
             throw new InvalidArgumentException($midocoOrdCriteriaTypeCategoryDescriptionArrayErrorMessage, __LINE__);
         }
         $this->MidocoOrdCriteriaTypeCategoryDescription = $midocoOrdCriteriaTypeCategoryDescription;

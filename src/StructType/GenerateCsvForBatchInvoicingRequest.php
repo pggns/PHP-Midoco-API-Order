@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: Deprecated and replaced by GenerateInvoiceFileRequest
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GenerateCsvForBatchInvoicingRequest extends AbstractStructBase
 {
     /**
@@ -22,7 +23,7 @@ class GenerateCsvForBatchInvoicingRequest extends AbstractStructBase
      * - minOccurs: 0
      * @var int[]
      */
-    protected array $documentIds = [];
+    protected ?array $documentIds = null;
     /**
      * The customerId
      * Meta information extracted from the WSDL
@@ -56,7 +57,7 @@ class GenerateCsvForBatchInvoicingRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoMailMessageType $midocoMailMessage
      * @param bool $sendMail
      */
-    public function __construct(array $documentIds = [], ?int $customerId = null, ?\Pggns\MidocoApi\Order\StructType\MidocoMailMessageType $midocoMailMessage = null, ?bool $sendMail = null)
+    public function __construct(?array $documentIds = null, ?int $customerId = null, ?\Pggns\MidocoApi\Order\StructType\MidocoMailMessageType $midocoMailMessage = null, ?bool $sendMail = null)
     {
         $this
             ->setDocumentIds($documentIds)
@@ -68,18 +69,22 @@ class GenerateCsvForBatchInvoicingRequest extends AbstractStructBase
      * Get documentIds value
      * @return int[]
      */
-    public function getDocumentIds(): array
+    public function getDocumentIds(): ?array
     {
         return $this->documentIds;
     }
     /**
-     * This method is responsible for validating the values passed to the setDocumentIds method
+     * This method is responsible for validating the value(s) passed to the setDocumentIds method
      * This method is willingly generated in order to preserve the one-line inline validation within the setDocumentIds method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateDocumentIdsForArrayConstraintsFromSetDocumentIds(array $values = []): string
+    public static function validateDocumentIdsForArrayConstraintFromSetDocumentIds(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $generateCsvForBatchInvoicingRequestDocumentIdsItem) {
@@ -101,10 +106,10 @@ class GenerateCsvForBatchInvoicingRequest extends AbstractStructBase
      * @param int[] $documentIds
      * @return \Pggns\MidocoApi\Order\StructType\GenerateCsvForBatchInvoicingRequest
      */
-    public function setDocumentIds(array $documentIds = []): self
+    public function setDocumentIds(?array $documentIds = null): self
     {
         // validation for constraint: array
-        if ('' !== ($documentIdsArrayErrorMessage = self::validateDocumentIdsForArrayConstraintsFromSetDocumentIds($documentIds))) {
+        if ('' !== ($documentIdsArrayErrorMessage = self::validateDocumentIdsForArrayConstraintFromSetDocumentIds($documentIds))) {
             throw new InvalidArgumentException($documentIdsArrayErrorMessage, __LINE__);
         }
         $this->documentIds = $documentIds;

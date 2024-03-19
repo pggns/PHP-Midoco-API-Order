@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoSupplierSettlementInfo StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoSupplierSettlementInfo extends AbstractStructBase
 {
     /**
@@ -70,7 +71,7 @@ class MidocoSupplierSettlementInfo extends AbstractStructBase
      * - ref: MidocoSellItemError
      * @var \Pggns\MidocoApi\Order\StructType\SellItemErrorDTO[]
      */
-    protected array $MidocoSellItemError = [];
+    protected ?array $MidocoSellItemError = null;
     /**
      * The itemDescription
      * @var string|null
@@ -118,7 +119,7 @@ class MidocoSupplierSettlementInfo extends AbstractStructBase
      * @param string $supplierId
      * @param float $grantedRevenue
      */
-    public function __construct(int $itemId, int $orderId, int $orderNo, string $accountId, float $itemPrice, string $startTravel, int $noOfPers, array $midocoSellItemError = [], ?string $itemDescription = null, ?string $endDate = null, ?string $supplierId = null, ?float $grantedRevenue = null)
+    public function __construct(int $itemId, int $orderId, int $orderNo, string $accountId, float $itemPrice, string $startTravel, int $noOfPers, ?array $midocoSellItemError = null, ?string $itemDescription = null, ?string $endDate = null, ?string $supplierId = null, ?float $grantedRevenue = null)
     {
         $this
             ->setItemId($itemId)
@@ -299,18 +300,22 @@ class MidocoSupplierSettlementInfo extends AbstractStructBase
      * Get MidocoSellItemError value
      * @return \Pggns\MidocoApi\Order\StructType\SellItemErrorDTO[]
      */
-    public function getMidocoSellItemError(): array
+    public function getMidocoSellItemError(): ?array
     {
         return $this->MidocoSellItemError;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoSellItemError method
+     * This method is responsible for validating the value(s) passed to the setMidocoSellItemError method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoSellItemError method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoSellItemErrorForArrayConstraintsFromSetMidocoSellItemError(array $values = []): string
+    public static function validateMidocoSellItemErrorForArrayConstraintFromSetMidocoSellItemError(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoSupplierSettlementInfoMidocoSellItemErrorItem) {
@@ -332,10 +337,10 @@ class MidocoSupplierSettlementInfo extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\SellItemErrorDTO[] $midocoSellItemError
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSupplierSettlementInfo
      */
-    public function setMidocoSellItemError(array $midocoSellItemError = []): self
+    public function setMidocoSellItemError(?array $midocoSellItemError = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoSellItemErrorArrayErrorMessage = self::validateMidocoSellItemErrorForArrayConstraintsFromSetMidocoSellItemError($midocoSellItemError))) {
+        if ('' !== ($midocoSellItemErrorArrayErrorMessage = self::validateMidocoSellItemErrorForArrayConstraintFromSetMidocoSellItemError($midocoSellItemError))) {
             throw new InvalidArgumentException($midocoSellItemErrorArrayErrorMessage, __LINE__);
         }
         $this->MidocoSellItemError = $midocoSellItemError;

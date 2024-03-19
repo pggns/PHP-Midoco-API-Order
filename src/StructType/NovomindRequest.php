@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for NovomindRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class NovomindRequest extends AbstractStructBase
 {
     /**
@@ -35,9 +36,9 @@ class NovomindRequest extends AbstractStructBase
     protected ?string $method = null;
     /**
      * The data
-     * @var mixed|null
+     * @var string|null
      */
-    protected ?mixed $data = null;
+    protected ?string $data = null;
     /**
      * Constructor method for NovomindRequest
      * @uses NovomindRequest::setAccessToken()
@@ -49,9 +50,9 @@ class NovomindRequest extends AbstractStructBase
      * @param string $url
      * @param string $methodType
      * @param string $method
-     * @param mixed $data
+     * @param string $data
      */
-    public function __construct(?string $accessToken = null, ?string $url = null, ?string $methodType = null, ?string $method = null, ?mixed $data = null)
+    public function __construct(?string $accessToken = null, ?string $url = null, ?string $methodType = null, ?string $method = null, ?string $data = null)
     {
         $this
             ->setAccessToken($accessToken)
@@ -154,19 +155,23 @@ class NovomindRequest extends AbstractStructBase
     }
     /**
      * Get data value
-     * @return mixed|null
+     * @return string|null
      */
-    public function getData(): ?mixed
+    public function getData(): ?string
     {
         return $this->data;
     }
     /**
      * Set data value
-     * @param mixed $data
+     * @param string $data
      * @return \Pggns\MidocoApi\Order\StructType\NovomindRequest
      */
-    public function setData(?mixed $data = null): self
+    public function setData(?string $data = null): self
     {
+        // validation for constraint: string
+        if (!is_null($data) && !is_string($data)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($data, true), gettype($data)), __LINE__);
+        }
         $this->data = $data;
         
         return $this;

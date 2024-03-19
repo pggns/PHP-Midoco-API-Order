@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoAgencySettlementLevelError StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoAgencySettlementLevelError extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoMediatorProductSettlementInfo StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoMediatorProductSettlementInfo extends MedStlmntProdDTO
 {
     /**

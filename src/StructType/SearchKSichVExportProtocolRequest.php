@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SearchKSichVExportProtocolRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchKSichVExportProtocolRequest extends AbstractStructBase
 {
     /**

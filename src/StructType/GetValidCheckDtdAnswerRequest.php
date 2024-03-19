@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetValidCheckDtdAnswerRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetValidCheckDtdAnswerRequest extends AbstractStructBase
 {
     /**
@@ -20,7 +21,7 @@ class GetValidCheckDtdAnswerRequest extends AbstractStructBase
      * - minOccurs: 1
      * @var \Pggns\MidocoApi\Order\StructType\Supplier_travelType_combination[]
      */
-    protected array $supplier_travelType_combination = [];
+    protected array $supplier_travelType_combination;
     /**
      * The category
      * Meta information extracted from the WSDL
@@ -28,7 +29,7 @@ class GetValidCheckDtdAnswerRequest extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $category = [];
+    protected ?array $category = null;
     /**
      * Constructor method for GetValidCheckDtdAnswerRequest
      * @uses GetValidCheckDtdAnswerRequest::setSupplier_travelType_combination()
@@ -36,7 +37,7 @@ class GetValidCheckDtdAnswerRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\Supplier_travelType_combination[] $supplier_travelType_combination
      * @param string[] $category
      */
-    public function __construct(array $supplier_travelType_combination, array $category = [])
+    public function __construct(array $supplier_travelType_combination, ?array $category = null)
     {
         $this
             ->setSupplier_travelType_combination($supplier_travelType_combination)
@@ -51,13 +52,17 @@ class GetValidCheckDtdAnswerRequest extends AbstractStructBase
         return $this->{'supplier-travelType-combination'};
     }
     /**
-     * This method is responsible for validating the values passed to the setSupplier_travelType_combination method
+     * This method is responsible for validating the value(s) passed to the setSupplier_travelType_combination method
      * This method is willingly generated in order to preserve the one-line inline validation within the setSupplier_travelType_combination method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateSupplier_travelType_combinationForArrayConstraintsFromSetSupplier_travelType_combination(array $values = []): string
+    public static function validateSupplier_travelType_combinationForArrayConstraintFromSetSupplier_travelType_combination(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getValidCheckDtdAnswerRequestSupplier_travelType_combinationItem) {
@@ -82,7 +87,7 @@ class GetValidCheckDtdAnswerRequest extends AbstractStructBase
     public function setSupplier_travelType_combination(array $supplier_travelType_combination): self
     {
         // validation for constraint: array
-        if ('' !== ($supplier_travelType_combinationArrayErrorMessage = self::validateSupplier_travelType_combinationForArrayConstraintsFromSetSupplier_travelType_combination($supplier_travelType_combination))) {
+        if ('' !== ($supplier_travelType_combinationArrayErrorMessage = self::validateSupplier_travelType_combinationForArrayConstraintFromSetSupplier_travelType_combination($supplier_travelType_combination))) {
             throw new InvalidArgumentException($supplier_travelType_combinationArrayErrorMessage, __LINE__);
         }
         $this->supplier_travelType_combination = $this->{'supplier-travelType-combination'} = $supplier_travelType_combination;
@@ -109,18 +114,22 @@ class GetValidCheckDtdAnswerRequest extends AbstractStructBase
      * Get category value
      * @return string[]
      */
-    public function getCategory(): array
+    public function getCategory(): ?array
     {
         return $this->category;
     }
     /**
-     * This method is responsible for validating the values passed to the setCategory method
+     * This method is responsible for validating the value(s) passed to the setCategory method
      * This method is willingly generated in order to preserve the one-line inline validation within the setCategory method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateCategoryForArrayConstraintsFromSetCategory(array $values = []): string
+    public static function validateCategoryForArrayConstraintFromSetCategory(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getValidCheckDtdAnswerRequestCategoryItem) {
@@ -142,10 +151,10 @@ class GetValidCheckDtdAnswerRequest extends AbstractStructBase
      * @param string[] $category
      * @return \Pggns\MidocoApi\Order\StructType\GetValidCheckDtdAnswerRequest
      */
-    public function setCategory(array $category = []): self
+    public function setCategory(?array $category = null): self
     {
         // validation for constraint: array
-        if ('' !== ($categoryArrayErrorMessage = self::validateCategoryForArrayConstraintsFromSetCategory($category))) {
+        if ('' !== ($categoryArrayErrorMessage = self::validateCategoryForArrayConstraintFromSetCategory($category))) {
             throw new InvalidArgumentException($categoryArrayErrorMessage, __LINE__);
         }
         $this->category = $category;

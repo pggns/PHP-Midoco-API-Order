@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CcOnlinePaymentMetadata StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CcOnlinePaymentMetadata extends AbstractStructBase
 {
     /**
@@ -20,13 +21,13 @@ class CcOnlinePaymentMetadata extends AbstractStructBase
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\CcOnlineMetadataEntry[]
      */
-    protected array $CcOnlineMetadataEntry = [];
+    protected ?array $CcOnlineMetadataEntry = null;
     /**
      * Constructor method for CcOnlinePaymentMetadata
      * @uses CcOnlinePaymentMetadata::setCcOnlineMetadataEntry()
      * @param \Pggns\MidocoApi\Order\StructType\CcOnlineMetadataEntry[] $ccOnlineMetadataEntry
      */
-    public function __construct(array $ccOnlineMetadataEntry = [])
+    public function __construct(?array $ccOnlineMetadataEntry = null)
     {
         $this
             ->setCcOnlineMetadataEntry($ccOnlineMetadataEntry);
@@ -35,18 +36,22 @@ class CcOnlinePaymentMetadata extends AbstractStructBase
      * Get CcOnlineMetadataEntry value
      * @return \Pggns\MidocoApi\Order\StructType\CcOnlineMetadataEntry[]
      */
-    public function getCcOnlineMetadataEntry(): array
+    public function getCcOnlineMetadataEntry(): ?array
     {
         return $this->CcOnlineMetadataEntry;
     }
     /**
-     * This method is responsible for validating the values passed to the setCcOnlineMetadataEntry method
+     * This method is responsible for validating the value(s) passed to the setCcOnlineMetadataEntry method
      * This method is willingly generated in order to preserve the one-line inline validation within the setCcOnlineMetadataEntry method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateCcOnlineMetadataEntryForArrayConstraintsFromSetCcOnlineMetadataEntry(array $values = []): string
+    public static function validateCcOnlineMetadataEntryForArrayConstraintFromSetCcOnlineMetadataEntry(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $ccOnlinePaymentMetadataCcOnlineMetadataEntryItem) {
@@ -68,10 +73,10 @@ class CcOnlinePaymentMetadata extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\CcOnlineMetadataEntry[] $ccOnlineMetadataEntry
      * @return \Pggns\MidocoApi\Order\StructType\CcOnlinePaymentMetadata
      */
-    public function setCcOnlineMetadataEntry(array $ccOnlineMetadataEntry = []): self
+    public function setCcOnlineMetadataEntry(?array $ccOnlineMetadataEntry = null): self
     {
         // validation for constraint: array
-        if ('' !== ($ccOnlineMetadataEntryArrayErrorMessage = self::validateCcOnlineMetadataEntryForArrayConstraintsFromSetCcOnlineMetadataEntry($ccOnlineMetadataEntry))) {
+        if ('' !== ($ccOnlineMetadataEntryArrayErrorMessage = self::validateCcOnlineMetadataEntryForArrayConstraintFromSetCcOnlineMetadataEntry($ccOnlineMetadataEntry))) {
             throw new InvalidArgumentException($ccOnlineMetadataEntryArrayErrorMessage, __LINE__);
         }
         $this->CcOnlineMetadataEntry = $ccOnlineMetadataEntry;

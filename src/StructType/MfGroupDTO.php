@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MfGroupDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MfGroupDTO extends AbstractStructBase
 {
     /**

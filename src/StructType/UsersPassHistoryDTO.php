@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for UsersPassHistoryDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class UsersPassHistoryDTO extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for FeeRateDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class FeeRateDTO extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetTravelNoMargins4SettlTypeResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetTravelNoMargins4SettlTypeResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetTravelNoMargins4SettlTypeResponse extends AbstractStructBase
      * - ref: MidocoTravelNoMarginSettlType
      * @var \Pggns\MidocoApi\Order\StructType\MidocoTravelNoMarginSettlType[]
      */
-    protected array $MidocoTravelNoMarginSettlType = [];
+    protected ?array $MidocoTravelNoMarginSettlType = null;
     /**
      * Constructor method for GetTravelNoMargins4SettlTypeResponse
      * @uses GetTravelNoMargins4SettlTypeResponse::setMidocoTravelNoMarginSettlType()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoTravelNoMarginSettlType[] $midocoTravelNoMarginSettlType
      */
-    public function __construct(array $midocoTravelNoMarginSettlType = [])
+    public function __construct(?array $midocoTravelNoMarginSettlType = null)
     {
         $this
             ->setMidocoTravelNoMarginSettlType($midocoTravelNoMarginSettlType);
@@ -36,18 +37,22 @@ class GetTravelNoMargins4SettlTypeResponse extends AbstractStructBase
      * Get MidocoTravelNoMarginSettlType value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoTravelNoMarginSettlType[]
      */
-    public function getMidocoTravelNoMarginSettlType(): array
+    public function getMidocoTravelNoMarginSettlType(): ?array
     {
         return $this->MidocoTravelNoMarginSettlType;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoTravelNoMarginSettlType method
+     * This method is responsible for validating the value(s) passed to the setMidocoTravelNoMarginSettlType method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoTravelNoMarginSettlType method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoTravelNoMarginSettlTypeForArrayConstraintsFromSetMidocoTravelNoMarginSettlType(array $values = []): string
+    public static function validateMidocoTravelNoMarginSettlTypeForArrayConstraintFromSetMidocoTravelNoMarginSettlType(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getTravelNoMargins4SettlTypeResponseMidocoTravelNoMarginSettlTypeItem) {
@@ -69,10 +74,10 @@ class GetTravelNoMargins4SettlTypeResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoTravelNoMarginSettlType[] $midocoTravelNoMarginSettlType
      * @return \Pggns\MidocoApi\Order\StructType\GetTravelNoMargins4SettlTypeResponse
      */
-    public function setMidocoTravelNoMarginSettlType(array $midocoTravelNoMarginSettlType = []): self
+    public function setMidocoTravelNoMarginSettlType(?array $midocoTravelNoMarginSettlType = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoTravelNoMarginSettlTypeArrayErrorMessage = self::validateMidocoTravelNoMarginSettlTypeForArrayConstraintsFromSetMidocoTravelNoMarginSettlType($midocoTravelNoMarginSettlType))) {
+        if ('' !== ($midocoTravelNoMarginSettlTypeArrayErrorMessage = self::validateMidocoTravelNoMarginSettlTypeForArrayConstraintFromSetMidocoTravelNoMarginSettlType($midocoTravelNoMarginSettlType))) {
             throw new InvalidArgumentException($midocoTravelNoMarginSettlTypeArrayErrorMessage, __LINE__);
         }
         $this->MidocoTravelNoMarginSettlType = $midocoTravelNoMarginSettlType;

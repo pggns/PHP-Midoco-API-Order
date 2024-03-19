@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveTravelCMSResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveTravelCMSResponse extends AbstractStructBase
 {
     /**

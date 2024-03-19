@@ -11,26 +11,27 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for NovomindNewEmailJSONRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class NovomindNewEmailJSONRequest extends AbstractStructBase
 {
     /**
      * The midocoMail
-     * @var mixed|null
+     * @var string|null
      */
-    protected ?mixed $midocoMail = null;
+    protected ?string $midocoMail = null;
     /**
      * The map
-     * @var mixed|null
+     * @var string|null
      */
-    protected ?mixed $map = null;
+    protected ?string $map = null;
     /**
      * Constructor method for NovomindNewEmailJSONRequest
      * @uses NovomindNewEmailJSONRequest::setMidocoMail()
      * @uses NovomindNewEmailJSONRequest::setMap()
-     * @param mixed $midocoMail
-     * @param mixed $map
+     * @param string $midocoMail
+     * @param string $map
      */
-    public function __construct(?mixed $midocoMail = null, ?mixed $map = null)
+    public function __construct(?string $midocoMail = null, ?string $map = null)
     {
         $this
             ->setMidocoMail($midocoMail)
@@ -38,38 +39,46 @@ class NovomindNewEmailJSONRequest extends AbstractStructBase
     }
     /**
      * Get midocoMail value
-     * @return mixed|null
+     * @return string|null
      */
-    public function getMidocoMail(): ?mixed
+    public function getMidocoMail(): ?string
     {
         return $this->midocoMail;
     }
     /**
      * Set midocoMail value
-     * @param mixed $midocoMail
+     * @param string $midocoMail
      * @return \Pggns\MidocoApi\Order\StructType\NovomindNewEmailJSONRequest
      */
-    public function setMidocoMail(?mixed $midocoMail = null): self
+    public function setMidocoMail(?string $midocoMail = null): self
     {
+        // validation for constraint: string
+        if (!is_null($midocoMail) && !is_string($midocoMail)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($midocoMail, true), gettype($midocoMail)), __LINE__);
+        }
         $this->midocoMail = $midocoMail;
         
         return $this;
     }
     /**
      * Get map value
-     * @return mixed|null
+     * @return string|null
      */
-    public function getMap(): ?mixed
+    public function getMap(): ?string
     {
         return $this->map;
     }
     /**
      * Set map value
-     * @param mixed $map
+     * @param string $map
      * @return \Pggns\MidocoApi\Order\StructType\NovomindNewEmailJSONRequest
      */
-    public function setMap(?mixed $map = null): self
+    public function setMap(?string $map = null): self
     {
+        // validation for constraint: string
+        if (!is_null($map) && !is_string($map)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($map, true), gettype($map)), __LINE__);
+        }
         $this->map = $map;
         
         return $this;

@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: deleteSupplierSettlementErrorsForItem --- deletes all the errors corresponding to the given item id
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteSupplierSettlementErrorsForItemResponse extends AbstractStructBase
 {
 }

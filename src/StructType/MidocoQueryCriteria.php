@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoQueryCriteria StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoQueryCriteria extends AbstractStructBase
 {
     /**
@@ -20,7 +21,7 @@ class MidocoQueryCriteria extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $value = [];
+    protected ?array $value = null;
     /**
      * The fieldName
      * @var string|null
@@ -61,7 +62,7 @@ class MidocoQueryCriteria extends AbstractStructBase
      * @param bool $visible
      * @param bool $isCaseInsensitive
      */
-    public function __construct(array $value = [], ?string $fieldName = null, ?bool $compareWithField = null, ?string $opName = null, ?bool $visible = null, ?bool $isCaseInsensitive = null)
+    public function __construct(?array $value = null, ?string $fieldName = null, ?bool $compareWithField = null, ?string $opName = null, ?bool $visible = null, ?bool $isCaseInsensitive = null)
     {
         $this
             ->setValue($value)
@@ -75,18 +76,22 @@ class MidocoQueryCriteria extends AbstractStructBase
      * Get value value
      * @return string[]
      */
-    public function getValue(): array
+    public function getValue(): ?array
     {
         return $this->value;
     }
     /**
-     * This method is responsible for validating the values passed to the setValue method
+     * This method is responsible for validating the value(s) passed to the setValue method
      * This method is willingly generated in order to preserve the one-line inline validation within the setValue method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateValueForArrayConstraintsFromSetValue(array $values = []): string
+    public static function validateValueForArrayConstraintFromSetValue(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoQueryCriteriaValueItem) {
@@ -108,10 +113,10 @@ class MidocoQueryCriteria extends AbstractStructBase
      * @param string[] $value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoQueryCriteria
      */
-    public function setValue(array $value = []): self
+    public function setValue(?array $value = null): self
     {
         // validation for constraint: array
-        if ('' !== ($valueArrayErrorMessage = self::validateValueForArrayConstraintsFromSetValue($value))) {
+        if ('' !== ($valueArrayErrorMessage = self::validateValueForArrayConstraintFromSetValue($value))) {
             throw new InvalidArgumentException($valueArrayErrorMessage, __LINE__);
         }
         $this->value = $value;

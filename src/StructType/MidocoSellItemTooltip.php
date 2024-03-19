@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoSellItemTooltip StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoSellItemTooltip extends AbstractStructBase
 {
     /**

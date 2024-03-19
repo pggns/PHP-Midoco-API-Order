@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveMidocoBonusCalculationResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveMidocoBonusCalculationResponse extends AbstractStructBase
 {
     /**
@@ -20,7 +21,7 @@ class SaveMidocoBonusCalculationResponse extends AbstractStructBase
      * - minOccurs: 0
      * @var int[]
      */
-    protected array $users = [];
+    protected ?array $users = null;
     /**
      * The bonusId
      * @var int|null
@@ -33,7 +34,7 @@ class SaveMidocoBonusCalculationResponse extends AbstractStructBase
      * @param int[] $users
      * @param int $bonusId
      */
-    public function __construct(array $users = [], ?int $bonusId = null)
+    public function __construct(?array $users = null, ?int $bonusId = null)
     {
         $this
             ->setUsers($users)
@@ -43,18 +44,22 @@ class SaveMidocoBonusCalculationResponse extends AbstractStructBase
      * Get users value
      * @return int[]
      */
-    public function getUsers(): array
+    public function getUsers(): ?array
     {
         return $this->users;
     }
     /**
-     * This method is responsible for validating the values passed to the setUsers method
+     * This method is responsible for validating the value(s) passed to the setUsers method
      * This method is willingly generated in order to preserve the one-line inline validation within the setUsers method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateUsersForArrayConstraintsFromSetUsers(array $values = []): string
+    public static function validateUsersForArrayConstraintFromSetUsers(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $saveMidocoBonusCalculationResponseUsersItem) {
@@ -76,10 +81,10 @@ class SaveMidocoBonusCalculationResponse extends AbstractStructBase
      * @param int[] $users
      * @return \Pggns\MidocoApi\Order\StructType\SaveMidocoBonusCalculationResponse
      */
-    public function setUsers(array $users = []): self
+    public function setUsers(?array $users = null): self
     {
         // validation for constraint: array
-        if ('' !== ($usersArrayErrorMessage = self::validateUsersForArrayConstraintsFromSetUsers($users))) {
+        if ('' !== ($usersArrayErrorMessage = self::validateUsersForArrayConstraintFromSetUsers($users))) {
             throw new InvalidArgumentException($usersArrayErrorMessage, __LINE__);
         }
         $this->users = $users;

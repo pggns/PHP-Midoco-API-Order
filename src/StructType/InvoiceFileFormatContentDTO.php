@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for InvoiceFileFormatContentDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class InvoiceFileFormatContentDTO extends AbstractStructBase
 {
     /**

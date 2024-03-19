@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for VoidReceiptRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class VoidReceiptRequest extends AbstractStructBase
 {
     /**
@@ -28,7 +29,7 @@ class VoidReceiptRequest extends AbstractStructBase
      * - ref: ReceiptPositioninfo
      * @var \Pggns\MidocoApi\Order\StructType\ReceiptPositioninfo[]
      */
-    protected array $ReceiptPositioninfo = [];
+    protected ?array $ReceiptPositioninfo = null;
     /**
      * The ReceiptOnlinePaymentInfo
      * Meta information extracted from the WSDL
@@ -56,7 +57,7 @@ class VoidReceiptRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\ReceiptOnlinePaymentInfo $receiptOnlinePaymentInfo
      * @param bool $doPrint
      */
-    public function __construct(int $receiptId, array $receiptPositioninfo = [], ?\Pggns\MidocoApi\Order\StructType\ReceiptOnlinePaymentInfo $receiptOnlinePaymentInfo = null, ?bool $doPrint = false)
+    public function __construct(int $receiptId, ?array $receiptPositioninfo = null, ?\Pggns\MidocoApi\Order\StructType\ReceiptOnlinePaymentInfo $receiptOnlinePaymentInfo = null, ?bool $doPrint = false)
     {
         $this
             ->setReceiptId($receiptId)
@@ -91,18 +92,22 @@ class VoidReceiptRequest extends AbstractStructBase
      * Get ReceiptPositioninfo value
      * @return \Pggns\MidocoApi\Order\StructType\ReceiptPositioninfo[]
      */
-    public function getReceiptPositioninfo(): array
+    public function getReceiptPositioninfo(): ?array
     {
         return $this->ReceiptPositioninfo;
     }
     /**
-     * This method is responsible for validating the values passed to the setReceiptPositioninfo method
+     * This method is responsible for validating the value(s) passed to the setReceiptPositioninfo method
      * This method is willingly generated in order to preserve the one-line inline validation within the setReceiptPositioninfo method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateReceiptPositioninfoForArrayConstraintsFromSetReceiptPositioninfo(array $values = []): string
+    public static function validateReceiptPositioninfoForArrayConstraintFromSetReceiptPositioninfo(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $voidReceiptRequestReceiptPositioninfoItem) {
@@ -124,10 +129,10 @@ class VoidReceiptRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\ReceiptPositioninfo[] $receiptPositioninfo
      * @return \Pggns\MidocoApi\Order\StructType\VoidReceiptRequest
      */
-    public function setReceiptPositioninfo(array $receiptPositioninfo = []): self
+    public function setReceiptPositioninfo(?array $receiptPositioninfo = null): self
     {
         // validation for constraint: array
-        if ('' !== ($receiptPositioninfoArrayErrorMessage = self::validateReceiptPositioninfoForArrayConstraintsFromSetReceiptPositioninfo($receiptPositioninfo))) {
+        if ('' !== ($receiptPositioninfoArrayErrorMessage = self::validateReceiptPositioninfoForArrayConstraintFromSetReceiptPositioninfo($receiptPositioninfo))) {
             throw new InvalidArgumentException($receiptPositioninfoArrayErrorMessage, __LINE__);
         }
         $this->ReceiptPositioninfo = $receiptPositioninfo;

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetSupplierAddressListResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetSupplierAddressListResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetSupplierAddressListResponse extends AbstractStructBase
      * - ref: MidocoSupplierAddress
      * @var \Pggns\MidocoApi\Order\StructType\MidocoSupplierAddress[]
      */
-    protected array $MidocoSupplierAddress = [];
+    protected ?array $MidocoSupplierAddress = null;
     /**
      * Constructor method for GetSupplierAddressListResponse
      * @uses GetSupplierAddressListResponse::setMidocoSupplierAddress()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSupplierAddress[] $midocoSupplierAddress
      */
-    public function __construct(array $midocoSupplierAddress = [])
+    public function __construct(?array $midocoSupplierAddress = null)
     {
         $this
             ->setMidocoSupplierAddress($midocoSupplierAddress);
@@ -36,18 +37,22 @@ class GetSupplierAddressListResponse extends AbstractStructBase
      * Get MidocoSupplierAddress value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSupplierAddress[]
      */
-    public function getMidocoSupplierAddress(): array
+    public function getMidocoSupplierAddress(): ?array
     {
         return $this->MidocoSupplierAddress;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoSupplierAddress method
+     * This method is responsible for validating the value(s) passed to the setMidocoSupplierAddress method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoSupplierAddress method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoSupplierAddressForArrayConstraintsFromSetMidocoSupplierAddress(array $values = []): string
+    public static function validateMidocoSupplierAddressForArrayConstraintFromSetMidocoSupplierAddress(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getSupplierAddressListResponseMidocoSupplierAddressItem) {
@@ -69,10 +74,10 @@ class GetSupplierAddressListResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSupplierAddress[] $midocoSupplierAddress
      * @return \Pggns\MidocoApi\Order\StructType\GetSupplierAddressListResponse
      */
-    public function setMidocoSupplierAddress(array $midocoSupplierAddress = []): self
+    public function setMidocoSupplierAddress(?array $midocoSupplierAddress = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoSupplierAddressArrayErrorMessage = self::validateMidocoSupplierAddressForArrayConstraintsFromSetMidocoSupplierAddress($midocoSupplierAddress))) {
+        if ('' !== ($midocoSupplierAddressArrayErrorMessage = self::validateMidocoSupplierAddressForArrayConstraintFromSetMidocoSupplierAddress($midocoSupplierAddress))) {
             throw new InvalidArgumentException($midocoSupplierAddressArrayErrorMessage, __LINE__);
         }
         $this->MidocoSupplierAddress = $midocoSupplierAddress;

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CheckCreditLimitRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CheckCreditLimitRequest extends AbstractStructBase
 {
     /**

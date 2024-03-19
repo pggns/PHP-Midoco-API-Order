@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoAdviceSettlementDetailInfo StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoAdviceSettlementDetailInfo extends AdviceSettlemDetailDTO
 {
     /**
@@ -21,7 +22,7 @@ class MidocoAdviceSettlementDetailInfo extends AdviceSettlemDetailDTO
      * - ref: MidocoAdviceDetailVatDiv
      * @var \Pggns\MidocoApi\Order\StructType\MidocoAdviceDetailVatDiv[]
      */
-    protected array $MidocoAdviceDetailVatDiv = [];
+    protected ?array $MidocoAdviceDetailVatDiv = null;
     /**
      * The foreignCurrency
      * @var string|null
@@ -125,7 +126,7 @@ class MidocoAdviceSettlementDetailInfo extends AdviceSettlemDetailDTO
      * @param float $foreignInkassoPrice
      * @param float $foreignFeeAmount
      */
-    public function __construct(array $midocoAdviceDetailVatDiv = [], ?string $foreignCurrency = null, ?float $foreignRevenueInclVat = null, ?float $foreignRevenueVatFree = null, ?float $foreignRevenueInsurance = null, ?float $foreignSupplierInvoice = null, ?float $foreignVatAmount = null, ?float $foreignNettoAmount = null, ?float $foreignTotalPrice = null, ?float $foreignTravelPrice = null, ?float $foreignSupplierDiAmount = null, ?float $foreignCalculatedRevenue = null, ?float $foreignGrantedRevenue = null, ?float $foreignInkassoPrice = null, ?float $foreignFeeAmount = null)
+    public function __construct(?array $midocoAdviceDetailVatDiv = null, ?string $foreignCurrency = null, ?float $foreignRevenueInclVat = null, ?float $foreignRevenueVatFree = null, ?float $foreignRevenueInsurance = null, ?float $foreignSupplierInvoice = null, ?float $foreignVatAmount = null, ?float $foreignNettoAmount = null, ?float $foreignTotalPrice = null, ?float $foreignTravelPrice = null, ?float $foreignSupplierDiAmount = null, ?float $foreignCalculatedRevenue = null, ?float $foreignGrantedRevenue = null, ?float $foreignInkassoPrice = null, ?float $foreignFeeAmount = null)
     {
         $this
             ->setMidocoAdviceDetailVatDiv($midocoAdviceDetailVatDiv)
@@ -148,18 +149,22 @@ class MidocoAdviceSettlementDetailInfo extends AdviceSettlemDetailDTO
      * Get MidocoAdviceDetailVatDiv value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoAdviceDetailVatDiv[]
      */
-    public function getMidocoAdviceDetailVatDiv(): array
+    public function getMidocoAdviceDetailVatDiv(): ?array
     {
         return $this->MidocoAdviceDetailVatDiv;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoAdviceDetailVatDiv method
+     * This method is responsible for validating the value(s) passed to the setMidocoAdviceDetailVatDiv method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoAdviceDetailVatDiv method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoAdviceDetailVatDivForArrayConstraintsFromSetMidocoAdviceDetailVatDiv(array $values = []): string
+    public static function validateMidocoAdviceDetailVatDivForArrayConstraintFromSetMidocoAdviceDetailVatDiv(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoAdviceSettlementDetailInfoMidocoAdviceDetailVatDivItem) {
@@ -181,10 +186,10 @@ class MidocoAdviceSettlementDetailInfo extends AdviceSettlemDetailDTO
      * @param \Pggns\MidocoApi\Order\StructType\MidocoAdviceDetailVatDiv[] $midocoAdviceDetailVatDiv
      * @return \Pggns\MidocoApi\Order\StructType\MidocoAdviceSettlementDetailInfo
      */
-    public function setMidocoAdviceDetailVatDiv(array $midocoAdviceDetailVatDiv = []): self
+    public function setMidocoAdviceDetailVatDiv(?array $midocoAdviceDetailVatDiv = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoAdviceDetailVatDivArrayErrorMessage = self::validateMidocoAdviceDetailVatDivForArrayConstraintsFromSetMidocoAdviceDetailVatDiv($midocoAdviceDetailVatDiv))) {
+        if ('' !== ($midocoAdviceDetailVatDivArrayErrorMessage = self::validateMidocoAdviceDetailVatDivForArrayConstraintFromSetMidocoAdviceDetailVatDiv($midocoAdviceDetailVatDiv))) {
             throw new InvalidArgumentException($midocoAdviceDetailVatDivArrayErrorMessage, __LINE__);
         }
         $this->MidocoAdviceDetailVatDiv = $midocoAdviceDetailVatDiv;

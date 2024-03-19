@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetLastImportedCrsRemarksRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetLastImportedCrsRemarksRequest extends AbstractStructBase
 {
     /**

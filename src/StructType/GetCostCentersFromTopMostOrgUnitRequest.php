@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetCostCentersFromTopMostOrgUnitRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetCostCentersFromTopMostOrgUnitRequest extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteDatastoreRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteDatastoreRequest extends AbstractStructBase
 {
     /**

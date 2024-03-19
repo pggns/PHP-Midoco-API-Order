@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for FeeMultiEditRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class FeeMultiEditRequest extends AbstractStructBase
 {
     /**
@@ -21,7 +22,7 @@ class FeeMultiEditRequest extends AbstractStructBase
      * - ref: MidocoFeeMultiEdit
      * @var \Pggns\MidocoApi\Order\StructType\MidocoFeeMultiEdit[]
      */
-    protected array $MidocoFeeMultiEdit = [];
+    protected ?array $MidocoFeeMultiEdit = null;
     /**
      * The MidocoFeeGroupAssign
      * Meta information extracted from the WSDL
@@ -30,7 +31,7 @@ class FeeMultiEditRequest extends AbstractStructBase
      * - ref: MidocoFeeGroupAssign
      * @var \Pggns\MidocoApi\Order\StructType\MidocoFeeGroupAssign[]
      */
-    protected array $MidocoFeeGroupAssign = [];
+    protected ?array $MidocoFeeGroupAssign = null;
     /**
      * Constructor method for FeeMultiEditRequest
      * @uses FeeMultiEditRequest::setMidocoFeeMultiEdit()
@@ -38,7 +39,7 @@ class FeeMultiEditRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoFeeMultiEdit[] $midocoFeeMultiEdit
      * @param \Pggns\MidocoApi\Order\StructType\MidocoFeeGroupAssign[] $midocoFeeGroupAssign
      */
-    public function __construct(array $midocoFeeMultiEdit = [], array $midocoFeeGroupAssign = [])
+    public function __construct(?array $midocoFeeMultiEdit = null, ?array $midocoFeeGroupAssign = null)
     {
         $this
             ->setMidocoFeeMultiEdit($midocoFeeMultiEdit)
@@ -48,18 +49,22 @@ class FeeMultiEditRequest extends AbstractStructBase
      * Get MidocoFeeMultiEdit value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoFeeMultiEdit[]
      */
-    public function getMidocoFeeMultiEdit(): array
+    public function getMidocoFeeMultiEdit(): ?array
     {
         return $this->MidocoFeeMultiEdit;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoFeeMultiEdit method
+     * This method is responsible for validating the value(s) passed to the setMidocoFeeMultiEdit method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoFeeMultiEdit method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoFeeMultiEditForArrayConstraintsFromSetMidocoFeeMultiEdit(array $values = []): string
+    public static function validateMidocoFeeMultiEditForArrayConstraintFromSetMidocoFeeMultiEdit(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $feeMultiEditRequestMidocoFeeMultiEditItem) {
@@ -81,10 +86,10 @@ class FeeMultiEditRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoFeeMultiEdit[] $midocoFeeMultiEdit
      * @return \Pggns\MidocoApi\Order\StructType\FeeMultiEditRequest
      */
-    public function setMidocoFeeMultiEdit(array $midocoFeeMultiEdit = []): self
+    public function setMidocoFeeMultiEdit(?array $midocoFeeMultiEdit = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoFeeMultiEditArrayErrorMessage = self::validateMidocoFeeMultiEditForArrayConstraintsFromSetMidocoFeeMultiEdit($midocoFeeMultiEdit))) {
+        if ('' !== ($midocoFeeMultiEditArrayErrorMessage = self::validateMidocoFeeMultiEditForArrayConstraintFromSetMidocoFeeMultiEdit($midocoFeeMultiEdit))) {
             throw new InvalidArgumentException($midocoFeeMultiEditArrayErrorMessage, __LINE__);
         }
         $this->MidocoFeeMultiEdit = $midocoFeeMultiEdit;
@@ -111,18 +116,22 @@ class FeeMultiEditRequest extends AbstractStructBase
      * Get MidocoFeeGroupAssign value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoFeeGroupAssign[]
      */
-    public function getMidocoFeeGroupAssign(): array
+    public function getMidocoFeeGroupAssign(): ?array
     {
         return $this->MidocoFeeGroupAssign;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoFeeGroupAssign method
+     * This method is responsible for validating the value(s) passed to the setMidocoFeeGroupAssign method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoFeeGroupAssign method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoFeeGroupAssignForArrayConstraintsFromSetMidocoFeeGroupAssign(array $values = []): string
+    public static function validateMidocoFeeGroupAssignForArrayConstraintFromSetMidocoFeeGroupAssign(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $feeMultiEditRequestMidocoFeeGroupAssignItem) {
@@ -144,10 +153,10 @@ class FeeMultiEditRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoFeeGroupAssign[] $midocoFeeGroupAssign
      * @return \Pggns\MidocoApi\Order\StructType\FeeMultiEditRequest
      */
-    public function setMidocoFeeGroupAssign(array $midocoFeeGroupAssign = []): self
+    public function setMidocoFeeGroupAssign(?array $midocoFeeGroupAssign = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoFeeGroupAssignArrayErrorMessage = self::validateMidocoFeeGroupAssignForArrayConstraintsFromSetMidocoFeeGroupAssign($midocoFeeGroupAssign))) {
+        if ('' !== ($midocoFeeGroupAssignArrayErrorMessage = self::validateMidocoFeeGroupAssignForArrayConstraintFromSetMidocoFeeGroupAssign($midocoFeeGroupAssign))) {
             throw new InvalidArgumentException($midocoFeeGroupAssignArrayErrorMessage, __LINE__);
         }
         $this->MidocoFeeGroupAssign = $midocoFeeGroupAssign;

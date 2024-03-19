@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetBookingInfo4KickbackRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetBookingInfo4KickbackRequest extends AbstractStructBase
 {
     /**

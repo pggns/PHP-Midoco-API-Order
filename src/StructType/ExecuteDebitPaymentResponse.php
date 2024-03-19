@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ExecuteDebitPaymentResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ExecuteDebitPaymentResponse extends AbstractStructBase
 {
     /**

@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: Searches for voucher by a its voucherNo. If there is no voucherNo in request, it searches for all vouchers. (voucherlisting)
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetExistingVoucherNumberRequest extends AbstractStructBase
 {
     /**
@@ -74,7 +75,7 @@ class GetExistingVoucherNumberRequest extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $voucherTypeId = [];
+    protected ?array $voucherTypeId = null;
     /**
      * Constructor method for GetExistingVoucherNumberRequest
      * @uses GetExistingVoucherNumberRequest::setVoucherNo()
@@ -98,7 +99,7 @@ class GetExistingVoucherNumberRequest extends AbstractStructBase
      * @param bool $extendedInfo
      * @param string[] $voucherTypeId
      */
-    public function __construct(?string $voucherNo = null, ?string $voucherType = null, ?string $dateFrom = null, ?string $dateUntil = null, ?string $securityCode = null, ?int $sellitemId = null, ?string $unitName = null, ?bool $showWithZeroPrice = null, ?bool $extendedInfo = null, array $voucherTypeId = [])
+    public function __construct(?string $voucherNo = null, ?string $voucherType = null, ?string $dateFrom = null, ?string $dateUntil = null, ?string $securityCode = null, ?int $sellitemId = null, ?string $unitName = null, ?bool $showWithZeroPrice = null, ?bool $extendedInfo = null, ?array $voucherTypeId = null)
     {
         $this
             ->setVoucherNo($voucherNo)
@@ -323,18 +324,22 @@ class GetExistingVoucherNumberRequest extends AbstractStructBase
      * Get voucherTypeId value
      * @return string[]
      */
-    public function getVoucherTypeId(): array
+    public function getVoucherTypeId(): ?array
     {
         return $this->voucherTypeId;
     }
     /**
-     * This method is responsible for validating the values passed to the setVoucherTypeId method
+     * This method is responsible for validating the value(s) passed to the setVoucherTypeId method
      * This method is willingly generated in order to preserve the one-line inline validation within the setVoucherTypeId method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateVoucherTypeIdForArrayConstraintsFromSetVoucherTypeId(array $values = []): string
+    public static function validateVoucherTypeIdForArrayConstraintFromSetVoucherTypeId(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getExistingVoucherNumberRequestVoucherTypeIdItem) {
@@ -356,10 +361,10 @@ class GetExistingVoucherNumberRequest extends AbstractStructBase
      * @param string[] $voucherTypeId
      * @return \Pggns\MidocoApi\Order\StructType\GetExistingVoucherNumberRequest
      */
-    public function setVoucherTypeId(array $voucherTypeId = []): self
+    public function setVoucherTypeId(?array $voucherTypeId = null): self
     {
         // validation for constraint: array
-        if ('' !== ($voucherTypeIdArrayErrorMessage = self::validateVoucherTypeIdForArrayConstraintsFromSetVoucherTypeId($voucherTypeId))) {
+        if ('' !== ($voucherTypeIdArrayErrorMessage = self::validateVoucherTypeIdForArrayConstraintFromSetVoucherTypeId($voucherTypeId))) {
             throw new InvalidArgumentException($voucherTypeIdArrayErrorMessage, __LINE__);
         }
         $this->voucherTypeId = $voucherTypeId;

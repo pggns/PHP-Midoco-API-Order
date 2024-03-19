@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GdsProfileAttribute StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GdsProfileAttribute extends AbstractStructBase
 {
     /**

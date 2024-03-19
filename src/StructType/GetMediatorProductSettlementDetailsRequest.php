@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetMediatorProductSettlementDetailsRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetMediatorProductSettlementDetailsRequest extends AbstractStructBase
 {
     /**

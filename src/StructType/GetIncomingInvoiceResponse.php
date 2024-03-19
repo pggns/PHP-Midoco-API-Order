@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetIncomingInvoiceResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetIncomingInvoiceResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetIncomingInvoiceResponse extends AbstractStructBase
      * - ref: MidocoIncomingInvoice
      * @var \Pggns\MidocoApi\Order\StructType\IncomingInvoiceDTO[]
      */
-    protected array $MidocoIncomingInvoice = [];
+    protected ?array $MidocoIncomingInvoice = null;
     /**
      * Constructor method for GetIncomingInvoiceResponse
      * @uses GetIncomingInvoiceResponse::setMidocoIncomingInvoice()
      * @param \Pggns\MidocoApi\Order\StructType\IncomingInvoiceDTO[] $midocoIncomingInvoice
      */
-    public function __construct(array $midocoIncomingInvoice = [])
+    public function __construct(?array $midocoIncomingInvoice = null)
     {
         $this
             ->setMidocoIncomingInvoice($midocoIncomingInvoice);
@@ -36,18 +37,22 @@ class GetIncomingInvoiceResponse extends AbstractStructBase
      * Get MidocoIncomingInvoice value
      * @return \Pggns\MidocoApi\Order\StructType\IncomingInvoiceDTO[]
      */
-    public function getMidocoIncomingInvoice(): array
+    public function getMidocoIncomingInvoice(): ?array
     {
         return $this->MidocoIncomingInvoice;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoIncomingInvoice method
+     * This method is responsible for validating the value(s) passed to the setMidocoIncomingInvoice method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoIncomingInvoice method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoIncomingInvoiceForArrayConstraintsFromSetMidocoIncomingInvoice(array $values = []): string
+    public static function validateMidocoIncomingInvoiceForArrayConstraintFromSetMidocoIncomingInvoice(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getIncomingInvoiceResponseMidocoIncomingInvoiceItem) {
@@ -69,10 +74,10 @@ class GetIncomingInvoiceResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\IncomingInvoiceDTO[] $midocoIncomingInvoice
      * @return \Pggns\MidocoApi\Order\StructType\GetIncomingInvoiceResponse
      */
-    public function setMidocoIncomingInvoice(array $midocoIncomingInvoice = []): self
+    public function setMidocoIncomingInvoice(?array $midocoIncomingInvoice = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoIncomingInvoiceArrayErrorMessage = self::validateMidocoIncomingInvoiceForArrayConstraintsFromSetMidocoIncomingInvoice($midocoIncomingInvoice))) {
+        if ('' !== ($midocoIncomingInvoiceArrayErrorMessage = self::validateMidocoIncomingInvoiceForArrayConstraintFromSetMidocoIncomingInvoice($midocoIncomingInvoice))) {
             throw new InvalidArgumentException($midocoIncomingInvoiceArrayErrorMessage, __LINE__);
         }
         $this->MidocoIncomingInvoice = $midocoIncomingInvoice;

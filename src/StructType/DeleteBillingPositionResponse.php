@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: deleteBillingPosition --- delete a given billing position
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteBillingPositionResponse extends AbstractStructBase
 {
     /**

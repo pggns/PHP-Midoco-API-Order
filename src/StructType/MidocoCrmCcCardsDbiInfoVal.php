@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoCrmCcCardsDbiInfoVal StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoCrmCcCardsDbiInfoVal extends CrmCcCardsDbiInfoValDTO
 {
 }

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteProductTypeResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteProductTypeResponse extends AbstractStructBase
 {
 }

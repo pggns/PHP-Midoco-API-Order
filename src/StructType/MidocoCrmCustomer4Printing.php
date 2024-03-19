@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoCrmCustomer4Printing StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoCrmCustomer4Printing extends CrmCustomerDTO
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MakePartialInvoice4OrderResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MakePartialInvoice4OrderResponse extends AbstractStructBase
 {
     /**

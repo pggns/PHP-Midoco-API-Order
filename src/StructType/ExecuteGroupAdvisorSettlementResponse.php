@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ExecuteGroupAdvisorSettlementResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ExecuteGroupAdvisorSettlementResponse extends AbstractStructBase
 {
     /**
@@ -21,7 +22,7 @@ class ExecuteGroupAdvisorSettlementResponse extends AbstractStructBase
      * - ref: GroupAdvisorSettlement
      * @var \Pggns\MidocoApi\Order\StructType\GroupAdvisorSettlement[]
      */
-    protected array $GroupAdvisorSettlement = [];
+    protected ?array $GroupAdvisorSettlement = null;
     /**
      * The MediatorError
      * Meta information extracted from the WSDL
@@ -30,7 +31,7 @@ class ExecuteGroupAdvisorSettlementResponse extends AbstractStructBase
      * - ref: MediatorError
      * @var \Pggns\MidocoApi\Order\StructType\MediatorErrorType[]
      */
-    protected array $MediatorError = [];
+    protected ?array $MediatorError = null;
     /**
      * Constructor method for ExecuteGroupAdvisorSettlementResponse
      * @uses ExecuteGroupAdvisorSettlementResponse::setGroupAdvisorSettlement()
@@ -38,7 +39,7 @@ class ExecuteGroupAdvisorSettlementResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\GroupAdvisorSettlement[] $groupAdvisorSettlement
      * @param \Pggns\MidocoApi\Order\StructType\MediatorErrorType[] $mediatorError
      */
-    public function __construct(array $groupAdvisorSettlement = [], array $mediatorError = [])
+    public function __construct(?array $groupAdvisorSettlement = null, ?array $mediatorError = null)
     {
         $this
             ->setGroupAdvisorSettlement($groupAdvisorSettlement)
@@ -48,18 +49,22 @@ class ExecuteGroupAdvisorSettlementResponse extends AbstractStructBase
      * Get GroupAdvisorSettlement value
      * @return \Pggns\MidocoApi\Order\StructType\GroupAdvisorSettlement[]
      */
-    public function getGroupAdvisorSettlement(): array
+    public function getGroupAdvisorSettlement(): ?array
     {
         return $this->GroupAdvisorSettlement;
     }
     /**
-     * This method is responsible for validating the values passed to the setGroupAdvisorSettlement method
+     * This method is responsible for validating the value(s) passed to the setGroupAdvisorSettlement method
      * This method is willingly generated in order to preserve the one-line inline validation within the setGroupAdvisorSettlement method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateGroupAdvisorSettlementForArrayConstraintsFromSetGroupAdvisorSettlement(array $values = []): string
+    public static function validateGroupAdvisorSettlementForArrayConstraintFromSetGroupAdvisorSettlement(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $executeGroupAdvisorSettlementResponseGroupAdvisorSettlementItem) {
@@ -81,10 +86,10 @@ class ExecuteGroupAdvisorSettlementResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\GroupAdvisorSettlement[] $groupAdvisorSettlement
      * @return \Pggns\MidocoApi\Order\StructType\ExecuteGroupAdvisorSettlementResponse
      */
-    public function setGroupAdvisorSettlement(array $groupAdvisorSettlement = []): self
+    public function setGroupAdvisorSettlement(?array $groupAdvisorSettlement = null): self
     {
         // validation for constraint: array
-        if ('' !== ($groupAdvisorSettlementArrayErrorMessage = self::validateGroupAdvisorSettlementForArrayConstraintsFromSetGroupAdvisorSettlement($groupAdvisorSettlement))) {
+        if ('' !== ($groupAdvisorSettlementArrayErrorMessage = self::validateGroupAdvisorSettlementForArrayConstraintFromSetGroupAdvisorSettlement($groupAdvisorSettlement))) {
             throw new InvalidArgumentException($groupAdvisorSettlementArrayErrorMessage, __LINE__);
         }
         $this->GroupAdvisorSettlement = $groupAdvisorSettlement;
@@ -111,18 +116,22 @@ class ExecuteGroupAdvisorSettlementResponse extends AbstractStructBase
      * Get MediatorError value
      * @return \Pggns\MidocoApi\Order\StructType\MediatorErrorType[]
      */
-    public function getMediatorError(): array
+    public function getMediatorError(): ?array
     {
         return $this->MediatorError;
     }
     /**
-     * This method is responsible for validating the values passed to the setMediatorError method
+     * This method is responsible for validating the value(s) passed to the setMediatorError method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMediatorError method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMediatorErrorForArrayConstraintsFromSetMediatorError(array $values = []): string
+    public static function validateMediatorErrorForArrayConstraintFromSetMediatorError(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $executeGroupAdvisorSettlementResponseMediatorErrorItem) {
@@ -144,10 +153,10 @@ class ExecuteGroupAdvisorSettlementResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MediatorErrorType[] $mediatorError
      * @return \Pggns\MidocoApi\Order\StructType\ExecuteGroupAdvisorSettlementResponse
      */
-    public function setMediatorError(array $mediatorError = []): self
+    public function setMediatorError(?array $mediatorError = null): self
     {
         // validation for constraint: array
-        if ('' !== ($mediatorErrorArrayErrorMessage = self::validateMediatorErrorForArrayConstraintsFromSetMediatorError($mediatorError))) {
+        if ('' !== ($mediatorErrorArrayErrorMessage = self::validateMediatorErrorForArrayConstraintFromSetMediatorError($mediatorError))) {
             throw new InvalidArgumentException($mediatorErrorArrayErrorMessage, __LINE__);
         }
         $this->MediatorError = $mediatorError;

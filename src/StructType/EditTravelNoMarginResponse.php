@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for EditTravelNoMarginResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class EditTravelNoMarginResponse extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for PerformIrisPlusLoginResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class PerformIrisPlusLoginResponse extends AbstractStructBase
 {
     /**

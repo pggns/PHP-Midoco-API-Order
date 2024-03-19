@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for PaymentProviderImportFormatDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class PaymentProviderImportFormatDTO extends AbstractStructBase
 {
     /**

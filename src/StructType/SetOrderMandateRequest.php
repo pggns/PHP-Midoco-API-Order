@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SetOrderMandateRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SetOrderMandateRequest extends AbstractStructBase
 {
     /**

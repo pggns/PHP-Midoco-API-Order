@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetDocumentNatureRetentionsResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetDocumentNatureRetentionsResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetDocumentNatureRetentionsResponse extends AbstractStructBase
      * - ref: MidocoDocumentNatureRetention
      * @var \Pggns\MidocoApi\Order\StructType\MidocoDocumentNatureRetentionType[]
      */
-    protected array $MidocoDocumentNatureRetention = [];
+    protected ?array $MidocoDocumentNatureRetention = null;
     /**
      * Constructor method for GetDocumentNatureRetentionsResponse
      * @uses GetDocumentNatureRetentionsResponse::setMidocoDocumentNatureRetention()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoDocumentNatureRetentionType[] $midocoDocumentNatureRetention
      */
-    public function __construct(array $midocoDocumentNatureRetention = [])
+    public function __construct(?array $midocoDocumentNatureRetention = null)
     {
         $this
             ->setMidocoDocumentNatureRetention($midocoDocumentNatureRetention);
@@ -36,18 +37,22 @@ class GetDocumentNatureRetentionsResponse extends AbstractStructBase
      * Get MidocoDocumentNatureRetention value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoDocumentNatureRetentionType[]
      */
-    public function getMidocoDocumentNatureRetention(): array
+    public function getMidocoDocumentNatureRetention(): ?array
     {
         return $this->MidocoDocumentNatureRetention;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoDocumentNatureRetention method
+     * This method is responsible for validating the value(s) passed to the setMidocoDocumentNatureRetention method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoDocumentNatureRetention method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoDocumentNatureRetentionForArrayConstraintsFromSetMidocoDocumentNatureRetention(array $values = []): string
+    public static function validateMidocoDocumentNatureRetentionForArrayConstraintFromSetMidocoDocumentNatureRetention(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getDocumentNatureRetentionsResponseMidocoDocumentNatureRetentionItem) {
@@ -69,10 +74,10 @@ class GetDocumentNatureRetentionsResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoDocumentNatureRetentionType[] $midocoDocumentNatureRetention
      * @return \Pggns\MidocoApi\Order\StructType\GetDocumentNatureRetentionsResponse
      */
-    public function setMidocoDocumentNatureRetention(array $midocoDocumentNatureRetention = []): self
+    public function setMidocoDocumentNatureRetention(?array $midocoDocumentNatureRetention = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoDocumentNatureRetentionArrayErrorMessage = self::validateMidocoDocumentNatureRetentionForArrayConstraintsFromSetMidocoDocumentNatureRetention($midocoDocumentNatureRetention))) {
+        if ('' !== ($midocoDocumentNatureRetentionArrayErrorMessage = self::validateMidocoDocumentNatureRetentionForArrayConstraintFromSetMidocoDocumentNatureRetention($midocoDocumentNatureRetention))) {
             throw new InvalidArgumentException($midocoDocumentNatureRetentionArrayErrorMessage, __LINE__);
         }
         $this->MidocoDocumentNatureRetention = $midocoDocumentNatureRetention;

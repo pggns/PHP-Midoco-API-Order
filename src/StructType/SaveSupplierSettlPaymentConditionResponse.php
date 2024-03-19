@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveSupplierSettlPaymentConditionResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveSupplierSettlPaymentConditionResponse extends AbstractStructBase
 {
 }

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for Attribute StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class Attribute_1 extends AbstractStructBase
 {
     /**

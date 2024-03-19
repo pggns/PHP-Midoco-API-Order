@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteVirtualAccountResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteVirtualAccountResponse extends AbstractStructBase
 {
 }

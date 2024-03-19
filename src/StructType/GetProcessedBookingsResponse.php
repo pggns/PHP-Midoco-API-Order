@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetProcessedBookingsResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetProcessedBookingsResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetProcessedBookingsResponse extends AbstractStructBase
      * - ref: MidocoProcessedBooking
      * @var \Pggns\MidocoApi\Order\StructType\ProcessedBookingDTO[]
      */
-    protected array $MidocoProcessedBooking = [];
+    protected ?array $MidocoProcessedBooking = null;
     /**
      * Constructor method for GetProcessedBookingsResponse
      * @uses GetProcessedBookingsResponse::setMidocoProcessedBooking()
      * @param \Pggns\MidocoApi\Order\StructType\ProcessedBookingDTO[] $midocoProcessedBooking
      */
-    public function __construct(array $midocoProcessedBooking = [])
+    public function __construct(?array $midocoProcessedBooking = null)
     {
         $this
             ->setMidocoProcessedBooking($midocoProcessedBooking);
@@ -36,18 +37,22 @@ class GetProcessedBookingsResponse extends AbstractStructBase
      * Get MidocoProcessedBooking value
      * @return \Pggns\MidocoApi\Order\StructType\ProcessedBookingDTO[]
      */
-    public function getMidocoProcessedBooking(): array
+    public function getMidocoProcessedBooking(): ?array
     {
         return $this->MidocoProcessedBooking;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoProcessedBooking method
+     * This method is responsible for validating the value(s) passed to the setMidocoProcessedBooking method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoProcessedBooking method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoProcessedBookingForArrayConstraintsFromSetMidocoProcessedBooking(array $values = []): string
+    public static function validateMidocoProcessedBookingForArrayConstraintFromSetMidocoProcessedBooking(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getProcessedBookingsResponseMidocoProcessedBookingItem) {
@@ -69,10 +74,10 @@ class GetProcessedBookingsResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\ProcessedBookingDTO[] $midocoProcessedBooking
      * @return \Pggns\MidocoApi\Order\StructType\GetProcessedBookingsResponse
      */
-    public function setMidocoProcessedBooking(array $midocoProcessedBooking = []): self
+    public function setMidocoProcessedBooking(?array $midocoProcessedBooking = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoProcessedBookingArrayErrorMessage = self::validateMidocoProcessedBookingForArrayConstraintsFromSetMidocoProcessedBooking($midocoProcessedBooking))) {
+        if ('' !== ($midocoProcessedBookingArrayErrorMessage = self::validateMidocoProcessedBookingForArrayConstraintFromSetMidocoProcessedBooking($midocoProcessedBooking))) {
             throw new InvalidArgumentException($midocoProcessedBookingArrayErrorMessage, __LINE__);
         }
         $this->MidocoProcessedBooking = $midocoProcessedBooking;

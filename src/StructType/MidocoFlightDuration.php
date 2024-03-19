@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoFlightDuration StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoFlightDuration extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetSellItemSavingsRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetSellItemSavingsRequest extends AbstractStructBase
 {
     /**

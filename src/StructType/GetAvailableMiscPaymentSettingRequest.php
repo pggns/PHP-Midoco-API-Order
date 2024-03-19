@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetAvailableMiscPaymentSettingRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetAvailableMiscPaymentSettingRequest extends AbstractStructBase
 {
     /**

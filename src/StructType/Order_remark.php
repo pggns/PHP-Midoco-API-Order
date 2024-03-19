@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: optional freetext remarks at order level (normally printed on documents below all services)
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class Order_remark extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetSwissQrInvoiceInfoResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetSwissQrInvoiceInfoResponse extends AbstractStructBase
 {
     /**

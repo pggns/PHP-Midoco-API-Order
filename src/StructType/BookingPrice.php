@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: a price in this section is subject of reference in all priceRef attributes of services and other priceInformation
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class BookingPrice extends AbstractStructBase
 {
     /**
@@ -86,6 +87,7 @@ class BookingPrice extends AbstractStructBase
     /**
      * The extPaymentType
      * Meta information extracted from the WSDL
+     * - documentation: default available values are: CASH,DEBIT,CC,FULL_CREDIT. More can be defined in org. unit attribute CUSTOM_EXTERN_PAYMENT_TYPES
      * - minOccurs: 0
      * @var string|null
      */
@@ -155,7 +157,7 @@ class BookingPrice extends AbstractStructBase
     /**
      * The depositDate
      * Meta information extracted from the WSDL
-     * - documentation: date of travel
+     * - documentation: due date of the deposit amount
      * - base: xs:string
      * - minOccurs: 0
      * - pattern: [0-9]{4}-[0-9]{2}-[0-9]{2}
@@ -165,7 +167,7 @@ class BookingPrice extends AbstractStructBase
     /**
      * The finalPaymentDate
      * Meta information extracted from the WSDL
-     * - documentation: date of travel
+     * - documentation: date of final payment
      * - base: xs:string
      * - minOccurs: 0
      * - pattern: [0-9]{4}-[0-9]{2}-[0-9]{2}
@@ -215,7 +217,7 @@ class BookingPrice extends AbstractStructBase
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\Vat_division[]
      */
-    protected array $vat_division = [];
+    protected ?array $vat_division = null;
     /**
      * The commissionValue
      * Meta information extracted from the WSDL
@@ -368,7 +370,7 @@ class BookingPrice extends AbstractStructBase
      * @param float $mediatorCommissionPercent
      * @param string $mediatorCommissionCurrency
      */
-    public function __construct(int $position, ?string $supplier = null, ?string $catalog = null, ?string $bookingId = null, ?float $deposit = null, ?string $depositPaymentType = null, ?float $totalPrice = null, ?bool $hideServicePrices = false, ?string $paymentType = null, ?string $extPaymentType = null, ?string $currency = null, ?bool $vatIncluded = null, ?float $salePrice = null, ?float $original_price = null, ?string $original_currency = null, ?float $customerSellingPrice = null, ?float $revenue_amount = null, ?float $reduced_vat_fraction = null, ?string $depositDate = null, ?string $finalPaymentDate = null, ?float $supplier_deposit_amount = null, ?string $supplier_deposit_date = null, ?string $supplier_final_payment_date = null, ?float $supplier_commission_amount = null, array $vat_division = [], ?float $commissionValue = null, ?float $commissionPercent = null, ?string $commissionCurrency = null, ?string $modeRevenueCalculation = null, ?float $valueRevenueCalculation = null, ?float $buyCurrencyRate = null, ?float $feeAmount = null, ?float $calculatedMediatorAmount = null, ?float $mediatorCommissionPercent = null, ?string $mediatorCommissionCurrency = null)
+    public function __construct(int $position, ?string $supplier = null, ?string $catalog = null, ?string $bookingId = null, ?float $deposit = null, ?string $depositPaymentType = null, ?float $totalPrice = null, ?bool $hideServicePrices = false, ?string $paymentType = null, ?string $extPaymentType = null, ?string $currency = null, ?bool $vatIncluded = null, ?float $salePrice = null, ?float $original_price = null, ?string $original_currency = null, ?float $customerSellingPrice = null, ?float $revenue_amount = null, ?float $reduced_vat_fraction = null, ?string $depositDate = null, ?string $finalPaymentDate = null, ?float $supplier_deposit_amount = null, ?string $supplier_deposit_date = null, ?string $supplier_final_payment_date = null, ?float $supplier_commission_amount = null, ?array $vat_division = null, ?float $commissionValue = null, ?float $commissionPercent = null, ?string $commissionCurrency = null, ?string $modeRevenueCalculation = null, ?float $valueRevenueCalculation = null, ?float $buyCurrencyRate = null, ?float $feeAmount = null, ?float $calculatedMediatorAmount = null, ?float $mediatorCommissionPercent = null, ?string $mediatorCommissionCurrency = null)
     {
         $this
             ->setPosition($position)
@@ -630,17 +632,14 @@ class BookingPrice extends AbstractStructBase
     }
     /**
      * Set extPaymentType value
-     * @uses \Pggns\MidocoApi\Order\EnumType\ExtPaymentType::valueIsValid()
-     * @uses \Pggns\MidocoApi\Order\EnumType\ExtPaymentType::getValidValues()
-     * @throws InvalidArgumentException
      * @param string $extPaymentType
      * @return \Pggns\MidocoApi\Order\StructType\BookingPrice
      */
     public function setExtPaymentType(?string $extPaymentType = null): self
     {
-        // validation for constraint: enumeration
-        if (!\Pggns\MidocoApi\Order\EnumType\ExtPaymentType::valueIsValid($extPaymentType)) {
-            throw new InvalidArgumentException(sprintf('Invalid value(s) %s, please use one of: %s from enumeration class \Pggns\MidocoApi\Order\EnumType\ExtPaymentType', is_array($extPaymentType) ? implode(', ', $extPaymentType) : var_export($extPaymentType, true), implode(', ', \Pggns\MidocoApi\Order\EnumType\ExtPaymentType::getValidValues())), __LINE__);
+        // validation for constraint: string
+        if (!is_null($extPaymentType) && !is_string($extPaymentType)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($extPaymentType, true), gettype($extPaymentType)), __LINE__);
         }
         $this->extPaymentType = $extPaymentType;
         
@@ -850,7 +849,7 @@ class BookingPrice extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($depositDate, true), gettype($depositDate)), __LINE__);
         }
         // validation for constraint: pattern([0-9]{4}-[0-9]{2}-[0-9]{2})
-        if (!is_null($depositDate) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', $depositDate)) {
+        if (!is_null($depositDate) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', (string) $depositDate)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[0-9]{4}-[0-9]{2}-[0-9]{2}/', var_export($depositDate, true)), __LINE__);
         }
         $this->depositDate = $depositDate;
@@ -877,7 +876,7 @@ class BookingPrice extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($finalPaymentDate, true), gettype($finalPaymentDate)), __LINE__);
         }
         // validation for constraint: pattern([0-9]{4}-[0-9]{2}-[0-9]{2})
-        if (!is_null($finalPaymentDate) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', $finalPaymentDate)) {
+        if (!is_null($finalPaymentDate) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', (string) $finalPaymentDate)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[0-9]{4}-[0-9]{2}-[0-9]{2}/', var_export($finalPaymentDate, true)), __LINE__);
         }
         $this->finalPaymentDate = $finalPaymentDate;
@@ -927,7 +926,7 @@ class BookingPrice extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($supplier_deposit_date, true), gettype($supplier_deposit_date)), __LINE__);
         }
         // validation for constraint: pattern([0-9]{4}-[0-9]{2}-[0-9]{2})
-        if (!is_null($supplier_deposit_date) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', $supplier_deposit_date)) {
+        if (!is_null($supplier_deposit_date) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', (string) $supplier_deposit_date)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[0-9]{4}-[0-9]{2}-[0-9]{2}/', var_export($supplier_deposit_date, true)), __LINE__);
         }
         $this->supplier_deposit_date = $supplier_deposit_date;
@@ -954,7 +953,7 @@ class BookingPrice extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($supplier_final_payment_date, true), gettype($supplier_final_payment_date)), __LINE__);
         }
         // validation for constraint: pattern([0-9]{4}-[0-9]{2}-[0-9]{2})
-        if (!is_null($supplier_final_payment_date) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', $supplier_final_payment_date)) {
+        if (!is_null($supplier_final_payment_date) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', (string) $supplier_final_payment_date)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[0-9]{4}-[0-9]{2}-[0-9]{2}/', var_export($supplier_final_payment_date, true)), __LINE__);
         }
         $this->supplier_final_payment_date = $supplier_final_payment_date;
@@ -988,18 +987,22 @@ class BookingPrice extends AbstractStructBase
      * Get vat_division value
      * @return \Pggns\MidocoApi\Order\StructType\Vat_division[]
      */
-    public function getVat_division(): array
+    public function getVat_division(): ?array
     {
         return $this->vat_division;
     }
     /**
-     * This method is responsible for validating the values passed to the setVat_division method
+     * This method is responsible for validating the value(s) passed to the setVat_division method
      * This method is willingly generated in order to preserve the one-line inline validation within the setVat_division method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateVat_divisionForArrayConstraintsFromSetVat_division(array $values = []): string
+    public static function validateVat_divisionForArrayConstraintFromSetVat_division(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $bookingPriceVat_divisionItem) {
@@ -1021,10 +1024,10 @@ class BookingPrice extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\Vat_division[] $vat_division
      * @return \Pggns\MidocoApi\Order\StructType\BookingPrice
      */
-    public function setVat_division(array $vat_division = []): self
+    public function setVat_division(?array $vat_division = null): self
     {
         // validation for constraint: array
-        if ('' !== ($vat_divisionArrayErrorMessage = self::validateVat_divisionForArrayConstraintsFromSetVat_division($vat_division))) {
+        if ('' !== ($vat_divisionArrayErrorMessage = self::validateVat_divisionForArrayConstraintFromSetVat_division($vat_division))) {
             throw new InvalidArgumentException($vat_divisionArrayErrorMessage, __LINE__);
         }
         $this->vat_division = $vat_division;

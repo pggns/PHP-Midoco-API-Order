@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: getTotalPartialPayments --- return if the partial payments are allowed
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class TotalPartialPaymentsResponse extends AbstractStructBase
 {
     /**

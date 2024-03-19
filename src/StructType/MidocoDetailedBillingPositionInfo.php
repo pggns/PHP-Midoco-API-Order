@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoDetailedBillingPositionInfo StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoDetailedBillingPositionInfo extends BillingPositionDTO
 {
     /**
@@ -21,7 +22,7 @@ class MidocoDetailedBillingPositionInfo extends BillingPositionDTO
      * - ref: MidocoDetailedBillingPositionInfo
      * @var \Pggns\MidocoApi\Order\StructType\MidocoDetailedBillingPositionInfo[]
      */
-    protected array $MidocoDetailedBillingPositionInfo = [];
+    protected ?array $MidocoDetailedBillingPositionInfo = null;
     /**
      * The MidocoSellPassenger
      * Meta information extracted from the WSDL
@@ -30,7 +31,7 @@ class MidocoDetailedBillingPositionInfo extends BillingPositionDTO
      * - ref: MidocoSellPassenger
      * @var \Pggns\MidocoApi\Order\StructType\MidocoSellPassenger[]
      */
-    protected array $MidocoSellPassenger = [];
+    protected ?array $MidocoSellPassenger = null;
     /**
      * The referencedDocumentNo
      * Meta information extracted from the WSDL
@@ -112,7 +113,7 @@ class MidocoDetailedBillingPositionInfo extends BillingPositionDTO
      * @param string $confirmationGroup
      * @param bool $isCollectiveInvoice
      */
-    public function __construct(array $midocoDetailedBillingPositionInfo = [], array $midocoSellPassenger = [], ?string $referencedDocumentNo = null, ?bool $isBillingPosSelected = null, ?bool $isSplitAllowed = null, ?bool $isViewOnly = false, ?int $orderNo = null, ?string $supplierId = null, ?string $bookingId = null, ?string $confirmationGroup = null, ?bool $isCollectiveInvoice = false)
+    public function __construct(?array $midocoDetailedBillingPositionInfo = null, ?array $midocoSellPassenger = null, ?string $referencedDocumentNo = null, ?bool $isBillingPosSelected = null, ?bool $isSplitAllowed = null, ?bool $isViewOnly = false, ?int $orderNo = null, ?string $supplierId = null, ?string $bookingId = null, ?string $confirmationGroup = null, ?bool $isCollectiveInvoice = false)
     {
         $this
             ->setMidocoDetailedBillingPositionInfo($midocoDetailedBillingPositionInfo)
@@ -131,18 +132,22 @@ class MidocoDetailedBillingPositionInfo extends BillingPositionDTO
      * Get MidocoDetailedBillingPositionInfo value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoDetailedBillingPositionInfo[]
      */
-    public function getMidocoDetailedBillingPositionInfo(): array
+    public function getMidocoDetailedBillingPositionInfo(): ?array
     {
         return $this->MidocoDetailedBillingPositionInfo;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoDetailedBillingPositionInfo method
+     * This method is responsible for validating the value(s) passed to the setMidocoDetailedBillingPositionInfo method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoDetailedBillingPositionInfo method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoDetailedBillingPositionInfoForArrayConstraintsFromSetMidocoDetailedBillingPositionInfo(array $values = []): string
+    public static function validateMidocoDetailedBillingPositionInfoForArrayConstraintFromSetMidocoDetailedBillingPositionInfo(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoDetailedBillingPositionInfoMidocoDetailedBillingPositionInfoItem) {
@@ -164,10 +169,10 @@ class MidocoDetailedBillingPositionInfo extends BillingPositionDTO
      * @param \Pggns\MidocoApi\Order\StructType\MidocoDetailedBillingPositionInfo[] $midocoDetailedBillingPositionInfo
      * @return \Pggns\MidocoApi\Order\StructType\MidocoDetailedBillingPositionInfo
      */
-    public function setMidocoDetailedBillingPositionInfo(array $midocoDetailedBillingPositionInfo = []): self
+    public function setMidocoDetailedBillingPositionInfo(?array $midocoDetailedBillingPositionInfo = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoDetailedBillingPositionInfoArrayErrorMessage = self::validateMidocoDetailedBillingPositionInfoForArrayConstraintsFromSetMidocoDetailedBillingPositionInfo($midocoDetailedBillingPositionInfo))) {
+        if ('' !== ($midocoDetailedBillingPositionInfoArrayErrorMessage = self::validateMidocoDetailedBillingPositionInfoForArrayConstraintFromSetMidocoDetailedBillingPositionInfo($midocoDetailedBillingPositionInfo))) {
             throw new InvalidArgumentException($midocoDetailedBillingPositionInfoArrayErrorMessage, __LINE__);
         }
         $this->MidocoDetailedBillingPositionInfo = $midocoDetailedBillingPositionInfo;
@@ -194,18 +199,22 @@ class MidocoDetailedBillingPositionInfo extends BillingPositionDTO
      * Get MidocoSellPassenger value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSellPassenger[]
      */
-    public function getMidocoSellPassenger(): array
+    public function getMidocoSellPassenger(): ?array
     {
         return $this->MidocoSellPassenger;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoSellPassenger method
+     * This method is responsible for validating the value(s) passed to the setMidocoSellPassenger method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoSellPassenger method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoSellPassengerForArrayConstraintsFromSetMidocoSellPassenger(array $values = []): string
+    public static function validateMidocoSellPassengerForArrayConstraintFromSetMidocoSellPassenger(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoDetailedBillingPositionInfoMidocoSellPassengerItem) {
@@ -227,10 +236,10 @@ class MidocoDetailedBillingPositionInfo extends BillingPositionDTO
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSellPassenger[] $midocoSellPassenger
      * @return \Pggns\MidocoApi\Order\StructType\MidocoDetailedBillingPositionInfo
      */
-    public function setMidocoSellPassenger(array $midocoSellPassenger = []): self
+    public function setMidocoSellPassenger(?array $midocoSellPassenger = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoSellPassengerArrayErrorMessage = self::validateMidocoSellPassengerForArrayConstraintsFromSetMidocoSellPassenger($midocoSellPassenger))) {
+        if ('' !== ($midocoSellPassengerArrayErrorMessage = self::validateMidocoSellPassengerForArrayConstraintFromSetMidocoSellPassenger($midocoSellPassenger))) {
             throw new InvalidArgumentException($midocoSellPassengerArrayErrorMessage, __LINE__);
         }
         $this->MidocoSellPassenger = $midocoSellPassenger;

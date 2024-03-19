@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for Delete2FaRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class Delete2FaRequest extends AbstractStructBase
 {
     /**

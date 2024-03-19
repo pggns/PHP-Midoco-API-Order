@@ -19,6 +19,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * debitor_assign table (Crm Database).
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveOrderResponse extends AbstractStructBase
 {
     /**

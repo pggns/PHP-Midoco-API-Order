@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ExecuteTssExportResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ExecuteTssExportResponse extends AbstractStructBase
 {
     /**

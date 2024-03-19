@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetPrintTemplateResultRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetPrintTemplateResultRequest extends AbstractStructBase
 {
     /**

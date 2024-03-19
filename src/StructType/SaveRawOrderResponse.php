@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveRawOrderResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveRawOrderResponse extends AbstractStructBase
 {
     /**

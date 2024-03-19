@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetPrintjobListResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetPrintjobListResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetPrintjobListResponse extends AbstractStructBase
      * - ref: MidocoPrintjob
      * @var \Pggns\MidocoApi\Order\StructType\PrintjobDTO[]
      */
-    protected array $MidocoPrintjob = [];
+    protected ?array $MidocoPrintjob = null;
     /**
      * Constructor method for GetPrintjobListResponse
      * @uses GetPrintjobListResponse::setMidocoPrintjob()
      * @param \Pggns\MidocoApi\Order\StructType\PrintjobDTO[] $midocoPrintjob
      */
-    public function __construct(array $midocoPrintjob = [])
+    public function __construct(?array $midocoPrintjob = null)
     {
         $this
             ->setMidocoPrintjob($midocoPrintjob);
@@ -36,18 +37,22 @@ class GetPrintjobListResponse extends AbstractStructBase
      * Get MidocoPrintjob value
      * @return \Pggns\MidocoApi\Order\StructType\PrintjobDTO[]
      */
-    public function getMidocoPrintjob(): array
+    public function getMidocoPrintjob(): ?array
     {
         return $this->MidocoPrintjob;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoPrintjob method
+     * This method is responsible for validating the value(s) passed to the setMidocoPrintjob method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoPrintjob method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoPrintjobForArrayConstraintsFromSetMidocoPrintjob(array $values = []): string
+    public static function validateMidocoPrintjobForArrayConstraintFromSetMidocoPrintjob(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getPrintjobListResponseMidocoPrintjobItem) {
@@ -69,10 +74,10 @@ class GetPrintjobListResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\PrintjobDTO[] $midocoPrintjob
      * @return \Pggns\MidocoApi\Order\StructType\GetPrintjobListResponse
      */
-    public function setMidocoPrintjob(array $midocoPrintjob = []): self
+    public function setMidocoPrintjob(?array $midocoPrintjob = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoPrintjobArrayErrorMessage = self::validateMidocoPrintjobForArrayConstraintsFromSetMidocoPrintjob($midocoPrintjob))) {
+        if ('' !== ($midocoPrintjobArrayErrorMessage = self::validateMidocoPrintjobForArrayConstraintFromSetMidocoPrintjob($midocoPrintjob))) {
             throw new InvalidArgumentException($midocoPrintjobArrayErrorMessage, __LINE__);
         }
         $this->MidocoPrintjob = $midocoPrintjob;

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetMidocoPrintOptionResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetMidocoPrintOptionResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetMidocoPrintOptionResponse extends AbstractStructBase
      * - ref: MidocoPrintOption
      * @var \Pggns\MidocoApi\Order\StructType\PrintOptionDTO[]
      */
-    protected array $MidocoPrintOption = [];
+    protected ?array $MidocoPrintOption = null;
     /**
      * Constructor method for GetMidocoPrintOptionResponse
      * @uses GetMidocoPrintOptionResponse::setMidocoPrintOption()
      * @param \Pggns\MidocoApi\Order\StructType\PrintOptionDTO[] $midocoPrintOption
      */
-    public function __construct(array $midocoPrintOption = [])
+    public function __construct(?array $midocoPrintOption = null)
     {
         $this
             ->setMidocoPrintOption($midocoPrintOption);
@@ -36,18 +37,22 @@ class GetMidocoPrintOptionResponse extends AbstractStructBase
      * Get MidocoPrintOption value
      * @return \Pggns\MidocoApi\Order\StructType\PrintOptionDTO[]
      */
-    public function getMidocoPrintOption(): array
+    public function getMidocoPrintOption(): ?array
     {
         return $this->MidocoPrintOption;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoPrintOption method
+     * This method is responsible for validating the value(s) passed to the setMidocoPrintOption method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoPrintOption method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoPrintOptionForArrayConstraintsFromSetMidocoPrintOption(array $values = []): string
+    public static function validateMidocoPrintOptionForArrayConstraintFromSetMidocoPrintOption(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getMidocoPrintOptionResponseMidocoPrintOptionItem) {
@@ -69,10 +74,10 @@ class GetMidocoPrintOptionResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\PrintOptionDTO[] $midocoPrintOption
      * @return \Pggns\MidocoApi\Order\StructType\GetMidocoPrintOptionResponse
      */
-    public function setMidocoPrintOption(array $midocoPrintOption = []): self
+    public function setMidocoPrintOption(?array $midocoPrintOption = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoPrintOptionArrayErrorMessage = self::validateMidocoPrintOptionForArrayConstraintsFromSetMidocoPrintOption($midocoPrintOption))) {
+        if ('' !== ($midocoPrintOptionArrayErrorMessage = self::validateMidocoPrintOptionForArrayConstraintFromSetMidocoPrintOption($midocoPrintOption))) {
             throw new InvalidArgumentException($midocoPrintOptionArrayErrorMessage, __LINE__);
         }
         $this->MidocoPrintOption = $midocoPrintOption;

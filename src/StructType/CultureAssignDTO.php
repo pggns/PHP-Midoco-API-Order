@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CultureAssignDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CultureAssignDTO extends AbstractStructBase
 {
     /**

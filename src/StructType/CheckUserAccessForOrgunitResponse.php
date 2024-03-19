@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CheckUserAccessForOrgunitResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CheckUserAccessForOrgunitResponse extends AbstractStructBase
 {
     /**

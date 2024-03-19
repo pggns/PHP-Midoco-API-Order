@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetMidocoVoucher4KickbackResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetMidocoVoucher4KickbackResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetMidocoVoucher4KickbackResponse extends AbstractStructBase
      * - ref: MidocoVoucher4Kickback
      * @var \Pggns\MidocoApi\Order\StructType\MidocoVoucher4Kickback[]
      */
-    protected array $MidocoVoucher4Kickback = [];
+    protected ?array $MidocoVoucher4Kickback = null;
     /**
      * Constructor method for GetMidocoVoucher4KickbackResponse
      * @uses GetMidocoVoucher4KickbackResponse::setMidocoVoucher4Kickback()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoVoucher4Kickback[] $midocoVoucher4Kickback
      */
-    public function __construct(array $midocoVoucher4Kickback = [])
+    public function __construct(?array $midocoVoucher4Kickback = null)
     {
         $this
             ->setMidocoVoucher4Kickback($midocoVoucher4Kickback);
@@ -36,18 +37,22 @@ class GetMidocoVoucher4KickbackResponse extends AbstractStructBase
      * Get MidocoVoucher4Kickback value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoVoucher4Kickback[]
      */
-    public function getMidocoVoucher4Kickback(): array
+    public function getMidocoVoucher4Kickback(): ?array
     {
         return $this->MidocoVoucher4Kickback;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoVoucher4Kickback method
+     * This method is responsible for validating the value(s) passed to the setMidocoVoucher4Kickback method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoVoucher4Kickback method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoVoucher4KickbackForArrayConstraintsFromSetMidocoVoucher4Kickback(array $values = []): string
+    public static function validateMidocoVoucher4KickbackForArrayConstraintFromSetMidocoVoucher4Kickback(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getMidocoVoucher4KickbackResponseMidocoVoucher4KickbackItem) {
@@ -69,10 +74,10 @@ class GetMidocoVoucher4KickbackResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoVoucher4Kickback[] $midocoVoucher4Kickback
      * @return \Pggns\MidocoApi\Order\StructType\GetMidocoVoucher4KickbackResponse
      */
-    public function setMidocoVoucher4Kickback(array $midocoVoucher4Kickback = []): self
+    public function setMidocoVoucher4Kickback(?array $midocoVoucher4Kickback = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoVoucher4KickbackArrayErrorMessage = self::validateMidocoVoucher4KickbackForArrayConstraintsFromSetMidocoVoucher4Kickback($midocoVoucher4Kickback))) {
+        if ('' !== ($midocoVoucher4KickbackArrayErrorMessage = self::validateMidocoVoucher4KickbackForArrayConstraintFromSetMidocoVoucher4Kickback($midocoVoucher4Kickback))) {
             throw new InvalidArgumentException($midocoVoucher4KickbackArrayErrorMessage, __LINE__);
         }
         $this->MidocoVoucher4Kickback = $midocoVoucher4Kickback;

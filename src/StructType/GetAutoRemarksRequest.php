@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetAutoRemarksRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetAutoRemarksRequest extends AbstractStructBase
 {
     /**

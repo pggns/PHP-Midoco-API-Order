@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for EndWorkOrderUpdateResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class EndWorkOrderUpdateResponse extends AbstractStructBase
 {
     /**

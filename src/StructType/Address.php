@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: Address information
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class Address extends AbstractStructBase
 {
     /**

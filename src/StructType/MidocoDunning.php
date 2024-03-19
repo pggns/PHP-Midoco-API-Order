@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoDunning StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoDunning extends DunningDTO
 {
     /**

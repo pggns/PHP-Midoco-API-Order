@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoBookingInfoExtType StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoBookingInfoExtType extends MidocoBookingInfoType
 {
     /**

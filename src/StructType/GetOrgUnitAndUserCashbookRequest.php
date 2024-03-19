@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetOrgUnitAndUserCashbookRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetOrgUnitAndUserCashbookRequest extends AbstractStructBase
 {
     /**

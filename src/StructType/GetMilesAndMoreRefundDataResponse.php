@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetMilesAndMoreRefundDataResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetMilesAndMoreRefundDataResponse extends AbstractStructBase
 {
     /**
@@ -20,7 +21,7 @@ class GetMilesAndMoreRefundDataResponse extends AbstractStructBase
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\MidocoMilesAndMoreBurnTransactionWithRefundBounds[]
      */
-    protected array $MidocoMilesAndMoreBurnTransactionWithRefundBounds = [];
+    protected ?array $MidocoMilesAndMoreBurnTransactionWithRefundBounds = null;
     /**
      * The minimalRefundAmount
      * Meta information extracted from the WSDL
@@ -53,7 +54,7 @@ class GetMilesAndMoreRefundDataResponse extends AbstractStructBase
      * @param float $maximalRefundAmount
      * @param float $currentRefundAmount
      */
-    public function __construct(array $midocoMilesAndMoreBurnTransactionWithRefundBounds = [], ?float $minimalRefundAmount = null, ?float $maximalRefundAmount = null, ?float $currentRefundAmount = null)
+    public function __construct(?array $midocoMilesAndMoreBurnTransactionWithRefundBounds = null, ?float $minimalRefundAmount = null, ?float $maximalRefundAmount = null, ?float $currentRefundAmount = null)
     {
         $this
             ->setMidocoMilesAndMoreBurnTransactionWithRefundBounds($midocoMilesAndMoreBurnTransactionWithRefundBounds)
@@ -65,18 +66,22 @@ class GetMilesAndMoreRefundDataResponse extends AbstractStructBase
      * Get MidocoMilesAndMoreBurnTransactionWithRefundBounds value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoMilesAndMoreBurnTransactionWithRefundBounds[]
      */
-    public function getMidocoMilesAndMoreBurnTransactionWithRefundBounds(): array
+    public function getMidocoMilesAndMoreBurnTransactionWithRefundBounds(): ?array
     {
         return $this->MidocoMilesAndMoreBurnTransactionWithRefundBounds;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoMilesAndMoreBurnTransactionWithRefundBounds method
+     * This method is responsible for validating the value(s) passed to the setMidocoMilesAndMoreBurnTransactionWithRefundBounds method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoMilesAndMoreBurnTransactionWithRefundBounds method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoMilesAndMoreBurnTransactionWithRefundBoundsForArrayConstraintsFromSetMidocoMilesAndMoreBurnTransactionWithRefundBounds(array $values = []): string
+    public static function validateMidocoMilesAndMoreBurnTransactionWithRefundBoundsForArrayConstraintFromSetMidocoMilesAndMoreBurnTransactionWithRefundBounds(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getMilesAndMoreRefundDataResponseMidocoMilesAndMoreBurnTransactionWithRefundBoundsItem) {
@@ -98,10 +103,10 @@ class GetMilesAndMoreRefundDataResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoMilesAndMoreBurnTransactionWithRefundBounds[] $midocoMilesAndMoreBurnTransactionWithRefundBounds
      * @return \Pggns\MidocoApi\Order\StructType\GetMilesAndMoreRefundDataResponse
      */
-    public function setMidocoMilesAndMoreBurnTransactionWithRefundBounds(array $midocoMilesAndMoreBurnTransactionWithRefundBounds = []): self
+    public function setMidocoMilesAndMoreBurnTransactionWithRefundBounds(?array $midocoMilesAndMoreBurnTransactionWithRefundBounds = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoMilesAndMoreBurnTransactionWithRefundBoundsArrayErrorMessage = self::validateMidocoMilesAndMoreBurnTransactionWithRefundBoundsForArrayConstraintsFromSetMidocoMilesAndMoreBurnTransactionWithRefundBounds($midocoMilesAndMoreBurnTransactionWithRefundBounds))) {
+        if ('' !== ($midocoMilesAndMoreBurnTransactionWithRefundBoundsArrayErrorMessage = self::validateMidocoMilesAndMoreBurnTransactionWithRefundBoundsForArrayConstraintFromSetMidocoMilesAndMoreBurnTransactionWithRefundBounds($midocoMilesAndMoreBurnTransactionWithRefundBounds))) {
             throw new InvalidArgumentException($midocoMilesAndMoreBurnTransactionWithRefundBoundsArrayErrorMessage, __LINE__);
         }
         $this->MidocoMilesAndMoreBurnTransactionWithRefundBounds = $midocoMilesAndMoreBurnTransactionWithRefundBounds;

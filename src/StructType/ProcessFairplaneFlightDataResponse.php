@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ProcessFairplaneFlightDataResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ProcessFairplaneFlightDataResponse extends AbstractStructBase
 {
     /**

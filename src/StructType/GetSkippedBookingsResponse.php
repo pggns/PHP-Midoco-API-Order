@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetSkippedBookingsResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetSkippedBookingsResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetSkippedBookingsResponse extends AbstractStructBase
      * - ref: MidocoSkippedBooking
      * @var \Pggns\MidocoApi\Order\StructType\SkippedBookingDTO[]
      */
-    protected array $MidocoSkippedBooking = [];
+    protected ?array $MidocoSkippedBooking = null;
     /**
      * Constructor method for GetSkippedBookingsResponse
      * @uses GetSkippedBookingsResponse::setMidocoSkippedBooking()
      * @param \Pggns\MidocoApi\Order\StructType\SkippedBookingDTO[] $midocoSkippedBooking
      */
-    public function __construct(array $midocoSkippedBooking = [])
+    public function __construct(?array $midocoSkippedBooking = null)
     {
         $this
             ->setMidocoSkippedBooking($midocoSkippedBooking);
@@ -36,18 +37,22 @@ class GetSkippedBookingsResponse extends AbstractStructBase
      * Get MidocoSkippedBooking value
      * @return \Pggns\MidocoApi\Order\StructType\SkippedBookingDTO[]
      */
-    public function getMidocoSkippedBooking(): array
+    public function getMidocoSkippedBooking(): ?array
     {
         return $this->MidocoSkippedBooking;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoSkippedBooking method
+     * This method is responsible for validating the value(s) passed to the setMidocoSkippedBooking method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoSkippedBooking method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoSkippedBookingForArrayConstraintsFromSetMidocoSkippedBooking(array $values = []): string
+    public static function validateMidocoSkippedBookingForArrayConstraintFromSetMidocoSkippedBooking(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getSkippedBookingsResponseMidocoSkippedBookingItem) {
@@ -69,10 +74,10 @@ class GetSkippedBookingsResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\SkippedBookingDTO[] $midocoSkippedBooking
      * @return \Pggns\MidocoApi\Order\StructType\GetSkippedBookingsResponse
      */
-    public function setMidocoSkippedBooking(array $midocoSkippedBooking = []): self
+    public function setMidocoSkippedBooking(?array $midocoSkippedBooking = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoSkippedBookingArrayErrorMessage = self::validateMidocoSkippedBookingForArrayConstraintsFromSetMidocoSkippedBooking($midocoSkippedBooking))) {
+        if ('' !== ($midocoSkippedBookingArrayErrorMessage = self::validateMidocoSkippedBookingForArrayConstraintFromSetMidocoSkippedBooking($midocoSkippedBooking))) {
             throw new InvalidArgumentException($midocoSkippedBookingArrayErrorMessage, __LINE__);
         }
         $this->MidocoSkippedBooking = $midocoSkippedBooking;

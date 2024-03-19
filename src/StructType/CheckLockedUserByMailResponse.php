@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CheckLockedUserByMailResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CheckLockedUserByMailResponse extends AbstractStructBase
 {
     /**

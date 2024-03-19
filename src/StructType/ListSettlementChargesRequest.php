@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ListSettlementChargesRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ListSettlementChargesRequest extends AbstractStructBase
 {
     /**

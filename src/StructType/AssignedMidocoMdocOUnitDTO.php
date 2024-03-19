@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for AssignedMidocoMdocOUnitDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class AssignedMidocoMdocOUnitDTO extends AbstractStructBase
 {
     /**

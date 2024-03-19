@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for BookTentativeMarginResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class BookTentativeMarginResponse extends AbstractStructBase
 {
     /**
@@ -21,7 +22,7 @@ class BookTentativeMarginResponse extends AbstractStructBase
      * - ref: MidocoMargin
      * @var \Pggns\MidocoApi\Order\StructType\MidocoMargin[]
      */
-    protected array $MidocoMargin = [];
+    protected array $MidocoMargin;
     /**
      * Constructor method for BookTentativeMarginResponse
      * @uses BookTentativeMarginResponse::setMidocoMargin()
@@ -41,13 +42,17 @@ class BookTentativeMarginResponse extends AbstractStructBase
         return $this->MidocoMargin;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoMargin method
+     * This method is responsible for validating the value(s) passed to the setMidocoMargin method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoMargin method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoMarginForArrayConstraintsFromSetMidocoMargin(array $values = []): string
+    public static function validateMidocoMarginForArrayConstraintFromSetMidocoMargin(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $bookTentativeMarginResponseMidocoMarginItem) {
@@ -72,7 +77,7 @@ class BookTentativeMarginResponse extends AbstractStructBase
     public function setMidocoMargin(array $midocoMargin): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoMarginArrayErrorMessage = self::validateMidocoMarginForArrayConstraintsFromSetMidocoMargin($midocoMargin))) {
+        if ('' !== ($midocoMarginArrayErrorMessage = self::validateMidocoMarginForArrayConstraintFromSetMidocoMargin($midocoMargin))) {
             throw new InvalidArgumentException($midocoMarginArrayErrorMessage, __LINE__);
         }
         $this->MidocoMargin = $midocoMargin;

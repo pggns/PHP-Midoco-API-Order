@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: Create or update auto invoice conditions.
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveAutoInvoiceConditionsRequest extends AbstractStructBase
 {
     /**

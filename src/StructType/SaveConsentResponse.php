@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveConsentResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveConsentResponse extends AbstractStructBase
 {
 }

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetRemarkCategoryResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetRemarkCategoryResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetRemarkCategoryResponse extends AbstractStructBase
      * - ref: MidocoRemarkCategory
      * @var \Pggns\MidocoApi\Order\StructType\MidocoRemarkCategory[]
      */
-    protected array $MidocoRemarkCategory = [];
+    protected ?array $MidocoRemarkCategory = null;
     /**
      * Constructor method for GetRemarkCategoryResponse
      * @uses GetRemarkCategoryResponse::setMidocoRemarkCategory()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoRemarkCategory[] $midocoRemarkCategory
      */
-    public function __construct(array $midocoRemarkCategory = [])
+    public function __construct(?array $midocoRemarkCategory = null)
     {
         $this
             ->setMidocoRemarkCategory($midocoRemarkCategory);
@@ -36,18 +37,22 @@ class GetRemarkCategoryResponse extends AbstractStructBase
      * Get MidocoRemarkCategory value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoRemarkCategory[]
      */
-    public function getMidocoRemarkCategory(): array
+    public function getMidocoRemarkCategory(): ?array
     {
         return $this->MidocoRemarkCategory;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoRemarkCategory method
+     * This method is responsible for validating the value(s) passed to the setMidocoRemarkCategory method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoRemarkCategory method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoRemarkCategoryForArrayConstraintsFromSetMidocoRemarkCategory(array $values = []): string
+    public static function validateMidocoRemarkCategoryForArrayConstraintFromSetMidocoRemarkCategory(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getRemarkCategoryResponseMidocoRemarkCategoryItem) {
@@ -69,10 +74,10 @@ class GetRemarkCategoryResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoRemarkCategory[] $midocoRemarkCategory
      * @return \Pggns\MidocoApi\Order\StructType\GetRemarkCategoryResponse
      */
-    public function setMidocoRemarkCategory(array $midocoRemarkCategory = []): self
+    public function setMidocoRemarkCategory(?array $midocoRemarkCategory = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoRemarkCategoryArrayErrorMessage = self::validateMidocoRemarkCategoryForArrayConstraintsFromSetMidocoRemarkCategory($midocoRemarkCategory))) {
+        if ('' !== ($midocoRemarkCategoryArrayErrorMessage = self::validateMidocoRemarkCategoryForArrayConstraintFromSetMidocoRemarkCategory($midocoRemarkCategory))) {
             throw new InvalidArgumentException($midocoRemarkCategoryArrayErrorMessage, __LINE__);
         }
         $this->MidocoRemarkCategory = $midocoRemarkCategory;

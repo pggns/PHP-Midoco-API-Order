@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: imports an Ama AIR message.
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class AnnounceAmaAirMessageRequest extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetCollectiveInvoicePrintPreselectionRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetCollectiveInvoicePrintPreselectionRequest extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetCollectiveInvoicePrintPreselectionRequest extends AbstractStructBase
      * - ref: MidocoOrderNo
      * @var \Pggns\MidocoApi\Order\StructType\MidocoOrderNo[]
      */
-    protected array $MidocoOrderNo = [];
+    protected ?array $MidocoOrderNo = null;
     /**
      * Constructor method for GetCollectiveInvoicePrintPreselectionRequest
      * @uses GetCollectiveInvoicePrintPreselectionRequest::setMidocoOrderNo()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoOrderNo[] $midocoOrderNo
      */
-    public function __construct(array $midocoOrderNo = [])
+    public function __construct(?array $midocoOrderNo = null)
     {
         $this
             ->setMidocoOrderNo($midocoOrderNo);
@@ -36,18 +37,22 @@ class GetCollectiveInvoicePrintPreselectionRequest extends AbstractStructBase
      * Get MidocoOrderNo value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoOrderNo[]
      */
-    public function getMidocoOrderNo(): array
+    public function getMidocoOrderNo(): ?array
     {
         return $this->MidocoOrderNo;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoOrderNo method
+     * This method is responsible for validating the value(s) passed to the setMidocoOrderNo method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoOrderNo method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoOrderNoForArrayConstraintsFromSetMidocoOrderNo(array $values = []): string
+    public static function validateMidocoOrderNoForArrayConstraintFromSetMidocoOrderNo(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getCollectiveInvoicePrintPreselectionRequestMidocoOrderNoItem) {
@@ -69,10 +74,10 @@ class GetCollectiveInvoicePrintPreselectionRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoOrderNo[] $midocoOrderNo
      * @return \Pggns\MidocoApi\Order\StructType\GetCollectiveInvoicePrintPreselectionRequest
      */
-    public function setMidocoOrderNo(array $midocoOrderNo = []): self
+    public function setMidocoOrderNo(?array $midocoOrderNo = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoOrderNoArrayErrorMessage = self::validateMidocoOrderNoForArrayConstraintsFromSetMidocoOrderNo($midocoOrderNo))) {
+        if ('' !== ($midocoOrderNoArrayErrorMessage = self::validateMidocoOrderNoForArrayConstraintFromSetMidocoOrderNo($midocoOrderNo))) {
             throw new InvalidArgumentException($midocoOrderNoArrayErrorMessage, __LINE__);
         }
         $this->MidocoOrderNo = $midocoOrderNo;

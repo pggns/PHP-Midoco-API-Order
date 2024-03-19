@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetOrgunitsForMidocoRuleSetResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetOrgunitsForMidocoRuleSetResponse extends AbstractStructBase
 {
     /**

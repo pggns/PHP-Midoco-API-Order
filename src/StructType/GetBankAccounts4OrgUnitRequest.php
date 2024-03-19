@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: return all bank accounts to a given orgUnit
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetBankAccounts4OrgUnitRequest extends AbstractStructBase
 {
     /**

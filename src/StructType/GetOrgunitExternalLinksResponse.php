@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetOrgunitExternalLinksResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetOrgunitExternalLinksResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetOrgunitExternalLinksResponse extends AbstractStructBase
      * - ref: MidocoOrgunitExternalLink
      * @var \Pggns\MidocoApi\Order\StructType\OrgunitExternalLinkDTO[]
      */
-    protected array $MidocoOrgunitExternalLink = [];
+    protected ?array $MidocoOrgunitExternalLink = null;
     /**
      * Constructor method for GetOrgunitExternalLinksResponse
      * @uses GetOrgunitExternalLinksResponse::setMidocoOrgunitExternalLink()
      * @param \Pggns\MidocoApi\Order\StructType\OrgunitExternalLinkDTO[] $midocoOrgunitExternalLink
      */
-    public function __construct(array $midocoOrgunitExternalLink = [])
+    public function __construct(?array $midocoOrgunitExternalLink = null)
     {
         $this
             ->setMidocoOrgunitExternalLink($midocoOrgunitExternalLink);
@@ -36,18 +37,22 @@ class GetOrgunitExternalLinksResponse extends AbstractStructBase
      * Get MidocoOrgunitExternalLink value
      * @return \Pggns\MidocoApi\Order\StructType\OrgunitExternalLinkDTO[]
      */
-    public function getMidocoOrgunitExternalLink(): array
+    public function getMidocoOrgunitExternalLink(): ?array
     {
         return $this->MidocoOrgunitExternalLink;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoOrgunitExternalLink method
+     * This method is responsible for validating the value(s) passed to the setMidocoOrgunitExternalLink method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoOrgunitExternalLink method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoOrgunitExternalLinkForArrayConstraintsFromSetMidocoOrgunitExternalLink(array $values = []): string
+    public static function validateMidocoOrgunitExternalLinkForArrayConstraintFromSetMidocoOrgunitExternalLink(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getOrgunitExternalLinksResponseMidocoOrgunitExternalLinkItem) {
@@ -69,10 +74,10 @@ class GetOrgunitExternalLinksResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\OrgunitExternalLinkDTO[] $midocoOrgunitExternalLink
      * @return \Pggns\MidocoApi\Order\StructType\GetOrgunitExternalLinksResponse
      */
-    public function setMidocoOrgunitExternalLink(array $midocoOrgunitExternalLink = []): self
+    public function setMidocoOrgunitExternalLink(?array $midocoOrgunitExternalLink = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoOrgunitExternalLinkArrayErrorMessage = self::validateMidocoOrgunitExternalLinkForArrayConstraintsFromSetMidocoOrgunitExternalLink($midocoOrgunitExternalLink))) {
+        if ('' !== ($midocoOrgunitExternalLinkArrayErrorMessage = self::validateMidocoOrgunitExternalLinkForArrayConstraintFromSetMidocoOrgunitExternalLink($midocoOrgunitExternalLink))) {
             throw new InvalidArgumentException($midocoOrgunitExternalLinkArrayErrorMessage, __LINE__);
         }
         $this->MidocoOrgunitExternalLink = $midocoOrgunitExternalLink;

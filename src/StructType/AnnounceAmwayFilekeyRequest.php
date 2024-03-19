@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for AnnounceAmwayFilekeyRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class AnnounceAmwayFilekeyRequest extends AbstractStructBase
 {
     /**
@@ -29,7 +30,7 @@ class AnnounceAmwayFilekeyRequest extends AbstractStructBase
      * - maxOccurs: unbounded
      * @var \Pggns\MidocoApi\Order\StructType\FlightService[]
      */
-    protected array $flightService = [];
+    protected ?array $flightService = null;
     /**
      * Constructor method for AnnounceAmwayFilekeyRequest
      * @uses AnnounceAmwayFilekeyRequest::setOrderNo()
@@ -39,7 +40,7 @@ class AnnounceAmwayFilekeyRequest extends AbstractStructBase
      * @param string $filekey
      * @param \Pggns\MidocoApi\Order\StructType\FlightService[] $flightService
      */
-    public function __construct(?int $orderNo = null, ?string $filekey = null, array $flightService = [])
+    public function __construct(?int $orderNo = null, ?string $filekey = null, ?array $flightService = null)
     {
         $this
             ->setOrderNo($orderNo)
@@ -96,18 +97,22 @@ class AnnounceAmwayFilekeyRequest extends AbstractStructBase
      * Get flightService value
      * @return \Pggns\MidocoApi\Order\StructType\FlightService[]
      */
-    public function getFlightService(): array
+    public function getFlightService(): ?array
     {
         return $this->flightService;
     }
     /**
-     * This method is responsible for validating the values passed to the setFlightService method
+     * This method is responsible for validating the value(s) passed to the setFlightService method
      * This method is willingly generated in order to preserve the one-line inline validation within the setFlightService method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateFlightServiceForArrayConstraintsFromSetFlightService(array $values = []): string
+    public static function validateFlightServiceForArrayConstraintFromSetFlightService(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $announceAmwayFilekeyRequestFlightServiceItem) {
@@ -129,10 +134,10 @@ class AnnounceAmwayFilekeyRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\FlightService[] $flightService
      * @return \Pggns\MidocoApi\Order\StructType\AnnounceAmwayFilekeyRequest
      */
-    public function setFlightService(array $flightService = []): self
+    public function setFlightService(?array $flightService = null): self
     {
         // validation for constraint: array
-        if ('' !== ($flightServiceArrayErrorMessage = self::validateFlightServiceForArrayConstraintsFromSetFlightService($flightService))) {
+        if ('' !== ($flightServiceArrayErrorMessage = self::validateFlightServiceForArrayConstraintFromSetFlightService($flightService))) {
             throw new InvalidArgumentException($flightServiceArrayErrorMessage, __LINE__);
         }
         $this->flightService = $flightService;

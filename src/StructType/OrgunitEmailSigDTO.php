@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for OrgunitEmailSigDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class OrgunitEmailSigDTO extends AbstractStructBase
 {
     /**

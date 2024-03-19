@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteTamaraPositionResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteTamaraPositionResponse extends AbstractStructBase
 {
 }

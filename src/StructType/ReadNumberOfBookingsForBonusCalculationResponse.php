@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ReadNumberOfBookingsForBonusCalculationResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ReadNumberOfBookingsForBonusCalculationResponse extends AbstractStructBase
 {
     /**

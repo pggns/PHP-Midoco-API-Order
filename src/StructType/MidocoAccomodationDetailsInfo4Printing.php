@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoAccomodationDetailsInfo4Printing StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoAccomodationDetailsInfo4Printing extends AccomodationDetailDTO
 {
     /**
@@ -20,13 +21,13 @@ class MidocoAccomodationDetailsInfo4Printing extends AccomodationDetailDTO
      * - minOccurs: 0
      * @var int[]
      */
-    protected array $assignedPassengers = [];
+    protected ?array $assignedPassengers = null;
     /**
      * Constructor method for MidocoAccomodationDetailsInfo4Printing
      * @uses MidocoAccomodationDetailsInfo4Printing::setAssignedPassengers()
      * @param int[] $assignedPassengers
      */
-    public function __construct(array $assignedPassengers = [])
+    public function __construct(?array $assignedPassengers = null)
     {
         $this
             ->setAssignedPassengers($assignedPassengers);
@@ -35,18 +36,22 @@ class MidocoAccomodationDetailsInfo4Printing extends AccomodationDetailDTO
      * Get assignedPassengers value
      * @return int[]
      */
-    public function getAssignedPassengers(): array
+    public function getAssignedPassengers(): ?array
     {
         return $this->assignedPassengers;
     }
     /**
-     * This method is responsible for validating the values passed to the setAssignedPassengers method
+     * This method is responsible for validating the value(s) passed to the setAssignedPassengers method
      * This method is willingly generated in order to preserve the one-line inline validation within the setAssignedPassengers method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateAssignedPassengersForArrayConstraintsFromSetAssignedPassengers(array $values = []): string
+    public static function validateAssignedPassengersForArrayConstraintFromSetAssignedPassengers(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoAccomodationDetailsInfo4PrintingAssignedPassengersItem) {
@@ -68,10 +73,10 @@ class MidocoAccomodationDetailsInfo4Printing extends AccomodationDetailDTO
      * @param int[] $assignedPassengers
      * @return \Pggns\MidocoApi\Order\StructType\MidocoAccomodationDetailsInfo4Printing
      */
-    public function setAssignedPassengers(array $assignedPassengers = []): self
+    public function setAssignedPassengers(?array $assignedPassengers = null): self
     {
         // validation for constraint: array
-        if ('' !== ($assignedPassengersArrayErrorMessage = self::validateAssignedPassengersForArrayConstraintsFromSetAssignedPassengers($assignedPassengers))) {
+        if ('' !== ($assignedPassengersArrayErrorMessage = self::validateAssignedPassengersForArrayConstraintFromSetAssignedPassengers($assignedPassengers))) {
             throw new InvalidArgumentException($assignedPassengersArrayErrorMessage, __LINE__);
         }
         $this->assignedPassengers = $assignedPassengers;

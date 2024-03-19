@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for AgencySettlementBookingSetItemPriceRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class AgencySettlementBookingSetItemPriceRequest extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetSellItemsSettlementNeededResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetSellItemsSettlementNeededResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetSellItemsSettlementNeededResponse extends AbstractStructBase
      * - ref: MidocoSupplierAgencySettlementBooking
      * @var \Pggns\MidocoApi\Order\StructType\MidocoSupplierAgencySettlementBooking[]
      */
-    protected array $MidocoSupplierAgencySettlementBooking = [];
+    protected ?array $MidocoSupplierAgencySettlementBooking = null;
     /**
      * Constructor method for GetSellItemsSettlementNeededResponse
      * @uses GetSellItemsSettlementNeededResponse::setMidocoSupplierAgencySettlementBooking()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSupplierAgencySettlementBooking[] $midocoSupplierAgencySettlementBooking
      */
-    public function __construct(array $midocoSupplierAgencySettlementBooking = [])
+    public function __construct(?array $midocoSupplierAgencySettlementBooking = null)
     {
         $this
             ->setMidocoSupplierAgencySettlementBooking($midocoSupplierAgencySettlementBooking);
@@ -36,18 +37,22 @@ class GetSellItemsSettlementNeededResponse extends AbstractStructBase
      * Get MidocoSupplierAgencySettlementBooking value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSupplierAgencySettlementBooking[]
      */
-    public function getMidocoSupplierAgencySettlementBooking(): array
+    public function getMidocoSupplierAgencySettlementBooking(): ?array
     {
         return $this->MidocoSupplierAgencySettlementBooking;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoSupplierAgencySettlementBooking method
+     * This method is responsible for validating the value(s) passed to the setMidocoSupplierAgencySettlementBooking method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoSupplierAgencySettlementBooking method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoSupplierAgencySettlementBookingForArrayConstraintsFromSetMidocoSupplierAgencySettlementBooking(array $values = []): string
+    public static function validateMidocoSupplierAgencySettlementBookingForArrayConstraintFromSetMidocoSupplierAgencySettlementBooking(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getSellItemsSettlementNeededResponseMidocoSupplierAgencySettlementBookingItem) {
@@ -69,10 +74,10 @@ class GetSellItemsSettlementNeededResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSupplierAgencySettlementBooking[] $midocoSupplierAgencySettlementBooking
      * @return \Pggns\MidocoApi\Order\StructType\GetSellItemsSettlementNeededResponse
      */
-    public function setMidocoSupplierAgencySettlementBooking(array $midocoSupplierAgencySettlementBooking = []): self
+    public function setMidocoSupplierAgencySettlementBooking(?array $midocoSupplierAgencySettlementBooking = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoSupplierAgencySettlementBookingArrayErrorMessage = self::validateMidocoSupplierAgencySettlementBookingForArrayConstraintsFromSetMidocoSupplierAgencySettlementBooking($midocoSupplierAgencySettlementBooking))) {
+        if ('' !== ($midocoSupplierAgencySettlementBookingArrayErrorMessage = self::validateMidocoSupplierAgencySettlementBookingForArrayConstraintFromSetMidocoSupplierAgencySettlementBooking($midocoSupplierAgencySettlementBooking))) {
             throw new InvalidArgumentException($midocoSupplierAgencySettlementBookingArrayErrorMessage, __LINE__);
         }
         $this->MidocoSupplierAgencySettlementBooking = $midocoSupplierAgencySettlementBooking;

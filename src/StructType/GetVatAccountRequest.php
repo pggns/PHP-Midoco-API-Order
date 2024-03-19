@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetVatAccountRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetVatAccountRequest extends AbstractStructBase
 {
     /**

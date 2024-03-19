@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SapChangeHistoryDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SapChangeHistoryDTO extends AbstractStructBase
 {
     /**

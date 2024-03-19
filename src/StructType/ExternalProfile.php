@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ExternalProfile StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ExternalProfile extends AbstractStructBase
 {
     /**

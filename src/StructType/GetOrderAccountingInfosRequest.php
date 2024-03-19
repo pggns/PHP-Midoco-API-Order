@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetOrderAccountingInfosRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetOrderAccountingInfosRequest extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for Door2GateImportResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class Door2GateImportResponse extends AbstractStructBase
 {
     /**
@@ -20,7 +21,7 @@ class Door2GateImportResponse extends AbstractStructBase
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\Door2GateImportStatus[]
      */
-    protected array $Door2GateImportStatus = [];
+    protected ?array $Door2GateImportStatus = null;
     /**
      * The error
      * Meta information extracted from the WSDL
@@ -35,7 +36,7 @@ class Door2GateImportResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\Door2GateImportStatus[] $door2GateImportStatus
      * @param string $error
      */
-    public function __construct(array $door2GateImportStatus = [], ?string $error = null)
+    public function __construct(?array $door2GateImportStatus = null, ?string $error = null)
     {
         $this
             ->setDoor2GateImportStatus($door2GateImportStatus)
@@ -45,18 +46,22 @@ class Door2GateImportResponse extends AbstractStructBase
      * Get Door2GateImportStatus value
      * @return \Pggns\MidocoApi\Order\StructType\Door2GateImportStatus[]
      */
-    public function getDoor2GateImportStatus(): array
+    public function getDoor2GateImportStatus(): ?array
     {
         return $this->Door2GateImportStatus;
     }
     /**
-     * This method is responsible for validating the values passed to the setDoor2GateImportStatus method
+     * This method is responsible for validating the value(s) passed to the setDoor2GateImportStatus method
      * This method is willingly generated in order to preserve the one-line inline validation within the setDoor2GateImportStatus method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateDoor2GateImportStatusForArrayConstraintsFromSetDoor2GateImportStatus(array $values = []): string
+    public static function validateDoor2GateImportStatusForArrayConstraintFromSetDoor2GateImportStatus(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $door2GateImportResponseDoor2GateImportStatusItem) {
@@ -78,10 +83,10 @@ class Door2GateImportResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\Door2GateImportStatus[] $door2GateImportStatus
      * @return \Pggns\MidocoApi\Order\StructType\Door2GateImportResponse
      */
-    public function setDoor2GateImportStatus(array $door2GateImportStatus = []): self
+    public function setDoor2GateImportStatus(?array $door2GateImportStatus = null): self
     {
         // validation for constraint: array
-        if ('' !== ($door2GateImportStatusArrayErrorMessage = self::validateDoor2GateImportStatusForArrayConstraintsFromSetDoor2GateImportStatus($door2GateImportStatus))) {
+        if ('' !== ($door2GateImportStatusArrayErrorMessage = self::validateDoor2GateImportStatusForArrayConstraintFromSetDoor2GateImportStatus($door2GateImportStatus))) {
             throw new InvalidArgumentException($door2GateImportStatusArrayErrorMessage, __LINE__);
         }
         $this->Door2GateImportStatus = $door2GateImportStatus;

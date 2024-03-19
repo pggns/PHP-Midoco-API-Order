@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteBillingDocRemarkRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteBillingDocRemarkRequest extends AbstractStructBase
 {
     /**

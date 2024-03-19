@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetEmailText4PrintTypeRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetEmailText4PrintTypeRequest extends AbstractStructBase
 {
     /**
@@ -39,14 +40,14 @@ class GetEmailText4PrintTypeRequest extends AbstractStructBase
      * - maxOccurs: unbounded
      * @var int[]
      */
-    protected array $repositoryId = [];
+    protected ?array $repositoryId = null;
     /**
      * The fileName
      * Meta information extracted from the WSDL
      * - maxOccurs: unbounded
      * @var string[]
      */
-    protected array $fileName = [];
+    protected ?array $fileName = null;
     /**
      * Constructor method for GetEmailText4PrintTypeRequest
      * @uses GetEmailText4PrintTypeRequest::setMedia()
@@ -62,7 +63,7 @@ class GetEmailText4PrintTypeRequest extends AbstractStructBase
      * @param int[] $repositoryId
      * @param string[] $fileName
      */
-    public function __construct(?string $media = null, ?string $printType = null, ?string $templateId = null, ?int $orderId = null, array $repositoryId = [], array $fileName = [])
+    public function __construct(?string $media = null, ?string $printType = null, ?string $templateId = null, ?int $orderId = null, ?array $repositoryId = null, ?array $fileName = null)
     {
         $this
             ->setMedia($media)
@@ -168,18 +169,22 @@ class GetEmailText4PrintTypeRequest extends AbstractStructBase
      * Get repositoryId value
      * @return int[]
      */
-    public function getRepositoryId(): array
+    public function getRepositoryId(): ?array
     {
         return $this->repositoryId;
     }
     /**
-     * This method is responsible for validating the values passed to the setRepositoryId method
+     * This method is responsible for validating the value(s) passed to the setRepositoryId method
      * This method is willingly generated in order to preserve the one-line inline validation within the setRepositoryId method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateRepositoryIdForArrayConstraintsFromSetRepositoryId(array $values = []): string
+    public static function validateRepositoryIdForArrayConstraintFromSetRepositoryId(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getEmailText4PrintTypeRequestRepositoryIdItem) {
@@ -201,10 +206,10 @@ class GetEmailText4PrintTypeRequest extends AbstractStructBase
      * @param int[] $repositoryId
      * @return \Pggns\MidocoApi\Order\StructType\GetEmailText4PrintTypeRequest
      */
-    public function setRepositoryId(array $repositoryId = []): self
+    public function setRepositoryId(?array $repositoryId = null): self
     {
         // validation for constraint: array
-        if ('' !== ($repositoryIdArrayErrorMessage = self::validateRepositoryIdForArrayConstraintsFromSetRepositoryId($repositoryId))) {
+        if ('' !== ($repositoryIdArrayErrorMessage = self::validateRepositoryIdForArrayConstraintFromSetRepositoryId($repositoryId))) {
             throw new InvalidArgumentException($repositoryIdArrayErrorMessage, __LINE__);
         }
         $this->repositoryId = $repositoryId;
@@ -231,18 +236,22 @@ class GetEmailText4PrintTypeRequest extends AbstractStructBase
      * Get fileName value
      * @return string[]
      */
-    public function getFileName(): array
+    public function getFileName(): ?array
     {
         return $this->fileName;
     }
     /**
-     * This method is responsible for validating the values passed to the setFileName method
+     * This method is responsible for validating the value(s) passed to the setFileName method
      * This method is willingly generated in order to preserve the one-line inline validation within the setFileName method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateFileNameForArrayConstraintsFromSetFileName(array $values = []): string
+    public static function validateFileNameForArrayConstraintFromSetFileName(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getEmailText4PrintTypeRequestFileNameItem) {
@@ -264,10 +273,10 @@ class GetEmailText4PrintTypeRequest extends AbstractStructBase
      * @param string[] $fileName
      * @return \Pggns\MidocoApi\Order\StructType\GetEmailText4PrintTypeRequest
      */
-    public function setFileName(array $fileName = []): self
+    public function setFileName(?array $fileName = null): self
     {
         // validation for constraint: array
-        if ('' !== ($fileNameArrayErrorMessage = self::validateFileNameForArrayConstraintsFromSetFileName($fileName))) {
+        if ('' !== ($fileNameArrayErrorMessage = self::validateFileNameForArrayConstraintFromSetFileName($fileName))) {
             throw new InvalidArgumentException($fileNameArrayErrorMessage, __LINE__);
         }
         $this->fileName = $fileName;

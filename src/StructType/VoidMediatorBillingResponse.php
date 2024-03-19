@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for VoidMediatorBillingResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class VoidMediatorBillingResponse extends AbstractStructBase
 {
 }

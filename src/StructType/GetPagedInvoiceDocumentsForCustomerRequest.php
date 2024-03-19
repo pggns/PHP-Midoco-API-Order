@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetPagedInvoiceDocumentsForCustomerRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetPagedInvoiceDocumentsForCustomerRequest extends AbstractStructBase
 {
     /**

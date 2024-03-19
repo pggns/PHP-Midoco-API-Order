@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CalculateDeliveryReceiptResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CalculateDeliveryReceiptResponse extends AbstractStructBase
 {
     /**

@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: move a customer document into the last order of the customer
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MoveCustomerDocumentIntoLastOrderResponse extends AbstractStructBase
 {
     /**

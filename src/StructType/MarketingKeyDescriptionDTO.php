@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MarketingKeyDescriptionDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MarketingKeyDescriptionDTO extends AbstractStructBase
 {
     /**

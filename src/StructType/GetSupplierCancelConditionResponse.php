@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetSupplierCancelConditionResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetSupplierCancelConditionResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetSupplierCancelConditionResponse extends AbstractStructBase
      * - ref: MidocoSupplierCancelCondition
      * @var \Pggns\MidocoApi\Order\StructType\MidocoSupplierCancelCondition[]
      */
-    protected array $MidocoSupplierCancelCondition = [];
+    protected ?array $MidocoSupplierCancelCondition = null;
     /**
      * Constructor method for GetSupplierCancelConditionResponse
      * @uses GetSupplierCancelConditionResponse::setMidocoSupplierCancelCondition()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSupplierCancelCondition[] $midocoSupplierCancelCondition
      */
-    public function __construct(array $midocoSupplierCancelCondition = [])
+    public function __construct(?array $midocoSupplierCancelCondition = null)
     {
         $this
             ->setMidocoSupplierCancelCondition($midocoSupplierCancelCondition);
@@ -36,18 +37,22 @@ class GetSupplierCancelConditionResponse extends AbstractStructBase
      * Get MidocoSupplierCancelCondition value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSupplierCancelCondition[]
      */
-    public function getMidocoSupplierCancelCondition(): array
+    public function getMidocoSupplierCancelCondition(): ?array
     {
         return $this->MidocoSupplierCancelCondition;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoSupplierCancelCondition method
+     * This method is responsible for validating the value(s) passed to the setMidocoSupplierCancelCondition method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoSupplierCancelCondition method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoSupplierCancelConditionForArrayConstraintsFromSetMidocoSupplierCancelCondition(array $values = []): string
+    public static function validateMidocoSupplierCancelConditionForArrayConstraintFromSetMidocoSupplierCancelCondition(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getSupplierCancelConditionResponseMidocoSupplierCancelConditionItem) {
@@ -69,10 +74,10 @@ class GetSupplierCancelConditionResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSupplierCancelCondition[] $midocoSupplierCancelCondition
      * @return \Pggns\MidocoApi\Order\StructType\GetSupplierCancelConditionResponse
      */
-    public function setMidocoSupplierCancelCondition(array $midocoSupplierCancelCondition = []): self
+    public function setMidocoSupplierCancelCondition(?array $midocoSupplierCancelCondition = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoSupplierCancelConditionArrayErrorMessage = self::validateMidocoSupplierCancelConditionForArrayConstraintsFromSetMidocoSupplierCancelCondition($midocoSupplierCancelCondition))) {
+        if ('' !== ($midocoSupplierCancelConditionArrayErrorMessage = self::validateMidocoSupplierCancelConditionForArrayConstraintFromSetMidocoSupplierCancelCondition($midocoSupplierCancelCondition))) {
             throw new InvalidArgumentException($midocoSupplierCancelConditionArrayErrorMessage, __LINE__);
         }
         $this->MidocoSupplierCancelCondition = $midocoSupplierCancelCondition;

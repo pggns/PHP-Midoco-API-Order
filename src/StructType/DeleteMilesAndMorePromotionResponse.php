@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteMilesAndMorePromotionResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteMilesAndMorePromotionResponse extends AbstractStructBase
 {
 }

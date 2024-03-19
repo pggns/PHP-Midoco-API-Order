@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetSuppCancelCMappingResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetSuppCancelCMappingResponse extends AbstractStructBase
 {
     /**

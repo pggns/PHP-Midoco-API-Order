@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetAttributeChoicesResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetAttributeChoicesResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetAttributeChoicesResponse extends AbstractStructBase
      * - ref: MidocoAttributeChoiceValue
      * @var \Pggns\MidocoApi\Order\StructType\AttributeChoiceValueDTO[]
      */
-    protected array $MidocoAttributeChoiceValue = [];
+    protected ?array $MidocoAttributeChoiceValue = null;
     /**
      * Constructor method for GetAttributeChoicesResponse
      * @uses GetAttributeChoicesResponse::setMidocoAttributeChoiceValue()
      * @param \Pggns\MidocoApi\Order\StructType\AttributeChoiceValueDTO[] $midocoAttributeChoiceValue
      */
-    public function __construct(array $midocoAttributeChoiceValue = [])
+    public function __construct(?array $midocoAttributeChoiceValue = null)
     {
         $this
             ->setMidocoAttributeChoiceValue($midocoAttributeChoiceValue);
@@ -36,18 +37,22 @@ class GetAttributeChoicesResponse extends AbstractStructBase
      * Get MidocoAttributeChoiceValue value
      * @return \Pggns\MidocoApi\Order\StructType\AttributeChoiceValueDTO[]
      */
-    public function getMidocoAttributeChoiceValue(): array
+    public function getMidocoAttributeChoiceValue(): ?array
     {
         return $this->MidocoAttributeChoiceValue;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoAttributeChoiceValue method
+     * This method is responsible for validating the value(s) passed to the setMidocoAttributeChoiceValue method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoAttributeChoiceValue method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoAttributeChoiceValueForArrayConstraintsFromSetMidocoAttributeChoiceValue(array $values = []): string
+    public static function validateMidocoAttributeChoiceValueForArrayConstraintFromSetMidocoAttributeChoiceValue(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getAttributeChoicesResponseMidocoAttributeChoiceValueItem) {
@@ -69,10 +74,10 @@ class GetAttributeChoicesResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\AttributeChoiceValueDTO[] $midocoAttributeChoiceValue
      * @return \Pggns\MidocoApi\Order\StructType\GetAttributeChoicesResponse
      */
-    public function setMidocoAttributeChoiceValue(array $midocoAttributeChoiceValue = []): self
+    public function setMidocoAttributeChoiceValue(?array $midocoAttributeChoiceValue = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoAttributeChoiceValueArrayErrorMessage = self::validateMidocoAttributeChoiceValueForArrayConstraintsFromSetMidocoAttributeChoiceValue($midocoAttributeChoiceValue))) {
+        if ('' !== ($midocoAttributeChoiceValueArrayErrorMessage = self::validateMidocoAttributeChoiceValueForArrayConstraintFromSetMidocoAttributeChoiceValue($midocoAttributeChoiceValue))) {
             throw new InvalidArgumentException($midocoAttributeChoiceValueArrayErrorMessage, __LINE__);
         }
         $this->MidocoAttributeChoiceValue = $midocoAttributeChoiceValue;

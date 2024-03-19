@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoCriteriaType4Printing StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoCriteriaType4Printing extends CrmCriteriaDTO
 {
     /**

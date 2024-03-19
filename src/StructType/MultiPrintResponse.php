@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MultiPrintResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MultiPrintResponse extends AbstractStructBase
 {
     /**
@@ -27,7 +28,7 @@ class MultiPrintResponse extends AbstractStructBase
      * - minOccurs: 0
      * @var int[]
      */
-    protected array $historyId = [];
+    protected ?array $historyId = null;
     /**
      * The invoiceId
      * Meta information extracted from the WSDL
@@ -35,7 +36,7 @@ class MultiPrintResponse extends AbstractStructBase
      * - minOccurs: 0
      * @var int[]
      */
-    protected array $invoiceId = [];
+    protected ?array $invoiceId = null;
     /**
      * The printjobId
      * Meta information extracted from the WSDL
@@ -43,7 +44,7 @@ class MultiPrintResponse extends AbstractStructBase
      * - minOccurs: 0
      * @var int[]
      */
-    protected array $printjobId = [];
+    protected ?array $printjobId = null;
     /**
      * The docRepoId
      * Meta information extracted from the WSDL
@@ -60,7 +61,7 @@ class MultiPrintResponse extends AbstractStructBase
      * - ref: system:MidocoMailDescription4Inexso
      * @var \Pggns\MidocoApi\Order\StructType\MidocoMailDescription4Inexso[]
      */
-    protected array $MidocoMailDescription4Inexso = [];
+    protected ?array $MidocoMailDescription4Inexso = null;
     /**
      * The MidocoAdditionalPrintDocument
      * Meta information extracted from the WSDL
@@ -69,7 +70,7 @@ class MultiPrintResponse extends AbstractStructBase
      * - ref: MidocoAdditionalPrintDocument
      * @var \Pggns\MidocoApi\Order\StructType\MidocoAdditionalPrintDocument[]
      */
-    protected array $MidocoAdditionalPrintDocument = [];
+    protected ?array $MidocoAdditionalPrintDocument = null;
     /**
      * The voidInvoiceId
      * Meta information extracted from the WSDL
@@ -77,7 +78,7 @@ class MultiPrintResponse extends AbstractStructBase
      * - minOccurs: 0
      * @var int[]
      */
-    protected array $voidInvoiceId = [];
+    protected ?array $voidInvoiceId = null;
     /**
      * The rtfData
      * Meta information extracted from the WSDL
@@ -85,7 +86,7 @@ class MultiPrintResponse extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $rtfData = [];
+    protected ?array $rtfData = null;
     /**
      * The fopStrs
      * Meta information extracted from the WSDL
@@ -93,7 +94,7 @@ class MultiPrintResponse extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $fopStrs = [];
+    protected ?array $fopStrs = null;
     /**
      * Constructor method for MultiPrintResponse
      * @uses MultiPrintResponse::setMidocoMailMessage()
@@ -117,7 +118,7 @@ class MultiPrintResponse extends AbstractStructBase
      * @param string[] $rtfData
      * @param string[] $fopStrs
      */
-    public function __construct(?\Pggns\MidocoApi\Order\StructType\MidocoMailMessageType $midocoMailMessage = null, array $historyId = [], array $invoiceId = [], array $printjobId = [], ?int $docRepoId = null, array $midocoMailDescription4Inexso = [], array $midocoAdditionalPrintDocument = [], array $voidInvoiceId = [], array $rtfData = [], array $fopStrs = [])
+    public function __construct(?\Pggns\MidocoApi\Order\StructType\MidocoMailMessageType $midocoMailMessage = null, ?array $historyId = null, ?array $invoiceId = null, ?array $printjobId = null, ?int $docRepoId = null, ?array $midocoMailDescription4Inexso = null, ?array $midocoAdditionalPrintDocument = null, ?array $voidInvoiceId = null, ?array $rtfData = null, ?array $fopStrs = null)
     {
         $this
             ->setMidocoMailMessage($midocoMailMessage)
@@ -154,18 +155,22 @@ class MultiPrintResponse extends AbstractStructBase
      * Get historyId value
      * @return int[]
      */
-    public function getHistoryId(): array
+    public function getHistoryId(): ?array
     {
         return $this->historyId;
     }
     /**
-     * This method is responsible for validating the values passed to the setHistoryId method
+     * This method is responsible for validating the value(s) passed to the setHistoryId method
      * This method is willingly generated in order to preserve the one-line inline validation within the setHistoryId method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateHistoryIdForArrayConstraintsFromSetHistoryId(array $values = []): string
+    public static function validateHistoryIdForArrayConstraintFromSetHistoryId(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $multiPrintResponseHistoryIdItem) {
@@ -187,10 +192,10 @@ class MultiPrintResponse extends AbstractStructBase
      * @param int[] $historyId
      * @return \Pggns\MidocoApi\Order\StructType\MultiPrintResponse
      */
-    public function setHistoryId(array $historyId = []): self
+    public function setHistoryId(?array $historyId = null): self
     {
         // validation for constraint: array
-        if ('' !== ($historyIdArrayErrorMessage = self::validateHistoryIdForArrayConstraintsFromSetHistoryId($historyId))) {
+        if ('' !== ($historyIdArrayErrorMessage = self::validateHistoryIdForArrayConstraintFromSetHistoryId($historyId))) {
             throw new InvalidArgumentException($historyIdArrayErrorMessage, __LINE__);
         }
         $this->historyId = $historyId;
@@ -217,18 +222,22 @@ class MultiPrintResponse extends AbstractStructBase
      * Get invoiceId value
      * @return int[]
      */
-    public function getInvoiceId(): array
+    public function getInvoiceId(): ?array
     {
         return $this->invoiceId;
     }
     /**
-     * This method is responsible for validating the values passed to the setInvoiceId method
+     * This method is responsible for validating the value(s) passed to the setInvoiceId method
      * This method is willingly generated in order to preserve the one-line inline validation within the setInvoiceId method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateInvoiceIdForArrayConstraintsFromSetInvoiceId(array $values = []): string
+    public static function validateInvoiceIdForArrayConstraintFromSetInvoiceId(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $multiPrintResponseInvoiceIdItem) {
@@ -250,10 +259,10 @@ class MultiPrintResponse extends AbstractStructBase
      * @param int[] $invoiceId
      * @return \Pggns\MidocoApi\Order\StructType\MultiPrintResponse
      */
-    public function setInvoiceId(array $invoiceId = []): self
+    public function setInvoiceId(?array $invoiceId = null): self
     {
         // validation for constraint: array
-        if ('' !== ($invoiceIdArrayErrorMessage = self::validateInvoiceIdForArrayConstraintsFromSetInvoiceId($invoiceId))) {
+        if ('' !== ($invoiceIdArrayErrorMessage = self::validateInvoiceIdForArrayConstraintFromSetInvoiceId($invoiceId))) {
             throw new InvalidArgumentException($invoiceIdArrayErrorMessage, __LINE__);
         }
         $this->invoiceId = $invoiceId;
@@ -280,18 +289,22 @@ class MultiPrintResponse extends AbstractStructBase
      * Get printjobId value
      * @return int[]
      */
-    public function getPrintjobId(): array
+    public function getPrintjobId(): ?array
     {
         return $this->printjobId;
     }
     /**
-     * This method is responsible for validating the values passed to the setPrintjobId method
+     * This method is responsible for validating the value(s) passed to the setPrintjobId method
      * This method is willingly generated in order to preserve the one-line inline validation within the setPrintjobId method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validatePrintjobIdForArrayConstraintsFromSetPrintjobId(array $values = []): string
+    public static function validatePrintjobIdForArrayConstraintFromSetPrintjobId(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $multiPrintResponsePrintjobIdItem) {
@@ -313,10 +326,10 @@ class MultiPrintResponse extends AbstractStructBase
      * @param int[] $printjobId
      * @return \Pggns\MidocoApi\Order\StructType\MultiPrintResponse
      */
-    public function setPrintjobId(array $printjobId = []): self
+    public function setPrintjobId(?array $printjobId = null): self
     {
         // validation for constraint: array
-        if ('' !== ($printjobIdArrayErrorMessage = self::validatePrintjobIdForArrayConstraintsFromSetPrintjobId($printjobId))) {
+        if ('' !== ($printjobIdArrayErrorMessage = self::validatePrintjobIdForArrayConstraintFromSetPrintjobId($printjobId))) {
             throw new InvalidArgumentException($printjobIdArrayErrorMessage, __LINE__);
         }
         $this->printjobId = $printjobId;
@@ -366,18 +379,22 @@ class MultiPrintResponse extends AbstractStructBase
      * Get MidocoMailDescription4Inexso value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoMailDescription4Inexso[]
      */
-    public function getMidocoMailDescription4Inexso(): array
+    public function getMidocoMailDescription4Inexso(): ?array
     {
         return $this->MidocoMailDescription4Inexso;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoMailDescription4Inexso method
+     * This method is responsible for validating the value(s) passed to the setMidocoMailDescription4Inexso method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoMailDescription4Inexso method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoMailDescription4InexsoForArrayConstraintsFromSetMidocoMailDescription4Inexso(array $values = []): string
+    public static function validateMidocoMailDescription4InexsoForArrayConstraintFromSetMidocoMailDescription4Inexso(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $multiPrintResponseMidocoMailDescription4InexsoItem) {
@@ -399,10 +416,10 @@ class MultiPrintResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoMailDescription4Inexso[] $midocoMailDescription4Inexso
      * @return \Pggns\MidocoApi\Order\StructType\MultiPrintResponse
      */
-    public function setMidocoMailDescription4Inexso(array $midocoMailDescription4Inexso = []): self
+    public function setMidocoMailDescription4Inexso(?array $midocoMailDescription4Inexso = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoMailDescription4InexsoArrayErrorMessage = self::validateMidocoMailDescription4InexsoForArrayConstraintsFromSetMidocoMailDescription4Inexso($midocoMailDescription4Inexso))) {
+        if ('' !== ($midocoMailDescription4InexsoArrayErrorMessage = self::validateMidocoMailDescription4InexsoForArrayConstraintFromSetMidocoMailDescription4Inexso($midocoMailDescription4Inexso))) {
             throw new InvalidArgumentException($midocoMailDescription4InexsoArrayErrorMessage, __LINE__);
         }
         $this->MidocoMailDescription4Inexso = $midocoMailDescription4Inexso;
@@ -429,18 +446,22 @@ class MultiPrintResponse extends AbstractStructBase
      * Get MidocoAdditionalPrintDocument value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoAdditionalPrintDocument[]
      */
-    public function getMidocoAdditionalPrintDocument(): array
+    public function getMidocoAdditionalPrintDocument(): ?array
     {
         return $this->MidocoAdditionalPrintDocument;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoAdditionalPrintDocument method
+     * This method is responsible for validating the value(s) passed to the setMidocoAdditionalPrintDocument method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoAdditionalPrintDocument method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoAdditionalPrintDocumentForArrayConstraintsFromSetMidocoAdditionalPrintDocument(array $values = []): string
+    public static function validateMidocoAdditionalPrintDocumentForArrayConstraintFromSetMidocoAdditionalPrintDocument(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $multiPrintResponseMidocoAdditionalPrintDocumentItem) {
@@ -462,10 +483,10 @@ class MultiPrintResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoAdditionalPrintDocument[] $midocoAdditionalPrintDocument
      * @return \Pggns\MidocoApi\Order\StructType\MultiPrintResponse
      */
-    public function setMidocoAdditionalPrintDocument(array $midocoAdditionalPrintDocument = []): self
+    public function setMidocoAdditionalPrintDocument(?array $midocoAdditionalPrintDocument = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoAdditionalPrintDocumentArrayErrorMessage = self::validateMidocoAdditionalPrintDocumentForArrayConstraintsFromSetMidocoAdditionalPrintDocument($midocoAdditionalPrintDocument))) {
+        if ('' !== ($midocoAdditionalPrintDocumentArrayErrorMessage = self::validateMidocoAdditionalPrintDocumentForArrayConstraintFromSetMidocoAdditionalPrintDocument($midocoAdditionalPrintDocument))) {
             throw new InvalidArgumentException($midocoAdditionalPrintDocumentArrayErrorMessage, __LINE__);
         }
         $this->MidocoAdditionalPrintDocument = $midocoAdditionalPrintDocument;
@@ -492,18 +513,22 @@ class MultiPrintResponse extends AbstractStructBase
      * Get voidInvoiceId value
      * @return int[]
      */
-    public function getVoidInvoiceId(): array
+    public function getVoidInvoiceId(): ?array
     {
         return $this->voidInvoiceId;
     }
     /**
-     * This method is responsible for validating the values passed to the setVoidInvoiceId method
+     * This method is responsible for validating the value(s) passed to the setVoidInvoiceId method
      * This method is willingly generated in order to preserve the one-line inline validation within the setVoidInvoiceId method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateVoidInvoiceIdForArrayConstraintsFromSetVoidInvoiceId(array $values = []): string
+    public static function validateVoidInvoiceIdForArrayConstraintFromSetVoidInvoiceId(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $multiPrintResponseVoidInvoiceIdItem) {
@@ -525,10 +550,10 @@ class MultiPrintResponse extends AbstractStructBase
      * @param int[] $voidInvoiceId
      * @return \Pggns\MidocoApi\Order\StructType\MultiPrintResponse
      */
-    public function setVoidInvoiceId(array $voidInvoiceId = []): self
+    public function setVoidInvoiceId(?array $voidInvoiceId = null): self
     {
         // validation for constraint: array
-        if ('' !== ($voidInvoiceIdArrayErrorMessage = self::validateVoidInvoiceIdForArrayConstraintsFromSetVoidInvoiceId($voidInvoiceId))) {
+        if ('' !== ($voidInvoiceIdArrayErrorMessage = self::validateVoidInvoiceIdForArrayConstraintFromSetVoidInvoiceId($voidInvoiceId))) {
             throw new InvalidArgumentException($voidInvoiceIdArrayErrorMessage, __LINE__);
         }
         $this->voidInvoiceId = $voidInvoiceId;
@@ -555,18 +580,22 @@ class MultiPrintResponse extends AbstractStructBase
      * Get rtfData value
      * @return string[]
      */
-    public function getRtfData(): array
+    public function getRtfData(): ?array
     {
         return $this->rtfData;
     }
     /**
-     * This method is responsible for validating the values passed to the setRtfData method
+     * This method is responsible for validating the value(s) passed to the setRtfData method
      * This method is willingly generated in order to preserve the one-line inline validation within the setRtfData method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateRtfDataForArrayConstraintsFromSetRtfData(array $values = []): string
+    public static function validateRtfDataForArrayConstraintFromSetRtfData(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $multiPrintResponseRtfDataItem) {
@@ -588,10 +617,10 @@ class MultiPrintResponse extends AbstractStructBase
      * @param string[] $rtfData
      * @return \Pggns\MidocoApi\Order\StructType\MultiPrintResponse
      */
-    public function setRtfData(array $rtfData = []): self
+    public function setRtfData(?array $rtfData = null): self
     {
         // validation for constraint: array
-        if ('' !== ($rtfDataArrayErrorMessage = self::validateRtfDataForArrayConstraintsFromSetRtfData($rtfData))) {
+        if ('' !== ($rtfDataArrayErrorMessage = self::validateRtfDataForArrayConstraintFromSetRtfData($rtfData))) {
             throw new InvalidArgumentException($rtfDataArrayErrorMessage, __LINE__);
         }
         $this->rtfData = $rtfData;
@@ -618,18 +647,22 @@ class MultiPrintResponse extends AbstractStructBase
      * Get fopStrs value
      * @return string[]
      */
-    public function getFopStrs(): array
+    public function getFopStrs(): ?array
     {
         return $this->fopStrs;
     }
     /**
-     * This method is responsible for validating the values passed to the setFopStrs method
+     * This method is responsible for validating the value(s) passed to the setFopStrs method
      * This method is willingly generated in order to preserve the one-line inline validation within the setFopStrs method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateFopStrsForArrayConstraintsFromSetFopStrs(array $values = []): string
+    public static function validateFopStrsForArrayConstraintFromSetFopStrs(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $multiPrintResponseFopStrsItem) {
@@ -651,10 +684,10 @@ class MultiPrintResponse extends AbstractStructBase
      * @param string[] $fopStrs
      * @return \Pggns\MidocoApi\Order\StructType\MultiPrintResponse
      */
-    public function setFopStrs(array $fopStrs = []): self
+    public function setFopStrs(?array $fopStrs = null): self
     {
         // validation for constraint: array
-        if ('' !== ($fopStrsArrayErrorMessage = self::validateFopStrsForArrayConstraintsFromSetFopStrs($fopStrs))) {
+        if ('' !== ($fopStrsArrayErrorMessage = self::validateFopStrsForArrayConstraintFromSetFopStrs($fopStrs))) {
             throw new InvalidArgumentException($fopStrsArrayErrorMessage, __LINE__);
         }
         $this->fopStrs = $fopStrs;

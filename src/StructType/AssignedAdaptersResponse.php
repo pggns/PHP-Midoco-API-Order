@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for AssignedAdaptersResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class AssignedAdaptersResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class AssignedAdaptersResponse extends AbstractStructBase
      * - ref: MidocoAdapter
      * @var \Pggns\MidocoApi\Order\StructType\MidocoAdapterType[]
      */
-    protected array $MidocoAdapter = [];
+    protected ?array $MidocoAdapter = null;
     /**
      * Constructor method for AssignedAdaptersResponse
      * @uses AssignedAdaptersResponse::setMidocoAdapter()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoAdapterType[] $midocoAdapter
      */
-    public function __construct(array $midocoAdapter = [])
+    public function __construct(?array $midocoAdapter = null)
     {
         $this
             ->setMidocoAdapter($midocoAdapter);
@@ -36,18 +37,22 @@ class AssignedAdaptersResponse extends AbstractStructBase
      * Get MidocoAdapter value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoAdapterType[]
      */
-    public function getMidocoAdapter(): array
+    public function getMidocoAdapter(): ?array
     {
         return $this->MidocoAdapter;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoAdapter method
+     * This method is responsible for validating the value(s) passed to the setMidocoAdapter method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoAdapter method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoAdapterForArrayConstraintsFromSetMidocoAdapter(array $values = []): string
+    public static function validateMidocoAdapterForArrayConstraintFromSetMidocoAdapter(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $assignedAdaptersResponseMidocoAdapterItem) {
@@ -69,10 +74,10 @@ class AssignedAdaptersResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoAdapterType[] $midocoAdapter
      * @return \Pggns\MidocoApi\Order\StructType\AssignedAdaptersResponse
      */
-    public function setMidocoAdapter(array $midocoAdapter = []): self
+    public function setMidocoAdapter(?array $midocoAdapter = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoAdapterArrayErrorMessage = self::validateMidocoAdapterForArrayConstraintsFromSetMidocoAdapter($midocoAdapter))) {
+        if ('' !== ($midocoAdapterArrayErrorMessage = self::validateMidocoAdapterForArrayConstraintFromSetMidocoAdapter($midocoAdapter))) {
             throw new InvalidArgumentException($midocoAdapterArrayErrorMessage, __LINE__);
         }
         $this->MidocoAdapter = $midocoAdapter;

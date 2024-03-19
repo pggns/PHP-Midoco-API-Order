@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: deleteFlightTimeChangeEmail --- deletes a given FlightTimeChange Email
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteFlightTimeChangeEmailResponse extends AbstractStructBase
 {
     /**

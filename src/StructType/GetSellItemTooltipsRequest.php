@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: Gets the html tooltips for all sell items of a midoco order
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetSellItemTooltipsRequest extends AbstractStructBase
 {
     /**

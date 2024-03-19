@@ -11,12 +11,12 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetAssignedSystemRulesToOrgunitRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetAssignedSystemRulesToOrgunitRequest extends AbstractStructBase
 {
     /**
      * The MidocoUnitRuleset
      * Meta information extracted from the WSDL
-     * - maxOccurs: 1
      * - minOccurs: 0
      * - ref: MidocoUnitRuleset
      * @var \Pggns\MidocoApi\Order\StructType\MidocoUnitRuleset|null

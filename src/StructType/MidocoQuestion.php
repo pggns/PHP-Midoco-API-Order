@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoQuestion StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoQuestion extends QuestionDTO
 {
     /**
@@ -20,13 +21,13 @@ class MidocoQuestion extends QuestionDTO
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\QmPrintDTO[]
      */
-    protected array $MidocoQmPrint = [];
+    protected ?array $MidocoQmPrint = null;
     /**
      * Constructor method for MidocoQuestion
      * @uses MidocoQuestion::setMidocoQmPrint()
      * @param \Pggns\MidocoApi\Order\StructType\QmPrintDTO[] $midocoQmPrint
      */
-    public function __construct(array $midocoQmPrint = [])
+    public function __construct(?array $midocoQmPrint = null)
     {
         $this
             ->setMidocoQmPrint($midocoQmPrint);
@@ -35,18 +36,22 @@ class MidocoQuestion extends QuestionDTO
      * Get MidocoQmPrint value
      * @return \Pggns\MidocoApi\Order\StructType\QmPrintDTO[]
      */
-    public function getMidocoQmPrint(): array
+    public function getMidocoQmPrint(): ?array
     {
         return $this->MidocoQmPrint;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoQmPrint method
+     * This method is responsible for validating the value(s) passed to the setMidocoQmPrint method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoQmPrint method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoQmPrintForArrayConstraintsFromSetMidocoQmPrint(array $values = []): string
+    public static function validateMidocoQmPrintForArrayConstraintFromSetMidocoQmPrint(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoQuestionMidocoQmPrintItem) {
@@ -68,10 +73,10 @@ class MidocoQuestion extends QuestionDTO
      * @param \Pggns\MidocoApi\Order\StructType\QmPrintDTO[] $midocoQmPrint
      * @return \Pggns\MidocoApi\Order\StructType\MidocoQuestion
      */
-    public function setMidocoQmPrint(array $midocoQmPrint = []): self
+    public function setMidocoQmPrint(?array $midocoQmPrint = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoQmPrintArrayErrorMessage = self::validateMidocoQmPrintForArrayConstraintsFromSetMidocoQmPrint($midocoQmPrint))) {
+        if ('' !== ($midocoQmPrintArrayErrorMessage = self::validateMidocoQmPrintForArrayConstraintFromSetMidocoQmPrint($midocoQmPrint))) {
             throw new InvalidArgumentException($midocoQmPrintArrayErrorMessage, __LINE__);
         }
         $this->MidocoQmPrint = $midocoQmPrint;

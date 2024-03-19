@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetLastImportedCrsRemarksResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetLastImportedCrsRemarksResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetLastImportedCrsRemarksResponse extends AbstractStructBase
      * - ref: MidocoImportedCrsRemark
      * @var \Pggns\MidocoApi\Order\StructType\ImportedCrsRemarkDTO[]
      */
-    protected array $MidocoImportedCrsRemark = [];
+    protected ?array $MidocoImportedCrsRemark = null;
     /**
      * Constructor method for GetLastImportedCrsRemarksResponse
      * @uses GetLastImportedCrsRemarksResponse::setMidocoImportedCrsRemark()
      * @param \Pggns\MidocoApi\Order\StructType\ImportedCrsRemarkDTO[] $midocoImportedCrsRemark
      */
-    public function __construct(array $midocoImportedCrsRemark = [])
+    public function __construct(?array $midocoImportedCrsRemark = null)
     {
         $this
             ->setMidocoImportedCrsRemark($midocoImportedCrsRemark);
@@ -36,18 +37,22 @@ class GetLastImportedCrsRemarksResponse extends AbstractStructBase
      * Get MidocoImportedCrsRemark value
      * @return \Pggns\MidocoApi\Order\StructType\ImportedCrsRemarkDTO[]
      */
-    public function getMidocoImportedCrsRemark(): array
+    public function getMidocoImportedCrsRemark(): ?array
     {
         return $this->MidocoImportedCrsRemark;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoImportedCrsRemark method
+     * This method is responsible for validating the value(s) passed to the setMidocoImportedCrsRemark method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoImportedCrsRemark method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoImportedCrsRemarkForArrayConstraintsFromSetMidocoImportedCrsRemark(array $values = []): string
+    public static function validateMidocoImportedCrsRemarkForArrayConstraintFromSetMidocoImportedCrsRemark(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getLastImportedCrsRemarksResponseMidocoImportedCrsRemarkItem) {
@@ -69,10 +74,10 @@ class GetLastImportedCrsRemarksResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\ImportedCrsRemarkDTO[] $midocoImportedCrsRemark
      * @return \Pggns\MidocoApi\Order\StructType\GetLastImportedCrsRemarksResponse
      */
-    public function setMidocoImportedCrsRemark(array $midocoImportedCrsRemark = []): self
+    public function setMidocoImportedCrsRemark(?array $midocoImportedCrsRemark = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoImportedCrsRemarkArrayErrorMessage = self::validateMidocoImportedCrsRemarkForArrayConstraintsFromSetMidocoImportedCrsRemark($midocoImportedCrsRemark))) {
+        if ('' !== ($midocoImportedCrsRemarkArrayErrorMessage = self::validateMidocoImportedCrsRemarkForArrayConstraintFromSetMidocoImportedCrsRemark($midocoImportedCrsRemark))) {
             throw new InvalidArgumentException($midocoImportedCrsRemarkArrayErrorMessage, __LINE__);
         }
         $this->MidocoImportedCrsRemark = $midocoImportedCrsRemark;

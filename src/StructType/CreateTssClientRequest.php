@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CreateTssClientRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CreateTssClientRequest extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveMarketingKeyRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveMarketingKeyRequest extends AbstractStructBase
 {
     /**

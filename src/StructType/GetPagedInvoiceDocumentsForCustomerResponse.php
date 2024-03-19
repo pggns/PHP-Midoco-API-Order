@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetPagedInvoiceDocumentsForCustomerResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetPagedInvoiceDocumentsForCustomerResponse extends AbstractStructBase
 {
     /**
@@ -21,7 +22,7 @@ class GetPagedInvoiceDocumentsForCustomerResponse extends AbstractStructBase
      * - ref: MidocoInvoiceDocInfoForCustomer
      * @var \Pggns\MidocoApi\Order\StructType\MidocoInvoiceDocInfoForCustomer[]
      */
-    protected array $MidocoInvoiceDocInfoForCustomer = [];
+    protected ?array $MidocoInvoiceDocInfoForCustomer = null;
     /**
      * The totalNoOfRecords
      * @var int|null
@@ -34,7 +35,7 @@ class GetPagedInvoiceDocumentsForCustomerResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoInvoiceDocInfoForCustomer[] $midocoInvoiceDocInfoForCustomer
      * @param int $totalNoOfRecords
      */
-    public function __construct(array $midocoInvoiceDocInfoForCustomer = [], ?int $totalNoOfRecords = null)
+    public function __construct(?array $midocoInvoiceDocInfoForCustomer = null, ?int $totalNoOfRecords = null)
     {
         $this
             ->setMidocoInvoiceDocInfoForCustomer($midocoInvoiceDocInfoForCustomer)
@@ -44,18 +45,22 @@ class GetPagedInvoiceDocumentsForCustomerResponse extends AbstractStructBase
      * Get MidocoInvoiceDocInfoForCustomer value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoInvoiceDocInfoForCustomer[]
      */
-    public function getMidocoInvoiceDocInfoForCustomer(): array
+    public function getMidocoInvoiceDocInfoForCustomer(): ?array
     {
         return $this->MidocoInvoiceDocInfoForCustomer;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoInvoiceDocInfoForCustomer method
+     * This method is responsible for validating the value(s) passed to the setMidocoInvoiceDocInfoForCustomer method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoInvoiceDocInfoForCustomer method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoInvoiceDocInfoForCustomerForArrayConstraintsFromSetMidocoInvoiceDocInfoForCustomer(array $values = []): string
+    public static function validateMidocoInvoiceDocInfoForCustomerForArrayConstraintFromSetMidocoInvoiceDocInfoForCustomer(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getPagedInvoiceDocumentsForCustomerResponseMidocoInvoiceDocInfoForCustomerItem) {
@@ -77,10 +82,10 @@ class GetPagedInvoiceDocumentsForCustomerResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoInvoiceDocInfoForCustomer[] $midocoInvoiceDocInfoForCustomer
      * @return \Pggns\MidocoApi\Order\StructType\GetPagedInvoiceDocumentsForCustomerResponse
      */
-    public function setMidocoInvoiceDocInfoForCustomer(array $midocoInvoiceDocInfoForCustomer = []): self
+    public function setMidocoInvoiceDocInfoForCustomer(?array $midocoInvoiceDocInfoForCustomer = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoInvoiceDocInfoForCustomerArrayErrorMessage = self::validateMidocoInvoiceDocInfoForCustomerForArrayConstraintsFromSetMidocoInvoiceDocInfoForCustomer($midocoInvoiceDocInfoForCustomer))) {
+        if ('' !== ($midocoInvoiceDocInfoForCustomerArrayErrorMessage = self::validateMidocoInvoiceDocInfoForCustomerForArrayConstraintFromSetMidocoInvoiceDocInfoForCustomer($midocoInvoiceDocInfoForCustomer))) {
             throw new InvalidArgumentException($midocoInvoiceDocInfoForCustomerArrayErrorMessage, __LINE__);
         }
         $this->MidocoInvoiceDocInfoForCustomer = $midocoInvoiceDocInfoForCustomer;

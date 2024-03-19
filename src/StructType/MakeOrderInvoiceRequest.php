@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MakeOrderInvoiceRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MakeOrderInvoiceRequest extends AbstractStructBase
 {
     /**
@@ -27,7 +28,7 @@ class MakeOrderInvoiceRequest extends AbstractStructBase
      * - minOccurs: 0
      * @var int[]
      */
-    protected array $itemIds = [];
+    protected ?array $itemIds = null;
     /**
      * The invoiceIds2Void
      * Meta information extracted from the WSDL
@@ -35,7 +36,7 @@ class MakeOrderInvoiceRequest extends AbstractStructBase
      * - minOccurs: 0
      * @var int[]
      */
-    protected array $invoiceIds2Void = [];
+    protected ?array $invoiceIds2Void = null;
     /**
      * The isDeposit
      * Meta information extracted from the WSDL
@@ -70,7 +71,7 @@ class MakeOrderInvoiceRequest extends AbstractStructBase
      * @param bool $onlyVoid
      * @param bool $explVoidInvoice
      */
-    public function __construct(int $orderId, array $itemIds = [], array $invoiceIds2Void = [], ?bool $isDeposit = false, ?bool $onlyVoid = false, ?bool $explVoidInvoice = null)
+    public function __construct(int $orderId, ?array $itemIds = null, ?array $invoiceIds2Void = null, ?bool $isDeposit = false, ?bool $onlyVoid = false, ?bool $explVoidInvoice = null)
     {
         $this
             ->setOrderId($orderId)
@@ -107,18 +108,22 @@ class MakeOrderInvoiceRequest extends AbstractStructBase
      * Get itemIds value
      * @return int[]
      */
-    public function getItemIds(): array
+    public function getItemIds(): ?array
     {
         return $this->itemIds;
     }
     /**
-     * This method is responsible for validating the values passed to the setItemIds method
+     * This method is responsible for validating the value(s) passed to the setItemIds method
      * This method is willingly generated in order to preserve the one-line inline validation within the setItemIds method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateItemIdsForArrayConstraintsFromSetItemIds(array $values = []): string
+    public static function validateItemIdsForArrayConstraintFromSetItemIds(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $makeOrderInvoiceRequestItemIdsItem) {
@@ -140,10 +145,10 @@ class MakeOrderInvoiceRequest extends AbstractStructBase
      * @param int[] $itemIds
      * @return \Pggns\MidocoApi\Order\StructType\MakeOrderInvoiceRequest
      */
-    public function setItemIds(array $itemIds = []): self
+    public function setItemIds(?array $itemIds = null): self
     {
         // validation for constraint: array
-        if ('' !== ($itemIdsArrayErrorMessage = self::validateItemIdsForArrayConstraintsFromSetItemIds($itemIds))) {
+        if ('' !== ($itemIdsArrayErrorMessage = self::validateItemIdsForArrayConstraintFromSetItemIds($itemIds))) {
             throw new InvalidArgumentException($itemIdsArrayErrorMessage, __LINE__);
         }
         $this->itemIds = $itemIds;
@@ -170,18 +175,22 @@ class MakeOrderInvoiceRequest extends AbstractStructBase
      * Get invoiceIds2Void value
      * @return int[]
      */
-    public function getInvoiceIds2Void(): array
+    public function getInvoiceIds2Void(): ?array
     {
         return $this->invoiceIds2Void;
     }
     /**
-     * This method is responsible for validating the values passed to the setInvoiceIds2Void method
+     * This method is responsible for validating the value(s) passed to the setInvoiceIds2Void method
      * This method is willingly generated in order to preserve the one-line inline validation within the setInvoiceIds2Void method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateInvoiceIds2VoidForArrayConstraintsFromSetInvoiceIds2Void(array $values = []): string
+    public static function validateInvoiceIds2VoidForArrayConstraintFromSetInvoiceIds2Void(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $makeOrderInvoiceRequestInvoiceIds2VoidItem) {
@@ -203,10 +212,10 @@ class MakeOrderInvoiceRequest extends AbstractStructBase
      * @param int[] $invoiceIds2Void
      * @return \Pggns\MidocoApi\Order\StructType\MakeOrderInvoiceRequest
      */
-    public function setInvoiceIds2Void(array $invoiceIds2Void = []): self
+    public function setInvoiceIds2Void(?array $invoiceIds2Void = null): self
     {
         // validation for constraint: array
-        if ('' !== ($invoiceIds2VoidArrayErrorMessage = self::validateInvoiceIds2VoidForArrayConstraintsFromSetInvoiceIds2Void($invoiceIds2Void))) {
+        if ('' !== ($invoiceIds2VoidArrayErrorMessage = self::validateInvoiceIds2VoidForArrayConstraintFromSetInvoiceIds2Void($invoiceIds2Void))) {
             throw new InvalidArgumentException($invoiceIds2VoidArrayErrorMessage, __LINE__);
         }
         $this->invoiceIds2Void = $invoiceIds2Void;

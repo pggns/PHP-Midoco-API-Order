@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for RevenueBookingVatDivDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class RevenueBookingVatDivDTO extends AbstractStructBase
 {
     /**

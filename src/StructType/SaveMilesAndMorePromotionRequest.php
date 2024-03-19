@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: Supply the promotion properties. To update a promotion, include the promotionId, otherwise a new promotion will be created.
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveMilesAndMorePromotionRequest extends AbstractStructBase
 {
     /**

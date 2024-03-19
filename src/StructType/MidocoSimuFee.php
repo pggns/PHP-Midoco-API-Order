@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoSimuFee StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoSimuFee extends CalcitemDTO
 {
     /**

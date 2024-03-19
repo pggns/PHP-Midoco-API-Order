@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ExecuteMediatorSettlementResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ExecuteMediatorSettlementResponse extends AbstractStructBase
 {
     /**
@@ -21,7 +22,7 @@ class ExecuteMediatorSettlementResponse extends AbstractStructBase
      * - ref: MidocoSettlementInfo
      * @var \Pggns\MidocoApi\Order\StructType\MidocoSettlementInfo[]
      */
-    protected array $MidocoSettlementInfo = [];
+    protected ?array $MidocoSettlementInfo = null;
     /**
      * The pdfForPreview
      * Meta information extracted from the WSDL
@@ -29,7 +30,7 @@ class ExecuteMediatorSettlementResponse extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $pdfForPreview = [];
+    protected ?array $pdfForPreview = null;
     /**
      * Constructor method for ExecuteMediatorSettlementResponse
      * @uses ExecuteMediatorSettlementResponse::setMidocoSettlementInfo()
@@ -37,7 +38,7 @@ class ExecuteMediatorSettlementResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSettlementInfo[] $midocoSettlementInfo
      * @param string[] $pdfForPreview
      */
-    public function __construct(array $midocoSettlementInfo = [], array $pdfForPreview = [])
+    public function __construct(?array $midocoSettlementInfo = null, ?array $pdfForPreview = null)
     {
         $this
             ->setMidocoSettlementInfo($midocoSettlementInfo)
@@ -47,18 +48,22 @@ class ExecuteMediatorSettlementResponse extends AbstractStructBase
      * Get MidocoSettlementInfo value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSettlementInfo[]
      */
-    public function getMidocoSettlementInfo(): array
+    public function getMidocoSettlementInfo(): ?array
     {
         return $this->MidocoSettlementInfo;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoSettlementInfo method
+     * This method is responsible for validating the value(s) passed to the setMidocoSettlementInfo method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoSettlementInfo method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoSettlementInfoForArrayConstraintsFromSetMidocoSettlementInfo(array $values = []): string
+    public static function validateMidocoSettlementInfoForArrayConstraintFromSetMidocoSettlementInfo(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $executeMediatorSettlementResponseMidocoSettlementInfoItem) {
@@ -80,10 +85,10 @@ class ExecuteMediatorSettlementResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSettlementInfo[] $midocoSettlementInfo
      * @return \Pggns\MidocoApi\Order\StructType\ExecuteMediatorSettlementResponse
      */
-    public function setMidocoSettlementInfo(array $midocoSettlementInfo = []): self
+    public function setMidocoSettlementInfo(?array $midocoSettlementInfo = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoSettlementInfoArrayErrorMessage = self::validateMidocoSettlementInfoForArrayConstraintsFromSetMidocoSettlementInfo($midocoSettlementInfo))) {
+        if ('' !== ($midocoSettlementInfoArrayErrorMessage = self::validateMidocoSettlementInfoForArrayConstraintFromSetMidocoSettlementInfo($midocoSettlementInfo))) {
             throw new InvalidArgumentException($midocoSettlementInfoArrayErrorMessage, __LINE__);
         }
         $this->MidocoSettlementInfo = $midocoSettlementInfo;
@@ -110,18 +115,22 @@ class ExecuteMediatorSettlementResponse extends AbstractStructBase
      * Get pdfForPreview value
      * @return string[]
      */
-    public function getPdfForPreview(): array
+    public function getPdfForPreview(): ?array
     {
         return $this->pdfForPreview;
     }
     /**
-     * This method is responsible for validating the values passed to the setPdfForPreview method
+     * This method is responsible for validating the value(s) passed to the setPdfForPreview method
      * This method is willingly generated in order to preserve the one-line inline validation within the setPdfForPreview method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validatePdfForPreviewForArrayConstraintsFromSetPdfForPreview(array $values = []): string
+    public static function validatePdfForPreviewForArrayConstraintFromSetPdfForPreview(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $executeMediatorSettlementResponsePdfForPreviewItem) {
@@ -143,10 +152,10 @@ class ExecuteMediatorSettlementResponse extends AbstractStructBase
      * @param string[] $pdfForPreview
      * @return \Pggns\MidocoApi\Order\StructType\ExecuteMediatorSettlementResponse
      */
-    public function setPdfForPreview(array $pdfForPreview = []): self
+    public function setPdfForPreview(?array $pdfForPreview = null): self
     {
         // validation for constraint: array
-        if ('' !== ($pdfForPreviewArrayErrorMessage = self::validatePdfForPreviewForArrayConstraintsFromSetPdfForPreview($pdfForPreview))) {
+        if ('' !== ($pdfForPreviewArrayErrorMessage = self::validatePdfForPreviewForArrayConstraintFromSetPdfForPreview($pdfForPreview))) {
             throw new InvalidArgumentException($pdfForPreviewArrayErrorMessage, __LINE__);
         }
         $this->pdfForPreview = $pdfForPreview;

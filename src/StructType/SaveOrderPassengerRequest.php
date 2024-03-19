@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveOrderPassengerRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveOrderPassengerRequest extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class SaveOrderPassengerRequest extends AbstractStructBase
      * - ref: MidocoOrderPassenger
      * @var \Pggns\MidocoApi\Order\StructType\OrderPassengerDTO[]
      */
-    protected array $MidocoOrderPassenger = [];
+    protected ?array $MidocoOrderPassenger = null;
     /**
      * Constructor method for SaveOrderPassengerRequest
      * @uses SaveOrderPassengerRequest::setMidocoOrderPassenger()
      * @param \Pggns\MidocoApi\Order\StructType\OrderPassengerDTO[] $midocoOrderPassenger
      */
-    public function __construct(array $midocoOrderPassenger = [])
+    public function __construct(?array $midocoOrderPassenger = null)
     {
         $this
             ->setMidocoOrderPassenger($midocoOrderPassenger);
@@ -36,18 +37,22 @@ class SaveOrderPassengerRequest extends AbstractStructBase
      * Get MidocoOrderPassenger value
      * @return \Pggns\MidocoApi\Order\StructType\OrderPassengerDTO[]
      */
-    public function getMidocoOrderPassenger(): array
+    public function getMidocoOrderPassenger(): ?array
     {
         return $this->MidocoOrderPassenger;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoOrderPassenger method
+     * This method is responsible for validating the value(s) passed to the setMidocoOrderPassenger method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoOrderPassenger method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoOrderPassengerForArrayConstraintsFromSetMidocoOrderPassenger(array $values = []): string
+    public static function validateMidocoOrderPassengerForArrayConstraintFromSetMidocoOrderPassenger(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $saveOrderPassengerRequestMidocoOrderPassengerItem) {
@@ -69,10 +74,10 @@ class SaveOrderPassengerRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\OrderPassengerDTO[] $midocoOrderPassenger
      * @return \Pggns\MidocoApi\Order\StructType\SaveOrderPassengerRequest
      */
-    public function setMidocoOrderPassenger(array $midocoOrderPassenger = []): self
+    public function setMidocoOrderPassenger(?array $midocoOrderPassenger = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoOrderPassengerArrayErrorMessage = self::validateMidocoOrderPassengerForArrayConstraintsFromSetMidocoOrderPassenger($midocoOrderPassenger))) {
+        if ('' !== ($midocoOrderPassengerArrayErrorMessage = self::validateMidocoOrderPassengerForArrayConstraintFromSetMidocoOrderPassenger($midocoOrderPassenger))) {
             throw new InvalidArgumentException($midocoOrderPassengerArrayErrorMessage, __LINE__);
         }
         $this->MidocoOrderPassenger = $midocoOrderPassenger;

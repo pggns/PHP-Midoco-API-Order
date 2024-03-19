@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SellPassengerDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SellPassengerDTO extends AbstractStructBase
 {
     /**

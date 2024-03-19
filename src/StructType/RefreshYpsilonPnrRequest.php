@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for RefreshYpsilonPnrRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class RefreshYpsilonPnrRequest extends AbstractStructBase
 {
     /**

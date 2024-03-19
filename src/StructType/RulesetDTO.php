@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for RulesetDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class RulesetDTO extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SystemRulesetCompiledResult StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SystemRulesetCompiledResult extends SystemRulesetDTO
 {
     /**

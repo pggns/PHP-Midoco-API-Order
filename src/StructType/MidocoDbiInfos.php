@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoDbiInfos StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoDbiInfos extends AbstractStructBase
 {
     /**
@@ -201,7 +202,7 @@ class MidocoDbiInfos extends AbstractStructBase
      * - ref: MidocoDbiDefValue
      * @var \Pggns\MidocoApi\Order\StructType\MidocoDbiDefValue[]
      */
-    protected array $MidocoDbiDefValue = [];
+    protected ?array $MidocoDbiDefValue = null;
     /**
      * Constructor method for MidocoDbiInfos
      * @uses MidocoDbiInfos::setOrderId()
@@ -279,7 +280,7 @@ class MidocoDbiInfos extends AbstractStructBase
      * @param string $f4DB
      * @param \Pggns\MidocoApi\Order\StructType\MidocoDbiDefValue[] $midocoDbiDefValue
      */
-    public function __construct(?int $orderId = null, ?int $itemId = null, ?int $passengerAssignment = null, ?string $aE = null, ?string $aK = null, ?string $aU = null, ?string $bD = null, ?string $dS = null, ?string $iK = null, ?string $kS = null, ?string $pK = null, ?string $pR = null, ?string $rZ = null, ?string $rD = null, ?string $uS = null, ?string $bS = null, ?string $f1 = null, ?string $f2 = null, ?string $f3 = null, ?string $f4 = null, ?string $f5 = null, ?string $f6 = null, ?string $f7 = null, ?string $f8 = null, ?string $f9 = null, ?string $f10 = null, ?string $kSDB = null, ?string $pKDB = null, ?string $rDDB = null, ?string $uSDB = null, ?string $rZDB = null, ?string $bSDB = null, ?string $f1DB = null, ?string $f2DB = null, ?string $f3DB = null, ?string $f4DB = null, array $midocoDbiDefValue = [])
+    public function __construct(?int $orderId = null, ?int $itemId = null, ?int $passengerAssignment = null, ?string $aE = null, ?string $aK = null, ?string $aU = null, ?string $bD = null, ?string $dS = null, ?string $iK = null, ?string $kS = null, ?string $pK = null, ?string $pR = null, ?string $rZ = null, ?string $rD = null, ?string $uS = null, ?string $bS = null, ?string $f1 = null, ?string $f2 = null, ?string $f3 = null, ?string $f4 = null, ?string $f5 = null, ?string $f6 = null, ?string $f7 = null, ?string $f8 = null, ?string $f9 = null, ?string $f10 = null, ?string $kSDB = null, ?string $pKDB = null, ?string $rDDB = null, ?string $uSDB = null, ?string $rZDB = null, ?string $bSDB = null, ?string $f1DB = null, ?string $f2DB = null, ?string $f3DB = null, ?string $f4DB = null, ?array $midocoDbiDefValue = null)
     {
         $this
             ->setOrderId($orderId)
@@ -1152,18 +1153,22 @@ class MidocoDbiInfos extends AbstractStructBase
      * Get MidocoDbiDefValue value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoDbiDefValue[]
      */
-    public function getMidocoDbiDefValue(): array
+    public function getMidocoDbiDefValue(): ?array
     {
         return $this->MidocoDbiDefValue;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoDbiDefValue method
+     * This method is responsible for validating the value(s) passed to the setMidocoDbiDefValue method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoDbiDefValue method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoDbiDefValueForArrayConstraintsFromSetMidocoDbiDefValue(array $values = []): string
+    public static function validateMidocoDbiDefValueForArrayConstraintFromSetMidocoDbiDefValue(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoDbiInfosMidocoDbiDefValueItem) {
@@ -1185,10 +1190,10 @@ class MidocoDbiInfos extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoDbiDefValue[] $midocoDbiDefValue
      * @return \Pggns\MidocoApi\Order\StructType\MidocoDbiInfos
      */
-    public function setMidocoDbiDefValue(array $midocoDbiDefValue = []): self
+    public function setMidocoDbiDefValue(?array $midocoDbiDefValue = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoDbiDefValueArrayErrorMessage = self::validateMidocoDbiDefValueForArrayConstraintsFromSetMidocoDbiDefValue($midocoDbiDefValue))) {
+        if ('' !== ($midocoDbiDefValueArrayErrorMessage = self::validateMidocoDbiDefValueForArrayConstraintFromSetMidocoDbiDefValue($midocoDbiDefValue))) {
             throw new InvalidArgumentException($midocoDbiDefValueArrayErrorMessage, __LINE__);
         }
         $this->MidocoDbiDefValue = $midocoDbiDefValue;

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoDestinationDocument StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoDestinationDocument extends DestinationDocumentDTO
 {
     /**

@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: special steering information for midoco to process this message
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class Internal_treatment extends AbstractStructBase
 {
     /**

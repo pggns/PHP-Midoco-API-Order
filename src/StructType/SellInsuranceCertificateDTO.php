@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SellInsuranceCertificateDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SellInsuranceCertificateDTO extends AbstractStructBase
 {
     /**

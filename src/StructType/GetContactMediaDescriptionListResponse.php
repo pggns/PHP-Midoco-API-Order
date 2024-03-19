@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetContactMediaDescriptionListResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetContactMediaDescriptionListResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetContactMediaDescriptionListResponse extends AbstractStructBase
      * - ref: MidocoContactMediaDescription
      * @var \Pggns\MidocoApi\Order\StructType\MediaDescriptionDTO[]
      */
-    protected array $MidocoContactMediaDescription = [];
+    protected ?array $MidocoContactMediaDescription = null;
     /**
      * Constructor method for GetContactMediaDescriptionListResponse
      * @uses GetContactMediaDescriptionListResponse::setMidocoContactMediaDescription()
      * @param \Pggns\MidocoApi\Order\StructType\MediaDescriptionDTO[] $midocoContactMediaDescription
      */
-    public function __construct(array $midocoContactMediaDescription = [])
+    public function __construct(?array $midocoContactMediaDescription = null)
     {
         $this
             ->setMidocoContactMediaDescription($midocoContactMediaDescription);
@@ -36,18 +37,22 @@ class GetContactMediaDescriptionListResponse extends AbstractStructBase
      * Get MidocoContactMediaDescription value
      * @return \Pggns\MidocoApi\Order\StructType\MediaDescriptionDTO[]
      */
-    public function getMidocoContactMediaDescription(): array
+    public function getMidocoContactMediaDescription(): ?array
     {
         return $this->MidocoContactMediaDescription;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoContactMediaDescription method
+     * This method is responsible for validating the value(s) passed to the setMidocoContactMediaDescription method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoContactMediaDescription method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoContactMediaDescriptionForArrayConstraintsFromSetMidocoContactMediaDescription(array $values = []): string
+    public static function validateMidocoContactMediaDescriptionForArrayConstraintFromSetMidocoContactMediaDescription(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getContactMediaDescriptionListResponseMidocoContactMediaDescriptionItem) {
@@ -69,10 +74,10 @@ class GetContactMediaDescriptionListResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MediaDescriptionDTO[] $midocoContactMediaDescription
      * @return \Pggns\MidocoApi\Order\StructType\GetContactMediaDescriptionListResponse
      */
-    public function setMidocoContactMediaDescription(array $midocoContactMediaDescription = []): self
+    public function setMidocoContactMediaDescription(?array $midocoContactMediaDescription = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoContactMediaDescriptionArrayErrorMessage = self::validateMidocoContactMediaDescriptionForArrayConstraintsFromSetMidocoContactMediaDescription($midocoContactMediaDescription))) {
+        if ('' !== ($midocoContactMediaDescriptionArrayErrorMessage = self::validateMidocoContactMediaDescriptionForArrayConstraintFromSetMidocoContactMediaDescription($midocoContactMediaDescription))) {
             throw new InvalidArgumentException($midocoContactMediaDescriptionArrayErrorMessage, __LINE__);
         }
         $this->MidocoContactMediaDescription = $midocoContactMediaDescription;

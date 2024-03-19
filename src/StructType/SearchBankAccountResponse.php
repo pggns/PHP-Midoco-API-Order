@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: search a bank account
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchBankAccountResponse extends AbstractStructBase
 {
     /**
@@ -23,13 +24,13 @@ class SearchBankAccountResponse extends AbstractStructBase
      * - ref: MidocoBankAccount
      * @var \Pggns\MidocoApi\Order\StructType\MidocoBankAccount[]
      */
-    protected array $MidocoBankAccount = [];
+    protected ?array $MidocoBankAccount = null;
     /**
      * Constructor method for SearchBankAccountResponse
      * @uses SearchBankAccountResponse::setMidocoBankAccount()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoBankAccount[] $midocoBankAccount
      */
-    public function __construct(array $midocoBankAccount = [])
+    public function __construct(?array $midocoBankAccount = null)
     {
         $this
             ->setMidocoBankAccount($midocoBankAccount);
@@ -38,18 +39,22 @@ class SearchBankAccountResponse extends AbstractStructBase
      * Get MidocoBankAccount value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoBankAccount[]
      */
-    public function getMidocoBankAccount(): array
+    public function getMidocoBankAccount(): ?array
     {
         return $this->MidocoBankAccount;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoBankAccount method
+     * This method is responsible for validating the value(s) passed to the setMidocoBankAccount method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoBankAccount method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoBankAccountForArrayConstraintsFromSetMidocoBankAccount(array $values = []): string
+    public static function validateMidocoBankAccountForArrayConstraintFromSetMidocoBankAccount(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $searchBankAccountResponseMidocoBankAccountItem) {
@@ -71,10 +76,10 @@ class SearchBankAccountResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoBankAccount[] $midocoBankAccount
      * @return \Pggns\MidocoApi\Order\StructType\SearchBankAccountResponse
      */
-    public function setMidocoBankAccount(array $midocoBankAccount = []): self
+    public function setMidocoBankAccount(?array $midocoBankAccount = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoBankAccountArrayErrorMessage = self::validateMidocoBankAccountForArrayConstraintsFromSetMidocoBankAccount($midocoBankAccount))) {
+        if ('' !== ($midocoBankAccountArrayErrorMessage = self::validateMidocoBankAccountForArrayConstraintFromSetMidocoBankAccount($midocoBankAccount))) {
             throw new InvalidArgumentException($midocoBankAccountArrayErrorMessage, __LINE__);
         }
         $this->MidocoBankAccount = $midocoBankAccount;

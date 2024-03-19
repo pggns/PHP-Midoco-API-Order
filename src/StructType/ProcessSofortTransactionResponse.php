@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ProcessSofortTransactionResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ProcessSofortTransactionResponse extends AbstractStructBase
 {
 }

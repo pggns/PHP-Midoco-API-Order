@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SearchMdcSettlementBillingsRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchMdcSettlementBillingsRequest extends AbstractStructBase
 {
     /**

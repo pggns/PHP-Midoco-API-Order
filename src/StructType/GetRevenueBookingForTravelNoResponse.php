@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetRevenueBookingForTravelNoResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetRevenueBookingForTravelNoResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetRevenueBookingForTravelNoResponse extends AbstractStructBase
      * - ref: RevenueBookingForTravelNo
      * @var \Pggns\MidocoApi\Order\StructType\RevenueBookingForTravelNo[]
      */
-    protected array $RevenueBookingForTravelNo = [];
+    protected ?array $RevenueBookingForTravelNo = null;
     /**
      * Constructor method for GetRevenueBookingForTravelNoResponse
      * @uses GetRevenueBookingForTravelNoResponse::setRevenueBookingForTravelNo()
      * @param \Pggns\MidocoApi\Order\StructType\RevenueBookingForTravelNo[] $revenueBookingForTravelNo
      */
-    public function __construct(array $revenueBookingForTravelNo = [])
+    public function __construct(?array $revenueBookingForTravelNo = null)
     {
         $this
             ->setRevenueBookingForTravelNo($revenueBookingForTravelNo);
@@ -36,18 +37,22 @@ class GetRevenueBookingForTravelNoResponse extends AbstractStructBase
      * Get RevenueBookingForTravelNo value
      * @return \Pggns\MidocoApi\Order\StructType\RevenueBookingForTravelNo[]
      */
-    public function getRevenueBookingForTravelNo(): array
+    public function getRevenueBookingForTravelNo(): ?array
     {
         return $this->RevenueBookingForTravelNo;
     }
     /**
-     * This method is responsible for validating the values passed to the setRevenueBookingForTravelNo method
+     * This method is responsible for validating the value(s) passed to the setRevenueBookingForTravelNo method
      * This method is willingly generated in order to preserve the one-line inline validation within the setRevenueBookingForTravelNo method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateRevenueBookingForTravelNoForArrayConstraintsFromSetRevenueBookingForTravelNo(array $values = []): string
+    public static function validateRevenueBookingForTravelNoForArrayConstraintFromSetRevenueBookingForTravelNo(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getRevenueBookingForTravelNoResponseRevenueBookingForTravelNoItem) {
@@ -69,10 +74,10 @@ class GetRevenueBookingForTravelNoResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\RevenueBookingForTravelNo[] $revenueBookingForTravelNo
      * @return \Pggns\MidocoApi\Order\StructType\GetRevenueBookingForTravelNoResponse
      */
-    public function setRevenueBookingForTravelNo(array $revenueBookingForTravelNo = []): self
+    public function setRevenueBookingForTravelNo(?array $revenueBookingForTravelNo = null): self
     {
         // validation for constraint: array
-        if ('' !== ($revenueBookingForTravelNoArrayErrorMessage = self::validateRevenueBookingForTravelNoForArrayConstraintsFromSetRevenueBookingForTravelNo($revenueBookingForTravelNo))) {
+        if ('' !== ($revenueBookingForTravelNoArrayErrorMessage = self::validateRevenueBookingForTravelNoForArrayConstraintFromSetRevenueBookingForTravelNo($revenueBookingForTravelNo))) {
             throw new InvalidArgumentException($revenueBookingForTravelNoArrayErrorMessage, __LINE__);
         }
         $this->RevenueBookingForTravelNo = $revenueBookingForTravelNo;

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoOrgTemplateText StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoOrgTemplateText extends OrgTemplateTextDTO
 {
 }

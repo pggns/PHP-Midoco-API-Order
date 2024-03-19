@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CrmPrintRecipientDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CrmPrintRecipientDTO extends AbstractStructBase
 {
     /**

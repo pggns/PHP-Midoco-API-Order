@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetFairplaneDetailsResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetFairplaneDetailsResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetFairplaneDetailsResponse extends AbstractStructBase
      * - ref: MidocoFairplaneStatus
      * @var \Pggns\MidocoApi\Order\StructType\MidocoFairplaneStatus[]
      */
-    protected array $MidocoFairplaneStatus = [];
+    protected ?array $MidocoFairplaneStatus = null;
     /**
      * Constructor method for GetFairplaneDetailsResponse
      * @uses GetFairplaneDetailsResponse::setMidocoFairplaneStatus()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoFairplaneStatus[] $midocoFairplaneStatus
      */
-    public function __construct(array $midocoFairplaneStatus = [])
+    public function __construct(?array $midocoFairplaneStatus = null)
     {
         $this
             ->setMidocoFairplaneStatus($midocoFairplaneStatus);
@@ -36,18 +37,22 @@ class GetFairplaneDetailsResponse extends AbstractStructBase
      * Get MidocoFairplaneStatus value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoFairplaneStatus[]
      */
-    public function getMidocoFairplaneStatus(): array
+    public function getMidocoFairplaneStatus(): ?array
     {
         return $this->MidocoFairplaneStatus;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoFairplaneStatus method
+     * This method is responsible for validating the value(s) passed to the setMidocoFairplaneStatus method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoFairplaneStatus method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoFairplaneStatusForArrayConstraintsFromSetMidocoFairplaneStatus(array $values = []): string
+    public static function validateMidocoFairplaneStatusForArrayConstraintFromSetMidocoFairplaneStatus(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getFairplaneDetailsResponseMidocoFairplaneStatusItem) {
@@ -69,10 +74,10 @@ class GetFairplaneDetailsResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoFairplaneStatus[] $midocoFairplaneStatus
      * @return \Pggns\MidocoApi\Order\StructType\GetFairplaneDetailsResponse
      */
-    public function setMidocoFairplaneStatus(array $midocoFairplaneStatus = []): self
+    public function setMidocoFairplaneStatus(?array $midocoFairplaneStatus = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoFairplaneStatusArrayErrorMessage = self::validateMidocoFairplaneStatusForArrayConstraintsFromSetMidocoFairplaneStatus($midocoFairplaneStatus))) {
+        if ('' !== ($midocoFairplaneStatusArrayErrorMessage = self::validateMidocoFairplaneStatusForArrayConstraintFromSetMidocoFairplaneStatus($midocoFairplaneStatus))) {
             throw new InvalidArgumentException($midocoFairplaneStatusArrayErrorMessage, __LINE__);
         }
         $this->MidocoFairplaneStatus = $midocoFairplaneStatus;

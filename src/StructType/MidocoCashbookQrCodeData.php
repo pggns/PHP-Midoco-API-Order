@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoCashbookQrCodeData StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoCashbookQrCodeData extends AbstractStructBase
 {
     /**

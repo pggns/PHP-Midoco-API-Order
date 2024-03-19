@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetSellItemAttributesForOrderResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetSellItemAttributesForOrderResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetSellItemAttributesForOrderResponse extends AbstractStructBase
      * - ref: MidocoAttributeValue
      * @var \Pggns\MidocoApi\Order\StructType\MidocoAttributeValue[]
      */
-    protected array $MidocoAttributeValue = [];
+    protected ?array $MidocoAttributeValue = null;
     /**
      * Constructor method for GetSellItemAttributesForOrderResponse
      * @uses GetSellItemAttributesForOrderResponse::setMidocoAttributeValue()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoAttributeValue[] $midocoAttributeValue
      */
-    public function __construct(array $midocoAttributeValue = [])
+    public function __construct(?array $midocoAttributeValue = null)
     {
         $this
             ->setMidocoAttributeValue($midocoAttributeValue);
@@ -36,18 +37,22 @@ class GetSellItemAttributesForOrderResponse extends AbstractStructBase
      * Get MidocoAttributeValue value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoAttributeValue[]
      */
-    public function getMidocoAttributeValue(): array
+    public function getMidocoAttributeValue(): ?array
     {
         return $this->MidocoAttributeValue;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoAttributeValue method
+     * This method is responsible for validating the value(s) passed to the setMidocoAttributeValue method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoAttributeValue method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoAttributeValueForArrayConstraintsFromSetMidocoAttributeValue(array $values = []): string
+    public static function validateMidocoAttributeValueForArrayConstraintFromSetMidocoAttributeValue(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getSellItemAttributesForOrderResponseMidocoAttributeValueItem) {
@@ -69,10 +74,10 @@ class GetSellItemAttributesForOrderResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoAttributeValue[] $midocoAttributeValue
      * @return \Pggns\MidocoApi\Order\StructType\GetSellItemAttributesForOrderResponse
      */
-    public function setMidocoAttributeValue(array $midocoAttributeValue = []): self
+    public function setMidocoAttributeValue(?array $midocoAttributeValue = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoAttributeValueArrayErrorMessage = self::validateMidocoAttributeValueForArrayConstraintsFromSetMidocoAttributeValue($midocoAttributeValue))) {
+        if ('' !== ($midocoAttributeValueArrayErrorMessage = self::validateMidocoAttributeValueForArrayConstraintFromSetMidocoAttributeValue($midocoAttributeValue))) {
             throw new InvalidArgumentException($midocoAttributeValueArrayErrorMessage, __LINE__);
         }
         $this->MidocoAttributeValue = $midocoAttributeValue;

@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: updateChangeableReceiptPosition --- update a manually adjustable receipt position
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class UpdateChangeableReceiptPositionResponse extends AbstractStructBase
 {
 }

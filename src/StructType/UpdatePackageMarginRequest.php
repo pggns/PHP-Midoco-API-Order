@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for UpdatePackageMarginRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class UpdatePackageMarginRequest extends AbstractStructBase
 {
     /**

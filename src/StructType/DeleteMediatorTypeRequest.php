@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteMediatorTypeRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteMediatorTypeRequest extends AbstractStructBase
 {
     /**

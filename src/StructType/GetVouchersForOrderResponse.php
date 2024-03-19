@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetVouchersForOrderResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetVouchersForOrderResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetVouchersForOrderResponse extends AbstractStructBase
      * - ref: VoucherInfo
      * @var \Pggns\MidocoApi\Order\StructType\VoucherInfo[]
      */
-    protected array $VoucherInfo = [];
+    protected ?array $VoucherInfo = null;
     /**
      * Constructor method for GetVouchersForOrderResponse
      * @uses GetVouchersForOrderResponse::setVoucherInfo()
      * @param \Pggns\MidocoApi\Order\StructType\VoucherInfo[] $voucherInfo
      */
-    public function __construct(array $voucherInfo = [])
+    public function __construct(?array $voucherInfo = null)
     {
         $this
             ->setVoucherInfo($voucherInfo);
@@ -36,18 +37,22 @@ class GetVouchersForOrderResponse extends AbstractStructBase
      * Get VoucherInfo value
      * @return \Pggns\MidocoApi\Order\StructType\VoucherInfo[]
      */
-    public function getVoucherInfo(): array
+    public function getVoucherInfo(): ?array
     {
         return $this->VoucherInfo;
     }
     /**
-     * This method is responsible for validating the values passed to the setVoucherInfo method
+     * This method is responsible for validating the value(s) passed to the setVoucherInfo method
      * This method is willingly generated in order to preserve the one-line inline validation within the setVoucherInfo method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateVoucherInfoForArrayConstraintsFromSetVoucherInfo(array $values = []): string
+    public static function validateVoucherInfoForArrayConstraintFromSetVoucherInfo(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getVouchersForOrderResponseVoucherInfoItem) {
@@ -69,10 +74,10 @@ class GetVouchersForOrderResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\VoucherInfo[] $voucherInfo
      * @return \Pggns\MidocoApi\Order\StructType\GetVouchersForOrderResponse
      */
-    public function setVoucherInfo(array $voucherInfo = []): self
+    public function setVoucherInfo(?array $voucherInfo = null): self
     {
         // validation for constraint: array
-        if ('' !== ($voucherInfoArrayErrorMessage = self::validateVoucherInfoForArrayConstraintsFromSetVoucherInfo($voucherInfo))) {
+        if ('' !== ($voucherInfoArrayErrorMessage = self::validateVoucherInfoForArrayConstraintFromSetVoucherInfo($voucherInfo))) {
             throw new InvalidArgumentException($voucherInfoArrayErrorMessage, __LINE__);
         }
         $this->VoucherInfo = $voucherInfo;

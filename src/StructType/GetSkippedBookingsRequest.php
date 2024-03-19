@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetSkippedBookingsRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetSkippedBookingsRequest extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for PreparedRevenueJournalDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class PreparedRevenueJournalDTO extends AbstractStructBase
 {
     /**

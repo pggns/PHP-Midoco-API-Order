@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoSegmentInfo StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoSegmentInfo extends AbstractStructBase
 {
     /**
@@ -25,7 +26,7 @@ class MidocoSegmentInfo extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $documentNo = [];
+    protected ?array $documentNo = null;
     /**
      * Constructor method for MidocoSegmentInfo
      * @uses MidocoSegmentInfo::setSegmentNo()
@@ -33,7 +34,7 @@ class MidocoSegmentInfo extends AbstractStructBase
      * @param int $segmentNo
      * @param string[] $documentNo
      */
-    public function __construct(?int $segmentNo = null, array $documentNo = [])
+    public function __construct(?int $segmentNo = null, ?array $documentNo = null)
     {
         $this
             ->setSegmentNo($segmentNo)
@@ -66,18 +67,22 @@ class MidocoSegmentInfo extends AbstractStructBase
      * Get documentNo value
      * @return string[]
      */
-    public function getDocumentNo(): array
+    public function getDocumentNo(): ?array
     {
         return $this->documentNo;
     }
     /**
-     * This method is responsible for validating the values passed to the setDocumentNo method
+     * This method is responsible for validating the value(s) passed to the setDocumentNo method
      * This method is willingly generated in order to preserve the one-line inline validation within the setDocumentNo method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateDocumentNoForArrayConstraintsFromSetDocumentNo(array $values = []): string
+    public static function validateDocumentNoForArrayConstraintFromSetDocumentNo(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoSegmentInfoDocumentNoItem) {
@@ -99,10 +104,10 @@ class MidocoSegmentInfo extends AbstractStructBase
      * @param string[] $documentNo
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSegmentInfo
      */
-    public function setDocumentNo(array $documentNo = []): self
+    public function setDocumentNo(?array $documentNo = null): self
     {
         // validation for constraint: array
-        if ('' !== ($documentNoArrayErrorMessage = self::validateDocumentNoForArrayConstraintsFromSetDocumentNo($documentNo))) {
+        if ('' !== ($documentNoArrayErrorMessage = self::validateDocumentNoForArrayConstraintFromSetDocumentNo($documentNo))) {
             throw new InvalidArgumentException($documentNoArrayErrorMessage, __LINE__);
         }
         $this->documentNo = $documentNo;

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for PrintDestinationDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class PrintDestinationDTO extends AbstractStructBase
 {
     /**

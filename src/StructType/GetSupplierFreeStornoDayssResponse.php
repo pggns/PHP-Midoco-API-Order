@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetSupplierFreeStornoDayssResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetSupplierFreeStornoDayssResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetSupplierFreeStornoDayssResponse extends AbstractStructBase
      * - ref: MidocoSupplierFreeStornoDays
      * @var \Pggns\MidocoApi\Order\StructType\SupplierFreeStornoDayDTO[]
      */
-    protected array $MidocoSupplierFreeStornoDays = [];
+    protected ?array $MidocoSupplierFreeStornoDays = null;
     /**
      * Constructor method for GetSupplierFreeStornoDayssResponse
      * @uses GetSupplierFreeStornoDayssResponse::setMidocoSupplierFreeStornoDays()
      * @param \Pggns\MidocoApi\Order\StructType\SupplierFreeStornoDayDTO[] $midocoSupplierFreeStornoDays
      */
-    public function __construct(array $midocoSupplierFreeStornoDays = [])
+    public function __construct(?array $midocoSupplierFreeStornoDays = null)
     {
         $this
             ->setMidocoSupplierFreeStornoDays($midocoSupplierFreeStornoDays);
@@ -36,18 +37,22 @@ class GetSupplierFreeStornoDayssResponse extends AbstractStructBase
      * Get MidocoSupplierFreeStornoDays value
      * @return \Pggns\MidocoApi\Order\StructType\SupplierFreeStornoDayDTO[]
      */
-    public function getMidocoSupplierFreeStornoDays(): array
+    public function getMidocoSupplierFreeStornoDays(): ?array
     {
         return $this->MidocoSupplierFreeStornoDays;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoSupplierFreeStornoDays method
+     * This method is responsible for validating the value(s) passed to the setMidocoSupplierFreeStornoDays method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoSupplierFreeStornoDays method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoSupplierFreeStornoDaysForArrayConstraintsFromSetMidocoSupplierFreeStornoDays(array $values = []): string
+    public static function validateMidocoSupplierFreeStornoDaysForArrayConstraintFromSetMidocoSupplierFreeStornoDays(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getSupplierFreeStornoDayssResponseMidocoSupplierFreeStornoDaysItem) {
@@ -69,10 +74,10 @@ class GetSupplierFreeStornoDayssResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\SupplierFreeStornoDayDTO[] $midocoSupplierFreeStornoDays
      * @return \Pggns\MidocoApi\Order\StructType\GetSupplierFreeStornoDayssResponse
      */
-    public function setMidocoSupplierFreeStornoDays(array $midocoSupplierFreeStornoDays = []): self
+    public function setMidocoSupplierFreeStornoDays(?array $midocoSupplierFreeStornoDays = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoSupplierFreeStornoDaysArrayErrorMessage = self::validateMidocoSupplierFreeStornoDaysForArrayConstraintsFromSetMidocoSupplierFreeStornoDays($midocoSupplierFreeStornoDays))) {
+        if ('' !== ($midocoSupplierFreeStornoDaysArrayErrorMessage = self::validateMidocoSupplierFreeStornoDaysForArrayConstraintFromSetMidocoSupplierFreeStornoDays($midocoSupplierFreeStornoDays))) {
             throw new InvalidArgumentException($midocoSupplierFreeStornoDaysArrayErrorMessage, __LINE__);
         }
         $this->MidocoSupplierFreeStornoDays = $midocoSupplierFreeStornoDays;

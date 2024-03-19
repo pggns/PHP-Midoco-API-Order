@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CreateExternDocument4BillingDocumentRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CreateExternDocument4BillingDocumentRequest extends AbstractStructBase
 {
     /**
@@ -20,13 +21,13 @@ class CreateExternDocument4BillingDocumentRequest extends AbstractStructBase
      * - minOccurs: 0
      * @var int[]
      */
-    protected array $documentId = [];
+    protected ?array $documentId = null;
     /**
      * Constructor method for CreateExternDocument4BillingDocumentRequest
      * @uses CreateExternDocument4BillingDocumentRequest::setDocumentId()
      * @param int[] $documentId
      */
-    public function __construct(array $documentId = [])
+    public function __construct(?array $documentId = null)
     {
         $this
             ->setDocumentId($documentId);
@@ -35,18 +36,22 @@ class CreateExternDocument4BillingDocumentRequest extends AbstractStructBase
      * Get documentId value
      * @return int[]
      */
-    public function getDocumentId(): array
+    public function getDocumentId(): ?array
     {
         return $this->documentId;
     }
     /**
-     * This method is responsible for validating the values passed to the setDocumentId method
+     * This method is responsible for validating the value(s) passed to the setDocumentId method
      * This method is willingly generated in order to preserve the one-line inline validation within the setDocumentId method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateDocumentIdForArrayConstraintsFromSetDocumentId(array $values = []): string
+    public static function validateDocumentIdForArrayConstraintFromSetDocumentId(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $createExternDocument4BillingDocumentRequestDocumentIdItem) {
@@ -68,10 +73,10 @@ class CreateExternDocument4BillingDocumentRequest extends AbstractStructBase
      * @param int[] $documentId
      * @return \Pggns\MidocoApi\Order\StructType\CreateExternDocument4BillingDocumentRequest
      */
-    public function setDocumentId(array $documentId = []): self
+    public function setDocumentId(?array $documentId = null): self
     {
         // validation for constraint: array
-        if ('' !== ($documentIdArrayErrorMessage = self::validateDocumentIdForArrayConstraintsFromSetDocumentId($documentId))) {
+        if ('' !== ($documentIdArrayErrorMessage = self::validateDocumentIdForArrayConstraintFromSetDocumentId($documentId))) {
             throw new InvalidArgumentException($documentIdArrayErrorMessage, __LINE__);
         }
         $this->documentId = $documentId;

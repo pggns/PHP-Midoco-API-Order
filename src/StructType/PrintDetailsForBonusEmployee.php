@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for PrintDetailsForBonusEmployee StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class PrintDetailsForBonusEmployee extends AbstractStructBase
 {
     /**
@@ -21,7 +22,7 @@ class PrintDetailsForBonusEmployee extends AbstractStructBase
      * - ref: ordersd:MidocoBonusAssignmentSellitemDetails
      * @var \Pggns\MidocoApi\Order\StructType\MidocoBonusAssignmentSellitemDetails[]
      */
-    protected array $MidocoBonusAssignmentSellitemDetails = [];
+    protected ?array $MidocoBonusAssignmentSellitemDetails = null;
     /**
      * The MidocoBonusAddition
      * Meta information extracted from the WSDL
@@ -30,7 +31,7 @@ class PrintDetailsForBonusEmployee extends AbstractStructBase
      * - ref: MidocoBonusAddition
      * @var \Pggns\MidocoApi\Order\StructType\BonusAdditionDTO[]
      */
-    protected array $MidocoBonusAddition = [];
+    protected ?array $MidocoBonusAddition = null;
     /**
      * The grantedCompetition
      * @var float|null
@@ -94,7 +95,7 @@ class PrintDetailsForBonusEmployee extends AbstractStructBase
      * @param int $pageCounter
      * @param string $bonusDescription
      */
-    public function __construct(array $midocoBonusAssignmentSellitemDetails = [], array $midocoBonusAddition = [], ?float $grantedCompetition = null, ?float $grantedAdditional = null, ?string $username = null, ?float $baseAmountRule = null, ?float $grantedAmountRule = null, ?float $grantedSumBonus = null, ?int $pageCounter = null, ?string $bonusDescription = null)
+    public function __construct(?array $midocoBonusAssignmentSellitemDetails = null, ?array $midocoBonusAddition = null, ?float $grantedCompetition = null, ?float $grantedAdditional = null, ?string $username = null, ?float $baseAmountRule = null, ?float $grantedAmountRule = null, ?float $grantedSumBonus = null, ?int $pageCounter = null, ?string $bonusDescription = null)
     {
         $this
             ->setMidocoBonusAssignmentSellitemDetails($midocoBonusAssignmentSellitemDetails)
@@ -112,18 +113,22 @@ class PrintDetailsForBonusEmployee extends AbstractStructBase
      * Get MidocoBonusAssignmentSellitemDetails value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoBonusAssignmentSellitemDetails[]
      */
-    public function getMidocoBonusAssignmentSellitemDetails(): array
+    public function getMidocoBonusAssignmentSellitemDetails(): ?array
     {
         return $this->MidocoBonusAssignmentSellitemDetails;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoBonusAssignmentSellitemDetails method
+     * This method is responsible for validating the value(s) passed to the setMidocoBonusAssignmentSellitemDetails method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoBonusAssignmentSellitemDetails method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoBonusAssignmentSellitemDetailsForArrayConstraintsFromSetMidocoBonusAssignmentSellitemDetails(array $values = []): string
+    public static function validateMidocoBonusAssignmentSellitemDetailsForArrayConstraintFromSetMidocoBonusAssignmentSellitemDetails(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $printDetailsForBonusEmployeeMidocoBonusAssignmentSellitemDetailsItem) {
@@ -145,10 +150,10 @@ class PrintDetailsForBonusEmployee extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoBonusAssignmentSellitemDetails[] $midocoBonusAssignmentSellitemDetails
      * @return \Pggns\MidocoApi\Order\StructType\PrintDetailsForBonusEmployee
      */
-    public function setMidocoBonusAssignmentSellitemDetails(array $midocoBonusAssignmentSellitemDetails = []): self
+    public function setMidocoBonusAssignmentSellitemDetails(?array $midocoBonusAssignmentSellitemDetails = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoBonusAssignmentSellitemDetailsArrayErrorMessage = self::validateMidocoBonusAssignmentSellitemDetailsForArrayConstraintsFromSetMidocoBonusAssignmentSellitemDetails($midocoBonusAssignmentSellitemDetails))) {
+        if ('' !== ($midocoBonusAssignmentSellitemDetailsArrayErrorMessage = self::validateMidocoBonusAssignmentSellitemDetailsForArrayConstraintFromSetMidocoBonusAssignmentSellitemDetails($midocoBonusAssignmentSellitemDetails))) {
             throw new InvalidArgumentException($midocoBonusAssignmentSellitemDetailsArrayErrorMessage, __LINE__);
         }
         $this->MidocoBonusAssignmentSellitemDetails = $midocoBonusAssignmentSellitemDetails;
@@ -175,18 +180,22 @@ class PrintDetailsForBonusEmployee extends AbstractStructBase
      * Get MidocoBonusAddition value
      * @return \Pggns\MidocoApi\Order\StructType\BonusAdditionDTO[]
      */
-    public function getMidocoBonusAddition(): array
+    public function getMidocoBonusAddition(): ?array
     {
         return $this->MidocoBonusAddition;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoBonusAddition method
+     * This method is responsible for validating the value(s) passed to the setMidocoBonusAddition method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoBonusAddition method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoBonusAdditionForArrayConstraintsFromSetMidocoBonusAddition(array $values = []): string
+    public static function validateMidocoBonusAdditionForArrayConstraintFromSetMidocoBonusAddition(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $printDetailsForBonusEmployeeMidocoBonusAdditionItem) {
@@ -208,10 +217,10 @@ class PrintDetailsForBonusEmployee extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\BonusAdditionDTO[] $midocoBonusAddition
      * @return \Pggns\MidocoApi\Order\StructType\PrintDetailsForBonusEmployee
      */
-    public function setMidocoBonusAddition(array $midocoBonusAddition = []): self
+    public function setMidocoBonusAddition(?array $midocoBonusAddition = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoBonusAdditionArrayErrorMessage = self::validateMidocoBonusAdditionForArrayConstraintsFromSetMidocoBonusAddition($midocoBonusAddition))) {
+        if ('' !== ($midocoBonusAdditionArrayErrorMessage = self::validateMidocoBonusAdditionForArrayConstraintFromSetMidocoBonusAddition($midocoBonusAddition))) {
             throw new InvalidArgumentException($midocoBonusAdditionArrayErrorMessage, __LINE__);
         }
         $this->MidocoBonusAddition = $midocoBonusAddition;

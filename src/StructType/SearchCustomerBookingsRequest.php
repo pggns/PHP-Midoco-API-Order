@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SearchCustomerBookingsRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchCustomerBookingsRequest extends AbstractStructBase
 {
     /**
@@ -20,7 +21,7 @@ class SearchCustomerBookingsRequest extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $PrintTypeId = [];
+    protected ?array $PrintTypeId = null;
     /**
      * The name
      * @var string|null
@@ -75,7 +76,7 @@ class SearchCustomerBookingsRequest extends AbstractStructBase
      * @param bool $travelDocumentsPrinted
      * @param bool $airportPayment
      */
-    public function __construct(array $printTypeId = [], ?string $name = null, ?string $forename = null, ?string $travelDate = null, ?int $orderNo = null, ?string $departureCode = null, ?bool $travelDocumentsPrinted = null, ?bool $airportPayment = null)
+    public function __construct(?array $printTypeId = null, ?string $name = null, ?string $forename = null, ?string $travelDate = null, ?int $orderNo = null, ?string $departureCode = null, ?bool $travelDocumentsPrinted = null, ?bool $airportPayment = null)
     {
         $this
             ->setPrintTypeId($printTypeId)
@@ -91,18 +92,22 @@ class SearchCustomerBookingsRequest extends AbstractStructBase
      * Get PrintTypeId value
      * @return string[]
      */
-    public function getPrintTypeId(): array
+    public function getPrintTypeId(): ?array
     {
         return $this->PrintTypeId;
     }
     /**
-     * This method is responsible for validating the values passed to the setPrintTypeId method
+     * This method is responsible for validating the value(s) passed to the setPrintTypeId method
      * This method is willingly generated in order to preserve the one-line inline validation within the setPrintTypeId method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validatePrintTypeIdForArrayConstraintsFromSetPrintTypeId(array $values = []): string
+    public static function validatePrintTypeIdForArrayConstraintFromSetPrintTypeId(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $searchCustomerBookingsRequestPrintTypeIdItem) {
@@ -124,10 +129,10 @@ class SearchCustomerBookingsRequest extends AbstractStructBase
      * @param string[] $printTypeId
      * @return \Pggns\MidocoApi\Order\StructType\SearchCustomerBookingsRequest
      */
-    public function setPrintTypeId(array $printTypeId = []): self
+    public function setPrintTypeId(?array $printTypeId = null): self
     {
         // validation for constraint: array
-        if ('' !== ($printTypeIdArrayErrorMessage = self::validatePrintTypeIdForArrayConstraintsFromSetPrintTypeId($printTypeId))) {
+        if ('' !== ($printTypeIdArrayErrorMessage = self::validatePrintTypeIdForArrayConstraintFromSetPrintTypeId($printTypeId))) {
             throw new InvalidArgumentException($printTypeIdArrayErrorMessage, __LINE__);
         }
         $this->PrintTypeId = $printTypeId;

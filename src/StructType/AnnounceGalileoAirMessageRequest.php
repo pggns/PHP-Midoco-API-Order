@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for AnnounceGalileoAirMessageRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class AnnounceGalileoAirMessageRequest extends AbstractStructBase
 {
     /**

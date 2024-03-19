@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CustomerErrorDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CustomerErrorDTO extends AbstractStructBase
 {
     /**

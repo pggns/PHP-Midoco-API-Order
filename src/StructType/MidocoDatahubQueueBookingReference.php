@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: Identifier to match incoming bookings
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoDatahubQueueBookingReference extends AbstractStructBase
 {
     /**

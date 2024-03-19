@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetMergedMidocoPropertiesRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetMergedMidocoPropertiesRequest extends AbstractStructBase
 {
     /**

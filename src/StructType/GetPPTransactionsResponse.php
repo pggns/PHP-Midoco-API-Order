@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetPPTransactionsResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetPPTransactionsResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetPPTransactionsResponse extends AbstractStructBase
      * - ref: MidocoPaypalTransaction
      * @var \Pggns\MidocoApi\Order\StructType\MidocoPaypalTransaction[]
      */
-    protected array $MidocoPaypalTransaction = [];
+    protected ?array $MidocoPaypalTransaction = null;
     /**
      * Constructor method for GetPPTransactionsResponse
      * @uses GetPPTransactionsResponse::setMidocoPaypalTransaction()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoPaypalTransaction[] $midocoPaypalTransaction
      */
-    public function __construct(array $midocoPaypalTransaction = [])
+    public function __construct(?array $midocoPaypalTransaction = null)
     {
         $this
             ->setMidocoPaypalTransaction($midocoPaypalTransaction);
@@ -36,18 +37,22 @@ class GetPPTransactionsResponse extends AbstractStructBase
      * Get MidocoPaypalTransaction value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoPaypalTransaction[]
      */
-    public function getMidocoPaypalTransaction(): array
+    public function getMidocoPaypalTransaction(): ?array
     {
         return $this->MidocoPaypalTransaction;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoPaypalTransaction method
+     * This method is responsible for validating the value(s) passed to the setMidocoPaypalTransaction method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoPaypalTransaction method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoPaypalTransactionForArrayConstraintsFromSetMidocoPaypalTransaction(array $values = []): string
+    public static function validateMidocoPaypalTransactionForArrayConstraintFromSetMidocoPaypalTransaction(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getPPTransactionsResponseMidocoPaypalTransactionItem) {
@@ -69,10 +74,10 @@ class GetPPTransactionsResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoPaypalTransaction[] $midocoPaypalTransaction
      * @return \Pggns\MidocoApi\Order\StructType\GetPPTransactionsResponse
      */
-    public function setMidocoPaypalTransaction(array $midocoPaypalTransaction = []): self
+    public function setMidocoPaypalTransaction(?array $midocoPaypalTransaction = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoPaypalTransactionArrayErrorMessage = self::validateMidocoPaypalTransactionForArrayConstraintsFromSetMidocoPaypalTransaction($midocoPaypalTransaction))) {
+        if ('' !== ($midocoPaypalTransactionArrayErrorMessage = self::validateMidocoPaypalTransactionForArrayConstraintFromSetMidocoPaypalTransaction($midocoPaypalTransaction))) {
             throw new InvalidArgumentException($midocoPaypalTransactionArrayErrorMessage, __LINE__);
         }
         $this->MidocoPaypalTransaction = $midocoPaypalTransaction;

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteProductTypeMediatorConditionResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteProductTypeMediatorConditionResponse extends AbstractStructBase
 {
     /**

@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: Returns the requested and found Miles & More burn transactions. If the requested transactions can not be found, an exception is thrown.
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetMilesAndMoreBurnCommunicationRequest extends AbstractStructBase
 {
     /**

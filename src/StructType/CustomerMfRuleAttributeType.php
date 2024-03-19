@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CustomerMfRuleAttributeType StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CustomerMfRuleAttributeType extends AbstractStructBase
 {
     /**

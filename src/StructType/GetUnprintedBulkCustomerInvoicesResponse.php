@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetUnprintedBulkCustomerInvoicesResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetUnprintedBulkCustomerInvoicesResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetUnprintedBulkCustomerInvoicesResponse extends AbstractStructBase
      * - ref: MidocoUnprintedBulkBillingDoc
      * @var \Pggns\MidocoApi\Order\StructType\MidocoUnprintedBulkBillingDoc[]
      */
-    protected array $MidocoUnprintedBulkBillingDoc = [];
+    protected ?array $MidocoUnprintedBulkBillingDoc = null;
     /**
      * Constructor method for GetUnprintedBulkCustomerInvoicesResponse
      * @uses GetUnprintedBulkCustomerInvoicesResponse::setMidocoUnprintedBulkBillingDoc()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoUnprintedBulkBillingDoc[] $midocoUnprintedBulkBillingDoc
      */
-    public function __construct(array $midocoUnprintedBulkBillingDoc = [])
+    public function __construct(?array $midocoUnprintedBulkBillingDoc = null)
     {
         $this
             ->setMidocoUnprintedBulkBillingDoc($midocoUnprintedBulkBillingDoc);
@@ -36,18 +37,22 @@ class GetUnprintedBulkCustomerInvoicesResponse extends AbstractStructBase
      * Get MidocoUnprintedBulkBillingDoc value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoUnprintedBulkBillingDoc[]
      */
-    public function getMidocoUnprintedBulkBillingDoc(): array
+    public function getMidocoUnprintedBulkBillingDoc(): ?array
     {
         return $this->MidocoUnprintedBulkBillingDoc;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoUnprintedBulkBillingDoc method
+     * This method is responsible for validating the value(s) passed to the setMidocoUnprintedBulkBillingDoc method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoUnprintedBulkBillingDoc method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoUnprintedBulkBillingDocForArrayConstraintsFromSetMidocoUnprintedBulkBillingDoc(array $values = []): string
+    public static function validateMidocoUnprintedBulkBillingDocForArrayConstraintFromSetMidocoUnprintedBulkBillingDoc(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getUnprintedBulkCustomerInvoicesResponseMidocoUnprintedBulkBillingDocItem) {
@@ -69,10 +74,10 @@ class GetUnprintedBulkCustomerInvoicesResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoUnprintedBulkBillingDoc[] $midocoUnprintedBulkBillingDoc
      * @return \Pggns\MidocoApi\Order\StructType\GetUnprintedBulkCustomerInvoicesResponse
      */
-    public function setMidocoUnprintedBulkBillingDoc(array $midocoUnprintedBulkBillingDoc = []): self
+    public function setMidocoUnprintedBulkBillingDoc(?array $midocoUnprintedBulkBillingDoc = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoUnprintedBulkBillingDocArrayErrorMessage = self::validateMidocoUnprintedBulkBillingDocForArrayConstraintsFromSetMidocoUnprintedBulkBillingDoc($midocoUnprintedBulkBillingDoc))) {
+        if ('' !== ($midocoUnprintedBulkBillingDocArrayErrorMessage = self::validateMidocoUnprintedBulkBillingDocForArrayConstraintFromSetMidocoUnprintedBulkBillingDoc($midocoUnprintedBulkBillingDoc))) {
             throw new InvalidArgumentException($midocoUnprintedBulkBillingDocArrayErrorMessage, __LINE__);
         }
         $this->MidocoUnprintedBulkBillingDoc = $midocoUnprintedBulkBillingDoc;

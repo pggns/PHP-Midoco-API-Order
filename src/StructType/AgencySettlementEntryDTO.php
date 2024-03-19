@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for AgencySettlementEntryDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class AgencySettlementEntryDTO extends AbstractStructBase
 {
     /**

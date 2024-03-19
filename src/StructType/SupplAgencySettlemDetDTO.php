@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SupplAgencySettlemDetDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SupplAgencySettlemDetDTO extends AbstractStructBase
 {
     /**

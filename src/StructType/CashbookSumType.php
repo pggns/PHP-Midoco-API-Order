@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CashbookSumType StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CashbookSumType extends AbstractStructBase
 {
     /**

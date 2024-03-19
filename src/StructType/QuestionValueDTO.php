@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for QuestionValueDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class QuestionValueDTO extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoInvoiceFileFormat StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoInvoiceFileFormat extends InvoiceFileFormatDTO
 {
     /**
@@ -21,13 +22,13 @@ class MidocoInvoiceFileFormat extends InvoiceFileFormatDTO
      * - ref: MidocoInvoiceFileFormatContent
      * @var \Pggns\MidocoApi\Order\StructType\InvoiceFileFormatContentDTO[]
      */
-    protected array $MidocoInvoiceFileFormatContent = [];
+    protected ?array $MidocoInvoiceFileFormatContent = null;
     /**
      * Constructor method for MidocoInvoiceFileFormat
      * @uses MidocoInvoiceFileFormat::setMidocoInvoiceFileFormatContent()
      * @param \Pggns\MidocoApi\Order\StructType\InvoiceFileFormatContentDTO[] $midocoInvoiceFileFormatContent
      */
-    public function __construct(array $midocoInvoiceFileFormatContent = [])
+    public function __construct(?array $midocoInvoiceFileFormatContent = null)
     {
         $this
             ->setMidocoInvoiceFileFormatContent($midocoInvoiceFileFormatContent);
@@ -36,18 +37,22 @@ class MidocoInvoiceFileFormat extends InvoiceFileFormatDTO
      * Get MidocoInvoiceFileFormatContent value
      * @return \Pggns\MidocoApi\Order\StructType\InvoiceFileFormatContentDTO[]
      */
-    public function getMidocoInvoiceFileFormatContent(): array
+    public function getMidocoInvoiceFileFormatContent(): ?array
     {
         return $this->MidocoInvoiceFileFormatContent;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoInvoiceFileFormatContent method
+     * This method is responsible for validating the value(s) passed to the setMidocoInvoiceFileFormatContent method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoInvoiceFileFormatContent method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoInvoiceFileFormatContentForArrayConstraintsFromSetMidocoInvoiceFileFormatContent(array $values = []): string
+    public static function validateMidocoInvoiceFileFormatContentForArrayConstraintFromSetMidocoInvoiceFileFormatContent(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoInvoiceFileFormatMidocoInvoiceFileFormatContentItem) {
@@ -69,10 +74,10 @@ class MidocoInvoiceFileFormat extends InvoiceFileFormatDTO
      * @param \Pggns\MidocoApi\Order\StructType\InvoiceFileFormatContentDTO[] $midocoInvoiceFileFormatContent
      * @return \Pggns\MidocoApi\Order\StructType\MidocoInvoiceFileFormat
      */
-    public function setMidocoInvoiceFileFormatContent(array $midocoInvoiceFileFormatContent = []): self
+    public function setMidocoInvoiceFileFormatContent(?array $midocoInvoiceFileFormatContent = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoInvoiceFileFormatContentArrayErrorMessage = self::validateMidocoInvoiceFileFormatContentForArrayConstraintsFromSetMidocoInvoiceFileFormatContent($midocoInvoiceFileFormatContent))) {
+        if ('' !== ($midocoInvoiceFileFormatContentArrayErrorMessage = self::validateMidocoInvoiceFileFormatContentForArrayConstraintFromSetMidocoInvoiceFileFormatContent($midocoInvoiceFileFormatContent))) {
             throw new InvalidArgumentException($midocoInvoiceFileFormatContentArrayErrorMessage, __LINE__);
         }
         $this->MidocoInvoiceFileFormatContent = $midocoInvoiceFileFormatContent;

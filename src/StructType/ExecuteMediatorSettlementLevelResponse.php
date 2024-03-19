@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ExecuteMediatorSettlementLevelResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ExecuteMediatorSettlementLevelResponse extends AbstractStructBase
 {
     /**
@@ -21,7 +22,7 @@ class ExecuteMediatorSettlementLevelResponse extends AbstractStructBase
      * - ref: MidocoMediatorBilling
      * @var \Pggns\MidocoApi\Order\StructType\MediatorBillingDTO[]
      */
-    protected array $MidocoMediatorBilling = [];
+    protected ?array $MidocoMediatorBilling = null;
     /**
      * The MediatorError
      * Meta information extracted from the WSDL
@@ -30,7 +31,7 @@ class ExecuteMediatorSettlementLevelResponse extends AbstractStructBase
      * - ref: MediatorError
      * @var \Pggns\MidocoApi\Order\StructType\MediatorErrorType[]
      */
-    protected array $MediatorError = [];
+    protected ?array $MediatorError = null;
     /**
      * The pdfForPreview
      * Meta information extracted from the WSDL
@@ -38,7 +39,7 @@ class ExecuteMediatorSettlementLevelResponse extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $pdfForPreview = [];
+    protected ?array $pdfForPreview = null;
     /**
      * Constructor method for ExecuteMediatorSettlementLevelResponse
      * @uses ExecuteMediatorSettlementLevelResponse::setMidocoMediatorBilling()
@@ -48,7 +49,7 @@ class ExecuteMediatorSettlementLevelResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MediatorErrorType[] $mediatorError
      * @param string[] $pdfForPreview
      */
-    public function __construct(array $midocoMediatorBilling = [], array $mediatorError = [], array $pdfForPreview = [])
+    public function __construct(?array $midocoMediatorBilling = null, ?array $mediatorError = null, ?array $pdfForPreview = null)
     {
         $this
             ->setMidocoMediatorBilling($midocoMediatorBilling)
@@ -59,18 +60,22 @@ class ExecuteMediatorSettlementLevelResponse extends AbstractStructBase
      * Get MidocoMediatorBilling value
      * @return \Pggns\MidocoApi\Order\StructType\MediatorBillingDTO[]
      */
-    public function getMidocoMediatorBilling(): array
+    public function getMidocoMediatorBilling(): ?array
     {
         return $this->MidocoMediatorBilling;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoMediatorBilling method
+     * This method is responsible for validating the value(s) passed to the setMidocoMediatorBilling method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoMediatorBilling method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoMediatorBillingForArrayConstraintsFromSetMidocoMediatorBilling(array $values = []): string
+    public static function validateMidocoMediatorBillingForArrayConstraintFromSetMidocoMediatorBilling(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $executeMediatorSettlementLevelResponseMidocoMediatorBillingItem) {
@@ -92,10 +97,10 @@ class ExecuteMediatorSettlementLevelResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MediatorBillingDTO[] $midocoMediatorBilling
      * @return \Pggns\MidocoApi\Order\StructType\ExecuteMediatorSettlementLevelResponse
      */
-    public function setMidocoMediatorBilling(array $midocoMediatorBilling = []): self
+    public function setMidocoMediatorBilling(?array $midocoMediatorBilling = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoMediatorBillingArrayErrorMessage = self::validateMidocoMediatorBillingForArrayConstraintsFromSetMidocoMediatorBilling($midocoMediatorBilling))) {
+        if ('' !== ($midocoMediatorBillingArrayErrorMessage = self::validateMidocoMediatorBillingForArrayConstraintFromSetMidocoMediatorBilling($midocoMediatorBilling))) {
             throw new InvalidArgumentException($midocoMediatorBillingArrayErrorMessage, __LINE__);
         }
         $this->MidocoMediatorBilling = $midocoMediatorBilling;
@@ -122,18 +127,22 @@ class ExecuteMediatorSettlementLevelResponse extends AbstractStructBase
      * Get MediatorError value
      * @return \Pggns\MidocoApi\Order\StructType\MediatorErrorType[]
      */
-    public function getMediatorError(): array
+    public function getMediatorError(): ?array
     {
         return $this->MediatorError;
     }
     /**
-     * This method is responsible for validating the values passed to the setMediatorError method
+     * This method is responsible for validating the value(s) passed to the setMediatorError method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMediatorError method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMediatorErrorForArrayConstraintsFromSetMediatorError(array $values = []): string
+    public static function validateMediatorErrorForArrayConstraintFromSetMediatorError(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $executeMediatorSettlementLevelResponseMediatorErrorItem) {
@@ -155,10 +164,10 @@ class ExecuteMediatorSettlementLevelResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MediatorErrorType[] $mediatorError
      * @return \Pggns\MidocoApi\Order\StructType\ExecuteMediatorSettlementLevelResponse
      */
-    public function setMediatorError(array $mediatorError = []): self
+    public function setMediatorError(?array $mediatorError = null): self
     {
         // validation for constraint: array
-        if ('' !== ($mediatorErrorArrayErrorMessage = self::validateMediatorErrorForArrayConstraintsFromSetMediatorError($mediatorError))) {
+        if ('' !== ($mediatorErrorArrayErrorMessage = self::validateMediatorErrorForArrayConstraintFromSetMediatorError($mediatorError))) {
             throw new InvalidArgumentException($mediatorErrorArrayErrorMessage, __LINE__);
         }
         $this->MediatorError = $mediatorError;
@@ -185,18 +194,22 @@ class ExecuteMediatorSettlementLevelResponse extends AbstractStructBase
      * Get pdfForPreview value
      * @return string[]
      */
-    public function getPdfForPreview(): array
+    public function getPdfForPreview(): ?array
     {
         return $this->pdfForPreview;
     }
     /**
-     * This method is responsible for validating the values passed to the setPdfForPreview method
+     * This method is responsible for validating the value(s) passed to the setPdfForPreview method
      * This method is willingly generated in order to preserve the one-line inline validation within the setPdfForPreview method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validatePdfForPreviewForArrayConstraintsFromSetPdfForPreview(array $values = []): string
+    public static function validatePdfForPreviewForArrayConstraintFromSetPdfForPreview(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $executeMediatorSettlementLevelResponsePdfForPreviewItem) {
@@ -218,10 +231,10 @@ class ExecuteMediatorSettlementLevelResponse extends AbstractStructBase
      * @param string[] $pdfForPreview
      * @return \Pggns\MidocoApi\Order\StructType\ExecuteMediatorSettlementLevelResponse
      */
-    public function setPdfForPreview(array $pdfForPreview = []): self
+    public function setPdfForPreview(?array $pdfForPreview = null): self
     {
         // validation for constraint: array
-        if ('' !== ($pdfForPreviewArrayErrorMessage = self::validatePdfForPreviewForArrayConstraintsFromSetPdfForPreview($pdfForPreview))) {
+        if ('' !== ($pdfForPreviewArrayErrorMessage = self::validatePdfForPreviewForArrayConstraintFromSetPdfForPreview($pdfForPreview))) {
             throw new InvalidArgumentException($pdfForPreviewArrayErrorMessage, __LINE__);
         }
         $this->pdfForPreview = $pdfForPreview;

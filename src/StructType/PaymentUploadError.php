@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for PaymentUploadError StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class PaymentUploadError extends AbstractStructBase
 {
     /**

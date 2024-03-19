@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ChangeOrderCreationUserResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ChangeOrderCreationUserResponse extends AbstractStructBase
 {
 }

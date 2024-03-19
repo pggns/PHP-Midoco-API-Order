@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoFlightTimeChangeEmailType StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoFlightTimeChangeEmailType extends FlightTimeChangeEmailDTO
 {
     /**
@@ -21,13 +22,13 @@ class MidocoFlightTimeChangeEmailType extends FlightTimeChangeEmailDTO
      * - ref: MidocoFlightTimeChangeEmailDet
      * @var \Pggns\MidocoApi\Order\StructType\FlightTimeChangeEmailDetDTO[]
      */
-    protected array $MidocoFlightTimeChangeEmailDet = [];
+    protected ?array $MidocoFlightTimeChangeEmailDet = null;
     /**
      * Constructor method for MidocoFlightTimeChangeEmailType
      * @uses MidocoFlightTimeChangeEmailType::setMidocoFlightTimeChangeEmailDet()
      * @param \Pggns\MidocoApi\Order\StructType\FlightTimeChangeEmailDetDTO[] $midocoFlightTimeChangeEmailDet
      */
-    public function __construct(array $midocoFlightTimeChangeEmailDet = [])
+    public function __construct(?array $midocoFlightTimeChangeEmailDet = null)
     {
         $this
             ->setMidocoFlightTimeChangeEmailDet($midocoFlightTimeChangeEmailDet);
@@ -36,18 +37,22 @@ class MidocoFlightTimeChangeEmailType extends FlightTimeChangeEmailDTO
      * Get MidocoFlightTimeChangeEmailDet value
      * @return \Pggns\MidocoApi\Order\StructType\FlightTimeChangeEmailDetDTO[]
      */
-    public function getMidocoFlightTimeChangeEmailDet(): array
+    public function getMidocoFlightTimeChangeEmailDet(): ?array
     {
         return $this->MidocoFlightTimeChangeEmailDet;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoFlightTimeChangeEmailDet method
+     * This method is responsible for validating the value(s) passed to the setMidocoFlightTimeChangeEmailDet method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoFlightTimeChangeEmailDet method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoFlightTimeChangeEmailDetForArrayConstraintsFromSetMidocoFlightTimeChangeEmailDet(array $values = []): string
+    public static function validateMidocoFlightTimeChangeEmailDetForArrayConstraintFromSetMidocoFlightTimeChangeEmailDet(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoFlightTimeChangeEmailTypeMidocoFlightTimeChangeEmailDetItem) {
@@ -69,10 +74,10 @@ class MidocoFlightTimeChangeEmailType extends FlightTimeChangeEmailDTO
      * @param \Pggns\MidocoApi\Order\StructType\FlightTimeChangeEmailDetDTO[] $midocoFlightTimeChangeEmailDet
      * @return \Pggns\MidocoApi\Order\StructType\MidocoFlightTimeChangeEmailType
      */
-    public function setMidocoFlightTimeChangeEmailDet(array $midocoFlightTimeChangeEmailDet = []): self
+    public function setMidocoFlightTimeChangeEmailDet(?array $midocoFlightTimeChangeEmailDet = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoFlightTimeChangeEmailDetArrayErrorMessage = self::validateMidocoFlightTimeChangeEmailDetForArrayConstraintsFromSetMidocoFlightTimeChangeEmailDet($midocoFlightTimeChangeEmailDet))) {
+        if ('' !== ($midocoFlightTimeChangeEmailDetArrayErrorMessage = self::validateMidocoFlightTimeChangeEmailDetForArrayConstraintFromSetMidocoFlightTimeChangeEmailDet($midocoFlightTimeChangeEmailDet))) {
             throw new InvalidArgumentException($midocoFlightTimeChangeEmailDetArrayErrorMessage, __LINE__);
         }
         $this->MidocoFlightTimeChangeEmailDet = $midocoFlightTimeChangeEmailDet;

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetOrderNoticesRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetOrderNoticesRequest extends AbstractStructBase
 {
     /**
@@ -20,7 +21,7 @@ class GetOrderNoticesRequest extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $types = [];
+    protected ?array $types = null;
     /**
      * The orderId
      * @var int|null
@@ -126,7 +127,7 @@ class GetOrderNoticesRequest extends AbstractStructBase
      * @param int $finishUser
      * @param bool $withOrderNo
      */
-    public function __construct(array $types = [], ?int $orderId = null, ?int $position = null, ?string $sortOrder = null, ?string $orgunitName = null, ?string $selection = null, ?string $fromFinishTimestamp = null, ?string $untilFinishTimestamp = null, ?string $fromCreationTimestamp = null, ?string $untilCreationTimestamp = null, ?string $delegationQueue = null, ?string $notice = null, ?string $taskType = null, ?int $finishUser = null, ?bool $withOrderNo = false)
+    public function __construct(?array $types = null, ?int $orderId = null, ?int $position = null, ?string $sortOrder = null, ?string $orgunitName = null, ?string $selection = null, ?string $fromFinishTimestamp = null, ?string $untilFinishTimestamp = null, ?string $fromCreationTimestamp = null, ?string $untilCreationTimestamp = null, ?string $delegationQueue = null, ?string $notice = null, ?string $taskType = null, ?int $finishUser = null, ?bool $withOrderNo = false)
     {
         $this
             ->setTypes($types)
@@ -149,18 +150,22 @@ class GetOrderNoticesRequest extends AbstractStructBase
      * Get types value
      * @return string[]
      */
-    public function getTypes(): array
+    public function getTypes(): ?array
     {
         return $this->types;
     }
     /**
-     * This method is responsible for validating the values passed to the setTypes method
+     * This method is responsible for validating the value(s) passed to the setTypes method
      * This method is willingly generated in order to preserve the one-line inline validation within the setTypes method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateTypesForArrayConstraintsFromSetTypes(array $values = []): string
+    public static function validateTypesForArrayConstraintFromSetTypes(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getOrderNoticesRequestTypesItem) {
@@ -182,10 +187,10 @@ class GetOrderNoticesRequest extends AbstractStructBase
      * @param string[] $types
      * @return \Pggns\MidocoApi\Order\StructType\GetOrderNoticesRequest
      */
-    public function setTypes(array $types = []): self
+    public function setTypes(?array $types = null): self
     {
         // validation for constraint: array
-        if ('' !== ($typesArrayErrorMessage = self::validateTypesForArrayConstraintsFromSetTypes($types))) {
+        if ('' !== ($typesArrayErrorMessage = self::validateTypesForArrayConstraintFromSetTypes($types))) {
             throw new InvalidArgumentException($typesArrayErrorMessage, __LINE__);
         }
         $this->types = $types;

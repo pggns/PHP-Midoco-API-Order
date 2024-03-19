@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetEmailTextForOrderResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetEmailTextForOrderResponse extends AbstractStructBase
 {
     /**

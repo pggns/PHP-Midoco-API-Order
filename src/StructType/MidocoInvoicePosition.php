@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoInvoicePosition StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoInvoicePosition extends InvoicePositionDTO
 {
 }

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetFeeGroupAssignsResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetFeeGroupAssignsResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetFeeGroupAssignsResponse extends AbstractStructBase
      * - ref: MidocoFeeGroupAssign
      * @var \Pggns\MidocoApi\Order\StructType\MidocoFeeGroupAssign[]
      */
-    protected array $MidocoFeeGroupAssign = [];
+    protected ?array $MidocoFeeGroupAssign = null;
     /**
      * Constructor method for GetFeeGroupAssignsResponse
      * @uses GetFeeGroupAssignsResponse::setMidocoFeeGroupAssign()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoFeeGroupAssign[] $midocoFeeGroupAssign
      */
-    public function __construct(array $midocoFeeGroupAssign = [])
+    public function __construct(?array $midocoFeeGroupAssign = null)
     {
         $this
             ->setMidocoFeeGroupAssign($midocoFeeGroupAssign);
@@ -36,18 +37,22 @@ class GetFeeGroupAssignsResponse extends AbstractStructBase
      * Get MidocoFeeGroupAssign value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoFeeGroupAssign[]
      */
-    public function getMidocoFeeGroupAssign(): array
+    public function getMidocoFeeGroupAssign(): ?array
     {
         return $this->MidocoFeeGroupAssign;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoFeeGroupAssign method
+     * This method is responsible for validating the value(s) passed to the setMidocoFeeGroupAssign method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoFeeGroupAssign method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoFeeGroupAssignForArrayConstraintsFromSetMidocoFeeGroupAssign(array $values = []): string
+    public static function validateMidocoFeeGroupAssignForArrayConstraintFromSetMidocoFeeGroupAssign(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getFeeGroupAssignsResponseMidocoFeeGroupAssignItem) {
@@ -69,10 +74,10 @@ class GetFeeGroupAssignsResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoFeeGroupAssign[] $midocoFeeGroupAssign
      * @return \Pggns\MidocoApi\Order\StructType\GetFeeGroupAssignsResponse
      */
-    public function setMidocoFeeGroupAssign(array $midocoFeeGroupAssign = []): self
+    public function setMidocoFeeGroupAssign(?array $midocoFeeGroupAssign = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoFeeGroupAssignArrayErrorMessage = self::validateMidocoFeeGroupAssignForArrayConstraintsFromSetMidocoFeeGroupAssign($midocoFeeGroupAssign))) {
+        if ('' !== ($midocoFeeGroupAssignArrayErrorMessage = self::validateMidocoFeeGroupAssignForArrayConstraintFromSetMidocoFeeGroupAssign($midocoFeeGroupAssign))) {
             throw new InvalidArgumentException($midocoFeeGroupAssignArrayErrorMessage, __LINE__);
         }
         $this->MidocoFeeGroupAssign = $midocoFeeGroupAssign;

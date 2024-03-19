@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CreateExternDocument4BillingDocumentResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CreateExternDocument4BillingDocumentResponse extends AbstractStructBase
 {
 }

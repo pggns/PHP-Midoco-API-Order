@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetOrgunitForSupplierAgencyResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetOrgunitForSupplierAgencyResponse extends AbstractStructBase
 {
     /**
@@ -25,7 +26,7 @@ class GetOrgunitForSupplierAgencyResponse extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $supplierId = [];
+    protected ?array $supplierId = null;
     /**
      * Constructor method for GetOrgunitForSupplierAgencyResponse
      * @uses GetOrgunitForSupplierAgencyResponse::setUnitName()
@@ -33,7 +34,7 @@ class GetOrgunitForSupplierAgencyResponse extends AbstractStructBase
      * @param string $unitName
      * @param string[] $supplierId
      */
-    public function __construct(?string $unitName = null, array $supplierId = [])
+    public function __construct(?string $unitName = null, ?array $supplierId = null)
     {
         $this
             ->setUnitName($unitName)
@@ -66,18 +67,22 @@ class GetOrgunitForSupplierAgencyResponse extends AbstractStructBase
      * Get supplierId value
      * @return string[]
      */
-    public function getSupplierId(): array
+    public function getSupplierId(): ?array
     {
         return $this->supplierId;
     }
     /**
-     * This method is responsible for validating the values passed to the setSupplierId method
+     * This method is responsible for validating the value(s) passed to the setSupplierId method
      * This method is willingly generated in order to preserve the one-line inline validation within the setSupplierId method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateSupplierIdForArrayConstraintsFromSetSupplierId(array $values = []): string
+    public static function validateSupplierIdForArrayConstraintFromSetSupplierId(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getOrgunitForSupplierAgencyResponseSupplierIdItem) {
@@ -99,10 +104,10 @@ class GetOrgunitForSupplierAgencyResponse extends AbstractStructBase
      * @param string[] $supplierId
      * @return \Pggns\MidocoApi\Order\StructType\GetOrgunitForSupplierAgencyResponse
      */
-    public function setSupplierId(array $supplierId = []): self
+    public function setSupplierId(?array $supplierId = null): self
     {
         // validation for constraint: array
-        if ('' !== ($supplierIdArrayErrorMessage = self::validateSupplierIdForArrayConstraintsFromSetSupplierId($supplierId))) {
+        if ('' !== ($supplierIdArrayErrorMessage = self::validateSupplierIdForArrayConstraintFromSetSupplierId($supplierId))) {
             throw new InvalidArgumentException($supplierIdArrayErrorMessage, __LINE__);
         }
         $this->supplierId = $supplierId;

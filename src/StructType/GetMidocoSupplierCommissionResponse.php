@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetMidocoSupplierCommissionResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetMidocoSupplierCommissionResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetMidocoSupplierCommissionResponse extends AbstractStructBase
      * - ref: MidocoSupplierCommission
      * @var \Pggns\MidocoApi\Order\StructType\SupplierCommissionDTO[]
      */
-    protected array $MidocoSupplierCommission = [];
+    protected ?array $MidocoSupplierCommission = null;
     /**
      * Constructor method for GetMidocoSupplierCommissionResponse
      * @uses GetMidocoSupplierCommissionResponse::setMidocoSupplierCommission()
      * @param \Pggns\MidocoApi\Order\StructType\SupplierCommissionDTO[] $midocoSupplierCommission
      */
-    public function __construct(array $midocoSupplierCommission = [])
+    public function __construct(?array $midocoSupplierCommission = null)
     {
         $this
             ->setMidocoSupplierCommission($midocoSupplierCommission);
@@ -36,18 +37,22 @@ class GetMidocoSupplierCommissionResponse extends AbstractStructBase
      * Get MidocoSupplierCommission value
      * @return \Pggns\MidocoApi\Order\StructType\SupplierCommissionDTO[]
      */
-    public function getMidocoSupplierCommission(): array
+    public function getMidocoSupplierCommission(): ?array
     {
         return $this->MidocoSupplierCommission;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoSupplierCommission method
+     * This method is responsible for validating the value(s) passed to the setMidocoSupplierCommission method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoSupplierCommission method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoSupplierCommissionForArrayConstraintsFromSetMidocoSupplierCommission(array $values = []): string
+    public static function validateMidocoSupplierCommissionForArrayConstraintFromSetMidocoSupplierCommission(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getMidocoSupplierCommissionResponseMidocoSupplierCommissionItem) {
@@ -69,10 +74,10 @@ class GetMidocoSupplierCommissionResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\SupplierCommissionDTO[] $midocoSupplierCommission
      * @return \Pggns\MidocoApi\Order\StructType\GetMidocoSupplierCommissionResponse
      */
-    public function setMidocoSupplierCommission(array $midocoSupplierCommission = []): self
+    public function setMidocoSupplierCommission(?array $midocoSupplierCommission = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoSupplierCommissionArrayErrorMessage = self::validateMidocoSupplierCommissionForArrayConstraintsFromSetMidocoSupplierCommission($midocoSupplierCommission))) {
+        if ('' !== ($midocoSupplierCommissionArrayErrorMessage = self::validateMidocoSupplierCommissionForArrayConstraintFromSetMidocoSupplierCommission($midocoSupplierCommission))) {
             throw new InvalidArgumentException($midocoSupplierCommissionArrayErrorMessage, __LINE__);
         }
         $this->MidocoSupplierCommission = $midocoSupplierCommission;

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetMidocoBonusCalculationResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetMidocoBonusCalculationResponse extends AbstractStructBase
 {
     /**
@@ -20,13 +21,13 @@ class GetMidocoBonusCalculationResponse extends AbstractStructBase
      * - ref: MidocoBonusCalculation
      * @var \Pggns\MidocoApi\Order\StructType\MidocoBonusCalculation[]
      */
-    protected array $MidocoBonusCalculation = [];
+    protected ?array $MidocoBonusCalculation = null;
     /**
      * Constructor method for GetMidocoBonusCalculationResponse
      * @uses GetMidocoBonusCalculationResponse::setMidocoBonusCalculation()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoBonusCalculation[] $midocoBonusCalculation
      */
-    public function __construct(array $midocoBonusCalculation = [])
+    public function __construct(?array $midocoBonusCalculation = null)
     {
         $this
             ->setMidocoBonusCalculation($midocoBonusCalculation);
@@ -35,18 +36,22 @@ class GetMidocoBonusCalculationResponse extends AbstractStructBase
      * Get MidocoBonusCalculation value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoBonusCalculation[]
      */
-    public function getMidocoBonusCalculation(): array
+    public function getMidocoBonusCalculation(): ?array
     {
         return $this->MidocoBonusCalculation;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoBonusCalculation method
+     * This method is responsible for validating the value(s) passed to the setMidocoBonusCalculation method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoBonusCalculation method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoBonusCalculationForArrayConstraintsFromSetMidocoBonusCalculation(array $values = []): string
+    public static function validateMidocoBonusCalculationForArrayConstraintFromSetMidocoBonusCalculation(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getMidocoBonusCalculationResponseMidocoBonusCalculationItem) {
@@ -68,10 +73,10 @@ class GetMidocoBonusCalculationResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoBonusCalculation[] $midocoBonusCalculation
      * @return \Pggns\MidocoApi\Order\StructType\GetMidocoBonusCalculationResponse
      */
-    public function setMidocoBonusCalculation(array $midocoBonusCalculation = []): self
+    public function setMidocoBonusCalculation(?array $midocoBonusCalculation = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoBonusCalculationArrayErrorMessage = self::validateMidocoBonusCalculationForArrayConstraintsFromSetMidocoBonusCalculation($midocoBonusCalculation))) {
+        if ('' !== ($midocoBonusCalculationArrayErrorMessage = self::validateMidocoBonusCalculationForArrayConstraintFromSetMidocoBonusCalculation($midocoBonusCalculation))) {
             throw new InvalidArgumentException($midocoBonusCalculationArrayErrorMessage, __LINE__);
         }
         $this->MidocoBonusCalculation = $midocoBonusCalculation;

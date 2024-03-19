@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveMiscPaymentSettingResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveMiscPaymentSettingResponse extends AbstractStructBase
 {
 }

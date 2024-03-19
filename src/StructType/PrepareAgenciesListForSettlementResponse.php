@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for PrepareAgenciesListForSettlementResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class PrepareAgenciesListForSettlementResponse extends AbstractStructBase
 {
     /**
@@ -20,13 +21,13 @@ class PrepareAgenciesListForSettlementResponse extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $AgencyId = [];
+    protected ?array $AgencyId = null;
     /**
      * Constructor method for PrepareAgenciesListForSettlementResponse
      * @uses PrepareAgenciesListForSettlementResponse::setAgencyId()
      * @param string[] $agencyId
      */
-    public function __construct(array $agencyId = [])
+    public function __construct(?array $agencyId = null)
     {
         $this
             ->setAgencyId($agencyId);
@@ -35,18 +36,22 @@ class PrepareAgenciesListForSettlementResponse extends AbstractStructBase
      * Get AgencyId value
      * @return string[]
      */
-    public function getAgencyId(): array
+    public function getAgencyId(): ?array
     {
         return $this->AgencyId;
     }
     /**
-     * This method is responsible for validating the values passed to the setAgencyId method
+     * This method is responsible for validating the value(s) passed to the setAgencyId method
      * This method is willingly generated in order to preserve the one-line inline validation within the setAgencyId method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateAgencyIdForArrayConstraintsFromSetAgencyId(array $values = []): string
+    public static function validateAgencyIdForArrayConstraintFromSetAgencyId(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $prepareAgenciesListForSettlementResponseAgencyIdItem) {
@@ -68,10 +73,10 @@ class PrepareAgenciesListForSettlementResponse extends AbstractStructBase
      * @param string[] $agencyId
      * @return \Pggns\MidocoApi\Order\StructType\PrepareAgenciesListForSettlementResponse
      */
-    public function setAgencyId(array $agencyId = []): self
+    public function setAgencyId(?array $agencyId = null): self
     {
         // validation for constraint: array
-        if ('' !== ($agencyIdArrayErrorMessage = self::validateAgencyIdForArrayConstraintsFromSetAgencyId($agencyId))) {
+        if ('' !== ($agencyIdArrayErrorMessage = self::validateAgencyIdForArrayConstraintFromSetAgencyId($agencyId))) {
             throw new InvalidArgumentException($agencyIdArrayErrorMessage, __LINE__);
         }
         $this->AgencyId = $agencyId;

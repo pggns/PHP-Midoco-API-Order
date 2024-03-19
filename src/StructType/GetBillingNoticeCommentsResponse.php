@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetBillingNoticeCommentsResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetBillingNoticeCommentsResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetBillingNoticeCommentsResponse extends AbstractStructBase
      * - ref: MidocoBillingNoticeComment
      * @var \Pggns\MidocoApi\Order\StructType\BillingNoticeCommentDTO[]
      */
-    protected array $MidocoBillingNoticeComment = [];
+    protected ?array $MidocoBillingNoticeComment = null;
     /**
      * Constructor method for GetBillingNoticeCommentsResponse
      * @uses GetBillingNoticeCommentsResponse::setMidocoBillingNoticeComment()
      * @param \Pggns\MidocoApi\Order\StructType\BillingNoticeCommentDTO[] $midocoBillingNoticeComment
      */
-    public function __construct(array $midocoBillingNoticeComment = [])
+    public function __construct(?array $midocoBillingNoticeComment = null)
     {
         $this
             ->setMidocoBillingNoticeComment($midocoBillingNoticeComment);
@@ -36,18 +37,22 @@ class GetBillingNoticeCommentsResponse extends AbstractStructBase
      * Get MidocoBillingNoticeComment value
      * @return \Pggns\MidocoApi\Order\StructType\BillingNoticeCommentDTO[]
      */
-    public function getMidocoBillingNoticeComment(): array
+    public function getMidocoBillingNoticeComment(): ?array
     {
         return $this->MidocoBillingNoticeComment;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoBillingNoticeComment method
+     * This method is responsible for validating the value(s) passed to the setMidocoBillingNoticeComment method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoBillingNoticeComment method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoBillingNoticeCommentForArrayConstraintsFromSetMidocoBillingNoticeComment(array $values = []): string
+    public static function validateMidocoBillingNoticeCommentForArrayConstraintFromSetMidocoBillingNoticeComment(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getBillingNoticeCommentsResponseMidocoBillingNoticeCommentItem) {
@@ -69,10 +74,10 @@ class GetBillingNoticeCommentsResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\BillingNoticeCommentDTO[] $midocoBillingNoticeComment
      * @return \Pggns\MidocoApi\Order\StructType\GetBillingNoticeCommentsResponse
      */
-    public function setMidocoBillingNoticeComment(array $midocoBillingNoticeComment = []): self
+    public function setMidocoBillingNoticeComment(?array $midocoBillingNoticeComment = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoBillingNoticeCommentArrayErrorMessage = self::validateMidocoBillingNoticeCommentForArrayConstraintsFromSetMidocoBillingNoticeComment($midocoBillingNoticeComment))) {
+        if ('' !== ($midocoBillingNoticeCommentArrayErrorMessage = self::validateMidocoBillingNoticeCommentForArrayConstraintFromSetMidocoBillingNoticeComment($midocoBillingNoticeComment))) {
             throw new InvalidArgumentException($midocoBillingNoticeCommentArrayErrorMessage, __LINE__);
         }
         $this->MidocoBillingNoticeComment = $midocoBillingNoticeComment;

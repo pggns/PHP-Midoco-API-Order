@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CheckCcDbiInfoResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CheckCcDbiInfoResponse extends AbstractStructBase
 {
     /**

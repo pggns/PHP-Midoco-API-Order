@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ConcardisPositionDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ConcardisPositionDTO extends AbstractStructBase
 {
     /**

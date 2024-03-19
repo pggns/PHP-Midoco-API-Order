@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetUserHistoryRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetUserHistoryRequest extends AbstractStructBase
 {
     /**

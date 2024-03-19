@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoPrintTypeDestination StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoPrintTypeDestination extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for RecalculateDocnumbersResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class RecalculateDocnumbersResponse extends AbstractStructBase
 {
 }

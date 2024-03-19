@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: The response is only filled in the test system to show the testers where to find the order.
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ImportHandlerResponseType extends AbstractStructBase
 {
     /**
@@ -44,17 +45,26 @@ class ImportHandlerResponseType extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - documentation: A forwarded response from an import handler.
      * - minOccurs: 0
-     * @var mixed|null
+     * @var string|null
      */
-    protected ?mixed $result = null;
+    protected ?string $result = null;
     /**
      * The error
      * Meta information extracted from the WSDL
-     * - documentation: An error message or the reason the import was ignored.
+     * - documentation: An error message or the reason the import was ignored. @deprecated Use ImportHandlerResponseMessage elements instead.
      * - minOccurs: 0
      * @var string|null
      */
     protected ?string $error = null;
+    /**
+     * The ImportHandlerResponseMessage
+     * Meta information extracted from the WSDL
+     * - maxOccurs: unbounded
+     * - minOccurs: 0
+     * - ref: ImportHandlerResponseMessage
+     * @var \Pggns\MidocoApi\Order\StructType\ImportHandlerResponseMessage[]
+     */
+    protected ?array $ImportHandlerResponseMessage = null;
     /**
      * Constructor method for ImportHandlerResponseType
      * @uses ImportHandlerResponseType::setOrderId()
@@ -62,20 +72,23 @@ class ImportHandlerResponseType extends AbstractStructBase
      * @uses ImportHandlerResponseType::setUnitName()
      * @uses ImportHandlerResponseType::setResult()
      * @uses ImportHandlerResponseType::setError()
+     * @uses ImportHandlerResponseType::setImportHandlerResponseMessage()
      * @param int $orderId
      * @param int $orderNo
      * @param string $unitName
-     * @param mixed $result
+     * @param string $result
      * @param string $error
+     * @param \Pggns\MidocoApi\Order\StructType\ImportHandlerResponseMessage[] $importHandlerResponseMessage
      */
-    public function __construct(?int $orderId = null, ?int $orderNo = null, ?string $unitName = null, ?mixed $result = null, ?string $error = null)
+    public function __construct(?int $orderId = null, ?int $orderNo = null, ?string $unitName = null, ?string $result = null, ?string $error = null, ?array $importHandlerResponseMessage = null)
     {
         $this
             ->setOrderId($orderId)
             ->setOrderNo($orderNo)
             ->setUnitName($unitName)
             ->setResult($result)
-            ->setError($error);
+            ->setError($error)
+            ->setImportHandlerResponseMessage($importHandlerResponseMessage);
     }
     /**
      * Get orderId value
@@ -148,19 +161,23 @@ class ImportHandlerResponseType extends AbstractStructBase
     }
     /**
      * Get result value
-     * @return mixed|null
+     * @return string|null
      */
-    public function getResult(): ?mixed
+    public function getResult(): ?string
     {
         return $this->result;
     }
     /**
      * Set result value
-     * @param mixed $result
+     * @param string $result
      * @return \Pggns\MidocoApi\Order\StructType\ImportHandlerResponseType
      */
-    public function setResult(?mixed $result = null): self
+    public function setResult(?string $result = null): self
     {
+        // validation for constraint: string
+        if (!is_null($result) && !is_string($result)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($result, true), gettype($result)), __LINE__);
+        }
         $this->result = $result;
         
         return $this;
@@ -185,6 +202,73 @@ class ImportHandlerResponseType extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($error, true), gettype($error)), __LINE__);
         }
         $this->error = $error;
+        
+        return $this;
+    }
+    /**
+     * Get ImportHandlerResponseMessage value
+     * @return \Pggns\MidocoApi\Order\StructType\ImportHandlerResponseMessage[]
+     */
+    public function getImportHandlerResponseMessage(): ?array
+    {
+        return $this->ImportHandlerResponseMessage;
+    }
+    /**
+     * This method is responsible for validating the value(s) passed to the setImportHandlerResponseMessage method
+     * This method is willingly generated in order to preserve the one-line inline validation within the setImportHandlerResponseMessage method
+     * This has to validate that each item contained by the array match the itemType constraint
+     * @param array $values
+     * @return string A non-empty message if the values does not match the validation rules
+     */
+    public static function validateImportHandlerResponseMessageForArrayConstraintFromSetImportHandlerResponseMessage(?array $values = []): string
+    {
+        if (!is_array($values)) {
+            return '';
+        }
+        $message = '';
+        $invalidValues = [];
+        foreach ($values as $importHandlerResponseTypeImportHandlerResponseMessageItem) {
+            // validation for constraint: itemType
+            if (!$importHandlerResponseTypeImportHandlerResponseMessageItem instanceof \Pggns\MidocoApi\Order\StructType\ImportHandlerResponseMessage) {
+                $invalidValues[] = is_object($importHandlerResponseTypeImportHandlerResponseMessageItem) ? get_class($importHandlerResponseTypeImportHandlerResponseMessageItem) : sprintf('%s(%s)', gettype($importHandlerResponseTypeImportHandlerResponseMessageItem), var_export($importHandlerResponseTypeImportHandlerResponseMessageItem, true));
+            }
+        }
+        if (!empty($invalidValues)) {
+            $message = sprintf('The ImportHandlerResponseMessage property can only contain items of type \Pggns\MidocoApi\Order\StructType\ImportHandlerResponseMessage, %s given', is_object($invalidValues) ? get_class($invalidValues) : (is_array($invalidValues) ? implode(', ', $invalidValues) : gettype($invalidValues)));
+        }
+        unset($invalidValues);
+        
+        return $message;
+    }
+    /**
+     * Set ImportHandlerResponseMessage value
+     * @throws InvalidArgumentException
+     * @param \Pggns\MidocoApi\Order\StructType\ImportHandlerResponseMessage[] $importHandlerResponseMessage
+     * @return \Pggns\MidocoApi\Order\StructType\ImportHandlerResponseType
+     */
+    public function setImportHandlerResponseMessage(?array $importHandlerResponseMessage = null): self
+    {
+        // validation for constraint: array
+        if ('' !== ($importHandlerResponseMessageArrayErrorMessage = self::validateImportHandlerResponseMessageForArrayConstraintFromSetImportHandlerResponseMessage($importHandlerResponseMessage))) {
+            throw new InvalidArgumentException($importHandlerResponseMessageArrayErrorMessage, __LINE__);
+        }
+        $this->ImportHandlerResponseMessage = $importHandlerResponseMessage;
+        
+        return $this;
+    }
+    /**
+     * Add item to ImportHandlerResponseMessage value
+     * @throws InvalidArgumentException
+     * @param \Pggns\MidocoApi\Order\StructType\ImportHandlerResponseMessage $item
+     * @return \Pggns\MidocoApi\Order\StructType\ImportHandlerResponseType
+     */
+    public function addToImportHandlerResponseMessage(\Pggns\MidocoApi\Order\StructType\ImportHandlerResponseMessage $item): self
+    {
+        // validation for constraint: itemType
+        if (!$item instanceof \Pggns\MidocoApi\Order\StructType\ImportHandlerResponseMessage) {
+            throw new InvalidArgumentException(sprintf('The ImportHandlerResponseMessage property can only contain items of type \Pggns\MidocoApi\Order\StructType\ImportHandlerResponseMessage, %s given', is_object($item) ? get_class($item) : (is_array($item) ? implode(', ', $item) : gettype($item))), __LINE__);
+        }
+        $this->ImportHandlerResponseMessage[] = $item;
         
         return $this;
     }

@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: check if a billing document (identifieb by its document id) is already paid or not
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CheckIfPaidBillingDocResponse extends AbstractStructBase
 {
     /**

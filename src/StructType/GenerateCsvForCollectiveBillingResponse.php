@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GenerateCsvForCollectiveBillingResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GenerateCsvForCollectiveBillingResponse extends AbstractStructBase
 {
     /**

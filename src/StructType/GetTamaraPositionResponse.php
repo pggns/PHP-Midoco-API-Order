@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetTamaraPositionResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetTamaraPositionResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetTamaraPositionResponse extends AbstractStructBase
      * - ref: MidocoTamaraPosition
      * @var \Pggns\MidocoApi\Order\StructType\MidocoTamaraPosition[]
      */
-    protected array $MidocoTamaraPosition = [];
+    protected ?array $MidocoTamaraPosition = null;
     /**
      * Constructor method for GetTamaraPositionResponse
      * @uses GetTamaraPositionResponse::setMidocoTamaraPosition()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoTamaraPosition[] $midocoTamaraPosition
      */
-    public function __construct(array $midocoTamaraPosition = [])
+    public function __construct(?array $midocoTamaraPosition = null)
     {
         $this
             ->setMidocoTamaraPosition($midocoTamaraPosition);
@@ -36,18 +37,22 @@ class GetTamaraPositionResponse extends AbstractStructBase
      * Get MidocoTamaraPosition value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoTamaraPosition[]
      */
-    public function getMidocoTamaraPosition(): array
+    public function getMidocoTamaraPosition(): ?array
     {
         return $this->MidocoTamaraPosition;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoTamaraPosition method
+     * This method is responsible for validating the value(s) passed to the setMidocoTamaraPosition method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoTamaraPosition method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoTamaraPositionForArrayConstraintsFromSetMidocoTamaraPosition(array $values = []): string
+    public static function validateMidocoTamaraPositionForArrayConstraintFromSetMidocoTamaraPosition(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getTamaraPositionResponseMidocoTamaraPositionItem) {
@@ -69,10 +74,10 @@ class GetTamaraPositionResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoTamaraPosition[] $midocoTamaraPosition
      * @return \Pggns\MidocoApi\Order\StructType\GetTamaraPositionResponse
      */
-    public function setMidocoTamaraPosition(array $midocoTamaraPosition = []): self
+    public function setMidocoTamaraPosition(?array $midocoTamaraPosition = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoTamaraPositionArrayErrorMessage = self::validateMidocoTamaraPositionForArrayConstraintsFromSetMidocoTamaraPosition($midocoTamaraPosition))) {
+        if ('' !== ($midocoTamaraPositionArrayErrorMessage = self::validateMidocoTamaraPositionForArrayConstraintFromSetMidocoTamaraPosition($midocoTamaraPosition))) {
             throw new InvalidArgumentException($midocoTamaraPositionArrayErrorMessage, __LINE__);
         }
         $this->MidocoTamaraPosition = $midocoTamaraPosition;

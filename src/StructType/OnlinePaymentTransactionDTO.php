@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for OnlinePaymentTransactionDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class OnlinePaymentTransactionDTO extends AbstractStructBase
 {
     /**
@@ -179,6 +180,11 @@ class OnlinePaymentTransactionDTO extends AbstractStructBase
      */
     protected ?string $usedAdapter = null;
     /**
+     * The usedMerchantId
+     * @var string|null
+     */
+    protected ?string $usedMerchantId = null;
+    /**
      * The vat2AmountExtern
      * @var float|null
      */
@@ -248,6 +254,7 @@ class OnlinePaymentTransactionDTO extends AbstractStructBase
      * @uses OnlinePaymentTransactionDTO::setTransactionId()
      * @uses OnlinePaymentTransactionDTO::setTransactionRefId()
      * @uses OnlinePaymentTransactionDTO::setUsedAdapter()
+     * @uses OnlinePaymentTransactionDTO::setUsedMerchantId()
      * @uses OnlinePaymentTransactionDTO::setVat2AmountExtern()
      * @uses OnlinePaymentTransactionDTO::setVat2BaseExtern()
      * @uses OnlinePaymentTransactionDTO::setVat2PercentExtern()
@@ -288,6 +295,7 @@ class OnlinePaymentTransactionDTO extends AbstractStructBase
      * @param int $transactionId
      * @param string $transactionRefId
      * @param string $usedAdapter
+     * @param string $usedMerchantId
      * @param float $vat2AmountExtern
      * @param float $vat2BaseExtern
      * @param float $vat2PercentExtern
@@ -296,7 +304,7 @@ class OnlinePaymentTransactionDTO extends AbstractStructBase
      * @param float $vatPercentExtern
      * @param string $xid
      */
-    public function __construct(?float $amount = null, ?string $approvalCode = null, ?int $basePositionId = null, ?string $calculatedPaymentDate = null, ?string $captureDate = null, ?int $captureDone = null, ?string $ccNo = null, ?int $ccReceiptNo = null, ?string $ccToken = null, ?string $ccTokenType = null, ?string $ccType = null, ?int $ccValidMonth = null, ?int $ccValidYear = null, ?string $creationTimestamp = null, ?string $currency = null, ?string $dstid = null, ?string $errorBundle = null, ?string $errorCode = null, ?string $errorDescriptionCode = null, ?string $externalId = null, ?string $initialEcomTransactionId = null, ?bool $isDeposit = null, ?bool $isRecurring = null, ?int $itemId = null, ?string $manualApprovalCode = null, ?int $orderId = null, ?string $paymentChannelIndicator = null, ?string $posCode = null, ?string $settlementDate = null, ?bool $tokenChecked = null, ?int $transactionId = null, ?string $transactionRefId = null, ?string $usedAdapter = null, ?float $vat2AmountExtern = null, ?float $vat2BaseExtern = null, ?float $vat2PercentExtern = null, ?float $vatAmountExtern = null, ?float $vatBaseExtern = null, ?float $vatPercentExtern = null, ?string $xid = null)
+    public function __construct(?float $amount = null, ?string $approvalCode = null, ?int $basePositionId = null, ?string $calculatedPaymentDate = null, ?string $captureDate = null, ?int $captureDone = null, ?string $ccNo = null, ?int $ccReceiptNo = null, ?string $ccToken = null, ?string $ccTokenType = null, ?string $ccType = null, ?int $ccValidMonth = null, ?int $ccValidYear = null, ?string $creationTimestamp = null, ?string $currency = null, ?string $dstid = null, ?string $errorBundle = null, ?string $errorCode = null, ?string $errorDescriptionCode = null, ?string $externalId = null, ?string $initialEcomTransactionId = null, ?bool $isDeposit = null, ?bool $isRecurring = null, ?int $itemId = null, ?string $manualApprovalCode = null, ?int $orderId = null, ?string $paymentChannelIndicator = null, ?string $posCode = null, ?string $settlementDate = null, ?bool $tokenChecked = null, ?int $transactionId = null, ?string $transactionRefId = null, ?string $usedAdapter = null, ?string $usedMerchantId = null, ?float $vat2AmountExtern = null, ?float $vat2BaseExtern = null, ?float $vat2PercentExtern = null, ?float $vatAmountExtern = null, ?float $vatBaseExtern = null, ?float $vatPercentExtern = null, ?string $xid = null)
     {
         $this
             ->setAmount($amount)
@@ -332,6 +340,7 @@ class OnlinePaymentTransactionDTO extends AbstractStructBase
             ->setTransactionId($transactionId)
             ->setTransactionRefId($transactionRefId)
             ->setUsedAdapter($usedAdapter)
+            ->setUsedMerchantId($usedMerchantId)
             ->setVat2AmountExtern($vat2AmountExtern)
             ->setVat2BaseExtern($vat2BaseExtern)
             ->setVat2PercentExtern($vat2PercentExtern)
@@ -1096,6 +1105,29 @@ class OnlinePaymentTransactionDTO extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($usedAdapter, true), gettype($usedAdapter)), __LINE__);
         }
         $this->usedAdapter = $usedAdapter;
+        
+        return $this;
+    }
+    /**
+     * Get usedMerchantId value
+     * @return string|null
+     */
+    public function getUsedMerchantId(): ?string
+    {
+        return $this->usedMerchantId;
+    }
+    /**
+     * Set usedMerchantId value
+     * @param string $usedMerchantId
+     * @return \Pggns\MidocoApi\Order\StructType\OnlinePaymentTransactionDTO
+     */
+    public function setUsedMerchantId(?string $usedMerchantId = null): self
+    {
+        // validation for constraint: string
+        if (!is_null($usedMerchantId) && !is_string($usedMerchantId)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($usedMerchantId, true), gettype($usedMerchantId)), __LINE__);
+        }
+        $this->usedMerchantId = $usedMerchantId;
         
         return $this;
     }

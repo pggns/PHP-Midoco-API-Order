@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetTravelNumberDocumentsResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetTravelNumberDocumentsResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetTravelNumberDocumentsResponse extends AbstractStructBase
      * - ref: MidocoTravelNumberDocument
      * @var \Pggns\MidocoApi\Order\StructType\MidocoTravelNumberDocument[]
      */
-    protected array $MidocoTravelNumberDocument = [];
+    protected ?array $MidocoTravelNumberDocument = null;
     /**
      * Constructor method for GetTravelNumberDocumentsResponse
      * @uses GetTravelNumberDocumentsResponse::setMidocoTravelNumberDocument()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoTravelNumberDocument[] $midocoTravelNumberDocument
      */
-    public function __construct(array $midocoTravelNumberDocument = [])
+    public function __construct(?array $midocoTravelNumberDocument = null)
     {
         $this
             ->setMidocoTravelNumberDocument($midocoTravelNumberDocument);
@@ -36,18 +37,22 @@ class GetTravelNumberDocumentsResponse extends AbstractStructBase
      * Get MidocoTravelNumberDocument value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoTravelNumberDocument[]
      */
-    public function getMidocoTravelNumberDocument(): array
+    public function getMidocoTravelNumberDocument(): ?array
     {
         return $this->MidocoTravelNumberDocument;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoTravelNumberDocument method
+     * This method is responsible for validating the value(s) passed to the setMidocoTravelNumberDocument method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoTravelNumberDocument method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoTravelNumberDocumentForArrayConstraintsFromSetMidocoTravelNumberDocument(array $values = []): string
+    public static function validateMidocoTravelNumberDocumentForArrayConstraintFromSetMidocoTravelNumberDocument(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getTravelNumberDocumentsResponseMidocoTravelNumberDocumentItem) {
@@ -69,10 +74,10 @@ class GetTravelNumberDocumentsResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoTravelNumberDocument[] $midocoTravelNumberDocument
      * @return \Pggns\MidocoApi\Order\StructType\GetTravelNumberDocumentsResponse
      */
-    public function setMidocoTravelNumberDocument(array $midocoTravelNumberDocument = []): self
+    public function setMidocoTravelNumberDocument(?array $midocoTravelNumberDocument = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoTravelNumberDocumentArrayErrorMessage = self::validateMidocoTravelNumberDocumentForArrayConstraintsFromSetMidocoTravelNumberDocument($midocoTravelNumberDocument))) {
+        if ('' !== ($midocoTravelNumberDocumentArrayErrorMessage = self::validateMidocoTravelNumberDocumentForArrayConstraintFromSetMidocoTravelNumberDocument($midocoTravelNumberDocument))) {
             throw new InvalidArgumentException($midocoTravelNumberDocumentArrayErrorMessage, __LINE__);
         }
         $this->MidocoTravelNumberDocument = $midocoTravelNumberDocument;

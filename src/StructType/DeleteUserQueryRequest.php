@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteUserQueryRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteUserQueryRequest extends AbstractStructBase
 {
     /**

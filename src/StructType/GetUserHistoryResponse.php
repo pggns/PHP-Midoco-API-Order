@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetUserHistoryResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetUserHistoryResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetUserHistoryResponse extends AbstractStructBase
      * - ref: MidocoUserHistory
      * @var \Pggns\MidocoApi\Order\StructType\UserHistoryDTO[]
      */
-    protected array $MidocoUserHistory = [];
+    protected ?array $MidocoUserHistory = null;
     /**
      * Constructor method for GetUserHistoryResponse
      * @uses GetUserHistoryResponse::setMidocoUserHistory()
      * @param \Pggns\MidocoApi\Order\StructType\UserHistoryDTO[] $midocoUserHistory
      */
-    public function __construct(array $midocoUserHistory = [])
+    public function __construct(?array $midocoUserHistory = null)
     {
         $this
             ->setMidocoUserHistory($midocoUserHistory);
@@ -36,18 +37,22 @@ class GetUserHistoryResponse extends AbstractStructBase
      * Get MidocoUserHistory value
      * @return \Pggns\MidocoApi\Order\StructType\UserHistoryDTO[]
      */
-    public function getMidocoUserHistory(): array
+    public function getMidocoUserHistory(): ?array
     {
         return $this->MidocoUserHistory;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoUserHistory method
+     * This method is responsible for validating the value(s) passed to the setMidocoUserHistory method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoUserHistory method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoUserHistoryForArrayConstraintsFromSetMidocoUserHistory(array $values = []): string
+    public static function validateMidocoUserHistoryForArrayConstraintFromSetMidocoUserHistory(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getUserHistoryResponseMidocoUserHistoryItem) {
@@ -69,10 +74,10 @@ class GetUserHistoryResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\UserHistoryDTO[] $midocoUserHistory
      * @return \Pggns\MidocoApi\Order\StructType\GetUserHistoryResponse
      */
-    public function setMidocoUserHistory(array $midocoUserHistory = []): self
+    public function setMidocoUserHistory(?array $midocoUserHistory = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoUserHistoryArrayErrorMessage = self::validateMidocoUserHistoryForArrayConstraintsFromSetMidocoUserHistory($midocoUserHistory))) {
+        if ('' !== ($midocoUserHistoryArrayErrorMessage = self::validateMidocoUserHistoryForArrayConstraintFromSetMidocoUserHistory($midocoUserHistory))) {
             throw new InvalidArgumentException($midocoUserHistoryArrayErrorMessage, __LINE__);
         }
         $this->MidocoUserHistory = $midocoUserHistory;

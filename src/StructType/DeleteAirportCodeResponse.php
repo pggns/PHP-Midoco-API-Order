@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteAirportCodeResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteAirportCodeResponse extends AbstractStructBase
 {
 }

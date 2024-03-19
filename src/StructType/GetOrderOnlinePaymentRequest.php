@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetOrderOnlinePaymentRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetOrderOnlinePaymentRequest extends AbstractStructBase
 {
     /**

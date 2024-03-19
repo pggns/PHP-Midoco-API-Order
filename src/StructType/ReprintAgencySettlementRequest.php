@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ReprintAgencySettlementRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ReprintAgencySettlementRequest extends AbstractStructBase
 {
     /**

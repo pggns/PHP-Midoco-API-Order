@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetTotalPartialInvoiceRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetTotalPartialInvoiceRequest extends AbstractStructBase
 {
     /**

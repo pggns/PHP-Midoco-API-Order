@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: Automatically split the amount of the specified supplier invoice to the sale item(s) which are assigned
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class AutoSplitTravelnoPurchaseAssignmentsRequest extends AbstractStructBase
 {
     /**
@@ -23,13 +24,13 @@ class AutoSplitTravelnoPurchaseAssignmentsRequest extends AbstractStructBase
      * - ref: MidocoTravelnoPurchaseAssignment
      * @var \Pggns\MidocoApi\Order\StructType\MidocoTravelnoPurchaseAssignment[]
      */
-    protected array $MidocoTravelnoPurchaseAssignment = [];
+    protected ?array $MidocoTravelnoPurchaseAssignment = null;
     /**
      * Constructor method for AutoSplitTravelnoPurchaseAssignmentsRequest
      * @uses AutoSplitTravelnoPurchaseAssignmentsRequest::setMidocoTravelnoPurchaseAssignment()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoTravelnoPurchaseAssignment[] $midocoTravelnoPurchaseAssignment
      */
-    public function __construct(array $midocoTravelnoPurchaseAssignment = [])
+    public function __construct(?array $midocoTravelnoPurchaseAssignment = null)
     {
         $this
             ->setMidocoTravelnoPurchaseAssignment($midocoTravelnoPurchaseAssignment);
@@ -38,18 +39,22 @@ class AutoSplitTravelnoPurchaseAssignmentsRequest extends AbstractStructBase
      * Get MidocoTravelnoPurchaseAssignment value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoTravelnoPurchaseAssignment[]
      */
-    public function getMidocoTravelnoPurchaseAssignment(): array
+    public function getMidocoTravelnoPurchaseAssignment(): ?array
     {
         return $this->MidocoTravelnoPurchaseAssignment;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoTravelnoPurchaseAssignment method
+     * This method is responsible for validating the value(s) passed to the setMidocoTravelnoPurchaseAssignment method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoTravelnoPurchaseAssignment method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoTravelnoPurchaseAssignmentForArrayConstraintsFromSetMidocoTravelnoPurchaseAssignment(array $values = []): string
+    public static function validateMidocoTravelnoPurchaseAssignmentForArrayConstraintFromSetMidocoTravelnoPurchaseAssignment(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $autoSplitTravelnoPurchaseAssignmentsRequestMidocoTravelnoPurchaseAssignmentItem) {
@@ -71,10 +76,10 @@ class AutoSplitTravelnoPurchaseAssignmentsRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoTravelnoPurchaseAssignment[] $midocoTravelnoPurchaseAssignment
      * @return \Pggns\MidocoApi\Order\StructType\AutoSplitTravelnoPurchaseAssignmentsRequest
      */
-    public function setMidocoTravelnoPurchaseAssignment(array $midocoTravelnoPurchaseAssignment = []): self
+    public function setMidocoTravelnoPurchaseAssignment(?array $midocoTravelnoPurchaseAssignment = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoTravelnoPurchaseAssignmentArrayErrorMessage = self::validateMidocoTravelnoPurchaseAssignmentForArrayConstraintsFromSetMidocoTravelnoPurchaseAssignment($midocoTravelnoPurchaseAssignment))) {
+        if ('' !== ($midocoTravelnoPurchaseAssignmentArrayErrorMessage = self::validateMidocoTravelnoPurchaseAssignmentForArrayConstraintFromSetMidocoTravelnoPurchaseAssignment($midocoTravelnoPurchaseAssignment))) {
             throw new InvalidArgumentException($midocoTravelnoPurchaseAssignmentArrayErrorMessage, __LINE__);
         }
         $this->MidocoTravelnoPurchaseAssignment = $midocoTravelnoPurchaseAssignment;

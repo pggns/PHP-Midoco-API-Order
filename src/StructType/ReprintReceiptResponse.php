@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ReprintReceiptResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ReprintReceiptResponse extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveVirtualAccountRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveVirtualAccountRequest extends AbstractStructBase
 {
     /**

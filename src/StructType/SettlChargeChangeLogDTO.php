@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SettlChargeChangeLogDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SettlChargeChangeLogDTO extends AbstractStructBase
 {
     /**

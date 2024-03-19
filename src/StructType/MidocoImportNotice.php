@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoImportNotice StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoImportNotice extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ManualDtausTransactionDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ManualDtausTransactionDTO extends AbstractStructBase
 {
     /**

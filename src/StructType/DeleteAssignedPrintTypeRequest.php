@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteAssignedPrintTypeRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteAssignedPrintTypeRequest extends AbstractStructBase
 {
     /**

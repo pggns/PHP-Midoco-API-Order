@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoKaeraPackageExt StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoKaeraPackageExt extends AbstractStructBase
 {
     /**

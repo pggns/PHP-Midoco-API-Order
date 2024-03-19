@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteFeeGroupAssignRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteFeeGroupAssignRequest extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ListTssClientRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ListTssClientRequest extends AbstractStructBase
 {
     /**
@@ -20,7 +21,7 @@ class ListTssClientRequest extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $unit = [];
+    protected ?array $unit = null;
     /**
      * The MidocoTssClient
      * Meta information extracted from the WSDL
@@ -44,7 +45,7 @@ class ListTssClientRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoTssClient $midocoTssClient
      * @param bool $extern
      */
-    public function __construct(array $unit = [], ?\Pggns\MidocoApi\Order\StructType\MidocoTssClient $midocoTssClient = null, ?bool $extern = null)
+    public function __construct(?array $unit = null, ?\Pggns\MidocoApi\Order\StructType\MidocoTssClient $midocoTssClient = null, ?bool $extern = null)
     {
         $this
             ->setUnit($unit)
@@ -55,18 +56,22 @@ class ListTssClientRequest extends AbstractStructBase
      * Get unit value
      * @return string[]
      */
-    public function getUnit(): array
+    public function getUnit(): ?array
     {
         return $this->unit;
     }
     /**
-     * This method is responsible for validating the values passed to the setUnit method
+     * This method is responsible for validating the value(s) passed to the setUnit method
      * This method is willingly generated in order to preserve the one-line inline validation within the setUnit method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateUnitForArrayConstraintsFromSetUnit(array $values = []): string
+    public static function validateUnitForArrayConstraintFromSetUnit(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $listTssClientRequestUnitItem) {
@@ -88,10 +93,10 @@ class ListTssClientRequest extends AbstractStructBase
      * @param string[] $unit
      * @return \Pggns\MidocoApi\Order\StructType\ListTssClientRequest
      */
-    public function setUnit(array $unit = []): self
+    public function setUnit(?array $unit = null): self
     {
         // validation for constraint: array
-        if ('' !== ($unitArrayErrorMessage = self::validateUnitForArrayConstraintsFromSetUnit($unit))) {
+        if ('' !== ($unitArrayErrorMessage = self::validateUnitForArrayConstraintFromSetUnit($unit))) {
             throw new InvalidArgumentException($unitArrayErrorMessage, __LINE__);
         }
         $this->unit = $unit;

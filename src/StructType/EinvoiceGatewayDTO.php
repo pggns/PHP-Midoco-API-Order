@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for EinvoiceGatewayDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class EinvoiceGatewayDTO extends AbstractStructBase
 {
     /**

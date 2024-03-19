@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for PackageMarginBookingDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class PackageMarginBookingDTO extends AbstractStructBase
 {
     /**

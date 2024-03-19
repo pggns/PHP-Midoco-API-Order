@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for PrintAdviceResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class PrintAdviceResponse extends AbstractStructBase
 {
     /**
@@ -36,7 +37,7 @@ class PrintAdviceResponse extends AbstractStructBase
      * - minOccurs: 0
      * @var int[]
      */
-    protected array $printJobIds = [];
+    protected ?array $printJobIds = null;
     /**
      * The data
      * Meta information extracted from the WSDL
@@ -44,7 +45,7 @@ class PrintAdviceResponse extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $data = [];
+    protected ?array $data = null;
     /**
      * The fopMsg
      * Meta information extracted from the WSDL
@@ -52,7 +53,7 @@ class PrintAdviceResponse extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $fopMsg = [];
+    protected ?array $fopMsg = null;
     /**
      * The name
      * @var string|null
@@ -80,7 +81,7 @@ class PrintAdviceResponse extends AbstractStructBase
      * @param string $name
      * @param string $printType
      */
-    public function __construct(?\Pggns\MidocoApi\Order\StructType\MidocoMailMessageType $midocoMailMessage = null, ?\Pggns\MidocoApi\Order\StructType\MidocoMailDescription4Inexso $midocoMailDescription4Inexso = null, array $printJobIds = [], array $data = [], array $fopMsg = [], ?string $name = null, ?string $printType = null)
+    public function __construct(?\Pggns\MidocoApi\Order\StructType\MidocoMailMessageType $midocoMailMessage = null, ?\Pggns\MidocoApi\Order\StructType\MidocoMailDescription4Inexso $midocoMailDescription4Inexso = null, ?array $printJobIds = null, ?array $data = null, ?array $fopMsg = null, ?string $name = null, ?string $printType = null)
     {
         $this
             ->setMidocoMailMessage($midocoMailMessage)
@@ -133,18 +134,22 @@ class PrintAdviceResponse extends AbstractStructBase
      * Get printJobIds value
      * @return int[]
      */
-    public function getPrintJobIds(): array
+    public function getPrintJobIds(): ?array
     {
         return $this->printJobIds;
     }
     /**
-     * This method is responsible for validating the values passed to the setPrintJobIds method
+     * This method is responsible for validating the value(s) passed to the setPrintJobIds method
      * This method is willingly generated in order to preserve the one-line inline validation within the setPrintJobIds method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validatePrintJobIdsForArrayConstraintsFromSetPrintJobIds(array $values = []): string
+    public static function validatePrintJobIdsForArrayConstraintFromSetPrintJobIds(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $printAdviceResponsePrintJobIdsItem) {
@@ -166,10 +171,10 @@ class PrintAdviceResponse extends AbstractStructBase
      * @param int[] $printJobIds
      * @return \Pggns\MidocoApi\Order\StructType\PrintAdviceResponse
      */
-    public function setPrintJobIds(array $printJobIds = []): self
+    public function setPrintJobIds(?array $printJobIds = null): self
     {
         // validation for constraint: array
-        if ('' !== ($printJobIdsArrayErrorMessage = self::validatePrintJobIdsForArrayConstraintsFromSetPrintJobIds($printJobIds))) {
+        if ('' !== ($printJobIdsArrayErrorMessage = self::validatePrintJobIdsForArrayConstraintFromSetPrintJobIds($printJobIds))) {
             throw new InvalidArgumentException($printJobIdsArrayErrorMessage, __LINE__);
         }
         $this->printJobIds = $printJobIds;
@@ -196,18 +201,22 @@ class PrintAdviceResponse extends AbstractStructBase
      * Get data value
      * @return string[]
      */
-    public function getData(): array
+    public function getData(): ?array
     {
         return $this->data;
     }
     /**
-     * This method is responsible for validating the values passed to the setData method
+     * This method is responsible for validating the value(s) passed to the setData method
      * This method is willingly generated in order to preserve the one-line inline validation within the setData method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateDataForArrayConstraintsFromSetData(array $values = []): string
+    public static function validateDataForArrayConstraintFromSetData(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $printAdviceResponseDataItem) {
@@ -229,10 +238,10 @@ class PrintAdviceResponse extends AbstractStructBase
      * @param string[] $data
      * @return \Pggns\MidocoApi\Order\StructType\PrintAdviceResponse
      */
-    public function setData(array $data = []): self
+    public function setData(?array $data = null): self
     {
         // validation for constraint: array
-        if ('' !== ($dataArrayErrorMessage = self::validateDataForArrayConstraintsFromSetData($data))) {
+        if ('' !== ($dataArrayErrorMessage = self::validateDataForArrayConstraintFromSetData($data))) {
             throw new InvalidArgumentException($dataArrayErrorMessage, __LINE__);
         }
         $this->data = $data;
@@ -259,18 +268,22 @@ class PrintAdviceResponse extends AbstractStructBase
      * Get fopMsg value
      * @return string[]
      */
-    public function getFopMsg(): array
+    public function getFopMsg(): ?array
     {
         return $this->fopMsg;
     }
     /**
-     * This method is responsible for validating the values passed to the setFopMsg method
+     * This method is responsible for validating the value(s) passed to the setFopMsg method
      * This method is willingly generated in order to preserve the one-line inline validation within the setFopMsg method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateFopMsgForArrayConstraintsFromSetFopMsg(array $values = []): string
+    public static function validateFopMsgForArrayConstraintFromSetFopMsg(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $printAdviceResponseFopMsgItem) {
@@ -292,10 +305,10 @@ class PrintAdviceResponse extends AbstractStructBase
      * @param string[] $fopMsg
      * @return \Pggns\MidocoApi\Order\StructType\PrintAdviceResponse
      */
-    public function setFopMsg(array $fopMsg = []): self
+    public function setFopMsg(?array $fopMsg = null): self
     {
         // validation for constraint: array
-        if ('' !== ($fopMsgArrayErrorMessage = self::validateFopMsgForArrayConstraintsFromSetFopMsg($fopMsg))) {
+        if ('' !== ($fopMsgArrayErrorMessage = self::validateFopMsgForArrayConstraintFromSetFopMsg($fopMsg))) {
             throw new InvalidArgumentException($fopMsgArrayErrorMessage, __LINE__);
         }
         $this->fopMsg = $fopMsg;

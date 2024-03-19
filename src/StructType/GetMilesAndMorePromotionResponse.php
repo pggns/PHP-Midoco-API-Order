@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetMilesAndMorePromotionResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetMilesAndMorePromotionResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetMilesAndMorePromotionResponse extends AbstractStructBase
      * - ref: MidocoMilesAndMorePromotion
      * @var \Pggns\MidocoApi\Order\StructType\MilesAndMorePromotionDTO[]
      */
-    protected array $MidocoMilesAndMorePromotion = [];
+    protected ?array $MidocoMilesAndMorePromotion = null;
     /**
      * Constructor method for GetMilesAndMorePromotionResponse
      * @uses GetMilesAndMorePromotionResponse::setMidocoMilesAndMorePromotion()
      * @param \Pggns\MidocoApi\Order\StructType\MilesAndMorePromotionDTO[] $midocoMilesAndMorePromotion
      */
-    public function __construct(array $midocoMilesAndMorePromotion = [])
+    public function __construct(?array $midocoMilesAndMorePromotion = null)
     {
         $this
             ->setMidocoMilesAndMorePromotion($midocoMilesAndMorePromotion);
@@ -36,18 +37,22 @@ class GetMilesAndMorePromotionResponse extends AbstractStructBase
      * Get MidocoMilesAndMorePromotion value
      * @return \Pggns\MidocoApi\Order\StructType\MilesAndMorePromotionDTO[]
      */
-    public function getMidocoMilesAndMorePromotion(): array
+    public function getMidocoMilesAndMorePromotion(): ?array
     {
         return $this->MidocoMilesAndMorePromotion;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoMilesAndMorePromotion method
+     * This method is responsible for validating the value(s) passed to the setMidocoMilesAndMorePromotion method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoMilesAndMorePromotion method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoMilesAndMorePromotionForArrayConstraintsFromSetMidocoMilesAndMorePromotion(array $values = []): string
+    public static function validateMidocoMilesAndMorePromotionForArrayConstraintFromSetMidocoMilesAndMorePromotion(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getMilesAndMorePromotionResponseMidocoMilesAndMorePromotionItem) {
@@ -69,10 +74,10 @@ class GetMilesAndMorePromotionResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MilesAndMorePromotionDTO[] $midocoMilesAndMorePromotion
      * @return \Pggns\MidocoApi\Order\StructType\GetMilesAndMorePromotionResponse
      */
-    public function setMidocoMilesAndMorePromotion(array $midocoMilesAndMorePromotion = []): self
+    public function setMidocoMilesAndMorePromotion(?array $midocoMilesAndMorePromotion = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoMilesAndMorePromotionArrayErrorMessage = self::validateMidocoMilesAndMorePromotionForArrayConstraintsFromSetMidocoMilesAndMorePromotion($midocoMilesAndMorePromotion))) {
+        if ('' !== ($midocoMilesAndMorePromotionArrayErrorMessage = self::validateMidocoMilesAndMorePromotionForArrayConstraintFromSetMidocoMilesAndMorePromotion($midocoMilesAndMorePromotion))) {
             throw new InvalidArgumentException($midocoMilesAndMorePromotionArrayErrorMessage, __LINE__);
         }
         $this->MidocoMilesAndMorePromotion = $midocoMilesAndMorePromotion;

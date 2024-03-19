@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: getLockReasons--- returns a list of available lock reason for the given lock reason with parent-entries
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetAvailableOrderLockReasonsResponse extends AbstractStructBase
 {
     /**
@@ -23,13 +24,13 @@ class GetAvailableOrderLockReasonsResponse extends AbstractStructBase
      * - ref: MidocoOrderLockReason
      * @var \Pggns\MidocoApi\Order\StructType\OrderLockReasonDTO[]
      */
-    protected array $MidocoOrderLockReason = [];
+    protected ?array $MidocoOrderLockReason = null;
     /**
      * Constructor method for GetAvailableOrderLockReasonsResponse
      * @uses GetAvailableOrderLockReasonsResponse::setMidocoOrderLockReason()
      * @param \Pggns\MidocoApi\Order\StructType\OrderLockReasonDTO[] $midocoOrderLockReason
      */
-    public function __construct(array $midocoOrderLockReason = [])
+    public function __construct(?array $midocoOrderLockReason = null)
     {
         $this
             ->setMidocoOrderLockReason($midocoOrderLockReason);
@@ -38,18 +39,22 @@ class GetAvailableOrderLockReasonsResponse extends AbstractStructBase
      * Get MidocoOrderLockReason value
      * @return \Pggns\MidocoApi\Order\StructType\OrderLockReasonDTO[]
      */
-    public function getMidocoOrderLockReason(): array
+    public function getMidocoOrderLockReason(): ?array
     {
         return $this->MidocoOrderLockReason;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoOrderLockReason method
+     * This method is responsible for validating the value(s) passed to the setMidocoOrderLockReason method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoOrderLockReason method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoOrderLockReasonForArrayConstraintsFromSetMidocoOrderLockReason(array $values = []): string
+    public static function validateMidocoOrderLockReasonForArrayConstraintFromSetMidocoOrderLockReason(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getAvailableOrderLockReasonsResponseMidocoOrderLockReasonItem) {
@@ -71,10 +76,10 @@ class GetAvailableOrderLockReasonsResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\OrderLockReasonDTO[] $midocoOrderLockReason
      * @return \Pggns\MidocoApi\Order\StructType\GetAvailableOrderLockReasonsResponse
      */
-    public function setMidocoOrderLockReason(array $midocoOrderLockReason = []): self
+    public function setMidocoOrderLockReason(?array $midocoOrderLockReason = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoOrderLockReasonArrayErrorMessage = self::validateMidocoOrderLockReasonForArrayConstraintsFromSetMidocoOrderLockReason($midocoOrderLockReason))) {
+        if ('' !== ($midocoOrderLockReasonArrayErrorMessage = self::validateMidocoOrderLockReasonForArrayConstraintFromSetMidocoOrderLockReason($midocoOrderLockReason))) {
             throw new InvalidArgumentException($midocoOrderLockReasonArrayErrorMessage, __LINE__);
         }
         $this->MidocoOrderLockReason = $midocoOrderLockReason;

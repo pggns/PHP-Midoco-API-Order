@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveWSGroupsForUserRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveWSGroupsForUserRequest extends AbstractStructBase
 {
     /**
@@ -25,7 +26,7 @@ class SaveWSGroupsForUserRequest extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $groupsToSave = [];
+    protected ?array $groupsToSave = null;
     /**
      * The groupsToRemove
      * Meta information extracted from the WSDL
@@ -33,7 +34,7 @@ class SaveWSGroupsForUserRequest extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $groupsToRemove = [];
+    protected ?array $groupsToRemove = null;
     /**
      * Constructor method for SaveWSGroupsForUserRequest
      * @uses SaveWSGroupsForUserRequest::setUserId()
@@ -43,7 +44,7 @@ class SaveWSGroupsForUserRequest extends AbstractStructBase
      * @param string[] $groupsToSave
      * @param string[] $groupsToRemove
      */
-    public function __construct(?int $userId = null, array $groupsToSave = [], array $groupsToRemove = [])
+    public function __construct(?int $userId = null, ?array $groupsToSave = null, ?array $groupsToRemove = null)
     {
         $this
             ->setUserId($userId)
@@ -77,18 +78,22 @@ class SaveWSGroupsForUserRequest extends AbstractStructBase
      * Get groupsToSave value
      * @return string[]
      */
-    public function getGroupsToSave(): array
+    public function getGroupsToSave(): ?array
     {
         return $this->groupsToSave;
     }
     /**
-     * This method is responsible for validating the values passed to the setGroupsToSave method
+     * This method is responsible for validating the value(s) passed to the setGroupsToSave method
      * This method is willingly generated in order to preserve the one-line inline validation within the setGroupsToSave method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateGroupsToSaveForArrayConstraintsFromSetGroupsToSave(array $values = []): string
+    public static function validateGroupsToSaveForArrayConstraintFromSetGroupsToSave(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $saveWSGroupsForUserRequestGroupsToSaveItem) {
@@ -110,10 +115,10 @@ class SaveWSGroupsForUserRequest extends AbstractStructBase
      * @param string[] $groupsToSave
      * @return \Pggns\MidocoApi\Order\StructType\SaveWSGroupsForUserRequest
      */
-    public function setGroupsToSave(array $groupsToSave = []): self
+    public function setGroupsToSave(?array $groupsToSave = null): self
     {
         // validation for constraint: array
-        if ('' !== ($groupsToSaveArrayErrorMessage = self::validateGroupsToSaveForArrayConstraintsFromSetGroupsToSave($groupsToSave))) {
+        if ('' !== ($groupsToSaveArrayErrorMessage = self::validateGroupsToSaveForArrayConstraintFromSetGroupsToSave($groupsToSave))) {
             throw new InvalidArgumentException($groupsToSaveArrayErrorMessage, __LINE__);
         }
         $this->groupsToSave = $groupsToSave;
@@ -140,18 +145,22 @@ class SaveWSGroupsForUserRequest extends AbstractStructBase
      * Get groupsToRemove value
      * @return string[]
      */
-    public function getGroupsToRemove(): array
+    public function getGroupsToRemove(): ?array
     {
         return $this->groupsToRemove;
     }
     /**
-     * This method is responsible for validating the values passed to the setGroupsToRemove method
+     * This method is responsible for validating the value(s) passed to the setGroupsToRemove method
      * This method is willingly generated in order to preserve the one-line inline validation within the setGroupsToRemove method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateGroupsToRemoveForArrayConstraintsFromSetGroupsToRemove(array $values = []): string
+    public static function validateGroupsToRemoveForArrayConstraintFromSetGroupsToRemove(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $saveWSGroupsForUserRequestGroupsToRemoveItem) {
@@ -173,10 +182,10 @@ class SaveWSGroupsForUserRequest extends AbstractStructBase
      * @param string[] $groupsToRemove
      * @return \Pggns\MidocoApi\Order\StructType\SaveWSGroupsForUserRequest
      */
-    public function setGroupsToRemove(array $groupsToRemove = []): self
+    public function setGroupsToRemove(?array $groupsToRemove = null): self
     {
         // validation for constraint: array
-        if ('' !== ($groupsToRemoveArrayErrorMessage = self::validateGroupsToRemoveForArrayConstraintsFromSetGroupsToRemove($groupsToRemove))) {
+        if ('' !== ($groupsToRemoveArrayErrorMessage = self::validateGroupsToRemoveForArrayConstraintFromSetGroupsToRemove($groupsToRemove))) {
             throw new InvalidArgumentException($groupsToRemoveArrayErrorMessage, __LINE__);
         }
         $this->groupsToRemove = $groupsToRemove;

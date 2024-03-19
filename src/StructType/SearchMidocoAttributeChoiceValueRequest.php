@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SearchMidocoAttributeChoiceValueRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchMidocoAttributeChoiceValueRequest extends AbstractStructBase
 {
     /**

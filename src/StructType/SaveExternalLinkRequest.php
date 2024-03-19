@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveExternalLinkRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveExternalLinkRequest extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetOrgunitExternalLinksRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetOrgunitExternalLinksRequest extends AbstractStructBase
 {
     /**

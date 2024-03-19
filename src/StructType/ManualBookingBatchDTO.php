@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ManualBookingBatchDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ManualBookingBatchDTO extends AbstractStructBase
 {
     /**

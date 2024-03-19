@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for AnnounceA3MMessageResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class AnnounceA3MMessageResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class AnnounceA3MMessageResponse extends AbstractStructBase
      * - ref: AnnounceA3MError
      * @var \Pggns\MidocoApi\Order\StructType\AnnounceA3MError[]
      */
-    protected array $AnnounceA3MError = [];
+    protected ?array $AnnounceA3MError = null;
     /**
      * Constructor method for AnnounceA3MMessageResponse
      * @uses AnnounceA3MMessageResponse::setAnnounceA3MError()
      * @param \Pggns\MidocoApi\Order\StructType\AnnounceA3MError[] $announceA3MError
      */
-    public function __construct(array $announceA3MError = [])
+    public function __construct(?array $announceA3MError = null)
     {
         $this
             ->setAnnounceA3MError($announceA3MError);
@@ -36,18 +37,22 @@ class AnnounceA3MMessageResponse extends AbstractStructBase
      * Get AnnounceA3MError value
      * @return \Pggns\MidocoApi\Order\StructType\AnnounceA3MError[]
      */
-    public function getAnnounceA3MError(): array
+    public function getAnnounceA3MError(): ?array
     {
         return $this->AnnounceA3MError;
     }
     /**
-     * This method is responsible for validating the values passed to the setAnnounceA3MError method
+     * This method is responsible for validating the value(s) passed to the setAnnounceA3MError method
      * This method is willingly generated in order to preserve the one-line inline validation within the setAnnounceA3MError method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateAnnounceA3MErrorForArrayConstraintsFromSetAnnounceA3MError(array $values = []): string
+    public static function validateAnnounceA3MErrorForArrayConstraintFromSetAnnounceA3MError(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $announceA3MMessageResponseAnnounceA3MErrorItem) {
@@ -69,10 +74,10 @@ class AnnounceA3MMessageResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\AnnounceA3MError[] $announceA3MError
      * @return \Pggns\MidocoApi\Order\StructType\AnnounceA3MMessageResponse
      */
-    public function setAnnounceA3MError(array $announceA3MError = []): self
+    public function setAnnounceA3MError(?array $announceA3MError = null): self
     {
         // validation for constraint: array
-        if ('' !== ($announceA3MErrorArrayErrorMessage = self::validateAnnounceA3MErrorForArrayConstraintsFromSetAnnounceA3MError($announceA3MError))) {
+        if ('' !== ($announceA3MErrorArrayErrorMessage = self::validateAnnounceA3MErrorForArrayConstraintFromSetAnnounceA3MError($announceA3MError))) {
             throw new InvalidArgumentException($announceA3MErrorArrayErrorMessage, __LINE__);
         }
         $this->AnnounceA3MError = $announceA3MError;

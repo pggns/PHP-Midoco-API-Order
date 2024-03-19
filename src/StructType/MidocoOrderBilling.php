@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoOrderBilling StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoOrderBilling extends OrderBillingDTO
 {
     /**

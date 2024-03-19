@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ExecuteBonusRuleResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ExecuteBonusRuleResponse extends AbstractStructBase
 {
 }

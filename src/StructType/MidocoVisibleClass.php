@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoVisibleClass StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoVisibleClass extends AbstractStructBase
 {
     /**
@@ -21,7 +22,7 @@ class MidocoVisibleClass extends AbstractStructBase
      * - ref: MidocoPropertyAttribute
      * @var \Pggns\MidocoApi\Order\StructType\MidocoPropertyAttribute[]
      */
-    protected array $MidocoPropertyAttribute = [];
+    protected ?array $MidocoPropertyAttribute = null;
     /**
      * The className
      * @var string|null
@@ -41,7 +42,7 @@ class MidocoVisibleClass extends AbstractStructBase
      * @param string $className
      * @param string $description
      */
-    public function __construct(array $midocoPropertyAttribute = [], ?string $className = null, ?string $description = null)
+    public function __construct(?array $midocoPropertyAttribute = null, ?string $className = null, ?string $description = null)
     {
         $this
             ->setMidocoPropertyAttribute($midocoPropertyAttribute)
@@ -52,18 +53,22 @@ class MidocoVisibleClass extends AbstractStructBase
      * Get MidocoPropertyAttribute value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoPropertyAttribute[]
      */
-    public function getMidocoPropertyAttribute(): array
+    public function getMidocoPropertyAttribute(): ?array
     {
         return $this->MidocoPropertyAttribute;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoPropertyAttribute method
+     * This method is responsible for validating the value(s) passed to the setMidocoPropertyAttribute method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoPropertyAttribute method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoPropertyAttributeForArrayConstraintsFromSetMidocoPropertyAttribute(array $values = []): string
+    public static function validateMidocoPropertyAttributeForArrayConstraintFromSetMidocoPropertyAttribute(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoVisibleClassMidocoPropertyAttributeItem) {
@@ -85,10 +90,10 @@ class MidocoVisibleClass extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoPropertyAttribute[] $midocoPropertyAttribute
      * @return \Pggns\MidocoApi\Order\StructType\MidocoVisibleClass
      */
-    public function setMidocoPropertyAttribute(array $midocoPropertyAttribute = []): self
+    public function setMidocoPropertyAttribute(?array $midocoPropertyAttribute = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoPropertyAttributeArrayErrorMessage = self::validateMidocoPropertyAttributeForArrayConstraintsFromSetMidocoPropertyAttribute($midocoPropertyAttribute))) {
+        if ('' !== ($midocoPropertyAttributeArrayErrorMessage = self::validateMidocoPropertyAttributeForArrayConstraintFromSetMidocoPropertyAttribute($midocoPropertyAttribute))) {
             throw new InvalidArgumentException($midocoPropertyAttributeArrayErrorMessage, __LINE__);
         }
         $this->MidocoPropertyAttribute = $midocoPropertyAttribute;

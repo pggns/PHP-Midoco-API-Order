@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DebitorHistoryEntryDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DebitorHistoryEntryDTO extends AbstractStructBase
 {
     /**

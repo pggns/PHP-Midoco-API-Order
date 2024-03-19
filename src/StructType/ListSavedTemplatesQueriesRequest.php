@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ListSavedTemplatesQueriesRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ListSavedTemplatesQueriesRequest extends AbstractStructBase
 {
     /**

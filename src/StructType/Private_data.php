@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: Special data for a private customer
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class Private_data extends AbstractStructBase
 {
     /**
@@ -235,7 +236,7 @@ class Private_data extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($birthday, true), gettype($birthday)), __LINE__);
         }
         // validation for constraint: pattern([0-9]{4}-[0-9]{2}-[0-9]{2})
-        if (!is_null($birthday) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', $birthday)) {
+        if (!is_null($birthday) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', (string) $birthday)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[0-9]{4}-[0-9]{2}-[0-9]{2}/', var_export($birthday, true)), __LINE__);
         }
         $this->birthday = $birthday;

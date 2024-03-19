@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetCityFromZipCodeRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetCityFromZipCodeRequest extends AbstractStructBase
 {
     /**

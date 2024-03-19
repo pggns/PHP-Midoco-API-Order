@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ForceTravelNoRecalculationResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ForceTravelNoRecalculationResponse extends AbstractStructBase
 {
 }

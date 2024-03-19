@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for AccessibleComponentDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class AccessibleComponentDTO extends AbstractStructBase
 {
     /**
@@ -34,6 +35,11 @@ class AccessibleComponentDTO extends AbstractStructBase
      */
     protected ?string $guiType = null;
     /**
+     * The hideAllowed
+     * @var bool|null
+     */
+    protected ?bool $hideAllowed = null;
+    /**
      * The isEditable
      * @var bool|null
      */
@@ -54,6 +60,7 @@ class AccessibleComponentDTO extends AbstractStructBase
      * @uses AccessibleComponentDTO::setComponentId()
      * @uses AccessibleComponentDTO::setGuiPosition()
      * @uses AccessibleComponentDTO::setGuiType()
+     * @uses AccessibleComponentDTO::setHideAllowed()
      * @uses AccessibleComponentDTO::setIsEditable()
      * @uses AccessibleComponentDTO::setParentComponentId()
      * @uses AccessibleComponentDTO::setResourceId()
@@ -61,17 +68,19 @@ class AccessibleComponentDTO extends AbstractStructBase
      * @param int $componentId
      * @param int $guiPosition
      * @param string $guiType
+     * @param bool $hideAllowed
      * @param bool $isEditable
      * @param int $parentComponentId
      * @param string $resourceId
      */
-    public function __construct(?string $bundleName = null, ?int $componentId = null, ?int $guiPosition = null, ?string $guiType = null, ?bool $isEditable = null, ?int $parentComponentId = null, ?string $resourceId = null)
+    public function __construct(?string $bundleName = null, ?int $componentId = null, ?int $guiPosition = null, ?string $guiType = null, ?bool $hideAllowed = null, ?bool $isEditable = null, ?int $parentComponentId = null, ?string $resourceId = null)
     {
         $this
             ->setBundleName($bundleName)
             ->setComponentId($componentId)
             ->setGuiPosition($guiPosition)
             ->setGuiType($guiType)
+            ->setHideAllowed($hideAllowed)
             ->setIsEditable($isEditable)
             ->setParentComponentId($parentComponentId)
             ->setResourceId($resourceId);
@@ -165,6 +174,29 @@ class AccessibleComponentDTO extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($guiType, true), gettype($guiType)), __LINE__);
         }
         $this->guiType = $guiType;
+        
+        return $this;
+    }
+    /**
+     * Get hideAllowed value
+     * @return bool|null
+     */
+    public function getHideAllowed(): ?bool
+    {
+        return $this->hideAllowed;
+    }
+    /**
+     * Set hideAllowed value
+     * @param bool $hideAllowed
+     * @return \Pggns\MidocoApi\Order\StructType\AccessibleComponentDTO
+     */
+    public function setHideAllowed(?bool $hideAllowed = null): self
+    {
+        // validation for constraint: boolean
+        if (!is_null($hideAllowed) && !is_bool($hideAllowed)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($hideAllowed, true), gettype($hideAllowed)), __LINE__);
+        }
+        $this->hideAllowed = $hideAllowed;
         
         return $this;
     }

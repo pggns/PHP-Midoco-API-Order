@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MarkInvoiceHistoryEmailSentRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MarkInvoiceHistoryEmailSentRequest extends AbstractStructBase
 {
     /**
@@ -19,7 +20,7 @@ class MarkInvoiceHistoryEmailSentRequest extends AbstractStructBase
      * - maxOccurs: unbounded
      * @var int[]
      */
-    protected array $invoiceId = [];
+    protected ?array $invoiceId = null;
     /**
      * The MidocoMailMessage
      * Meta information extracted from the WSDL
@@ -35,7 +36,7 @@ class MarkInvoiceHistoryEmailSentRequest extends AbstractStructBase
      * @param int[] $invoiceId
      * @param \Pggns\MidocoApi\Order\StructType\MidocoMailMessageType $midocoMailMessage
      */
-    public function __construct(array $invoiceId = [], ?\Pggns\MidocoApi\Order\StructType\MidocoMailMessageType $midocoMailMessage = null)
+    public function __construct(?array $invoiceId = null, ?\Pggns\MidocoApi\Order\StructType\MidocoMailMessageType $midocoMailMessage = null)
     {
         $this
             ->setInvoiceId($invoiceId)
@@ -45,18 +46,22 @@ class MarkInvoiceHistoryEmailSentRequest extends AbstractStructBase
      * Get invoiceId value
      * @return int[]
      */
-    public function getInvoiceId(): array
+    public function getInvoiceId(): ?array
     {
         return $this->invoiceId;
     }
     /**
-     * This method is responsible for validating the values passed to the setInvoiceId method
+     * This method is responsible for validating the value(s) passed to the setInvoiceId method
      * This method is willingly generated in order to preserve the one-line inline validation within the setInvoiceId method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateInvoiceIdForArrayConstraintsFromSetInvoiceId(array $values = []): string
+    public static function validateInvoiceIdForArrayConstraintFromSetInvoiceId(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $markInvoiceHistoryEmailSentRequestInvoiceIdItem) {
@@ -78,10 +83,10 @@ class MarkInvoiceHistoryEmailSentRequest extends AbstractStructBase
      * @param int[] $invoiceId
      * @return \Pggns\MidocoApi\Order\StructType\MarkInvoiceHistoryEmailSentRequest
      */
-    public function setInvoiceId(array $invoiceId = []): self
+    public function setInvoiceId(?array $invoiceId = null): self
     {
         // validation for constraint: array
-        if ('' !== ($invoiceIdArrayErrorMessage = self::validateInvoiceIdForArrayConstraintsFromSetInvoiceId($invoiceId))) {
+        if ('' !== ($invoiceIdArrayErrorMessage = self::validateInvoiceIdForArrayConstraintFromSetInvoiceId($invoiceId))) {
             throw new InvalidArgumentException($invoiceIdArrayErrorMessage, __LINE__);
         }
         $this->invoiceId = $invoiceId;

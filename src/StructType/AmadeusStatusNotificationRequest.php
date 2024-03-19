@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for AmadeusStatusNotificationRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class AmadeusStatusNotificationRequest extends AbstractStructBase
 {
     /**

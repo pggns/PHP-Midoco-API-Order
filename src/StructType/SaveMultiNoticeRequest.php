@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveMultiNoticeRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveMultiNoticeRequest extends AbstractStructBase
 {
     /**
@@ -20,13 +21,13 @@ class SaveMultiNoticeRequest extends AbstractStructBase
      * - ref: MidocoOrderNotice
      * @var \Pggns\MidocoApi\Order\StructType\MidocoOrderNotice[]
      */
-    protected array $MidocoOrderNotice = [];
+    protected ?array $MidocoOrderNotice = null;
     /**
      * Constructor method for SaveMultiNoticeRequest
      * @uses SaveMultiNoticeRequest::setMidocoOrderNotice()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoOrderNotice[] $midocoOrderNotice
      */
-    public function __construct(array $midocoOrderNotice = [])
+    public function __construct(?array $midocoOrderNotice = null)
     {
         $this
             ->setMidocoOrderNotice($midocoOrderNotice);
@@ -35,18 +36,22 @@ class SaveMultiNoticeRequest extends AbstractStructBase
      * Get MidocoOrderNotice value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoOrderNotice[]
      */
-    public function getMidocoOrderNotice(): array
+    public function getMidocoOrderNotice(): ?array
     {
         return $this->MidocoOrderNotice;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoOrderNotice method
+     * This method is responsible for validating the value(s) passed to the setMidocoOrderNotice method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoOrderNotice method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoOrderNoticeForArrayConstraintsFromSetMidocoOrderNotice(array $values = []): string
+    public static function validateMidocoOrderNoticeForArrayConstraintFromSetMidocoOrderNotice(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $saveMultiNoticeRequestMidocoOrderNoticeItem) {
@@ -68,10 +73,10 @@ class SaveMultiNoticeRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoOrderNotice[] $midocoOrderNotice
      * @return \Pggns\MidocoApi\Order\StructType\SaveMultiNoticeRequest
      */
-    public function setMidocoOrderNotice(array $midocoOrderNotice = []): self
+    public function setMidocoOrderNotice(?array $midocoOrderNotice = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoOrderNoticeArrayErrorMessage = self::validateMidocoOrderNoticeForArrayConstraintsFromSetMidocoOrderNotice($midocoOrderNotice))) {
+        if ('' !== ($midocoOrderNoticeArrayErrorMessage = self::validateMidocoOrderNoticeForArrayConstraintFromSetMidocoOrderNotice($midocoOrderNotice))) {
             throw new InvalidArgumentException($midocoOrderNoticeArrayErrorMessage, __LINE__);
         }
         $this->MidocoOrderNotice = $midocoOrderNotice;

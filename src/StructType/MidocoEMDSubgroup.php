@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoEMDSubgroup StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoEMDSubgroup extends AbstractStructBase
 {
     /**

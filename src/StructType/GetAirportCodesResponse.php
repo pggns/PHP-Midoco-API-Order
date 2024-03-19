@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetAirportCodesResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetAirportCodesResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetAirportCodesResponse extends AbstractStructBase
      * - ref: MidocoAirportCode
      * @var \Pggns\MidocoApi\Order\StructType\MidocoAirportCode[]
      */
-    protected array $MidocoAirportCode = [];
+    protected ?array $MidocoAirportCode = null;
     /**
      * Constructor method for GetAirportCodesResponse
      * @uses GetAirportCodesResponse::setMidocoAirportCode()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoAirportCode[] $midocoAirportCode
      */
-    public function __construct(array $midocoAirportCode = [])
+    public function __construct(?array $midocoAirportCode = null)
     {
         $this
             ->setMidocoAirportCode($midocoAirportCode);
@@ -36,18 +37,22 @@ class GetAirportCodesResponse extends AbstractStructBase
      * Get MidocoAirportCode value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoAirportCode[]
      */
-    public function getMidocoAirportCode(): array
+    public function getMidocoAirportCode(): ?array
     {
         return $this->MidocoAirportCode;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoAirportCode method
+     * This method is responsible for validating the value(s) passed to the setMidocoAirportCode method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoAirportCode method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoAirportCodeForArrayConstraintsFromSetMidocoAirportCode(array $values = []): string
+    public static function validateMidocoAirportCodeForArrayConstraintFromSetMidocoAirportCode(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getAirportCodesResponseMidocoAirportCodeItem) {
@@ -69,10 +74,10 @@ class GetAirportCodesResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoAirportCode[] $midocoAirportCode
      * @return \Pggns\MidocoApi\Order\StructType\GetAirportCodesResponse
      */
-    public function setMidocoAirportCode(array $midocoAirportCode = []): self
+    public function setMidocoAirportCode(?array $midocoAirportCode = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoAirportCodeArrayErrorMessage = self::validateMidocoAirportCodeForArrayConstraintsFromSetMidocoAirportCode($midocoAirportCode))) {
+        if ('' !== ($midocoAirportCodeArrayErrorMessage = self::validateMidocoAirportCodeForArrayConstraintFromSetMidocoAirportCode($midocoAirportCode))) {
             throw new InvalidArgumentException($midocoAirportCodeArrayErrorMessage, __LINE__);
         }
         $this->MidocoAirportCode = $midocoAirportCode;

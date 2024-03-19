@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetMidocoOrgUnitGuiAttributeResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetMidocoOrgUnitGuiAttributeResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetMidocoOrgUnitGuiAttributeResponse extends AbstractStructBase
      * - ref: MidocoOrgunitGuiAttribute
      * @var \Pggns\MidocoApi\Order\StructType\MidocoOrgunitGuiAttribute[]
      */
-    protected array $MidocoOrgunitGuiAttribute = [];
+    protected ?array $MidocoOrgunitGuiAttribute = null;
     /**
      * Constructor method for GetMidocoOrgUnitGuiAttributeResponse
      * @uses GetMidocoOrgUnitGuiAttributeResponse::setMidocoOrgunitGuiAttribute()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoOrgunitGuiAttribute[] $midocoOrgunitGuiAttribute
      */
-    public function __construct(array $midocoOrgunitGuiAttribute = [])
+    public function __construct(?array $midocoOrgunitGuiAttribute = null)
     {
         $this
             ->setMidocoOrgunitGuiAttribute($midocoOrgunitGuiAttribute);
@@ -36,18 +37,22 @@ class GetMidocoOrgUnitGuiAttributeResponse extends AbstractStructBase
      * Get MidocoOrgunitGuiAttribute value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoOrgunitGuiAttribute[]
      */
-    public function getMidocoOrgunitGuiAttribute(): array
+    public function getMidocoOrgunitGuiAttribute(): ?array
     {
         return $this->MidocoOrgunitGuiAttribute;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoOrgunitGuiAttribute method
+     * This method is responsible for validating the value(s) passed to the setMidocoOrgunitGuiAttribute method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoOrgunitGuiAttribute method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoOrgunitGuiAttributeForArrayConstraintsFromSetMidocoOrgunitGuiAttribute(array $values = []): string
+    public static function validateMidocoOrgunitGuiAttributeForArrayConstraintFromSetMidocoOrgunitGuiAttribute(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getMidocoOrgUnitGuiAttributeResponseMidocoOrgunitGuiAttributeItem) {
@@ -69,10 +74,10 @@ class GetMidocoOrgUnitGuiAttributeResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoOrgunitGuiAttribute[] $midocoOrgunitGuiAttribute
      * @return \Pggns\MidocoApi\Order\StructType\GetMidocoOrgUnitGuiAttributeResponse
      */
-    public function setMidocoOrgunitGuiAttribute(array $midocoOrgunitGuiAttribute = []): self
+    public function setMidocoOrgunitGuiAttribute(?array $midocoOrgunitGuiAttribute = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoOrgunitGuiAttributeArrayErrorMessage = self::validateMidocoOrgunitGuiAttributeForArrayConstraintsFromSetMidocoOrgunitGuiAttribute($midocoOrgunitGuiAttribute))) {
+        if ('' !== ($midocoOrgunitGuiAttributeArrayErrorMessage = self::validateMidocoOrgunitGuiAttributeForArrayConstraintFromSetMidocoOrgunitGuiAttribute($midocoOrgunitGuiAttribute))) {
             throw new InvalidArgumentException($midocoOrgunitGuiAttributeArrayErrorMessage, __LINE__);
         }
         $this->MidocoOrgunitGuiAttribute = $midocoOrgunitGuiAttribute;

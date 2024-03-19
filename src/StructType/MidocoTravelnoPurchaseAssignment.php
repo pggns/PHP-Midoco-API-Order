@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoTravelnoPurchaseAssignment StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoTravelnoPurchaseAssignment extends TravelnoPurchaseAssignmentDTO
 {
     /**

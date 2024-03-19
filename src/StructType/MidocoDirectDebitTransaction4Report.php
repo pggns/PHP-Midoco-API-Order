@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoDirectDebitTransaction4Report StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoDirectDebitTransaction4Report extends DtausTransactionDTO
 {
     /**

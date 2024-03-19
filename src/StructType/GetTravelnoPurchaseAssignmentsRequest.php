@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: Criteria data used to get sale item(s) which are assigned to a specific supplier invoice issued for a purchase order in the travel number context
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetTravelnoPurchaseAssignmentsRequest extends AbstractStructBase
 {
     /**
@@ -30,7 +31,7 @@ class GetTravelnoPurchaseAssignmentsRequest extends AbstractStructBase
      * - ref: ordersd:MidocoTravelNumber
      * @var \Pggns\MidocoApi\Order\StructType\MidocoTravelNumber[]
      */
-    protected array $MidocoTravelNumber = [];
+    protected ?array $MidocoTravelNumber = null;
     /**
      * Constructor method for GetTravelnoPurchaseAssignmentsRequest
      * @uses GetTravelnoPurchaseAssignmentsRequest::setMidocoTravelnoPurchaseAssignment()
@@ -38,7 +39,7 @@ class GetTravelnoPurchaseAssignmentsRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoTravelnoPurchaseAssignment $midocoTravelnoPurchaseAssignment
      * @param \Pggns\MidocoApi\Order\StructType\MidocoTravelNumber[] $midocoTravelNumber
      */
-    public function __construct(?\Pggns\MidocoApi\Order\StructType\MidocoTravelnoPurchaseAssignment $midocoTravelnoPurchaseAssignment = null, array $midocoTravelNumber = [])
+    public function __construct(?\Pggns\MidocoApi\Order\StructType\MidocoTravelnoPurchaseAssignment $midocoTravelnoPurchaseAssignment = null, ?array $midocoTravelNumber = null)
     {
         $this
             ->setMidocoTravelnoPurchaseAssignment($midocoTravelnoPurchaseAssignment)
@@ -67,18 +68,22 @@ class GetTravelnoPurchaseAssignmentsRequest extends AbstractStructBase
      * Get MidocoTravelNumber value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoTravelNumber[]
      */
-    public function getMidocoTravelNumber(): array
+    public function getMidocoTravelNumber(): ?array
     {
         return $this->MidocoTravelNumber;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoTravelNumber method
+     * This method is responsible for validating the value(s) passed to the setMidocoTravelNumber method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoTravelNumber method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoTravelNumberForArrayConstraintsFromSetMidocoTravelNumber(array $values = []): string
+    public static function validateMidocoTravelNumberForArrayConstraintFromSetMidocoTravelNumber(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getTravelnoPurchaseAssignmentsRequestMidocoTravelNumberItem) {
@@ -100,10 +105,10 @@ class GetTravelnoPurchaseAssignmentsRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoTravelNumber[] $midocoTravelNumber
      * @return \Pggns\MidocoApi\Order\StructType\GetTravelnoPurchaseAssignmentsRequest
      */
-    public function setMidocoTravelNumber(array $midocoTravelNumber = []): self
+    public function setMidocoTravelNumber(?array $midocoTravelNumber = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoTravelNumberArrayErrorMessage = self::validateMidocoTravelNumberForArrayConstraintsFromSetMidocoTravelNumber($midocoTravelNumber))) {
+        if ('' !== ($midocoTravelNumberArrayErrorMessage = self::validateMidocoTravelNumberForArrayConstraintFromSetMidocoTravelNumber($midocoTravelNumber))) {
             throw new InvalidArgumentException($midocoTravelNumberArrayErrorMessage, __LINE__);
         }
         $this->MidocoTravelNumber = $midocoTravelNumber;

@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: Validates the request parameters used to authorize a Miles and More BURN transaction
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ValidateMilesAndMoreTransactionLinkRequest extends AbstractStructBase
 {
     /**

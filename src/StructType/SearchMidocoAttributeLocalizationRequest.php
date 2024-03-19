@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SearchMidocoAttributeLocalizationRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchMidocoAttributeLocalizationRequest extends AbstractStructBase
 {
     /**

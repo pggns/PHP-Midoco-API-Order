@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetShortOrderStatusResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetShortOrderStatusResponse extends AbstractStructBase
 {
     /**
@@ -20,13 +21,13 @@ class GetShortOrderStatusResponse extends AbstractStructBase
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\BookingStatus[]
      */
-    protected array $bookingStatus = [];
+    protected ?array $bookingStatus = null;
     /**
      * Constructor method for GetShortOrderStatusResponse
      * @uses GetShortOrderStatusResponse::setBookingStatus()
      * @param \Pggns\MidocoApi\Order\StructType\BookingStatus[] $bookingStatus
      */
-    public function __construct(array $bookingStatus = [])
+    public function __construct(?array $bookingStatus = null)
     {
         $this
             ->setBookingStatus($bookingStatus);
@@ -35,18 +36,22 @@ class GetShortOrderStatusResponse extends AbstractStructBase
      * Get bookingStatus value
      * @return \Pggns\MidocoApi\Order\StructType\BookingStatus[]
      */
-    public function getBookingStatus(): array
+    public function getBookingStatus(): ?array
     {
         return $this->bookingStatus;
     }
     /**
-     * This method is responsible for validating the values passed to the setBookingStatus method
+     * This method is responsible for validating the value(s) passed to the setBookingStatus method
      * This method is willingly generated in order to preserve the one-line inline validation within the setBookingStatus method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateBookingStatusForArrayConstraintsFromSetBookingStatus(array $values = []): string
+    public static function validateBookingStatusForArrayConstraintFromSetBookingStatus(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getShortOrderStatusResponseBookingStatusItem) {
@@ -68,10 +73,10 @@ class GetShortOrderStatusResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\BookingStatus[] $bookingStatus
      * @return \Pggns\MidocoApi\Order\StructType\GetShortOrderStatusResponse
      */
-    public function setBookingStatus(array $bookingStatus = []): self
+    public function setBookingStatus(?array $bookingStatus = null): self
     {
         // validation for constraint: array
-        if ('' !== ($bookingStatusArrayErrorMessage = self::validateBookingStatusForArrayConstraintsFromSetBookingStatus($bookingStatus))) {
+        if ('' !== ($bookingStatusArrayErrorMessage = self::validateBookingStatusForArrayConstraintFromSetBookingStatus($bookingStatus))) {
             throw new InvalidArgumentException($bookingStatusArrayErrorMessage, __LINE__);
         }
         $this->bookingStatus = $bookingStatus;

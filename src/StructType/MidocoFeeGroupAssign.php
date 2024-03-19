@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoFeeGroupAssign StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoFeeGroupAssign extends FeeAssignDTO
 {
     /**

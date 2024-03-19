@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CompanyErrorTypeExt StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CompanyErrorTypeExt extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetRevenueBookingVatDivsRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetRevenueBookingVatDivsRequest extends AbstractStructBase
 {
     /**

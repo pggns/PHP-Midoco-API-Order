@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoCustomerTravelType StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoCustomerTravelType extends CrmTravelDTO
 {
     /**

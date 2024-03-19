@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetOrderPaymentsResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetOrderPaymentsResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetOrderPaymentsResponse extends AbstractStructBase
      * - ref: MidocoOrderPayment
      * @var \Pggns\MidocoApi\Order\StructType\MidocoOrderPayment[]
      */
-    protected array $MidocoOrderPayment = [];
+    protected ?array $MidocoOrderPayment = null;
     /**
      * Constructor method for GetOrderPaymentsResponse
      * @uses GetOrderPaymentsResponse::setMidocoOrderPayment()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoOrderPayment[] $midocoOrderPayment
      */
-    public function __construct(array $midocoOrderPayment = [])
+    public function __construct(?array $midocoOrderPayment = null)
     {
         $this
             ->setMidocoOrderPayment($midocoOrderPayment);
@@ -36,18 +37,22 @@ class GetOrderPaymentsResponse extends AbstractStructBase
      * Get MidocoOrderPayment value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoOrderPayment[]
      */
-    public function getMidocoOrderPayment(): array
+    public function getMidocoOrderPayment(): ?array
     {
         return $this->MidocoOrderPayment;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoOrderPayment method
+     * This method is responsible for validating the value(s) passed to the setMidocoOrderPayment method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoOrderPayment method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoOrderPaymentForArrayConstraintsFromSetMidocoOrderPayment(array $values = []): string
+    public static function validateMidocoOrderPaymentForArrayConstraintFromSetMidocoOrderPayment(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getOrderPaymentsResponseMidocoOrderPaymentItem) {
@@ -69,10 +74,10 @@ class GetOrderPaymentsResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoOrderPayment[] $midocoOrderPayment
      * @return \Pggns\MidocoApi\Order\StructType\GetOrderPaymentsResponse
      */
-    public function setMidocoOrderPayment(array $midocoOrderPayment = []): self
+    public function setMidocoOrderPayment(?array $midocoOrderPayment = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoOrderPaymentArrayErrorMessage = self::validateMidocoOrderPaymentForArrayConstraintsFromSetMidocoOrderPayment($midocoOrderPayment))) {
+        if ('' !== ($midocoOrderPaymentArrayErrorMessage = self::validateMidocoOrderPaymentForArrayConstraintFromSetMidocoOrderPayment($midocoOrderPayment))) {
             throw new InvalidArgumentException($midocoOrderPaymentArrayErrorMessage, __LINE__);
         }
         $this->MidocoOrderPayment = $midocoOrderPayment;

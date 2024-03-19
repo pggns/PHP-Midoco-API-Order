@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoImportCCard StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoImportCCard extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CalculateRetentionPeriod4OrderResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CalculateRetentionPeriod4OrderResponse extends AbstractStructBase
 {
     /**

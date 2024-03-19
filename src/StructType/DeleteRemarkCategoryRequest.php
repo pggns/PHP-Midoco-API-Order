@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteRemarkCategoryRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteRemarkCategoryRequest extends AbstractStructBase
 {
     /**

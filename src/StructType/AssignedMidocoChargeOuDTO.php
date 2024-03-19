@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for AssignedMidocoChargeOuDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class AssignedMidocoChargeOuDTO extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for PaymentConditionDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class PaymentConditionDTO extends AbstractStructBase
 {
     /**

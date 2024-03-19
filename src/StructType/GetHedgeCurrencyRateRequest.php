@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetHedgeCurrencyRateRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetHedgeCurrencyRateRequest extends AbstractStructBase
 {
     /**
@@ -19,13 +20,13 @@ class GetHedgeCurrencyRateRequest extends AbstractStructBase
      * - maxOccurs: unbounded
      * @var \Pggns\MidocoApi\Order\StructType\HedgeCurrencyRequest[]
      */
-    protected array $hedgeCurrencyRequest = [];
+    protected ?array $hedgeCurrencyRequest = null;
     /**
      * Constructor method for GetHedgeCurrencyRateRequest
      * @uses GetHedgeCurrencyRateRequest::setHedgeCurrencyRequest()
      * @param \Pggns\MidocoApi\Order\StructType\HedgeCurrencyRequest[] $hedgeCurrencyRequest
      */
-    public function __construct(array $hedgeCurrencyRequest = [])
+    public function __construct(?array $hedgeCurrencyRequest = null)
     {
         $this
             ->setHedgeCurrencyRequest($hedgeCurrencyRequest);
@@ -34,18 +35,22 @@ class GetHedgeCurrencyRateRequest extends AbstractStructBase
      * Get hedgeCurrencyRequest value
      * @return \Pggns\MidocoApi\Order\StructType\HedgeCurrencyRequest[]
      */
-    public function getHedgeCurrencyRequest(): array
+    public function getHedgeCurrencyRequest(): ?array
     {
         return $this->hedgeCurrencyRequest;
     }
     /**
-     * This method is responsible for validating the values passed to the setHedgeCurrencyRequest method
+     * This method is responsible for validating the value(s) passed to the setHedgeCurrencyRequest method
      * This method is willingly generated in order to preserve the one-line inline validation within the setHedgeCurrencyRequest method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateHedgeCurrencyRequestForArrayConstraintsFromSetHedgeCurrencyRequest(array $values = []): string
+    public static function validateHedgeCurrencyRequestForArrayConstraintFromSetHedgeCurrencyRequest(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getHedgeCurrencyRateRequestHedgeCurrencyRequestItem) {
@@ -67,10 +72,10 @@ class GetHedgeCurrencyRateRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\HedgeCurrencyRequest[] $hedgeCurrencyRequest
      * @return \Pggns\MidocoApi\Order\StructType\GetHedgeCurrencyRateRequest
      */
-    public function setHedgeCurrencyRequest(array $hedgeCurrencyRequest = []): self
+    public function setHedgeCurrencyRequest(?array $hedgeCurrencyRequest = null): self
     {
         // validation for constraint: array
-        if ('' !== ($hedgeCurrencyRequestArrayErrorMessage = self::validateHedgeCurrencyRequestForArrayConstraintsFromSetHedgeCurrencyRequest($hedgeCurrencyRequest))) {
+        if ('' !== ($hedgeCurrencyRequestArrayErrorMessage = self::validateHedgeCurrencyRequestForArrayConstraintFromSetHedgeCurrencyRequest($hedgeCurrencyRequest))) {
             throw new InvalidArgumentException($hedgeCurrencyRequestArrayErrorMessage, __LINE__);
         }
         $this->hedgeCurrencyRequest = $hedgeCurrencyRequest;

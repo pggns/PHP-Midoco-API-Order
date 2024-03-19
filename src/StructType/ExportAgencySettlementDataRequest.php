@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: exportAgencySettlementData -- exports the agencyno, booking id, supplier ID for the sellitems from the orders with mediator id.
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ExportAgencySettlementDataRequest extends AbstractStructBase
 {
     /**
@@ -81,7 +82,7 @@ class ExportAgencySettlementDataRequest extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($date, true), gettype($date)), __LINE__);
         }
         // validation for constraint: pattern(dd.MM.yyyy)
-        if (!is_null($date) && !preg_match('/dd.MM.yyyy/', $date)) {
+        if (!is_null($date) && !preg_match('/dd.MM.yyyy/', (string) $date)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /dd.MM.yyyy/', var_export($date, true)), __LINE__);
         }
         $this->date = $date;

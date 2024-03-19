@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ImportMdcSettlementChargesRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ImportMdcSettlementChargesRequest extends AbstractStructBase
 {
     /**
@@ -158,7 +159,7 @@ class ImportMdcSettlementChargesRequest extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($settlementMonth, true), gettype($settlementMonth)), __LINE__);
         }
         // validation for constraint: pattern([0-9]{4}-[0-9]{2})
-        if (!is_null($settlementMonth) && !preg_match('/[0-9]{4}-[0-9]{2}/', $settlementMonth)) {
+        if (!is_null($settlementMonth) && !preg_match('/[0-9]{4}-[0-9]{2}/', (string) $settlementMonth)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[0-9]{4}-[0-9]{2}/', var_export($settlementMonth, true)), __LINE__);
         }
         $this->settlementMonth = $settlementMonth;

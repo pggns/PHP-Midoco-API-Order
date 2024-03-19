@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoCustomerSearch StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoCustomerSearch extends CustomerSearchDTO
 {
     /**

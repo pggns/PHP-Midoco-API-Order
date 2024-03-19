@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for PackageAirlineData StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class PackageAirlineData extends AbstractStructBase
 {
     /**

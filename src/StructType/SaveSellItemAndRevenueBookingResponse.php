@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveSellItemAndRevenueBookingResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveSellItemAndRevenueBookingResponse extends AbstractStructBase
 {
     /**

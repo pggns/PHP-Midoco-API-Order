@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoSellItemVatDivision StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoSellItemVatDivision extends SellItemVatDivisionDTO
 {
 }

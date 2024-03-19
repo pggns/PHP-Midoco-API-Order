@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MarkTravelplanHistoryEmailsSentResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MarkTravelplanHistoryEmailsSentResponse extends AbstractStructBase
 {
 }

@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: saveBillingPosition --- saves a given billing position
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveBillingPositionResponse extends AbstractStructBase
 {
 }

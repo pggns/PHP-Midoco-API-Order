@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: This is customer specific marketing information used for reporting (some fields specific for some backoffice systems using the VERK standard protocol)
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MarketingInfo extends AbstractStructBase
 {
     /**
@@ -71,7 +72,7 @@ class MarketingInfo extends AbstractStructBase
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\Attribute[]
      */
-    protected array $attribute = [];
+    protected ?array $attribute = null;
     /**
      * Constructor method for marketingInfo
      * @uses MarketingInfo::setAreaCode()
@@ -91,7 +92,7 @@ class MarketingInfo extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\SearchCriteria $searchCriteria
      * @param \Pggns\MidocoApi\Order\StructType\Attribute[] $attribute
      */
-    public function __construct(?string $areaCode = null, ?string $travelDuration = null, ?string $season = null, ?string $travelType = null, ?string $transportation = null, ?string $personCount = null, ?\Pggns\MidocoApi\Order\StructType\SearchCriteria $searchCriteria = null, array $attribute = [])
+    public function __construct(?string $areaCode = null, ?string $travelDuration = null, ?string $season = null, ?string $travelType = null, ?string $transportation = null, ?string $personCount = null, ?\Pggns\MidocoApi\Order\StructType\SearchCriteria $searchCriteria = null, ?array $attribute = null)
     {
         $this
             ->setAreaCode($areaCode)
@@ -264,18 +265,22 @@ class MarketingInfo extends AbstractStructBase
      * Get attribute value
      * @return \Pggns\MidocoApi\Order\StructType\Attribute[]
      */
-    public function getAttribute(): array
+    public function getAttribute(): ?array
     {
         return $this->attribute;
     }
     /**
-     * This method is responsible for validating the values passed to the setAttribute method
+     * This method is responsible for validating the value(s) passed to the setAttribute method
      * This method is willingly generated in order to preserve the one-line inline validation within the setAttribute method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateAttributeForArrayConstraintsFromSetAttribute(array $values = []): string
+    public static function validateAttributeForArrayConstraintFromSetAttribute(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $marketingInfoAttributeItem) {
@@ -297,10 +302,10 @@ class MarketingInfo extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\Attribute[] $attribute
      * @return \Pggns\MidocoApi\Order\StructType\MarketingInfo
      */
-    public function setAttribute(array $attribute = []): self
+    public function setAttribute(?array $attribute = null): self
     {
         // validation for constraint: array
-        if ('' !== ($attributeArrayErrorMessage = self::validateAttributeForArrayConstraintsFromSetAttribute($attribute))) {
+        if ('' !== ($attributeArrayErrorMessage = self::validateAttributeForArrayConstraintFromSetAttribute($attribute))) {
             throw new InvalidArgumentException($attributeArrayErrorMessage, __LINE__);
         }
         $this->attribute = $attribute;

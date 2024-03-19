@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for RevenueBookingInfoType StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class RevenueBookingInfoType extends RevenueBookingDTO
 {
     /**
@@ -21,7 +22,7 @@ class RevenueBookingInfoType extends RevenueBookingDTO
      * - ref: MidocoRevenueBookingVatDiv
      * @var \Pggns\MidocoApi\Order\StructType\MidocoRevenueBookingVatDiv[]
      */
-    protected array $MidocoRevenueBookingVatDiv = [];
+    protected ?array $MidocoRevenueBookingVatDiv = null;
     /**
      * The MidocoTravelnoPurchaseAssignment
      * Meta information extracted from the WSDL
@@ -30,7 +31,7 @@ class RevenueBookingInfoType extends RevenueBookingDTO
      * - ref: MidocoTravelnoPurchaseAssignment
      * @var \Pggns\MidocoApi\Order\StructType\MidocoTravelnoPurchaseAssignment[]
      */
-    protected array $MidocoTravelnoPurchaseAssignment = [];
+    protected ?array $MidocoTravelnoPurchaseAssignment = null;
     /**
      * The newTotalAmount
      * @var float|null
@@ -98,7 +99,7 @@ class RevenueBookingInfoType extends RevenueBookingDTO
      * @param bool $preventPaymentForEntry
      * @param int $customerId
      */
-    public function __construct(array $midocoRevenueBookingVatDiv = [], array $midocoTravelnoPurchaseAssignment = [], ?float $newTotalAmount = null, ?float $bookedSupplierInvoiceAmount = null, ?float $bookedOriginalSupplierInvoiceAmount = null, ?string $costCentre = null, ?bool $entryRestAsProv = false, ?float $foreignCurrencyExchangeRate = null, ?bool $preventPaymentForEntry = false, ?int $customerId = null)
+    public function __construct(?array $midocoRevenueBookingVatDiv = null, ?array $midocoTravelnoPurchaseAssignment = null, ?float $newTotalAmount = null, ?float $bookedSupplierInvoiceAmount = null, ?float $bookedOriginalSupplierInvoiceAmount = null, ?string $costCentre = null, ?bool $entryRestAsProv = false, ?float $foreignCurrencyExchangeRate = null, ?bool $preventPaymentForEntry = false, ?int $customerId = null)
     {
         $this
             ->setMidocoRevenueBookingVatDiv($midocoRevenueBookingVatDiv)
@@ -116,18 +117,22 @@ class RevenueBookingInfoType extends RevenueBookingDTO
      * Get MidocoRevenueBookingVatDiv value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoRevenueBookingVatDiv[]
      */
-    public function getMidocoRevenueBookingVatDiv(): array
+    public function getMidocoRevenueBookingVatDiv(): ?array
     {
         return $this->MidocoRevenueBookingVatDiv;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoRevenueBookingVatDiv method
+     * This method is responsible for validating the value(s) passed to the setMidocoRevenueBookingVatDiv method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoRevenueBookingVatDiv method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoRevenueBookingVatDivForArrayConstraintsFromSetMidocoRevenueBookingVatDiv(array $values = []): string
+    public static function validateMidocoRevenueBookingVatDivForArrayConstraintFromSetMidocoRevenueBookingVatDiv(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $revenueBookingInfoTypeMidocoRevenueBookingVatDivItem) {
@@ -149,10 +154,10 @@ class RevenueBookingInfoType extends RevenueBookingDTO
      * @param \Pggns\MidocoApi\Order\StructType\MidocoRevenueBookingVatDiv[] $midocoRevenueBookingVatDiv
      * @return \Pggns\MidocoApi\Order\StructType\RevenueBookingInfoType
      */
-    public function setMidocoRevenueBookingVatDiv(array $midocoRevenueBookingVatDiv = []): self
+    public function setMidocoRevenueBookingVatDiv(?array $midocoRevenueBookingVatDiv = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoRevenueBookingVatDivArrayErrorMessage = self::validateMidocoRevenueBookingVatDivForArrayConstraintsFromSetMidocoRevenueBookingVatDiv($midocoRevenueBookingVatDiv))) {
+        if ('' !== ($midocoRevenueBookingVatDivArrayErrorMessage = self::validateMidocoRevenueBookingVatDivForArrayConstraintFromSetMidocoRevenueBookingVatDiv($midocoRevenueBookingVatDiv))) {
             throw new InvalidArgumentException($midocoRevenueBookingVatDivArrayErrorMessage, __LINE__);
         }
         $this->MidocoRevenueBookingVatDiv = $midocoRevenueBookingVatDiv;
@@ -179,18 +184,22 @@ class RevenueBookingInfoType extends RevenueBookingDTO
      * Get MidocoTravelnoPurchaseAssignment value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoTravelnoPurchaseAssignment[]
      */
-    public function getMidocoTravelnoPurchaseAssignment(): array
+    public function getMidocoTravelnoPurchaseAssignment(): ?array
     {
         return $this->MidocoTravelnoPurchaseAssignment;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoTravelnoPurchaseAssignment method
+     * This method is responsible for validating the value(s) passed to the setMidocoTravelnoPurchaseAssignment method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoTravelnoPurchaseAssignment method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoTravelnoPurchaseAssignmentForArrayConstraintsFromSetMidocoTravelnoPurchaseAssignment(array $values = []): string
+    public static function validateMidocoTravelnoPurchaseAssignmentForArrayConstraintFromSetMidocoTravelnoPurchaseAssignment(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $revenueBookingInfoTypeMidocoTravelnoPurchaseAssignmentItem) {
@@ -212,10 +221,10 @@ class RevenueBookingInfoType extends RevenueBookingDTO
      * @param \Pggns\MidocoApi\Order\StructType\MidocoTravelnoPurchaseAssignment[] $midocoTravelnoPurchaseAssignment
      * @return \Pggns\MidocoApi\Order\StructType\RevenueBookingInfoType
      */
-    public function setMidocoTravelnoPurchaseAssignment(array $midocoTravelnoPurchaseAssignment = []): self
+    public function setMidocoTravelnoPurchaseAssignment(?array $midocoTravelnoPurchaseAssignment = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoTravelnoPurchaseAssignmentArrayErrorMessage = self::validateMidocoTravelnoPurchaseAssignmentForArrayConstraintsFromSetMidocoTravelnoPurchaseAssignment($midocoTravelnoPurchaseAssignment))) {
+        if ('' !== ($midocoTravelnoPurchaseAssignmentArrayErrorMessage = self::validateMidocoTravelnoPurchaseAssignmentForArrayConstraintFromSetMidocoTravelnoPurchaseAssignment($midocoTravelnoPurchaseAssignment))) {
             throw new InvalidArgumentException($midocoTravelnoPurchaseAssignmentArrayErrorMessage, __LINE__);
         }
         $this->MidocoTravelnoPurchaseAssignment = $midocoTravelnoPurchaseAssignment;

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for UpdateGrantedProvisionForSellItemRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class UpdateGrantedProvisionForSellItemRequest extends AbstractStructBase
 {
     /**

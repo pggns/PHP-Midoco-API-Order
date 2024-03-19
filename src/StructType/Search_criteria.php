@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: Her, all the search criteria which lead to the booking in a search engine, should be given.
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class Search_criteria extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for EntryCriteria StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class EntryCriteria extends AbstractStructBase
 {
     /**

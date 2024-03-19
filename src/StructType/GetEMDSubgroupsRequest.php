@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetEMDSubgroupsRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetEMDSubgroupsRequest extends AbstractStructBase
 {
     /**

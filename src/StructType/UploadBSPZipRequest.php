@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for UploadBSPZipRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class UploadBSPZipRequest extends AbstractStructBase
 {
     /**

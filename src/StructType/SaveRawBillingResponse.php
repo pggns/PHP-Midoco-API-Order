@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveRawBillingResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveRawBillingResponse extends AbstractStructBase
 {
 }

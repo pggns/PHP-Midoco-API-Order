@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CreateVatCorrectionBillingDocumentRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CreateVatCorrectionBillingDocumentRequest extends AbstractStructBase
 {
     /**

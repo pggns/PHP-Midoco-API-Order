@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for response StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class Response extends AbstractStructBase
 {
     /**

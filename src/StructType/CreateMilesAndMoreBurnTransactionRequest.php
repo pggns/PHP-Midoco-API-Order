@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CreateMilesAndMoreBurnTransactionRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CreateMilesAndMoreBurnTransactionRequest extends AbstractStructBase
 {
     /**

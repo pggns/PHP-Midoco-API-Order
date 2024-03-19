@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetOrderIdForSellItemIdRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetOrderIdForSellItemIdRequest extends AbstractStructBase
 {
     /**

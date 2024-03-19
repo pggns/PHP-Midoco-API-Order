@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteCostCentreResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteCostCentreResponse extends AbstractStructBase
 {
 }

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for IsOrderTotallyCancelledRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class IsOrderTotallyCancelledRequest extends AbstractStructBase
 {
     /**

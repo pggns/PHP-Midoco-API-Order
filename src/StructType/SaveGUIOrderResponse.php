@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveGUIOrderResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveGUIOrderResponse extends AbstractStructBase
 {
     /**
@@ -28,7 +29,7 @@ class SaveGUIOrderResponse extends AbstractStructBase
      * - ref: MidocoSellItemTooltip
      * @var \Pggns\MidocoApi\Order\StructType\MidocoSellItemTooltip[]
      */
-    protected array $MidocoSellItemTooltip = [];
+    protected ?array $MidocoSellItemTooltip = null;
     /**
      * Constructor method for SaveGUIOrderResponse
      * @uses SaveGUIOrderResponse::setMidocoOrder()
@@ -36,7 +37,7 @@ class SaveGUIOrderResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoOrderType $midocoOrder
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSellItemTooltip[] $midocoSellItemTooltip
      */
-    public function __construct(?\Pggns\MidocoApi\Order\StructType\MidocoOrderType $midocoOrder = null, array $midocoSellItemTooltip = [])
+    public function __construct(?\Pggns\MidocoApi\Order\StructType\MidocoOrderType $midocoOrder = null, ?array $midocoSellItemTooltip = null)
     {
         $this
             ->setMidocoOrder($midocoOrder)
@@ -65,18 +66,22 @@ class SaveGUIOrderResponse extends AbstractStructBase
      * Get MidocoSellItemTooltip value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSellItemTooltip[]
      */
-    public function getMidocoSellItemTooltip(): array
+    public function getMidocoSellItemTooltip(): ?array
     {
         return $this->MidocoSellItemTooltip;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoSellItemTooltip method
+     * This method is responsible for validating the value(s) passed to the setMidocoSellItemTooltip method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoSellItemTooltip method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoSellItemTooltipForArrayConstraintsFromSetMidocoSellItemTooltip(array $values = []): string
+    public static function validateMidocoSellItemTooltipForArrayConstraintFromSetMidocoSellItemTooltip(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $saveGUIOrderResponseMidocoSellItemTooltipItem) {
@@ -98,10 +103,10 @@ class SaveGUIOrderResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSellItemTooltip[] $midocoSellItemTooltip
      * @return \Pggns\MidocoApi\Order\StructType\SaveGUIOrderResponse
      */
-    public function setMidocoSellItemTooltip(array $midocoSellItemTooltip = []): self
+    public function setMidocoSellItemTooltip(?array $midocoSellItemTooltip = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoSellItemTooltipArrayErrorMessage = self::validateMidocoSellItemTooltipForArrayConstraintsFromSetMidocoSellItemTooltip($midocoSellItemTooltip))) {
+        if ('' !== ($midocoSellItemTooltipArrayErrorMessage = self::validateMidocoSellItemTooltipForArrayConstraintFromSetMidocoSellItemTooltip($midocoSellItemTooltip))) {
             throw new InvalidArgumentException($midocoSellItemTooltipArrayErrorMessage, __LINE__);
         }
         $this->MidocoSellItemTooltip = $midocoSellItemTooltip;

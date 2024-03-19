@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoCateringCode StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoCateringCode extends CateringDTO
 {
     /**
@@ -21,7 +22,7 @@ class MidocoCateringCode extends CateringDTO
      * - ref: MidocoCateringDescription
      * @var \Pggns\MidocoApi\Order\StructType\CateringDescriptionDTO[]
      */
-    protected array $MidocoCateringDescription = [];
+    protected ?array $MidocoCateringDescription = null;
     /**
      * The unitName
      * Meta information extracted from the WSDL
@@ -45,7 +46,7 @@ class MidocoCateringCode extends CateringDTO
      * @param string $unitName
      * @param string $displayDescription
      */
-    public function __construct(array $midocoCateringDescription = [], ?string $unitName = null, ?string $displayDescription = null)
+    public function __construct(?array $midocoCateringDescription = null, ?string $unitName = null, ?string $displayDescription = null)
     {
         $this
             ->setMidocoCateringDescription($midocoCateringDescription)
@@ -56,18 +57,22 @@ class MidocoCateringCode extends CateringDTO
      * Get MidocoCateringDescription value
      * @return \Pggns\MidocoApi\Order\StructType\CateringDescriptionDTO[]
      */
-    public function getMidocoCateringDescription(): array
+    public function getMidocoCateringDescription(): ?array
     {
         return $this->MidocoCateringDescription;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoCateringDescription method
+     * This method is responsible for validating the value(s) passed to the setMidocoCateringDescription method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoCateringDescription method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoCateringDescriptionForArrayConstraintsFromSetMidocoCateringDescription(array $values = []): string
+    public static function validateMidocoCateringDescriptionForArrayConstraintFromSetMidocoCateringDescription(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoCateringCodeMidocoCateringDescriptionItem) {
@@ -89,10 +94,10 @@ class MidocoCateringCode extends CateringDTO
      * @param \Pggns\MidocoApi\Order\StructType\CateringDescriptionDTO[] $midocoCateringDescription
      * @return \Pggns\MidocoApi\Order\StructType\MidocoCateringCode
      */
-    public function setMidocoCateringDescription(array $midocoCateringDescription = []): self
+    public function setMidocoCateringDescription(?array $midocoCateringDescription = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoCateringDescriptionArrayErrorMessage = self::validateMidocoCateringDescriptionForArrayConstraintsFromSetMidocoCateringDescription($midocoCateringDescription))) {
+        if ('' !== ($midocoCateringDescriptionArrayErrorMessage = self::validateMidocoCateringDescriptionForArrayConstraintFromSetMidocoCateringDescription($midocoCateringDescription))) {
             throw new InvalidArgumentException($midocoCateringDescriptionArrayErrorMessage, __LINE__);
         }
         $this->MidocoCateringDescription = $midocoCateringDescription;

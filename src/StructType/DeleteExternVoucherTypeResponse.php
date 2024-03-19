@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteExternVoucherTypeResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteExternVoucherTypeResponse extends AbstractStructBase
 {
 }

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteSuppCancelCEmailRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteSuppCancelCEmailRequest extends AbstractStructBase
 {
     /**

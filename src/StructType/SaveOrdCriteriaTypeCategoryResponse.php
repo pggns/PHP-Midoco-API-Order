@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveOrdCriteriaTypeCategoryResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveOrdCriteriaTypeCategoryResponse extends AbstractStructBase
 {
     /**

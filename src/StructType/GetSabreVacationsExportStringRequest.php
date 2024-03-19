@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetSabreVacationsExportStringRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetSabreVacationsExportStringRequest extends AbstractStructBase
 {
     /**

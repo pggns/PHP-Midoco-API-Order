@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for OrderCreditCheckLogDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class OrderCreditCheckLogDTO extends AbstractStructBase
 {
     /**

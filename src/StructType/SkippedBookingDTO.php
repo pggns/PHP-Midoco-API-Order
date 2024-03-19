@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SkippedBookingDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SkippedBookingDTO extends AbstractStructBase
 {
     /**
@@ -44,6 +45,11 @@ class SkippedBookingDTO extends AbstractStructBase
      */
     protected ?string $timestamp = null;
     /**
+     * The tryNo
+     * @var int|null
+     */
+    protected ?int $tryNo = null;
+    /**
      * Constructor method for SkippedBookingDTO
      * @uses SkippedBookingDTO::setExternalId()
      * @uses SkippedBookingDTO::setExternalSystem()
@@ -51,14 +57,16 @@ class SkippedBookingDTO extends AbstractStructBase
      * @uses SkippedBookingDTO::setMessageText()
      * @uses SkippedBookingDTO::setMessageType()
      * @uses SkippedBookingDTO::setTimestamp()
+     * @uses SkippedBookingDTO::setTryNo()
      * @param string $externalId
      * @param string $externalSystem
      * @param string $messageSubtype
      * @param string $messageText
      * @param string $messageType
      * @param string $timestamp
+     * @param int $tryNo
      */
-    public function __construct(?string $externalId = null, ?string $externalSystem = null, ?string $messageSubtype = null, ?string $messageText = null, ?string $messageType = null, ?string $timestamp = null)
+    public function __construct(?string $externalId = null, ?string $externalSystem = null, ?string $messageSubtype = null, ?string $messageText = null, ?string $messageType = null, ?string $timestamp = null, ?int $tryNo = null)
     {
         $this
             ->setExternalId($externalId)
@@ -66,7 +74,8 @@ class SkippedBookingDTO extends AbstractStructBase
             ->setMessageSubtype($messageSubtype)
             ->setMessageText($messageText)
             ->setMessageType($messageType)
-            ->setTimestamp($timestamp);
+            ->setTimestamp($timestamp)
+            ->setTryNo($tryNo);
     }
     /**
      * Get externalId value
@@ -203,6 +212,29 @@ class SkippedBookingDTO extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($timestamp, true), gettype($timestamp)), __LINE__);
         }
         $this->timestamp = $timestamp;
+        
+        return $this;
+    }
+    /**
+     * Get tryNo value
+     * @return int|null
+     */
+    public function getTryNo(): ?int
+    {
+        return $this->tryNo;
+    }
+    /**
+     * Set tryNo value
+     * @param int $tryNo
+     * @return \Pggns\MidocoApi\Order\StructType\SkippedBookingDTO
+     */
+    public function setTryNo(?int $tryNo = null): self
+    {
+        // validation for constraint: int
+        if (!is_null($tryNo) && !(is_int($tryNo) || ctype_digit($tryNo))) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($tryNo, true), gettype($tryNo)), __LINE__);
+        }
+        $this->tryNo = $tryNo;
         
         return $this;
     }

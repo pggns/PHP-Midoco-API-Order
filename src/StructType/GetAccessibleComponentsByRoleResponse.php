@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetAccessibleComponentsByRoleResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetAccessibleComponentsByRoleResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetAccessibleComponentsByRoleResponse extends AbstractStructBase
      * - ref: MidocoAccessibleComponentByRole
      * @var \Pggns\MidocoApi\Order\StructType\MidocoAccessibleComponentByRoleType[]
      */
-    protected array $MidocoAccessibleComponentByRole = [];
+    protected ?array $MidocoAccessibleComponentByRole = null;
     /**
      * Constructor method for GetAccessibleComponentsByRoleResponse
      * @uses GetAccessibleComponentsByRoleResponse::setMidocoAccessibleComponentByRole()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoAccessibleComponentByRoleType[] $midocoAccessibleComponentByRole
      */
-    public function __construct(array $midocoAccessibleComponentByRole = [])
+    public function __construct(?array $midocoAccessibleComponentByRole = null)
     {
         $this
             ->setMidocoAccessibleComponentByRole($midocoAccessibleComponentByRole);
@@ -36,18 +37,22 @@ class GetAccessibleComponentsByRoleResponse extends AbstractStructBase
      * Get MidocoAccessibleComponentByRole value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoAccessibleComponentByRoleType[]
      */
-    public function getMidocoAccessibleComponentByRole(): array
+    public function getMidocoAccessibleComponentByRole(): ?array
     {
         return $this->MidocoAccessibleComponentByRole;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoAccessibleComponentByRole method
+     * This method is responsible for validating the value(s) passed to the setMidocoAccessibleComponentByRole method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoAccessibleComponentByRole method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoAccessibleComponentByRoleForArrayConstraintsFromSetMidocoAccessibleComponentByRole(array $values = []): string
+    public static function validateMidocoAccessibleComponentByRoleForArrayConstraintFromSetMidocoAccessibleComponentByRole(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getAccessibleComponentsByRoleResponseMidocoAccessibleComponentByRoleItem) {
@@ -69,10 +74,10 @@ class GetAccessibleComponentsByRoleResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoAccessibleComponentByRoleType[] $midocoAccessibleComponentByRole
      * @return \Pggns\MidocoApi\Order\StructType\GetAccessibleComponentsByRoleResponse
      */
-    public function setMidocoAccessibleComponentByRole(array $midocoAccessibleComponentByRole = []): self
+    public function setMidocoAccessibleComponentByRole(?array $midocoAccessibleComponentByRole = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoAccessibleComponentByRoleArrayErrorMessage = self::validateMidocoAccessibleComponentByRoleForArrayConstraintsFromSetMidocoAccessibleComponentByRole($midocoAccessibleComponentByRole))) {
+        if ('' !== ($midocoAccessibleComponentByRoleArrayErrorMessage = self::validateMidocoAccessibleComponentByRoleForArrayConstraintFromSetMidocoAccessibleComponentByRole($midocoAccessibleComponentByRole))) {
             throw new InvalidArgumentException($midocoAccessibleComponentByRoleArrayErrorMessage, __LINE__);
         }
         $this->MidocoAccessibleComponentByRole = $midocoAccessibleComponentByRole;

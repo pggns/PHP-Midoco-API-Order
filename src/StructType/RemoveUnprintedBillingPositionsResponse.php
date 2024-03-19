@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for RemoveUnprintedBillingPositionsResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class RemoveUnprintedBillingPositionsResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class RemoveUnprintedBillingPositionsResponse extends AbstractStructBase
      * - ref: MidocoBillingPosition
      * @var \Pggns\MidocoApi\Order\StructType\MidocoBillingPositionType[]
      */
-    protected array $MidocoBillingPosition = [];
+    protected ?array $MidocoBillingPosition = null;
     /**
      * Constructor method for RemoveUnprintedBillingPositionsResponse
      * @uses RemoveUnprintedBillingPositionsResponse::setMidocoBillingPosition()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoBillingPositionType[] $midocoBillingPosition
      */
-    public function __construct(array $midocoBillingPosition = [])
+    public function __construct(?array $midocoBillingPosition = null)
     {
         $this
             ->setMidocoBillingPosition($midocoBillingPosition);
@@ -36,18 +37,22 @@ class RemoveUnprintedBillingPositionsResponse extends AbstractStructBase
      * Get MidocoBillingPosition value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoBillingPositionType[]
      */
-    public function getMidocoBillingPosition(): array
+    public function getMidocoBillingPosition(): ?array
     {
         return $this->MidocoBillingPosition;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoBillingPosition method
+     * This method is responsible for validating the value(s) passed to the setMidocoBillingPosition method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoBillingPosition method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoBillingPositionForArrayConstraintsFromSetMidocoBillingPosition(array $values = []): string
+    public static function validateMidocoBillingPositionForArrayConstraintFromSetMidocoBillingPosition(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $removeUnprintedBillingPositionsResponseMidocoBillingPositionItem) {
@@ -69,10 +74,10 @@ class RemoveUnprintedBillingPositionsResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoBillingPositionType[] $midocoBillingPosition
      * @return \Pggns\MidocoApi\Order\StructType\RemoveUnprintedBillingPositionsResponse
      */
-    public function setMidocoBillingPosition(array $midocoBillingPosition = []): self
+    public function setMidocoBillingPosition(?array $midocoBillingPosition = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoBillingPositionArrayErrorMessage = self::validateMidocoBillingPositionForArrayConstraintsFromSetMidocoBillingPosition($midocoBillingPosition))) {
+        if ('' !== ($midocoBillingPositionArrayErrorMessage = self::validateMidocoBillingPositionForArrayConstraintFromSetMidocoBillingPosition($midocoBillingPosition))) {
             throw new InvalidArgumentException($midocoBillingPositionArrayErrorMessage, __LINE__);
         }
         $this->MidocoBillingPosition = $midocoBillingPosition;

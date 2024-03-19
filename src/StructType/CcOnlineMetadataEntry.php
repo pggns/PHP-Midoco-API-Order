@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CcOnlineMetadataEntry StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CcOnlineMetadataEntry extends AbstractStructBase
 {
     /**

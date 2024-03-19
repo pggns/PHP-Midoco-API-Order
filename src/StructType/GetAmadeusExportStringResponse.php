@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetAmadeusExportStringResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetAmadeusExportStringResponse extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for EmptyFieldDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class EmptyFieldDTO extends AbstractStructBase
 {
     /**

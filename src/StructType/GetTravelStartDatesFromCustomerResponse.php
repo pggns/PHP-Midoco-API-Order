@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: returns a list of travel start dates from a customer
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetTravelStartDatesFromCustomerResponse extends AbstractStructBase
 {
     /**
@@ -22,13 +23,13 @@ class GetTravelStartDatesFromCustomerResponse extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $startTravelDate = [];
+    protected ?array $startTravelDate = null;
     /**
      * Constructor method for GetTravelStartDatesFromCustomerResponse
      * @uses GetTravelStartDatesFromCustomerResponse::setStartTravelDate()
      * @param string[] $startTravelDate
      */
-    public function __construct(array $startTravelDate = [])
+    public function __construct(?array $startTravelDate = null)
     {
         $this
             ->setStartTravelDate($startTravelDate);
@@ -37,18 +38,22 @@ class GetTravelStartDatesFromCustomerResponse extends AbstractStructBase
      * Get startTravelDate value
      * @return string[]
      */
-    public function getStartTravelDate(): array
+    public function getStartTravelDate(): ?array
     {
         return $this->startTravelDate;
     }
     /**
-     * This method is responsible for validating the values passed to the setStartTravelDate method
+     * This method is responsible for validating the value(s) passed to the setStartTravelDate method
      * This method is willingly generated in order to preserve the one-line inline validation within the setStartTravelDate method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateStartTravelDateForArrayConstraintsFromSetStartTravelDate(array $values = []): string
+    public static function validateStartTravelDateForArrayConstraintFromSetStartTravelDate(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getTravelStartDatesFromCustomerResponseStartTravelDateItem) {
@@ -70,10 +75,10 @@ class GetTravelStartDatesFromCustomerResponse extends AbstractStructBase
      * @param string[] $startTravelDate
      * @return \Pggns\MidocoApi\Order\StructType\GetTravelStartDatesFromCustomerResponse
      */
-    public function setStartTravelDate(array $startTravelDate = []): self
+    public function setStartTravelDate(?array $startTravelDate = null): self
     {
         // validation for constraint: array
-        if ('' !== ($startTravelDateArrayErrorMessage = self::validateStartTravelDateForArrayConstraintsFromSetStartTravelDate($startTravelDate))) {
+        if ('' !== ($startTravelDateArrayErrorMessage = self::validateStartTravelDateForArrayConstraintFromSetStartTravelDate($startTravelDate))) {
             throw new InvalidArgumentException($startTravelDateArrayErrorMessage, __LINE__);
         }
         $this->startTravelDate = $startTravelDate;

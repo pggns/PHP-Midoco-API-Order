@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: getPrintedBillingDocDate --- returns the date when the last billing document corresponding to the given order was printed
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetPrintedBillingDocDateResponse extends AbstractStructBase
 {
     /**

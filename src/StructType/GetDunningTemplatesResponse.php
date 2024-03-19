@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetDunningTemplatesResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetDunningTemplatesResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetDunningTemplatesResponse extends AbstractStructBase
      * - ref: MidocoDunningTemplate
      * @var \Pggns\MidocoApi\Order\StructType\MidocoDunningTemplate[]
      */
-    protected array $MidocoDunningTemplate = [];
+    protected ?array $MidocoDunningTemplate = null;
     /**
      * Constructor method for GetDunningTemplatesResponse
      * @uses GetDunningTemplatesResponse::setMidocoDunningTemplate()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoDunningTemplate[] $midocoDunningTemplate
      */
-    public function __construct(array $midocoDunningTemplate = [])
+    public function __construct(?array $midocoDunningTemplate = null)
     {
         $this
             ->setMidocoDunningTemplate($midocoDunningTemplate);
@@ -36,18 +37,22 @@ class GetDunningTemplatesResponse extends AbstractStructBase
      * Get MidocoDunningTemplate value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoDunningTemplate[]
      */
-    public function getMidocoDunningTemplate(): array
+    public function getMidocoDunningTemplate(): ?array
     {
         return $this->MidocoDunningTemplate;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoDunningTemplate method
+     * This method is responsible for validating the value(s) passed to the setMidocoDunningTemplate method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoDunningTemplate method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoDunningTemplateForArrayConstraintsFromSetMidocoDunningTemplate(array $values = []): string
+    public static function validateMidocoDunningTemplateForArrayConstraintFromSetMidocoDunningTemplate(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getDunningTemplatesResponseMidocoDunningTemplateItem) {
@@ -69,10 +74,10 @@ class GetDunningTemplatesResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoDunningTemplate[] $midocoDunningTemplate
      * @return \Pggns\MidocoApi\Order\StructType\GetDunningTemplatesResponse
      */
-    public function setMidocoDunningTemplate(array $midocoDunningTemplate = []): self
+    public function setMidocoDunningTemplate(?array $midocoDunningTemplate = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoDunningTemplateArrayErrorMessage = self::validateMidocoDunningTemplateForArrayConstraintsFromSetMidocoDunningTemplate($midocoDunningTemplate))) {
+        if ('' !== ($midocoDunningTemplateArrayErrorMessage = self::validateMidocoDunningTemplateForArrayConstraintFromSetMidocoDunningTemplate($midocoDunningTemplate))) {
             throw new InvalidArgumentException($midocoDunningTemplateArrayErrorMessage, __LINE__);
         }
         $this->MidocoDunningTemplate = $midocoDunningTemplate;

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetVerkDataPrintListRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetVerkDataPrintListRequest extends AbstractStructBase
 {
     /**

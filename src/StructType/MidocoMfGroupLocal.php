@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoMfGroupLocal StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoMfGroupLocal extends MfGroupLocalDTO
 {
 }

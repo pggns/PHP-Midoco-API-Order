@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for flight-service-type StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class Flight_service_type extends AbstractStructBase
 {
     /**
@@ -178,7 +179,7 @@ class Flight_service_type extends AbstractStructBase
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\FlightMealType[]
      */
-    protected array $meal = [];
+    protected ?array $meal = null;
     /**
      * The seat
      * Meta information extracted from the WSDL
@@ -186,7 +187,7 @@ class Flight_service_type extends AbstractStructBase
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\FlightSeatType[]
      */
-    protected array $seat = [];
+    protected ?array $seat = null;
     /**
      * The operating_carrier
      * Meta information extracted from the WSDL
@@ -236,7 +237,7 @@ class Flight_service_type extends AbstractStructBase
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\Special_service_request[]
      */
-    protected array $special_service_request = [];
+    protected ?array $special_service_request = null;
     /**
      * The departureTerminal
      * @var string|null
@@ -309,7 +310,7 @@ class Flight_service_type extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\Special_service_request[] $special_service_request
      * @param string $departureTerminal
      */
-    public function __construct(int $position, ?string $carrier = null, ?string $flight_no = null, ?string $booking_class = null, ?string $class_description = null, ?bool $open_segment = false, ?string $departure_code = null, ?string $destination_code = null, ?string $departure_date = null, ?string $departure_time = null, ?string $checkin_time = null, ?string $arrival_date = null, ?string $arrival_time = null, ?string $departure_description = null, ?string $destination_description = null, ?string $person_assignment = null, ?string $service_status = null, ?string $baggage_allowance = null, ?int $segment_no = null, ?string $cabin_class = null, ?int $stopover_count = null, ?string $aircraft_type = null, array $meal = [], array $seat = [], ?string $operating_carrier = null, ?string $operating_carrier_flight_no = null, ?int $miles = null, ?string $duration = null, ?string $fare_base = null, ?float $co2_emission = null, array $special_service_request = [], ?string $departureTerminal = null)
+    public function __construct(int $position, ?string $carrier = null, ?string $flight_no = null, ?string $booking_class = null, ?string $class_description = null, ?bool $open_segment = false, ?string $departure_code = null, ?string $destination_code = null, ?string $departure_date = null, ?string $departure_time = null, ?string $checkin_time = null, ?string $arrival_date = null, ?string $arrival_time = null, ?string $departure_description = null, ?string $destination_description = null, ?string $person_assignment = null, ?string $service_status = null, ?string $baggage_allowance = null, ?int $segment_no = null, ?string $cabin_class = null, ?int $stopover_count = null, ?string $aircraft_type = null, ?array $meal = null, ?array $seat = null, ?string $operating_carrier = null, ?string $operating_carrier_flight_no = null, ?int $miles = null, ?string $duration = null, ?string $fare_base = null, ?float $co2_emission = null, ?array $special_service_request = null, ?string $departureTerminal = null)
     {
         $this
             ->setPosition($position)
@@ -549,7 +550,7 @@ class Flight_service_type extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($departure_date, true), gettype($departure_date)), __LINE__);
         }
         // validation for constraint: pattern([0-9]{4}-[0-9]{2}-[0-9]{2})
-        if (!is_null($departure_date) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', $departure_date)) {
+        if (!is_null($departure_date) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', (string) $departure_date)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[0-9]{4}-[0-9]{2}-[0-9]{2}/', var_export($departure_date, true)), __LINE__);
         }
         $this->departure_date = $this->{'departure-date'} = $departure_date;
@@ -576,7 +577,7 @@ class Flight_service_type extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($departure_time, true), gettype($departure_time)), __LINE__);
         }
         // validation for constraint: pattern([0-9]{2}:[0-9]{2})
-        if (!is_null($departure_time) && !preg_match('/[0-9]{2}:[0-9]{2}/', $departure_time)) {
+        if (!is_null($departure_time) && !preg_match('/[0-9]{2}:[0-9]{2}/', (string) $departure_time)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[0-9]{2}:[0-9]{2}/', var_export($departure_time, true)), __LINE__);
         }
         $this->departure_time = $this->{'departure-time'} = $departure_time;
@@ -603,7 +604,7 @@ class Flight_service_type extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($checkin_time, true), gettype($checkin_time)), __LINE__);
         }
         // validation for constraint: pattern([0-9]{2}:[0-9]{2})
-        if (!is_null($checkin_time) && !preg_match('/[0-9]{2}:[0-9]{2}/', $checkin_time)) {
+        if (!is_null($checkin_time) && !preg_match('/[0-9]{2}:[0-9]{2}/', (string) $checkin_time)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[0-9]{2}:[0-9]{2}/', var_export($checkin_time, true)), __LINE__);
         }
         $this->checkin_time = $this->{'checkin-time'} = $checkin_time;
@@ -630,7 +631,7 @@ class Flight_service_type extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($arrival_date, true), gettype($arrival_date)), __LINE__);
         }
         // validation for constraint: pattern([0-9]{4}-[0-9]{2}-[0-9]{2})
-        if (!is_null($arrival_date) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', $arrival_date)) {
+        if (!is_null($arrival_date) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', (string) $arrival_date)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[0-9]{4}-[0-9]{2}-[0-9]{2}/', var_export($arrival_date, true)), __LINE__);
         }
         $this->arrival_date = $this->{'arrival-date'} = $arrival_date;
@@ -657,7 +658,7 @@ class Flight_service_type extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($arrival_time, true), gettype($arrival_time)), __LINE__);
         }
         // validation for constraint: pattern([0-9]{2}:[0-9]{2})
-        if (!is_null($arrival_time) && !preg_match('/[0-9]{2}:[0-9]{2}/', $arrival_time)) {
+        if (!is_null($arrival_time) && !preg_match('/[0-9]{2}:[0-9]{2}/', (string) $arrival_time)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[0-9]{2}:[0-9]{2}/', var_export($arrival_time, true)), __LINE__);
         }
         $this->arrival_time = $this->{'arrival-time'} = $arrival_time;
@@ -875,18 +876,22 @@ class Flight_service_type extends AbstractStructBase
      * Get meal value
      * @return \Pggns\MidocoApi\Order\StructType\FlightMealType[]
      */
-    public function getMeal(): array
+    public function getMeal(): ?array
     {
         return $this->meal;
     }
     /**
-     * This method is responsible for validating the values passed to the setMeal method
+     * This method is responsible for validating the value(s) passed to the setMeal method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMeal method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMealForArrayConstraintsFromSetMeal(array $values = []): string
+    public static function validateMealForArrayConstraintFromSetMeal(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $flight_service_typeMealItem) {
@@ -908,10 +913,10 @@ class Flight_service_type extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\FlightMealType[] $meal
      * @return \Pggns\MidocoApi\Order\StructType\Flight_service_type
      */
-    public function setMeal(array $meal = []): self
+    public function setMeal(?array $meal = null): self
     {
         // validation for constraint: array
-        if ('' !== ($mealArrayErrorMessage = self::validateMealForArrayConstraintsFromSetMeal($meal))) {
+        if ('' !== ($mealArrayErrorMessage = self::validateMealForArrayConstraintFromSetMeal($meal))) {
             throw new InvalidArgumentException($mealArrayErrorMessage, __LINE__);
         }
         $this->meal = $meal;
@@ -938,18 +943,22 @@ class Flight_service_type extends AbstractStructBase
      * Get seat value
      * @return \Pggns\MidocoApi\Order\StructType\FlightSeatType[]
      */
-    public function getSeat(): array
+    public function getSeat(): ?array
     {
         return $this->seat;
     }
     /**
-     * This method is responsible for validating the values passed to the setSeat method
+     * This method is responsible for validating the value(s) passed to the setSeat method
      * This method is willingly generated in order to preserve the one-line inline validation within the setSeat method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateSeatForArrayConstraintsFromSetSeat(array $values = []): string
+    public static function validateSeatForArrayConstraintFromSetSeat(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $flight_service_typeSeatItem) {
@@ -971,10 +980,10 @@ class Flight_service_type extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\FlightSeatType[] $seat
      * @return \Pggns\MidocoApi\Order\StructType\Flight_service_type
      */
-    public function setSeat(array $seat = []): self
+    public function setSeat(?array $seat = null): self
     {
         // validation for constraint: array
-        if ('' !== ($seatArrayErrorMessage = self::validateSeatForArrayConstraintsFromSetSeat($seat))) {
+        if ('' !== ($seatArrayErrorMessage = self::validateSeatForArrayConstraintFromSetSeat($seat))) {
             throw new InvalidArgumentException($seatArrayErrorMessage, __LINE__);
         }
         $this->seat = $seat;
@@ -1139,18 +1148,22 @@ class Flight_service_type extends AbstractStructBase
      * Get special_service_request value
      * @return \Pggns\MidocoApi\Order\StructType\Special_service_request[]
      */
-    public function getSpecial_service_request(): array
+    public function getSpecial_service_request(): ?array
     {
         return $this->{'special-service-request'};
     }
     /**
-     * This method is responsible for validating the values passed to the setSpecial_service_request method
+     * This method is responsible for validating the value(s) passed to the setSpecial_service_request method
      * This method is willingly generated in order to preserve the one-line inline validation within the setSpecial_service_request method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateSpecial_service_requestForArrayConstraintsFromSetSpecial_service_request(array $values = []): string
+    public static function validateSpecial_service_requestForArrayConstraintFromSetSpecial_service_request(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $flight_service_typeSpecial_service_requestItem) {
@@ -1172,10 +1185,10 @@ class Flight_service_type extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\Special_service_request[] $special_service_request
      * @return \Pggns\MidocoApi\Order\StructType\Flight_service_type
      */
-    public function setSpecial_service_request(array $special_service_request = []): self
+    public function setSpecial_service_request(?array $special_service_request = null): self
     {
         // validation for constraint: array
-        if ('' !== ($special_service_requestArrayErrorMessage = self::validateSpecial_service_requestForArrayConstraintsFromSetSpecial_service_request($special_service_request))) {
+        if ('' !== ($special_service_requestArrayErrorMessage = self::validateSpecial_service_requestForArrayConstraintFromSetSpecial_service_request($special_service_request))) {
             throw new InvalidArgumentException($special_service_requestArrayErrorMessage, __LINE__);
         }
         $this->special_service_request = $this->{'special-service-request'} = $special_service_request;

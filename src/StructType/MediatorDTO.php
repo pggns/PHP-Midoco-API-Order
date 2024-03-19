@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MediatorDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MediatorDTO extends AbstractStructBase
 {
     /**

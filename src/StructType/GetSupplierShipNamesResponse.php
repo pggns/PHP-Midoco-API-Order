@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetSupplierShipNamesResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetSupplierShipNamesResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetSupplierShipNamesResponse extends AbstractStructBase
      * - ref: MidocoSupplierShipName
      * @var \Pggns\MidocoApi\Order\StructType\SupplierShipNameDTO[]
      */
-    protected array $MidocoSupplierShipName = [];
+    protected ?array $MidocoSupplierShipName = null;
     /**
      * Constructor method for GetSupplierShipNamesResponse
      * @uses GetSupplierShipNamesResponse::setMidocoSupplierShipName()
      * @param \Pggns\MidocoApi\Order\StructType\SupplierShipNameDTO[] $midocoSupplierShipName
      */
-    public function __construct(array $midocoSupplierShipName = [])
+    public function __construct(?array $midocoSupplierShipName = null)
     {
         $this
             ->setMidocoSupplierShipName($midocoSupplierShipName);
@@ -36,18 +37,22 @@ class GetSupplierShipNamesResponse extends AbstractStructBase
      * Get MidocoSupplierShipName value
      * @return \Pggns\MidocoApi\Order\StructType\SupplierShipNameDTO[]
      */
-    public function getMidocoSupplierShipName(): array
+    public function getMidocoSupplierShipName(): ?array
     {
         return $this->MidocoSupplierShipName;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoSupplierShipName method
+     * This method is responsible for validating the value(s) passed to the setMidocoSupplierShipName method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoSupplierShipName method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoSupplierShipNameForArrayConstraintsFromSetMidocoSupplierShipName(array $values = []): string
+    public static function validateMidocoSupplierShipNameForArrayConstraintFromSetMidocoSupplierShipName(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getSupplierShipNamesResponseMidocoSupplierShipNameItem) {
@@ -69,10 +74,10 @@ class GetSupplierShipNamesResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\SupplierShipNameDTO[] $midocoSupplierShipName
      * @return \Pggns\MidocoApi\Order\StructType\GetSupplierShipNamesResponse
      */
-    public function setMidocoSupplierShipName(array $midocoSupplierShipName = []): self
+    public function setMidocoSupplierShipName(?array $midocoSupplierShipName = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoSupplierShipNameArrayErrorMessage = self::validateMidocoSupplierShipNameForArrayConstraintsFromSetMidocoSupplierShipName($midocoSupplierShipName))) {
+        if ('' !== ($midocoSupplierShipNameArrayErrorMessage = self::validateMidocoSupplierShipNameForArrayConstraintFromSetMidocoSupplierShipName($midocoSupplierShipName))) {
             throw new InvalidArgumentException($midocoSupplierShipNameArrayErrorMessage, __LINE__);
         }
         $this->MidocoSupplierShipName = $midocoSupplierShipName;

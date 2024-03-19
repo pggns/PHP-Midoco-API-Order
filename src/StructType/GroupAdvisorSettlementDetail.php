@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GroupAdvisorSettlementDetail StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GroupAdvisorSettlementDetail extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for InsurerDisabledUnitDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class InsurerDisabledUnitDTO extends AbstractStructBase
 {
     /**

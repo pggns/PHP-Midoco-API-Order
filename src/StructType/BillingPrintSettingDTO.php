@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for BillingPrintSettingDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class BillingPrintSettingDTO extends AbstractStructBase
 {
     /**

@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: validateAccountForPlan --- validates an account of a plan
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ValidateAccountForPlanResponse extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteMarketingKeyRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteMarketingKeyRequest extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for RevenueBookingForTravelNo StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class RevenueBookingForTravelNo extends RevenueBookingDTO
 {
     /**

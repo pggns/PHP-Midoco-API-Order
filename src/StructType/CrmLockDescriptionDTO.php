@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CrmLockDescriptionDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CrmLockDescriptionDTO extends AbstractStructBase
 {
     /**

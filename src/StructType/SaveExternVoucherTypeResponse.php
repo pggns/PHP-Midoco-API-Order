@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveExternVoucherTypeResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveExternVoucherTypeResponse extends AbstractStructBase
 {
 }

@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: save OrderLockReasonDescription --- save the lock reason description transmited as parameter. returns void
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveOrderLockReasonDescriptionResponse extends AbstractStructBase
 {
 }

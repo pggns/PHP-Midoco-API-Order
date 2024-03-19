@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for BankAccountDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class BankAccountDTO extends AbstractStructBase
 {
     /**

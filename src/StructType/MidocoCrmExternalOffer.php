@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoCrmExternalOffer StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoCrmExternalOffer extends CrmExternalOfferDTO
 {
 }

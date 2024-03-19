@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ImportMdcSettlementChargesResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ImportMdcSettlementChargesResponse extends AbstractStructBase
 {
     /**
@@ -21,7 +22,7 @@ class ImportMdcSettlementChargesResponse extends AbstractStructBase
      * - ref: MidocoMdcSettlementCharge
      * @var \Pggns\MidocoApi\Order\StructType\MdcSettlementChargeDTO[]
      */
-    protected array $MidocoMdcSettlementCharge = [];
+    protected ?array $MidocoMdcSettlementCharge = null;
     /**
      * The CompanyErrorExt
      * Meta information extracted from the WSDL
@@ -30,7 +31,7 @@ class ImportMdcSettlementChargesResponse extends AbstractStructBase
      * - ref: CompanyErrorExt
      * @var \Pggns\MidocoApi\Order\StructType\CompanyErrorTypeExt[]
      */
-    protected array $CompanyErrorExt = [];
+    protected ?array $CompanyErrorExt = null;
     /**
      * Constructor method for ImportMdcSettlementChargesResponse
      * @uses ImportMdcSettlementChargesResponse::setMidocoMdcSettlementCharge()
@@ -38,7 +39,7 @@ class ImportMdcSettlementChargesResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MdcSettlementChargeDTO[] $midocoMdcSettlementCharge
      * @param \Pggns\MidocoApi\Order\StructType\CompanyErrorTypeExt[] $companyErrorExt
      */
-    public function __construct(array $midocoMdcSettlementCharge = [], array $companyErrorExt = [])
+    public function __construct(?array $midocoMdcSettlementCharge = null, ?array $companyErrorExt = null)
     {
         $this
             ->setMidocoMdcSettlementCharge($midocoMdcSettlementCharge)
@@ -48,18 +49,22 @@ class ImportMdcSettlementChargesResponse extends AbstractStructBase
      * Get MidocoMdcSettlementCharge value
      * @return \Pggns\MidocoApi\Order\StructType\MdcSettlementChargeDTO[]
      */
-    public function getMidocoMdcSettlementCharge(): array
+    public function getMidocoMdcSettlementCharge(): ?array
     {
         return $this->MidocoMdcSettlementCharge;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoMdcSettlementCharge method
+     * This method is responsible for validating the value(s) passed to the setMidocoMdcSettlementCharge method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoMdcSettlementCharge method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoMdcSettlementChargeForArrayConstraintsFromSetMidocoMdcSettlementCharge(array $values = []): string
+    public static function validateMidocoMdcSettlementChargeForArrayConstraintFromSetMidocoMdcSettlementCharge(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $importMdcSettlementChargesResponseMidocoMdcSettlementChargeItem) {
@@ -81,10 +86,10 @@ class ImportMdcSettlementChargesResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MdcSettlementChargeDTO[] $midocoMdcSettlementCharge
      * @return \Pggns\MidocoApi\Order\StructType\ImportMdcSettlementChargesResponse
      */
-    public function setMidocoMdcSettlementCharge(array $midocoMdcSettlementCharge = []): self
+    public function setMidocoMdcSettlementCharge(?array $midocoMdcSettlementCharge = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoMdcSettlementChargeArrayErrorMessage = self::validateMidocoMdcSettlementChargeForArrayConstraintsFromSetMidocoMdcSettlementCharge($midocoMdcSettlementCharge))) {
+        if ('' !== ($midocoMdcSettlementChargeArrayErrorMessage = self::validateMidocoMdcSettlementChargeForArrayConstraintFromSetMidocoMdcSettlementCharge($midocoMdcSettlementCharge))) {
             throw new InvalidArgumentException($midocoMdcSettlementChargeArrayErrorMessage, __LINE__);
         }
         $this->MidocoMdcSettlementCharge = $midocoMdcSettlementCharge;
@@ -111,18 +116,22 @@ class ImportMdcSettlementChargesResponse extends AbstractStructBase
      * Get CompanyErrorExt value
      * @return \Pggns\MidocoApi\Order\StructType\CompanyErrorTypeExt[]
      */
-    public function getCompanyErrorExt(): array
+    public function getCompanyErrorExt(): ?array
     {
         return $this->CompanyErrorExt;
     }
     /**
-     * This method is responsible for validating the values passed to the setCompanyErrorExt method
+     * This method is responsible for validating the value(s) passed to the setCompanyErrorExt method
      * This method is willingly generated in order to preserve the one-line inline validation within the setCompanyErrorExt method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateCompanyErrorExtForArrayConstraintsFromSetCompanyErrorExt(array $values = []): string
+    public static function validateCompanyErrorExtForArrayConstraintFromSetCompanyErrorExt(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $importMdcSettlementChargesResponseCompanyErrorExtItem) {
@@ -144,10 +153,10 @@ class ImportMdcSettlementChargesResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\CompanyErrorTypeExt[] $companyErrorExt
      * @return \Pggns\MidocoApi\Order\StructType\ImportMdcSettlementChargesResponse
      */
-    public function setCompanyErrorExt(array $companyErrorExt = []): self
+    public function setCompanyErrorExt(?array $companyErrorExt = null): self
     {
         // validation for constraint: array
-        if ('' !== ($companyErrorExtArrayErrorMessage = self::validateCompanyErrorExtForArrayConstraintsFromSetCompanyErrorExt($companyErrorExt))) {
+        if ('' !== ($companyErrorExtArrayErrorMessage = self::validateCompanyErrorExtForArrayConstraintFromSetCompanyErrorExt($companyErrorExt))) {
             throw new InvalidArgumentException($companyErrorExtArrayErrorMessage, __LINE__);
         }
         $this->CompanyErrorExt = $companyErrorExt;

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SetFinishedFlagResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SetFinishedFlagResponse extends AbstractStructBase
 {
 }

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for BonusEmployeeDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class BonusEmployeeDTO extends AbstractStructBase
 {
     /**

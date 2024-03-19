@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetBookingControlDataRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetBookingControlDataRequest extends AbstractStructBase
 {
     /**

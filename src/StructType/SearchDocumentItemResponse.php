@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: SearchDocumentItem --- returns a DocumentitemDTO which contains the given ticket
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchDocumentItemResponse extends AbstractStructBase
 {
     /**

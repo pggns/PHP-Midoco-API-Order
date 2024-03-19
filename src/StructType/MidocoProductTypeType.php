@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoProductTypeType StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoProductTypeType extends ProductTypeDTO
 {
     /**
@@ -21,7 +22,7 @@ class MidocoProductTypeType extends ProductTypeDTO
      * - ref: MidocoProductTypeMediatorCondition
      * @var \Pggns\MidocoApi\Order\StructType\ProdTypesMediatorCondDTO[]
      */
-    protected array $MidocoProductTypeMediatorCondition = [];
+    protected ?array $MidocoProductTypeMediatorCondition = null;
     /**
      * The MidocoProductTypeSupplier
      * Meta information extracted from the WSDL
@@ -30,7 +31,7 @@ class MidocoProductTypeType extends ProductTypeDTO
      * - ref: MidocoProductTypeSupplier
      * @var \Pggns\MidocoApi\Order\StructType\ProductTypeSupplierDTO[]
      */
-    protected array $MidocoProductTypeSupplier = [];
+    protected ?array $MidocoProductTypeSupplier = null;
     /**
      * The VatDivisionIn
      * Meta information extracted from the WSDL
@@ -58,7 +59,7 @@ class MidocoProductTypeType extends ProductTypeDTO
      * @param \Pggns\MidocoApi\Order\StructType\VatDivisionTemplateType $vatDivisionIn
      * @param \Pggns\MidocoApi\Order\StructType\VatDivisionTemplateType $vatDivisionOut
      */
-    public function __construct(array $midocoProductTypeMediatorCondition = [], array $midocoProductTypeSupplier = [], ?\Pggns\MidocoApi\Order\StructType\VatDivisionTemplateType $vatDivisionIn = null, ?\Pggns\MidocoApi\Order\StructType\VatDivisionTemplateType $vatDivisionOut = null)
+    public function __construct(?array $midocoProductTypeMediatorCondition = null, ?array $midocoProductTypeSupplier = null, ?\Pggns\MidocoApi\Order\StructType\VatDivisionTemplateType $vatDivisionIn = null, ?\Pggns\MidocoApi\Order\StructType\VatDivisionTemplateType $vatDivisionOut = null)
     {
         $this
             ->setMidocoProductTypeMediatorCondition($midocoProductTypeMediatorCondition)
@@ -70,18 +71,22 @@ class MidocoProductTypeType extends ProductTypeDTO
      * Get MidocoProductTypeMediatorCondition value
      * @return \Pggns\MidocoApi\Order\StructType\ProdTypesMediatorCondDTO[]
      */
-    public function getMidocoProductTypeMediatorCondition(): array
+    public function getMidocoProductTypeMediatorCondition(): ?array
     {
         return $this->MidocoProductTypeMediatorCondition;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoProductTypeMediatorCondition method
+     * This method is responsible for validating the value(s) passed to the setMidocoProductTypeMediatorCondition method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoProductTypeMediatorCondition method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoProductTypeMediatorConditionForArrayConstraintsFromSetMidocoProductTypeMediatorCondition(array $values = []): string
+    public static function validateMidocoProductTypeMediatorConditionForArrayConstraintFromSetMidocoProductTypeMediatorCondition(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoProductTypeTypeMidocoProductTypeMediatorConditionItem) {
@@ -103,10 +108,10 @@ class MidocoProductTypeType extends ProductTypeDTO
      * @param \Pggns\MidocoApi\Order\StructType\ProdTypesMediatorCondDTO[] $midocoProductTypeMediatorCondition
      * @return \Pggns\MidocoApi\Order\StructType\MidocoProductTypeType
      */
-    public function setMidocoProductTypeMediatorCondition(array $midocoProductTypeMediatorCondition = []): self
+    public function setMidocoProductTypeMediatorCondition(?array $midocoProductTypeMediatorCondition = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoProductTypeMediatorConditionArrayErrorMessage = self::validateMidocoProductTypeMediatorConditionForArrayConstraintsFromSetMidocoProductTypeMediatorCondition($midocoProductTypeMediatorCondition))) {
+        if ('' !== ($midocoProductTypeMediatorConditionArrayErrorMessage = self::validateMidocoProductTypeMediatorConditionForArrayConstraintFromSetMidocoProductTypeMediatorCondition($midocoProductTypeMediatorCondition))) {
             throw new InvalidArgumentException($midocoProductTypeMediatorConditionArrayErrorMessage, __LINE__);
         }
         $this->MidocoProductTypeMediatorCondition = $midocoProductTypeMediatorCondition;
@@ -133,18 +138,22 @@ class MidocoProductTypeType extends ProductTypeDTO
      * Get MidocoProductTypeSupplier value
      * @return \Pggns\MidocoApi\Order\StructType\ProductTypeSupplierDTO[]
      */
-    public function getMidocoProductTypeSupplier(): array
+    public function getMidocoProductTypeSupplier(): ?array
     {
         return $this->MidocoProductTypeSupplier;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoProductTypeSupplier method
+     * This method is responsible for validating the value(s) passed to the setMidocoProductTypeSupplier method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoProductTypeSupplier method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoProductTypeSupplierForArrayConstraintsFromSetMidocoProductTypeSupplier(array $values = []): string
+    public static function validateMidocoProductTypeSupplierForArrayConstraintFromSetMidocoProductTypeSupplier(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoProductTypeTypeMidocoProductTypeSupplierItem) {
@@ -166,10 +175,10 @@ class MidocoProductTypeType extends ProductTypeDTO
      * @param \Pggns\MidocoApi\Order\StructType\ProductTypeSupplierDTO[] $midocoProductTypeSupplier
      * @return \Pggns\MidocoApi\Order\StructType\MidocoProductTypeType
      */
-    public function setMidocoProductTypeSupplier(array $midocoProductTypeSupplier = []): self
+    public function setMidocoProductTypeSupplier(?array $midocoProductTypeSupplier = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoProductTypeSupplierArrayErrorMessage = self::validateMidocoProductTypeSupplierForArrayConstraintsFromSetMidocoProductTypeSupplier($midocoProductTypeSupplier))) {
+        if ('' !== ($midocoProductTypeSupplierArrayErrorMessage = self::validateMidocoProductTypeSupplierForArrayConstraintFromSetMidocoProductTypeSupplier($midocoProductTypeSupplier))) {
             throw new InvalidArgumentException($midocoProductTypeSupplierArrayErrorMessage, __LINE__);
         }
         $this->MidocoProductTypeSupplier = $midocoProductTypeSupplier;

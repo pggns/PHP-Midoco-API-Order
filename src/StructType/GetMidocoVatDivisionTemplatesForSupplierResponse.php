@@ -12,6 +12,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetMidocoVatDivisionTemplatesForSupplierResponse extends AbstractStructBase
 {
     /**
@@ -22,13 +23,13 @@ class GetMidocoVatDivisionTemplatesForSupplierResponse extends AbstractStructBas
      * - ref: MidocoVatDivisionTemplate
      * @var \Pggns\MidocoApi\Order\StructType\VatDivisionTemplateType[]
      */
-    protected array $MidocoVatDivisionTemplate = [];
+    protected ?array $MidocoVatDivisionTemplate = null;
     /**
      * Constructor method for GetMidocoVatDivisionTemplatesForSupplierResponse
      * @uses GetMidocoVatDivisionTemplatesForSupplierResponse::setMidocoVatDivisionTemplate()
      * @param \Pggns\MidocoApi\Order\StructType\VatDivisionTemplateType[] $midocoVatDivisionTemplate
      */
-    public function __construct(array $midocoVatDivisionTemplate = [])
+    public function __construct(?array $midocoVatDivisionTemplate = null)
     {
         $this
             ->setMidocoVatDivisionTemplate($midocoVatDivisionTemplate);
@@ -37,18 +38,22 @@ class GetMidocoVatDivisionTemplatesForSupplierResponse extends AbstractStructBas
      * Get MidocoVatDivisionTemplate value
      * @return \Pggns\MidocoApi\Order\StructType\VatDivisionTemplateType[]
      */
-    public function getMidocoVatDivisionTemplate(): array
+    public function getMidocoVatDivisionTemplate(): ?array
     {
         return $this->MidocoVatDivisionTemplate;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoVatDivisionTemplate method
+     * This method is responsible for validating the value(s) passed to the setMidocoVatDivisionTemplate method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoVatDivisionTemplate method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoVatDivisionTemplateForArrayConstraintsFromSetMidocoVatDivisionTemplate(array $values = []): string
+    public static function validateMidocoVatDivisionTemplateForArrayConstraintFromSetMidocoVatDivisionTemplate(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getMidocoVatDivisionTemplatesForSupplierResponseMidocoVatDivisionTemplateItem) {
@@ -70,10 +75,10 @@ class GetMidocoVatDivisionTemplatesForSupplierResponse extends AbstractStructBas
      * @param \Pggns\MidocoApi\Order\StructType\VatDivisionTemplateType[] $midocoVatDivisionTemplate
      * @return \Pggns\MidocoApi\Order\StructType\GetMidocoVatDivisionTemplatesForSupplierResponse
      */
-    public function setMidocoVatDivisionTemplate(array $midocoVatDivisionTemplate = []): self
+    public function setMidocoVatDivisionTemplate(?array $midocoVatDivisionTemplate = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoVatDivisionTemplateArrayErrorMessage = self::validateMidocoVatDivisionTemplateForArrayConstraintsFromSetMidocoVatDivisionTemplate($midocoVatDivisionTemplate))) {
+        if ('' !== ($midocoVatDivisionTemplateArrayErrorMessage = self::validateMidocoVatDivisionTemplateForArrayConstraintFromSetMidocoVatDivisionTemplate($midocoVatDivisionTemplate))) {
             throw new InvalidArgumentException($midocoVatDivisionTemplateArrayErrorMessage, __LINE__);
         }
         $this->MidocoVatDivisionTemplate = $midocoVatDivisionTemplate;

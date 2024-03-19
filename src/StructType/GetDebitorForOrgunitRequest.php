@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetDebitorForOrgunitRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetDebitorForOrgunitRequest extends AbstractStructBase
 {
     /**

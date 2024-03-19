@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoOrgTemplateTextInfo StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoOrgTemplateTextInfo extends AbstractStructBase
 {
     /**

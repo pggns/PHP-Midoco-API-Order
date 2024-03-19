@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoPreparedRevenueBooking StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoPreparedRevenueBooking extends PreparedRevenueBookingDTO
 {
     /**

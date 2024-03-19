@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SearchBillingDunningRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchBillingDunningRequest extends AbstractStructBase
 {
     /**

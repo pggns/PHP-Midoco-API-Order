@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetSupplierDisabledItemTypesResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetSupplierDisabledItemTypesResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetSupplierDisabledItemTypesResponse extends AbstractStructBase
      * - ref: MidocoSupplierDisabledItemType
      * @var \Pggns\MidocoApi\Order\StructType\MidocoSupplierDisabledItemType[]
      */
-    protected array $MidocoSupplierDisabledItemType = [];
+    protected ?array $MidocoSupplierDisabledItemType = null;
     /**
      * Constructor method for GetSupplierDisabledItemTypesResponse
      * @uses GetSupplierDisabledItemTypesResponse::setMidocoSupplierDisabledItemType()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSupplierDisabledItemType[] $midocoSupplierDisabledItemType
      */
-    public function __construct(array $midocoSupplierDisabledItemType = [])
+    public function __construct(?array $midocoSupplierDisabledItemType = null)
     {
         $this
             ->setMidocoSupplierDisabledItemType($midocoSupplierDisabledItemType);
@@ -36,18 +37,22 @@ class GetSupplierDisabledItemTypesResponse extends AbstractStructBase
      * Get MidocoSupplierDisabledItemType value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSupplierDisabledItemType[]
      */
-    public function getMidocoSupplierDisabledItemType(): array
+    public function getMidocoSupplierDisabledItemType(): ?array
     {
         return $this->MidocoSupplierDisabledItemType;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoSupplierDisabledItemType method
+     * This method is responsible for validating the value(s) passed to the setMidocoSupplierDisabledItemType method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoSupplierDisabledItemType method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoSupplierDisabledItemTypeForArrayConstraintsFromSetMidocoSupplierDisabledItemType(array $values = []): string
+    public static function validateMidocoSupplierDisabledItemTypeForArrayConstraintFromSetMidocoSupplierDisabledItemType(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getSupplierDisabledItemTypesResponseMidocoSupplierDisabledItemTypeItem) {
@@ -69,10 +74,10 @@ class GetSupplierDisabledItemTypesResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSupplierDisabledItemType[] $midocoSupplierDisabledItemType
      * @return \Pggns\MidocoApi\Order\StructType\GetSupplierDisabledItemTypesResponse
      */
-    public function setMidocoSupplierDisabledItemType(array $midocoSupplierDisabledItemType = []): self
+    public function setMidocoSupplierDisabledItemType(?array $midocoSupplierDisabledItemType = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoSupplierDisabledItemTypeArrayErrorMessage = self::validateMidocoSupplierDisabledItemTypeForArrayConstraintsFromSetMidocoSupplierDisabledItemType($midocoSupplierDisabledItemType))) {
+        if ('' !== ($midocoSupplierDisabledItemTypeArrayErrorMessage = self::validateMidocoSupplierDisabledItemTypeForArrayConstraintFromSetMidocoSupplierDisabledItemType($midocoSupplierDisabledItemType))) {
             throw new InvalidArgumentException($midocoSupplierDisabledItemTypeArrayErrorMessage, __LINE__);
         }
         $this->MidocoSupplierDisabledItemType = $midocoSupplierDisabledItemType;

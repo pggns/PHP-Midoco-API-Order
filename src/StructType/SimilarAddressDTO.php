@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SimilarAddressDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SimilarAddressDTO extends CrmAddressDTO
 {
     /**

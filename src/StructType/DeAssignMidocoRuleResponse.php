@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeAssignMidocoRuleResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeAssignMidocoRuleResponse extends AbstractStructBase
 {
 }

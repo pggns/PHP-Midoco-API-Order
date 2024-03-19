@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MakeOrderInvoiceResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MakeOrderInvoiceResponse extends AbstractStructBase
 {
     /**
@@ -34,7 +35,7 @@ class MakeOrderInvoiceResponse extends AbstractStructBase
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\MidocoInvoiceType[]
      */
-    protected array $VoidInvoices = [];
+    protected ?array $VoidInvoices = null;
     /**
      * The VoidPartialInvoice
      * Meta information extracted from the WSDL
@@ -42,7 +43,7 @@ class MakeOrderInvoiceResponse extends AbstractStructBase
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\MidocoInvoiceType[]
      */
-    protected array $VoidPartialInvoice = [];
+    protected ?array $VoidPartialInvoice = null;
     /**
      * Constructor method for MakeOrderInvoiceResponse
      * @uses MakeOrderInvoiceResponse::setMidocoInvoice()
@@ -54,7 +55,7 @@ class MakeOrderInvoiceResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoInvoiceType[] $voidInvoices
      * @param \Pggns\MidocoApi\Order\StructType\MidocoInvoiceType[] $voidPartialInvoice
      */
-    public function __construct(?\Pggns\MidocoApi\Order\StructType\MidocoInvoice $midocoInvoice = null, ?\Pggns\MidocoApi\Order\StructType\MidocoInvoiceType $voidInvoice = null, array $voidInvoices = [], array $voidPartialInvoice = [])
+    public function __construct(?\Pggns\MidocoApi\Order\StructType\MidocoInvoice $midocoInvoice = null, ?\Pggns\MidocoApi\Order\StructType\MidocoInvoiceType $voidInvoice = null, ?array $voidInvoices = null, ?array $voidPartialInvoice = null)
     {
         $this
             ->setMidocoInvoice($midocoInvoice)
@@ -104,18 +105,22 @@ class MakeOrderInvoiceResponse extends AbstractStructBase
      * Get VoidInvoices value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoInvoiceType[]
      */
-    public function getVoidInvoices(): array
+    public function getVoidInvoices(): ?array
     {
         return $this->VoidInvoices;
     }
     /**
-     * This method is responsible for validating the values passed to the setVoidInvoices method
+     * This method is responsible for validating the value(s) passed to the setVoidInvoices method
      * This method is willingly generated in order to preserve the one-line inline validation within the setVoidInvoices method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateVoidInvoicesForArrayConstraintsFromSetVoidInvoices(array $values = []): string
+    public static function validateVoidInvoicesForArrayConstraintFromSetVoidInvoices(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $makeOrderInvoiceResponseVoidInvoicesItem) {
@@ -137,10 +142,10 @@ class MakeOrderInvoiceResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoInvoiceType[] $voidInvoices
      * @return \Pggns\MidocoApi\Order\StructType\MakeOrderInvoiceResponse
      */
-    public function setVoidInvoices(array $voidInvoices = []): self
+    public function setVoidInvoices(?array $voidInvoices = null): self
     {
         // validation for constraint: array
-        if ('' !== ($voidInvoicesArrayErrorMessage = self::validateVoidInvoicesForArrayConstraintsFromSetVoidInvoices($voidInvoices))) {
+        if ('' !== ($voidInvoicesArrayErrorMessage = self::validateVoidInvoicesForArrayConstraintFromSetVoidInvoices($voidInvoices))) {
             throw new InvalidArgumentException($voidInvoicesArrayErrorMessage, __LINE__);
         }
         $this->VoidInvoices = $voidInvoices;
@@ -167,18 +172,22 @@ class MakeOrderInvoiceResponse extends AbstractStructBase
      * Get VoidPartialInvoice value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoInvoiceType[]
      */
-    public function getVoidPartialInvoice(): array
+    public function getVoidPartialInvoice(): ?array
     {
         return $this->VoidPartialInvoice;
     }
     /**
-     * This method is responsible for validating the values passed to the setVoidPartialInvoice method
+     * This method is responsible for validating the value(s) passed to the setVoidPartialInvoice method
      * This method is willingly generated in order to preserve the one-line inline validation within the setVoidPartialInvoice method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateVoidPartialInvoiceForArrayConstraintsFromSetVoidPartialInvoice(array $values = []): string
+    public static function validateVoidPartialInvoiceForArrayConstraintFromSetVoidPartialInvoice(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $makeOrderInvoiceResponseVoidPartialInvoiceItem) {
@@ -200,10 +209,10 @@ class MakeOrderInvoiceResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoInvoiceType[] $voidPartialInvoice
      * @return \Pggns\MidocoApi\Order\StructType\MakeOrderInvoiceResponse
      */
-    public function setVoidPartialInvoice(array $voidPartialInvoice = []): self
+    public function setVoidPartialInvoice(?array $voidPartialInvoice = null): self
     {
         // validation for constraint: array
-        if ('' !== ($voidPartialInvoiceArrayErrorMessage = self::validateVoidPartialInvoiceForArrayConstraintsFromSetVoidPartialInvoice($voidPartialInvoice))) {
+        if ('' !== ($voidPartialInvoiceArrayErrorMessage = self::validateVoidPartialInvoiceForArrayConstraintFromSetVoidPartialInvoice($voidPartialInvoice))) {
             throw new InvalidArgumentException($voidPartialInvoiceArrayErrorMessage, __LINE__);
         }
         $this->VoidPartialInvoice = $voidPartialInvoice;

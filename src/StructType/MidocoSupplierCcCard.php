@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoSupplierCcCard StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoSupplierCcCard extends SupplierCcCardDTO
 {
     /**

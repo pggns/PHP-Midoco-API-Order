@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoAgencySettlementLevelBilling StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoAgencySettlementLevelBilling extends AgencyStlmntLevelBillDTO
 {
     /**

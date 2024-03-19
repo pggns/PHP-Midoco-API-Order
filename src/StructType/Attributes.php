@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for attributes StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class Attributes extends AbstractStructBase
 {
     /**
@@ -21,7 +22,7 @@ class Attributes extends AbstractStructBase
      * - ref: attributetype
      * @var \Pggns\MidocoApi\Order\StructType\Attributetype[]
      */
-    protected array $attributetype = [];
+    protected ?array $attributetype = null;
     /**
      * The type
      * @var string|null
@@ -41,7 +42,7 @@ class Attributes extends AbstractStructBase
      * @param string $type
      * @param int $count
      */
-    public function __construct(array $attributetype = [], ?string $type = null, ?int $count = null)
+    public function __construct(?array $attributetype = null, ?string $type = null, ?int $count = null)
     {
         $this
             ->setAttributetype($attributetype)
@@ -52,18 +53,22 @@ class Attributes extends AbstractStructBase
      * Get attributetype value
      * @return \Pggns\MidocoApi\Order\StructType\Attributetype[]
      */
-    public function getAttributetype(): array
+    public function getAttributetype(): ?array
     {
         return $this->attributetype;
     }
     /**
-     * This method is responsible for validating the values passed to the setAttributetype method
+     * This method is responsible for validating the value(s) passed to the setAttributetype method
      * This method is willingly generated in order to preserve the one-line inline validation within the setAttributetype method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateAttributetypeForArrayConstraintsFromSetAttributetype(array $values = []): string
+    public static function validateAttributetypeForArrayConstraintFromSetAttributetype(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $attributesAttributetypeItem) {
@@ -85,10 +90,10 @@ class Attributes extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\Attributetype[] $attributetype
      * @return \Pggns\MidocoApi\Order\StructType\Attributes
      */
-    public function setAttributetype(array $attributetype = []): self
+    public function setAttributetype(?array $attributetype = null): self
     {
         // validation for constraint: array
-        if ('' !== ($attributetypeArrayErrorMessage = self::validateAttributetypeForArrayConstraintsFromSetAttributetype($attributetype))) {
+        if ('' !== ($attributetypeArrayErrorMessage = self::validateAttributetypeForArrayConstraintFromSetAttributetype($attributetype))) {
             throw new InvalidArgumentException($attributetypeArrayErrorMessage, __LINE__);
         }
         $this->attributetype = $attributetype;

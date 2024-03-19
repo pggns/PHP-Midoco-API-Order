@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ListCashBookItemTypesResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ListCashBookItemTypesResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class ListCashBookItemTypesResponse extends AbstractStructBase
      * - ref: MidocoCashBookItemType
      * @var \Pggns\MidocoApi\Order\StructType\MidocoCashBookItemType[]
      */
-    protected array $MidocoCashBookItemType = [];
+    protected ?array $MidocoCashBookItemType = null;
     /**
      * Constructor method for ListCashBookItemTypesResponse
      * @uses ListCashBookItemTypesResponse::setMidocoCashBookItemType()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoCashBookItemType[] $midocoCashBookItemType
      */
-    public function __construct(array $midocoCashBookItemType = [])
+    public function __construct(?array $midocoCashBookItemType = null)
     {
         $this
             ->setMidocoCashBookItemType($midocoCashBookItemType);
@@ -36,18 +37,22 @@ class ListCashBookItemTypesResponse extends AbstractStructBase
      * Get MidocoCashBookItemType value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoCashBookItemType[]
      */
-    public function getMidocoCashBookItemType(): array
+    public function getMidocoCashBookItemType(): ?array
     {
         return $this->MidocoCashBookItemType;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoCashBookItemType method
+     * This method is responsible for validating the value(s) passed to the setMidocoCashBookItemType method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoCashBookItemType method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoCashBookItemTypeForArrayConstraintsFromSetMidocoCashBookItemType(array $values = []): string
+    public static function validateMidocoCashBookItemTypeForArrayConstraintFromSetMidocoCashBookItemType(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $listCashBookItemTypesResponseMidocoCashBookItemTypeItem) {
@@ -69,10 +74,10 @@ class ListCashBookItemTypesResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoCashBookItemType[] $midocoCashBookItemType
      * @return \Pggns\MidocoApi\Order\StructType\ListCashBookItemTypesResponse
      */
-    public function setMidocoCashBookItemType(array $midocoCashBookItemType = []): self
+    public function setMidocoCashBookItemType(?array $midocoCashBookItemType = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoCashBookItemTypeArrayErrorMessage = self::validateMidocoCashBookItemTypeForArrayConstraintsFromSetMidocoCashBookItemType($midocoCashBookItemType))) {
+        if ('' !== ($midocoCashBookItemTypeArrayErrorMessage = self::validateMidocoCashBookItemTypeForArrayConstraintFromSetMidocoCashBookItemType($midocoCashBookItemType))) {
             throw new InvalidArgumentException($midocoCashBookItemTypeArrayErrorMessage, __LINE__);
         }
         $this->MidocoCashBookItemType = $midocoCashBookItemType;

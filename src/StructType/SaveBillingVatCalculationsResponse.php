@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: saveBillingVatCalculations --- generates and saves the recs in billing_vat_calculations table
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveBillingVatCalculationsResponse extends AbstractStructBase
 {
     /**
@@ -23,13 +24,13 @@ class SaveBillingVatCalculationsResponse extends AbstractStructBase
      * - ref: MidocoBillingVatCalculation
      * @var \Pggns\MidocoApi\Order\StructType\MidocoBillingVatCalculation[]
      */
-    protected array $MidocoBillingVatCalculation = [];
+    protected ?array $MidocoBillingVatCalculation = null;
     /**
      * Constructor method for SaveBillingVatCalculationsResponse
      * @uses SaveBillingVatCalculationsResponse::setMidocoBillingVatCalculation()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoBillingVatCalculation[] $midocoBillingVatCalculation
      */
-    public function __construct(array $midocoBillingVatCalculation = [])
+    public function __construct(?array $midocoBillingVatCalculation = null)
     {
         $this
             ->setMidocoBillingVatCalculation($midocoBillingVatCalculation);
@@ -38,18 +39,22 @@ class SaveBillingVatCalculationsResponse extends AbstractStructBase
      * Get MidocoBillingVatCalculation value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoBillingVatCalculation[]
      */
-    public function getMidocoBillingVatCalculation(): array
+    public function getMidocoBillingVatCalculation(): ?array
     {
         return $this->MidocoBillingVatCalculation;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoBillingVatCalculation method
+     * This method is responsible for validating the value(s) passed to the setMidocoBillingVatCalculation method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoBillingVatCalculation method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoBillingVatCalculationForArrayConstraintsFromSetMidocoBillingVatCalculation(array $values = []): string
+    public static function validateMidocoBillingVatCalculationForArrayConstraintFromSetMidocoBillingVatCalculation(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $saveBillingVatCalculationsResponseMidocoBillingVatCalculationItem) {
@@ -71,10 +76,10 @@ class SaveBillingVatCalculationsResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoBillingVatCalculation[] $midocoBillingVatCalculation
      * @return \Pggns\MidocoApi\Order\StructType\SaveBillingVatCalculationsResponse
      */
-    public function setMidocoBillingVatCalculation(array $midocoBillingVatCalculation = []): self
+    public function setMidocoBillingVatCalculation(?array $midocoBillingVatCalculation = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoBillingVatCalculationArrayErrorMessage = self::validateMidocoBillingVatCalculationForArrayConstraintsFromSetMidocoBillingVatCalculation($midocoBillingVatCalculation))) {
+        if ('' !== ($midocoBillingVatCalculationArrayErrorMessage = self::validateMidocoBillingVatCalculationForArrayConstraintFromSetMidocoBillingVatCalculation($midocoBillingVatCalculation))) {
             throw new InvalidArgumentException($midocoBillingVatCalculationArrayErrorMessage, __LINE__);
         }
         $this->MidocoBillingVatCalculation = $midocoBillingVatCalculation;

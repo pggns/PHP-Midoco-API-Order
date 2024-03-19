@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for PaymentProviderEntryType StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class PaymentProviderEntryType extends EntryDTO
 {
     /**

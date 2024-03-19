@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoCalendarEvent StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoCalendarEvent extends AbstractStructBase
 {
     /**

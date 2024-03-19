@@ -16,6 +16,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * stored correctly, otherwise this information is ignored | optional attributes placed at the level of this package in midoco order. Any attribute has to be pre-defined in midoco to be stored correctly, otherwise this information is ignored
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class Attribute extends AbstractStructBase
 {
     /**

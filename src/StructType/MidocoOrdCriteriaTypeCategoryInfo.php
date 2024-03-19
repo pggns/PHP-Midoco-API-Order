@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoOrdCriteriaTypeCategoryInfo StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoOrdCriteriaTypeCategoryInfo extends OrdCritTypeCatDTO
 {
     /**

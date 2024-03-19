@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for PriceHistoryDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class PriceHistoryDTO extends AbstractStructBase
 {
     /**

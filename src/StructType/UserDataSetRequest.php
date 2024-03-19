@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for UserDataSetRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class UserDataSetRequest extends AbstractStructBase
 {
     /**

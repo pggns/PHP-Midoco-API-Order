@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetSupplierDocumentsResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetSupplierDocumentsResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetSupplierDocumentsResponse extends AbstractStructBase
      * - ref: MidocoSupplierDocument
      * @var \Pggns\MidocoApi\Order\StructType\MidocoSupplierDocument[]
      */
-    protected array $MidocoSupplierDocument = [];
+    protected ?array $MidocoSupplierDocument = null;
     /**
      * Constructor method for GetSupplierDocumentsResponse
      * @uses GetSupplierDocumentsResponse::setMidocoSupplierDocument()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSupplierDocument[] $midocoSupplierDocument
      */
-    public function __construct(array $midocoSupplierDocument = [])
+    public function __construct(?array $midocoSupplierDocument = null)
     {
         $this
             ->setMidocoSupplierDocument($midocoSupplierDocument);
@@ -36,18 +37,22 @@ class GetSupplierDocumentsResponse extends AbstractStructBase
      * Get MidocoSupplierDocument value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSupplierDocument[]
      */
-    public function getMidocoSupplierDocument(): array
+    public function getMidocoSupplierDocument(): ?array
     {
         return $this->MidocoSupplierDocument;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoSupplierDocument method
+     * This method is responsible for validating the value(s) passed to the setMidocoSupplierDocument method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoSupplierDocument method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoSupplierDocumentForArrayConstraintsFromSetMidocoSupplierDocument(array $values = []): string
+    public static function validateMidocoSupplierDocumentForArrayConstraintFromSetMidocoSupplierDocument(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getSupplierDocumentsResponseMidocoSupplierDocumentItem) {
@@ -69,10 +74,10 @@ class GetSupplierDocumentsResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSupplierDocument[] $midocoSupplierDocument
      * @return \Pggns\MidocoApi\Order\StructType\GetSupplierDocumentsResponse
      */
-    public function setMidocoSupplierDocument(array $midocoSupplierDocument = []): self
+    public function setMidocoSupplierDocument(?array $midocoSupplierDocument = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoSupplierDocumentArrayErrorMessage = self::validateMidocoSupplierDocumentForArrayConstraintsFromSetMidocoSupplierDocument($midocoSupplierDocument))) {
+        if ('' !== ($midocoSupplierDocumentArrayErrorMessage = self::validateMidocoSupplierDocumentForArrayConstraintFromSetMidocoSupplierDocument($midocoSupplierDocument))) {
             throw new InvalidArgumentException($midocoSupplierDocumentArrayErrorMessage, __LINE__);
         }
         $this->MidocoSupplierDocument = $midocoSupplierDocument;

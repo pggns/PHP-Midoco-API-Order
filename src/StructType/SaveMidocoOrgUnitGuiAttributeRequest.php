@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveMidocoOrgUnitGuiAttributeRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveMidocoOrgUnitGuiAttributeRequest extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CheckMediatorFormularRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CheckMediatorFormularRequest extends AbstractStructBase
 {
     /**

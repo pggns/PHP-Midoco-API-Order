@@ -11,22 +11,19 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetTssClient4UnitRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetTssClient4UnitRequest extends AbstractStructBase
 {
     /**
      * The unitName
-     * Meta information extracted from the WSDL
-     * - minOccurs: 1
-     * @var string
+     * @var string|null
      */
-    protected string $unitName;
+    protected ?string $unitName = null;
     /**
      * The tssSystem
-     * Meta information extracted from the WSDL
-     * - minOccurs: 1
-     * @var string
+     * @var string|null
      */
-    protected string $tssSystem;
+    protected ?string $tssSystem = null;
     /**
      * The tssId
      * @var string|null
@@ -41,7 +38,7 @@ class GetTssClient4UnitRequest extends AbstractStructBase
      * @param string $tssSystem
      * @param string $tssId
      */
-    public function __construct(string $unitName, string $tssSystem, ?string $tssId = null)
+    public function __construct(?string $unitName = null, ?string $tssSystem = null, ?string $tssId = null)
     {
         $this
             ->setUnitName($unitName)
@@ -50,9 +47,9 @@ class GetTssClient4UnitRequest extends AbstractStructBase
     }
     /**
      * Get unitName value
-     * @return string
+     * @return string|null
      */
-    public function getUnitName(): string
+    public function getUnitName(): ?string
     {
         return $this->unitName;
     }
@@ -61,7 +58,7 @@ class GetTssClient4UnitRequest extends AbstractStructBase
      * @param string $unitName
      * @return \Pggns\MidocoApi\Order\StructType\GetTssClient4UnitRequest
      */
-    public function setUnitName(string $unitName): self
+    public function setUnitName(?string $unitName = null): self
     {
         // validation for constraint: string
         if (!is_null($unitName) && !is_string($unitName)) {
@@ -73,9 +70,9 @@ class GetTssClient4UnitRequest extends AbstractStructBase
     }
     /**
      * Get tssSystem value
-     * @return string
+     * @return string|null
      */
-    public function getTssSystem(): string
+    public function getTssSystem(): ?string
     {
         return $this->tssSystem;
     }
@@ -84,7 +81,7 @@ class GetTssClient4UnitRequest extends AbstractStructBase
      * @param string $tssSystem
      * @return \Pggns\MidocoApi\Order\StructType\GetTssClient4UnitRequest
      */
-    public function setTssSystem(string $tssSystem): self
+    public function setTssSystem(?string $tssSystem = null): self
     {
         // validation for constraint: string
         if (!is_null($tssSystem) && !is_string($tssSystem)) {

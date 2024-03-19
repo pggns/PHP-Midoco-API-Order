@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoTravelNumber StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoTravelNumber extends TravelNumberDTO
 {
     /**

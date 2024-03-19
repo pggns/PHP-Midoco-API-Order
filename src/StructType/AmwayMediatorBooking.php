@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for AmwayMediatorBooking StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class AmwayMediatorBooking extends AbstractStructBase
 {
     /**

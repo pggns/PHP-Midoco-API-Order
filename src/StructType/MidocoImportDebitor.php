@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoImportDebitor StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoImportDebitor extends AbstractStructBase
 {
     /**

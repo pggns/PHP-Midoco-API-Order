@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoJasperForRoles StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoJasperForRoles extends AbstractStructBase
 {
     /**
@@ -21,7 +22,7 @@ class MidocoJasperForRoles extends AbstractStructBase
      * - ref: MidocoJasperReport
      * @var \Pggns\MidocoApi\Order\StructType\MidocoJasperReport[]
      */
-    protected array $MidocoJasperReport = [];
+    protected ?array $MidocoJasperReport = null;
     /**
      * The MidocoAccessJasperReport
      * Meta information extracted from the WSDL
@@ -29,7 +30,7 @@ class MidocoJasperForRoles extends AbstractStructBase
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\MidocoAccessJasperReport[]
      */
-    protected array $MidocoAccessJasperReport = [];
+    protected ?array $MidocoAccessJasperReport = null;
     /**
      * Constructor method for MidocoJasperForRoles
      * @uses MidocoJasperForRoles::setMidocoJasperReport()
@@ -37,7 +38,7 @@ class MidocoJasperForRoles extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoJasperReport[] $midocoJasperReport
      * @param \Pggns\MidocoApi\Order\StructType\MidocoAccessJasperReport[] $midocoAccessJasperReport
      */
-    public function __construct(array $midocoJasperReport = [], array $midocoAccessJasperReport = [])
+    public function __construct(?array $midocoJasperReport = null, ?array $midocoAccessJasperReport = null)
     {
         $this
             ->setMidocoJasperReport($midocoJasperReport)
@@ -47,18 +48,22 @@ class MidocoJasperForRoles extends AbstractStructBase
      * Get MidocoJasperReport value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoJasperReport[]
      */
-    public function getMidocoJasperReport(): array
+    public function getMidocoJasperReport(): ?array
     {
         return $this->MidocoJasperReport;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoJasperReport method
+     * This method is responsible for validating the value(s) passed to the setMidocoJasperReport method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoJasperReport method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoJasperReportForArrayConstraintsFromSetMidocoJasperReport(array $values = []): string
+    public static function validateMidocoJasperReportForArrayConstraintFromSetMidocoJasperReport(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoJasperForRolesMidocoJasperReportItem) {
@@ -80,10 +85,10 @@ class MidocoJasperForRoles extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoJasperReport[] $midocoJasperReport
      * @return \Pggns\MidocoApi\Order\StructType\MidocoJasperForRoles
      */
-    public function setMidocoJasperReport(array $midocoJasperReport = []): self
+    public function setMidocoJasperReport(?array $midocoJasperReport = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoJasperReportArrayErrorMessage = self::validateMidocoJasperReportForArrayConstraintsFromSetMidocoJasperReport($midocoJasperReport))) {
+        if ('' !== ($midocoJasperReportArrayErrorMessage = self::validateMidocoJasperReportForArrayConstraintFromSetMidocoJasperReport($midocoJasperReport))) {
             throw new InvalidArgumentException($midocoJasperReportArrayErrorMessage, __LINE__);
         }
         $this->MidocoJasperReport = $midocoJasperReport;
@@ -110,18 +115,22 @@ class MidocoJasperForRoles extends AbstractStructBase
      * Get MidocoAccessJasperReport value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoAccessJasperReport[]
      */
-    public function getMidocoAccessJasperReport(): array
+    public function getMidocoAccessJasperReport(): ?array
     {
         return $this->MidocoAccessJasperReport;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoAccessJasperReport method
+     * This method is responsible for validating the value(s) passed to the setMidocoAccessJasperReport method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoAccessJasperReport method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoAccessJasperReportForArrayConstraintsFromSetMidocoAccessJasperReport(array $values = []): string
+    public static function validateMidocoAccessJasperReportForArrayConstraintFromSetMidocoAccessJasperReport(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoJasperForRolesMidocoAccessJasperReportItem) {
@@ -143,10 +152,10 @@ class MidocoJasperForRoles extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoAccessJasperReport[] $midocoAccessJasperReport
      * @return \Pggns\MidocoApi\Order\StructType\MidocoJasperForRoles
      */
-    public function setMidocoAccessJasperReport(array $midocoAccessJasperReport = []): self
+    public function setMidocoAccessJasperReport(?array $midocoAccessJasperReport = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoAccessJasperReportArrayErrorMessage = self::validateMidocoAccessJasperReportForArrayConstraintsFromSetMidocoAccessJasperReport($midocoAccessJasperReport))) {
+        if ('' !== ($midocoAccessJasperReportArrayErrorMessage = self::validateMidocoAccessJasperReportForArrayConstraintFromSetMidocoAccessJasperReport($midocoAccessJasperReport))) {
             throw new InvalidArgumentException($midocoAccessJasperReportArrayErrorMessage, __LINE__);
         }
         $this->MidocoAccessJasperReport = $midocoAccessJasperReport;

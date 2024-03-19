@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - type: SellItemAttributeDTO
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoSellItemAttribute extends AbstractStructBase
 {
     /**

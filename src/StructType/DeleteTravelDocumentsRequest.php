@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteTravelDocumentsRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteTravelDocumentsRequest extends AbstractStructBase
 {
     /**
@@ -19,13 +20,13 @@ class DeleteTravelDocumentsRequest extends AbstractStructBase
      * - maxOccurs: unbounded
      * @var int[]
      */
-    protected array $tdId = [];
+    protected ?array $tdId = null;
     /**
      * Constructor method for DeleteTravelDocumentsRequest
      * @uses DeleteTravelDocumentsRequest::setTdId()
      * @param int[] $tdId
      */
-    public function __construct(array $tdId = [])
+    public function __construct(?array $tdId = null)
     {
         $this
             ->setTdId($tdId);
@@ -34,18 +35,22 @@ class DeleteTravelDocumentsRequest extends AbstractStructBase
      * Get tdId value
      * @return int[]
      */
-    public function getTdId(): array
+    public function getTdId(): ?array
     {
         return $this->tdId;
     }
     /**
-     * This method is responsible for validating the values passed to the setTdId method
+     * This method is responsible for validating the value(s) passed to the setTdId method
      * This method is willingly generated in order to preserve the one-line inline validation within the setTdId method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateTdIdForArrayConstraintsFromSetTdId(array $values = []): string
+    public static function validateTdIdForArrayConstraintFromSetTdId(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $deleteTravelDocumentsRequestTdIdItem) {
@@ -67,10 +72,10 @@ class DeleteTravelDocumentsRequest extends AbstractStructBase
      * @param int[] $tdId
      * @return \Pggns\MidocoApi\Order\StructType\DeleteTravelDocumentsRequest
      */
-    public function setTdId(array $tdId = []): self
+    public function setTdId(?array $tdId = null): self
     {
         // validation for constraint: array
-        if ('' !== ($tdIdArrayErrorMessage = self::validateTdIdForArrayConstraintsFromSetTdId($tdId))) {
+        if ('' !== ($tdIdArrayErrorMessage = self::validateTdIdForArrayConstraintFromSetTdId($tdId))) {
             throw new InvalidArgumentException($tdIdArrayErrorMessage, __LINE__);
         }
         $this->tdId = $tdId;

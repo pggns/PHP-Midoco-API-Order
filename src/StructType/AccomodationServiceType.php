@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for accomodationServiceType StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class AccomodationServiceType extends AbstractStructBase
 {
     /**
@@ -201,7 +202,7 @@ class AccomodationServiceType extends AbstractStructBase
      * - minOccurs: 0
      * @var int[]
      */
-    protected array $travelerRefId = [];
+    protected ?array $travelerRefId = null;
     /**
      * The chain
      * @var string|null
@@ -324,7 +325,7 @@ class AccomodationServiceType extends AbstractStructBase
      * @param string $sourceExtId
      * @param string $airportCode
      */
-    public function __construct(int $position, ?string $serviceCode = null, ?string $serviceName = null, ?string $serviceDescription = null, ?string $accomodation = null, ?string $accomodationDescription = null, ?string $catering = null, ?string $cateringDescription = null, ?string $locationDescription = null, ?string $allocation = null, ?string $noOfServices = null, ?int $noOfNights = null, ?string $startDate = null, ?string $endDate = null, ?string $serviceStatus = null, ?string $personAssignment = null, ?float $totalPrice = null, ?string $currency = 'EUR', ?bool $vatIncluded = false, ?string $country_description = null, ?string $transfer_description = null, ?string $address_line1 = null, ?string $address_line2 = null, ?string $address_line3 = null, ?string $address_line4 = null, ?string $emergency_Number = null, ?string $corporateDiscount = null, array $travelerRefId = [], ?string $chain = null, ?string $category = null, ?string $bookingId = null, ?string $bookingDate = null, ?string $supplierId = null, ?string $extId = null, ?string $sourceSystem = null, ?string $sourceExtId = null, ?string $airportCode = null)
+    public function __construct(int $position, ?string $serviceCode = null, ?string $serviceName = null, ?string $serviceDescription = null, ?string $accomodation = null, ?string $accomodationDescription = null, ?string $catering = null, ?string $cateringDescription = null, ?string $locationDescription = null, ?string $allocation = null, ?string $noOfServices = null, ?int $noOfNights = null, ?string $startDate = null, ?string $endDate = null, ?string $serviceStatus = null, ?string $personAssignment = null, ?float $totalPrice = null, ?string $currency = 'EUR', ?bool $vatIncluded = false, ?string $country_description = null, ?string $transfer_description = null, ?string $address_line1 = null, ?string $address_line2 = null, ?string $address_line3 = null, ?string $address_line4 = null, ?string $emergency_Number = null, ?string $corporateDiscount = null, ?array $travelerRefId = null, ?string $chain = null, ?string $category = null, ?string $bookingId = null, ?string $bookingDate = null, ?string $supplierId = null, ?string $extId = null, ?string $sourceSystem = null, ?string $sourceExtId = null, ?string $airportCode = null)
     {
         $this
             ->setPosition($position)
@@ -661,7 +662,7 @@ class AccomodationServiceType extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($startDate, true), gettype($startDate)), __LINE__);
         }
         // validation for constraint: pattern([0-9]{4}-[0-9]{2}-[0-9]{2})
-        if (!is_null($startDate) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', $startDate)) {
+        if (!is_null($startDate) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', (string) $startDate)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[0-9]{4}-[0-9]{2}-[0-9]{2}/', var_export($startDate, true)), __LINE__);
         }
         $this->startDate = $startDate;
@@ -688,7 +689,7 @@ class AccomodationServiceType extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($endDate, true), gettype($endDate)), __LINE__);
         }
         // validation for constraint: pattern([0-9]{4}-[0-9]{2}-[0-9]{2})
-        if (!is_null($endDate) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', $endDate)) {
+        if (!is_null($endDate) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', (string) $endDate)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[0-9]{4}-[0-9]{2}-[0-9]{2}/', var_export($endDate, true)), __LINE__);
         }
         $this->endDate = $endDate;
@@ -998,18 +999,22 @@ class AccomodationServiceType extends AbstractStructBase
      * Get travelerRefId value
      * @return int[]
      */
-    public function getTravelerRefId(): array
+    public function getTravelerRefId(): ?array
     {
         return $this->travelerRefId;
     }
     /**
-     * This method is responsible for validating the values passed to the setTravelerRefId method
+     * This method is responsible for validating the value(s) passed to the setTravelerRefId method
      * This method is willingly generated in order to preserve the one-line inline validation within the setTravelerRefId method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateTravelerRefIdForArrayConstraintsFromSetTravelerRefId(array $values = []): string
+    public static function validateTravelerRefIdForArrayConstraintFromSetTravelerRefId(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $accomodationServiceTypeTravelerRefIdItem) {
@@ -1031,10 +1036,10 @@ class AccomodationServiceType extends AbstractStructBase
      * @param int[] $travelerRefId
      * @return \Pggns\MidocoApi\Order\StructType\AccomodationServiceType
      */
-    public function setTravelerRefId(array $travelerRefId = []): self
+    public function setTravelerRefId(?array $travelerRefId = null): self
     {
         // validation for constraint: array
-        if ('' !== ($travelerRefIdArrayErrorMessage = self::validateTravelerRefIdForArrayConstraintsFromSetTravelerRefId($travelerRefId))) {
+        if ('' !== ($travelerRefIdArrayErrorMessage = self::validateTravelerRefIdForArrayConstraintFromSetTravelerRefId($travelerRefId))) {
             throw new InvalidArgumentException($travelerRefIdArrayErrorMessage, __LINE__);
         }
         $this->travelerRefId = $travelerRefId;

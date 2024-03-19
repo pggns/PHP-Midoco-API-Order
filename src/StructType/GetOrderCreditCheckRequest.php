@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetOrderCreditCheckRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetOrderCreditCheckRequest extends AbstractStructBase
 {
     /**

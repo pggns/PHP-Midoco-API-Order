@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: if there is additional service included, it should be added here
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class AddAdditionalServicesRequest extends AbstractStructBase
 {
     /**
@@ -38,7 +39,7 @@ class AddAdditionalServicesRequest extends AbstractStructBase
      * - ref: mbm:AdditionalService
      * @var \Pggns\MidocoApi\Order\StructType\AdditionalService[]
      */
-    protected array $AdditionalService = [];
+    protected ?array $AdditionalService = null;
     /**
      * The unitName
      * @var string|null
@@ -55,7 +56,7 @@ class AddAdditionalServicesRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\AdditionalService[] $additionalService
      * @param string $unitName
      */
-    public function __construct(string $supplierId, string $bookingId, array $additionalService = [], ?string $unitName = null)
+    public function __construct(string $supplierId, string $bookingId, ?array $additionalService = null, ?string $unitName = null)
     {
         $this
             ->setSupplierId($supplierId)
@@ -113,18 +114,22 @@ class AddAdditionalServicesRequest extends AbstractStructBase
      * Get AdditionalService value
      * @return \Pggns\MidocoApi\Order\StructType\AdditionalService[]
      */
-    public function getAdditionalService(): array
+    public function getAdditionalService(): ?array
     {
         return $this->AdditionalService;
     }
     /**
-     * This method is responsible for validating the values passed to the setAdditionalService method
+     * This method is responsible for validating the value(s) passed to the setAdditionalService method
      * This method is willingly generated in order to preserve the one-line inline validation within the setAdditionalService method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateAdditionalServiceForArrayConstraintsFromSetAdditionalService(array $values = []): string
+    public static function validateAdditionalServiceForArrayConstraintFromSetAdditionalService(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $addAdditionalServicesRequestAdditionalServiceItem) {
@@ -146,10 +151,10 @@ class AddAdditionalServicesRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\AdditionalService[] $additionalService
      * @return \Pggns\MidocoApi\Order\StructType\AddAdditionalServicesRequest
      */
-    public function setAdditionalService(array $additionalService = []): self
+    public function setAdditionalService(?array $additionalService = null): self
     {
         // validation for constraint: array
-        if ('' !== ($additionalServiceArrayErrorMessage = self::validateAdditionalServiceForArrayConstraintsFromSetAdditionalService($additionalService))) {
+        if ('' !== ($additionalServiceArrayErrorMessage = self::validateAdditionalServiceForArrayConstraintFromSetAdditionalService($additionalService))) {
             throw new InvalidArgumentException($additionalServiceArrayErrorMessage, __LINE__);
         }
         $this->AdditionalService = $additionalService;

@@ -14,6 +14,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * this action. Set the printing_count to 0 ! Return: a BillingDocumentDTO, containing the actual status of the Document (document_no set and print_counter = 0)
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class FinishBillingDocumentResponse extends AbstractStructBase
 {
     /**
@@ -44,7 +45,7 @@ class FinishBillingDocumentResponse extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $errorArgs = [];
+    protected ?array $errorArgs = null;
     /**
      * Constructor method for FinishBillingDocumentResponse
      * @uses FinishBillingDocumentResponse::setMidocoBillingDocument()
@@ -56,7 +57,7 @@ class FinishBillingDocumentResponse extends AbstractStructBase
      * @param string $errorBundle
      * @param string[] $errorArgs
      */
-    public function __construct(?\Pggns\MidocoApi\Order\StructType\MidocoBillingDocument $midocoBillingDocument = null, ?string $errorCode = null, ?string $errorBundle = null, array $errorArgs = [])
+    public function __construct(?\Pggns\MidocoApi\Order\StructType\MidocoBillingDocument $midocoBillingDocument = null, ?string $errorCode = null, ?string $errorBundle = null, ?array $errorArgs = null)
     {
         $this
             ->setMidocoBillingDocument($midocoBillingDocument)
@@ -133,18 +134,22 @@ class FinishBillingDocumentResponse extends AbstractStructBase
      * Get errorArgs value
      * @return string[]
      */
-    public function getErrorArgs(): array
+    public function getErrorArgs(): ?array
     {
         return $this->errorArgs;
     }
     /**
-     * This method is responsible for validating the values passed to the setErrorArgs method
+     * This method is responsible for validating the value(s) passed to the setErrorArgs method
      * This method is willingly generated in order to preserve the one-line inline validation within the setErrorArgs method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateErrorArgsForArrayConstraintsFromSetErrorArgs(array $values = []): string
+    public static function validateErrorArgsForArrayConstraintFromSetErrorArgs(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $finishBillingDocumentResponseErrorArgsItem) {
@@ -166,10 +171,10 @@ class FinishBillingDocumentResponse extends AbstractStructBase
      * @param string[] $errorArgs
      * @return \Pggns\MidocoApi\Order\StructType\FinishBillingDocumentResponse
      */
-    public function setErrorArgs(array $errorArgs = []): self
+    public function setErrorArgs(?array $errorArgs = null): self
     {
         // validation for constraint: array
-        if ('' !== ($errorArgsArrayErrorMessage = self::validateErrorArgsForArrayConstraintsFromSetErrorArgs($errorArgs))) {
+        if ('' !== ($errorArgsArrayErrorMessage = self::validateErrorArgsForArrayConstraintFromSetErrorArgs($errorArgs))) {
             throw new InvalidArgumentException($errorArgsArrayErrorMessage, __LINE__);
         }
         $this->errorArgs = $errorArgs;

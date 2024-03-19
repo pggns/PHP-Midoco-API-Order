@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: Return the saved e-invoice gateway configurations.
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveEInvoiceGatewayResponse extends AbstractStructBase
 {
     /**
@@ -22,13 +23,13 @@ class SaveEInvoiceGatewayResponse extends AbstractStructBase
      * - ref: MidocoEInvoiceGateway
      * @var \Pggns\MidocoApi\Order\StructType\EinvoiceGatewayDTO[]
      */
-    protected array $MidocoEInvoiceGateway = [];
+    protected ?array $MidocoEInvoiceGateway = null;
     /**
      * Constructor method for SaveEInvoiceGatewayResponse
      * @uses SaveEInvoiceGatewayResponse::setMidocoEInvoiceGateway()
      * @param \Pggns\MidocoApi\Order\StructType\EinvoiceGatewayDTO[] $midocoEInvoiceGateway
      */
-    public function __construct(array $midocoEInvoiceGateway = [])
+    public function __construct(?array $midocoEInvoiceGateway = null)
     {
         $this
             ->setMidocoEInvoiceGateway($midocoEInvoiceGateway);
@@ -37,18 +38,22 @@ class SaveEInvoiceGatewayResponse extends AbstractStructBase
      * Get MidocoEInvoiceGateway value
      * @return \Pggns\MidocoApi\Order\StructType\EinvoiceGatewayDTO[]
      */
-    public function getMidocoEInvoiceGateway(): array
+    public function getMidocoEInvoiceGateway(): ?array
     {
         return $this->MidocoEInvoiceGateway;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoEInvoiceGateway method
+     * This method is responsible for validating the value(s) passed to the setMidocoEInvoiceGateway method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoEInvoiceGateway method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoEInvoiceGatewayForArrayConstraintsFromSetMidocoEInvoiceGateway(array $values = []): string
+    public static function validateMidocoEInvoiceGatewayForArrayConstraintFromSetMidocoEInvoiceGateway(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $saveEInvoiceGatewayResponseMidocoEInvoiceGatewayItem) {
@@ -70,10 +75,10 @@ class SaveEInvoiceGatewayResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\EinvoiceGatewayDTO[] $midocoEInvoiceGateway
      * @return \Pggns\MidocoApi\Order\StructType\SaveEInvoiceGatewayResponse
      */
-    public function setMidocoEInvoiceGateway(array $midocoEInvoiceGateway = []): self
+    public function setMidocoEInvoiceGateway(?array $midocoEInvoiceGateway = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoEInvoiceGatewayArrayErrorMessage = self::validateMidocoEInvoiceGatewayForArrayConstraintsFromSetMidocoEInvoiceGateway($midocoEInvoiceGateway))) {
+        if ('' !== ($midocoEInvoiceGatewayArrayErrorMessage = self::validateMidocoEInvoiceGatewayForArrayConstraintFromSetMidocoEInvoiceGateway($midocoEInvoiceGateway))) {
             throw new InvalidArgumentException($midocoEInvoiceGatewayArrayErrorMessage, __LINE__);
         }
         $this->MidocoEInvoiceGateway = $midocoEInvoiceGateway;

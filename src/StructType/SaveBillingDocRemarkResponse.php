@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: saveBillingDocRemark --- saves a new remark or updates an existing one
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveBillingDocRemarkResponse extends AbstractStructBase
 {
     /**

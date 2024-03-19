@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetBillingPositions4BonusClearingRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetBillingPositions4BonusClearingRequest extends AbstractStructBase
 {
     /**
@@ -34,7 +35,7 @@ class GetBillingPositions4BonusClearingRequest extends AbstractStructBase
      * - maxOccurs: unbounded
      * @var string[]
      */
-    protected array $bonusType = [];
+    protected ?array $bonusType = null;
     /**
      * Constructor method for GetBillingPositions4BonusClearingRequest
      * @uses GetBillingPositions4BonusClearingRequest::setAgencyId()
@@ -46,7 +47,7 @@ class GetBillingPositions4BonusClearingRequest extends AbstractStructBase
      * @param string $endDate
      * @param string[] $bonusType
      */
-    public function __construct(?string $agencyId = null, ?string $startDate = null, ?string $endDate = null, array $bonusType = [])
+    public function __construct(?string $agencyId = null, ?string $startDate = null, ?string $endDate = null, ?array $bonusType = null)
     {
         $this
             ->setAgencyId($agencyId)
@@ -127,18 +128,22 @@ class GetBillingPositions4BonusClearingRequest extends AbstractStructBase
      * Get bonusType value
      * @return string[]
      */
-    public function getBonusType(): array
+    public function getBonusType(): ?array
     {
         return $this->bonusType;
     }
     /**
-     * This method is responsible for validating the values passed to the setBonusType method
+     * This method is responsible for validating the value(s) passed to the setBonusType method
      * This method is willingly generated in order to preserve the one-line inline validation within the setBonusType method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateBonusTypeForArrayConstraintsFromSetBonusType(array $values = []): string
+    public static function validateBonusTypeForArrayConstraintFromSetBonusType(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getBillingPositions4BonusClearingRequestBonusTypeItem) {
@@ -160,10 +165,10 @@ class GetBillingPositions4BonusClearingRequest extends AbstractStructBase
      * @param string[] $bonusType
      * @return \Pggns\MidocoApi\Order\StructType\GetBillingPositions4BonusClearingRequest
      */
-    public function setBonusType(array $bonusType = []): self
+    public function setBonusType(?array $bonusType = null): self
     {
         // validation for constraint: array
-        if ('' !== ($bonusTypeArrayErrorMessage = self::validateBonusTypeForArrayConstraintsFromSetBonusType($bonusType))) {
+        if ('' !== ($bonusTypeArrayErrorMessage = self::validateBonusTypeForArrayConstraintFromSetBonusType($bonusType))) {
             throw new InvalidArgumentException($bonusTypeArrayErrorMessage, __LINE__);
         }
         $this->bonusType = $bonusType;

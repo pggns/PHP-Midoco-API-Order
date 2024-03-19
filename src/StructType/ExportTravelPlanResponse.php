@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ExportTravelPlanResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ExportTravelPlanResponse extends AbstractStructBase
 {
     /**
@@ -26,7 +27,7 @@ class ExportTravelPlanResponse extends AbstractStructBase
      * - ref: MidocoAdditionalPrintDocument
      * @var \Pggns\MidocoApi\Order\StructType\MidocoAdditionalPrintDocument[]
      */
-    protected array $MidocoAdditionalPrintDocument = [];
+    protected ?array $MidocoAdditionalPrintDocument = null;
     /**
      * Constructor method for ExportTravelPlanResponse
      * @uses ExportTravelPlanResponse::setTravelPlanData()
@@ -34,7 +35,7 @@ class ExportTravelPlanResponse extends AbstractStructBase
      * @param string $travelPlanData
      * @param \Pggns\MidocoApi\Order\StructType\MidocoAdditionalPrintDocument[] $midocoAdditionalPrintDocument
      */
-    public function __construct(?string $travelPlanData = null, array $midocoAdditionalPrintDocument = [])
+    public function __construct(?string $travelPlanData = null, ?array $midocoAdditionalPrintDocument = null)
     {
         $this
             ->setTravelPlanData($travelPlanData)
@@ -67,18 +68,22 @@ class ExportTravelPlanResponse extends AbstractStructBase
      * Get MidocoAdditionalPrintDocument value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoAdditionalPrintDocument[]
      */
-    public function getMidocoAdditionalPrintDocument(): array
+    public function getMidocoAdditionalPrintDocument(): ?array
     {
         return $this->MidocoAdditionalPrintDocument;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoAdditionalPrintDocument method
+     * This method is responsible for validating the value(s) passed to the setMidocoAdditionalPrintDocument method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoAdditionalPrintDocument method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoAdditionalPrintDocumentForArrayConstraintsFromSetMidocoAdditionalPrintDocument(array $values = []): string
+    public static function validateMidocoAdditionalPrintDocumentForArrayConstraintFromSetMidocoAdditionalPrintDocument(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $exportTravelPlanResponseMidocoAdditionalPrintDocumentItem) {
@@ -100,10 +105,10 @@ class ExportTravelPlanResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoAdditionalPrintDocument[] $midocoAdditionalPrintDocument
      * @return \Pggns\MidocoApi\Order\StructType\ExportTravelPlanResponse
      */
-    public function setMidocoAdditionalPrintDocument(array $midocoAdditionalPrintDocument = []): self
+    public function setMidocoAdditionalPrintDocument(?array $midocoAdditionalPrintDocument = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoAdditionalPrintDocumentArrayErrorMessage = self::validateMidocoAdditionalPrintDocumentForArrayConstraintsFromSetMidocoAdditionalPrintDocument($midocoAdditionalPrintDocument))) {
+        if ('' !== ($midocoAdditionalPrintDocumentArrayErrorMessage = self::validateMidocoAdditionalPrintDocumentForArrayConstraintFromSetMidocoAdditionalPrintDocument($midocoAdditionalPrintDocument))) {
             throw new InvalidArgumentException($midocoAdditionalPrintDocumentArrayErrorMessage, __LINE__);
         }
         $this->MidocoAdditionalPrintDocument = $midocoAdditionalPrintDocument;

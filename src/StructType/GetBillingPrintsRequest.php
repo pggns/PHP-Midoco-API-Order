@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetBillingPrintsRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetBillingPrintsRequest extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for BookAdviceSettlementResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class BookAdviceSettlementResponse extends AbstractStructBase
 {
 }

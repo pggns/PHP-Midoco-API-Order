@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ListMidocoQuestionValueRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ListMidocoQuestionValueRequest extends AbstractStructBase
 {
     /**

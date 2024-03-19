@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for UpdateCallDateForJSPSiteResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class UpdateCallDateForJSPSiteResponse extends AbstractStructBase
 {
 }

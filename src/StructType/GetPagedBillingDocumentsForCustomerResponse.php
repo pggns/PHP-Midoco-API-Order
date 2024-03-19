@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetPagedBillingDocumentsForCustomerResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetPagedBillingDocumentsForCustomerResponse extends AbstractStructBase
 {
     /**
@@ -21,7 +22,7 @@ class GetPagedBillingDocumentsForCustomerResponse extends AbstractStructBase
      * - ref: MidocoBillingDocInfoForCustomer
      * @var \Pggns\MidocoApi\Order\StructType\MidocoBillingDocInfoForCustomer[]
      */
-    protected array $MidocoBillingDocInfoForCustomer = [];
+    protected ?array $MidocoBillingDocInfoForCustomer = null;
     /**
      * The totalPages
      * @var int|null
@@ -34,7 +35,7 @@ class GetPagedBillingDocumentsForCustomerResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoBillingDocInfoForCustomer[] $midocoBillingDocInfoForCustomer
      * @param int $totalPages
      */
-    public function __construct(array $midocoBillingDocInfoForCustomer = [], ?int $totalPages = null)
+    public function __construct(?array $midocoBillingDocInfoForCustomer = null, ?int $totalPages = null)
     {
         $this
             ->setMidocoBillingDocInfoForCustomer($midocoBillingDocInfoForCustomer)
@@ -44,18 +45,22 @@ class GetPagedBillingDocumentsForCustomerResponse extends AbstractStructBase
      * Get MidocoBillingDocInfoForCustomer value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoBillingDocInfoForCustomer[]
      */
-    public function getMidocoBillingDocInfoForCustomer(): array
+    public function getMidocoBillingDocInfoForCustomer(): ?array
     {
         return $this->MidocoBillingDocInfoForCustomer;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoBillingDocInfoForCustomer method
+     * This method is responsible for validating the value(s) passed to the setMidocoBillingDocInfoForCustomer method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoBillingDocInfoForCustomer method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoBillingDocInfoForCustomerForArrayConstraintsFromSetMidocoBillingDocInfoForCustomer(array $values = []): string
+    public static function validateMidocoBillingDocInfoForCustomerForArrayConstraintFromSetMidocoBillingDocInfoForCustomer(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getPagedBillingDocumentsForCustomerResponseMidocoBillingDocInfoForCustomerItem) {
@@ -77,10 +82,10 @@ class GetPagedBillingDocumentsForCustomerResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoBillingDocInfoForCustomer[] $midocoBillingDocInfoForCustomer
      * @return \Pggns\MidocoApi\Order\StructType\GetPagedBillingDocumentsForCustomerResponse
      */
-    public function setMidocoBillingDocInfoForCustomer(array $midocoBillingDocInfoForCustomer = []): self
+    public function setMidocoBillingDocInfoForCustomer(?array $midocoBillingDocInfoForCustomer = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoBillingDocInfoForCustomerArrayErrorMessage = self::validateMidocoBillingDocInfoForCustomerForArrayConstraintsFromSetMidocoBillingDocInfoForCustomer($midocoBillingDocInfoForCustomer))) {
+        if ('' !== ($midocoBillingDocInfoForCustomerArrayErrorMessage = self::validateMidocoBillingDocInfoForCustomerForArrayConstraintFromSetMidocoBillingDocInfoForCustomer($midocoBillingDocInfoForCustomer))) {
             throw new InvalidArgumentException($midocoBillingDocInfoForCustomerArrayErrorMessage, __LINE__);
         }
         $this->MidocoBillingDocInfoForCustomer = $midocoBillingDocInfoForCustomer;

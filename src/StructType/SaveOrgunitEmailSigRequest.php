@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveOrgunitEmailSigRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveOrgunitEmailSigRequest extends AbstractStructBase
 {
     /**
@@ -20,13 +21,13 @@ class SaveOrgunitEmailSigRequest extends AbstractStructBase
      * - ref: MidocoOrgunitEmailSig
      * @var \Pggns\MidocoApi\Order\StructType\OrgunitEmailSigDTO[]
      */
-    protected array $MidocoOrgunitEmailSig = [];
+    protected ?array $MidocoOrgunitEmailSig = null;
     /**
      * Constructor method for SaveOrgunitEmailSigRequest
      * @uses SaveOrgunitEmailSigRequest::setMidocoOrgunitEmailSig()
      * @param \Pggns\MidocoApi\Order\StructType\OrgunitEmailSigDTO[] $midocoOrgunitEmailSig
      */
-    public function __construct(array $midocoOrgunitEmailSig = [])
+    public function __construct(?array $midocoOrgunitEmailSig = null)
     {
         $this
             ->setMidocoOrgunitEmailSig($midocoOrgunitEmailSig);
@@ -35,18 +36,22 @@ class SaveOrgunitEmailSigRequest extends AbstractStructBase
      * Get MidocoOrgunitEmailSig value
      * @return \Pggns\MidocoApi\Order\StructType\OrgunitEmailSigDTO[]
      */
-    public function getMidocoOrgunitEmailSig(): array
+    public function getMidocoOrgunitEmailSig(): ?array
     {
         return $this->MidocoOrgunitEmailSig;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoOrgunitEmailSig method
+     * This method is responsible for validating the value(s) passed to the setMidocoOrgunitEmailSig method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoOrgunitEmailSig method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoOrgunitEmailSigForArrayConstraintsFromSetMidocoOrgunitEmailSig(array $values = []): string
+    public static function validateMidocoOrgunitEmailSigForArrayConstraintFromSetMidocoOrgunitEmailSig(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $saveOrgunitEmailSigRequestMidocoOrgunitEmailSigItem) {
@@ -68,10 +73,10 @@ class SaveOrgunitEmailSigRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\OrgunitEmailSigDTO[] $midocoOrgunitEmailSig
      * @return \Pggns\MidocoApi\Order\StructType\SaveOrgunitEmailSigRequest
      */
-    public function setMidocoOrgunitEmailSig(array $midocoOrgunitEmailSig = []): self
+    public function setMidocoOrgunitEmailSig(?array $midocoOrgunitEmailSig = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoOrgunitEmailSigArrayErrorMessage = self::validateMidocoOrgunitEmailSigForArrayConstraintsFromSetMidocoOrgunitEmailSig($midocoOrgunitEmailSig))) {
+        if ('' !== ($midocoOrgunitEmailSigArrayErrorMessage = self::validateMidocoOrgunitEmailSigForArrayConstraintFromSetMidocoOrgunitEmailSig($midocoOrgunitEmailSig))) {
             throw new InvalidArgumentException($midocoOrgunitEmailSigArrayErrorMessage, __LINE__);
         }
         $this->MidocoOrgunitEmailSig = $midocoOrgunitEmailSig;

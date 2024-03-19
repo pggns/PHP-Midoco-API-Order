@@ -11,12 +11,12 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetCcProxyTargetRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetCcProxyTargetRequest extends AbstractStructBase
 {
     /**
      * The targetId
      * Meta information extracted from the WSDL
-     * - maxOccurs: 1
      * - minOccurs: 0
      * @var string|null
      */
@@ -24,7 +24,6 @@ class GetCcProxyTargetRequest extends AbstractStructBase
     /**
      * The processingUser
      * Meta information extracted from the WSDL
-     * - maxOccurs: 1
      * - minOccurs: 0
      * @var int|null
      */
@@ -32,7 +31,6 @@ class GetCcProxyTargetRequest extends AbstractStructBase
     /**
      * The targetUrl
      * Meta information extracted from the WSDL
-     * - maxOccurs: 1
      * - minOccurs: 0
      * @var string|null
      */
@@ -40,7 +38,6 @@ class GetCcProxyTargetRequest extends AbstractStructBase
     /**
      * The direction
      * Meta information extracted from the WSDL
-     * - maxOccurs: 1
      * - minOccurs: 0
      * @var string|null
      */
@@ -48,7 +45,6 @@ class GetCcProxyTargetRequest extends AbstractStructBase
     /**
      * The isActive
      * Meta information extracted from the WSDL
-     * - maxOccurs: 1
      * - minOccurs: 0
      * @var bool|null
      */
@@ -56,7 +52,6 @@ class GetCcProxyTargetRequest extends AbstractStructBase
     /**
      * The unitName
      * Meta information extracted from the WSDL
-     * - maxOccurs: 1
      * - minOccurs: 0
      * @var string|null
      */

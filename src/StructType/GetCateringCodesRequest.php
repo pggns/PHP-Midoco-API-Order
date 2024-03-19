@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetCateringCodesRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetCateringCodesRequest extends AbstractStructBase
 {
     /**

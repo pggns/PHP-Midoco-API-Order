@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetVouchersForOrderRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetVouchersForOrderRequest extends AbstractStructBase
 {
     /**

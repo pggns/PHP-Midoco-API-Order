@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SearchOrderLayoutOrgunitResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchOrderLayoutOrgunitResponse extends AbstractStructBase
 {
     /**
@@ -20,7 +21,7 @@ class SearchOrderLayoutOrgunitResponse extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $notAllowedUnits = [];
+    protected ?array $notAllowedUnits = null;
     /**
      * The asNeighbor
      * Meta information extracted from the WSDL
@@ -28,7 +29,7 @@ class SearchOrderLayoutOrgunitResponse extends AbstractStructBase
      * - minOccurs: 0
      * @var bool[]
      */
-    protected array $asNeighbor = [];
+    protected ?array $asNeighbor = null;
     /**
      * Constructor method for SearchOrderLayoutOrgunitResponse
      * @uses SearchOrderLayoutOrgunitResponse::setNotAllowedUnits()
@@ -36,7 +37,7 @@ class SearchOrderLayoutOrgunitResponse extends AbstractStructBase
      * @param string[] $notAllowedUnits
      * @param bool[] $asNeighbor
      */
-    public function __construct(array $notAllowedUnits = [], array $asNeighbor = [])
+    public function __construct(?array $notAllowedUnits = null, ?array $asNeighbor = null)
     {
         $this
             ->setNotAllowedUnits($notAllowedUnits)
@@ -46,18 +47,22 @@ class SearchOrderLayoutOrgunitResponse extends AbstractStructBase
      * Get notAllowedUnits value
      * @return string[]
      */
-    public function getNotAllowedUnits(): array
+    public function getNotAllowedUnits(): ?array
     {
         return $this->notAllowedUnits;
     }
     /**
-     * This method is responsible for validating the values passed to the setNotAllowedUnits method
+     * This method is responsible for validating the value(s) passed to the setNotAllowedUnits method
      * This method is willingly generated in order to preserve the one-line inline validation within the setNotAllowedUnits method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateNotAllowedUnitsForArrayConstraintsFromSetNotAllowedUnits(array $values = []): string
+    public static function validateNotAllowedUnitsForArrayConstraintFromSetNotAllowedUnits(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $searchOrderLayoutOrgunitResponseNotAllowedUnitsItem) {
@@ -79,10 +84,10 @@ class SearchOrderLayoutOrgunitResponse extends AbstractStructBase
      * @param string[] $notAllowedUnits
      * @return \Pggns\MidocoApi\Order\StructType\SearchOrderLayoutOrgunitResponse
      */
-    public function setNotAllowedUnits(array $notAllowedUnits = []): self
+    public function setNotAllowedUnits(?array $notAllowedUnits = null): self
     {
         // validation for constraint: array
-        if ('' !== ($notAllowedUnitsArrayErrorMessage = self::validateNotAllowedUnitsForArrayConstraintsFromSetNotAllowedUnits($notAllowedUnits))) {
+        if ('' !== ($notAllowedUnitsArrayErrorMessage = self::validateNotAllowedUnitsForArrayConstraintFromSetNotAllowedUnits($notAllowedUnits))) {
             throw new InvalidArgumentException($notAllowedUnitsArrayErrorMessage, __LINE__);
         }
         $this->notAllowedUnits = $notAllowedUnits;
@@ -109,18 +114,22 @@ class SearchOrderLayoutOrgunitResponse extends AbstractStructBase
      * Get asNeighbor value
      * @return bool[]
      */
-    public function getAsNeighbor(): array
+    public function getAsNeighbor(): ?array
     {
         return $this->asNeighbor;
     }
     /**
-     * This method is responsible for validating the values passed to the setAsNeighbor method
+     * This method is responsible for validating the value(s) passed to the setAsNeighbor method
      * This method is willingly generated in order to preserve the one-line inline validation within the setAsNeighbor method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateAsNeighborForArrayConstraintsFromSetAsNeighbor(array $values = []): string
+    public static function validateAsNeighborForArrayConstraintFromSetAsNeighbor(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $searchOrderLayoutOrgunitResponseAsNeighborItem) {
@@ -142,10 +151,10 @@ class SearchOrderLayoutOrgunitResponse extends AbstractStructBase
      * @param bool[] $asNeighbor
      * @return \Pggns\MidocoApi\Order\StructType\SearchOrderLayoutOrgunitResponse
      */
-    public function setAsNeighbor(array $asNeighbor = []): self
+    public function setAsNeighbor(?array $asNeighbor = null): self
     {
         // validation for constraint: array
-        if ('' !== ($asNeighborArrayErrorMessage = self::validateAsNeighborForArrayConstraintsFromSetAsNeighbor($asNeighbor))) {
+        if ('' !== ($asNeighborArrayErrorMessage = self::validateAsNeighborForArrayConstraintFromSetAsNeighbor($asNeighbor))) {
             throw new InvalidArgumentException($asNeighborArrayErrorMessage, __LINE__);
         }
         $this->asNeighbor = $asNeighbor;

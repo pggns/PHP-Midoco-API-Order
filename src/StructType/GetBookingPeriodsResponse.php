@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetBookingPeriodsResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetBookingPeriodsResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetBookingPeriodsResponse extends AbstractStructBase
      * - ref: MidocoCompleteBookingPeriod
      * @var \Pggns\MidocoApi\Order\StructType\MidocoCompleteBookingPeriod[]
      */
-    protected array $MidocoCompleteBookingPeriod = [];
+    protected ?array $MidocoCompleteBookingPeriod = null;
     /**
      * Constructor method for GetBookingPeriodsResponse
      * @uses GetBookingPeriodsResponse::setMidocoCompleteBookingPeriod()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoCompleteBookingPeriod[] $midocoCompleteBookingPeriod
      */
-    public function __construct(array $midocoCompleteBookingPeriod = [])
+    public function __construct(?array $midocoCompleteBookingPeriod = null)
     {
         $this
             ->setMidocoCompleteBookingPeriod($midocoCompleteBookingPeriod);
@@ -36,18 +37,22 @@ class GetBookingPeriodsResponse extends AbstractStructBase
      * Get MidocoCompleteBookingPeriod value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoCompleteBookingPeriod[]
      */
-    public function getMidocoCompleteBookingPeriod(): array
+    public function getMidocoCompleteBookingPeriod(): ?array
     {
         return $this->MidocoCompleteBookingPeriod;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoCompleteBookingPeriod method
+     * This method is responsible for validating the value(s) passed to the setMidocoCompleteBookingPeriod method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoCompleteBookingPeriod method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoCompleteBookingPeriodForArrayConstraintsFromSetMidocoCompleteBookingPeriod(array $values = []): string
+    public static function validateMidocoCompleteBookingPeriodForArrayConstraintFromSetMidocoCompleteBookingPeriod(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getBookingPeriodsResponseMidocoCompleteBookingPeriodItem) {
@@ -69,10 +74,10 @@ class GetBookingPeriodsResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoCompleteBookingPeriod[] $midocoCompleteBookingPeriod
      * @return \Pggns\MidocoApi\Order\StructType\GetBookingPeriodsResponse
      */
-    public function setMidocoCompleteBookingPeriod(array $midocoCompleteBookingPeriod = []): self
+    public function setMidocoCompleteBookingPeriod(?array $midocoCompleteBookingPeriod = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoCompleteBookingPeriodArrayErrorMessage = self::validateMidocoCompleteBookingPeriodForArrayConstraintsFromSetMidocoCompleteBookingPeriod($midocoCompleteBookingPeriod))) {
+        if ('' !== ($midocoCompleteBookingPeriodArrayErrorMessage = self::validateMidocoCompleteBookingPeriodForArrayConstraintFromSetMidocoCompleteBookingPeriod($midocoCompleteBookingPeriod))) {
             throw new InvalidArgumentException($midocoCompleteBookingPeriodArrayErrorMessage, __LINE__);
         }
         $this->MidocoCompleteBookingPeriod = $midocoCompleteBookingPeriod;

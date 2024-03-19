@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetDebitInfoForReceiptRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetDebitInfoForReceiptRequest extends AbstractStructBase
 {
     /**

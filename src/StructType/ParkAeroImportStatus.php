@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ParkAeroImportStatus StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ParkAeroImportStatus extends ImportHandlerResponseType
 {
     /**

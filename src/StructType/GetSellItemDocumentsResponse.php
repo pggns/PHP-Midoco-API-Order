@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetSellItemDocumentsResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetSellItemDocumentsResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetSellItemDocumentsResponse extends AbstractStructBase
      * - ref: MidocoSellItemDocument
      * @var \Pggns\MidocoApi\Order\StructType\SellItemDocumentDTO[]
      */
-    protected array $MidocoSellItemDocument = [];
+    protected ?array $MidocoSellItemDocument = null;
     /**
      * Constructor method for GetSellItemDocumentsResponse
      * @uses GetSellItemDocumentsResponse::setMidocoSellItemDocument()
      * @param \Pggns\MidocoApi\Order\StructType\SellItemDocumentDTO[] $midocoSellItemDocument
      */
-    public function __construct(array $midocoSellItemDocument = [])
+    public function __construct(?array $midocoSellItemDocument = null)
     {
         $this
             ->setMidocoSellItemDocument($midocoSellItemDocument);
@@ -36,18 +37,22 @@ class GetSellItemDocumentsResponse extends AbstractStructBase
      * Get MidocoSellItemDocument value
      * @return \Pggns\MidocoApi\Order\StructType\SellItemDocumentDTO[]
      */
-    public function getMidocoSellItemDocument(): array
+    public function getMidocoSellItemDocument(): ?array
     {
         return $this->MidocoSellItemDocument;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoSellItemDocument method
+     * This method is responsible for validating the value(s) passed to the setMidocoSellItemDocument method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoSellItemDocument method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoSellItemDocumentForArrayConstraintsFromSetMidocoSellItemDocument(array $values = []): string
+    public static function validateMidocoSellItemDocumentForArrayConstraintFromSetMidocoSellItemDocument(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getSellItemDocumentsResponseMidocoSellItemDocumentItem) {
@@ -69,10 +74,10 @@ class GetSellItemDocumentsResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\SellItemDocumentDTO[] $midocoSellItemDocument
      * @return \Pggns\MidocoApi\Order\StructType\GetSellItemDocumentsResponse
      */
-    public function setMidocoSellItemDocument(array $midocoSellItemDocument = []): self
+    public function setMidocoSellItemDocument(?array $midocoSellItemDocument = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoSellItemDocumentArrayErrorMessage = self::validateMidocoSellItemDocumentForArrayConstraintsFromSetMidocoSellItemDocument($midocoSellItemDocument))) {
+        if ('' !== ($midocoSellItemDocumentArrayErrorMessage = self::validateMidocoSellItemDocumentForArrayConstraintFromSetMidocoSellItemDocument($midocoSellItemDocument))) {
             throw new InvalidArgumentException($midocoSellItemDocumentArrayErrorMessage, __LINE__);
         }
         $this->MidocoSellItemDocument = $midocoSellItemDocument;

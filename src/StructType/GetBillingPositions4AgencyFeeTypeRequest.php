@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetBillingPositions4AgencyFeeTypeRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetBillingPositions4AgencyFeeTypeRequest extends AbstractStructBase
 {
     /**
@@ -34,7 +35,7 @@ class GetBillingPositions4AgencyFeeTypeRequest extends AbstractStructBase
      * - maxOccurs: unbounded
      * @var string[]
      */
-    protected array $feeType = [];
+    protected ?array $feeType = null;
     /**
      * Constructor method for GetBillingPositions4AgencyFeeTypeRequest
      * @uses GetBillingPositions4AgencyFeeTypeRequest::setAgencyId()
@@ -46,7 +47,7 @@ class GetBillingPositions4AgencyFeeTypeRequest extends AbstractStructBase
      * @param string $endDate
      * @param string[] $feeType
      */
-    public function __construct(?string $agencyId = null, ?string $startDate = null, ?string $endDate = null, array $feeType = [])
+    public function __construct(?string $agencyId = null, ?string $startDate = null, ?string $endDate = null, ?array $feeType = null)
     {
         $this
             ->setAgencyId($agencyId)
@@ -127,18 +128,22 @@ class GetBillingPositions4AgencyFeeTypeRequest extends AbstractStructBase
      * Get feeType value
      * @return string[]
      */
-    public function getFeeType(): array
+    public function getFeeType(): ?array
     {
         return $this->feeType;
     }
     /**
-     * This method is responsible for validating the values passed to the setFeeType method
+     * This method is responsible for validating the value(s) passed to the setFeeType method
      * This method is willingly generated in order to preserve the one-line inline validation within the setFeeType method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateFeeTypeForArrayConstraintsFromSetFeeType(array $values = []): string
+    public static function validateFeeTypeForArrayConstraintFromSetFeeType(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getBillingPositions4AgencyFeeTypeRequestFeeTypeItem) {
@@ -160,10 +165,10 @@ class GetBillingPositions4AgencyFeeTypeRequest extends AbstractStructBase
      * @param string[] $feeType
      * @return \Pggns\MidocoApi\Order\StructType\GetBillingPositions4AgencyFeeTypeRequest
      */
-    public function setFeeType(array $feeType = []): self
+    public function setFeeType(?array $feeType = null): self
     {
         // validation for constraint: array
-        if ('' !== ($feeTypeArrayErrorMessage = self::validateFeeTypeForArrayConstraintsFromSetFeeType($feeType))) {
+        if ('' !== ($feeTypeArrayErrorMessage = self::validateFeeTypeForArrayConstraintFromSetFeeType($feeType))) {
             throw new InvalidArgumentException($feeTypeArrayErrorMessage, __LINE__);
         }
         $this->feeType = $feeType;

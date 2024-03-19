@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ExternalCampaignAssignDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ExternalCampaignAssignDTO extends AbstractStructBase
 {
     /**

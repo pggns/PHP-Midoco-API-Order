@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GroupAdvisorSearchCriteria StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GroupAdvisorSearchCriteria extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for EditMidocoTextRemarkRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class EditMidocoTextRemarkRequest extends AbstractStructBase
 {
     /**

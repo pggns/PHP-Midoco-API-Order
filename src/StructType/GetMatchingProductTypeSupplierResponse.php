@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetMatchingProductTypeSupplierResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetMatchingProductTypeSupplierResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetMatchingProductTypeSupplierResponse extends AbstractStructBase
      * - ref: MidocoProductTypeSupplier
      * @var \Pggns\MidocoApi\Order\StructType\ProductTypeSupplierDTO[]
      */
-    protected array $MidocoProductTypeSupplier = [];
+    protected ?array $MidocoProductTypeSupplier = null;
     /**
      * Constructor method for GetMatchingProductTypeSupplierResponse
      * @uses GetMatchingProductTypeSupplierResponse::setMidocoProductTypeSupplier()
      * @param \Pggns\MidocoApi\Order\StructType\ProductTypeSupplierDTO[] $midocoProductTypeSupplier
      */
-    public function __construct(array $midocoProductTypeSupplier = [])
+    public function __construct(?array $midocoProductTypeSupplier = null)
     {
         $this
             ->setMidocoProductTypeSupplier($midocoProductTypeSupplier);
@@ -36,18 +37,22 @@ class GetMatchingProductTypeSupplierResponse extends AbstractStructBase
      * Get MidocoProductTypeSupplier value
      * @return \Pggns\MidocoApi\Order\StructType\ProductTypeSupplierDTO[]
      */
-    public function getMidocoProductTypeSupplier(): array
+    public function getMidocoProductTypeSupplier(): ?array
     {
         return $this->MidocoProductTypeSupplier;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoProductTypeSupplier method
+     * This method is responsible for validating the value(s) passed to the setMidocoProductTypeSupplier method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoProductTypeSupplier method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoProductTypeSupplierForArrayConstraintsFromSetMidocoProductTypeSupplier(array $values = []): string
+    public static function validateMidocoProductTypeSupplierForArrayConstraintFromSetMidocoProductTypeSupplier(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getMatchingProductTypeSupplierResponseMidocoProductTypeSupplierItem) {
@@ -69,10 +74,10 @@ class GetMatchingProductTypeSupplierResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\ProductTypeSupplierDTO[] $midocoProductTypeSupplier
      * @return \Pggns\MidocoApi\Order\StructType\GetMatchingProductTypeSupplierResponse
      */
-    public function setMidocoProductTypeSupplier(array $midocoProductTypeSupplier = []): self
+    public function setMidocoProductTypeSupplier(?array $midocoProductTypeSupplier = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoProductTypeSupplierArrayErrorMessage = self::validateMidocoProductTypeSupplierForArrayConstraintsFromSetMidocoProductTypeSupplier($midocoProductTypeSupplier))) {
+        if ('' !== ($midocoProductTypeSupplierArrayErrorMessage = self::validateMidocoProductTypeSupplierForArrayConstraintFromSetMidocoProductTypeSupplier($midocoProductTypeSupplier))) {
             throw new InvalidArgumentException($midocoProductTypeSupplierArrayErrorMessage, __LINE__);
         }
         $this->MidocoProductTypeSupplier = $midocoProductTypeSupplier;

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ExecuteVatDivisionIncomingRuleRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ExecuteVatDivisionIncomingRuleRequest extends AbstractStructBase
 {
     /**
@@ -21,7 +22,7 @@ class ExecuteVatDivisionIncomingRuleRequest extends AbstractStructBase
      * - ref: ordersd:MidocoVatCode
      * @var \Pggns\MidocoApi\Order\StructType\MidocoVatCode[]
      */
-    protected array $MidocoVatCode = [];
+    protected ?array $MidocoVatCode = null;
     /**
      * The RevenueBookingInfo
      * Meta information extracted from the WSDL
@@ -36,7 +37,7 @@ class ExecuteVatDivisionIncomingRuleRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoVatCode[] $midocoVatCode
      * @param \Pggns\MidocoApi\Order\StructType\RevenueBookingInfoType $revenueBookingInfo
      */
-    public function __construct(array $midocoVatCode = [], ?\Pggns\MidocoApi\Order\StructType\RevenueBookingInfoType $revenueBookingInfo = null)
+    public function __construct(?array $midocoVatCode = null, ?\Pggns\MidocoApi\Order\StructType\RevenueBookingInfoType $revenueBookingInfo = null)
     {
         $this
             ->setMidocoVatCode($midocoVatCode)
@@ -46,18 +47,22 @@ class ExecuteVatDivisionIncomingRuleRequest extends AbstractStructBase
      * Get MidocoVatCode value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoVatCode[]
      */
-    public function getMidocoVatCode(): array
+    public function getMidocoVatCode(): ?array
     {
         return $this->MidocoVatCode;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoVatCode method
+     * This method is responsible for validating the value(s) passed to the setMidocoVatCode method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoVatCode method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoVatCodeForArrayConstraintsFromSetMidocoVatCode(array $values = []): string
+    public static function validateMidocoVatCodeForArrayConstraintFromSetMidocoVatCode(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $executeVatDivisionIncomingRuleRequestMidocoVatCodeItem) {
@@ -79,10 +84,10 @@ class ExecuteVatDivisionIncomingRuleRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoVatCode[] $midocoVatCode
      * @return \Pggns\MidocoApi\Order\StructType\ExecuteVatDivisionIncomingRuleRequest
      */
-    public function setMidocoVatCode(array $midocoVatCode = []): self
+    public function setMidocoVatCode(?array $midocoVatCode = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoVatCodeArrayErrorMessage = self::validateMidocoVatCodeForArrayConstraintsFromSetMidocoVatCode($midocoVatCode))) {
+        if ('' !== ($midocoVatCodeArrayErrorMessage = self::validateMidocoVatCodeForArrayConstraintFromSetMidocoVatCode($midocoVatCode))) {
             throw new InvalidArgumentException($midocoVatCodeArrayErrorMessage, __LINE__);
         }
         $this->MidocoVatCode = $midocoVatCode;

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoOrderPayment4Printing StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoOrderPayment4Printing extends AbstractStructBase
 {
     /**

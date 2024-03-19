@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: Customer information, describing the person or company who is to be registered as paying or getting the paperwork for the booked travel (2 entries possible)
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class Customer extends AbstractStructBase
 {
     /**
@@ -155,7 +156,7 @@ class Customer extends AbstractStructBase
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\Communication[]
      */
-    protected array $communication = [];
+    protected ?array $communication = null;
     /**
      * The customer_has_business_contract
      * Meta information extracted from the WSDL
@@ -364,7 +365,7 @@ class Customer extends AbstractStructBase
      * @param bool $customerHasBusinessContract
      * @param bool $overrideExistingOrderCustomer
      */
-    public function __construct(?int $midoco_customer_id = null, ?string $midoco_debitor = null, ?bool $force_debitor_infos = false, ?bool $use_mail_address_from_message = true, ?string $reference_customer_id = null, ?string $reference_system = null, ?string $reference_url = null, ?\Pggns\MidocoApi\Order\StructType\Private_data $private_data = null, ?\Pggns\MidocoApi\Order\StructType\Company_data $company_data = null, ?string $language = null, ?string $street = null, ?string $street_no = null, ?string $state = null, ?string $country = null, ?string $postal_code = null, ?string $city = null, ?string $endorsement = null, array $communication = [], ?bool $customer_has_business_contract = null, ?\Pggns\MidocoApi\Order\StructType\ConsentType $consent = null, ?string $type = 'INVOICE', ?bool $override_existing_order_customer = false, ?int $midocoCustomerId = null, ?string $midocoDebitor = null, ?bool $forceDebitorInfos = false, ?bool $useMailAddressFromMessage = true, ?string $referenceCustomerId = null, ?string $referenceSystem = null, ?string $referenceUrl = null, ?\Pggns\MidocoApi\Order\StructType\PrivateData $privateData = null, ?\Pggns\MidocoApi\Order\StructType\CompanyData $companyData = null, ?string $streetNo = null, ?string $postalCode = null, ?bool $customerHasBusinessContract = null, ?bool $overrideExistingOrderCustomer = false)
+    public function __construct(?int $midoco_customer_id = null, ?string $midoco_debitor = null, ?bool $force_debitor_infos = false, ?bool $use_mail_address_from_message = true, ?string $reference_customer_id = null, ?string $reference_system = null, ?string $reference_url = null, ?\Pggns\MidocoApi\Order\StructType\Private_data $private_data = null, ?\Pggns\MidocoApi\Order\StructType\Company_data $company_data = null, ?string $language = null, ?string $street = null, ?string $street_no = null, ?string $state = null, ?string $country = null, ?string $postal_code = null, ?string $city = null, ?string $endorsement = null, ?array $communication = null, ?bool $customer_has_business_contract = null, ?\Pggns\MidocoApi\Order\StructType\ConsentType $consent = null, ?string $type = 'INVOICE', ?bool $override_existing_order_customer = false, ?int $midocoCustomerId = null, ?string $midocoDebitor = null, ?bool $forceDebitorInfos = false, ?bool $useMailAddressFromMessage = true, ?string $referenceCustomerId = null, ?string $referenceSystem = null, ?string $referenceUrl = null, ?\Pggns\MidocoApi\Order\StructType\PrivateData $privateData = null, ?\Pggns\MidocoApi\Order\StructType\CompanyData $companyData = null, ?string $streetNo = null, ?string $postalCode = null, ?bool $customerHasBusinessContract = null, ?bool $overrideExistingOrderCustomer = false)
     {
         $this
             ->setMidoco_customer_id($midoco_customer_id)
@@ -790,18 +791,22 @@ class Customer extends AbstractStructBase
      * Get communication value
      * @return \Pggns\MidocoApi\Order\StructType\Communication[]
      */
-    public function getCommunication(): array
+    public function getCommunication(): ?array
     {
         return $this->communication;
     }
     /**
-     * This method is responsible for validating the values passed to the setCommunication method
+     * This method is responsible for validating the value(s) passed to the setCommunication method
      * This method is willingly generated in order to preserve the one-line inline validation within the setCommunication method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateCommunicationForArrayConstraintsFromSetCommunication(array $values = []): string
+    public static function validateCommunicationForArrayConstraintFromSetCommunication(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $customerCommunicationItem) {
@@ -823,10 +828,10 @@ class Customer extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\Communication[] $communication
      * @return \Pggns\MidocoApi\Order\StructType\Customer
      */
-    public function setCommunication(array $communication = []): self
+    public function setCommunication(?array $communication = null): self
     {
         // validation for constraint: array
-        if ('' !== ($communicationArrayErrorMessage = self::validateCommunicationForArrayConstraintsFromSetCommunication($communication))) {
+        if ('' !== ($communicationArrayErrorMessage = self::validateCommunicationForArrayConstraintFromSetCommunication($communication))) {
             throw new InvalidArgumentException($communicationArrayErrorMessage, __LINE__);
         }
         $this->communication = $communication;

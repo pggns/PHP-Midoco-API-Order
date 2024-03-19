@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoSupplierSettlementAccount StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoSupplierSettlementAccount extends SupplierSettlemAccountDTO
 {
     /**

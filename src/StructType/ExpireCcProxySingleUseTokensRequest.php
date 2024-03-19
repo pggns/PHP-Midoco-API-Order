@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ExpireCcProxySingleUseTokensRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ExpireCcProxySingleUseTokensRequest extends AbstractStructBase
 {
 }

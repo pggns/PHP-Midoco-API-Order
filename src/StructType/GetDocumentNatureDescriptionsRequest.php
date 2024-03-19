@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetDocumentNatureDescriptionsRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetDocumentNatureDescriptionsRequest extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteBillingLayoutRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteBillingLayoutRequest extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class DeleteBillingLayoutRequest extends AbstractStructBase
      * - ref: MidocoBillingLayout
      * @var \Pggns\MidocoApi\Order\StructType\MidocoBillingLayout[]
      */
-    protected array $MidocoBillingLayout = [];
+    protected ?array $MidocoBillingLayout = null;
     /**
      * Constructor method for DeleteBillingLayoutRequest
      * @uses DeleteBillingLayoutRequest::setMidocoBillingLayout()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoBillingLayout[] $midocoBillingLayout
      */
-    public function __construct(array $midocoBillingLayout = [])
+    public function __construct(?array $midocoBillingLayout = null)
     {
         $this
             ->setMidocoBillingLayout($midocoBillingLayout);
@@ -36,18 +37,22 @@ class DeleteBillingLayoutRequest extends AbstractStructBase
      * Get MidocoBillingLayout value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoBillingLayout[]
      */
-    public function getMidocoBillingLayout(): array
+    public function getMidocoBillingLayout(): ?array
     {
         return $this->MidocoBillingLayout;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoBillingLayout method
+     * This method is responsible for validating the value(s) passed to the setMidocoBillingLayout method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoBillingLayout method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoBillingLayoutForArrayConstraintsFromSetMidocoBillingLayout(array $values = []): string
+    public static function validateMidocoBillingLayoutForArrayConstraintFromSetMidocoBillingLayout(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $deleteBillingLayoutRequestMidocoBillingLayoutItem) {
@@ -69,10 +74,10 @@ class DeleteBillingLayoutRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoBillingLayout[] $midocoBillingLayout
      * @return \Pggns\MidocoApi\Order\StructType\DeleteBillingLayoutRequest
      */
-    public function setMidocoBillingLayout(array $midocoBillingLayout = []): self
+    public function setMidocoBillingLayout(?array $midocoBillingLayout = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoBillingLayoutArrayErrorMessage = self::validateMidocoBillingLayoutForArrayConstraintsFromSetMidocoBillingLayout($midocoBillingLayout))) {
+        if ('' !== ($midocoBillingLayoutArrayErrorMessage = self::validateMidocoBillingLayoutForArrayConstraintFromSetMidocoBillingLayout($midocoBillingLayout))) {
             throw new InvalidArgumentException($midocoBillingLayoutArrayErrorMessage, __LINE__);
         }
         $this->MidocoBillingLayout = $midocoBillingLayout;

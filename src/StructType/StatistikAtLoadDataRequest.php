@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for StatistikAtLoadDataRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class StatistikAtLoadDataRequest extends AbstractStructBase
 {
     /**

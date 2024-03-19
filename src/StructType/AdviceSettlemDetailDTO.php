@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for AdviceSettlemDetailDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class AdviceSettlemDetailDTO extends AbstractStructBase
 {
     /**

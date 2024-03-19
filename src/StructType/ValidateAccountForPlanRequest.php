@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ValidateAccountForPlanRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ValidateAccountForPlanRequest extends AbstractStructBase
 {
     /**

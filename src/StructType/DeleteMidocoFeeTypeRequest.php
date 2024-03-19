@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: remove a fee type
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteMidocoFeeTypeRequest extends AbstractStructBase
 {
     /**

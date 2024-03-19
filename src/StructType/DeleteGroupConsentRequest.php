@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteGroupConsentRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteGroupConsentRequest extends AbstractStructBase
 {
     /**

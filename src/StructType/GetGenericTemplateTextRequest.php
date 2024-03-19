@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetGenericTemplateTextRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetGenericTemplateTextRequest extends AbstractStructBase
 {
     /**
@@ -35,7 +36,7 @@ class GetGenericTemplateTextRequest extends AbstractStructBase
      * - ref: MidocoTemplateParam
      * @var \Pggns\MidocoApi\Order\StructType\MidocoTemplateParam[]
      */
-    protected array $MidocoTemplateParam = [];
+    protected ?array $MidocoTemplateParam = null;
     /**
      * The orderId
      * @var int|null
@@ -59,7 +60,7 @@ class GetGenericTemplateTextRequest extends AbstractStructBase
      * @param int $orderId
      * @param int $customerId
      */
-    public function __construct(string $bodyTemplateId, string $subjectTemplateId, array $midocoTemplateParam = [], ?int $orderId = null, ?int $customerId = null)
+    public function __construct(string $bodyTemplateId, string $subjectTemplateId, ?array $midocoTemplateParam = null, ?int $orderId = null, ?int $customerId = null)
     {
         $this
             ->setBodyTemplateId($bodyTemplateId)
@@ -118,18 +119,22 @@ class GetGenericTemplateTextRequest extends AbstractStructBase
      * Get MidocoTemplateParam value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoTemplateParam[]
      */
-    public function getMidocoTemplateParam(): array
+    public function getMidocoTemplateParam(): ?array
     {
         return $this->MidocoTemplateParam;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoTemplateParam method
+     * This method is responsible for validating the value(s) passed to the setMidocoTemplateParam method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoTemplateParam method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoTemplateParamForArrayConstraintsFromSetMidocoTemplateParam(array $values = []): string
+    public static function validateMidocoTemplateParamForArrayConstraintFromSetMidocoTemplateParam(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getGenericTemplateTextRequestMidocoTemplateParamItem) {
@@ -151,10 +156,10 @@ class GetGenericTemplateTextRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoTemplateParam[] $midocoTemplateParam
      * @return \Pggns\MidocoApi\Order\StructType\GetGenericTemplateTextRequest
      */
-    public function setMidocoTemplateParam(array $midocoTemplateParam = []): self
+    public function setMidocoTemplateParam(?array $midocoTemplateParam = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoTemplateParamArrayErrorMessage = self::validateMidocoTemplateParamForArrayConstraintsFromSetMidocoTemplateParam($midocoTemplateParam))) {
+        if ('' !== ($midocoTemplateParamArrayErrorMessage = self::validateMidocoTemplateParamForArrayConstraintFromSetMidocoTemplateParam($midocoTemplateParam))) {
             throw new InvalidArgumentException($midocoTemplateParamArrayErrorMessage, __LINE__);
         }
         $this->MidocoTemplateParam = $midocoTemplateParam;

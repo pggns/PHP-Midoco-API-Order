@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ImportPaymentProviderSettlementDataResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ImportPaymentProviderSettlementDataResponse extends AbstractStructBase
 {
     /**
@@ -20,7 +21,7 @@ class ImportPaymentProviderSettlementDataResponse extends AbstractStructBase
      * - minOccurs: 0
      * @var int[]
      */
-    protected array $settlementId = [];
+    protected ?array $settlementId = null;
     /**
      * The MidocoFault
      * Meta information extracted from the WSDL
@@ -29,7 +30,7 @@ class ImportPaymentProviderSettlementDataResponse extends AbstractStructBase
      * - ref: system:MidocoFault
      * @var \Pggns\MidocoApi\Order\StructType\MidocoFaultType[]
      */
-    protected array $MidocoFault = [];
+    protected ?array $MidocoFault = null;
     /**
      * Constructor method for ImportPaymentProviderSettlementDataResponse
      * @uses ImportPaymentProviderSettlementDataResponse::setSettlementId()
@@ -37,7 +38,7 @@ class ImportPaymentProviderSettlementDataResponse extends AbstractStructBase
      * @param int[] $settlementId
      * @param \Pggns\MidocoApi\Order\StructType\MidocoFaultType[] $midocoFault
      */
-    public function __construct(array $settlementId = [], array $midocoFault = [])
+    public function __construct(?array $settlementId = null, ?array $midocoFault = null)
     {
         $this
             ->setSettlementId($settlementId)
@@ -47,18 +48,22 @@ class ImportPaymentProviderSettlementDataResponse extends AbstractStructBase
      * Get settlementId value
      * @return int[]
      */
-    public function getSettlementId(): array
+    public function getSettlementId(): ?array
     {
         return $this->settlementId;
     }
     /**
-     * This method is responsible for validating the values passed to the setSettlementId method
+     * This method is responsible for validating the value(s) passed to the setSettlementId method
      * This method is willingly generated in order to preserve the one-line inline validation within the setSettlementId method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateSettlementIdForArrayConstraintsFromSetSettlementId(array $values = []): string
+    public static function validateSettlementIdForArrayConstraintFromSetSettlementId(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $importPaymentProviderSettlementDataResponseSettlementIdItem) {
@@ -80,10 +85,10 @@ class ImportPaymentProviderSettlementDataResponse extends AbstractStructBase
      * @param int[] $settlementId
      * @return \Pggns\MidocoApi\Order\StructType\ImportPaymentProviderSettlementDataResponse
      */
-    public function setSettlementId(array $settlementId = []): self
+    public function setSettlementId(?array $settlementId = null): self
     {
         // validation for constraint: array
-        if ('' !== ($settlementIdArrayErrorMessage = self::validateSettlementIdForArrayConstraintsFromSetSettlementId($settlementId))) {
+        if ('' !== ($settlementIdArrayErrorMessage = self::validateSettlementIdForArrayConstraintFromSetSettlementId($settlementId))) {
             throw new InvalidArgumentException($settlementIdArrayErrorMessage, __LINE__);
         }
         $this->settlementId = $settlementId;
@@ -110,18 +115,22 @@ class ImportPaymentProviderSettlementDataResponse extends AbstractStructBase
      * Get MidocoFault value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoFaultType[]
      */
-    public function getMidocoFault(): array
+    public function getMidocoFault(): ?array
     {
         return $this->MidocoFault;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoFault method
+     * This method is responsible for validating the value(s) passed to the setMidocoFault method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoFault method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoFaultForArrayConstraintsFromSetMidocoFault(array $values = []): string
+    public static function validateMidocoFaultForArrayConstraintFromSetMidocoFault(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $importPaymentProviderSettlementDataResponseMidocoFaultItem) {
@@ -143,10 +152,10 @@ class ImportPaymentProviderSettlementDataResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoFaultType[] $midocoFault
      * @return \Pggns\MidocoApi\Order\StructType\ImportPaymentProviderSettlementDataResponse
      */
-    public function setMidocoFault(array $midocoFault = []): self
+    public function setMidocoFault(?array $midocoFault = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoFaultArrayErrorMessage = self::validateMidocoFaultForArrayConstraintsFromSetMidocoFault($midocoFault))) {
+        if ('' !== ($midocoFaultArrayErrorMessage = self::validateMidocoFaultForArrayConstraintFromSetMidocoFault($midocoFault))) {
             throw new InvalidArgumentException($midocoFaultArrayErrorMessage, __LINE__);
         }
         $this->MidocoFault = $midocoFault;

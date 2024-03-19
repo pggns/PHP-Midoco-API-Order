@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetOrdersContactHistoryForCustomerRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetOrdersContactHistoryForCustomerRequest extends AbstractStructBase
 {
     /**

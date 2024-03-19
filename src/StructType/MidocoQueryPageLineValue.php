@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoQueryPageLineValue StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoQueryPageLineValue extends AbstractStructBase
 {
     /**

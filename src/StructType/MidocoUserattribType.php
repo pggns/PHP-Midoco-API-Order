@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoUserattribType StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoUserattribType extends UserattribDTO
 {
     /**

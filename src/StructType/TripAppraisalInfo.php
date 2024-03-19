@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for TripAppraisalInfo StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class TripAppraisalInfo extends AbstractStructBase
 {
     /**

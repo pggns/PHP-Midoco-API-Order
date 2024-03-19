@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoBillingPositionWithSellItem StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoBillingPositionWithSellItem extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SendTssCertificatesMailRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SendTssCertificatesMailRequest extends AbstractStructBase
 {
     /**

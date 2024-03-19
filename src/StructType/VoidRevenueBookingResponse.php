@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for VoidRevenueBookingResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class VoidRevenueBookingResponse extends AbstractStructBase
 {
 }

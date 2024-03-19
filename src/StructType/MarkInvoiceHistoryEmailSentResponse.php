@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MarkInvoiceHistoryEmailSentResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MarkInvoiceHistoryEmailSentResponse extends AbstractStructBase
 {
 }

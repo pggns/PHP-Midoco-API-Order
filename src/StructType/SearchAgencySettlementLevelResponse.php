@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SearchAgencySettlementLevelResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchAgencySettlementLevelResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class SearchAgencySettlementLevelResponse extends AbstractStructBase
      * - ref: MidocoAgencySettlementLevelBilling
      * @var \Pggns\MidocoApi\Order\StructType\MidocoAgencySettlementLevelBilling[]
      */
-    protected array $MidocoAgencySettlementLevelBilling = [];
+    protected ?array $MidocoAgencySettlementLevelBilling = null;
     /**
      * Constructor method for SearchAgencySettlementLevelResponse
      * @uses SearchAgencySettlementLevelResponse::setMidocoAgencySettlementLevelBilling()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoAgencySettlementLevelBilling[] $midocoAgencySettlementLevelBilling
      */
-    public function __construct(array $midocoAgencySettlementLevelBilling = [])
+    public function __construct(?array $midocoAgencySettlementLevelBilling = null)
     {
         $this
             ->setMidocoAgencySettlementLevelBilling($midocoAgencySettlementLevelBilling);
@@ -36,18 +37,22 @@ class SearchAgencySettlementLevelResponse extends AbstractStructBase
      * Get MidocoAgencySettlementLevelBilling value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoAgencySettlementLevelBilling[]
      */
-    public function getMidocoAgencySettlementLevelBilling(): array
+    public function getMidocoAgencySettlementLevelBilling(): ?array
     {
         return $this->MidocoAgencySettlementLevelBilling;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoAgencySettlementLevelBilling method
+     * This method is responsible for validating the value(s) passed to the setMidocoAgencySettlementLevelBilling method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoAgencySettlementLevelBilling method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoAgencySettlementLevelBillingForArrayConstraintsFromSetMidocoAgencySettlementLevelBilling(array $values = []): string
+    public static function validateMidocoAgencySettlementLevelBillingForArrayConstraintFromSetMidocoAgencySettlementLevelBilling(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $searchAgencySettlementLevelResponseMidocoAgencySettlementLevelBillingItem) {
@@ -69,10 +74,10 @@ class SearchAgencySettlementLevelResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoAgencySettlementLevelBilling[] $midocoAgencySettlementLevelBilling
      * @return \Pggns\MidocoApi\Order\StructType\SearchAgencySettlementLevelResponse
      */
-    public function setMidocoAgencySettlementLevelBilling(array $midocoAgencySettlementLevelBilling = []): self
+    public function setMidocoAgencySettlementLevelBilling(?array $midocoAgencySettlementLevelBilling = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoAgencySettlementLevelBillingArrayErrorMessage = self::validateMidocoAgencySettlementLevelBillingForArrayConstraintsFromSetMidocoAgencySettlementLevelBilling($midocoAgencySettlementLevelBilling))) {
+        if ('' !== ($midocoAgencySettlementLevelBillingArrayErrorMessage = self::validateMidocoAgencySettlementLevelBillingForArrayConstraintFromSetMidocoAgencySettlementLevelBilling($midocoAgencySettlementLevelBilling))) {
             throw new InvalidArgumentException($midocoAgencySettlementLevelBillingArrayErrorMessage, __LINE__);
         }
         $this->MidocoAgencySettlementLevelBilling = $midocoAgencySettlementLevelBilling;

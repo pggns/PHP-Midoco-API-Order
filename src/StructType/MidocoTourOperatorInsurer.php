@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoTourOperatorInsurer StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoTourOperatorInsurer extends TouroperatorInsurerDTO
 {
     /**

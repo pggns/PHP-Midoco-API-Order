@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DuplicateRoleResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DuplicateRoleResponse extends AbstractStructBase
 {
     /**

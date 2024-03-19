@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteUnitNoticeReponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteUnitNoticeReponse extends AbstractStructBase
 {
 }

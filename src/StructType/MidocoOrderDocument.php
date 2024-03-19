@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoOrderDocument StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoOrderDocument extends OrderDocumentDTO
 {
     /**

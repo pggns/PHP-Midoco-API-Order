@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetSequenceValuesResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetSequenceValuesResponse extends AbstractStructBase
 {
     /**
@@ -20,13 +21,13 @@ class GetSequenceValuesResponse extends AbstractStructBase
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\SequenceContent[]
      */
-    protected array $SequenceValue = [];
+    protected ?array $SequenceValue = null;
     /**
      * Constructor method for GetSequenceValuesResponse
      * @uses GetSequenceValuesResponse::setSequenceValue()
      * @param \Pggns\MidocoApi\Order\StructType\SequenceContent[] $sequenceValue
      */
-    public function __construct(array $sequenceValue = [])
+    public function __construct(?array $sequenceValue = null)
     {
         $this
             ->setSequenceValue($sequenceValue);
@@ -35,18 +36,22 @@ class GetSequenceValuesResponse extends AbstractStructBase
      * Get SequenceValue value
      * @return \Pggns\MidocoApi\Order\StructType\SequenceContent[]
      */
-    public function getSequenceValue(): array
+    public function getSequenceValue(): ?array
     {
         return $this->SequenceValue;
     }
     /**
-     * This method is responsible for validating the values passed to the setSequenceValue method
+     * This method is responsible for validating the value(s) passed to the setSequenceValue method
      * This method is willingly generated in order to preserve the one-line inline validation within the setSequenceValue method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateSequenceValueForArrayConstraintsFromSetSequenceValue(array $values = []): string
+    public static function validateSequenceValueForArrayConstraintFromSetSequenceValue(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getSequenceValuesResponseSequenceValueItem) {
@@ -68,10 +73,10 @@ class GetSequenceValuesResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\SequenceContent[] $sequenceValue
      * @return \Pggns\MidocoApi\Order\StructType\GetSequenceValuesResponse
      */
-    public function setSequenceValue(array $sequenceValue = []): self
+    public function setSequenceValue(?array $sequenceValue = null): self
     {
         // validation for constraint: array
-        if ('' !== ($sequenceValueArrayErrorMessage = self::validateSequenceValueForArrayConstraintsFromSetSequenceValue($sequenceValue))) {
+        if ('' !== ($sequenceValueArrayErrorMessage = self::validateSequenceValueForArrayConstraintFromSetSequenceValue($sequenceValue))) {
             throw new InvalidArgumentException($sequenceValueArrayErrorMessage, __LINE__);
         }
         $this->SequenceValue = $sequenceValue;

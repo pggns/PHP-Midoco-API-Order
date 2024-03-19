@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for RailDetailDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class RailDetailDTO extends AbstractStructBase
 {
     /**

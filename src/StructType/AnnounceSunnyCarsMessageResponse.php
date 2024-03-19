@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for AnnounceSunnyCarsMessageResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class AnnounceSunnyCarsMessageResponse extends AbstractStructBase
 {
 }

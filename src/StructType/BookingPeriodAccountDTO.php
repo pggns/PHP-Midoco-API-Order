@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for BookingPeriodAccountDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class BookingPeriodAccountDTO extends AbstractStructBase
 {
     /**

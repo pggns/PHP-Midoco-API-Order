@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoSavedReportSameParamList StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoSavedReportSameParamList extends AbstractStructBase
 {
     /**
@@ -27,7 +28,7 @@ class MidocoSavedReportSameParamList extends AbstractStructBase
      * - ref: MidocoJasperReportParamValue
      * @var \Pggns\MidocoApi\Order\StructType\JasperReportParamValueDTO[]
      */
-    protected array $MidocoJasperReportParamValue = [];
+    protected ?array $MidocoJasperReportParamValue = null;
     /**
      * Constructor method for MidocoSavedReportSameParamList
      * @uses MidocoSavedReportSameParamList::setMidocoJasperReportExt()
@@ -35,7 +36,7 @@ class MidocoSavedReportSameParamList extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoJasperReportExt $midocoJasperReportExt
      * @param \Pggns\MidocoApi\Order\StructType\JasperReportParamValueDTO[] $midocoJasperReportParamValue
      */
-    public function __construct(?\Pggns\MidocoApi\Order\StructType\MidocoJasperReportExt $midocoJasperReportExt = null, array $midocoJasperReportParamValue = [])
+    public function __construct(?\Pggns\MidocoApi\Order\StructType\MidocoJasperReportExt $midocoJasperReportExt = null, ?array $midocoJasperReportParamValue = null)
     {
         $this
             ->setMidocoJasperReportExt($midocoJasperReportExt)
@@ -64,18 +65,22 @@ class MidocoSavedReportSameParamList extends AbstractStructBase
      * Get MidocoJasperReportParamValue value
      * @return \Pggns\MidocoApi\Order\StructType\JasperReportParamValueDTO[]
      */
-    public function getMidocoJasperReportParamValue(): array
+    public function getMidocoJasperReportParamValue(): ?array
     {
         return $this->MidocoJasperReportParamValue;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoJasperReportParamValue method
+     * This method is responsible for validating the value(s) passed to the setMidocoJasperReportParamValue method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoJasperReportParamValue method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoJasperReportParamValueForArrayConstraintsFromSetMidocoJasperReportParamValue(array $values = []): string
+    public static function validateMidocoJasperReportParamValueForArrayConstraintFromSetMidocoJasperReportParamValue(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoSavedReportSameParamListMidocoJasperReportParamValueItem) {
@@ -97,10 +102,10 @@ class MidocoSavedReportSameParamList extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\JasperReportParamValueDTO[] $midocoJasperReportParamValue
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSavedReportSameParamList
      */
-    public function setMidocoJasperReportParamValue(array $midocoJasperReportParamValue = []): self
+    public function setMidocoJasperReportParamValue(?array $midocoJasperReportParamValue = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoJasperReportParamValueArrayErrorMessage = self::validateMidocoJasperReportParamValueForArrayConstraintsFromSetMidocoJasperReportParamValue($midocoJasperReportParamValue))) {
+        if ('' !== ($midocoJasperReportParamValueArrayErrorMessage = self::validateMidocoJasperReportParamValueForArrayConstraintFromSetMidocoJasperReportParamValue($midocoJasperReportParamValue))) {
             throw new InvalidArgumentException($midocoJasperReportParamValueArrayErrorMessage, __LINE__);
         }
         $this->MidocoJasperReportParamValue = $midocoJasperReportParamValue;

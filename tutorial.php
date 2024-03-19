@@ -2501,6 +2501,14 @@ if ($delete->deleteSupplierAgencySettlement(new \Pggns\MidocoApi\Order\StructTyp
     print_r($delete->getLastError());
 }
 /**
+ * Sample call for deleteSupplAgencySettlemJournals operation/method
+ */
+if ($delete->deleteSupplAgencySettlemJournals(new \Pggns\MidocoApi\Order\StructType\DeleteSupplAgencySettlemJournalsRequest()) !== false) {
+    print_r($delete->getResult());
+} else {
+    print_r($delete->getLastError());
+}
+/**
  * Sample call for deleteMediatorProductSettlementInfo operation/method
  */
 if ($delete->deleteMediatorProductSettlementInfo(new \Pggns\MidocoApi\Order\StructType\DeleteMediatorProductSettlementInfoRequest()) !== false) {

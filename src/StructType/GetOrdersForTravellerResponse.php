@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetOrdersForTravellerResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetOrdersForTravellerResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetOrdersForTravellerResponse extends AbstractStructBase
      * - ref: MidocoTravellerOrderInfo
      * @var \Pggns\MidocoApi\Order\StructType\MidocoTravellerOrderInfo[]
      */
-    protected array $MidocoTravellerOrderInfo = [];
+    protected ?array $MidocoTravellerOrderInfo = null;
     /**
      * Constructor method for GetOrdersForTravellerResponse
      * @uses GetOrdersForTravellerResponse::setMidocoTravellerOrderInfo()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoTravellerOrderInfo[] $midocoTravellerOrderInfo
      */
-    public function __construct(array $midocoTravellerOrderInfo = [])
+    public function __construct(?array $midocoTravellerOrderInfo = null)
     {
         $this
             ->setMidocoTravellerOrderInfo($midocoTravellerOrderInfo);
@@ -36,18 +37,22 @@ class GetOrdersForTravellerResponse extends AbstractStructBase
      * Get MidocoTravellerOrderInfo value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoTravellerOrderInfo[]
      */
-    public function getMidocoTravellerOrderInfo(): array
+    public function getMidocoTravellerOrderInfo(): ?array
     {
         return $this->MidocoTravellerOrderInfo;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoTravellerOrderInfo method
+     * This method is responsible for validating the value(s) passed to the setMidocoTravellerOrderInfo method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoTravellerOrderInfo method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoTravellerOrderInfoForArrayConstraintsFromSetMidocoTravellerOrderInfo(array $values = []): string
+    public static function validateMidocoTravellerOrderInfoForArrayConstraintFromSetMidocoTravellerOrderInfo(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getOrdersForTravellerResponseMidocoTravellerOrderInfoItem) {
@@ -69,10 +74,10 @@ class GetOrdersForTravellerResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoTravellerOrderInfo[] $midocoTravellerOrderInfo
      * @return \Pggns\MidocoApi\Order\StructType\GetOrdersForTravellerResponse
      */
-    public function setMidocoTravellerOrderInfo(array $midocoTravellerOrderInfo = []): self
+    public function setMidocoTravellerOrderInfo(?array $midocoTravellerOrderInfo = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoTravellerOrderInfoArrayErrorMessage = self::validateMidocoTravellerOrderInfoForArrayConstraintsFromSetMidocoTravellerOrderInfo($midocoTravellerOrderInfo))) {
+        if ('' !== ($midocoTravellerOrderInfoArrayErrorMessage = self::validateMidocoTravellerOrderInfoForArrayConstraintFromSetMidocoTravellerOrderInfo($midocoTravellerOrderInfo))) {
             throw new InvalidArgumentException($midocoTravellerOrderInfoArrayErrorMessage, __LINE__);
         }
         $this->MidocoTravellerOrderInfo = $midocoTravellerOrderInfo;

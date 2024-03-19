@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DecodeTTIbanRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DecodeTTIbanRequest extends AbstractStructBase
 {
     /**

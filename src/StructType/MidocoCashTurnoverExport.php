@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoCashTurnoverExport StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoCashTurnoverExport extends CashTurnoverExportDTO
 {
 }

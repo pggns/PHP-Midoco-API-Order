@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveMediatorBillingResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveMediatorBillingResponse extends AbstractStructBase
 {
     /**

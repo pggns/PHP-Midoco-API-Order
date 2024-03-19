@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for AgencyInfoType StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class AgencyInfoType extends AbstractStructBase
 {
     /**

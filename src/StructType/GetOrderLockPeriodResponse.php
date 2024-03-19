@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetOrderLockPeriodResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetOrderLockPeriodResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetOrderLockPeriodResponse extends AbstractStructBase
      * - ref: MidocoOrderLockPeriod
      * @var \Pggns\MidocoApi\Order\StructType\MidocoOrderLockPeriod[]
      */
-    protected array $MidocoOrderLockPeriod = [];
+    protected ?array $MidocoOrderLockPeriod = null;
     /**
      * Constructor method for GetOrderLockPeriodResponse
      * @uses GetOrderLockPeriodResponse::setMidocoOrderLockPeriod()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoOrderLockPeriod[] $midocoOrderLockPeriod
      */
-    public function __construct(array $midocoOrderLockPeriod = [])
+    public function __construct(?array $midocoOrderLockPeriod = null)
     {
         $this
             ->setMidocoOrderLockPeriod($midocoOrderLockPeriod);
@@ -36,18 +37,22 @@ class GetOrderLockPeriodResponse extends AbstractStructBase
      * Get MidocoOrderLockPeriod value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoOrderLockPeriod[]
      */
-    public function getMidocoOrderLockPeriod(): array
+    public function getMidocoOrderLockPeriod(): ?array
     {
         return $this->MidocoOrderLockPeriod;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoOrderLockPeriod method
+     * This method is responsible for validating the value(s) passed to the setMidocoOrderLockPeriod method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoOrderLockPeriod method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoOrderLockPeriodForArrayConstraintsFromSetMidocoOrderLockPeriod(array $values = []): string
+    public static function validateMidocoOrderLockPeriodForArrayConstraintFromSetMidocoOrderLockPeriod(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getOrderLockPeriodResponseMidocoOrderLockPeriodItem) {
@@ -69,10 +74,10 @@ class GetOrderLockPeriodResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoOrderLockPeriod[] $midocoOrderLockPeriod
      * @return \Pggns\MidocoApi\Order\StructType\GetOrderLockPeriodResponse
      */
-    public function setMidocoOrderLockPeriod(array $midocoOrderLockPeriod = []): self
+    public function setMidocoOrderLockPeriod(?array $midocoOrderLockPeriod = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoOrderLockPeriodArrayErrorMessage = self::validateMidocoOrderLockPeriodForArrayConstraintsFromSetMidocoOrderLockPeriod($midocoOrderLockPeriod))) {
+        if ('' !== ($midocoOrderLockPeriodArrayErrorMessage = self::validateMidocoOrderLockPeriodForArrayConstraintFromSetMidocoOrderLockPeriod($midocoOrderLockPeriod))) {
             throw new InvalidArgumentException($midocoOrderLockPeriodArrayErrorMessage, __LINE__);
         }
         $this->MidocoOrderLockPeriod = $midocoOrderLockPeriod;

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoOrderVoucher StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoOrderVoucher extends OrderVoucherDTO
 {
 }

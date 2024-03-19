@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoCrmNotice StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoCrmNotice extends CrmNoticeDTO
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoCollectiveBillingDetails StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoCollectiveBillingDetails extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class MidocoCollectiveBillingDetails extends AbstractStructBase
      * - ref: MidocoBillingPositionsDetails
      * @var \Pggns\MidocoApi\Order\StructType\MidocoBillingPositionsDetails[]
      */
-    protected array $MidocoBillingPositionsDetails = [];
+    protected ?array $MidocoBillingPositionsDetails = null;
     /**
      * Constructor method for MidocoCollectiveBillingDetails
      * @uses MidocoCollectiveBillingDetails::setMidocoBillingPositionsDetails()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoBillingPositionsDetails[] $midocoBillingPositionsDetails
      */
-    public function __construct(array $midocoBillingPositionsDetails = [])
+    public function __construct(?array $midocoBillingPositionsDetails = null)
     {
         $this
             ->setMidocoBillingPositionsDetails($midocoBillingPositionsDetails);
@@ -36,18 +37,22 @@ class MidocoCollectiveBillingDetails extends AbstractStructBase
      * Get MidocoBillingPositionsDetails value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoBillingPositionsDetails[]
      */
-    public function getMidocoBillingPositionsDetails(): array
+    public function getMidocoBillingPositionsDetails(): ?array
     {
         return $this->MidocoBillingPositionsDetails;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoBillingPositionsDetails method
+     * This method is responsible for validating the value(s) passed to the setMidocoBillingPositionsDetails method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoBillingPositionsDetails method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoBillingPositionsDetailsForArrayConstraintsFromSetMidocoBillingPositionsDetails(array $values = []): string
+    public static function validateMidocoBillingPositionsDetailsForArrayConstraintFromSetMidocoBillingPositionsDetails(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoCollectiveBillingDetailsMidocoBillingPositionsDetailsItem) {
@@ -69,10 +74,10 @@ class MidocoCollectiveBillingDetails extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoBillingPositionsDetails[] $midocoBillingPositionsDetails
      * @return \Pggns\MidocoApi\Order\StructType\MidocoCollectiveBillingDetails
      */
-    public function setMidocoBillingPositionsDetails(array $midocoBillingPositionsDetails = []): self
+    public function setMidocoBillingPositionsDetails(?array $midocoBillingPositionsDetails = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoBillingPositionsDetailsArrayErrorMessage = self::validateMidocoBillingPositionsDetailsForArrayConstraintsFromSetMidocoBillingPositionsDetails($midocoBillingPositionsDetails))) {
+        if ('' !== ($midocoBillingPositionsDetailsArrayErrorMessage = self::validateMidocoBillingPositionsDetailsForArrayConstraintFromSetMidocoBillingPositionsDetails($midocoBillingPositionsDetails))) {
             throw new InvalidArgumentException($midocoBillingPositionsDetailsArrayErrorMessage, __LINE__);
         }
         $this->MidocoBillingPositionsDetails = $midocoBillingPositionsDetails;

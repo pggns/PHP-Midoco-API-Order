@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetExportMessages4OrderResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetExportMessages4OrderResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetExportMessages4OrderResponse extends AbstractStructBase
      * - ref: MidocoExportMessage
      * @var \Pggns\MidocoApi\Order\StructType\ExportMessageDTO[]
      */
-    protected array $MidocoExportMessage = [];
+    protected ?array $MidocoExportMessage = null;
     /**
      * Constructor method for GetExportMessages4OrderResponse
      * @uses GetExportMessages4OrderResponse::setMidocoExportMessage()
      * @param \Pggns\MidocoApi\Order\StructType\ExportMessageDTO[] $midocoExportMessage
      */
-    public function __construct(array $midocoExportMessage = [])
+    public function __construct(?array $midocoExportMessage = null)
     {
         $this
             ->setMidocoExportMessage($midocoExportMessage);
@@ -36,18 +37,22 @@ class GetExportMessages4OrderResponse extends AbstractStructBase
      * Get MidocoExportMessage value
      * @return \Pggns\MidocoApi\Order\StructType\ExportMessageDTO[]
      */
-    public function getMidocoExportMessage(): array
+    public function getMidocoExportMessage(): ?array
     {
         return $this->MidocoExportMessage;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoExportMessage method
+     * This method is responsible for validating the value(s) passed to the setMidocoExportMessage method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoExportMessage method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoExportMessageForArrayConstraintsFromSetMidocoExportMessage(array $values = []): string
+    public static function validateMidocoExportMessageForArrayConstraintFromSetMidocoExportMessage(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getExportMessages4OrderResponseMidocoExportMessageItem) {
@@ -69,10 +74,10 @@ class GetExportMessages4OrderResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\ExportMessageDTO[] $midocoExportMessage
      * @return \Pggns\MidocoApi\Order\StructType\GetExportMessages4OrderResponse
      */
-    public function setMidocoExportMessage(array $midocoExportMessage = []): self
+    public function setMidocoExportMessage(?array $midocoExportMessage = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoExportMessageArrayErrorMessage = self::validateMidocoExportMessageForArrayConstraintsFromSetMidocoExportMessage($midocoExportMessage))) {
+        if ('' !== ($midocoExportMessageArrayErrorMessage = self::validateMidocoExportMessageForArrayConstraintFromSetMidocoExportMessage($midocoExportMessage))) {
             throw new InvalidArgumentException($midocoExportMessageArrayErrorMessage, __LINE__);
         }
         $this->MidocoExportMessage = $midocoExportMessage;

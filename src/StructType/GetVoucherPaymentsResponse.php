@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetVoucherPaymentsResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetVoucherPaymentsResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetVoucherPaymentsResponse extends AbstractStructBase
      * - ref: MidocoVoucherPayment
      * @var \Pggns\MidocoApi\Order\StructType\VoucherPaymentDTO[]
      */
-    protected array $MidocoVoucherPayment = [];
+    protected ?array $MidocoVoucherPayment = null;
     /**
      * Constructor method for GetVoucherPaymentsResponse
      * @uses GetVoucherPaymentsResponse::setMidocoVoucherPayment()
      * @param \Pggns\MidocoApi\Order\StructType\VoucherPaymentDTO[] $midocoVoucherPayment
      */
-    public function __construct(array $midocoVoucherPayment = [])
+    public function __construct(?array $midocoVoucherPayment = null)
     {
         $this
             ->setMidocoVoucherPayment($midocoVoucherPayment);
@@ -36,18 +37,22 @@ class GetVoucherPaymentsResponse extends AbstractStructBase
      * Get MidocoVoucherPayment value
      * @return \Pggns\MidocoApi\Order\StructType\VoucherPaymentDTO[]
      */
-    public function getMidocoVoucherPayment(): array
+    public function getMidocoVoucherPayment(): ?array
     {
         return $this->MidocoVoucherPayment;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoVoucherPayment method
+     * This method is responsible for validating the value(s) passed to the setMidocoVoucherPayment method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoVoucherPayment method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoVoucherPaymentForArrayConstraintsFromSetMidocoVoucherPayment(array $values = []): string
+    public static function validateMidocoVoucherPaymentForArrayConstraintFromSetMidocoVoucherPayment(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getVoucherPaymentsResponseMidocoVoucherPaymentItem) {
@@ -69,10 +74,10 @@ class GetVoucherPaymentsResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\VoucherPaymentDTO[] $midocoVoucherPayment
      * @return \Pggns\MidocoApi\Order\StructType\GetVoucherPaymentsResponse
      */
-    public function setMidocoVoucherPayment(array $midocoVoucherPayment = []): self
+    public function setMidocoVoucherPayment(?array $midocoVoucherPayment = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoVoucherPaymentArrayErrorMessage = self::validateMidocoVoucherPaymentForArrayConstraintsFromSetMidocoVoucherPayment($midocoVoucherPayment))) {
+        if ('' !== ($midocoVoucherPaymentArrayErrorMessage = self::validateMidocoVoucherPaymentForArrayConstraintFromSetMidocoVoucherPayment($midocoVoucherPayment))) {
             throw new InvalidArgumentException($midocoVoucherPaymentArrayErrorMessage, __LINE__);
         }
         $this->MidocoVoucherPayment = $midocoVoucherPayment;

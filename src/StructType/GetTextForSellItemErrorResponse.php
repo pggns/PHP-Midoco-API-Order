@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetTextForSellItemErrorResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetTextForSellItemErrorResponse extends AbstractStructBase
 {
     /**

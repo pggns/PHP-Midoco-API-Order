@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for AzstradaCheckLogDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class AzstradaCheckLogDTO extends AbstractStructBase
 {
     /**

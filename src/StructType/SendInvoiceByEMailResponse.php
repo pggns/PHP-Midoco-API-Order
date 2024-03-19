@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SendInvoiceByEMailResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SendInvoiceByEMailResponse extends AbstractStructBase
 {
     /**

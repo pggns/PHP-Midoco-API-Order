@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetRemarkOrgunitsResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetRemarkOrgunitsResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetRemarkOrgunitsResponse extends AbstractStructBase
      * - ref: MidocoRemarkOrgunit
      * @var \Pggns\MidocoApi\Order\StructType\MidocoRemarkOrgunit[]
      */
-    protected array $MidocoRemarkOrgunit = [];
+    protected ?array $MidocoRemarkOrgunit = null;
     /**
      * Constructor method for GetRemarkOrgunitsResponse
      * @uses GetRemarkOrgunitsResponse::setMidocoRemarkOrgunit()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoRemarkOrgunit[] $midocoRemarkOrgunit
      */
-    public function __construct(array $midocoRemarkOrgunit = [])
+    public function __construct(?array $midocoRemarkOrgunit = null)
     {
         $this
             ->setMidocoRemarkOrgunit($midocoRemarkOrgunit);
@@ -36,18 +37,22 @@ class GetRemarkOrgunitsResponse extends AbstractStructBase
      * Get MidocoRemarkOrgunit value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoRemarkOrgunit[]
      */
-    public function getMidocoRemarkOrgunit(): array
+    public function getMidocoRemarkOrgunit(): ?array
     {
         return $this->MidocoRemarkOrgunit;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoRemarkOrgunit method
+     * This method is responsible for validating the value(s) passed to the setMidocoRemarkOrgunit method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoRemarkOrgunit method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoRemarkOrgunitForArrayConstraintsFromSetMidocoRemarkOrgunit(array $values = []): string
+    public static function validateMidocoRemarkOrgunitForArrayConstraintFromSetMidocoRemarkOrgunit(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getRemarkOrgunitsResponseMidocoRemarkOrgunitItem) {
@@ -69,10 +74,10 @@ class GetRemarkOrgunitsResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoRemarkOrgunit[] $midocoRemarkOrgunit
      * @return \Pggns\MidocoApi\Order\StructType\GetRemarkOrgunitsResponse
      */
-    public function setMidocoRemarkOrgunit(array $midocoRemarkOrgunit = []): self
+    public function setMidocoRemarkOrgunit(?array $midocoRemarkOrgunit = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoRemarkOrgunitArrayErrorMessage = self::validateMidocoRemarkOrgunitForArrayConstraintsFromSetMidocoRemarkOrgunit($midocoRemarkOrgunit))) {
+        if ('' !== ($midocoRemarkOrgunitArrayErrorMessage = self::validateMidocoRemarkOrgunitForArrayConstraintFromSetMidocoRemarkOrgunit($midocoRemarkOrgunit))) {
             throw new InvalidArgumentException($midocoRemarkOrgunitArrayErrorMessage, __LINE__);
         }
         $this->MidocoRemarkOrgunit = $midocoRemarkOrgunit;

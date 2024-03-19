@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoMarginDetails StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoMarginDetails extends AbstractStructBase
 {
     /**
@@ -29,7 +30,7 @@ class MidocoMarginDetails extends AbstractStructBase
      * - ref: MidocoMarginBuyItem
      * @var \Pggns\MidocoApi\Order\StructType\MidocoMarginBuyItem[]
      */
-    protected array $MidocoMarginBuyItem = [];
+    protected ?array $MidocoMarginBuyItem = null;
     /**
      * The MidocoMarginSaleItem
      * Meta information extracted from the WSDL
@@ -38,7 +39,7 @@ class MidocoMarginDetails extends AbstractStructBase
      * - ref: MidocoMarginSaleItem
      * @var \Pggns\MidocoApi\Order\StructType\MidocoMarginSaleItem[]
      */
-    protected array $MidocoMarginSaleItem = [];
+    protected ?array $MidocoMarginSaleItem = null;
     /**
      * The calculatedMarginBrutto
      * @var float|null
@@ -62,7 +63,7 @@ class MidocoMarginDetails extends AbstractStructBase
      * @param float $calculatedMarginBrutto
      * @param float $bookedMarginBrutto
      */
-    public function __construct(?\Pggns\MidocoApi\Order\StructType\MidocoMargin $midocoMargin = null, array $midocoMarginBuyItem = [], array $midocoMarginSaleItem = [], ?float $calculatedMarginBrutto = null, ?float $bookedMarginBrutto = null)
+    public function __construct(?\Pggns\MidocoApi\Order\StructType\MidocoMargin $midocoMargin = null, ?array $midocoMarginBuyItem = null, ?array $midocoMarginSaleItem = null, ?float $calculatedMarginBrutto = null, ?float $bookedMarginBrutto = null)
     {
         $this
             ->setMidocoMargin($midocoMargin)
@@ -94,18 +95,22 @@ class MidocoMarginDetails extends AbstractStructBase
      * Get MidocoMarginBuyItem value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoMarginBuyItem[]
      */
-    public function getMidocoMarginBuyItem(): array
+    public function getMidocoMarginBuyItem(): ?array
     {
         return $this->MidocoMarginBuyItem;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoMarginBuyItem method
+     * This method is responsible for validating the value(s) passed to the setMidocoMarginBuyItem method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoMarginBuyItem method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoMarginBuyItemForArrayConstraintsFromSetMidocoMarginBuyItem(array $values = []): string
+    public static function validateMidocoMarginBuyItemForArrayConstraintFromSetMidocoMarginBuyItem(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoMarginDetailsMidocoMarginBuyItemItem) {
@@ -127,10 +132,10 @@ class MidocoMarginDetails extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoMarginBuyItem[] $midocoMarginBuyItem
      * @return \Pggns\MidocoApi\Order\StructType\MidocoMarginDetails
      */
-    public function setMidocoMarginBuyItem(array $midocoMarginBuyItem = []): self
+    public function setMidocoMarginBuyItem(?array $midocoMarginBuyItem = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoMarginBuyItemArrayErrorMessage = self::validateMidocoMarginBuyItemForArrayConstraintsFromSetMidocoMarginBuyItem($midocoMarginBuyItem))) {
+        if ('' !== ($midocoMarginBuyItemArrayErrorMessage = self::validateMidocoMarginBuyItemForArrayConstraintFromSetMidocoMarginBuyItem($midocoMarginBuyItem))) {
             throw new InvalidArgumentException($midocoMarginBuyItemArrayErrorMessage, __LINE__);
         }
         $this->MidocoMarginBuyItem = $midocoMarginBuyItem;
@@ -157,18 +162,22 @@ class MidocoMarginDetails extends AbstractStructBase
      * Get MidocoMarginSaleItem value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoMarginSaleItem[]
      */
-    public function getMidocoMarginSaleItem(): array
+    public function getMidocoMarginSaleItem(): ?array
     {
         return $this->MidocoMarginSaleItem;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoMarginSaleItem method
+     * This method is responsible for validating the value(s) passed to the setMidocoMarginSaleItem method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoMarginSaleItem method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoMarginSaleItemForArrayConstraintsFromSetMidocoMarginSaleItem(array $values = []): string
+    public static function validateMidocoMarginSaleItemForArrayConstraintFromSetMidocoMarginSaleItem(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoMarginDetailsMidocoMarginSaleItemItem) {
@@ -190,10 +199,10 @@ class MidocoMarginDetails extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoMarginSaleItem[] $midocoMarginSaleItem
      * @return \Pggns\MidocoApi\Order\StructType\MidocoMarginDetails
      */
-    public function setMidocoMarginSaleItem(array $midocoMarginSaleItem = []): self
+    public function setMidocoMarginSaleItem(?array $midocoMarginSaleItem = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoMarginSaleItemArrayErrorMessage = self::validateMidocoMarginSaleItemForArrayConstraintsFromSetMidocoMarginSaleItem($midocoMarginSaleItem))) {
+        if ('' !== ($midocoMarginSaleItemArrayErrorMessage = self::validateMidocoMarginSaleItemForArrayConstraintFromSetMidocoMarginSaleItem($midocoMarginSaleItem))) {
             throw new InvalidArgumentException($midocoMarginSaleItemArrayErrorMessage, __LINE__);
         }
         $this->MidocoMarginSaleItem = $midocoMarginSaleItem;

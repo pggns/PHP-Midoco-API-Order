@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetMidocoBonusAdditionResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetMidocoBonusAdditionResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetMidocoBonusAdditionResponse extends AbstractStructBase
      * - ref: MidocoBonusAddition
      * @var \Pggns\MidocoApi\Order\StructType\BonusAdditionDTO[]
      */
-    protected array $MidocoBonusAddition = [];
+    protected ?array $MidocoBonusAddition = null;
     /**
      * Constructor method for GetMidocoBonusAdditionResponse
      * @uses GetMidocoBonusAdditionResponse::setMidocoBonusAddition()
      * @param \Pggns\MidocoApi\Order\StructType\BonusAdditionDTO[] $midocoBonusAddition
      */
-    public function __construct(array $midocoBonusAddition = [])
+    public function __construct(?array $midocoBonusAddition = null)
     {
         $this
             ->setMidocoBonusAddition($midocoBonusAddition);
@@ -36,18 +37,22 @@ class GetMidocoBonusAdditionResponse extends AbstractStructBase
      * Get MidocoBonusAddition value
      * @return \Pggns\MidocoApi\Order\StructType\BonusAdditionDTO[]
      */
-    public function getMidocoBonusAddition(): array
+    public function getMidocoBonusAddition(): ?array
     {
         return $this->MidocoBonusAddition;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoBonusAddition method
+     * This method is responsible for validating the value(s) passed to the setMidocoBonusAddition method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoBonusAddition method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoBonusAdditionForArrayConstraintsFromSetMidocoBonusAddition(array $values = []): string
+    public static function validateMidocoBonusAdditionForArrayConstraintFromSetMidocoBonusAddition(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getMidocoBonusAdditionResponseMidocoBonusAdditionItem) {
@@ -69,10 +74,10 @@ class GetMidocoBonusAdditionResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\BonusAdditionDTO[] $midocoBonusAddition
      * @return \Pggns\MidocoApi\Order\StructType\GetMidocoBonusAdditionResponse
      */
-    public function setMidocoBonusAddition(array $midocoBonusAddition = []): self
+    public function setMidocoBonusAddition(?array $midocoBonusAddition = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoBonusAdditionArrayErrorMessage = self::validateMidocoBonusAdditionForArrayConstraintsFromSetMidocoBonusAddition($midocoBonusAddition))) {
+        if ('' !== ($midocoBonusAdditionArrayErrorMessage = self::validateMidocoBonusAdditionForArrayConstraintFromSetMidocoBonusAddition($midocoBonusAddition))) {
             throw new InvalidArgumentException($midocoBonusAdditionArrayErrorMessage, __LINE__);
         }
         $this->MidocoBonusAddition = $midocoBonusAddition;

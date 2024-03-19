@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CashBookITChangeLogDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CashBookITChangeLogDTO extends AbstractStructBase
 {
     /**

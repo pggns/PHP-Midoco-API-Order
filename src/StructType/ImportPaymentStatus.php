@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ImportPaymentStatus StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ImportPaymentStatus extends AbstractStructBase
 {
     /**
@@ -30,7 +31,7 @@ class ImportPaymentStatus extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $errorParameter = [];
+    protected ?array $errorParameter = null;
     /**
      * The errorCode
      * @var string|null
@@ -54,7 +55,7 @@ class ImportPaymentStatus extends AbstractStructBase
      * @param string $errorCode
      * @param string $errorBundle
      */
-    public function __construct(?int $orderId = null, ?int $importedPaymentId = null, array $errorParameter = [], ?string $errorCode = null, ?string $errorBundle = null)
+    public function __construct(?int $orderId = null, ?int $importedPaymentId = null, ?array $errorParameter = null, ?string $errorCode = null, ?string $errorBundle = null)
     {
         $this
             ->setOrderId($orderId)
@@ -113,18 +114,22 @@ class ImportPaymentStatus extends AbstractStructBase
      * Get errorParameter value
      * @return string[]
      */
-    public function getErrorParameter(): array
+    public function getErrorParameter(): ?array
     {
         return $this->errorParameter;
     }
     /**
-     * This method is responsible for validating the values passed to the setErrorParameter method
+     * This method is responsible for validating the value(s) passed to the setErrorParameter method
      * This method is willingly generated in order to preserve the one-line inline validation within the setErrorParameter method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateErrorParameterForArrayConstraintsFromSetErrorParameter(array $values = []): string
+    public static function validateErrorParameterForArrayConstraintFromSetErrorParameter(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $importPaymentStatusErrorParameterItem) {
@@ -146,10 +151,10 @@ class ImportPaymentStatus extends AbstractStructBase
      * @param string[] $errorParameter
      * @return \Pggns\MidocoApi\Order\StructType\ImportPaymentStatus
      */
-    public function setErrorParameter(array $errorParameter = []): self
+    public function setErrorParameter(?array $errorParameter = null): self
     {
         // validation for constraint: array
-        if ('' !== ($errorParameterArrayErrorMessage = self::validateErrorParameterForArrayConstraintsFromSetErrorParameter($errorParameter))) {
+        if ('' !== ($errorParameterArrayErrorMessage = self::validateErrorParameterForArrayConstraintFromSetErrorParameter($errorParameter))) {
             throw new InvalidArgumentException($errorParameterArrayErrorMessage, __LINE__);
         }
         $this->errorParameter = $errorParameter;

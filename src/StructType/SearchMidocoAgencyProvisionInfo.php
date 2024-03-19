@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SearchMidocoAgencyProvisionInfo StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchMidocoAgencyProvisionInfo extends AbstractStructBase
 {
     /**

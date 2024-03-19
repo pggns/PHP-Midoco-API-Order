@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetRemarkCategoryRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetRemarkCategoryRequest extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SupplierFreeStornoDayDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SupplierFreeStornoDayDTO extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SuppPayCondChangeLogDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SuppPayCondChangeLogDTO extends AbstractStructBase
 {
     /**

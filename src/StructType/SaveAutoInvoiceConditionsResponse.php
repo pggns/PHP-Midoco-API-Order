@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveAutoInvoiceConditionsResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveAutoInvoiceConditionsResponse extends AbstractStructBase
 {
 }

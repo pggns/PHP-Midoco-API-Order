@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SellItemVatDivisionDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SellItemVatDivisionDTO extends AbstractStructBase
 {
     /**

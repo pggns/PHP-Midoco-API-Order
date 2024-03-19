@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CreateSupplierMessageRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CreateSupplierMessageRequest extends AbstractStructBase
 {
     /**

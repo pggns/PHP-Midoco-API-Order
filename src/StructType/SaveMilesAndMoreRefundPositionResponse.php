@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: This re-calculated billing position including the miles and more transaction data.
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveMilesAndMoreRefundPositionResponse extends AbstractStructBase
 {
     /**

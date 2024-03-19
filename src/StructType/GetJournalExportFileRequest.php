@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetJournalExportFileRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetJournalExportFileRequest extends AbstractStructBase
 {
     /**

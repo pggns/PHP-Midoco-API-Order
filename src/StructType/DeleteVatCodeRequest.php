@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteVatCodeRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteVatCodeRequest extends AbstractStructBase
 {
     /**

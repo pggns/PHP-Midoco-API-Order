@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetMediatorCommissionResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetMediatorCommissionResponse extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SearchPaymentProviderSettlementsResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchPaymentProviderSettlementsResponse extends AbstractStructBase
 {
     /**
@@ -20,13 +21,13 @@ class SearchPaymentProviderSettlementsResponse extends AbstractStructBase
      * - ref: MidocoPaymentProviderSettlement
      * @var \Pggns\MidocoApi\Order\StructType\MidocoPaymentProviderSettlement[]
      */
-    protected array $MidocoPaymentProviderSettlement = [];
+    protected ?array $MidocoPaymentProviderSettlement = null;
     /**
      * Constructor method for SearchPaymentProviderSettlementsResponse
      * @uses SearchPaymentProviderSettlementsResponse::setMidocoPaymentProviderSettlement()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoPaymentProviderSettlement[] $midocoPaymentProviderSettlement
      */
-    public function __construct(array $midocoPaymentProviderSettlement = [])
+    public function __construct(?array $midocoPaymentProviderSettlement = null)
     {
         $this
             ->setMidocoPaymentProviderSettlement($midocoPaymentProviderSettlement);
@@ -35,18 +36,22 @@ class SearchPaymentProviderSettlementsResponse extends AbstractStructBase
      * Get MidocoPaymentProviderSettlement value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoPaymentProviderSettlement[]
      */
-    public function getMidocoPaymentProviderSettlement(): array
+    public function getMidocoPaymentProviderSettlement(): ?array
     {
         return $this->MidocoPaymentProviderSettlement;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoPaymentProviderSettlement method
+     * This method is responsible for validating the value(s) passed to the setMidocoPaymentProviderSettlement method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoPaymentProviderSettlement method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoPaymentProviderSettlementForArrayConstraintsFromSetMidocoPaymentProviderSettlement(array $values = []): string
+    public static function validateMidocoPaymentProviderSettlementForArrayConstraintFromSetMidocoPaymentProviderSettlement(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $searchPaymentProviderSettlementsResponseMidocoPaymentProviderSettlementItem) {
@@ -68,10 +73,10 @@ class SearchPaymentProviderSettlementsResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoPaymentProviderSettlement[] $midocoPaymentProviderSettlement
      * @return \Pggns\MidocoApi\Order\StructType\SearchPaymentProviderSettlementsResponse
      */
-    public function setMidocoPaymentProviderSettlement(array $midocoPaymentProviderSettlement = []): self
+    public function setMidocoPaymentProviderSettlement(?array $midocoPaymentProviderSettlement = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoPaymentProviderSettlementArrayErrorMessage = self::validateMidocoPaymentProviderSettlementForArrayConstraintsFromSetMidocoPaymentProviderSettlement($midocoPaymentProviderSettlement))) {
+        if ('' !== ($midocoPaymentProviderSettlementArrayErrorMessage = self::validateMidocoPaymentProviderSettlementForArrayConstraintFromSetMidocoPaymentProviderSettlement($midocoPaymentProviderSettlement))) {
             throw new InvalidArgumentException($midocoPaymentProviderSettlementArrayErrorMessage, __LINE__);
         }
         $this->MidocoPaymentProviderSettlement = $midocoPaymentProviderSettlement;

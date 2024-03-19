@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoOrgunitGuiAttribute StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoOrgunitGuiAttribute extends OrgunitGuiAttributeDTO
 {
     /**

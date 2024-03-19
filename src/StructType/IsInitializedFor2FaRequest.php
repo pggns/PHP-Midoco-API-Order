@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for IsInitializedFor2FaRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class IsInitializedFor2FaRequest extends AbstractStructBase
 {
     /**

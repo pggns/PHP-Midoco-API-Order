@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetCostCentresResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetCostCentresResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetCostCentresResponse extends AbstractStructBase
      * - ref: MidocoCostCentre
      * @var \Pggns\MidocoApi\Order\StructType\MidocoCostCentre[]
      */
-    protected array $MidocoCostCentre = [];
+    protected ?array $MidocoCostCentre = null;
     /**
      * Constructor method for GetCostCentresResponse
      * @uses GetCostCentresResponse::setMidocoCostCentre()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoCostCentre[] $midocoCostCentre
      */
-    public function __construct(array $midocoCostCentre = [])
+    public function __construct(?array $midocoCostCentre = null)
     {
         $this
             ->setMidocoCostCentre($midocoCostCentre);
@@ -36,18 +37,22 @@ class GetCostCentresResponse extends AbstractStructBase
      * Get MidocoCostCentre value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoCostCentre[]
      */
-    public function getMidocoCostCentre(): array
+    public function getMidocoCostCentre(): ?array
     {
         return $this->MidocoCostCentre;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoCostCentre method
+     * This method is responsible for validating the value(s) passed to the setMidocoCostCentre method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoCostCentre method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoCostCentreForArrayConstraintsFromSetMidocoCostCentre(array $values = []): string
+    public static function validateMidocoCostCentreForArrayConstraintFromSetMidocoCostCentre(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getCostCentresResponseMidocoCostCentreItem) {
@@ -69,10 +74,10 @@ class GetCostCentresResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoCostCentre[] $midocoCostCentre
      * @return \Pggns\MidocoApi\Order\StructType\GetCostCentresResponse
      */
-    public function setMidocoCostCentre(array $midocoCostCentre = []): self
+    public function setMidocoCostCentre(?array $midocoCostCentre = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoCostCentreArrayErrorMessage = self::validateMidocoCostCentreForArrayConstraintsFromSetMidocoCostCentre($midocoCostCentre))) {
+        if ('' !== ($midocoCostCentreArrayErrorMessage = self::validateMidocoCostCentreForArrayConstraintFromSetMidocoCostCentre($midocoCostCentre))) {
             throw new InvalidArgumentException($midocoCostCentreArrayErrorMessage, __LINE__);
         }
         $this->MidocoCostCentre = $midocoCostCentre;

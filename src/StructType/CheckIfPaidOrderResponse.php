@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: check if an order (identifieb by its order id) is already paid or not
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CheckIfPaidOrderResponse extends AbstractStructBase
 {
     /**

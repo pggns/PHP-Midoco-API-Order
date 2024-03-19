@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoDebitorAccountEntryBalance StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoDebitorAccountEntryBalance extends AbstractStructBase
 {
     /**

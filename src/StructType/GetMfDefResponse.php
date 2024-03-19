@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetMfDefResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetMfDefResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetMfDefResponse extends AbstractStructBase
      * - ref: MidocoMfDef
      * @var \Pggns\MidocoApi\Order\StructType\MidocoMfDef[]
      */
-    protected array $MidocoMfDef = [];
+    protected ?array $MidocoMfDef = null;
     /**
      * Constructor method for GetMfDefResponse
      * @uses GetMfDefResponse::setMidocoMfDef()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoMfDef[] $midocoMfDef
      */
-    public function __construct(array $midocoMfDef = [])
+    public function __construct(?array $midocoMfDef = null)
     {
         $this
             ->setMidocoMfDef($midocoMfDef);
@@ -36,18 +37,22 @@ class GetMfDefResponse extends AbstractStructBase
      * Get MidocoMfDef value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoMfDef[]
      */
-    public function getMidocoMfDef(): array
+    public function getMidocoMfDef(): ?array
     {
         return $this->MidocoMfDef;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoMfDef method
+     * This method is responsible for validating the value(s) passed to the setMidocoMfDef method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoMfDef method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoMfDefForArrayConstraintsFromSetMidocoMfDef(array $values = []): string
+    public static function validateMidocoMfDefForArrayConstraintFromSetMidocoMfDef(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getMfDefResponseMidocoMfDefItem) {
@@ -69,10 +74,10 @@ class GetMfDefResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoMfDef[] $midocoMfDef
      * @return \Pggns\MidocoApi\Order\StructType\GetMfDefResponse
      */
-    public function setMidocoMfDef(array $midocoMfDef = []): self
+    public function setMidocoMfDef(?array $midocoMfDef = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoMfDefArrayErrorMessage = self::validateMidocoMfDefForArrayConstraintsFromSetMidocoMfDef($midocoMfDef))) {
+        if ('' !== ($midocoMfDefArrayErrorMessage = self::validateMidocoMfDefForArrayConstraintFromSetMidocoMfDef($midocoMfDef))) {
             throw new InvalidArgumentException($midocoMfDefArrayErrorMessage, __LINE__);
         }
         $this->MidocoMfDef = $midocoMfDef;

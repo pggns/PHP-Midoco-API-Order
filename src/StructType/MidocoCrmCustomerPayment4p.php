@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoCrmCustomerPayment4p StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoCrmCustomerPayment4p extends CrmCustomerPaymentDTO
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetMediatorProductSettlementDetailsResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetMediatorProductSettlementDetailsResponse extends AbstractStructBase
 {
     /**
@@ -21,7 +22,7 @@ class GetMediatorProductSettlementDetailsResponse extends AbstractStructBase
      * - ref: MidocoMediatorProductSettlementDetail
      * @var \Pggns\MidocoApi\Order\StructType\MidocoMediatorProductSettlementDetail[]
      */
-    protected array $MidocoMediatorProductSettlementDetail = [];
+    protected ?array $MidocoMediatorProductSettlementDetail = null;
     /**
      * The MidocoMediatorCharge
      * Meta information extracted from the WSDL
@@ -30,7 +31,7 @@ class GetMediatorProductSettlementDetailsResponse extends AbstractStructBase
      * - ref: MidocoMediatorCharge
      * @var \Pggns\MidocoApi\Order\StructType\MediatorChargeDTO[]
      */
-    protected array $MidocoMediatorCharge = [];
+    protected ?array $MidocoMediatorCharge = null;
     /**
      * Constructor method for GetMediatorProductSettlementDetailsResponse
      * @uses GetMediatorProductSettlementDetailsResponse::setMidocoMediatorProductSettlementDetail()
@@ -38,7 +39,7 @@ class GetMediatorProductSettlementDetailsResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoMediatorProductSettlementDetail[] $midocoMediatorProductSettlementDetail
      * @param \Pggns\MidocoApi\Order\StructType\MediatorChargeDTO[] $midocoMediatorCharge
      */
-    public function __construct(array $midocoMediatorProductSettlementDetail = [], array $midocoMediatorCharge = [])
+    public function __construct(?array $midocoMediatorProductSettlementDetail = null, ?array $midocoMediatorCharge = null)
     {
         $this
             ->setMidocoMediatorProductSettlementDetail($midocoMediatorProductSettlementDetail)
@@ -48,18 +49,22 @@ class GetMediatorProductSettlementDetailsResponse extends AbstractStructBase
      * Get MidocoMediatorProductSettlementDetail value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoMediatorProductSettlementDetail[]
      */
-    public function getMidocoMediatorProductSettlementDetail(): array
+    public function getMidocoMediatorProductSettlementDetail(): ?array
     {
         return $this->MidocoMediatorProductSettlementDetail;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoMediatorProductSettlementDetail method
+     * This method is responsible for validating the value(s) passed to the setMidocoMediatorProductSettlementDetail method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoMediatorProductSettlementDetail method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoMediatorProductSettlementDetailForArrayConstraintsFromSetMidocoMediatorProductSettlementDetail(array $values = []): string
+    public static function validateMidocoMediatorProductSettlementDetailForArrayConstraintFromSetMidocoMediatorProductSettlementDetail(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getMediatorProductSettlementDetailsResponseMidocoMediatorProductSettlementDetailItem) {
@@ -81,10 +86,10 @@ class GetMediatorProductSettlementDetailsResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoMediatorProductSettlementDetail[] $midocoMediatorProductSettlementDetail
      * @return \Pggns\MidocoApi\Order\StructType\GetMediatorProductSettlementDetailsResponse
      */
-    public function setMidocoMediatorProductSettlementDetail(array $midocoMediatorProductSettlementDetail = []): self
+    public function setMidocoMediatorProductSettlementDetail(?array $midocoMediatorProductSettlementDetail = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoMediatorProductSettlementDetailArrayErrorMessage = self::validateMidocoMediatorProductSettlementDetailForArrayConstraintsFromSetMidocoMediatorProductSettlementDetail($midocoMediatorProductSettlementDetail))) {
+        if ('' !== ($midocoMediatorProductSettlementDetailArrayErrorMessage = self::validateMidocoMediatorProductSettlementDetailForArrayConstraintFromSetMidocoMediatorProductSettlementDetail($midocoMediatorProductSettlementDetail))) {
             throw new InvalidArgumentException($midocoMediatorProductSettlementDetailArrayErrorMessage, __LINE__);
         }
         $this->MidocoMediatorProductSettlementDetail = $midocoMediatorProductSettlementDetail;
@@ -111,18 +116,22 @@ class GetMediatorProductSettlementDetailsResponse extends AbstractStructBase
      * Get MidocoMediatorCharge value
      * @return \Pggns\MidocoApi\Order\StructType\MediatorChargeDTO[]
      */
-    public function getMidocoMediatorCharge(): array
+    public function getMidocoMediatorCharge(): ?array
     {
         return $this->MidocoMediatorCharge;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoMediatorCharge method
+     * This method is responsible for validating the value(s) passed to the setMidocoMediatorCharge method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoMediatorCharge method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoMediatorChargeForArrayConstraintsFromSetMidocoMediatorCharge(array $values = []): string
+    public static function validateMidocoMediatorChargeForArrayConstraintFromSetMidocoMediatorCharge(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getMediatorProductSettlementDetailsResponseMidocoMediatorChargeItem) {
@@ -144,10 +153,10 @@ class GetMediatorProductSettlementDetailsResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MediatorChargeDTO[] $midocoMediatorCharge
      * @return \Pggns\MidocoApi\Order\StructType\GetMediatorProductSettlementDetailsResponse
      */
-    public function setMidocoMediatorCharge(array $midocoMediatorCharge = []): self
+    public function setMidocoMediatorCharge(?array $midocoMediatorCharge = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoMediatorChargeArrayErrorMessage = self::validateMidocoMediatorChargeForArrayConstraintsFromSetMidocoMediatorCharge($midocoMediatorCharge))) {
+        if ('' !== ($midocoMediatorChargeArrayErrorMessage = self::validateMidocoMediatorChargeForArrayConstraintFromSetMidocoMediatorCharge($midocoMediatorCharge))) {
             throw new InvalidArgumentException($midocoMediatorChargeArrayErrorMessage, __LINE__);
         }
         $this->MidocoMediatorCharge = $midocoMediatorCharge;

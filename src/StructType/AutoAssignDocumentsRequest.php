@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for AutoAssignDocumentsRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class AutoAssignDocumentsRequest extends AbstractStructBase
 {
     /**

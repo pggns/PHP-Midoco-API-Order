@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for RemarkCategoryDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class RemarkCategoryDTO extends AbstractStructBase
 {
     /**

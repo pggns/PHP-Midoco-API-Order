@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoExportNamesTableChooserValue StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoExportNamesTableChooserValue extends AbstractStructBase
 {
     /**

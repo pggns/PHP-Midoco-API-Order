@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for AutoGenMidocoMandatesResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class AutoGenMidocoMandatesResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class AutoGenMidocoMandatesResponse extends AbstractStructBase
      * - ref: MidocoMandateGenError
      * @var \Pggns\MidocoApi\Order\StructType\MidocoMandateGenError[]
      */
-    protected array $MidocoMandateGenError = [];
+    protected ?array $MidocoMandateGenError = null;
     /**
      * Constructor method for AutoGenMidocoMandatesResponse
      * @uses AutoGenMidocoMandatesResponse::setMidocoMandateGenError()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoMandateGenError[] $midocoMandateGenError
      */
-    public function __construct(array $midocoMandateGenError = [])
+    public function __construct(?array $midocoMandateGenError = null)
     {
         $this
             ->setMidocoMandateGenError($midocoMandateGenError);
@@ -36,18 +37,22 @@ class AutoGenMidocoMandatesResponse extends AbstractStructBase
      * Get MidocoMandateGenError value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoMandateGenError[]
      */
-    public function getMidocoMandateGenError(): array
+    public function getMidocoMandateGenError(): ?array
     {
         return $this->MidocoMandateGenError;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoMandateGenError method
+     * This method is responsible for validating the value(s) passed to the setMidocoMandateGenError method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoMandateGenError method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoMandateGenErrorForArrayConstraintsFromSetMidocoMandateGenError(array $values = []): string
+    public static function validateMidocoMandateGenErrorForArrayConstraintFromSetMidocoMandateGenError(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $autoGenMidocoMandatesResponseMidocoMandateGenErrorItem) {
@@ -69,10 +74,10 @@ class AutoGenMidocoMandatesResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoMandateGenError[] $midocoMandateGenError
      * @return \Pggns\MidocoApi\Order\StructType\AutoGenMidocoMandatesResponse
      */
-    public function setMidocoMandateGenError(array $midocoMandateGenError = []): self
+    public function setMidocoMandateGenError(?array $midocoMandateGenError = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoMandateGenErrorArrayErrorMessage = self::validateMidocoMandateGenErrorForArrayConstraintsFromSetMidocoMandateGenError($midocoMandateGenError))) {
+        if ('' !== ($midocoMandateGenErrorArrayErrorMessage = self::validateMidocoMandateGenErrorForArrayConstraintFromSetMidocoMandateGenError($midocoMandateGenError))) {
             throw new InvalidArgumentException($midocoMandateGenErrorArrayErrorMessage, __LINE__);
         }
         $this->MidocoMandateGenError = $midocoMandateGenError;

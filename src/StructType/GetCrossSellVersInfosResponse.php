@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetCrossSellVersInfosResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetCrossSellVersInfosResponse extends AbstractStructBase
 {
     /**
@@ -21,7 +22,7 @@ class GetCrossSellVersInfosResponse extends AbstractStructBase
      * - ref: CrossSellingVersInfo
      * @var \Pggns\MidocoApi\Order\StructType\CrossSellingVersInfo[]
      */
-    protected array $CrossSellingVersInfo = [];
+    protected ?array $CrossSellingVersInfo = null;
     /**
      * The existsVers
      * @var bool|null
@@ -34,7 +35,7 @@ class GetCrossSellVersInfosResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\CrossSellingVersInfo[] $crossSellingVersInfo
      * @param bool $existsVers
      */
-    public function __construct(array $crossSellingVersInfo = [], ?bool $existsVers = null)
+    public function __construct(?array $crossSellingVersInfo = null, ?bool $existsVers = null)
     {
         $this
             ->setCrossSellingVersInfo($crossSellingVersInfo)
@@ -44,18 +45,22 @@ class GetCrossSellVersInfosResponse extends AbstractStructBase
      * Get CrossSellingVersInfo value
      * @return \Pggns\MidocoApi\Order\StructType\CrossSellingVersInfo[]
      */
-    public function getCrossSellingVersInfo(): array
+    public function getCrossSellingVersInfo(): ?array
     {
         return $this->CrossSellingVersInfo;
     }
     /**
-     * This method is responsible for validating the values passed to the setCrossSellingVersInfo method
+     * This method is responsible for validating the value(s) passed to the setCrossSellingVersInfo method
      * This method is willingly generated in order to preserve the one-line inline validation within the setCrossSellingVersInfo method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateCrossSellingVersInfoForArrayConstraintsFromSetCrossSellingVersInfo(array $values = []): string
+    public static function validateCrossSellingVersInfoForArrayConstraintFromSetCrossSellingVersInfo(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getCrossSellVersInfosResponseCrossSellingVersInfoItem) {
@@ -77,10 +82,10 @@ class GetCrossSellVersInfosResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\CrossSellingVersInfo[] $crossSellingVersInfo
      * @return \Pggns\MidocoApi\Order\StructType\GetCrossSellVersInfosResponse
      */
-    public function setCrossSellingVersInfo(array $crossSellingVersInfo = []): self
+    public function setCrossSellingVersInfo(?array $crossSellingVersInfo = null): self
     {
         // validation for constraint: array
-        if ('' !== ($crossSellingVersInfoArrayErrorMessage = self::validateCrossSellingVersInfoForArrayConstraintsFromSetCrossSellingVersInfo($crossSellingVersInfo))) {
+        if ('' !== ($crossSellingVersInfoArrayErrorMessage = self::validateCrossSellingVersInfoForArrayConstraintFromSetCrossSellingVersInfo($crossSellingVersInfo))) {
             throw new InvalidArgumentException($crossSellingVersInfoArrayErrorMessage, __LINE__);
         }
         $this->CrossSellingVersInfo = $crossSellingVersInfo;

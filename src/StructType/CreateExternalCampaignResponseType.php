@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CreateExternalCampaignResponseType StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CreateExternalCampaignResponseType extends ExternalCampaignDTO
 {
     /**

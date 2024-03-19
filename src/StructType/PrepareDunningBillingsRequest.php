@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for PrepareDunningBillingsRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class PrepareDunningBillingsRequest extends AbstractStructBase
 {
     /**

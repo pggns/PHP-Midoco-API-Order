@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetRemarkSuppliersResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetRemarkSuppliersResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetRemarkSuppliersResponse extends AbstractStructBase
      * - ref: MidocoRemarkSupplier
      * @var \Pggns\MidocoApi\Order\StructType\MidocoRemarkSupplier[]
      */
-    protected array $MidocoRemarkSupplier = [];
+    protected ?array $MidocoRemarkSupplier = null;
     /**
      * Constructor method for GetRemarkSuppliersResponse
      * @uses GetRemarkSuppliersResponse::setMidocoRemarkSupplier()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoRemarkSupplier[] $midocoRemarkSupplier
      */
-    public function __construct(array $midocoRemarkSupplier = [])
+    public function __construct(?array $midocoRemarkSupplier = null)
     {
         $this
             ->setMidocoRemarkSupplier($midocoRemarkSupplier);
@@ -36,18 +37,22 @@ class GetRemarkSuppliersResponse extends AbstractStructBase
      * Get MidocoRemarkSupplier value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoRemarkSupplier[]
      */
-    public function getMidocoRemarkSupplier(): array
+    public function getMidocoRemarkSupplier(): ?array
     {
         return $this->MidocoRemarkSupplier;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoRemarkSupplier method
+     * This method is responsible for validating the value(s) passed to the setMidocoRemarkSupplier method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoRemarkSupplier method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoRemarkSupplierForArrayConstraintsFromSetMidocoRemarkSupplier(array $values = []): string
+    public static function validateMidocoRemarkSupplierForArrayConstraintFromSetMidocoRemarkSupplier(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getRemarkSuppliersResponseMidocoRemarkSupplierItem) {
@@ -69,10 +74,10 @@ class GetRemarkSuppliersResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoRemarkSupplier[] $midocoRemarkSupplier
      * @return \Pggns\MidocoApi\Order\StructType\GetRemarkSuppliersResponse
      */
-    public function setMidocoRemarkSupplier(array $midocoRemarkSupplier = []): self
+    public function setMidocoRemarkSupplier(?array $midocoRemarkSupplier = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoRemarkSupplierArrayErrorMessage = self::validateMidocoRemarkSupplierForArrayConstraintsFromSetMidocoRemarkSupplier($midocoRemarkSupplier))) {
+        if ('' !== ($midocoRemarkSupplierArrayErrorMessage = self::validateMidocoRemarkSupplierForArrayConstraintFromSetMidocoRemarkSupplier($midocoRemarkSupplier))) {
             throw new InvalidArgumentException($midocoRemarkSupplierArrayErrorMessage, __LINE__);
         }
         $this->MidocoRemarkSupplier = $midocoRemarkSupplier;

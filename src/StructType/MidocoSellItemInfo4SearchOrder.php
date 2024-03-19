@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoSellItemInfo4SearchOrder StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoSellItemInfo4SearchOrder extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetAccountEntriesForDebitorPageRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetAccountEntriesForDebitorPageRequest extends AbstractStructBase
 {
     /**

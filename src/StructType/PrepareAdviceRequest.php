@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for PrepareAdviceRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class PrepareAdviceRequest extends PrepareAdviceInfoRequest
 {
     /**

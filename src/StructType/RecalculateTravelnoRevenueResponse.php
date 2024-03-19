@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for RecalculateTravelnoRevenueResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class RecalculateTravelnoRevenueResponse extends AbstractStructBase
 {
 }

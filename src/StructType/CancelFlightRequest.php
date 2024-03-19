@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CancelFlightRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CancelFlightRequest extends AbstractStructBase
 {
     /**
@@ -27,7 +28,7 @@ class CancelFlightRequest extends AbstractStructBase
      * - minOccurs: 0
      * @var int[]
      */
-    protected array $feeItemIds = [];
+    protected ?array $feeItemIds = null;
     /**
      * Constructor method for CancelFlightRequest
      * @uses CancelFlightRequest::setMidocoSellItem()
@@ -35,7 +36,7 @@ class CancelFlightRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSellItemType $midocoSellItem
      * @param int[] $feeItemIds
      */
-    public function __construct(?\Pggns\MidocoApi\Order\StructType\MidocoSellItemType $midocoSellItem = null, array $feeItemIds = [])
+    public function __construct(?\Pggns\MidocoApi\Order\StructType\MidocoSellItemType $midocoSellItem = null, ?array $feeItemIds = null)
     {
         $this
             ->setMidocoSellItem($midocoSellItem)
@@ -64,18 +65,22 @@ class CancelFlightRequest extends AbstractStructBase
      * Get feeItemIds value
      * @return int[]
      */
-    public function getFeeItemIds(): array
+    public function getFeeItemIds(): ?array
     {
         return $this->feeItemIds;
     }
     /**
-     * This method is responsible for validating the values passed to the setFeeItemIds method
+     * This method is responsible for validating the value(s) passed to the setFeeItemIds method
      * This method is willingly generated in order to preserve the one-line inline validation within the setFeeItemIds method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateFeeItemIdsForArrayConstraintsFromSetFeeItemIds(array $values = []): string
+    public static function validateFeeItemIdsForArrayConstraintFromSetFeeItemIds(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $cancelFlightRequestFeeItemIdsItem) {
@@ -97,10 +102,10 @@ class CancelFlightRequest extends AbstractStructBase
      * @param int[] $feeItemIds
      * @return \Pggns\MidocoApi\Order\StructType\CancelFlightRequest
      */
-    public function setFeeItemIds(array $feeItemIds = []): self
+    public function setFeeItemIds(?array $feeItemIds = null): self
     {
         // validation for constraint: array
-        if ('' !== ($feeItemIdsArrayErrorMessage = self::validateFeeItemIdsForArrayConstraintsFromSetFeeItemIds($feeItemIds))) {
+        if ('' !== ($feeItemIdsArrayErrorMessage = self::validateFeeItemIdsForArrayConstraintFromSetFeeItemIds($feeItemIds))) {
             throw new InvalidArgumentException($feeItemIdsArrayErrorMessage, __LINE__);
         }
         $this->feeItemIds = $feeItemIds;

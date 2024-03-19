@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SearchSupplierAgencySettlementsResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchSupplierAgencySettlementsResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class SearchSupplierAgencySettlementsResponse extends AbstractStructBase
      * - ref: MidocoSupplierAgencySettlement
      * @var \Pggns\MidocoApi\Order\StructType\MidocoSupplierAgencySettlement[]
      */
-    protected array $MidocoSupplierAgencySettlement = [];
+    protected ?array $MidocoSupplierAgencySettlement = null;
     /**
      * Constructor method for SearchSupplierAgencySettlementsResponse
      * @uses SearchSupplierAgencySettlementsResponse::setMidocoSupplierAgencySettlement()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSupplierAgencySettlement[] $midocoSupplierAgencySettlement
      */
-    public function __construct(array $midocoSupplierAgencySettlement = [])
+    public function __construct(?array $midocoSupplierAgencySettlement = null)
     {
         $this
             ->setMidocoSupplierAgencySettlement($midocoSupplierAgencySettlement);
@@ -36,18 +37,22 @@ class SearchSupplierAgencySettlementsResponse extends AbstractStructBase
      * Get MidocoSupplierAgencySettlement value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSupplierAgencySettlement[]
      */
-    public function getMidocoSupplierAgencySettlement(): array
+    public function getMidocoSupplierAgencySettlement(): ?array
     {
         return $this->MidocoSupplierAgencySettlement;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoSupplierAgencySettlement method
+     * This method is responsible for validating the value(s) passed to the setMidocoSupplierAgencySettlement method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoSupplierAgencySettlement method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoSupplierAgencySettlementForArrayConstraintsFromSetMidocoSupplierAgencySettlement(array $values = []): string
+    public static function validateMidocoSupplierAgencySettlementForArrayConstraintFromSetMidocoSupplierAgencySettlement(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $searchSupplierAgencySettlementsResponseMidocoSupplierAgencySettlementItem) {
@@ -69,10 +74,10 @@ class SearchSupplierAgencySettlementsResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSupplierAgencySettlement[] $midocoSupplierAgencySettlement
      * @return \Pggns\MidocoApi\Order\StructType\SearchSupplierAgencySettlementsResponse
      */
-    public function setMidocoSupplierAgencySettlement(array $midocoSupplierAgencySettlement = []): self
+    public function setMidocoSupplierAgencySettlement(?array $midocoSupplierAgencySettlement = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoSupplierAgencySettlementArrayErrorMessage = self::validateMidocoSupplierAgencySettlementForArrayConstraintsFromSetMidocoSupplierAgencySettlement($midocoSupplierAgencySettlement))) {
+        if ('' !== ($midocoSupplierAgencySettlementArrayErrorMessage = self::validateMidocoSupplierAgencySettlementForArrayConstraintFromSetMidocoSupplierAgencySettlement($midocoSupplierAgencySettlement))) {
             throw new InvalidArgumentException($midocoSupplierAgencySettlementArrayErrorMessage, __LINE__);
         }
         $this->MidocoSupplierAgencySettlement = $midocoSupplierAgencySettlement;

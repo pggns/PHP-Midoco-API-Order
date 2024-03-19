@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CustomerIds StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CustomerIds extends AbstractStructBase
 {
     /**
@@ -21,7 +22,7 @@ class CustomerIds extends AbstractStructBase
      * - minOccurs: 0
      * @var int[]
      */
-    protected array $included = [];
+    protected ?array $included = null;
     /**
      * The dropped
      * Meta information extracted from the WSDL
@@ -30,7 +31,7 @@ class CustomerIds extends AbstractStructBase
      * - minOccurs: 0
      * @var int[]
      */
-    protected array $dropped = [];
+    protected ?array $dropped = null;
     /**
      * Constructor method for CustomerIds
      * @uses CustomerIds::setIncluded()
@@ -38,7 +39,7 @@ class CustomerIds extends AbstractStructBase
      * @param int[] $included
      * @param int[] $dropped
      */
-    public function __construct(array $included = [], array $dropped = [])
+    public function __construct(?array $included = null, ?array $dropped = null)
     {
         $this
             ->setIncluded($included)
@@ -48,18 +49,22 @@ class CustomerIds extends AbstractStructBase
      * Get included value
      * @return int[]
      */
-    public function getIncluded(): array
+    public function getIncluded(): ?array
     {
         return $this->included;
     }
     /**
-     * This method is responsible for validating the values passed to the setIncluded method
+     * This method is responsible for validating the value(s) passed to the setIncluded method
      * This method is willingly generated in order to preserve the one-line inline validation within the setIncluded method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateIncludedForArrayConstraintsFromSetIncluded(array $values = []): string
+    public static function validateIncludedForArrayConstraintFromSetIncluded(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $customerIdsIncludedItem) {
@@ -81,10 +86,10 @@ class CustomerIds extends AbstractStructBase
      * @param int[] $included
      * @return \Pggns\MidocoApi\Order\StructType\CustomerIds
      */
-    public function setIncluded(array $included = []): self
+    public function setIncluded(?array $included = null): self
     {
         // validation for constraint: array
-        if ('' !== ($includedArrayErrorMessage = self::validateIncludedForArrayConstraintsFromSetIncluded($included))) {
+        if ('' !== ($includedArrayErrorMessage = self::validateIncludedForArrayConstraintFromSetIncluded($included))) {
             throw new InvalidArgumentException($includedArrayErrorMessage, __LINE__);
         }
         $this->included = $included;
@@ -111,18 +116,22 @@ class CustomerIds extends AbstractStructBase
      * Get dropped value
      * @return int[]
      */
-    public function getDropped(): array
+    public function getDropped(): ?array
     {
         return $this->dropped;
     }
     /**
-     * This method is responsible for validating the values passed to the setDropped method
+     * This method is responsible for validating the value(s) passed to the setDropped method
      * This method is willingly generated in order to preserve the one-line inline validation within the setDropped method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateDroppedForArrayConstraintsFromSetDropped(array $values = []): string
+    public static function validateDroppedForArrayConstraintFromSetDropped(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $customerIdsDroppedItem) {
@@ -144,10 +153,10 @@ class CustomerIds extends AbstractStructBase
      * @param int[] $dropped
      * @return \Pggns\MidocoApi\Order\StructType\CustomerIds
      */
-    public function setDropped(array $dropped = []): self
+    public function setDropped(?array $dropped = null): self
     {
         // validation for constraint: array
-        if ('' !== ($droppedArrayErrorMessage = self::validateDroppedForArrayConstraintsFromSetDropped($dropped))) {
+        if ('' !== ($droppedArrayErrorMessage = self::validateDroppedForArrayConstraintFromSetDropped($dropped))) {
             throw new InvalidArgumentException($droppedArrayErrorMessage, __LINE__);
         }
         $this->dropped = $dropped;

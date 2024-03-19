@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoCreditCardPosition StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoCreditCardPosition extends MidocoOnlinePaymentTransactionPosition
 {
     /**
@@ -63,7 +64,7 @@ class MidocoCreditCardPosition extends MidocoOnlinePaymentTransactionPosition
      * - ref: crm:MidocoCcToken
      * @var \Pggns\MidocoApi\Order\StructType\MidocoCcToken[]
      */
-    protected array $MidocoCcToken = [];
+    protected ?array $MidocoCcToken = null;
     /**
      * The ccToken
      * @var string|null
@@ -113,7 +114,7 @@ class MidocoCreditCardPosition extends MidocoOnlinePaymentTransactionPosition
      * @param bool $isRecurring
      * @param int $preferredReceiptId
      */
-    public function __construct(?string $ccType = null, ?string $ccNo = null, ?string $ccCvc = null, ?string $ccValidYear = null, ?string $ccValidMonth = null, ?string $ccOwner = null, ?string $ccAuthCode = null, ?\Pggns\MidocoApi\Order\StructType\MidocoPaymentOrdersInfos $midocoPaymentOrdersInfos = null, array $midocoCcToken = [], ?string $ccToken = null, ?string $ccTokenType = null, ?bool $isRecurring = null, ?int $preferredReceiptId = null)
+    public function __construct(?string $ccType = null, ?string $ccNo = null, ?string $ccCvc = null, ?string $ccValidYear = null, ?string $ccValidMonth = null, ?string $ccOwner = null, ?string $ccAuthCode = null, ?\Pggns\MidocoApi\Order\StructType\MidocoPaymentOrdersInfos $midocoPaymentOrdersInfos = null, ?array $midocoCcToken = null, ?string $ccToken = null, ?string $ccTokenType = null, ?bool $isRecurring = null, ?int $preferredReceiptId = null)
     {
         $this
             ->setCcType($ccType)
@@ -314,18 +315,22 @@ class MidocoCreditCardPosition extends MidocoOnlinePaymentTransactionPosition
      * Get MidocoCcToken value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoCcToken[]
      */
-    public function getMidocoCcToken(): array
+    public function getMidocoCcToken(): ?array
     {
         return $this->MidocoCcToken;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoCcToken method
+     * This method is responsible for validating the value(s) passed to the setMidocoCcToken method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoCcToken method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoCcTokenForArrayConstraintsFromSetMidocoCcToken(array $values = []): string
+    public static function validateMidocoCcTokenForArrayConstraintFromSetMidocoCcToken(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoCreditCardPositionMidocoCcTokenItem) {
@@ -347,10 +352,10 @@ class MidocoCreditCardPosition extends MidocoOnlinePaymentTransactionPosition
      * @param \Pggns\MidocoApi\Order\StructType\MidocoCcToken[] $midocoCcToken
      * @return \Pggns\MidocoApi\Order\StructType\MidocoCreditCardPosition
      */
-    public function setMidocoCcToken(array $midocoCcToken = []): self
+    public function setMidocoCcToken(?array $midocoCcToken = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoCcTokenArrayErrorMessage = self::validateMidocoCcTokenForArrayConstraintsFromSetMidocoCcToken($midocoCcToken))) {
+        if ('' !== ($midocoCcTokenArrayErrorMessage = self::validateMidocoCcTokenForArrayConstraintFromSetMidocoCcToken($midocoCcToken))) {
             throw new InvalidArgumentException($midocoCcTokenArrayErrorMessage, __LINE__);
         }
         $this->MidocoCcToken = $midocoCcToken;

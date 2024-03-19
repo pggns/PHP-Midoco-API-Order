@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SearchCashBookForCrtUserRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchCashBookForCrtUserRequest extends AbstractStructBase
 {
     /**

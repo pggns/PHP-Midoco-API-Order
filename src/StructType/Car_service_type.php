@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for car-service-type StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class Car_service_type extends AbstractStructBase
 {
     /**
@@ -221,7 +222,7 @@ class Car_service_type extends AbstractStructBase
      * - minOccurs: 0
      * @var int[]
      */
-    protected array $traveler_ref_id = [];
+    protected ?array $traveler_ref_id = null;
     /**
      * The bookingId
      * @var string|null
@@ -327,7 +328,7 @@ class Car_service_type extends AbstractStructBase
      * @param string $sourceSystem
      * @param string $sourceExtId
      */
-    public function __construct(int $position, ?string $service_code = null, ?string $service_name = null, ?string $category = null, ?string $car_type = null, ?string $car_description = null, ?string $pickup_code = null, ?string $pickup_description = null, ?string $pickup_date = null, ?string $pickup_time = null, ?string $return_code = null, ?string $return_description = null, ?string $return_date = null, ?string $return_time = null, ?string $service_status = null, ?float $service_price = null, ?int $no_of_services = null, ?string $currency = null, ?string $insurance_type = null, ?string $insurance_description = null, ?bool $vat_included = false, ?string $country_code = null, ?string $country_description = null, ?string $return_country_code = null, ?string $return_country_description = null, ?string $car_supplier = null, ?string $region_code = null, ?string $region_description = null, ?string $corporate_discount = null, array $traveler_ref_id = [], ?string $bookingId = null, ?string $bookingDate = null, ?string $supplierId = null, ?string $extId = null, ?string $sourceSystem = null, ?string $sourceExtId = null)
+    public function __construct(int $position, ?string $service_code = null, ?string $service_name = null, ?string $category = null, ?string $car_type = null, ?string $car_description = null, ?string $pickup_code = null, ?string $pickup_description = null, ?string $pickup_date = null, ?string $pickup_time = null, ?string $return_code = null, ?string $return_description = null, ?string $return_date = null, ?string $return_time = null, ?string $service_status = null, ?float $service_price = null, ?int $no_of_services = null, ?string $currency = null, ?string $insurance_type = null, ?string $insurance_description = null, ?bool $vat_included = false, ?string $country_code = null, ?string $country_description = null, ?string $return_country_code = null, ?string $return_country_description = null, ?string $car_supplier = null, ?string $region_code = null, ?string $region_description = null, ?string $corporate_discount = null, ?array $traveler_ref_id = null, ?string $bookingId = null, ?string $bookingDate = null, ?string $supplierId = null, ?string $extId = null, ?string $sourceSystem = null, ?string $sourceExtId = null)
     {
         $this
             ->setPosition($position)
@@ -571,7 +572,7 @@ class Car_service_type extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($pickup_date, true), gettype($pickup_date)), __LINE__);
         }
         // validation for constraint: pattern([0-9]{4}-[0-9]{2}-[0-9]{2})
-        if (!is_null($pickup_date) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', $pickup_date)) {
+        if (!is_null($pickup_date) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', (string) $pickup_date)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[0-9]{4}-[0-9]{2}-[0-9]{2}/', var_export($pickup_date, true)), __LINE__);
         }
         $this->pickup_date = $this->{'pickup-date'} = $pickup_date;
@@ -598,7 +599,7 @@ class Car_service_type extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($pickup_time, true), gettype($pickup_time)), __LINE__);
         }
         // validation for constraint: pattern([0-9]{2}:[0-9]{2})
-        if (!is_null($pickup_time) && !preg_match('/[0-9]{2}:[0-9]{2}/', $pickup_time)) {
+        if (!is_null($pickup_time) && !preg_match('/[0-9]{2}:[0-9]{2}/', (string) $pickup_time)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[0-9]{2}:[0-9]{2}/', var_export($pickup_time, true)), __LINE__);
         }
         $this->pickup_time = $this->{'pickup-time'} = $pickup_time;
@@ -671,7 +672,7 @@ class Car_service_type extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($return_date, true), gettype($return_date)), __LINE__);
         }
         // validation for constraint: pattern([0-9]{4}-[0-9]{2}-[0-9]{2})
-        if (!is_null($return_date) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', $return_date)) {
+        if (!is_null($return_date) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', (string) $return_date)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[0-9]{4}-[0-9]{2}-[0-9]{2}/', var_export($return_date, true)), __LINE__);
         }
         $this->return_date = $this->{'return-date'} = $return_date;
@@ -698,7 +699,7 @@ class Car_service_type extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($return_time, true), gettype($return_time)), __LINE__);
         }
         // validation for constraint: pattern([0-9]{2}:[0-9]{2})
-        if (!is_null($return_time) && !preg_match('/[0-9]{2}:[0-9]{2}/', $return_time)) {
+        if (!is_null($return_time) && !preg_match('/[0-9]{2}:[0-9]{2}/', (string) $return_time)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[0-9]{2}:[0-9]{2}/', var_export($return_time, true)), __LINE__);
         }
         $this->return_time = $this->{'return-time'} = $return_time;
@@ -1054,18 +1055,22 @@ class Car_service_type extends AbstractStructBase
      * Get traveler_ref_id value
      * @return int[]
      */
-    public function getTraveler_ref_id(): array
+    public function getTraveler_ref_id(): ?array
     {
         return $this->{'traveler-ref-id'};
     }
     /**
-     * This method is responsible for validating the values passed to the setTraveler_ref_id method
+     * This method is responsible for validating the value(s) passed to the setTraveler_ref_id method
      * This method is willingly generated in order to preserve the one-line inline validation within the setTraveler_ref_id method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateTraveler_ref_idForArrayConstraintsFromSetTraveler_ref_id(array $values = []): string
+    public static function validateTraveler_ref_idForArrayConstraintFromSetTraveler_ref_id(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $car_service_typeTraveler_ref_idItem) {
@@ -1087,10 +1092,10 @@ class Car_service_type extends AbstractStructBase
      * @param int[] $traveler_ref_id
      * @return \Pggns\MidocoApi\Order\StructType\Car_service_type
      */
-    public function setTraveler_ref_id(array $traveler_ref_id = []): self
+    public function setTraveler_ref_id(?array $traveler_ref_id = null): self
     {
         // validation for constraint: array
-        if ('' !== ($traveler_ref_idArrayErrorMessage = self::validateTraveler_ref_idForArrayConstraintsFromSetTraveler_ref_id($traveler_ref_id))) {
+        if ('' !== ($traveler_ref_idArrayErrorMessage = self::validateTraveler_ref_idForArrayConstraintFromSetTraveler_ref_id($traveler_ref_id))) {
             throw new InvalidArgumentException($traveler_ref_idArrayErrorMessage, __LINE__);
         }
         $this->traveler_ref_id = $this->{'traveler-ref-id'} = $traveler_ref_id;

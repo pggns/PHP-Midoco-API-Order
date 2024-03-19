@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoMarketingKeyLocalized StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoMarketingKeyLocalized extends MarketingKeyDTO
 {
     /**

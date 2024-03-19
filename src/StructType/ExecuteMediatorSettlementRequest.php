@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: execute the mediator settlement - generates billling documents with the sum that the agency should pay for each mediator
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ExecuteMediatorSettlementRequest extends AbstractStructBase
 {
     /**
@@ -214,7 +215,7 @@ class ExecuteMediatorSettlementRequest extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($date, true), gettype($date)), __LINE__);
         }
         // validation for constraint: pattern(dd.MM.yyyy)
-        if (!is_null($date) && !preg_match('/dd.MM.yyyy/', $date)) {
+        if (!is_null($date) && !preg_match('/dd.MM.yyyy/', (string) $date)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /dd.MM.yyyy/', var_export($date, true)), __LINE__);
         }
         $this->date = $date;

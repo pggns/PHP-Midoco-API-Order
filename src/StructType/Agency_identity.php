@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: Identification of the booking agency. Important when the login-information do not contain the correct information for assigning the data to the midoco OrgUnit.
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class Agency_identity extends AbstractStructBase
 {
     /**

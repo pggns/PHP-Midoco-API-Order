@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: contains the fee localization
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveMidocoFeeTypeLocalResponse extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveRemarkOrgunitRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveRemarkOrgunitRequest extends AbstractStructBase
 {
     /**

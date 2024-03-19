@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetOrderInternalVersionResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetOrderInternalVersionResponse extends AbstractStructBase
 {
     /**

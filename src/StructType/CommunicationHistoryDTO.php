@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CommunicationHistoryDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CommunicationHistoryDTO extends AbstractStructBase
 {
     /**

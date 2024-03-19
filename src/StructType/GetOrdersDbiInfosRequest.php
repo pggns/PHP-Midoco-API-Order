@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetOrdersDbiInfosRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetOrdersDbiInfosRequest extends AbstractStructBase
 {
     /**

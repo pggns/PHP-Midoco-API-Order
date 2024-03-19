@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SearchBankByBankNoResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchBankByBankNoResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class SearchBankByBankNoResponse extends AbstractStructBase
      * - ref: MidocoBankInfo
      * @var \Pggns\MidocoApi\Order\StructType\MidocoBankInfo[]
      */
-    protected array $MidocoBankInfo = [];
+    protected ?array $MidocoBankInfo = null;
     /**
      * Constructor method for SearchBankByBankNoResponse
      * @uses SearchBankByBankNoResponse::setMidocoBankInfo()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoBankInfo[] $midocoBankInfo
      */
-    public function __construct(array $midocoBankInfo = [])
+    public function __construct(?array $midocoBankInfo = null)
     {
         $this
             ->setMidocoBankInfo($midocoBankInfo);
@@ -36,18 +37,22 @@ class SearchBankByBankNoResponse extends AbstractStructBase
      * Get MidocoBankInfo value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoBankInfo[]
      */
-    public function getMidocoBankInfo(): array
+    public function getMidocoBankInfo(): ?array
     {
         return $this->MidocoBankInfo;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoBankInfo method
+     * This method is responsible for validating the value(s) passed to the setMidocoBankInfo method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoBankInfo method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoBankInfoForArrayConstraintsFromSetMidocoBankInfo(array $values = []): string
+    public static function validateMidocoBankInfoForArrayConstraintFromSetMidocoBankInfo(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $searchBankByBankNoResponseMidocoBankInfoItem) {
@@ -69,10 +74,10 @@ class SearchBankByBankNoResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoBankInfo[] $midocoBankInfo
      * @return \Pggns\MidocoApi\Order\StructType\SearchBankByBankNoResponse
      */
-    public function setMidocoBankInfo(array $midocoBankInfo = []): self
+    public function setMidocoBankInfo(?array $midocoBankInfo = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoBankInfoArrayErrorMessage = self::validateMidocoBankInfoForArrayConstraintsFromSetMidocoBankInfo($midocoBankInfo))) {
+        if ('' !== ($midocoBankInfoArrayErrorMessage = self::validateMidocoBankInfoForArrayConstraintFromSetMidocoBankInfo($midocoBankInfo))) {
             throw new InvalidArgumentException($midocoBankInfoArrayErrorMessage, __LINE__);
         }
         $this->MidocoBankInfo = $midocoBankInfo;

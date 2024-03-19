@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetInvoiceOrderByCustomerIdRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetInvoiceOrderByCustomerIdRequest extends AbstractStructBase
 {
     /**

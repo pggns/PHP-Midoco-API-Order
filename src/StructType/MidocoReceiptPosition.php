@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoReceiptPosition StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoReceiptPosition extends ReceiptPositionDTO
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetMidocoSettlementTypeForSupplierResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetMidocoSettlementTypeForSupplierResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetMidocoSettlementTypeForSupplierResponse extends AbstractStructBase
      * - ref: MidocoSettlementType
      * @var \Pggns\MidocoApi\Order\StructType\SettlementTypeDTO[]
      */
-    protected array $MidocoSettlementType = [];
+    protected ?array $MidocoSettlementType = null;
     /**
      * Constructor method for GetMidocoSettlementTypeForSupplierResponse
      * @uses GetMidocoSettlementTypeForSupplierResponse::setMidocoSettlementType()
      * @param \Pggns\MidocoApi\Order\StructType\SettlementTypeDTO[] $midocoSettlementType
      */
-    public function __construct(array $midocoSettlementType = [])
+    public function __construct(?array $midocoSettlementType = null)
     {
         $this
             ->setMidocoSettlementType($midocoSettlementType);
@@ -36,18 +37,22 @@ class GetMidocoSettlementTypeForSupplierResponse extends AbstractStructBase
      * Get MidocoSettlementType value
      * @return \Pggns\MidocoApi\Order\StructType\SettlementTypeDTO[]
      */
-    public function getMidocoSettlementType(): array
+    public function getMidocoSettlementType(): ?array
     {
         return $this->MidocoSettlementType;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoSettlementType method
+     * This method is responsible for validating the value(s) passed to the setMidocoSettlementType method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoSettlementType method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoSettlementTypeForArrayConstraintsFromSetMidocoSettlementType(array $values = []): string
+    public static function validateMidocoSettlementTypeForArrayConstraintFromSetMidocoSettlementType(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getMidocoSettlementTypeForSupplierResponseMidocoSettlementTypeItem) {
@@ -69,10 +74,10 @@ class GetMidocoSettlementTypeForSupplierResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\SettlementTypeDTO[] $midocoSettlementType
      * @return \Pggns\MidocoApi\Order\StructType\GetMidocoSettlementTypeForSupplierResponse
      */
-    public function setMidocoSettlementType(array $midocoSettlementType = []): self
+    public function setMidocoSettlementType(?array $midocoSettlementType = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoSettlementTypeArrayErrorMessage = self::validateMidocoSettlementTypeForArrayConstraintsFromSetMidocoSettlementType($midocoSettlementType))) {
+        if ('' !== ($midocoSettlementTypeArrayErrorMessage = self::validateMidocoSettlementTypeForArrayConstraintFromSetMidocoSettlementType($midocoSettlementType))) {
             throw new InvalidArgumentException($midocoSettlementTypeArrayErrorMessage, __LINE__);
         }
         $this->MidocoSettlementType = $midocoSettlementType;

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetMidocoSupplierTemplateResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetMidocoSupplierTemplateResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetMidocoSupplierTemplateResponse extends AbstractStructBase
      * - ref: MidocoTemplate
      * @var \Pggns\MidocoApi\Order\StructType\TemplateDTO[]
      */
-    protected array $MidocoTemplate = [];
+    protected ?array $MidocoTemplate = null;
     /**
      * Constructor method for GetMidocoSupplierTemplateResponse
      * @uses GetMidocoSupplierTemplateResponse::setMidocoTemplate()
      * @param \Pggns\MidocoApi\Order\StructType\TemplateDTO[] $midocoTemplate
      */
-    public function __construct(array $midocoTemplate = [])
+    public function __construct(?array $midocoTemplate = null)
     {
         $this
             ->setMidocoTemplate($midocoTemplate);
@@ -36,18 +37,22 @@ class GetMidocoSupplierTemplateResponse extends AbstractStructBase
      * Get MidocoTemplate value
      * @return \Pggns\MidocoApi\Order\StructType\TemplateDTO[]
      */
-    public function getMidocoTemplate(): array
+    public function getMidocoTemplate(): ?array
     {
         return $this->MidocoTemplate;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoTemplate method
+     * This method is responsible for validating the value(s) passed to the setMidocoTemplate method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoTemplate method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoTemplateForArrayConstraintsFromSetMidocoTemplate(array $values = []): string
+    public static function validateMidocoTemplateForArrayConstraintFromSetMidocoTemplate(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getMidocoSupplierTemplateResponseMidocoTemplateItem) {
@@ -69,10 +74,10 @@ class GetMidocoSupplierTemplateResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\TemplateDTO[] $midocoTemplate
      * @return \Pggns\MidocoApi\Order\StructType\GetMidocoSupplierTemplateResponse
      */
-    public function setMidocoTemplate(array $midocoTemplate = []): self
+    public function setMidocoTemplate(?array $midocoTemplate = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoTemplateArrayErrorMessage = self::validateMidocoTemplateForArrayConstraintsFromSetMidocoTemplate($midocoTemplate))) {
+        if ('' !== ($midocoTemplateArrayErrorMessage = self::validateMidocoTemplateForArrayConstraintFromSetMidocoTemplate($midocoTemplate))) {
             throw new InvalidArgumentException($midocoTemplateArrayErrorMessage, __LINE__);
         }
         $this->MidocoTemplate = $midocoTemplate;

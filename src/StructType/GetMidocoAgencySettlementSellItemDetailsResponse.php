@@ -12,6 +12,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetMidocoAgencySettlementSellItemDetailsResponse extends AbstractStructBase
 {
     /**
@@ -22,7 +23,7 @@ class GetMidocoAgencySettlementSellItemDetailsResponse extends AbstractStructBas
      * - ref: MidocoAgencySettlementFibuConsoDetail
      * @var \Pggns\MidocoApi\Order\StructType\MidocoAgencySettlementFibuConsoDetail[]
      */
-    protected array $MidocoAgencySettlementFibuConsoDetail = [];
+    protected ?array $MidocoAgencySettlementFibuConsoDetail = null;
     /**
      * The MidocoAgencySettlement
      * Meta information extracted from the WSDL
@@ -37,7 +38,7 @@ class GetMidocoAgencySettlementSellItemDetailsResponse extends AbstractStructBas
      * @param \Pggns\MidocoApi\Order\StructType\MidocoAgencySettlementFibuConsoDetail[] $midocoAgencySettlementFibuConsoDetail
      * @param \Pggns\MidocoApi\Order\StructType\AgencySettlementDTO $midocoAgencySettlement
      */
-    public function __construct(array $midocoAgencySettlementFibuConsoDetail = [], ?\Pggns\MidocoApi\Order\StructType\AgencySettlementDTO $midocoAgencySettlement = null)
+    public function __construct(?array $midocoAgencySettlementFibuConsoDetail = null, ?\Pggns\MidocoApi\Order\StructType\AgencySettlementDTO $midocoAgencySettlement = null)
     {
         $this
             ->setMidocoAgencySettlementFibuConsoDetail($midocoAgencySettlementFibuConsoDetail)
@@ -47,18 +48,22 @@ class GetMidocoAgencySettlementSellItemDetailsResponse extends AbstractStructBas
      * Get MidocoAgencySettlementFibuConsoDetail value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoAgencySettlementFibuConsoDetail[]
      */
-    public function getMidocoAgencySettlementFibuConsoDetail(): array
+    public function getMidocoAgencySettlementFibuConsoDetail(): ?array
     {
         return $this->MidocoAgencySettlementFibuConsoDetail;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoAgencySettlementFibuConsoDetail method
+     * This method is responsible for validating the value(s) passed to the setMidocoAgencySettlementFibuConsoDetail method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoAgencySettlementFibuConsoDetail method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoAgencySettlementFibuConsoDetailForArrayConstraintsFromSetMidocoAgencySettlementFibuConsoDetail(array $values = []): string
+    public static function validateMidocoAgencySettlementFibuConsoDetailForArrayConstraintFromSetMidocoAgencySettlementFibuConsoDetail(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getMidocoAgencySettlementSellItemDetailsResponseMidocoAgencySettlementFibuConsoDetailItem) {
@@ -80,10 +85,10 @@ class GetMidocoAgencySettlementSellItemDetailsResponse extends AbstractStructBas
      * @param \Pggns\MidocoApi\Order\StructType\MidocoAgencySettlementFibuConsoDetail[] $midocoAgencySettlementFibuConsoDetail
      * @return \Pggns\MidocoApi\Order\StructType\GetMidocoAgencySettlementSellItemDetailsResponse
      */
-    public function setMidocoAgencySettlementFibuConsoDetail(array $midocoAgencySettlementFibuConsoDetail = []): self
+    public function setMidocoAgencySettlementFibuConsoDetail(?array $midocoAgencySettlementFibuConsoDetail = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoAgencySettlementFibuConsoDetailArrayErrorMessage = self::validateMidocoAgencySettlementFibuConsoDetailForArrayConstraintsFromSetMidocoAgencySettlementFibuConsoDetail($midocoAgencySettlementFibuConsoDetail))) {
+        if ('' !== ($midocoAgencySettlementFibuConsoDetailArrayErrorMessage = self::validateMidocoAgencySettlementFibuConsoDetailForArrayConstraintFromSetMidocoAgencySettlementFibuConsoDetail($midocoAgencySettlementFibuConsoDetail))) {
             throw new InvalidArgumentException($midocoAgencySettlementFibuConsoDetailArrayErrorMessage, __LINE__);
         }
         $this->MidocoAgencySettlementFibuConsoDetail = $midocoAgencySettlementFibuConsoDetail;

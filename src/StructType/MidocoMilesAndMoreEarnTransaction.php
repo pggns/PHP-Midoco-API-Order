@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoMilesAndMoreEarnTransaction StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoMilesAndMoreEarnTransaction extends MilesAndMoreEarnTransactionDTO
 {
     /**

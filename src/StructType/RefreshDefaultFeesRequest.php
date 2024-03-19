@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for RefreshDefaultFeesRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class RefreshDefaultFeesRequest extends AbstractStructBase
 {
     /**

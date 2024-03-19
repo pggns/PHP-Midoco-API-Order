@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: Options to filter by.
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetMilesAndMorePromotionRequest extends MilesAndMorePromotionDTO
 {
     /**
@@ -23,7 +24,7 @@ class GetMilesAndMorePromotionRequest extends MilesAndMorePromotionDTO
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $serviceNames = [];
+    protected ?array $serviceNames = null;
     /**
      * The bookingDate
      * Meta information extracted from the WSDL
@@ -49,7 +50,7 @@ class GetMilesAndMorePromotionRequest extends MilesAndMorePromotionDTO
      * @param string $bookingDate
      * @param string $travelDate
      */
-    public function __construct(array $serviceNames = [], ?string $bookingDate = null, ?string $travelDate = null)
+    public function __construct(?array $serviceNames = null, ?string $bookingDate = null, ?string $travelDate = null)
     {
         $this
             ->setServiceNames($serviceNames)
@@ -60,18 +61,22 @@ class GetMilesAndMorePromotionRequest extends MilesAndMorePromotionDTO
      * Get serviceNames value
      * @return string[]
      */
-    public function getServiceNames(): array
+    public function getServiceNames(): ?array
     {
         return $this->serviceNames;
     }
     /**
-     * This method is responsible for validating the values passed to the setServiceNames method
+     * This method is responsible for validating the value(s) passed to the setServiceNames method
      * This method is willingly generated in order to preserve the one-line inline validation within the setServiceNames method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateServiceNamesForArrayConstraintsFromSetServiceNames(array $values = []): string
+    public static function validateServiceNamesForArrayConstraintFromSetServiceNames(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getMilesAndMorePromotionRequestServiceNamesItem) {
@@ -93,10 +98,10 @@ class GetMilesAndMorePromotionRequest extends MilesAndMorePromotionDTO
      * @param string[] $serviceNames
      * @return \Pggns\MidocoApi\Order\StructType\GetMilesAndMorePromotionRequest
      */
-    public function setServiceNames(array $serviceNames = []): self
+    public function setServiceNames(?array $serviceNames = null): self
     {
         // validation for constraint: array
-        if ('' !== ($serviceNamesArrayErrorMessage = self::validateServiceNamesForArrayConstraintsFromSetServiceNames($serviceNames))) {
+        if ('' !== ($serviceNamesArrayErrorMessage = self::validateServiceNamesForArrayConstraintFromSetServiceNames($serviceNames))) {
             throw new InvalidArgumentException($serviceNamesArrayErrorMessage, __LINE__);
         }
         $this->serviceNames = $serviceNames;

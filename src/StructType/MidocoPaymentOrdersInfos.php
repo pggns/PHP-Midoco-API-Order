@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoPaymentOrdersInfos StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoPaymentOrdersInfos extends AbstractStructBase
 {
     /**
@@ -204,7 +205,7 @@ class MidocoPaymentOrdersInfos extends AbstractStructBase
      * - ref: MidocoPaymentServiceInfos
      * @var \Pggns\MidocoApi\Order\StructType\MidocoPaymentServiceInfos[]
      */
-    protected array $MidocoPaymentServiceInfos = [];
+    protected ?array $MidocoPaymentServiceInfos = null;
     /**
      * The hasFlightInfos
      * Meta information extracted from the WSDL
@@ -343,7 +344,7 @@ class MidocoPaymentOrdersInfos extends AbstractStructBase
      * @param string $destinationDescription
      * @param string $countryDescription
      */
-    public function __construct(?int $orderId = null, ?int $orderNo = null, ?string $creationDate = null, ?int $customerId = null, ?string $customerName = null, ?string $companyName = null, ?string $unitName = null, ?string $receiptNo = null, ?string $invoiceNo = null, ?string $mediatorId = null, ?string $ordersExtBookingId = null, ?string $ordersMainBookingId = null, ?string $ordersMainSupplierId = null, ?bool $isDeposit = null, ?string $paymentType = null, ?string $manualBookingText = null, ?string $transactionType = null, ?string $debitType = null, ?string $travelDate = null, ?string $invoiceType = null, ?string $agencyId = null, ?string $portal = null, ?string $debitorNo = null, ?string $paymentReason = null, ?bool $isCreated = false, ?string $firstTraveller = null, array $midocoPaymentServiceInfos = [], ?string $hasFlightInfos = null, ?string $flightBookingDate = null, ?string $flightDeparture = null, ?string $flightDepartureDate = null, ?string $flightDestination = null, ?string $flightFilekey = null, ?string $productType = null, ?string $destinationDescription = null, ?string $countryDescription = null)
+    public function __construct(?int $orderId = null, ?int $orderNo = null, ?string $creationDate = null, ?int $customerId = null, ?string $customerName = null, ?string $companyName = null, ?string $unitName = null, ?string $receiptNo = null, ?string $invoiceNo = null, ?string $mediatorId = null, ?string $ordersExtBookingId = null, ?string $ordersMainBookingId = null, ?string $ordersMainSupplierId = null, ?bool $isDeposit = null, ?string $paymentType = null, ?string $manualBookingText = null, ?string $transactionType = null, ?string $debitType = null, ?string $travelDate = null, ?string $invoiceType = null, ?string $agencyId = null, ?string $portal = null, ?string $debitorNo = null, ?string $paymentReason = null, ?bool $isCreated = false, ?string $firstTraveller = null, ?array $midocoPaymentServiceInfos = null, ?string $hasFlightInfos = null, ?string $flightBookingDate = null, ?string $flightDeparture = null, ?string $flightDepartureDate = null, ?string $flightDestination = null, ?string $flightFilekey = null, ?string $productType = null, ?string $destinationDescription = null, ?string $countryDescription = null)
     {
         $this
             ->setOrderId($orderId)
@@ -985,18 +986,22 @@ class MidocoPaymentOrdersInfos extends AbstractStructBase
      * Get MidocoPaymentServiceInfos value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoPaymentServiceInfos[]
      */
-    public function getMidocoPaymentServiceInfos(): array
+    public function getMidocoPaymentServiceInfos(): ?array
     {
         return $this->MidocoPaymentServiceInfos;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoPaymentServiceInfos method
+     * This method is responsible for validating the value(s) passed to the setMidocoPaymentServiceInfos method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoPaymentServiceInfos method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoPaymentServiceInfosForArrayConstraintsFromSetMidocoPaymentServiceInfos(array $values = []): string
+    public static function validateMidocoPaymentServiceInfosForArrayConstraintFromSetMidocoPaymentServiceInfos(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoPaymentOrdersInfosMidocoPaymentServiceInfosItem) {
@@ -1018,10 +1023,10 @@ class MidocoPaymentOrdersInfos extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoPaymentServiceInfos[] $midocoPaymentServiceInfos
      * @return \Pggns\MidocoApi\Order\StructType\MidocoPaymentOrdersInfos
      */
-    public function setMidocoPaymentServiceInfos(array $midocoPaymentServiceInfos = []): self
+    public function setMidocoPaymentServiceInfos(?array $midocoPaymentServiceInfos = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoPaymentServiceInfosArrayErrorMessage = self::validateMidocoPaymentServiceInfosForArrayConstraintsFromSetMidocoPaymentServiceInfos($midocoPaymentServiceInfos))) {
+        if ('' !== ($midocoPaymentServiceInfosArrayErrorMessage = self::validateMidocoPaymentServiceInfosForArrayConstraintFromSetMidocoPaymentServiceInfos($midocoPaymentServiceInfos))) {
             throw new InvalidArgumentException($midocoPaymentServiceInfosArrayErrorMessage, __LINE__);
         }
         $this->MidocoPaymentServiceInfos = $midocoPaymentServiceInfos;

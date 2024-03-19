@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CreateVermiLinkResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CreateVermiLinkResponse extends AbstractStructBase
 {
     /**

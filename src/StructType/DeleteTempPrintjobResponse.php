@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteTempPrintjobResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteTempPrintjobResponse extends AbstractStructBase
 {
 }

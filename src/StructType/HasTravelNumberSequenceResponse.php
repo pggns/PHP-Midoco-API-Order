@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for HasTravelNumberSequenceResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class HasTravelNumberSequenceResponse extends AbstractStructBase
 {
     /**

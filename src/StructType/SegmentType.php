@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SegmentType StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SegmentType extends AbstractStructBase
 {
     /**
@@ -300,7 +301,7 @@ class SegmentType extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($arrivalDate, true), gettype($arrivalDate)), __LINE__);
         }
         // validation for constraint: pattern([0-9]{4}-[0-9]{2}-[0-9]{2})
-        if (!is_null($arrivalDate) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', $arrivalDate)) {
+        if (!is_null($arrivalDate) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', (string) $arrivalDate)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[0-9]{4}-[0-9]{2}-[0-9]{2}/', var_export($arrivalDate, true)), __LINE__);
         }
         $this->arrivalDate = $arrivalDate;
@@ -327,7 +328,7 @@ class SegmentType extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($arrivalTime, true), gettype($arrivalTime)), __LINE__);
         }
         // validation for constraint: pattern(([01][0-9]|2[0-3]):[0-5][0-9])
-        if (!is_null($arrivalTime) && !preg_match('/([01][0-9]|2[0-3]):[0-5][0-9]/', $arrivalTime)) {
+        if (!is_null($arrivalTime) && !preg_match('/([01][0-9]|2[0-3]):[0-5][0-9]/', (string) $arrivalTime)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /([01][0-9]|2[0-3]):[0-5][0-9]/', var_export($arrivalTime, true)), __LINE__);
         }
         $this->arrivalTime = $arrivalTime;
@@ -446,7 +447,7 @@ class SegmentType extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($checkinTime, true), gettype($checkinTime)), __LINE__);
         }
         // validation for constraint: pattern(([01][0-9]|2[0-3]):[0-5][0-9])
-        if (!is_null($checkinTime) && !preg_match('/([01][0-9]|2[0-3]):[0-5][0-9]/', $checkinTime)) {
+        if (!is_null($checkinTime) && !preg_match('/([01][0-9]|2[0-3]):[0-5][0-9]/', (string) $checkinTime)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /([01][0-9]|2[0-3]):[0-5][0-9]/', var_export($checkinTime, true)), __LINE__);
         }
         $this->checkinTime = $checkinTime;
@@ -496,7 +497,7 @@ class SegmentType extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($departureCode, true), gettype($departureCode)), __LINE__);
         }
         // validation for constraint: pattern([A-Za-z0-9]{3,5})
-        if (!is_null($departureCode) && !preg_match('/[A-Za-z0-9]{3,5}/', $departureCode)) {
+        if (!is_null($departureCode) && !preg_match('/[A-Za-z0-9]{3,5}/', (string) $departureCode)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[A-Za-z0-9]{3,5}/', var_export($departureCode, true)), __LINE__);
         }
         $this->departureCode = $departureCode;
@@ -523,7 +524,7 @@ class SegmentType extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($departureDate, true), gettype($departureDate)), __LINE__);
         }
         // validation for constraint: pattern([0-9]{4}-[0-9]{2}-[0-9]{2})
-        if (!is_null($departureDate) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', $departureDate)) {
+        if (!is_null($departureDate) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', (string) $departureDate)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[0-9]{4}-[0-9]{2}-[0-9]{2}/', var_export($departureDate, true)), __LINE__);
         }
         $this->departureDate = $departureDate;
@@ -596,7 +597,7 @@ class SegmentType extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($departureTime, true), gettype($departureTime)), __LINE__);
         }
         // validation for constraint: pattern(([01][0-9]|2[0-3]):[0-5][0-9])
-        if (!is_null($departureTime) && !preg_match('/([01][0-9]|2[0-3]):[0-5][0-9]/', $departureTime)) {
+        if (!is_null($departureTime) && !preg_match('/([01][0-9]|2[0-3]):[0-5][0-9]/', (string) $departureTime)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /([01][0-9]|2[0-3]):[0-5][0-9]/', var_export($departureTime, true)), __LINE__);
         }
         $this->departureTime = $departureTime;
@@ -623,7 +624,7 @@ class SegmentType extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($destinationCode, true), gettype($destinationCode)), __LINE__);
         }
         // validation for constraint: pattern([A-Za-z0-9]{3,5})
-        if (!is_null($destinationCode) && !preg_match('/[A-Za-z0-9]{3,5}/', $destinationCode)) {
+        if (!is_null($destinationCode) && !preg_match('/[A-Za-z0-9]{3,5}/', (string) $destinationCode)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[A-Za-z0-9]{3,5}/', var_export($destinationCode, true)), __LINE__);
         }
         $this->destinationCode = $destinationCode;

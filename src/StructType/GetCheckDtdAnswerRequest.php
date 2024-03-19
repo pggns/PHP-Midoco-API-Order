@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetCheckDtdAnswerRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetCheckDtdAnswerRequest extends AbstractStructBase
 {
     /**
@@ -29,7 +30,7 @@ class GetCheckDtdAnswerRequest extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $category = [];
+    protected ?array $category = null;
     /**
      * Constructor method for GetCheckDtdAnswerRequest
      * @uses GetCheckDtdAnswerRequest::setMidocoCheckDtdAnswer()
@@ -37,7 +38,7 @@ class GetCheckDtdAnswerRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoCheckDtdAnswer $midocoCheckDtdAnswer
      * @param string[] $category
      */
-    public function __construct(?\Pggns\MidocoApi\Order\StructType\MidocoCheckDtdAnswer $midocoCheckDtdAnswer = null, array $category = [])
+    public function __construct(?\Pggns\MidocoApi\Order\StructType\MidocoCheckDtdAnswer $midocoCheckDtdAnswer = null, ?array $category = null)
     {
         $this
             ->setMidocoCheckDtdAnswer($midocoCheckDtdAnswer)
@@ -66,18 +67,22 @@ class GetCheckDtdAnswerRequest extends AbstractStructBase
      * Get category value
      * @return string[]
      */
-    public function getCategory(): array
+    public function getCategory(): ?array
     {
         return $this->category;
     }
     /**
-     * This method is responsible for validating the values passed to the setCategory method
+     * This method is responsible for validating the value(s) passed to the setCategory method
      * This method is willingly generated in order to preserve the one-line inline validation within the setCategory method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateCategoryForArrayConstraintsFromSetCategory(array $values = []): string
+    public static function validateCategoryForArrayConstraintFromSetCategory(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getCheckDtdAnswerRequestCategoryItem) {
@@ -99,10 +104,10 @@ class GetCheckDtdAnswerRequest extends AbstractStructBase
      * @param string[] $category
      * @return \Pggns\MidocoApi\Order\StructType\GetCheckDtdAnswerRequest
      */
-    public function setCategory(array $category = []): self
+    public function setCategory(?array $category = null): self
     {
         // validation for constraint: array
-        if ('' !== ($categoryArrayErrorMessage = self::validateCategoryForArrayConstraintsFromSetCategory($category))) {
+        if ('' !== ($categoryArrayErrorMessage = self::validateCategoryForArrayConstraintFromSetCategory($category))) {
             throw new InvalidArgumentException($categoryArrayErrorMessage, __LINE__);
         }
         $this->category = $category;

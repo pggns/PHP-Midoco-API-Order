@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CashBookPageInfo4Printing StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CashBookPageInfo4Printing extends AbstractStructBase
 {
     /**
@@ -48,7 +49,7 @@ class CashBookPageInfo4Printing extends AbstractStructBase
      * - ref: CashBookLineInfo4Printing
      * @var \Pggns\MidocoApi\Order\StructType\CashBookLineInfo4Printing[]
      */
-    protected array $CashBookLineInfo4Printing = [];
+    protected ?array $CashBookLineInfo4Printing = null;
     /**
      * The CashBookReceiptPosition4Printing
      * Meta information extracted from the WSDL
@@ -57,7 +58,7 @@ class CashBookPageInfo4Printing extends AbstractStructBase
      * - ref: CashBookReceiptPosition4Printing
      * @var \Pggns\MidocoApi\Order\StructType\CashBookReceiptPosition4Printing[]
      */
-    protected array $CashBookReceiptPosition4Printing = [];
+    protected ?array $CashBookReceiptPosition4Printing = null;
     /**
      * The cashBalanceStart
      * @var float|null
@@ -119,7 +120,7 @@ class CashBookPageInfo4Printing extends AbstractStructBase
      * @param bool $printSum
      * @param string $currency
      */
-    public function __construct(?string $pageNo = null, ?int $pageCounter = null, ?float $balanceStart = null, ?float $balanceEnd = null, ?string $paymentType = null, array $cashBookLineInfo4Printing = [], array $cashBookReceiptPosition4Printing = [], ?float $cashBalanceStart = null, ?float $cashBalanceEnd = null, ?float $sumExpenses = null, ?float $sumReceipts = null, ?bool $printSum = null, ?string $currency = null)
+    public function __construct(?string $pageNo = null, ?int $pageCounter = null, ?float $balanceStart = null, ?float $balanceEnd = null, ?string $paymentType = null, ?array $cashBookLineInfo4Printing = null, ?array $cashBookReceiptPosition4Printing = null, ?float $cashBalanceStart = null, ?float $cashBalanceEnd = null, ?float $sumExpenses = null, ?float $sumReceipts = null, ?bool $printSum = null, ?string $currency = null)
     {
         $this
             ->setPageNo($pageNo)
@@ -255,18 +256,22 @@ class CashBookPageInfo4Printing extends AbstractStructBase
      * Get CashBookLineInfo4Printing value
      * @return \Pggns\MidocoApi\Order\StructType\CashBookLineInfo4Printing[]
      */
-    public function getCashBookLineInfo4Printing(): array
+    public function getCashBookLineInfo4Printing(): ?array
     {
         return $this->CashBookLineInfo4Printing;
     }
     /**
-     * This method is responsible for validating the values passed to the setCashBookLineInfo4Printing method
+     * This method is responsible for validating the value(s) passed to the setCashBookLineInfo4Printing method
      * This method is willingly generated in order to preserve the one-line inline validation within the setCashBookLineInfo4Printing method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateCashBookLineInfo4PrintingForArrayConstraintsFromSetCashBookLineInfo4Printing(array $values = []): string
+    public static function validateCashBookLineInfo4PrintingForArrayConstraintFromSetCashBookLineInfo4Printing(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $cashBookPageInfo4PrintingCashBookLineInfo4PrintingItem) {
@@ -288,10 +293,10 @@ class CashBookPageInfo4Printing extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\CashBookLineInfo4Printing[] $cashBookLineInfo4Printing
      * @return \Pggns\MidocoApi\Order\StructType\CashBookPageInfo4Printing
      */
-    public function setCashBookLineInfo4Printing(array $cashBookLineInfo4Printing = []): self
+    public function setCashBookLineInfo4Printing(?array $cashBookLineInfo4Printing = null): self
     {
         // validation for constraint: array
-        if ('' !== ($cashBookLineInfo4PrintingArrayErrorMessage = self::validateCashBookLineInfo4PrintingForArrayConstraintsFromSetCashBookLineInfo4Printing($cashBookLineInfo4Printing))) {
+        if ('' !== ($cashBookLineInfo4PrintingArrayErrorMessage = self::validateCashBookLineInfo4PrintingForArrayConstraintFromSetCashBookLineInfo4Printing($cashBookLineInfo4Printing))) {
             throw new InvalidArgumentException($cashBookLineInfo4PrintingArrayErrorMessage, __LINE__);
         }
         $this->CashBookLineInfo4Printing = $cashBookLineInfo4Printing;
@@ -318,18 +323,22 @@ class CashBookPageInfo4Printing extends AbstractStructBase
      * Get CashBookReceiptPosition4Printing value
      * @return \Pggns\MidocoApi\Order\StructType\CashBookReceiptPosition4Printing[]
      */
-    public function getCashBookReceiptPosition4Printing(): array
+    public function getCashBookReceiptPosition4Printing(): ?array
     {
         return $this->CashBookReceiptPosition4Printing;
     }
     /**
-     * This method is responsible for validating the values passed to the setCashBookReceiptPosition4Printing method
+     * This method is responsible for validating the value(s) passed to the setCashBookReceiptPosition4Printing method
      * This method is willingly generated in order to preserve the one-line inline validation within the setCashBookReceiptPosition4Printing method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateCashBookReceiptPosition4PrintingForArrayConstraintsFromSetCashBookReceiptPosition4Printing(array $values = []): string
+    public static function validateCashBookReceiptPosition4PrintingForArrayConstraintFromSetCashBookReceiptPosition4Printing(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $cashBookPageInfo4PrintingCashBookReceiptPosition4PrintingItem) {
@@ -351,10 +360,10 @@ class CashBookPageInfo4Printing extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\CashBookReceiptPosition4Printing[] $cashBookReceiptPosition4Printing
      * @return \Pggns\MidocoApi\Order\StructType\CashBookPageInfo4Printing
      */
-    public function setCashBookReceiptPosition4Printing(array $cashBookReceiptPosition4Printing = []): self
+    public function setCashBookReceiptPosition4Printing(?array $cashBookReceiptPosition4Printing = null): self
     {
         // validation for constraint: array
-        if ('' !== ($cashBookReceiptPosition4PrintingArrayErrorMessage = self::validateCashBookReceiptPosition4PrintingForArrayConstraintsFromSetCashBookReceiptPosition4Printing($cashBookReceiptPosition4Printing))) {
+        if ('' !== ($cashBookReceiptPosition4PrintingArrayErrorMessage = self::validateCashBookReceiptPosition4PrintingForArrayConstraintFromSetCashBookReceiptPosition4Printing($cashBookReceiptPosition4Printing))) {
             throw new InvalidArgumentException($cashBookReceiptPosition4PrintingArrayErrorMessage, __LINE__);
         }
         $this->CashBookReceiptPosition4Printing = $cashBookReceiptPosition4Printing;

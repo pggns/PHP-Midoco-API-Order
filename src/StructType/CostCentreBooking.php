@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CostCentreBooking StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CostCentreBooking extends AbstractStructBase
 {
     /**

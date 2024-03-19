@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoPaymentProviderSettlement StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoPaymentProviderSettlement extends PaymentProviderSettlementDTO
 {
     /**

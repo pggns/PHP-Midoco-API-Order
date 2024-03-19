@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for BookingInfo4GoBucherRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class BookingInfo4GoBucherRequest extends AbstractStructBase
 {
     /**

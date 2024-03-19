@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetSupplierAgenciesResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetSupplierAgenciesResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetSupplierAgenciesResponse extends AbstractStructBase
      * - ref: MidocoSupplierAgency
      * @var \Pggns\MidocoApi\Order\StructType\SupplierAgencyDTO[]
      */
-    protected array $MidocoSupplierAgency = [];
+    protected ?array $MidocoSupplierAgency = null;
     /**
      * Constructor method for GetSupplierAgenciesResponse
      * @uses GetSupplierAgenciesResponse::setMidocoSupplierAgency()
      * @param \Pggns\MidocoApi\Order\StructType\SupplierAgencyDTO[] $midocoSupplierAgency
      */
-    public function __construct(array $midocoSupplierAgency = [])
+    public function __construct(?array $midocoSupplierAgency = null)
     {
         $this
             ->setMidocoSupplierAgency($midocoSupplierAgency);
@@ -36,18 +37,22 @@ class GetSupplierAgenciesResponse extends AbstractStructBase
      * Get MidocoSupplierAgency value
      * @return \Pggns\MidocoApi\Order\StructType\SupplierAgencyDTO[]
      */
-    public function getMidocoSupplierAgency(): array
+    public function getMidocoSupplierAgency(): ?array
     {
         return $this->MidocoSupplierAgency;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoSupplierAgency method
+     * This method is responsible for validating the value(s) passed to the setMidocoSupplierAgency method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoSupplierAgency method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoSupplierAgencyForArrayConstraintsFromSetMidocoSupplierAgency(array $values = []): string
+    public static function validateMidocoSupplierAgencyForArrayConstraintFromSetMidocoSupplierAgency(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getSupplierAgenciesResponseMidocoSupplierAgencyItem) {
@@ -69,10 +74,10 @@ class GetSupplierAgenciesResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\SupplierAgencyDTO[] $midocoSupplierAgency
      * @return \Pggns\MidocoApi\Order\StructType\GetSupplierAgenciesResponse
      */
-    public function setMidocoSupplierAgency(array $midocoSupplierAgency = []): self
+    public function setMidocoSupplierAgency(?array $midocoSupplierAgency = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoSupplierAgencyArrayErrorMessage = self::validateMidocoSupplierAgencyForArrayConstraintsFromSetMidocoSupplierAgency($midocoSupplierAgency))) {
+        if ('' !== ($midocoSupplierAgencyArrayErrorMessage = self::validateMidocoSupplierAgencyForArrayConstraintFromSetMidocoSupplierAgency($midocoSupplierAgency))) {
             throw new InvalidArgumentException($midocoSupplierAgencyArrayErrorMessage, __LINE__);
         }
         $this->MidocoSupplierAgency = $midocoSupplierAgency;

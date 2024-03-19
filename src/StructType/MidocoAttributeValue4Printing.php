@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoAttributeValue4Printing StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoAttributeValue4Printing extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ExportRbsDataResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ExportRbsDataResponse extends AbstractStructBase
 {
 }

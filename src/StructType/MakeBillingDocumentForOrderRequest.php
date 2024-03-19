@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: prepared Recipient for BillingDocument | prepared payment for BillingDocument | prepared BillingPositions to create a BillingDocument
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MakeBillingDocumentForOrderRequest extends AbstractStructBase
 {
     /**
@@ -23,7 +24,7 @@ class MakeBillingDocumentForOrderRequest extends AbstractStructBase
      * - ref: MidocoSellPassenger
      * @var \Pggns\MidocoApi\Order\StructType\MidocoSellPassenger[]
      */
-    protected array $MidocoSellPassenger = [];
+    protected ?array $MidocoSellPassenger = null;
     /**
      * The MidocoDetailedBillingPositionInfo
      * Meta information extracted from the WSDL
@@ -32,7 +33,7 @@ class MakeBillingDocumentForOrderRequest extends AbstractStructBase
      * - ref: MidocoDetailedBillingPositionInfo
      * @var \Pggns\MidocoApi\Order\StructType\MidocoDetailedBillingPositionInfo[]
      */
-    protected array $MidocoDetailedBillingPositionInfo = [];
+    protected ?array $MidocoDetailedBillingPositionInfo = null;
     /**
      * The MidocoOnlinePaymentHelper
      * Meta information extracted from the WSDL
@@ -160,6 +161,13 @@ class MakeBillingDocumentForOrderRequest extends AbstractStructBase
      */
     protected ?bool $createNormalInvoice = null;
     /**
+     * The isGdsAutoPrint
+     * Meta information extracted from the WSDL
+     * - default: false
+     * @var bool|null
+     */
+    protected ?bool $isGdsAutoPrint = null;
+    /**
      * Constructor method for MakeBillingDocumentForOrderRequest
      * @uses MakeBillingDocumentForOrderRequest::setMidocoSellPassenger()
      * @uses MakeBillingDocumentForOrderRequest::setMidocoDetailedBillingPositionInfo()
@@ -185,6 +193,7 @@ class MakeBillingDocumentForOrderRequest extends AbstractStructBase
      * @uses MakeBillingDocumentForOrderRequest::setPrintAllTravellersNames()
      * @uses MakeBillingDocumentForOrderRequest::setCreateITInvoice()
      * @uses MakeBillingDocumentForOrderRequest::setCreateNormalInvoice()
+     * @uses MakeBillingDocumentForOrderRequest::setIsGdsAutoPrint()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSellPassenger[] $midocoSellPassenger
      * @param \Pggns\MidocoApi\Order\StructType\MidocoDetailedBillingPositionInfo[] $midocoDetailedBillingPositionInfo
      * @param \Pggns\MidocoApi\Order\StructType\MidocoOnlinePaymentHelper $midocoOnlinePaymentHelper
@@ -209,8 +218,9 @@ class MakeBillingDocumentForOrderRequest extends AbstractStructBase
      * @param bool $printAllTravellersNames
      * @param bool $createITInvoice
      * @param bool $createNormalInvoice
+     * @param bool $isGdsAutoPrint
      */
-    public function __construct(array $midocoSellPassenger = [], array $midocoDetailedBillingPositionInfo = [], ?\Pggns\MidocoApi\Order\StructType\MidocoOnlinePaymentHelper $midocoOnlinePaymentHelper = null, ?\Pggns\MidocoApi\Order\StructType\MidocoCustomerInfo $midocoCustomerInfo = null, ?string $confirmationGroup = null, ?int $documentInternalVersion = null, ?int $documentId = null, ?bool $createNewDocument = null, ?bool $deleteExistingDocument = null, ?bool $addToBulkMatchingCCSeetings = null, ?int $orderId = null, ?int $cashBookId = null, ?int $orderInternalVersion = null, ?string $calculatedPrintDate = null, ?bool $partialPayment = null, ?float $partialAmount = null, ?string $preferredType = null, ?string $paymentType = null, ?string $documentType = null, ?bool $collectiveInvoice = null, ?bool $printGroupName = false, ?bool $printAllTravellersNames = false, ?bool $createITInvoice = false, ?bool $createNormalInvoice = false)
+    public function __construct(?array $midocoSellPassenger = null, ?array $midocoDetailedBillingPositionInfo = null, ?\Pggns\MidocoApi\Order\StructType\MidocoOnlinePaymentHelper $midocoOnlinePaymentHelper = null, ?\Pggns\MidocoApi\Order\StructType\MidocoCustomerInfo $midocoCustomerInfo = null, ?string $confirmationGroup = null, ?int $documentInternalVersion = null, ?int $documentId = null, ?bool $createNewDocument = null, ?bool $deleteExistingDocument = null, ?bool $addToBulkMatchingCCSeetings = null, ?int $orderId = null, ?int $cashBookId = null, ?int $orderInternalVersion = null, ?string $calculatedPrintDate = null, ?bool $partialPayment = null, ?float $partialAmount = null, ?string $preferredType = null, ?string $paymentType = null, ?string $documentType = null, ?bool $collectiveInvoice = null, ?bool $printGroupName = false, ?bool $printAllTravellersNames = false, ?bool $createITInvoice = false, ?bool $createNormalInvoice = false, ?bool $isGdsAutoPrint = false)
     {
         $this
             ->setMidocoSellPassenger($midocoSellPassenger)
@@ -236,24 +246,29 @@ class MakeBillingDocumentForOrderRequest extends AbstractStructBase
             ->setPrintGroupName($printGroupName)
             ->setPrintAllTravellersNames($printAllTravellersNames)
             ->setCreateITInvoice($createITInvoice)
-            ->setCreateNormalInvoice($createNormalInvoice);
+            ->setCreateNormalInvoice($createNormalInvoice)
+            ->setIsGdsAutoPrint($isGdsAutoPrint);
     }
     /**
      * Get MidocoSellPassenger value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSellPassenger[]
      */
-    public function getMidocoSellPassenger(): array
+    public function getMidocoSellPassenger(): ?array
     {
         return $this->MidocoSellPassenger;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoSellPassenger method
+     * This method is responsible for validating the value(s) passed to the setMidocoSellPassenger method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoSellPassenger method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoSellPassengerForArrayConstraintsFromSetMidocoSellPassenger(array $values = []): string
+    public static function validateMidocoSellPassengerForArrayConstraintFromSetMidocoSellPassenger(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $makeBillingDocumentForOrderRequestMidocoSellPassengerItem) {
@@ -275,10 +290,10 @@ class MakeBillingDocumentForOrderRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSellPassenger[] $midocoSellPassenger
      * @return \Pggns\MidocoApi\Order\StructType\MakeBillingDocumentForOrderRequest
      */
-    public function setMidocoSellPassenger(array $midocoSellPassenger = []): self
+    public function setMidocoSellPassenger(?array $midocoSellPassenger = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoSellPassengerArrayErrorMessage = self::validateMidocoSellPassengerForArrayConstraintsFromSetMidocoSellPassenger($midocoSellPassenger))) {
+        if ('' !== ($midocoSellPassengerArrayErrorMessage = self::validateMidocoSellPassengerForArrayConstraintFromSetMidocoSellPassenger($midocoSellPassenger))) {
             throw new InvalidArgumentException($midocoSellPassengerArrayErrorMessage, __LINE__);
         }
         $this->MidocoSellPassenger = $midocoSellPassenger;
@@ -305,18 +320,22 @@ class MakeBillingDocumentForOrderRequest extends AbstractStructBase
      * Get MidocoDetailedBillingPositionInfo value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoDetailedBillingPositionInfo[]
      */
-    public function getMidocoDetailedBillingPositionInfo(): array
+    public function getMidocoDetailedBillingPositionInfo(): ?array
     {
         return $this->MidocoDetailedBillingPositionInfo;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoDetailedBillingPositionInfo method
+     * This method is responsible for validating the value(s) passed to the setMidocoDetailedBillingPositionInfo method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoDetailedBillingPositionInfo method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoDetailedBillingPositionInfoForArrayConstraintsFromSetMidocoDetailedBillingPositionInfo(array $values = []): string
+    public static function validateMidocoDetailedBillingPositionInfoForArrayConstraintFromSetMidocoDetailedBillingPositionInfo(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $makeBillingDocumentForOrderRequestMidocoDetailedBillingPositionInfoItem) {
@@ -338,10 +357,10 @@ class MakeBillingDocumentForOrderRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoDetailedBillingPositionInfo[] $midocoDetailedBillingPositionInfo
      * @return \Pggns\MidocoApi\Order\StructType\MakeBillingDocumentForOrderRequest
      */
-    public function setMidocoDetailedBillingPositionInfo(array $midocoDetailedBillingPositionInfo = []): self
+    public function setMidocoDetailedBillingPositionInfo(?array $midocoDetailedBillingPositionInfo = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoDetailedBillingPositionInfoArrayErrorMessage = self::validateMidocoDetailedBillingPositionInfoForArrayConstraintsFromSetMidocoDetailedBillingPositionInfo($midocoDetailedBillingPositionInfo))) {
+        if ('' !== ($midocoDetailedBillingPositionInfoArrayErrorMessage = self::validateMidocoDetailedBillingPositionInfoForArrayConstraintFromSetMidocoDetailedBillingPositionInfo($midocoDetailedBillingPositionInfo))) {
             throw new InvalidArgumentException($midocoDetailedBillingPositionInfoArrayErrorMessage, __LINE__);
         }
         $this->MidocoDetailedBillingPositionInfo = $midocoDetailedBillingPositionInfo;
@@ -859,6 +878,29 @@ class MakeBillingDocumentForOrderRequest extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($createNormalInvoice, true), gettype($createNormalInvoice)), __LINE__);
         }
         $this->createNormalInvoice = $createNormalInvoice;
+        
+        return $this;
+    }
+    /**
+     * Get isGdsAutoPrint value
+     * @return bool|null
+     */
+    public function getIsGdsAutoPrint(): ?bool
+    {
+        return $this->isGdsAutoPrint;
+    }
+    /**
+     * Set isGdsAutoPrint value
+     * @param bool $isGdsAutoPrint
+     * @return \Pggns\MidocoApi\Order\StructType\MakeBillingDocumentForOrderRequest
+     */
+    public function setIsGdsAutoPrint(?bool $isGdsAutoPrint = false): self
+    {
+        // validation for constraint: boolean
+        if (!is_null($isGdsAutoPrint) && !is_bool($isGdsAutoPrint)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($isGdsAutoPrint, true), gettype($isGdsAutoPrint)), __LINE__);
+        }
+        $this->isGdsAutoPrint = $isGdsAutoPrint;
         
         return $this;
     }

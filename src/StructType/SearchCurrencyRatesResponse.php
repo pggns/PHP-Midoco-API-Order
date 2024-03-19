@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SearchCurrencyRatesResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchCurrencyRatesResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class SearchCurrencyRatesResponse extends AbstractStructBase
      * - ref: MidocoCurrencyRate
      * @var \Pggns\MidocoApi\Order\StructType\MidocoCurrencyRate[]
      */
-    protected array $MidocoCurrencyRate = [];
+    protected ?array $MidocoCurrencyRate = null;
     /**
      * Constructor method for SearchCurrencyRatesResponse
      * @uses SearchCurrencyRatesResponse::setMidocoCurrencyRate()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoCurrencyRate[] $midocoCurrencyRate
      */
-    public function __construct(array $midocoCurrencyRate = [])
+    public function __construct(?array $midocoCurrencyRate = null)
     {
         $this
             ->setMidocoCurrencyRate($midocoCurrencyRate);
@@ -36,18 +37,22 @@ class SearchCurrencyRatesResponse extends AbstractStructBase
      * Get MidocoCurrencyRate value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoCurrencyRate[]
      */
-    public function getMidocoCurrencyRate(): array
+    public function getMidocoCurrencyRate(): ?array
     {
         return $this->MidocoCurrencyRate;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoCurrencyRate method
+     * This method is responsible for validating the value(s) passed to the setMidocoCurrencyRate method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoCurrencyRate method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoCurrencyRateForArrayConstraintsFromSetMidocoCurrencyRate(array $values = []): string
+    public static function validateMidocoCurrencyRateForArrayConstraintFromSetMidocoCurrencyRate(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $searchCurrencyRatesResponseMidocoCurrencyRateItem) {
@@ -69,10 +74,10 @@ class SearchCurrencyRatesResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoCurrencyRate[] $midocoCurrencyRate
      * @return \Pggns\MidocoApi\Order\StructType\SearchCurrencyRatesResponse
      */
-    public function setMidocoCurrencyRate(array $midocoCurrencyRate = []): self
+    public function setMidocoCurrencyRate(?array $midocoCurrencyRate = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoCurrencyRateArrayErrorMessage = self::validateMidocoCurrencyRateForArrayConstraintsFromSetMidocoCurrencyRate($midocoCurrencyRate))) {
+        if ('' !== ($midocoCurrencyRateArrayErrorMessage = self::validateMidocoCurrencyRateForArrayConstraintFromSetMidocoCurrencyRate($midocoCurrencyRate))) {
             throw new InvalidArgumentException($midocoCurrencyRateArrayErrorMessage, __LINE__);
         }
         $this->MidocoCurrencyRate = $midocoCurrencyRate;

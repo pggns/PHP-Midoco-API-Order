@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CruiseDetailDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CruiseDetailDTO extends AbstractStructBase
 {
     /**

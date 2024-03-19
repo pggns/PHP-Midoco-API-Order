@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetActualConsentRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetActualConsentRequest extends AbstractStructBase
 {
     /**

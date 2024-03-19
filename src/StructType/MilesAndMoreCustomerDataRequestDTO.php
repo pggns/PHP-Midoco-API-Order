@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MilesAndMoreCustomerDataRequestDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MilesAndMoreCustomerDataRequestDTO extends AbstractStructBase
 {
     /**

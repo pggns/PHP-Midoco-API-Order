@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SearchReceiptResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchReceiptResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class SearchReceiptResponse extends AbstractStructBase
      * - ref: MidocoReceiptShortInfo
      * @var \Pggns\MidocoApi\Order\StructType\MidocoReceiptShortInfo[]
      */
-    protected array $MidocoReceiptShortInfo = [];
+    protected ?array $MidocoReceiptShortInfo = null;
     /**
      * Constructor method for SearchReceiptResponse
      * @uses SearchReceiptResponse::setMidocoReceiptShortInfo()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoReceiptShortInfo[] $midocoReceiptShortInfo
      */
-    public function __construct(array $midocoReceiptShortInfo = [])
+    public function __construct(?array $midocoReceiptShortInfo = null)
     {
         $this
             ->setMidocoReceiptShortInfo($midocoReceiptShortInfo);
@@ -36,18 +37,22 @@ class SearchReceiptResponse extends AbstractStructBase
      * Get MidocoReceiptShortInfo value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoReceiptShortInfo[]
      */
-    public function getMidocoReceiptShortInfo(): array
+    public function getMidocoReceiptShortInfo(): ?array
     {
         return $this->MidocoReceiptShortInfo;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoReceiptShortInfo method
+     * This method is responsible for validating the value(s) passed to the setMidocoReceiptShortInfo method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoReceiptShortInfo method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoReceiptShortInfoForArrayConstraintsFromSetMidocoReceiptShortInfo(array $values = []): string
+    public static function validateMidocoReceiptShortInfoForArrayConstraintFromSetMidocoReceiptShortInfo(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $searchReceiptResponseMidocoReceiptShortInfoItem) {
@@ -69,10 +74,10 @@ class SearchReceiptResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoReceiptShortInfo[] $midocoReceiptShortInfo
      * @return \Pggns\MidocoApi\Order\StructType\SearchReceiptResponse
      */
-    public function setMidocoReceiptShortInfo(array $midocoReceiptShortInfo = []): self
+    public function setMidocoReceiptShortInfo(?array $midocoReceiptShortInfo = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoReceiptShortInfoArrayErrorMessage = self::validateMidocoReceiptShortInfoForArrayConstraintsFromSetMidocoReceiptShortInfo($midocoReceiptShortInfo))) {
+        if ('' !== ($midocoReceiptShortInfoArrayErrorMessage = self::validateMidocoReceiptShortInfoForArrayConstraintFromSetMidocoReceiptShortInfo($midocoReceiptShortInfo))) {
             throw new InvalidArgumentException($midocoReceiptShortInfoArrayErrorMessage, __LINE__);
         }
         $this->MidocoReceiptShortInfo = $midocoReceiptShortInfo;

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SearchMidocoAttributeLocalizationResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchMidocoAttributeLocalizationResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class SearchMidocoAttributeLocalizationResponse extends AbstractStructBase
      * - ref: MidocoSystemAttributeLocalization
      * @var \Pggns\MidocoApi\Order\StructType\AttributeDefinitionLocalDTO[]
      */
-    protected array $MidocoSystemAttributeLocalization = [];
+    protected ?array $MidocoSystemAttributeLocalization = null;
     /**
      * Constructor method for SearchMidocoAttributeLocalizationResponse
      * @uses SearchMidocoAttributeLocalizationResponse::setMidocoSystemAttributeLocalization()
      * @param \Pggns\MidocoApi\Order\StructType\AttributeDefinitionLocalDTO[] $midocoSystemAttributeLocalization
      */
-    public function __construct(array $midocoSystemAttributeLocalization = [])
+    public function __construct(?array $midocoSystemAttributeLocalization = null)
     {
         $this
             ->setMidocoSystemAttributeLocalization($midocoSystemAttributeLocalization);
@@ -36,18 +37,22 @@ class SearchMidocoAttributeLocalizationResponse extends AbstractStructBase
      * Get MidocoSystemAttributeLocalization value
      * @return \Pggns\MidocoApi\Order\StructType\AttributeDefinitionLocalDTO[]
      */
-    public function getMidocoSystemAttributeLocalization(): array
+    public function getMidocoSystemAttributeLocalization(): ?array
     {
         return $this->MidocoSystemAttributeLocalization;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoSystemAttributeLocalization method
+     * This method is responsible for validating the value(s) passed to the setMidocoSystemAttributeLocalization method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoSystemAttributeLocalization method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoSystemAttributeLocalizationForArrayConstraintsFromSetMidocoSystemAttributeLocalization(array $values = []): string
+    public static function validateMidocoSystemAttributeLocalizationForArrayConstraintFromSetMidocoSystemAttributeLocalization(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $searchMidocoAttributeLocalizationResponseMidocoSystemAttributeLocalizationItem) {
@@ -69,10 +74,10 @@ class SearchMidocoAttributeLocalizationResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\AttributeDefinitionLocalDTO[] $midocoSystemAttributeLocalization
      * @return \Pggns\MidocoApi\Order\StructType\SearchMidocoAttributeLocalizationResponse
      */
-    public function setMidocoSystemAttributeLocalization(array $midocoSystemAttributeLocalization = []): self
+    public function setMidocoSystemAttributeLocalization(?array $midocoSystemAttributeLocalization = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoSystemAttributeLocalizationArrayErrorMessage = self::validateMidocoSystemAttributeLocalizationForArrayConstraintsFromSetMidocoSystemAttributeLocalization($midocoSystemAttributeLocalization))) {
+        if ('' !== ($midocoSystemAttributeLocalizationArrayErrorMessage = self::validateMidocoSystemAttributeLocalizationForArrayConstraintFromSetMidocoSystemAttributeLocalization($midocoSystemAttributeLocalization))) {
             throw new InvalidArgumentException($midocoSystemAttributeLocalizationArrayErrorMessage, __LINE__);
         }
         $this->MidocoSystemAttributeLocalization = $midocoSystemAttributeLocalization;

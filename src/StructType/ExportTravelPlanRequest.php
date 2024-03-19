@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: exportTravelPlan --- exports a travel plan document as PDF. If isPreview is false the travel plan document will be saved in the repository.
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ExportTravelPlanRequest extends AbstractStructBase
 {
     /**

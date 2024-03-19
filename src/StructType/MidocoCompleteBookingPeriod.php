@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoCompleteBookingPeriod StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoCompleteBookingPeriod extends BookingPeriodDTO
 {
     /**
@@ -21,13 +22,13 @@ class MidocoCompleteBookingPeriod extends BookingPeriodDTO
      * - ref: MidocoBookingPeriodAccount
      * @var \Pggns\MidocoApi\Order\StructType\BookingPeriodAccountDTO[]
      */
-    protected array $MidocoBookingPeriodAccount = [];
+    protected ?array $MidocoBookingPeriodAccount = null;
     /**
      * Constructor method for MidocoCompleteBookingPeriod
      * @uses MidocoCompleteBookingPeriod::setMidocoBookingPeriodAccount()
      * @param \Pggns\MidocoApi\Order\StructType\BookingPeriodAccountDTO[] $midocoBookingPeriodAccount
      */
-    public function __construct(array $midocoBookingPeriodAccount = [])
+    public function __construct(?array $midocoBookingPeriodAccount = null)
     {
         $this
             ->setMidocoBookingPeriodAccount($midocoBookingPeriodAccount);
@@ -36,18 +37,22 @@ class MidocoCompleteBookingPeriod extends BookingPeriodDTO
      * Get MidocoBookingPeriodAccount value
      * @return \Pggns\MidocoApi\Order\StructType\BookingPeriodAccountDTO[]
      */
-    public function getMidocoBookingPeriodAccount(): array
+    public function getMidocoBookingPeriodAccount(): ?array
     {
         return $this->MidocoBookingPeriodAccount;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoBookingPeriodAccount method
+     * This method is responsible for validating the value(s) passed to the setMidocoBookingPeriodAccount method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoBookingPeriodAccount method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoBookingPeriodAccountForArrayConstraintsFromSetMidocoBookingPeriodAccount(array $values = []): string
+    public static function validateMidocoBookingPeriodAccountForArrayConstraintFromSetMidocoBookingPeriodAccount(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoCompleteBookingPeriodMidocoBookingPeriodAccountItem) {
@@ -69,10 +74,10 @@ class MidocoCompleteBookingPeriod extends BookingPeriodDTO
      * @param \Pggns\MidocoApi\Order\StructType\BookingPeriodAccountDTO[] $midocoBookingPeriodAccount
      * @return \Pggns\MidocoApi\Order\StructType\MidocoCompleteBookingPeriod
      */
-    public function setMidocoBookingPeriodAccount(array $midocoBookingPeriodAccount = []): self
+    public function setMidocoBookingPeriodAccount(?array $midocoBookingPeriodAccount = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoBookingPeriodAccountArrayErrorMessage = self::validateMidocoBookingPeriodAccountForArrayConstraintsFromSetMidocoBookingPeriodAccount($midocoBookingPeriodAccount))) {
+        if ('' !== ($midocoBookingPeriodAccountArrayErrorMessage = self::validateMidocoBookingPeriodAccountForArrayConstraintFromSetMidocoBookingPeriodAccount($midocoBookingPeriodAccount))) {
             throw new InvalidArgumentException($midocoBookingPeriodAccountArrayErrorMessage, __LINE__);
         }
         $this->MidocoBookingPeriodAccount = $midocoBookingPeriodAccount;

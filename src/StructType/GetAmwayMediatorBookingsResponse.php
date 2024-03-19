@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetAmwayMediatorBookingsResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetAmwayMediatorBookingsResponse extends AbstractStructBase
 {
     /**
@@ -20,13 +21,13 @@ class GetAmwayMediatorBookingsResponse extends AbstractStructBase
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\AmwayMediatorBookings[]
      */
-    protected array $AmwayMediatorBookings = [];
+    protected ?array $AmwayMediatorBookings = null;
     /**
      * Constructor method for GetAmwayMediatorBookingsResponse
      * @uses GetAmwayMediatorBookingsResponse::setAmwayMediatorBookings()
      * @param \Pggns\MidocoApi\Order\StructType\AmwayMediatorBookings[] $amwayMediatorBookings
      */
-    public function __construct(array $amwayMediatorBookings = [])
+    public function __construct(?array $amwayMediatorBookings = null)
     {
         $this
             ->setAmwayMediatorBookings($amwayMediatorBookings);
@@ -35,18 +36,22 @@ class GetAmwayMediatorBookingsResponse extends AbstractStructBase
      * Get AmwayMediatorBookings value
      * @return \Pggns\MidocoApi\Order\StructType\AmwayMediatorBookings[]
      */
-    public function getAmwayMediatorBookings(): array
+    public function getAmwayMediatorBookings(): ?array
     {
         return $this->AmwayMediatorBookings;
     }
     /**
-     * This method is responsible for validating the values passed to the setAmwayMediatorBookings method
+     * This method is responsible for validating the value(s) passed to the setAmwayMediatorBookings method
      * This method is willingly generated in order to preserve the one-line inline validation within the setAmwayMediatorBookings method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateAmwayMediatorBookingsForArrayConstraintsFromSetAmwayMediatorBookings(array $values = []): string
+    public static function validateAmwayMediatorBookingsForArrayConstraintFromSetAmwayMediatorBookings(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getAmwayMediatorBookingsResponseAmwayMediatorBookingsItem) {
@@ -68,10 +73,10 @@ class GetAmwayMediatorBookingsResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\AmwayMediatorBookings[] $amwayMediatorBookings
      * @return \Pggns\MidocoApi\Order\StructType\GetAmwayMediatorBookingsResponse
      */
-    public function setAmwayMediatorBookings(array $amwayMediatorBookings = []): self
+    public function setAmwayMediatorBookings(?array $amwayMediatorBookings = null): self
     {
         // validation for constraint: array
-        if ('' !== ($amwayMediatorBookingsArrayErrorMessage = self::validateAmwayMediatorBookingsForArrayConstraintsFromSetAmwayMediatorBookings($amwayMediatorBookings))) {
+        if ('' !== ($amwayMediatorBookingsArrayErrorMessage = self::validateAmwayMediatorBookingsForArrayConstraintFromSetAmwayMediatorBookings($amwayMediatorBookings))) {
             throw new InvalidArgumentException($amwayMediatorBookingsArrayErrorMessage, __LINE__);
         }
         $this->AmwayMediatorBookings = $amwayMediatorBookings;

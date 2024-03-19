@@ -14,6 +14,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * startDate = the travel start date to get the datas to export from the database (default:yesterday) endDate =
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ExecuteBackofficeExportRequest extends AbstractStructBase
 {
     /**
@@ -158,7 +159,7 @@ class ExecuteBackofficeExportRequest extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($startDate, true), gettype($startDate)), __LINE__);
         }
         // validation for constraint: pattern([0-9]{2}.[0-9]{2}.[0-9]{4})
-        if (!is_null($startDate) && !preg_match('/[0-9]{2}.[0-9]{2}.[0-9]{4}/', $startDate)) {
+        if (!is_null($startDate) && !preg_match('/[0-9]{2}.[0-9]{2}.[0-9]{4}/', (string) $startDate)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[0-9]{2}.[0-9]{2}.[0-9]{4}/', var_export($startDate, true)), __LINE__);
         }
         $this->startDate = $startDate;
@@ -185,7 +186,7 @@ class ExecuteBackofficeExportRequest extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($endDate, true), gettype($endDate)), __LINE__);
         }
         // validation for constraint: pattern([0-9]{2}.[0-9]{2}.[0-9]{4})
-        if (!is_null($endDate) && !preg_match('/[0-9]{2}.[0-9]{2}.[0-9]{4}/', $endDate)) {
+        if (!is_null($endDate) && !preg_match('/[0-9]{2}.[0-9]{2}.[0-9]{4}/', (string) $endDate)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[0-9]{2}.[0-9]{2}.[0-9]{4}/', var_export($endDate, true)), __LINE__);
         }
         $this->endDate = $endDate;

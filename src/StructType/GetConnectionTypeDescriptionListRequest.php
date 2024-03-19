@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetConnectionTypeDescriptionListRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetConnectionTypeDescriptionListRequest extends AbstractStructBase
 {
 }

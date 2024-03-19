@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetMerlinExportStringResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetMerlinExportStringResponse extends AbstractStructBase
 {
     /**

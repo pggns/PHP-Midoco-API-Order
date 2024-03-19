@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for PaymentAccrualSearchCriteria StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class PaymentAccrualSearchCriteria extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ReceiptPositioninfo StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ReceiptPositioninfo extends AbstractStructBase
 {
     /**

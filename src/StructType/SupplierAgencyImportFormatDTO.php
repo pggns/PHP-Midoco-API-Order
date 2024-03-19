@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SupplierAgencyImportFormatDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SupplierAgencyImportFormatDTO extends AbstractStructBase
 {
     /**

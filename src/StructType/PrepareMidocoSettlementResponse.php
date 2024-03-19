@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for PrepareMidocoSettlementResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class PrepareMidocoSettlementResponse extends AbstractStructBase
 {
     /**
@@ -20,13 +21,13 @@ class PrepareMidocoSettlementResponse extends AbstractStructBase
      * - minOccurs: 0
      * @var int[]
      */
-    protected array $companyId = [];
+    protected ?array $companyId = null;
     /**
      * Constructor method for PrepareMidocoSettlementResponse
      * @uses PrepareMidocoSettlementResponse::setCompanyId()
      * @param int[] $companyId
      */
-    public function __construct(array $companyId = [])
+    public function __construct(?array $companyId = null)
     {
         $this
             ->setCompanyId($companyId);
@@ -35,18 +36,22 @@ class PrepareMidocoSettlementResponse extends AbstractStructBase
      * Get companyId value
      * @return int[]
      */
-    public function getCompanyId(): array
+    public function getCompanyId(): ?array
     {
         return $this->companyId;
     }
     /**
-     * This method is responsible for validating the values passed to the setCompanyId method
+     * This method is responsible for validating the value(s) passed to the setCompanyId method
      * This method is willingly generated in order to preserve the one-line inline validation within the setCompanyId method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateCompanyIdForArrayConstraintsFromSetCompanyId(array $values = []): string
+    public static function validateCompanyIdForArrayConstraintFromSetCompanyId(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $prepareMidocoSettlementResponseCompanyIdItem) {
@@ -68,10 +73,10 @@ class PrepareMidocoSettlementResponse extends AbstractStructBase
      * @param int[] $companyId
      * @return \Pggns\MidocoApi\Order\StructType\PrepareMidocoSettlementResponse
      */
-    public function setCompanyId(array $companyId = []): self
+    public function setCompanyId(?array $companyId = null): self
     {
         // validation for constraint: array
-        if ('' !== ($companyIdArrayErrorMessage = self::validateCompanyIdForArrayConstraintsFromSetCompanyId($companyId))) {
+        if ('' !== ($companyIdArrayErrorMessage = self::validateCompanyIdForArrayConstraintFromSetCompanyId($companyId))) {
             throw new InvalidArgumentException($companyIdArrayErrorMessage, __LINE__);
         }
         $this->companyId = $companyId;

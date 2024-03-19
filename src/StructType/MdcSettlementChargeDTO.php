@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MdcSettlementChargeDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MdcSettlementChargeDTO extends AbstractStructBase
 {
     /**

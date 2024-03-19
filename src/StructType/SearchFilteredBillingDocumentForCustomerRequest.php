@@ -11,38 +11,43 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SearchFilteredBillingDocumentForCustomerRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchFilteredBillingDocumentForCustomerRequest extends AbstractStructBase
 {
     /**
      * The MidocoCollectiveBillingCriteria
-     * @var mixed|null
+     * @var string|null
      */
-    protected ?mixed $MidocoCollectiveBillingCriteria = null;
+    protected ?string $MidocoCollectiveBillingCriteria = null;
     /**
      * Constructor method for SearchFilteredBillingDocumentForCustomerRequest
      * @uses SearchFilteredBillingDocumentForCustomerRequest::setMidocoCollectiveBillingCriteria()
-     * @param mixed $midocoCollectiveBillingCriteria
+     * @param string $midocoCollectiveBillingCriteria
      */
-    public function __construct(?mixed $midocoCollectiveBillingCriteria = null)
+    public function __construct(?string $midocoCollectiveBillingCriteria = null)
     {
         $this
             ->setMidocoCollectiveBillingCriteria($midocoCollectiveBillingCriteria);
     }
     /**
      * Get MidocoCollectiveBillingCriteria value
-     * @return mixed|null
+     * @return string|null
      */
-    public function getMidocoCollectiveBillingCriteria(): ?mixed
+    public function getMidocoCollectiveBillingCriteria(): ?string
     {
         return $this->MidocoCollectiveBillingCriteria;
     }
     /**
      * Set MidocoCollectiveBillingCriteria value
-     * @param mixed $midocoCollectiveBillingCriteria
+     * @param string $midocoCollectiveBillingCriteria
      * @return \Pggns\MidocoApi\Order\StructType\SearchFilteredBillingDocumentForCustomerRequest
      */
-    public function setMidocoCollectiveBillingCriteria(?mixed $midocoCollectiveBillingCriteria = null): self
+    public function setMidocoCollectiveBillingCriteria(?string $midocoCollectiveBillingCriteria = null): self
     {
+        // validation for constraint: string
+        if (!is_null($midocoCollectiveBillingCriteria) && !is_string($midocoCollectiveBillingCriteria)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($midocoCollectiveBillingCriteria, true), gettype($midocoCollectiveBillingCriteria)), __LINE__);
+        }
         $this->MidocoCollectiveBillingCriteria = $midocoCollectiveBillingCriteria;
         
         return $this;

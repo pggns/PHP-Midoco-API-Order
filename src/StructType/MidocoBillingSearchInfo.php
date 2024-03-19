@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoBillingSearchInfo StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoBillingSearchInfo extends MidocoBillingSearchInfoType
 {
     /**

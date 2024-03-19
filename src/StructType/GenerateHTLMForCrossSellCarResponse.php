@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GenerateHTLMForCrossSellCarResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GenerateHTLMForCrossSellCarResponse extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for AmexPositionDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class AmexPositionDTO extends AbstractStructBase
 {
     /**

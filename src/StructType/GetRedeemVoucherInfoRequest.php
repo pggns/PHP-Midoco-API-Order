@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetRedeemVoucherInfoRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetRedeemVoucherInfoRequest extends AbstractStructBase
 {
     /**

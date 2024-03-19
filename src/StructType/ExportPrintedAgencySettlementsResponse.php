@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ExportPrintedAgencySettlementsResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ExportPrintedAgencySettlementsResponse extends AbstractStructBase
 {
     /**

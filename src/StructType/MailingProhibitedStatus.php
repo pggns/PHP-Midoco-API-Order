@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MailingProhibitedStatus StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MailingProhibitedStatus extends AbstractStructBase
 {
     /**

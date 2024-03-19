@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetMarketingKeysLocalizedForTypeResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetMarketingKeysLocalizedForTypeResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetMarketingKeysLocalizedForTypeResponse extends AbstractStructBase
      * - ref: MidocoMarketingKeyLocalized
      * @var \Pggns\MidocoApi\Order\StructType\MidocoMarketingKeyLocalized[]
      */
-    protected array $MidocoMarketingKeyLocalized = [];
+    protected ?array $MidocoMarketingKeyLocalized = null;
     /**
      * Constructor method for GetMarketingKeysLocalizedForTypeResponse
      * @uses GetMarketingKeysLocalizedForTypeResponse::setMidocoMarketingKeyLocalized()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoMarketingKeyLocalized[] $midocoMarketingKeyLocalized
      */
-    public function __construct(array $midocoMarketingKeyLocalized = [])
+    public function __construct(?array $midocoMarketingKeyLocalized = null)
     {
         $this
             ->setMidocoMarketingKeyLocalized($midocoMarketingKeyLocalized);
@@ -36,18 +37,22 @@ class GetMarketingKeysLocalizedForTypeResponse extends AbstractStructBase
      * Get MidocoMarketingKeyLocalized value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoMarketingKeyLocalized[]
      */
-    public function getMidocoMarketingKeyLocalized(): array
+    public function getMidocoMarketingKeyLocalized(): ?array
     {
         return $this->MidocoMarketingKeyLocalized;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoMarketingKeyLocalized method
+     * This method is responsible for validating the value(s) passed to the setMidocoMarketingKeyLocalized method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoMarketingKeyLocalized method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoMarketingKeyLocalizedForArrayConstraintsFromSetMidocoMarketingKeyLocalized(array $values = []): string
+    public static function validateMidocoMarketingKeyLocalizedForArrayConstraintFromSetMidocoMarketingKeyLocalized(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getMarketingKeysLocalizedForTypeResponseMidocoMarketingKeyLocalizedItem) {
@@ -69,10 +74,10 @@ class GetMarketingKeysLocalizedForTypeResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoMarketingKeyLocalized[] $midocoMarketingKeyLocalized
      * @return \Pggns\MidocoApi\Order\StructType\GetMarketingKeysLocalizedForTypeResponse
      */
-    public function setMidocoMarketingKeyLocalized(array $midocoMarketingKeyLocalized = []): self
+    public function setMidocoMarketingKeyLocalized(?array $midocoMarketingKeyLocalized = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoMarketingKeyLocalizedArrayErrorMessage = self::validateMidocoMarketingKeyLocalizedForArrayConstraintsFromSetMidocoMarketingKeyLocalized($midocoMarketingKeyLocalized))) {
+        if ('' !== ($midocoMarketingKeyLocalizedArrayErrorMessage = self::validateMidocoMarketingKeyLocalizedForArrayConstraintFromSetMidocoMarketingKeyLocalized($midocoMarketingKeyLocalized))) {
             throw new InvalidArgumentException($midocoMarketingKeyLocalizedArrayErrorMessage, __LINE__);
         }
         $this->MidocoMarketingKeyLocalized = $midocoMarketingKeyLocalized;

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for Error StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class Error extends AbstractStructBase
 {
     /**

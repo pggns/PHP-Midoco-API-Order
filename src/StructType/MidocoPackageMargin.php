@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoPackageMargin StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoPackageMargin extends PackageMarginDTO
 {
 }

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetOrderRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetOrderRequest extends AbstractStructBase
 {
     /**
@@ -20,7 +21,7 @@ class GetOrderRequest extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $IncludeOrderDetail = [];
+    protected ?array $IncludeOrderDetail = null;
     /**
      * The orderNo
      * @var int|null
@@ -63,7 +64,7 @@ class GetOrderRequest extends AbstractStructBase
      * @param bool $maskCcNo
      * @param bool $withDetails
      */
-    public function __construct(array $includeOrderDetail = [], ?int $orderNo = null, ?int $orderId = null, ?int $internalVersion = null, ?bool $maskCcNo = null, ?bool $withDetails = null)
+    public function __construct(?array $includeOrderDetail = null, ?int $orderNo = null, ?int $orderId = null, ?int $internalVersion = null, ?bool $maskCcNo = null, ?bool $withDetails = null)
     {
         $this
             ->setIncludeOrderDetail($includeOrderDetail)
@@ -77,18 +78,22 @@ class GetOrderRequest extends AbstractStructBase
      * Get IncludeOrderDetail value
      * @return string[]
      */
-    public function getIncludeOrderDetail(): array
+    public function getIncludeOrderDetail(): ?array
     {
         return $this->IncludeOrderDetail;
     }
     /**
-     * This method is responsible for validating the values passed to the setIncludeOrderDetail method
+     * This method is responsible for validating the value(s) passed to the setIncludeOrderDetail method
      * This method is willingly generated in order to preserve the one-line inline validation within the setIncludeOrderDetail method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateIncludeOrderDetailForArrayConstraintsFromSetIncludeOrderDetail(array $values = []): string
+    public static function validateIncludeOrderDetailForArrayConstraintFromSetIncludeOrderDetail(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getOrderRequestIncludeOrderDetailItem) {
@@ -112,10 +117,10 @@ class GetOrderRequest extends AbstractStructBase
      * @param string[] $includeOrderDetail
      * @return \Pggns\MidocoApi\Order\StructType\GetOrderRequest
      */
-    public function setIncludeOrderDetail(array $includeOrderDetail = []): self
+    public function setIncludeOrderDetail(?array $includeOrderDetail = null): self
     {
         // validation for constraint: array
-        if ('' !== ($includeOrderDetailArrayErrorMessage = self::validateIncludeOrderDetailForArrayConstraintsFromSetIncludeOrderDetail($includeOrderDetail))) {
+        if ('' !== ($includeOrderDetailArrayErrorMessage = self::validateIncludeOrderDetailForArrayConstraintFromSetIncludeOrderDetail($includeOrderDetail))) {
             throw new InvalidArgumentException($includeOrderDetailArrayErrorMessage, __LINE__);
         }
         $this->IncludeOrderDetail = $includeOrderDetail;

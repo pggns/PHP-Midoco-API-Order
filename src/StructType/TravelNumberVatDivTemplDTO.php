@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for TravelNumberVatDivTemplDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class TravelNumberVatDivTemplDTO extends AbstractStructBase
 {
     /**

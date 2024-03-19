@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for OnlinePaymentDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class OnlinePaymentDTO extends AbstractStructBase
 {
     /**

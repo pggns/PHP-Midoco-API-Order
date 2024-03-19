@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SupplierSettlemAccountsHistoricDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SupplierSettlemAccountsHistoricDTO extends AbstractStructBase
 {
     /**

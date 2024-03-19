@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetSequenceValuesRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetSequenceValuesRequest extends AbstractStructBase
 {
 }

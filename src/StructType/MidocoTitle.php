@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoTitle StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoTitle extends PersonTitleDTO
 {
     /**

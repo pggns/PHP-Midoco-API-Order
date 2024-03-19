@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoJasperReport StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoJasperReport extends JasperReportDTO
 {
 }

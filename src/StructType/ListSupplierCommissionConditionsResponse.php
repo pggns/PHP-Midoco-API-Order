@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ListSupplierCommissionConditionsResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ListSupplierCommissionConditionsResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class ListSupplierCommissionConditionsResponse extends AbstractStructBase
      * - ref: MidocoSupplierCommissionCondition
      * @var \Pggns\MidocoApi\Order\StructType\MidocoSupplierCommissionCondition[]
      */
-    protected array $MidocoSupplierCommissionCondition = [];
+    protected ?array $MidocoSupplierCommissionCondition = null;
     /**
      * Constructor method for ListSupplierCommissionConditionsResponse
      * @uses ListSupplierCommissionConditionsResponse::setMidocoSupplierCommissionCondition()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSupplierCommissionCondition[] $midocoSupplierCommissionCondition
      */
-    public function __construct(array $midocoSupplierCommissionCondition = [])
+    public function __construct(?array $midocoSupplierCommissionCondition = null)
     {
         $this
             ->setMidocoSupplierCommissionCondition($midocoSupplierCommissionCondition);
@@ -36,18 +37,22 @@ class ListSupplierCommissionConditionsResponse extends AbstractStructBase
      * Get MidocoSupplierCommissionCondition value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSupplierCommissionCondition[]
      */
-    public function getMidocoSupplierCommissionCondition(): array
+    public function getMidocoSupplierCommissionCondition(): ?array
     {
         return $this->MidocoSupplierCommissionCondition;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoSupplierCommissionCondition method
+     * This method is responsible for validating the value(s) passed to the setMidocoSupplierCommissionCondition method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoSupplierCommissionCondition method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoSupplierCommissionConditionForArrayConstraintsFromSetMidocoSupplierCommissionCondition(array $values = []): string
+    public static function validateMidocoSupplierCommissionConditionForArrayConstraintFromSetMidocoSupplierCommissionCondition(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $listSupplierCommissionConditionsResponseMidocoSupplierCommissionConditionItem) {
@@ -69,10 +74,10 @@ class ListSupplierCommissionConditionsResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSupplierCommissionCondition[] $midocoSupplierCommissionCondition
      * @return \Pggns\MidocoApi\Order\StructType\ListSupplierCommissionConditionsResponse
      */
-    public function setMidocoSupplierCommissionCondition(array $midocoSupplierCommissionCondition = []): self
+    public function setMidocoSupplierCommissionCondition(?array $midocoSupplierCommissionCondition = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoSupplierCommissionConditionArrayErrorMessage = self::validateMidocoSupplierCommissionConditionForArrayConstraintsFromSetMidocoSupplierCommissionCondition($midocoSupplierCommissionCondition))) {
+        if ('' !== ($midocoSupplierCommissionConditionArrayErrorMessage = self::validateMidocoSupplierCommissionConditionForArrayConstraintFromSetMidocoSupplierCommissionCondition($midocoSupplierCommissionCondition))) {
             throw new InvalidArgumentException($midocoSupplierCommissionConditionArrayErrorMessage, __LINE__);
         }
         $this->MidocoSupplierCommissionCondition = $midocoSupplierCommissionCondition;

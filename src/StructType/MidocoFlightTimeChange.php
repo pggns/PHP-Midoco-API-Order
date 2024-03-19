@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoFlightTimeChange StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoFlightTimeChange extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveVatCodeRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveVatCodeRequest extends AbstractStructBase
 {
     /**

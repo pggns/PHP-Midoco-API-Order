@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CheckPaymentProviderSettlementBookingRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CheckPaymentProviderSettlementBookingRequest extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ChangeSellItemCreationUserRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ChangeSellItemCreationUserRequest extends AbstractStructBase
 {
     /**

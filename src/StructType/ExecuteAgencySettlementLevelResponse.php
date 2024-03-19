@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ExecuteAgencySettlementLevelResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ExecuteAgencySettlementLevelResponse extends AbstractStructBase
 {
     /**
@@ -21,7 +22,7 @@ class ExecuteAgencySettlementLevelResponse extends AbstractStructBase
      * - ref: MidocoAgencySettlementLevelBilling
      * @var \Pggns\MidocoApi\Order\StructType\MidocoAgencySettlementLevelBilling[]
      */
-    protected array $MidocoAgencySettlementLevelBilling = [];
+    protected ?array $MidocoAgencySettlementLevelBilling = null;
     /**
      * The MidocoAgencySettlementLevelError
      * Meta information extracted from the WSDL
@@ -30,7 +31,7 @@ class ExecuteAgencySettlementLevelResponse extends AbstractStructBase
      * - ref: MidocoAgencySettlementLevelError
      * @var \Pggns\MidocoApi\Order\StructType\MidocoAgencySettlementLevelError[]
      */
-    protected array $MidocoAgencySettlementLevelError = [];
+    protected ?array $MidocoAgencySettlementLevelError = null;
     /**
      * Constructor method for ExecuteAgencySettlementLevelResponse
      * @uses ExecuteAgencySettlementLevelResponse::setMidocoAgencySettlementLevelBilling()
@@ -38,7 +39,7 @@ class ExecuteAgencySettlementLevelResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoAgencySettlementLevelBilling[] $midocoAgencySettlementLevelBilling
      * @param \Pggns\MidocoApi\Order\StructType\MidocoAgencySettlementLevelError[] $midocoAgencySettlementLevelError
      */
-    public function __construct(array $midocoAgencySettlementLevelBilling = [], array $midocoAgencySettlementLevelError = [])
+    public function __construct(?array $midocoAgencySettlementLevelBilling = null, ?array $midocoAgencySettlementLevelError = null)
     {
         $this
             ->setMidocoAgencySettlementLevelBilling($midocoAgencySettlementLevelBilling)
@@ -48,18 +49,22 @@ class ExecuteAgencySettlementLevelResponse extends AbstractStructBase
      * Get MidocoAgencySettlementLevelBilling value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoAgencySettlementLevelBilling[]
      */
-    public function getMidocoAgencySettlementLevelBilling(): array
+    public function getMidocoAgencySettlementLevelBilling(): ?array
     {
         return $this->MidocoAgencySettlementLevelBilling;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoAgencySettlementLevelBilling method
+     * This method is responsible for validating the value(s) passed to the setMidocoAgencySettlementLevelBilling method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoAgencySettlementLevelBilling method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoAgencySettlementLevelBillingForArrayConstraintsFromSetMidocoAgencySettlementLevelBilling(array $values = []): string
+    public static function validateMidocoAgencySettlementLevelBillingForArrayConstraintFromSetMidocoAgencySettlementLevelBilling(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $executeAgencySettlementLevelResponseMidocoAgencySettlementLevelBillingItem) {
@@ -81,10 +86,10 @@ class ExecuteAgencySettlementLevelResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoAgencySettlementLevelBilling[] $midocoAgencySettlementLevelBilling
      * @return \Pggns\MidocoApi\Order\StructType\ExecuteAgencySettlementLevelResponse
      */
-    public function setMidocoAgencySettlementLevelBilling(array $midocoAgencySettlementLevelBilling = []): self
+    public function setMidocoAgencySettlementLevelBilling(?array $midocoAgencySettlementLevelBilling = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoAgencySettlementLevelBillingArrayErrorMessage = self::validateMidocoAgencySettlementLevelBillingForArrayConstraintsFromSetMidocoAgencySettlementLevelBilling($midocoAgencySettlementLevelBilling))) {
+        if ('' !== ($midocoAgencySettlementLevelBillingArrayErrorMessage = self::validateMidocoAgencySettlementLevelBillingForArrayConstraintFromSetMidocoAgencySettlementLevelBilling($midocoAgencySettlementLevelBilling))) {
             throw new InvalidArgumentException($midocoAgencySettlementLevelBillingArrayErrorMessage, __LINE__);
         }
         $this->MidocoAgencySettlementLevelBilling = $midocoAgencySettlementLevelBilling;
@@ -111,18 +116,22 @@ class ExecuteAgencySettlementLevelResponse extends AbstractStructBase
      * Get MidocoAgencySettlementLevelError value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoAgencySettlementLevelError[]
      */
-    public function getMidocoAgencySettlementLevelError(): array
+    public function getMidocoAgencySettlementLevelError(): ?array
     {
         return $this->MidocoAgencySettlementLevelError;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoAgencySettlementLevelError method
+     * This method is responsible for validating the value(s) passed to the setMidocoAgencySettlementLevelError method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoAgencySettlementLevelError method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoAgencySettlementLevelErrorForArrayConstraintsFromSetMidocoAgencySettlementLevelError(array $values = []): string
+    public static function validateMidocoAgencySettlementLevelErrorForArrayConstraintFromSetMidocoAgencySettlementLevelError(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $executeAgencySettlementLevelResponseMidocoAgencySettlementLevelErrorItem) {
@@ -144,10 +153,10 @@ class ExecuteAgencySettlementLevelResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoAgencySettlementLevelError[] $midocoAgencySettlementLevelError
      * @return \Pggns\MidocoApi\Order\StructType\ExecuteAgencySettlementLevelResponse
      */
-    public function setMidocoAgencySettlementLevelError(array $midocoAgencySettlementLevelError = []): self
+    public function setMidocoAgencySettlementLevelError(?array $midocoAgencySettlementLevelError = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoAgencySettlementLevelErrorArrayErrorMessage = self::validateMidocoAgencySettlementLevelErrorForArrayConstraintsFromSetMidocoAgencySettlementLevelError($midocoAgencySettlementLevelError))) {
+        if ('' !== ($midocoAgencySettlementLevelErrorArrayErrorMessage = self::validateMidocoAgencySettlementLevelErrorForArrayConstraintFromSetMidocoAgencySettlementLevelError($midocoAgencySettlementLevelError))) {
             throw new InvalidArgumentException($midocoAgencySettlementLevelErrorArrayErrorMessage, __LINE__);
         }
         $this->MidocoAgencySettlementLevelError = $midocoAgencySettlementLevelError;

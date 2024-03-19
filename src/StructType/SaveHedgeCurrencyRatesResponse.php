@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveHedgeCurrencyRatesResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveHedgeCurrencyRatesResponse extends AbstractStructBase
 {
     /**

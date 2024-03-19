@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CcproxySingleUseTokenDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CcproxySingleUseTokenDTO extends AbstractStructBase
 {
     /**

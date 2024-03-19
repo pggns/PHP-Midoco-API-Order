@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for rail-service-type StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class Rail_service_type extends AbstractStructBase
 {
     /**
@@ -495,7 +496,7 @@ class Rail_service_type extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($departure_date, true), gettype($departure_date)), __LINE__);
         }
         // validation for constraint: pattern([0-9]{4}-[0-9]{2}-[0-9]{2})
-        if (!is_null($departure_date) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', $departure_date)) {
+        if (!is_null($departure_date) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', (string) $departure_date)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[0-9]{4}-[0-9]{2}-[0-9]{2}/', var_export($departure_date, true)), __LINE__);
         }
         $this->departure_date = $this->{'departure-date'} = $departure_date;
@@ -522,7 +523,7 @@ class Rail_service_type extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($departure_time, true), gettype($departure_time)), __LINE__);
         }
         // validation for constraint: pattern([0-9]{2}:[0-9]{2})
-        if (!is_null($departure_time) && !preg_match('/[0-9]{2}:[0-9]{2}/', $departure_time)) {
+        if (!is_null($departure_time) && !preg_match('/[0-9]{2}:[0-9]{2}/', (string) $departure_time)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[0-9]{2}:[0-9]{2}/', var_export($departure_time, true)), __LINE__);
         }
         $this->departure_time = $this->{'departure-time'} = $departure_time;
@@ -626,7 +627,7 @@ class Rail_service_type extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($arrival_date, true), gettype($arrival_date)), __LINE__);
         }
         // validation for constraint: pattern([0-9]{4}-[0-9]{2}-[0-9]{2})
-        if (!is_null($arrival_date) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', $arrival_date)) {
+        if (!is_null($arrival_date) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', (string) $arrival_date)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[0-9]{4}-[0-9]{2}-[0-9]{2}/', var_export($arrival_date, true)), __LINE__);
         }
         $this->arrival_date = $this->{'arrival-date'} = $arrival_date;
@@ -653,7 +654,7 @@ class Rail_service_type extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($arrival_time, true), gettype($arrival_time)), __LINE__);
         }
         // validation for constraint: pattern([0-9]{2}:[0-9]{2})
-        if (!is_null($arrival_time) && !preg_match('/[0-9]{2}:[0-9]{2}/', $arrival_time)) {
+        if (!is_null($arrival_time) && !preg_match('/[0-9]{2}:[0-9]{2}/', (string) $arrival_time)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[0-9]{2}:[0-9]{2}/', var_export($arrival_time, true)), __LINE__);
         }
         $this->arrival_time = $this->{'arrival-time'} = $arrival_time;
@@ -1171,7 +1172,7 @@ class Rail_service_type extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($valid_from, true), gettype($valid_from)), __LINE__);
         }
         // validation for constraint: pattern([0-9]{4}-[0-9]{2}-[0-9]{2})
-        if (!is_null($valid_from) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', $valid_from)) {
+        if (!is_null($valid_from) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', (string) $valid_from)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[0-9]{4}-[0-9]{2}-[0-9]{2}/', var_export($valid_from, true)), __LINE__);
         }
         $this->valid_from = $this->{'valid-from'} = $valid_from;
@@ -1198,7 +1199,7 @@ class Rail_service_type extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($last_cancel_date, true), gettype($last_cancel_date)), __LINE__);
         }
         // validation for constraint: pattern([0-9]{4}-[0-9]{2}-[0-9]{2})
-        if (!is_null($last_cancel_date) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', $last_cancel_date)) {
+        if (!is_null($last_cancel_date) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', (string) $last_cancel_date)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[0-9]{4}-[0-9]{2}-[0-9]{2}/', var_export($last_cancel_date, true)), __LINE__);
         }
         $this->last_cancel_date = $this->{'last-cancel-date'} = $last_cancel_date;

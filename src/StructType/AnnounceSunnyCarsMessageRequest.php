@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: imports an Sunny Cars message.
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class AnnounceSunnyCarsMessageRequest extends AbstractStructBase
 {
     /**

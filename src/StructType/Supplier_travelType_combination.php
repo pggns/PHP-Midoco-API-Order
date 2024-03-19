@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for supplier-travelType-combination StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class Supplier_travelType_combination extends AbstractStructBase
 {
     /**

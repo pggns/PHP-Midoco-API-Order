@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoOnlinePaymentTransactionHistory StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoOnlinePaymentTransactionHistory extends AbstractStructBase
 {
     /**

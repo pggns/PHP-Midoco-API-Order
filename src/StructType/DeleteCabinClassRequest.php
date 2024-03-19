@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteCabinClassRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteCabinClassRequest extends AbstractStructBase
 {
     /**

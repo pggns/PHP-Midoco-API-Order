@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for AnnounceFlightTimeChangesResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class AnnounceFlightTimeChangesResponse extends AbstractStructBase
 {
 }

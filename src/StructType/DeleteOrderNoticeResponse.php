@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: deleteOrderNotice --- deletes a notice from an order
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteOrderNoticeResponse extends AbstractStructBase
 {
 }

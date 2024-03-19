@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for TemplateSuppliersAssignType StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class TemplateSuppliersAssignType extends AbstractStructBase
 {
     /**
@@ -33,7 +34,7 @@ class TemplateSuppliersAssignType extends AbstractStructBase
      * - maxOccurs: unbounded
      * @var string[]
      */
-    protected array $SupplierId = [];
+    protected ?array $SupplierId = null;
     /**
      * Constructor method for TemplateSuppliersAssignType
      * @uses TemplateSuppliersAssignType::setUnitName()
@@ -43,7 +44,7 @@ class TemplateSuppliersAssignType extends AbstractStructBase
      * @param int $templateId
      * @param string[] $supplierId
      */
-    public function __construct(string $unitName, int $templateId, array $supplierId = [])
+    public function __construct(string $unitName, int $templateId, ?array $supplierId = null)
     {
         $this
             ->setUnitName($unitName)
@@ -100,18 +101,22 @@ class TemplateSuppliersAssignType extends AbstractStructBase
      * Get SupplierId value
      * @return string[]
      */
-    public function getSupplierId(): array
+    public function getSupplierId(): ?array
     {
         return $this->SupplierId;
     }
     /**
-     * This method is responsible for validating the values passed to the setSupplierId method
+     * This method is responsible for validating the value(s) passed to the setSupplierId method
      * This method is willingly generated in order to preserve the one-line inline validation within the setSupplierId method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateSupplierIdForArrayConstraintsFromSetSupplierId(array $values = []): string
+    public static function validateSupplierIdForArrayConstraintFromSetSupplierId(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $templateSuppliersAssignTypeSupplierIdItem) {
@@ -133,10 +138,10 @@ class TemplateSuppliersAssignType extends AbstractStructBase
      * @param string[] $supplierId
      * @return \Pggns\MidocoApi\Order\StructType\TemplateSuppliersAssignType
      */
-    public function setSupplierId(array $supplierId = []): self
+    public function setSupplierId(?array $supplierId = null): self
     {
         // validation for constraint: array
-        if ('' !== ($supplierIdArrayErrorMessage = self::validateSupplierIdForArrayConstraintsFromSetSupplierId($supplierId))) {
+        if ('' !== ($supplierIdArrayErrorMessage = self::validateSupplierIdForArrayConstraintFromSetSupplierId($supplierId))) {
             throw new InvalidArgumentException($supplierIdArrayErrorMessage, __LINE__);
         }
         $this->SupplierId = $supplierId;

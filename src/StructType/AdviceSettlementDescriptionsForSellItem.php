@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for AdviceSettlementDescriptionsForSellItem StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class AdviceSettlementDescriptionsForSellItem extends AbstractStructBase
 {
     /**

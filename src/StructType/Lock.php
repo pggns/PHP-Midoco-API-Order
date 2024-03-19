@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: information about the type of lock set on the order
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class Lock extends AbstractStructBase
 {
     /**

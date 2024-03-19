@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ProcessInvoiceMixedModeRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ProcessInvoiceMixedModeRequest extends AbstractStructBase
 {
     /**

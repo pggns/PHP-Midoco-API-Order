@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoOrderQm StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoOrderQm extends OrderQmDTO
 {
     /**
@@ -27,7 +28,7 @@ class MidocoOrderQm extends OrderQmDTO
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\OrderQmAnswerDTO[]
      */
-    protected array $MidocoOrderQmAnswerDTO = [];
+    protected ?array $MidocoOrderQmAnswerDTO = null;
     /**
      * Constructor method for MidocoOrderQm
      * @uses MidocoOrderQm::setMidocoQuestion()
@@ -35,7 +36,7 @@ class MidocoOrderQm extends OrderQmDTO
      * @param \Pggns\MidocoApi\Order\StructType\MidocoQuestion $midocoQuestion
      * @param \Pggns\MidocoApi\Order\StructType\OrderQmAnswerDTO[] $midocoOrderQmAnswerDTO
      */
-    public function __construct(?\Pggns\MidocoApi\Order\StructType\MidocoQuestion $midocoQuestion = null, array $midocoOrderQmAnswerDTO = [])
+    public function __construct(?\Pggns\MidocoApi\Order\StructType\MidocoQuestion $midocoQuestion = null, ?array $midocoOrderQmAnswerDTO = null)
     {
         $this
             ->setMidocoQuestion($midocoQuestion)
@@ -64,18 +65,22 @@ class MidocoOrderQm extends OrderQmDTO
      * Get MidocoOrderQmAnswerDTO value
      * @return \Pggns\MidocoApi\Order\StructType\OrderQmAnswerDTO[]
      */
-    public function getMidocoOrderQmAnswerDTO(): array
+    public function getMidocoOrderQmAnswerDTO(): ?array
     {
         return $this->MidocoOrderQmAnswerDTO;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoOrderQmAnswerDTO method
+     * This method is responsible for validating the value(s) passed to the setMidocoOrderQmAnswerDTO method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoOrderQmAnswerDTO method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoOrderQmAnswerDTOForArrayConstraintsFromSetMidocoOrderQmAnswerDTO(array $values = []): string
+    public static function validateMidocoOrderQmAnswerDTOForArrayConstraintFromSetMidocoOrderQmAnswerDTO(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoOrderQmMidocoOrderQmAnswerDTOItem) {
@@ -97,10 +102,10 @@ class MidocoOrderQm extends OrderQmDTO
      * @param \Pggns\MidocoApi\Order\StructType\OrderQmAnswerDTO[] $midocoOrderQmAnswerDTO
      * @return \Pggns\MidocoApi\Order\StructType\MidocoOrderQm
      */
-    public function setMidocoOrderQmAnswerDTO(array $midocoOrderQmAnswerDTO = []): self
+    public function setMidocoOrderQmAnswerDTO(?array $midocoOrderQmAnswerDTO = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoOrderQmAnswerDTOArrayErrorMessage = self::validateMidocoOrderQmAnswerDTOForArrayConstraintsFromSetMidocoOrderQmAnswerDTO($midocoOrderQmAnswerDTO))) {
+        if ('' !== ($midocoOrderQmAnswerDTOArrayErrorMessage = self::validateMidocoOrderQmAnswerDTOForArrayConstraintFromSetMidocoOrderQmAnswerDTO($midocoOrderQmAnswerDTO))) {
             throw new InvalidArgumentException($midocoOrderQmAnswerDTOArrayErrorMessage, __LINE__);
         }
         $this->MidocoOrderQmAnswerDTO = $midocoOrderQmAnswerDTO;

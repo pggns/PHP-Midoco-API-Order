@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteBillingNoticesResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteBillingNoticesResponse extends AbstractStructBase
 {
     /**

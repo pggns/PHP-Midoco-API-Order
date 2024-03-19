@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoBillingNotice StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoBillingNotice extends BillingNoticeDTO
 {
     /**

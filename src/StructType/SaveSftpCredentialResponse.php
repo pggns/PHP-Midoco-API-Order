@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveSftpCredentialResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveSftpCredentialResponse extends AbstractStructBase
 {
 }

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoSearchFeeType StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoSearchFeeType extends FeeDescriptorType
 {
 }

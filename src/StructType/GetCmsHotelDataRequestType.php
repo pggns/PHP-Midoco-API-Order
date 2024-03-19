@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetCmsHotelDataRequestType StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetCmsHotelDataRequestType extends AbstractStructBase
 {
     /**
@@ -20,7 +21,7 @@ class GetCmsHotelDataRequestType extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $hotelCodes = [];
+    protected ?array $hotelCodes = null;
     /**
      * The supplierId
      * @var string|null
@@ -47,7 +48,7 @@ class GetCmsHotelDataRequestType extends AbstractStructBase
      * @param string $hotelcode
      * @param int $itemId
      */
-    public function __construct(array $hotelCodes = [], ?string $supplierId = null, ?string $hotelcode = null, ?int $itemId = null)
+    public function __construct(?array $hotelCodes = null, ?string $supplierId = null, ?string $hotelcode = null, ?int $itemId = null)
     {
         $this
             ->setHotelCodes($hotelCodes)
@@ -59,18 +60,22 @@ class GetCmsHotelDataRequestType extends AbstractStructBase
      * Get hotelCodes value
      * @return string[]
      */
-    public function getHotelCodes(): array
+    public function getHotelCodes(): ?array
     {
         return $this->hotelCodes;
     }
     /**
-     * This method is responsible for validating the values passed to the setHotelCodes method
+     * This method is responsible for validating the value(s) passed to the setHotelCodes method
      * This method is willingly generated in order to preserve the one-line inline validation within the setHotelCodes method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateHotelCodesForArrayConstraintsFromSetHotelCodes(array $values = []): string
+    public static function validateHotelCodesForArrayConstraintFromSetHotelCodes(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getCmsHotelDataRequestTypeHotelCodesItem) {
@@ -92,10 +97,10 @@ class GetCmsHotelDataRequestType extends AbstractStructBase
      * @param string[] $hotelCodes
      * @return \Pggns\MidocoApi\Order\StructType\GetCmsHotelDataRequestType
      */
-    public function setHotelCodes(array $hotelCodes = []): self
+    public function setHotelCodes(?array $hotelCodes = null): self
     {
         // validation for constraint: array
-        if ('' !== ($hotelCodesArrayErrorMessage = self::validateHotelCodesForArrayConstraintsFromSetHotelCodes($hotelCodes))) {
+        if ('' !== ($hotelCodesArrayErrorMessage = self::validateHotelCodesForArrayConstraintFromSetHotelCodes($hotelCodes))) {
             throw new InvalidArgumentException($hotelCodesArrayErrorMessage, __LINE__);
         }
         $this->hotelCodes = $hotelCodes;

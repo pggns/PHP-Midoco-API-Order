@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for RebookingSupplierInvoiceResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class RebookingSupplierInvoiceResponse extends AbstractStructBase
 {
 }

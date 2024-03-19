@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoTravelCm StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoTravelCm extends TravelCmDTO
 {
     /**
@@ -21,7 +22,7 @@ class MidocoTravelCm extends TravelCmDTO
      * - ref: MidocoTravelAttr
      * @var \Pggns\MidocoApi\Order\StructType\MidocoTravelAttr[]
      */
-    protected array $MidocoTravelAttr = [];
+    protected ?array $MidocoTravelAttr = null;
     /**
      * The MidocoTravelExtraData
      * Meta information extracted from the WSDL
@@ -30,7 +31,7 @@ class MidocoTravelCm extends TravelCmDTO
      * - ref: MidocoTravelExtraData
      * @var \Pggns\MidocoApi\Order\StructType\TravelExtraDataDTO[]
      */
-    protected array $MidocoTravelExtraData = [];
+    protected ?array $MidocoTravelExtraData = null;
     /**
      * Constructor method for MidocoTravelCm
      * @uses MidocoTravelCm::setMidocoTravelAttr()
@@ -38,7 +39,7 @@ class MidocoTravelCm extends TravelCmDTO
      * @param \Pggns\MidocoApi\Order\StructType\MidocoTravelAttr[] $midocoTravelAttr
      * @param \Pggns\MidocoApi\Order\StructType\TravelExtraDataDTO[] $midocoTravelExtraData
      */
-    public function __construct(array $midocoTravelAttr = [], array $midocoTravelExtraData = [])
+    public function __construct(?array $midocoTravelAttr = null, ?array $midocoTravelExtraData = null)
     {
         $this
             ->setMidocoTravelAttr($midocoTravelAttr)
@@ -48,18 +49,22 @@ class MidocoTravelCm extends TravelCmDTO
      * Get MidocoTravelAttr value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoTravelAttr[]
      */
-    public function getMidocoTravelAttr(): array
+    public function getMidocoTravelAttr(): ?array
     {
         return $this->MidocoTravelAttr;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoTravelAttr method
+     * This method is responsible for validating the value(s) passed to the setMidocoTravelAttr method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoTravelAttr method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoTravelAttrForArrayConstraintsFromSetMidocoTravelAttr(array $values = []): string
+    public static function validateMidocoTravelAttrForArrayConstraintFromSetMidocoTravelAttr(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoTravelCmMidocoTravelAttrItem) {
@@ -81,10 +86,10 @@ class MidocoTravelCm extends TravelCmDTO
      * @param \Pggns\MidocoApi\Order\StructType\MidocoTravelAttr[] $midocoTravelAttr
      * @return \Pggns\MidocoApi\Order\StructType\MidocoTravelCm
      */
-    public function setMidocoTravelAttr(array $midocoTravelAttr = []): self
+    public function setMidocoTravelAttr(?array $midocoTravelAttr = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoTravelAttrArrayErrorMessage = self::validateMidocoTravelAttrForArrayConstraintsFromSetMidocoTravelAttr($midocoTravelAttr))) {
+        if ('' !== ($midocoTravelAttrArrayErrorMessage = self::validateMidocoTravelAttrForArrayConstraintFromSetMidocoTravelAttr($midocoTravelAttr))) {
             throw new InvalidArgumentException($midocoTravelAttrArrayErrorMessage, __LINE__);
         }
         $this->MidocoTravelAttr = $midocoTravelAttr;
@@ -111,18 +116,22 @@ class MidocoTravelCm extends TravelCmDTO
      * Get MidocoTravelExtraData value
      * @return \Pggns\MidocoApi\Order\StructType\TravelExtraDataDTO[]
      */
-    public function getMidocoTravelExtraData(): array
+    public function getMidocoTravelExtraData(): ?array
     {
         return $this->MidocoTravelExtraData;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoTravelExtraData method
+     * This method is responsible for validating the value(s) passed to the setMidocoTravelExtraData method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoTravelExtraData method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoTravelExtraDataForArrayConstraintsFromSetMidocoTravelExtraData(array $values = []): string
+    public static function validateMidocoTravelExtraDataForArrayConstraintFromSetMidocoTravelExtraData(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoTravelCmMidocoTravelExtraDataItem) {
@@ -144,10 +153,10 @@ class MidocoTravelCm extends TravelCmDTO
      * @param \Pggns\MidocoApi\Order\StructType\TravelExtraDataDTO[] $midocoTravelExtraData
      * @return \Pggns\MidocoApi\Order\StructType\MidocoTravelCm
      */
-    public function setMidocoTravelExtraData(array $midocoTravelExtraData = []): self
+    public function setMidocoTravelExtraData(?array $midocoTravelExtraData = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoTravelExtraDataArrayErrorMessage = self::validateMidocoTravelExtraDataForArrayConstraintsFromSetMidocoTravelExtraData($midocoTravelExtraData))) {
+        if ('' !== ($midocoTravelExtraDataArrayErrorMessage = self::validateMidocoTravelExtraDataForArrayConstraintFromSetMidocoTravelExtraData($midocoTravelExtraData))) {
             throw new InvalidArgumentException($midocoTravelExtraDataArrayErrorMessage, __LINE__);
         }
         $this->MidocoTravelExtraData = $midocoTravelExtraData;

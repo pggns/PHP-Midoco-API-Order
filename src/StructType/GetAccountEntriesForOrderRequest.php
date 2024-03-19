@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetAccountEntriesForOrderRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetAccountEntriesForOrderRequest extends AbstractStructBase
 {
     /**

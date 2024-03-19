@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SearchVirtualAccountResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchVirtualAccountResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class SearchVirtualAccountResponse extends AbstractStructBase
      * - ref: MidocoVirtualAccount
      * @var \Pggns\MidocoApi\Order\StructType\VirtualAccountDTO[]
      */
-    protected array $MidocoVirtualAccount = [];
+    protected ?array $MidocoVirtualAccount = null;
     /**
      * Constructor method for SearchVirtualAccountResponse
      * @uses SearchVirtualAccountResponse::setMidocoVirtualAccount()
      * @param \Pggns\MidocoApi\Order\StructType\VirtualAccountDTO[] $midocoVirtualAccount
      */
-    public function __construct(array $midocoVirtualAccount = [])
+    public function __construct(?array $midocoVirtualAccount = null)
     {
         $this
             ->setMidocoVirtualAccount($midocoVirtualAccount);
@@ -36,18 +37,22 @@ class SearchVirtualAccountResponse extends AbstractStructBase
      * Get MidocoVirtualAccount value
      * @return \Pggns\MidocoApi\Order\StructType\VirtualAccountDTO[]
      */
-    public function getMidocoVirtualAccount(): array
+    public function getMidocoVirtualAccount(): ?array
     {
         return $this->MidocoVirtualAccount;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoVirtualAccount method
+     * This method is responsible for validating the value(s) passed to the setMidocoVirtualAccount method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoVirtualAccount method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoVirtualAccountForArrayConstraintsFromSetMidocoVirtualAccount(array $values = []): string
+    public static function validateMidocoVirtualAccountForArrayConstraintFromSetMidocoVirtualAccount(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $searchVirtualAccountResponseMidocoVirtualAccountItem) {
@@ -69,10 +74,10 @@ class SearchVirtualAccountResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\VirtualAccountDTO[] $midocoVirtualAccount
      * @return \Pggns\MidocoApi\Order\StructType\SearchVirtualAccountResponse
      */
-    public function setMidocoVirtualAccount(array $midocoVirtualAccount = []): self
+    public function setMidocoVirtualAccount(?array $midocoVirtualAccount = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoVirtualAccountArrayErrorMessage = self::validateMidocoVirtualAccountForArrayConstraintsFromSetMidocoVirtualAccount($midocoVirtualAccount))) {
+        if ('' !== ($midocoVirtualAccountArrayErrorMessage = self::validateMidocoVirtualAccountForArrayConstraintFromSetMidocoVirtualAccount($midocoVirtualAccount))) {
             throw new InvalidArgumentException($midocoVirtualAccountArrayErrorMessage, __LINE__);
         }
         $this->MidocoVirtualAccount = $midocoVirtualAccount;

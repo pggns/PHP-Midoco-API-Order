@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetOrderLockReasonDescriptionsRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetOrderLockReasonDescriptionsRequest extends AbstractStructBase
 {
     /**

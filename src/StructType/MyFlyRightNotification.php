@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MyFlyRightNotification StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MyFlyRightNotification extends AbstractStructBase
 {
     /**

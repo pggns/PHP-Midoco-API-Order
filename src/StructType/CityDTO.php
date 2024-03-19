@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CityDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CityDTO extends AbstractStructBase
 {
     /**

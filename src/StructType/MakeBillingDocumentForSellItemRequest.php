@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MakeBillingDocumentForSellItemRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MakeBillingDocumentForSellItemRequest extends AbstractStructBase
 {
     /**

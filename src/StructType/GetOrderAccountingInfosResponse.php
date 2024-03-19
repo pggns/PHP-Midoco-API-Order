@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetOrderAccountingInfosResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetOrderAccountingInfosResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetOrderAccountingInfosResponse extends AbstractStructBase
      * - ref: MidocoOrderAccountingInfo
      * @var \Pggns\MidocoApi\Order\StructType\OrderAccountingInfoDTO[]
      */
-    protected array $MidocoOrderAccountingInfo = [];
+    protected ?array $MidocoOrderAccountingInfo = null;
     /**
      * Constructor method for GetOrderAccountingInfosResponse
      * @uses GetOrderAccountingInfosResponse::setMidocoOrderAccountingInfo()
      * @param \Pggns\MidocoApi\Order\StructType\OrderAccountingInfoDTO[] $midocoOrderAccountingInfo
      */
-    public function __construct(array $midocoOrderAccountingInfo = [])
+    public function __construct(?array $midocoOrderAccountingInfo = null)
     {
         $this
             ->setMidocoOrderAccountingInfo($midocoOrderAccountingInfo);
@@ -36,18 +37,22 @@ class GetOrderAccountingInfosResponse extends AbstractStructBase
      * Get MidocoOrderAccountingInfo value
      * @return \Pggns\MidocoApi\Order\StructType\OrderAccountingInfoDTO[]
      */
-    public function getMidocoOrderAccountingInfo(): array
+    public function getMidocoOrderAccountingInfo(): ?array
     {
         return $this->MidocoOrderAccountingInfo;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoOrderAccountingInfo method
+     * This method is responsible for validating the value(s) passed to the setMidocoOrderAccountingInfo method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoOrderAccountingInfo method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoOrderAccountingInfoForArrayConstraintsFromSetMidocoOrderAccountingInfo(array $values = []): string
+    public static function validateMidocoOrderAccountingInfoForArrayConstraintFromSetMidocoOrderAccountingInfo(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getOrderAccountingInfosResponseMidocoOrderAccountingInfoItem) {
@@ -69,10 +74,10 @@ class GetOrderAccountingInfosResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\OrderAccountingInfoDTO[] $midocoOrderAccountingInfo
      * @return \Pggns\MidocoApi\Order\StructType\GetOrderAccountingInfosResponse
      */
-    public function setMidocoOrderAccountingInfo(array $midocoOrderAccountingInfo = []): self
+    public function setMidocoOrderAccountingInfo(?array $midocoOrderAccountingInfo = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoOrderAccountingInfoArrayErrorMessage = self::validateMidocoOrderAccountingInfoForArrayConstraintsFromSetMidocoOrderAccountingInfo($midocoOrderAccountingInfo))) {
+        if ('' !== ($midocoOrderAccountingInfoArrayErrorMessage = self::validateMidocoOrderAccountingInfoForArrayConstraintFromSetMidocoOrderAccountingInfo($midocoOrderAccountingInfo))) {
             throw new InvalidArgumentException($midocoOrderAccountingInfoArrayErrorMessage, __LINE__);
         }
         $this->MidocoOrderAccountingInfo = $midocoOrderAccountingInfo;

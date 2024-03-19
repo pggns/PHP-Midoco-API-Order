@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetGeographicalCategoryResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetGeographicalCategoryResponse extends AbstractStructBase
 {
     /**

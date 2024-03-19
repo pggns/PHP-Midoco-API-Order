@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CollectiveInvoicePrintOrderDetails StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CollectiveInvoicePrintOrderDetails extends AbstractStructBase
 {
     /**
@@ -19,7 +20,7 @@ class CollectiveInvoicePrintOrderDetails extends AbstractStructBase
      * - maxOccurs: unbounded
      * @var \Pggns\MidocoApi\Order\StructType\MidocoSellItemInfo4Printing[]
      */
-    protected array $SellItemDetails4Printing = [];
+    protected ?array $SellItemDetails4Printing = null;
     /**
      * The MidocoOrder
      * Meta information extracted from the WSDL
@@ -43,7 +44,7 @@ class CollectiveInvoicePrintOrderDetails extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoOrderType $midocoOrder
      * @param \Pggns\MidocoApi\Order\StructType\MidocoInvoice $midocoInvoice
      */
-    public function __construct(array $sellItemDetails4Printing = [], ?\Pggns\MidocoApi\Order\StructType\MidocoOrderType $midocoOrder = null, ?\Pggns\MidocoApi\Order\StructType\MidocoInvoice $midocoInvoice = null)
+    public function __construct(?array $sellItemDetails4Printing = null, ?\Pggns\MidocoApi\Order\StructType\MidocoOrderType $midocoOrder = null, ?\Pggns\MidocoApi\Order\StructType\MidocoInvoice $midocoInvoice = null)
     {
         $this
             ->setSellItemDetails4Printing($sellItemDetails4Printing)
@@ -54,18 +55,22 @@ class CollectiveInvoicePrintOrderDetails extends AbstractStructBase
      * Get SellItemDetails4Printing value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSellItemInfo4Printing[]
      */
-    public function getSellItemDetails4Printing(): array
+    public function getSellItemDetails4Printing(): ?array
     {
         return $this->SellItemDetails4Printing;
     }
     /**
-     * This method is responsible for validating the values passed to the setSellItemDetails4Printing method
+     * This method is responsible for validating the value(s) passed to the setSellItemDetails4Printing method
      * This method is willingly generated in order to preserve the one-line inline validation within the setSellItemDetails4Printing method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateSellItemDetails4PrintingForArrayConstraintsFromSetSellItemDetails4Printing(array $values = []): string
+    public static function validateSellItemDetails4PrintingForArrayConstraintFromSetSellItemDetails4Printing(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $collectiveInvoicePrintOrderDetailsSellItemDetails4PrintingItem) {
@@ -87,10 +92,10 @@ class CollectiveInvoicePrintOrderDetails extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSellItemInfo4Printing[] $sellItemDetails4Printing
      * @return \Pggns\MidocoApi\Order\StructType\CollectiveInvoicePrintOrderDetails
      */
-    public function setSellItemDetails4Printing(array $sellItemDetails4Printing = []): self
+    public function setSellItemDetails4Printing(?array $sellItemDetails4Printing = null): self
     {
         // validation for constraint: array
-        if ('' !== ($sellItemDetails4PrintingArrayErrorMessage = self::validateSellItemDetails4PrintingForArrayConstraintsFromSetSellItemDetails4Printing($sellItemDetails4Printing))) {
+        if ('' !== ($sellItemDetails4PrintingArrayErrorMessage = self::validateSellItemDetails4PrintingForArrayConstraintFromSetSellItemDetails4Printing($sellItemDetails4Printing))) {
             throw new InvalidArgumentException($sellItemDetails4PrintingArrayErrorMessage, __LINE__);
         }
         $this->SellItemDetails4Printing = $sellItemDetails4Printing;

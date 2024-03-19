@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DumpMidocoDataOrderDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DumpMidocoDataOrderDTO extends AbstractStructBase
 {
     /**

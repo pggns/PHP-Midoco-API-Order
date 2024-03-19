@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MigrateFiskalyTssResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MigrateFiskalyTssResponse extends AbstractStructBase
 {
     /**
@@ -25,7 +26,7 @@ class MigrateFiskalyTssResponse extends AbstractStructBase
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\Tss_Migration_Log[]
      */
-    protected array $Migration_Log = [];
+    protected ?array $Migration_Log = null;
     /**
      * The Unprocessed_Units
      * Meta information extracted from the WSDL
@@ -42,7 +43,7 @@ class MigrateFiskalyTssResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\Tss_Migration_Log[] $migration_Log
      * @param \Pggns\MidocoApi\Order\StructType\Unprocessed_Units $unprocessed_Units
      */
-    public function __construct(?\Pggns\MidocoApi\Order\StructType\Tss_Migration_Summary $migration_Summary = null, array $migration_Log = [], ?\Pggns\MidocoApi\Order\StructType\Unprocessed_Units $unprocessed_Units = null)
+    public function __construct(?\Pggns\MidocoApi\Order\StructType\Tss_Migration_Summary $migration_Summary = null, ?array $migration_Log = null, ?\Pggns\MidocoApi\Order\StructType\Unprocessed_Units $unprocessed_Units = null)
     {
         $this
             ->setMigration_Summary($migration_Summary)
@@ -72,18 +73,22 @@ class MigrateFiskalyTssResponse extends AbstractStructBase
      * Get Migration_Log value
      * @return \Pggns\MidocoApi\Order\StructType\Tss_Migration_Log[]
      */
-    public function getMigration_Log(): array
+    public function getMigration_Log(): ?array
     {
         return $this->{'Migration-Log'};
     }
     /**
-     * This method is responsible for validating the values passed to the setMigration_Log method
+     * This method is responsible for validating the value(s) passed to the setMigration_Log method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMigration_Log method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMigration_LogForArrayConstraintsFromSetMigration_Log(array $values = []): string
+    public static function validateMigration_LogForArrayConstraintFromSetMigration_Log(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $migrateFiskalyTssResponseMigration_LogItem) {
@@ -105,10 +110,10 @@ class MigrateFiskalyTssResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\Tss_Migration_Log[] $migration_Log
      * @return \Pggns\MidocoApi\Order\StructType\MigrateFiskalyTssResponse
      */
-    public function setMigration_Log(array $migration_Log = []): self
+    public function setMigration_Log(?array $migration_Log = null): self
     {
         // validation for constraint: array
-        if ('' !== ($migration_LogArrayErrorMessage = self::validateMigration_LogForArrayConstraintsFromSetMigration_Log($migration_Log))) {
+        if ('' !== ($migration_LogArrayErrorMessage = self::validateMigration_LogForArrayConstraintFromSetMigration_Log($migration_Log))) {
             throw new InvalidArgumentException($migration_LogArrayErrorMessage, __LINE__);
         }
         $this->Migration_Log = $this->{'Migration-Log'} = $migration_Log;

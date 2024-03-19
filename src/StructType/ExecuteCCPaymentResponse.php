@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: executeCCPayment --- execute a CC payment for a billing document (approval, create a new online payment transaction, create the corresponding billing position, update the billing document)
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ExecuteCCPaymentResponse extends AbstractStructBase
 {
     /**

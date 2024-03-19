@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for JobFunctionDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class JobFunctionDTO extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoBillingPositionType StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoBillingPositionType extends BillingPositionDTO
 {
     /**
@@ -29,7 +30,7 @@ class MidocoBillingPositionType extends BillingPositionDTO
      * - ref: MidocoBillingPositionRemark
      * @var \Pggns\MidocoApi\Order\StructType\BillingPositionRemarkDTO[]
      */
-    protected array $MidocoBillingPositionRemark = [];
+    protected ?array $MidocoBillingPositionRemark = null;
     /**
      * The MidocoOnlinePaymentTransaction
      * Meta information extracted from the WSDL
@@ -38,7 +39,7 @@ class MidocoBillingPositionType extends BillingPositionDTO
      * - ref: MidocoOnlinePaymentTransaction
      * @var \Pggns\MidocoApi\Order\StructType\MidocoOnlinePaymentTransaction[]
      */
-    protected array $MidocoOnlinePaymentTransaction = [];
+    protected ?array $MidocoOnlinePaymentTransaction = null;
     /**
      * The MidocoBillingVoidPosition
      * Meta information extracted from the WSDL
@@ -55,7 +56,7 @@ class MidocoBillingPositionType extends BillingPositionDTO
      * - ref: MidocoBillingPositionDbiInfo
      * @var \Pggns\MidocoApi\Order\StructType\MidocoBillingPositionDbiInfo[]
      */
-    protected array $MidocoBillingPositionDbiInfo = [];
+    protected ?array $MidocoBillingPositionDbiInfo = null;
     /**
      * The MidocoMilesAndMoreBurnTransaction
      * Meta information extracted from the WSDL
@@ -109,7 +110,7 @@ class MidocoBillingPositionType extends BillingPositionDTO
      * @param string $refCcType
      * @param string $refCcValid
      */
-    public function __construct(?\Pggns\MidocoApi\Order\StructType\BillingPositionAttribDTO $midocoBillingPositionAttribute = null, array $midocoBillingPositionRemark = [], array $midocoOnlinePaymentTransaction = [], ?\Pggns\MidocoApi\Order\StructType\MidocoBillingPositionType $midocoBillingVoidPosition = null, array $midocoBillingPositionDbiInfo = [], ?\Pggns\MidocoApi\Order\StructType\MidocoMilesAndMoreBurnTransactionType $midocoMilesAndMoreBurnTransaction = null, ?\Pggns\MidocoApi\Order\StructType\MidocoDBDetails $midocoDBDetails = null, ?string $refCcNumber = null, ?string $refCcType = null, ?string $refCcValid = null)
+    public function __construct(?\Pggns\MidocoApi\Order\StructType\BillingPositionAttribDTO $midocoBillingPositionAttribute = null, ?array $midocoBillingPositionRemark = null, ?array $midocoOnlinePaymentTransaction = null, ?\Pggns\MidocoApi\Order\StructType\MidocoBillingPositionType $midocoBillingVoidPosition = null, ?array $midocoBillingPositionDbiInfo = null, ?\Pggns\MidocoApi\Order\StructType\MidocoMilesAndMoreBurnTransactionType $midocoMilesAndMoreBurnTransaction = null, ?\Pggns\MidocoApi\Order\StructType\MidocoDBDetails $midocoDBDetails = null, ?string $refCcNumber = null, ?string $refCcType = null, ?string $refCcValid = null)
     {
         $this
             ->setMidocoBillingPositionAttribute($midocoBillingPositionAttribute)
@@ -146,18 +147,22 @@ class MidocoBillingPositionType extends BillingPositionDTO
      * Get MidocoBillingPositionRemark value
      * @return \Pggns\MidocoApi\Order\StructType\BillingPositionRemarkDTO[]
      */
-    public function getMidocoBillingPositionRemark(): array
+    public function getMidocoBillingPositionRemark(): ?array
     {
         return $this->MidocoBillingPositionRemark;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoBillingPositionRemark method
+     * This method is responsible for validating the value(s) passed to the setMidocoBillingPositionRemark method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoBillingPositionRemark method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoBillingPositionRemarkForArrayConstraintsFromSetMidocoBillingPositionRemark(array $values = []): string
+    public static function validateMidocoBillingPositionRemarkForArrayConstraintFromSetMidocoBillingPositionRemark(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoBillingPositionTypeMidocoBillingPositionRemarkItem) {
@@ -179,10 +184,10 @@ class MidocoBillingPositionType extends BillingPositionDTO
      * @param \Pggns\MidocoApi\Order\StructType\BillingPositionRemarkDTO[] $midocoBillingPositionRemark
      * @return \Pggns\MidocoApi\Order\StructType\MidocoBillingPositionType
      */
-    public function setMidocoBillingPositionRemark(array $midocoBillingPositionRemark = []): self
+    public function setMidocoBillingPositionRemark(?array $midocoBillingPositionRemark = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoBillingPositionRemarkArrayErrorMessage = self::validateMidocoBillingPositionRemarkForArrayConstraintsFromSetMidocoBillingPositionRemark($midocoBillingPositionRemark))) {
+        if ('' !== ($midocoBillingPositionRemarkArrayErrorMessage = self::validateMidocoBillingPositionRemarkForArrayConstraintFromSetMidocoBillingPositionRemark($midocoBillingPositionRemark))) {
             throw new InvalidArgumentException($midocoBillingPositionRemarkArrayErrorMessage, __LINE__);
         }
         $this->MidocoBillingPositionRemark = $midocoBillingPositionRemark;
@@ -209,18 +214,22 @@ class MidocoBillingPositionType extends BillingPositionDTO
      * Get MidocoOnlinePaymentTransaction value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoOnlinePaymentTransaction[]
      */
-    public function getMidocoOnlinePaymentTransaction(): array
+    public function getMidocoOnlinePaymentTransaction(): ?array
     {
         return $this->MidocoOnlinePaymentTransaction;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoOnlinePaymentTransaction method
+     * This method is responsible for validating the value(s) passed to the setMidocoOnlinePaymentTransaction method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoOnlinePaymentTransaction method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoOnlinePaymentTransactionForArrayConstraintsFromSetMidocoOnlinePaymentTransaction(array $values = []): string
+    public static function validateMidocoOnlinePaymentTransactionForArrayConstraintFromSetMidocoOnlinePaymentTransaction(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoBillingPositionTypeMidocoOnlinePaymentTransactionItem) {
@@ -242,10 +251,10 @@ class MidocoBillingPositionType extends BillingPositionDTO
      * @param \Pggns\MidocoApi\Order\StructType\MidocoOnlinePaymentTransaction[] $midocoOnlinePaymentTransaction
      * @return \Pggns\MidocoApi\Order\StructType\MidocoBillingPositionType
      */
-    public function setMidocoOnlinePaymentTransaction(array $midocoOnlinePaymentTransaction = []): self
+    public function setMidocoOnlinePaymentTransaction(?array $midocoOnlinePaymentTransaction = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoOnlinePaymentTransactionArrayErrorMessage = self::validateMidocoOnlinePaymentTransactionForArrayConstraintsFromSetMidocoOnlinePaymentTransaction($midocoOnlinePaymentTransaction))) {
+        if ('' !== ($midocoOnlinePaymentTransactionArrayErrorMessage = self::validateMidocoOnlinePaymentTransactionForArrayConstraintFromSetMidocoOnlinePaymentTransaction($midocoOnlinePaymentTransaction))) {
             throw new InvalidArgumentException($midocoOnlinePaymentTransactionArrayErrorMessage, __LINE__);
         }
         $this->MidocoOnlinePaymentTransaction = $midocoOnlinePaymentTransaction;
@@ -291,18 +300,22 @@ class MidocoBillingPositionType extends BillingPositionDTO
      * Get MidocoBillingPositionDbiInfo value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoBillingPositionDbiInfo[]
      */
-    public function getMidocoBillingPositionDbiInfo(): array
+    public function getMidocoBillingPositionDbiInfo(): ?array
     {
         return $this->MidocoBillingPositionDbiInfo;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoBillingPositionDbiInfo method
+     * This method is responsible for validating the value(s) passed to the setMidocoBillingPositionDbiInfo method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoBillingPositionDbiInfo method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoBillingPositionDbiInfoForArrayConstraintsFromSetMidocoBillingPositionDbiInfo(array $values = []): string
+    public static function validateMidocoBillingPositionDbiInfoForArrayConstraintFromSetMidocoBillingPositionDbiInfo(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoBillingPositionTypeMidocoBillingPositionDbiInfoItem) {
@@ -324,10 +337,10 @@ class MidocoBillingPositionType extends BillingPositionDTO
      * @param \Pggns\MidocoApi\Order\StructType\MidocoBillingPositionDbiInfo[] $midocoBillingPositionDbiInfo
      * @return \Pggns\MidocoApi\Order\StructType\MidocoBillingPositionType
      */
-    public function setMidocoBillingPositionDbiInfo(array $midocoBillingPositionDbiInfo = []): self
+    public function setMidocoBillingPositionDbiInfo(?array $midocoBillingPositionDbiInfo = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoBillingPositionDbiInfoArrayErrorMessage = self::validateMidocoBillingPositionDbiInfoForArrayConstraintsFromSetMidocoBillingPositionDbiInfo($midocoBillingPositionDbiInfo))) {
+        if ('' !== ($midocoBillingPositionDbiInfoArrayErrorMessage = self::validateMidocoBillingPositionDbiInfoForArrayConstraintFromSetMidocoBillingPositionDbiInfo($midocoBillingPositionDbiInfo))) {
             throw new InvalidArgumentException($midocoBillingPositionDbiInfoArrayErrorMessage, __LINE__);
         }
         $this->MidocoBillingPositionDbiInfo = $midocoBillingPositionDbiInfo;

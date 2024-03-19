@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: A private DTO for TSS transactions used in conjunction with CashBookSignature; has to do with KSichV.
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoTssTransaction extends AbstractStructBase
 {
     /**

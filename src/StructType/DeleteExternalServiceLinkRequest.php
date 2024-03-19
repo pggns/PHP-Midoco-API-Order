@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: Delete an ExternalServiceLink.
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteExternalServiceLinkRequest extends AbstractStructBase
 {
     /**

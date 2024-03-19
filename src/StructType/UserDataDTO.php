@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for UserDataDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class UserDataDTO extends AbstractStructBase
 {
     /**

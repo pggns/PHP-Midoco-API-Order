@@ -14,6 +14,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * paid out, or it is past due date.
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class UpdateMilesAndMoreEarnTransactionRequest extends AbstractStructBase
 {
     /**
@@ -26,7 +27,7 @@ class UpdateMilesAndMoreEarnTransactionRequest extends AbstractStructBase
      * - minOccurs: 0
      * @var int[]
      */
-    protected array $ItemId = [];
+    protected ?array $ItemId = null;
     /**
      * The prepare
      * Meta information extracted from the WSDL
@@ -50,7 +51,7 @@ class UpdateMilesAndMoreEarnTransactionRequest extends AbstractStructBase
      * @param bool $prepare
      * @param bool $send
      */
-    public function __construct(array $itemId = [], ?bool $prepare = null, ?bool $send = null)
+    public function __construct(?array $itemId = null, ?bool $prepare = null, ?bool $send = null)
     {
         $this
             ->setItemId($itemId)
@@ -61,18 +62,22 @@ class UpdateMilesAndMoreEarnTransactionRequest extends AbstractStructBase
      * Get ItemId value
      * @return int[]
      */
-    public function getItemId(): array
+    public function getItemId(): ?array
     {
         return $this->ItemId;
     }
     /**
-     * This method is responsible for validating the values passed to the setItemId method
+     * This method is responsible for validating the value(s) passed to the setItemId method
      * This method is willingly generated in order to preserve the one-line inline validation within the setItemId method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateItemIdForArrayConstraintsFromSetItemId(array $values = []): string
+    public static function validateItemIdForArrayConstraintFromSetItemId(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $updateMilesAndMoreEarnTransactionRequestItemIdItem) {
@@ -94,10 +99,10 @@ class UpdateMilesAndMoreEarnTransactionRequest extends AbstractStructBase
      * @param int[] $itemId
      * @return \Pggns\MidocoApi\Order\StructType\UpdateMilesAndMoreEarnTransactionRequest
      */
-    public function setItemId(array $itemId = []): self
+    public function setItemId(?array $itemId = null): self
     {
         // validation for constraint: array
-        if ('' !== ($itemIdArrayErrorMessage = self::validateItemIdForArrayConstraintsFromSetItemId($itemId))) {
+        if ('' !== ($itemIdArrayErrorMessage = self::validateItemIdForArrayConstraintFromSetItemId($itemId))) {
             throw new InvalidArgumentException($itemIdArrayErrorMessage, __LINE__);
         }
         // validation for constraint: minInclusive(1)

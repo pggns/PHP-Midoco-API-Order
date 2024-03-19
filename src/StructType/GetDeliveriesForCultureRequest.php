@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetDeliveriesForCultureRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetDeliveriesForCultureRequest extends AbstractStructBase
 {
     /**

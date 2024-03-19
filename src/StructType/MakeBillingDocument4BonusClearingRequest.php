@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MakeBillingDocument4BonusClearingRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MakeBillingDocument4BonusClearingRequest extends AbstractStructBase
 {
     /**
@@ -24,7 +25,7 @@ class MakeBillingDocument4BonusClearingRequest extends AbstractStructBase
      * - maxOccurs: unbounded
      * @var int[]
      */
-    protected array $positionId = [];
+    protected ?array $positionId = null;
     /**
      * Constructor method for MakeBillingDocument4BonusClearingRequest
      * @uses MakeBillingDocument4BonusClearingRequest::setAgencyId()
@@ -32,7 +33,7 @@ class MakeBillingDocument4BonusClearingRequest extends AbstractStructBase
      * @param string $agencyId
      * @param int[] $positionId
      */
-    public function __construct(?string $agencyId = null, array $positionId = [])
+    public function __construct(?string $agencyId = null, ?array $positionId = null)
     {
         $this
             ->setAgencyId($agencyId)
@@ -65,18 +66,22 @@ class MakeBillingDocument4BonusClearingRequest extends AbstractStructBase
      * Get positionId value
      * @return int[]
      */
-    public function getPositionId(): array
+    public function getPositionId(): ?array
     {
         return $this->positionId;
     }
     /**
-     * This method is responsible for validating the values passed to the setPositionId method
+     * This method is responsible for validating the value(s) passed to the setPositionId method
      * This method is willingly generated in order to preserve the one-line inline validation within the setPositionId method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validatePositionIdForArrayConstraintsFromSetPositionId(array $values = []): string
+    public static function validatePositionIdForArrayConstraintFromSetPositionId(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $makeBillingDocument4BonusClearingRequestPositionIdItem) {
@@ -98,10 +103,10 @@ class MakeBillingDocument4BonusClearingRequest extends AbstractStructBase
      * @param int[] $positionId
      * @return \Pggns\MidocoApi\Order\StructType\MakeBillingDocument4BonusClearingRequest
      */
-    public function setPositionId(array $positionId = []): self
+    public function setPositionId(?array $positionId = null): self
     {
         // validation for constraint: array
-        if ('' !== ($positionIdArrayErrorMessage = self::validatePositionIdForArrayConstraintsFromSetPositionId($positionId))) {
+        if ('' !== ($positionIdArrayErrorMessage = self::validatePositionIdForArrayConstraintFromSetPositionId($positionId))) {
             throw new InvalidArgumentException($positionIdArrayErrorMessage, __LINE__);
         }
         $this->positionId = $positionId;

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetOrderIdsForAgencyCommissionDatesRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetOrderIdsForAgencyCommissionDatesRequest extends AbstractStructBase
 {
     /**

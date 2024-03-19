@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: optional dunning infos at order level | optional payments at order level | This section contains the payment information which is given by the customer | a message containing information of booked items in a reservation system
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class Midoco_booking_message extends AbstractStructBase
 {
     /**
@@ -27,7 +28,7 @@ class Midoco_booking_message extends AbstractStructBase
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\Customer[]
      */
-    protected array $customer = [];
+    protected ?array $customer = null;
     /**
      * The package_info
      * Meta information extracted from the WSDL
@@ -35,7 +36,7 @@ class Midoco_booking_message extends AbstractStructBase
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\Package_info[]
      */
-    protected array $package_info = [];
+    protected ?array $package_info = null;
     /**
      * The booking
      * Meta information extracted from the WSDL
@@ -43,7 +44,7 @@ class Midoco_booking_message extends AbstractStructBase
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\Booking[]
      */
-    protected array $booking = [];
+    protected ?array $booking = null;
     /**
      * The prices
      * @var \Pggns\MidocoApi\Order\StructType\Prices|null
@@ -56,7 +57,7 @@ class Midoco_booking_message extends AbstractStructBase
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\Ticket[]
      */
-    protected array $ticket = [];
+    protected ?array $ticket = null;
     /**
      * The payment_info
      * Meta information extracted from the WSDL
@@ -80,13 +81,21 @@ class Midoco_booking_message extends AbstractStructBase
      */
     protected ?\Pggns\MidocoApi\Order\StructType\Internal_treatment $internal_treatment = null;
     /**
+     * The internal_command_configuration
+     * Meta information extracted from the WSDL
+     * - maxOccurs: unbounded
+     * - minOccurs: 0
+     * @var \Pggns\MidocoApi\Order\StructType\Internal_command_configuration[]
+     */
+    protected ?array $internal_command_configuration = null;
+    /**
      * The order_remark
      * Meta information extracted from the WSDL
      * - maxOccurs: unbounded
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\Order_remark[]
      */
-    protected array $order_remark = [];
+    protected ?array $order_remark = null;
     /**
      * The ExternalPayment
      * Meta information extracted from the WSDL
@@ -95,7 +104,7 @@ class Midoco_booking_message extends AbstractStructBase
      * - ref: ExternalPayment
      * @var \Pggns\MidocoApi\Order\StructType\ExternalPayment[]
      */
-    protected array $ExternalPayment = [];
+    protected ?array $ExternalPayment = null;
     /**
      * The imported_document
      * Meta information extracted from the WSDL
@@ -103,7 +112,7 @@ class Midoco_booking_message extends AbstractStructBase
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\Imported_document[]
      */
-    protected array $imported_document = [];
+    protected ?array $imported_document = null;
     /**
      * The DunningInfo
      * Meta information extracted from the WSDL
@@ -112,7 +121,7 @@ class Midoco_booking_message extends AbstractStructBase
      * - ref: DunningInfo
      * @var \Pggns\MidocoApi\Order\StructType\DunningInfo[]
      */
-    protected array $DunningInfo = [];
+    protected ?array $DunningInfo = null;
     /**
      * The voucher
      * Meta information extracted from the WSDL
@@ -120,7 +129,7 @@ class Midoco_booking_message extends AbstractStructBase
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\Voucher[]
      */
-    protected array $voucher = [];
+    protected ?array $voucher = null;
     /**
      * The verk_data
      * Meta information extracted from the WSDL
@@ -129,7 +138,7 @@ class Midoco_booking_message extends AbstractStructBase
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\VerkDataInfo[]
      */
-    protected array $verk_data = [];
+    protected ?array $verk_data = null;
     /**
      * The message_version
      * Meta information extracted from the WSDL
@@ -148,6 +157,7 @@ class Midoco_booking_message extends AbstractStructBase
      * @uses Midoco_booking_message::setPayment_info()
      * @uses Midoco_booking_message::setMarketing_info()
      * @uses Midoco_booking_message::setInternal_treatment()
+     * @uses Midoco_booking_message::setInternal_command_configuration()
      * @uses Midoco_booking_message::setOrder_remark()
      * @uses Midoco_booking_message::setExternalPayment()
      * @uses Midoco_booking_message::setImported_document()
@@ -164,6 +174,7 @@ class Midoco_booking_message extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\Payment_info $payment_info
      * @param \Pggns\MidocoApi\Order\StructType\Marketing_info $marketing_info
      * @param \Pggns\MidocoApi\Order\StructType\Internal_treatment $internal_treatment
+     * @param \Pggns\MidocoApi\Order\StructType\Internal_command_configuration[] $internal_command_configuration
      * @param \Pggns\MidocoApi\Order\StructType\Order_remark[] $order_remark
      * @param \Pggns\MidocoApi\Order\StructType\ExternalPayment[] $externalPayment
      * @param \Pggns\MidocoApi\Order\StructType\Imported_document[] $imported_document
@@ -172,7 +183,7 @@ class Midoco_booking_message extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\VerkDataInfo[] $verk_data
      * @param int $message_version
      */
-    public function __construct(?\Pggns\MidocoApi\Order\StructType\Agency_identity $agency_identity = null, array $customer = [], array $package_info = [], array $booking = [], ?\Pggns\MidocoApi\Order\StructType\Prices $prices = null, array $ticket = [], ?\Pggns\MidocoApi\Order\StructType\Payment_info $payment_info = null, ?\Pggns\MidocoApi\Order\StructType\Marketing_info $marketing_info = null, ?\Pggns\MidocoApi\Order\StructType\Internal_treatment $internal_treatment = null, array $order_remark = [], array $externalPayment = [], array $imported_document = [], array $dunningInfo = [], array $voucher = [], array $verk_data = [], ?int $message_version = 1)
+    public function __construct(?\Pggns\MidocoApi\Order\StructType\Agency_identity $agency_identity = null, ?array $customer = null, ?array $package_info = null, ?array $booking = null, ?\Pggns\MidocoApi\Order\StructType\Prices $prices = null, ?array $ticket = null, ?\Pggns\MidocoApi\Order\StructType\Payment_info $payment_info = null, ?\Pggns\MidocoApi\Order\StructType\Marketing_info $marketing_info = null, ?\Pggns\MidocoApi\Order\StructType\Internal_treatment $internal_treatment = null, ?array $internal_command_configuration = null, ?array $order_remark = null, ?array $externalPayment = null, ?array $imported_document = null, ?array $dunningInfo = null, ?array $voucher = null, ?array $verk_data = null, ?int $message_version = 1)
     {
         $this
             ->setAgency_identity($agency_identity)
@@ -184,6 +195,7 @@ class Midoco_booking_message extends AbstractStructBase
             ->setPayment_info($payment_info)
             ->setMarketing_info($marketing_info)
             ->setInternal_treatment($internal_treatment)
+            ->setInternal_command_configuration($internal_command_configuration)
             ->setOrder_remark($order_remark)
             ->setExternalPayment($externalPayment)
             ->setImported_document($imported_document)
@@ -215,18 +227,22 @@ class Midoco_booking_message extends AbstractStructBase
      * Get customer value
      * @return \Pggns\MidocoApi\Order\StructType\Customer[]
      */
-    public function getCustomer(): array
+    public function getCustomer(): ?array
     {
         return $this->customer;
     }
     /**
-     * This method is responsible for validating the values passed to the setCustomer method
+     * This method is responsible for validating the value(s) passed to the setCustomer method
      * This method is willingly generated in order to preserve the one-line inline validation within the setCustomer method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateCustomerForArrayConstraintsFromSetCustomer(array $values = []): string
+    public static function validateCustomerForArrayConstraintFromSetCustomer(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midoco_booking_messageCustomerItem) {
@@ -248,10 +264,10 @@ class Midoco_booking_message extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\Customer[] $customer
      * @return \Pggns\MidocoApi\Order\StructType\Midoco_booking_message
      */
-    public function setCustomer(array $customer = []): self
+    public function setCustomer(?array $customer = null): self
     {
         // validation for constraint: array
-        if ('' !== ($customerArrayErrorMessage = self::validateCustomerForArrayConstraintsFromSetCustomer($customer))) {
+        if ('' !== ($customerArrayErrorMessage = self::validateCustomerForArrayConstraintFromSetCustomer($customer))) {
             throw new InvalidArgumentException($customerArrayErrorMessage, __LINE__);
         }
         // validation for constraint: maxOccurs(2)
@@ -286,18 +302,22 @@ class Midoco_booking_message extends AbstractStructBase
      * Get package_info value
      * @return \Pggns\MidocoApi\Order\StructType\Package_info[]
      */
-    public function getPackage_info(): array
+    public function getPackage_info(): ?array
     {
         return $this->{'package-info'};
     }
     /**
-     * This method is responsible for validating the values passed to the setPackage_info method
+     * This method is responsible for validating the value(s) passed to the setPackage_info method
      * This method is willingly generated in order to preserve the one-line inline validation within the setPackage_info method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validatePackage_infoForArrayConstraintsFromSetPackage_info(array $values = []): string
+    public static function validatePackage_infoForArrayConstraintFromSetPackage_info(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midoco_booking_messagePackage_infoItem) {
@@ -319,10 +339,10 @@ class Midoco_booking_message extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\Package_info[] $package_info
      * @return \Pggns\MidocoApi\Order\StructType\Midoco_booking_message
      */
-    public function setPackage_info(array $package_info = []): self
+    public function setPackage_info(?array $package_info = null): self
     {
         // validation for constraint: array
-        if ('' !== ($package_infoArrayErrorMessage = self::validatePackage_infoForArrayConstraintsFromSetPackage_info($package_info))) {
+        if ('' !== ($package_infoArrayErrorMessage = self::validatePackage_infoForArrayConstraintFromSetPackage_info($package_info))) {
             throw new InvalidArgumentException($package_infoArrayErrorMessage, __LINE__);
         }
         $this->package_info = $this->{'package-info'} = $package_info;
@@ -349,18 +369,22 @@ class Midoco_booking_message extends AbstractStructBase
      * Get booking value
      * @return \Pggns\MidocoApi\Order\StructType\Booking[]
      */
-    public function getBooking(): array
+    public function getBooking(): ?array
     {
         return $this->booking;
     }
     /**
-     * This method is responsible for validating the values passed to the setBooking method
+     * This method is responsible for validating the value(s) passed to the setBooking method
      * This method is willingly generated in order to preserve the one-line inline validation within the setBooking method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateBookingForArrayConstraintsFromSetBooking(array $values = []): string
+    public static function validateBookingForArrayConstraintFromSetBooking(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midoco_booking_messageBookingItem) {
@@ -382,10 +406,10 @@ class Midoco_booking_message extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\Booking[] $booking
      * @return \Pggns\MidocoApi\Order\StructType\Midoco_booking_message
      */
-    public function setBooking(array $booking = []): self
+    public function setBooking(?array $booking = null): self
     {
         // validation for constraint: array
-        if ('' !== ($bookingArrayErrorMessage = self::validateBookingForArrayConstraintsFromSetBooking($booking))) {
+        if ('' !== ($bookingArrayErrorMessage = self::validateBookingForArrayConstraintFromSetBooking($booking))) {
             throw new InvalidArgumentException($bookingArrayErrorMessage, __LINE__);
         }
         $this->booking = $booking;
@@ -431,18 +455,22 @@ class Midoco_booking_message extends AbstractStructBase
      * Get ticket value
      * @return \Pggns\MidocoApi\Order\StructType\Ticket[]
      */
-    public function getTicket(): array
+    public function getTicket(): ?array
     {
         return $this->ticket;
     }
     /**
-     * This method is responsible for validating the values passed to the setTicket method
+     * This method is responsible for validating the value(s) passed to the setTicket method
      * This method is willingly generated in order to preserve the one-line inline validation within the setTicket method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateTicketForArrayConstraintsFromSetTicket(array $values = []): string
+    public static function validateTicketForArrayConstraintFromSetTicket(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midoco_booking_messageTicketItem) {
@@ -464,10 +492,10 @@ class Midoco_booking_message extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\Ticket[] $ticket
      * @return \Pggns\MidocoApi\Order\StructType\Midoco_booking_message
      */
-    public function setTicket(array $ticket = []): self
+    public function setTicket(?array $ticket = null): self
     {
         // validation for constraint: array
-        if ('' !== ($ticketArrayErrorMessage = self::validateTicketForArrayConstraintsFromSetTicket($ticket))) {
+        if ('' !== ($ticketArrayErrorMessage = self::validateTicketForArrayConstraintFromSetTicket($ticket))) {
             throw new InvalidArgumentException($ticketArrayErrorMessage, __LINE__);
         }
         $this->ticket = $ticket;
@@ -548,21 +576,92 @@ class Midoco_booking_message extends AbstractStructBase
         return $this;
     }
     /**
+     * Get internal_command_configuration value
+     * @return \Pggns\MidocoApi\Order\StructType\Internal_command_configuration[]
+     */
+    public function getInternal_command_configuration(): ?array
+    {
+        return $this->{'internal-command-configuration'};
+    }
+    /**
+     * This method is responsible for validating the value(s) passed to the setInternal_command_configuration method
+     * This method is willingly generated in order to preserve the one-line inline validation within the setInternal_command_configuration method
+     * This has to validate that each item contained by the array match the itemType constraint
+     * @param array $values
+     * @return string A non-empty message if the values does not match the validation rules
+     */
+    public static function validateInternal_command_configurationForArrayConstraintFromSetInternal_command_configuration(?array $values = []): string
+    {
+        if (!is_array($values)) {
+            return '';
+        }
+        $message = '';
+        $invalidValues = [];
+        foreach ($values as $midoco_booking_messageInternal_command_configurationItem) {
+            // validation for constraint: itemType
+            if (!$midoco_booking_messageInternal_command_configurationItem instanceof \Pggns\MidocoApi\Order\StructType\Internal_command_configuration) {
+                $invalidValues[] = is_object($midoco_booking_messageInternal_command_configurationItem) ? get_class($midoco_booking_messageInternal_command_configurationItem) : sprintf('%s(%s)', gettype($midoco_booking_messageInternal_command_configurationItem), var_export($midoco_booking_messageInternal_command_configurationItem, true));
+            }
+        }
+        if (!empty($invalidValues)) {
+            $message = sprintf('The internal_command_configuration property can only contain items of type \Pggns\MidocoApi\Order\StructType\Internal_command_configuration, %s given', is_object($invalidValues) ? get_class($invalidValues) : (is_array($invalidValues) ? implode(', ', $invalidValues) : gettype($invalidValues)));
+        }
+        unset($invalidValues);
+        
+        return $message;
+    }
+    /**
+     * Set internal_command_configuration value
+     * @throws InvalidArgumentException
+     * @param \Pggns\MidocoApi\Order\StructType\Internal_command_configuration[] $internal_command_configuration
+     * @return \Pggns\MidocoApi\Order\StructType\Midoco_booking_message
+     */
+    public function setInternal_command_configuration(?array $internal_command_configuration = null): self
+    {
+        // validation for constraint: array
+        if ('' !== ($internal_command_configurationArrayErrorMessage = self::validateInternal_command_configurationForArrayConstraintFromSetInternal_command_configuration($internal_command_configuration))) {
+            throw new InvalidArgumentException($internal_command_configurationArrayErrorMessage, __LINE__);
+        }
+        $this->internal_command_configuration = $this->{'internal-command-configuration'} = $internal_command_configuration;
+        
+        return $this;
+    }
+    /**
+     * Add item to internal_command_configuration value
+     * @throws InvalidArgumentException
+     * @param \Pggns\MidocoApi\Order\StructType\Internal_command_configuration $item
+     * @return \Pggns\MidocoApi\Order\StructType\Midoco_booking_message
+     */
+    public function addToInternal_command_configuration(\Pggns\MidocoApi\Order\StructType\Internal_command_configuration $item): self
+    {
+        // validation for constraint: itemType
+        if (!$item instanceof \Pggns\MidocoApi\Order\StructType\Internal_command_configuration) {
+            throw new InvalidArgumentException(sprintf('The internal_command_configuration property can only contain items of type \Pggns\MidocoApi\Order\StructType\Internal_command_configuration, %s given', is_object($item) ? get_class($item) : (is_array($item) ? implode(', ', $item) : gettype($item))), __LINE__);
+        }
+        $this->internal_command_configuration[] = $this->{'internal-command-configuration'}[] = $item;
+        
+        return $this;
+    }
+    /**
      * Get order_remark value
      * @return \Pggns\MidocoApi\Order\StructType\Order_remark[]
      */
-    public function getOrder_remark(): array
+    public function getOrder_remark(): ?array
     {
         return $this->{'order-remark'};
     }
     /**
-     * This method is responsible for validating the values passed to the setOrder_remark method
+     * This method is responsible for validating the value(s) passed to the setOrder_remark method
      * This method is willingly generated in order to preserve the one-line inline validation within the setOrder_remark method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateOrder_remarkForArrayConstraintsFromSetOrder_remark(array $values = []): string
+    public static function validateOrder_remarkForArrayConstraintFromSetOrder_remark(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midoco_booking_messageOrder_remarkItem) {
@@ -584,10 +683,10 @@ class Midoco_booking_message extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\Order_remark[] $order_remark
      * @return \Pggns\MidocoApi\Order\StructType\Midoco_booking_message
      */
-    public function setOrder_remark(array $order_remark = []): self
+    public function setOrder_remark(?array $order_remark = null): self
     {
         // validation for constraint: array
-        if ('' !== ($order_remarkArrayErrorMessage = self::validateOrder_remarkForArrayConstraintsFromSetOrder_remark($order_remark))) {
+        if ('' !== ($order_remarkArrayErrorMessage = self::validateOrder_remarkForArrayConstraintFromSetOrder_remark($order_remark))) {
             throw new InvalidArgumentException($order_remarkArrayErrorMessage, __LINE__);
         }
         $this->order_remark = $this->{'order-remark'} = $order_remark;
@@ -614,18 +713,22 @@ class Midoco_booking_message extends AbstractStructBase
      * Get ExternalPayment value
      * @return \Pggns\MidocoApi\Order\StructType\ExternalPayment[]
      */
-    public function getExternalPayment(): array
+    public function getExternalPayment(): ?array
     {
         return $this->ExternalPayment;
     }
     /**
-     * This method is responsible for validating the values passed to the setExternalPayment method
+     * This method is responsible for validating the value(s) passed to the setExternalPayment method
      * This method is willingly generated in order to preserve the one-line inline validation within the setExternalPayment method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateExternalPaymentForArrayConstraintsFromSetExternalPayment(array $values = []): string
+    public static function validateExternalPaymentForArrayConstraintFromSetExternalPayment(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midoco_booking_messageExternalPaymentItem) {
@@ -647,10 +750,10 @@ class Midoco_booking_message extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\ExternalPayment[] $externalPayment
      * @return \Pggns\MidocoApi\Order\StructType\Midoco_booking_message
      */
-    public function setExternalPayment(array $externalPayment = []): self
+    public function setExternalPayment(?array $externalPayment = null): self
     {
         // validation for constraint: array
-        if ('' !== ($externalPaymentArrayErrorMessage = self::validateExternalPaymentForArrayConstraintsFromSetExternalPayment($externalPayment))) {
+        if ('' !== ($externalPaymentArrayErrorMessage = self::validateExternalPaymentForArrayConstraintFromSetExternalPayment($externalPayment))) {
             throw new InvalidArgumentException($externalPaymentArrayErrorMessage, __LINE__);
         }
         $this->ExternalPayment = $externalPayment;
@@ -677,18 +780,22 @@ class Midoco_booking_message extends AbstractStructBase
      * Get imported_document value
      * @return \Pggns\MidocoApi\Order\StructType\Imported_document[]
      */
-    public function getImported_document(): array
+    public function getImported_document(): ?array
     {
         return $this->{'imported-document'};
     }
     /**
-     * This method is responsible for validating the values passed to the setImported_document method
+     * This method is responsible for validating the value(s) passed to the setImported_document method
      * This method is willingly generated in order to preserve the one-line inline validation within the setImported_document method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateImported_documentForArrayConstraintsFromSetImported_document(array $values = []): string
+    public static function validateImported_documentForArrayConstraintFromSetImported_document(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midoco_booking_messageImported_documentItem) {
@@ -710,10 +817,10 @@ class Midoco_booking_message extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\Imported_document[] $imported_document
      * @return \Pggns\MidocoApi\Order\StructType\Midoco_booking_message
      */
-    public function setImported_document(array $imported_document = []): self
+    public function setImported_document(?array $imported_document = null): self
     {
         // validation for constraint: array
-        if ('' !== ($imported_documentArrayErrorMessage = self::validateImported_documentForArrayConstraintsFromSetImported_document($imported_document))) {
+        if ('' !== ($imported_documentArrayErrorMessage = self::validateImported_documentForArrayConstraintFromSetImported_document($imported_document))) {
             throw new InvalidArgumentException($imported_documentArrayErrorMessage, __LINE__);
         }
         $this->imported_document = $this->{'imported-document'} = $imported_document;
@@ -740,18 +847,22 @@ class Midoco_booking_message extends AbstractStructBase
      * Get DunningInfo value
      * @return \Pggns\MidocoApi\Order\StructType\DunningInfo[]
      */
-    public function getDunningInfo(): array
+    public function getDunningInfo(): ?array
     {
         return $this->DunningInfo;
     }
     /**
-     * This method is responsible for validating the values passed to the setDunningInfo method
+     * This method is responsible for validating the value(s) passed to the setDunningInfo method
      * This method is willingly generated in order to preserve the one-line inline validation within the setDunningInfo method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateDunningInfoForArrayConstraintsFromSetDunningInfo(array $values = []): string
+    public static function validateDunningInfoForArrayConstraintFromSetDunningInfo(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midoco_booking_messageDunningInfoItem) {
@@ -773,10 +884,10 @@ class Midoco_booking_message extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\DunningInfo[] $dunningInfo
      * @return \Pggns\MidocoApi\Order\StructType\Midoco_booking_message
      */
-    public function setDunningInfo(array $dunningInfo = []): self
+    public function setDunningInfo(?array $dunningInfo = null): self
     {
         // validation for constraint: array
-        if ('' !== ($dunningInfoArrayErrorMessage = self::validateDunningInfoForArrayConstraintsFromSetDunningInfo($dunningInfo))) {
+        if ('' !== ($dunningInfoArrayErrorMessage = self::validateDunningInfoForArrayConstraintFromSetDunningInfo($dunningInfo))) {
             throw new InvalidArgumentException($dunningInfoArrayErrorMessage, __LINE__);
         }
         $this->DunningInfo = $dunningInfo;
@@ -803,18 +914,22 @@ class Midoco_booking_message extends AbstractStructBase
      * Get voucher value
      * @return \Pggns\MidocoApi\Order\StructType\Voucher[]
      */
-    public function getVoucher(): array
+    public function getVoucher(): ?array
     {
         return $this->voucher;
     }
     /**
-     * This method is responsible for validating the values passed to the setVoucher method
+     * This method is responsible for validating the value(s) passed to the setVoucher method
      * This method is willingly generated in order to preserve the one-line inline validation within the setVoucher method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateVoucherForArrayConstraintsFromSetVoucher(array $values = []): string
+    public static function validateVoucherForArrayConstraintFromSetVoucher(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midoco_booking_messageVoucherItem) {
@@ -836,10 +951,10 @@ class Midoco_booking_message extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\Voucher[] $voucher
      * @return \Pggns\MidocoApi\Order\StructType\Midoco_booking_message
      */
-    public function setVoucher(array $voucher = []): self
+    public function setVoucher(?array $voucher = null): self
     {
         // validation for constraint: array
-        if ('' !== ($voucherArrayErrorMessage = self::validateVoucherForArrayConstraintsFromSetVoucher($voucher))) {
+        if ('' !== ($voucherArrayErrorMessage = self::validateVoucherForArrayConstraintFromSetVoucher($voucher))) {
             throw new InvalidArgumentException($voucherArrayErrorMessage, __LINE__);
         }
         $this->voucher = $voucher;
@@ -866,18 +981,22 @@ class Midoco_booking_message extends AbstractStructBase
      * Get verk_data value
      * @return \Pggns\MidocoApi\Order\StructType\VerkDataInfo[]
      */
-    public function getVerk_data(): array
+    public function getVerk_data(): ?array
     {
         return $this->{'verk-data'};
     }
     /**
-     * This method is responsible for validating the values passed to the setVerk_data method
+     * This method is responsible for validating the value(s) passed to the setVerk_data method
      * This method is willingly generated in order to preserve the one-line inline validation within the setVerk_data method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateVerk_dataForArrayConstraintsFromSetVerk_data(array $values = []): string
+    public static function validateVerk_dataForArrayConstraintFromSetVerk_data(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midoco_booking_messageVerk_dataItem) {
@@ -899,10 +1018,10 @@ class Midoco_booking_message extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\VerkDataInfo[] $verk_data
      * @return \Pggns\MidocoApi\Order\StructType\Midoco_booking_message
      */
-    public function setVerk_data(array $verk_data = []): self
+    public function setVerk_data(?array $verk_data = null): self
     {
         // validation for constraint: array
-        if ('' !== ($verk_dataArrayErrorMessage = self::validateVerk_dataForArrayConstraintsFromSetVerk_data($verk_data))) {
+        if ('' !== ($verk_dataArrayErrorMessage = self::validateVerk_dataForArrayConstraintFromSetVerk_data($verk_data))) {
             throw new InvalidArgumentException($verk_dataArrayErrorMessage, __LINE__);
         }
         $this->verk_data = $this->{'verk-data'} = $verk_data;

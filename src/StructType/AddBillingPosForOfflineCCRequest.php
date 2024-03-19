@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for AddBillingPosForOfflineCCRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class AddBillingPosForOfflineCCRequest extends AbstractStructBase
 {
     /**

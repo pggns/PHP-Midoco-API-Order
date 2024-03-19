@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DuplicateOrderRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DuplicateOrderRequest extends AbstractStructBase
 {
     /**

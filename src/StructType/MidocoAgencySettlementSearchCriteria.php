@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoAgencySettlementSearchCriteria StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoAgencySettlementSearchCriteria extends AbstractStructBase
 {
     /**

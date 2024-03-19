@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CreateAcconLinkResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CreateAcconLinkResponse extends AbstractStructBase
 {
     /**

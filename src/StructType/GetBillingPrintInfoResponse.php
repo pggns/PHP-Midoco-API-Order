@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetBillingPrintInfoResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetBillingPrintInfoResponse extends AbstractStructBase
 {
     /**
@@ -21,7 +22,7 @@ class GetBillingPrintInfoResponse extends AbstractStructBase
      * - ref: MidocoBillingPrintInfo
      * @var \Pggns\MidocoApi\Order\StructType\MidocoBillingPrintInfo[]
      */
-    protected array $MidocoBillingPrintInfo = [];
+    protected ?array $MidocoBillingPrintInfo = null;
     /**
      * The allowPartialPayments
      * @var bool|null
@@ -48,7 +49,7 @@ class GetBillingPrintInfoResponse extends AbstractStructBase
      * @param bool $reachedTotalOrderInkasso
      * @param bool $allowCollectiveInvoice
      */
-    public function __construct(array $midocoBillingPrintInfo = [], ?bool $allowPartialPayments = null, ?bool $reachedTotalOrderInkasso = null, ?bool $allowCollectiveInvoice = null)
+    public function __construct(?array $midocoBillingPrintInfo = null, ?bool $allowPartialPayments = null, ?bool $reachedTotalOrderInkasso = null, ?bool $allowCollectiveInvoice = null)
     {
         $this
             ->setMidocoBillingPrintInfo($midocoBillingPrintInfo)
@@ -60,18 +61,22 @@ class GetBillingPrintInfoResponse extends AbstractStructBase
      * Get MidocoBillingPrintInfo value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoBillingPrintInfo[]
      */
-    public function getMidocoBillingPrintInfo(): array
+    public function getMidocoBillingPrintInfo(): ?array
     {
         return $this->MidocoBillingPrintInfo;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoBillingPrintInfo method
+     * This method is responsible for validating the value(s) passed to the setMidocoBillingPrintInfo method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoBillingPrintInfo method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoBillingPrintInfoForArrayConstraintsFromSetMidocoBillingPrintInfo(array $values = []): string
+    public static function validateMidocoBillingPrintInfoForArrayConstraintFromSetMidocoBillingPrintInfo(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getBillingPrintInfoResponseMidocoBillingPrintInfoItem) {
@@ -93,10 +98,10 @@ class GetBillingPrintInfoResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoBillingPrintInfo[] $midocoBillingPrintInfo
      * @return \Pggns\MidocoApi\Order\StructType\GetBillingPrintInfoResponse
      */
-    public function setMidocoBillingPrintInfo(array $midocoBillingPrintInfo = []): self
+    public function setMidocoBillingPrintInfo(?array $midocoBillingPrintInfo = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoBillingPrintInfoArrayErrorMessage = self::validateMidocoBillingPrintInfoForArrayConstraintsFromSetMidocoBillingPrintInfo($midocoBillingPrintInfo))) {
+        if ('' !== ($midocoBillingPrintInfoArrayErrorMessage = self::validateMidocoBillingPrintInfoForArrayConstraintFromSetMidocoBillingPrintInfo($midocoBillingPrintInfo))) {
             throw new InvalidArgumentException($midocoBillingPrintInfoArrayErrorMessage, __LINE__);
         }
         $this->MidocoBillingPrintInfo = $midocoBillingPrintInfo;

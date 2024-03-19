@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for insurance-service-type StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class Insurance_service_type extends AbstractStructBase
 {
     /**
@@ -272,7 +273,7 @@ class Insurance_service_type extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($valid_start, true), gettype($valid_start)), __LINE__);
         }
         // validation for constraint: pattern([0-9]{4}-[0-9]{2}-[0-9]{2})
-        if (!is_null($valid_start) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', $valid_start)) {
+        if (!is_null($valid_start) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', (string) $valid_start)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[0-9]{4}-[0-9]{2}-[0-9]{2}/', var_export($valid_start, true)), __LINE__);
         }
         $this->valid_start = $this->{'valid-start'} = $valid_start;
@@ -437,7 +438,7 @@ class Insurance_service_type extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($annual_valid_to, true), gettype($annual_valid_to)), __LINE__);
         }
         // validation for constraint: pattern([0-9]{4}-[0-9]{2}-[0-9]{2})
-        if (!is_null($annual_valid_to) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', $annual_valid_to)) {
+        if (!is_null($annual_valid_to) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', (string) $annual_valid_to)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[0-9]{4}-[0-9]{2}-[0-9]{2}/', var_export($annual_valid_to, true)), __LINE__);
         }
         $this->annual_valid_to = $this->{'annual-valid-to'} = $annual_valid_to;

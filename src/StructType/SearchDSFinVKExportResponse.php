@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SearchDSFinVKExportResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchDSFinVKExportResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class SearchDSFinVKExportResponse extends AbstractStructBase
      * - ref: MidocoDSFinVKExport
      * @var \Pggns\MidocoApi\Order\StructType\MidocoDSFinVKExport[]
      */
-    protected array $MidocoDSFinVKExport = [];
+    protected ?array $MidocoDSFinVKExport = null;
     /**
      * Constructor method for SearchDSFinVKExportResponse
      * @uses SearchDSFinVKExportResponse::setMidocoDSFinVKExport()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoDSFinVKExport[] $midocoDSFinVKExport
      */
-    public function __construct(array $midocoDSFinVKExport = [])
+    public function __construct(?array $midocoDSFinVKExport = null)
     {
         $this
             ->setMidocoDSFinVKExport($midocoDSFinVKExport);
@@ -36,18 +37,22 @@ class SearchDSFinVKExportResponse extends AbstractStructBase
      * Get MidocoDSFinVKExport value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoDSFinVKExport[]
      */
-    public function getMidocoDSFinVKExport(): array
+    public function getMidocoDSFinVKExport(): ?array
     {
         return $this->MidocoDSFinVKExport;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoDSFinVKExport method
+     * This method is responsible for validating the value(s) passed to the setMidocoDSFinVKExport method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoDSFinVKExport method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoDSFinVKExportForArrayConstraintsFromSetMidocoDSFinVKExport(array $values = []): string
+    public static function validateMidocoDSFinVKExportForArrayConstraintFromSetMidocoDSFinVKExport(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $searchDSFinVKExportResponseMidocoDSFinVKExportItem) {
@@ -69,10 +74,10 @@ class SearchDSFinVKExportResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoDSFinVKExport[] $midocoDSFinVKExport
      * @return \Pggns\MidocoApi\Order\StructType\SearchDSFinVKExportResponse
      */
-    public function setMidocoDSFinVKExport(array $midocoDSFinVKExport = []): self
+    public function setMidocoDSFinVKExport(?array $midocoDSFinVKExport = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoDSFinVKExportArrayErrorMessage = self::validateMidocoDSFinVKExportForArrayConstraintsFromSetMidocoDSFinVKExport($midocoDSFinVKExport))) {
+        if ('' !== ($midocoDSFinVKExportArrayErrorMessage = self::validateMidocoDSFinVKExportForArrayConstraintFromSetMidocoDSFinVKExport($midocoDSFinVKExport))) {
             throw new InvalidArgumentException($midocoDSFinVKExportArrayErrorMessage, __LINE__);
         }
         $this->MidocoDSFinVKExport = $midocoDSFinVKExport;

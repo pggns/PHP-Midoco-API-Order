@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for AnnounceAgencySaleMessageRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class AnnounceAgencySaleMessageRequest extends AbstractStructBase
 {
     /**

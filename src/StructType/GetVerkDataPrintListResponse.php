@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetVerkDataPrintListResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetVerkDataPrintListResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetVerkDataPrintListResponse extends AbstractStructBase
      * - ref: MidocoVerkDataPrint
      * @var \Pggns\MidocoApi\Order\StructType\VerkDataPrintDTO[]
      */
-    protected array $MidocoVerkDataPrint = [];
+    protected ?array $MidocoVerkDataPrint = null;
     /**
      * Constructor method for GetVerkDataPrintListResponse
      * @uses GetVerkDataPrintListResponse::setMidocoVerkDataPrint()
      * @param \Pggns\MidocoApi\Order\StructType\VerkDataPrintDTO[] $midocoVerkDataPrint
      */
-    public function __construct(array $midocoVerkDataPrint = [])
+    public function __construct(?array $midocoVerkDataPrint = null)
     {
         $this
             ->setMidocoVerkDataPrint($midocoVerkDataPrint);
@@ -36,18 +37,22 @@ class GetVerkDataPrintListResponse extends AbstractStructBase
      * Get MidocoVerkDataPrint value
      * @return \Pggns\MidocoApi\Order\StructType\VerkDataPrintDTO[]
      */
-    public function getMidocoVerkDataPrint(): array
+    public function getMidocoVerkDataPrint(): ?array
     {
         return $this->MidocoVerkDataPrint;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoVerkDataPrint method
+     * This method is responsible for validating the value(s) passed to the setMidocoVerkDataPrint method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoVerkDataPrint method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoVerkDataPrintForArrayConstraintsFromSetMidocoVerkDataPrint(array $values = []): string
+    public static function validateMidocoVerkDataPrintForArrayConstraintFromSetMidocoVerkDataPrint(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getVerkDataPrintListResponseMidocoVerkDataPrintItem) {
@@ -69,10 +74,10 @@ class GetVerkDataPrintListResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\VerkDataPrintDTO[] $midocoVerkDataPrint
      * @return \Pggns\MidocoApi\Order\StructType\GetVerkDataPrintListResponse
      */
-    public function setMidocoVerkDataPrint(array $midocoVerkDataPrint = []): self
+    public function setMidocoVerkDataPrint(?array $midocoVerkDataPrint = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoVerkDataPrintArrayErrorMessage = self::validateMidocoVerkDataPrintForArrayConstraintsFromSetMidocoVerkDataPrint($midocoVerkDataPrint))) {
+        if ('' !== ($midocoVerkDataPrintArrayErrorMessage = self::validateMidocoVerkDataPrintForArrayConstraintFromSetMidocoVerkDataPrint($midocoVerkDataPrint))) {
             throw new InvalidArgumentException($midocoVerkDataPrintArrayErrorMessage, __LINE__);
         }
         $this->MidocoVerkDataPrint = $midocoVerkDataPrint;

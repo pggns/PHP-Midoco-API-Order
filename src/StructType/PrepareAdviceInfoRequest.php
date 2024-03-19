@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for PrepareAdviceInfoRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class PrepareAdviceInfoRequest extends AbstractStructBase
 {
     /**
@@ -20,7 +21,7 @@ class PrepareAdviceInfoRequest extends AbstractStructBase
      * - minOccurs: 0
      * @var int[]
      */
-    protected array $sellItemId = [];
+    protected ?array $sellItemId = null;
     /**
      * The creationDateFrom
      * @var string|null
@@ -96,7 +97,7 @@ class PrepareAdviceInfoRequest extends AbstractStructBase
      * @param string $supplierId
      * @param string $unitName
      */
-    public function __construct(array $sellItemId = [], ?string $creationDateFrom = null, ?string $creationDateTo = null, ?string $travelDateFrom = null, ?string $travelDateTo = null, ?string $returnDateFrom = null, ?string $returnDateTo = null, ?bool $activeSettlement = null, ?string $settlementGroup = null, ?string $supplierId = null, ?string $unitName = null)
+    public function __construct(?array $sellItemId = null, ?string $creationDateFrom = null, ?string $creationDateTo = null, ?string $travelDateFrom = null, ?string $travelDateTo = null, ?string $returnDateFrom = null, ?string $returnDateTo = null, ?bool $activeSettlement = null, ?string $settlementGroup = null, ?string $supplierId = null, ?string $unitName = null)
     {
         $this
             ->setSellItemId($sellItemId)
@@ -115,18 +116,22 @@ class PrepareAdviceInfoRequest extends AbstractStructBase
      * Get sellItemId value
      * @return int[]
      */
-    public function getSellItemId(): array
+    public function getSellItemId(): ?array
     {
         return $this->sellItemId;
     }
     /**
-     * This method is responsible for validating the values passed to the setSellItemId method
+     * This method is responsible for validating the value(s) passed to the setSellItemId method
      * This method is willingly generated in order to preserve the one-line inline validation within the setSellItemId method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateSellItemIdForArrayConstraintsFromSetSellItemId(array $values = []): string
+    public static function validateSellItemIdForArrayConstraintFromSetSellItemId(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $prepareAdviceInfoRequestSellItemIdItem) {
@@ -148,10 +153,10 @@ class PrepareAdviceInfoRequest extends AbstractStructBase
      * @param int[] $sellItemId
      * @return \Pggns\MidocoApi\Order\StructType\PrepareAdviceInfoRequest
      */
-    public function setSellItemId(array $sellItemId = []): self
+    public function setSellItemId(?array $sellItemId = null): self
     {
         // validation for constraint: array
-        if ('' !== ($sellItemIdArrayErrorMessage = self::validateSellItemIdForArrayConstraintsFromSetSellItemId($sellItemId))) {
+        if ('' !== ($sellItemIdArrayErrorMessage = self::validateSellItemIdForArrayConstraintFromSetSellItemId($sellItemId))) {
             throw new InvalidArgumentException($sellItemIdArrayErrorMessage, __LINE__);
         }
         $this->sellItemId = $sellItemId;

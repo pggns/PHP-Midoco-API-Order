@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetOrderCrossSellHideInfoResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetOrderCrossSellHideInfoResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetOrderCrossSellHideInfoResponse extends AbstractStructBase
      * - ref: MidocoOrderCrossSell
      * @var \Pggns\MidocoApi\Order\StructType\OrderCrossSellDTO[]
      */
-    protected array $MidocoOrderCrossSell = [];
+    protected ?array $MidocoOrderCrossSell = null;
     /**
      * Constructor method for GetOrderCrossSellHideInfoResponse
      * @uses GetOrderCrossSellHideInfoResponse::setMidocoOrderCrossSell()
      * @param \Pggns\MidocoApi\Order\StructType\OrderCrossSellDTO[] $midocoOrderCrossSell
      */
-    public function __construct(array $midocoOrderCrossSell = [])
+    public function __construct(?array $midocoOrderCrossSell = null)
     {
         $this
             ->setMidocoOrderCrossSell($midocoOrderCrossSell);
@@ -36,18 +37,22 @@ class GetOrderCrossSellHideInfoResponse extends AbstractStructBase
      * Get MidocoOrderCrossSell value
      * @return \Pggns\MidocoApi\Order\StructType\OrderCrossSellDTO[]
      */
-    public function getMidocoOrderCrossSell(): array
+    public function getMidocoOrderCrossSell(): ?array
     {
         return $this->MidocoOrderCrossSell;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoOrderCrossSell method
+     * This method is responsible for validating the value(s) passed to the setMidocoOrderCrossSell method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoOrderCrossSell method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoOrderCrossSellForArrayConstraintsFromSetMidocoOrderCrossSell(array $values = []): string
+    public static function validateMidocoOrderCrossSellForArrayConstraintFromSetMidocoOrderCrossSell(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getOrderCrossSellHideInfoResponseMidocoOrderCrossSellItem) {
@@ -69,10 +74,10 @@ class GetOrderCrossSellHideInfoResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\OrderCrossSellDTO[] $midocoOrderCrossSell
      * @return \Pggns\MidocoApi\Order\StructType\GetOrderCrossSellHideInfoResponse
      */
-    public function setMidocoOrderCrossSell(array $midocoOrderCrossSell = []): self
+    public function setMidocoOrderCrossSell(?array $midocoOrderCrossSell = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoOrderCrossSellArrayErrorMessage = self::validateMidocoOrderCrossSellForArrayConstraintsFromSetMidocoOrderCrossSell($midocoOrderCrossSell))) {
+        if ('' !== ($midocoOrderCrossSellArrayErrorMessage = self::validateMidocoOrderCrossSellForArrayConstraintFromSetMidocoOrderCrossSell($midocoOrderCrossSell))) {
             throw new InvalidArgumentException($midocoOrderCrossSellArrayErrorMessage, __LINE__);
         }
         $this->MidocoOrderCrossSell = $midocoOrderCrossSell;

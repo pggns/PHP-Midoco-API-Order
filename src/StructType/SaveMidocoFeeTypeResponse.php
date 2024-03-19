@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: contains the fee
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveMidocoFeeTypeResponse extends AbstractStructBase
 {
     /**

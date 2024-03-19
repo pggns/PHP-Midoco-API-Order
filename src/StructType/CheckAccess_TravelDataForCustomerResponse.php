@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CheckAccess_TravelDataForCustomerResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CheckAccess_TravelDataForCustomerResponse extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MediatorCommision StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MediatorCommision extends AbstractStructBase
 {
     /**
@@ -48,7 +49,7 @@ class MediatorCommision extends AbstractStructBase
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\TourOperatorGroup[]
      */
-    protected array $TourOperatorGroup = [];
+    protected ?array $TourOperatorGroup = null;
     /**
      * Constructor method for MediatorCommision
      * @uses MediatorCommision::setMediatorId()
@@ -62,7 +63,7 @@ class MediatorCommision extends AbstractStructBase
      * @param float $totalPayedCommission
      * @param \Pggns\MidocoApi\Order\StructType\TourOperatorGroup[] $tourOperatorGroup
      */
-    public function __construct(string $mediatorId, float $totalTravelPrice, float $totalCalculatedCommission, float $totalPayedCommission, array $tourOperatorGroup = [])
+    public function __construct(string $mediatorId, float $totalTravelPrice, float $totalCalculatedCommission, float $totalPayedCommission, ?array $tourOperatorGroup = null)
     {
         $this
             ->setMediatorId($mediatorId)
@@ -167,18 +168,22 @@ class MediatorCommision extends AbstractStructBase
      * Get TourOperatorGroup value
      * @return \Pggns\MidocoApi\Order\StructType\TourOperatorGroup[]
      */
-    public function getTourOperatorGroup(): array
+    public function getTourOperatorGroup(): ?array
     {
         return $this->TourOperatorGroup;
     }
     /**
-     * This method is responsible for validating the values passed to the setTourOperatorGroup method
+     * This method is responsible for validating the value(s) passed to the setTourOperatorGroup method
      * This method is willingly generated in order to preserve the one-line inline validation within the setTourOperatorGroup method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateTourOperatorGroupForArrayConstraintsFromSetTourOperatorGroup(array $values = []): string
+    public static function validateTourOperatorGroupForArrayConstraintFromSetTourOperatorGroup(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $mediatorCommisionTourOperatorGroupItem) {
@@ -200,10 +205,10 @@ class MediatorCommision extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\TourOperatorGroup[] $tourOperatorGroup
      * @return \Pggns\MidocoApi\Order\StructType\MediatorCommision
      */
-    public function setTourOperatorGroup(array $tourOperatorGroup = []): self
+    public function setTourOperatorGroup(?array $tourOperatorGroup = null): self
     {
         // validation for constraint: array
-        if ('' !== ($tourOperatorGroupArrayErrorMessage = self::validateTourOperatorGroupForArrayConstraintsFromSetTourOperatorGroup($tourOperatorGroup))) {
+        if ('' !== ($tourOperatorGroupArrayErrorMessage = self::validateTourOperatorGroupForArrayConstraintFromSetTourOperatorGroup($tourOperatorGroup))) {
             throw new InvalidArgumentException($tourOperatorGroupArrayErrorMessage, __LINE__);
         }
         $this->TourOperatorGroup = $tourOperatorGroup;

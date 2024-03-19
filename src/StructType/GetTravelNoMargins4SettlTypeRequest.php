@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetTravelNoMargins4SettlTypeRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetTravelNoMargins4SettlTypeRequest extends AbstractStructBase
 {
     /**

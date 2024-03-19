@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteMfGroupRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteMfGroupRequest extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetAvailableQueryCriteriaOpsResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetAvailableQueryCriteriaOpsResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetAvailableQueryCriteriaOpsResponse extends AbstractStructBase
      * - ref: MidocoQueryCriteriaOp
      * @var \Pggns\MidocoApi\Order\StructType\MidocoQueryCriteriaOp[]
      */
-    protected array $MidocoQueryCriteriaOp = [];
+    protected ?array $MidocoQueryCriteriaOp = null;
     /**
      * Constructor method for GetAvailableQueryCriteriaOpsResponse
      * @uses GetAvailableQueryCriteriaOpsResponse::setMidocoQueryCriteriaOp()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoQueryCriteriaOp[] $midocoQueryCriteriaOp
      */
-    public function __construct(array $midocoQueryCriteriaOp = [])
+    public function __construct(?array $midocoQueryCriteriaOp = null)
     {
         $this
             ->setMidocoQueryCriteriaOp($midocoQueryCriteriaOp);
@@ -36,18 +37,22 @@ class GetAvailableQueryCriteriaOpsResponse extends AbstractStructBase
      * Get MidocoQueryCriteriaOp value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoQueryCriteriaOp[]
      */
-    public function getMidocoQueryCriteriaOp(): array
+    public function getMidocoQueryCriteriaOp(): ?array
     {
         return $this->MidocoQueryCriteriaOp;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoQueryCriteriaOp method
+     * This method is responsible for validating the value(s) passed to the setMidocoQueryCriteriaOp method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoQueryCriteriaOp method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoQueryCriteriaOpForArrayConstraintsFromSetMidocoQueryCriteriaOp(array $values = []): string
+    public static function validateMidocoQueryCriteriaOpForArrayConstraintFromSetMidocoQueryCriteriaOp(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getAvailableQueryCriteriaOpsResponseMidocoQueryCriteriaOpItem) {
@@ -69,10 +74,10 @@ class GetAvailableQueryCriteriaOpsResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoQueryCriteriaOp[] $midocoQueryCriteriaOp
      * @return \Pggns\MidocoApi\Order\StructType\GetAvailableQueryCriteriaOpsResponse
      */
-    public function setMidocoQueryCriteriaOp(array $midocoQueryCriteriaOp = []): self
+    public function setMidocoQueryCriteriaOp(?array $midocoQueryCriteriaOp = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoQueryCriteriaOpArrayErrorMessage = self::validateMidocoQueryCriteriaOpForArrayConstraintsFromSetMidocoQueryCriteriaOp($midocoQueryCriteriaOp))) {
+        if ('' !== ($midocoQueryCriteriaOpArrayErrorMessage = self::validateMidocoQueryCriteriaOpForArrayConstraintFromSetMidocoQueryCriteriaOp($midocoQueryCriteriaOp))) {
             throw new InvalidArgumentException($midocoQueryCriteriaOpArrayErrorMessage, __LINE__);
         }
         $this->MidocoQueryCriteriaOp = $midocoQueryCriteriaOp;

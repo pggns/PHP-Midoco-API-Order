@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for UpdateMediatorAmountsRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class UpdateMediatorAmountsRequest extends AbstractStructBase
 {
     /**
@@ -173,7 +174,7 @@ class UpdateMediatorAmountsRequest extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($fromDate, true), gettype($fromDate)), __LINE__);
         }
         // validation for constraint: pattern(dd.MM.yyyy)
-        if (!is_null($fromDate) && !preg_match('/dd.MM.yyyy/', $fromDate)) {
+        if (!is_null($fromDate) && !preg_match('/dd.MM.yyyy/', (string) $fromDate)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /dd.MM.yyyy/', var_export($fromDate, true)), __LINE__);
         }
         $this->fromDate = $fromDate;
@@ -200,7 +201,7 @@ class UpdateMediatorAmountsRequest extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($endDate, true), gettype($endDate)), __LINE__);
         }
         // validation for constraint: pattern(dd.MM.yyyy)
-        if (!is_null($endDate) && !preg_match('/dd.MM.yyyy/', $endDate)) {
+        if (!is_null($endDate) && !preg_match('/dd.MM.yyyy/', (string) $endDate)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /dd.MM.yyyy/', var_export($endDate, true)), __LINE__);
         }
         $this->endDate = $endDate;

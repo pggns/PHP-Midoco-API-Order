@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetMfs4GroupRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetMfs4GroupRequest extends AbstractStructBase
 {
     /**
@@ -34,7 +35,7 @@ class GetMfs4GroupRequest extends AbstractStructBase
      * - maxOccurs: unbounded
      * @var string[]
      */
-    protected array $className = [];
+    protected ?array $className = null;
     /**
      * Constructor method for GetMfs4GroupRequest
      * @uses GetMfs4GroupRequest::setBean()
@@ -46,7 +47,7 @@ class GetMfs4GroupRequest extends AbstractStructBase
      * @param string $groupName
      * @param string[] $className
      */
-    public function __construct(?string $bean = null, ?string $unitName = null, ?string $groupName = null, array $className = [])
+    public function __construct(?string $bean = null, ?string $unitName = null, ?string $groupName = null, ?array $className = null)
     {
         $this
             ->setBean($bean)
@@ -127,18 +128,22 @@ class GetMfs4GroupRequest extends AbstractStructBase
      * Get className value
      * @return string[]
      */
-    public function getClassName(): array
+    public function getClassName(): ?array
     {
         return $this->className;
     }
     /**
-     * This method is responsible for validating the values passed to the setClassName method
+     * This method is responsible for validating the value(s) passed to the setClassName method
      * This method is willingly generated in order to preserve the one-line inline validation within the setClassName method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateClassNameForArrayConstraintsFromSetClassName(array $values = []): string
+    public static function validateClassNameForArrayConstraintFromSetClassName(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getMfs4GroupRequestClassNameItem) {
@@ -160,10 +165,10 @@ class GetMfs4GroupRequest extends AbstractStructBase
      * @param string[] $className
      * @return \Pggns\MidocoApi\Order\StructType\GetMfs4GroupRequest
      */
-    public function setClassName(array $className = []): self
+    public function setClassName(?array $className = null): self
     {
         // validation for constraint: array
-        if ('' !== ($classNameArrayErrorMessage = self::validateClassNameForArrayConstraintsFromSetClassName($className))) {
+        if ('' !== ($classNameArrayErrorMessage = self::validateClassNameForArrayConstraintFromSetClassName($className))) {
             throw new InvalidArgumentException($classNameArrayErrorMessage, __LINE__);
         }
         $this->className = $className;

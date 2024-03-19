@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SearchMediatorProductSettlementInfoResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchMediatorProductSettlementInfoResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class SearchMediatorProductSettlementInfoResponse extends AbstractStructBase
      * - ref: MidocoMediatorProductSettlementInfo
      * @var \Pggns\MidocoApi\Order\StructType\MidocoMediatorProductSettlementInfo[]
      */
-    protected array $MidocoMediatorProductSettlementInfo = [];
+    protected ?array $MidocoMediatorProductSettlementInfo = null;
     /**
      * Constructor method for SearchMediatorProductSettlementInfoResponse
      * @uses SearchMediatorProductSettlementInfoResponse::setMidocoMediatorProductSettlementInfo()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoMediatorProductSettlementInfo[] $midocoMediatorProductSettlementInfo
      */
-    public function __construct(array $midocoMediatorProductSettlementInfo = [])
+    public function __construct(?array $midocoMediatorProductSettlementInfo = null)
     {
         $this
             ->setMidocoMediatorProductSettlementInfo($midocoMediatorProductSettlementInfo);
@@ -36,18 +37,22 @@ class SearchMediatorProductSettlementInfoResponse extends AbstractStructBase
      * Get MidocoMediatorProductSettlementInfo value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoMediatorProductSettlementInfo[]
      */
-    public function getMidocoMediatorProductSettlementInfo(): array
+    public function getMidocoMediatorProductSettlementInfo(): ?array
     {
         return $this->MidocoMediatorProductSettlementInfo;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoMediatorProductSettlementInfo method
+     * This method is responsible for validating the value(s) passed to the setMidocoMediatorProductSettlementInfo method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoMediatorProductSettlementInfo method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoMediatorProductSettlementInfoForArrayConstraintsFromSetMidocoMediatorProductSettlementInfo(array $values = []): string
+    public static function validateMidocoMediatorProductSettlementInfoForArrayConstraintFromSetMidocoMediatorProductSettlementInfo(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $searchMediatorProductSettlementInfoResponseMidocoMediatorProductSettlementInfoItem) {
@@ -69,10 +74,10 @@ class SearchMediatorProductSettlementInfoResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoMediatorProductSettlementInfo[] $midocoMediatorProductSettlementInfo
      * @return \Pggns\MidocoApi\Order\StructType\SearchMediatorProductSettlementInfoResponse
      */
-    public function setMidocoMediatorProductSettlementInfo(array $midocoMediatorProductSettlementInfo = []): self
+    public function setMidocoMediatorProductSettlementInfo(?array $midocoMediatorProductSettlementInfo = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoMediatorProductSettlementInfoArrayErrorMessage = self::validateMidocoMediatorProductSettlementInfoForArrayConstraintsFromSetMidocoMediatorProductSettlementInfo($midocoMediatorProductSettlementInfo))) {
+        if ('' !== ($midocoMediatorProductSettlementInfoArrayErrorMessage = self::validateMidocoMediatorProductSettlementInfoForArrayConstraintFromSetMidocoMediatorProductSettlementInfo($midocoMediatorProductSettlementInfo))) {
             throw new InvalidArgumentException($midocoMediatorProductSettlementInfoArrayErrorMessage, __LINE__);
         }
         $this->MidocoMediatorProductSettlementInfo = $midocoMediatorProductSettlementInfo;

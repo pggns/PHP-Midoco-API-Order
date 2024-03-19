@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetCrossSellCarInfosResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetCrossSellCarInfosResponse extends AbstractStructBase
 {
     /**
@@ -21,7 +22,7 @@ class GetCrossSellCarInfosResponse extends AbstractStructBase
      * - ref: CrossSellingCarInfo
      * @var \Pggns\MidocoApi\Order\StructType\CrossSellingCarInfo[]
      */
-    protected array $CrossSellingCarInfo = [];
+    protected ?array $CrossSellingCarInfo = null;
     /**
      * The existsCar
      * @var bool|null
@@ -34,7 +35,7 @@ class GetCrossSellCarInfosResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\CrossSellingCarInfo[] $crossSellingCarInfo
      * @param bool $existsCar
      */
-    public function __construct(array $crossSellingCarInfo = [], ?bool $existsCar = null)
+    public function __construct(?array $crossSellingCarInfo = null, ?bool $existsCar = null)
     {
         $this
             ->setCrossSellingCarInfo($crossSellingCarInfo)
@@ -44,18 +45,22 @@ class GetCrossSellCarInfosResponse extends AbstractStructBase
      * Get CrossSellingCarInfo value
      * @return \Pggns\MidocoApi\Order\StructType\CrossSellingCarInfo[]
      */
-    public function getCrossSellingCarInfo(): array
+    public function getCrossSellingCarInfo(): ?array
     {
         return $this->CrossSellingCarInfo;
     }
     /**
-     * This method is responsible for validating the values passed to the setCrossSellingCarInfo method
+     * This method is responsible for validating the value(s) passed to the setCrossSellingCarInfo method
      * This method is willingly generated in order to preserve the one-line inline validation within the setCrossSellingCarInfo method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateCrossSellingCarInfoForArrayConstraintsFromSetCrossSellingCarInfo(array $values = []): string
+    public static function validateCrossSellingCarInfoForArrayConstraintFromSetCrossSellingCarInfo(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getCrossSellCarInfosResponseCrossSellingCarInfoItem) {
@@ -77,10 +82,10 @@ class GetCrossSellCarInfosResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\CrossSellingCarInfo[] $crossSellingCarInfo
      * @return \Pggns\MidocoApi\Order\StructType\GetCrossSellCarInfosResponse
      */
-    public function setCrossSellingCarInfo(array $crossSellingCarInfo = []): self
+    public function setCrossSellingCarInfo(?array $crossSellingCarInfo = null): self
     {
         // validation for constraint: array
-        if ('' !== ($crossSellingCarInfoArrayErrorMessage = self::validateCrossSellingCarInfoForArrayConstraintsFromSetCrossSellingCarInfo($crossSellingCarInfo))) {
+        if ('' !== ($crossSellingCarInfoArrayErrorMessage = self::validateCrossSellingCarInfoForArrayConstraintFromSetCrossSellingCarInfo($crossSellingCarInfo))) {
             throw new InvalidArgumentException($crossSellingCarInfoArrayErrorMessage, __LINE__);
         }
         $this->CrossSellingCarInfo = $crossSellingCarInfo;

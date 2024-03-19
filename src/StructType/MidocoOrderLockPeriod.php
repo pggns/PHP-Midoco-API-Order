@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoOrderLockPeriod StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoOrderLockPeriod extends OrderLockPeriodDTO
 {
 }

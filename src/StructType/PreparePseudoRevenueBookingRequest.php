@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for PreparePseudoRevenueBookingRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class PreparePseudoRevenueBookingRequest extends AbstractStructBase
 {
     /**

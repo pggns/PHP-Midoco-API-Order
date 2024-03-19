@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoExternalLink StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoExternalLink extends ExternalLinkDTO
 {
 }

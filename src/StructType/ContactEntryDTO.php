@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ContactEntryDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ContactEntryDTO extends AbstractStructBase
 {
     /**

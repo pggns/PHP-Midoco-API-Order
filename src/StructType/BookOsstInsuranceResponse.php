@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for BookOsstInsuranceResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class BookOsstInsuranceResponse extends AbstractStructBase
 {
     /**

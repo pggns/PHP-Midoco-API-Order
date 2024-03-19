@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for FixEntryResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class FixEntryResponse extends AbstractStructBase
 {
 }

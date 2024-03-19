@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for WorkstationDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class WorkstationDTO extends AbstractStructBase
 {
     /**

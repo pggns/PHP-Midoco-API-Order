@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for TourOperatorGroup StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class TourOperatorGroup extends AbstractStructBase
 {
     /**
@@ -48,7 +49,7 @@ class TourOperatorGroup extends AbstractStructBase
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\CommissionDetail[]
      */
-    protected array $CommissionDetail = [];
+    protected ?array $CommissionDetail = null;
     /**
      * Constructor method for TourOperatorGroup
      * @uses TourOperatorGroup::setTourOperatorName()
@@ -62,7 +63,7 @@ class TourOperatorGroup extends AbstractStructBase
      * @param float $payedCommission
      * @param \Pggns\MidocoApi\Order\StructType\CommissionDetail[] $commissionDetail
      */
-    public function __construct(string $tourOperatorName, float $totalTravelPrice, float $calculatedCommission, float $payedCommission, array $commissionDetail = [])
+    public function __construct(string $tourOperatorName, float $totalTravelPrice, float $calculatedCommission, float $payedCommission, ?array $commissionDetail = null)
     {
         $this
             ->setTourOperatorName($tourOperatorName)
@@ -167,18 +168,22 @@ class TourOperatorGroup extends AbstractStructBase
      * Get CommissionDetail value
      * @return \Pggns\MidocoApi\Order\StructType\CommissionDetail[]
      */
-    public function getCommissionDetail(): array
+    public function getCommissionDetail(): ?array
     {
         return $this->CommissionDetail;
     }
     /**
-     * This method is responsible for validating the values passed to the setCommissionDetail method
+     * This method is responsible for validating the value(s) passed to the setCommissionDetail method
      * This method is willingly generated in order to preserve the one-line inline validation within the setCommissionDetail method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateCommissionDetailForArrayConstraintsFromSetCommissionDetail(array $values = []): string
+    public static function validateCommissionDetailForArrayConstraintFromSetCommissionDetail(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $tourOperatorGroupCommissionDetailItem) {
@@ -200,10 +205,10 @@ class TourOperatorGroup extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\CommissionDetail[] $commissionDetail
      * @return \Pggns\MidocoApi\Order\StructType\TourOperatorGroup
      */
-    public function setCommissionDetail(array $commissionDetail = []): self
+    public function setCommissionDetail(?array $commissionDetail = null): self
     {
         // validation for constraint: array
-        if ('' !== ($commissionDetailArrayErrorMessage = self::validateCommissionDetailForArrayConstraintsFromSetCommissionDetail($commissionDetail))) {
+        if ('' !== ($commissionDetailArrayErrorMessage = self::validateCommissionDetailForArrayConstraintFromSetCommissionDetail($commissionDetail))) {
             throw new InvalidArgumentException($commissionDetailArrayErrorMessage, __LINE__);
         }
         $this->CommissionDetail = $commissionDetail;

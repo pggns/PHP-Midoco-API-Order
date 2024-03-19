@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: searchTravelItemByFileKey --- returns a TravelItemDTO which contains the given filekey
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchTravelItemByFileKeyResponse extends AbstractStructBase
 {
     /**

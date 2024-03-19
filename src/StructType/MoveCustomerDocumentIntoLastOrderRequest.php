@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MoveCustomerDocumentIntoLastOrderRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MoveCustomerDocumentIntoLastOrderRequest extends AbstractStructBase
 {
     /**

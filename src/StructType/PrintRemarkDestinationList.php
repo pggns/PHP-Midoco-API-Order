@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for PrintRemarkDestinationList StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class PrintRemarkDestinationList extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class PrintRemarkDestinationList extends AbstractStructBase
      * - ref: MidocoPrintRemarkDestination
      * @var \Pggns\MidocoApi\Order\StructType\MidocoPrintRemarkDestination[]
      */
-    protected array $MidocoPrintRemarkDestination = [];
+    protected ?array $MidocoPrintRemarkDestination = null;
     /**
      * Constructor method for PrintRemarkDestinationList
      * @uses PrintRemarkDestinationList::setMidocoPrintRemarkDestination()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoPrintRemarkDestination[] $midocoPrintRemarkDestination
      */
-    public function __construct(array $midocoPrintRemarkDestination = [])
+    public function __construct(?array $midocoPrintRemarkDestination = null)
     {
         $this
             ->setMidocoPrintRemarkDestination($midocoPrintRemarkDestination);
@@ -36,18 +37,22 @@ class PrintRemarkDestinationList extends AbstractStructBase
      * Get MidocoPrintRemarkDestination value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoPrintRemarkDestination[]
      */
-    public function getMidocoPrintRemarkDestination(): array
+    public function getMidocoPrintRemarkDestination(): ?array
     {
         return $this->MidocoPrintRemarkDestination;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoPrintRemarkDestination method
+     * This method is responsible for validating the value(s) passed to the setMidocoPrintRemarkDestination method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoPrintRemarkDestination method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoPrintRemarkDestinationForArrayConstraintsFromSetMidocoPrintRemarkDestination(array $values = []): string
+    public static function validateMidocoPrintRemarkDestinationForArrayConstraintFromSetMidocoPrintRemarkDestination(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $printRemarkDestinationListMidocoPrintRemarkDestinationItem) {
@@ -69,10 +74,10 @@ class PrintRemarkDestinationList extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoPrintRemarkDestination[] $midocoPrintRemarkDestination
      * @return \Pggns\MidocoApi\Order\StructType\PrintRemarkDestinationList
      */
-    public function setMidocoPrintRemarkDestination(array $midocoPrintRemarkDestination = []): self
+    public function setMidocoPrintRemarkDestination(?array $midocoPrintRemarkDestination = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoPrintRemarkDestinationArrayErrorMessage = self::validateMidocoPrintRemarkDestinationForArrayConstraintsFromSetMidocoPrintRemarkDestination($midocoPrintRemarkDestination))) {
+        if ('' !== ($midocoPrintRemarkDestinationArrayErrorMessage = self::validateMidocoPrintRemarkDestinationForArrayConstraintFromSetMidocoPrintRemarkDestination($midocoPrintRemarkDestination))) {
             throw new InvalidArgumentException($midocoPrintRemarkDestinationArrayErrorMessage, __LINE__);
         }
         $this->MidocoPrintRemarkDestination = $midocoPrintRemarkDestination;

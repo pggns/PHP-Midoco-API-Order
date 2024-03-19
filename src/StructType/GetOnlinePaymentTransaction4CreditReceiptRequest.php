@@ -12,6 +12,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetOnlinePaymentTransaction4CreditReceiptRequest extends AbstractStructBase
 {
     /**

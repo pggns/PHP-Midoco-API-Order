@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for PS2ImportStatus StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class PS2ImportStatus extends ImportHandlerResponseType
 {
     /**

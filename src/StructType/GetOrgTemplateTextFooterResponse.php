@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetOrgTemplateTextFooterResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetOrgTemplateTextFooterResponse extends AbstractStructBase
 {
     /**

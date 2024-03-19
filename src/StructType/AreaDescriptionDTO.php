@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for AreaDescriptionDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class AreaDescriptionDTO extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for PreviewCashbookForCrtUserRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class PreviewCashbookForCrtUserRequest extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class PreviewCashbookForCrtUserRequest extends AbstractStructBase
      * - ref: MidocoCashbookSummary
      * @var \Pggns\MidocoApi\Order\StructType\CashbookSummaryType[]
      */
-    protected array $MidocoCashbookSummary = [];
+    protected ?array $MidocoCashbookSummary = null;
     /**
      * Constructor method for PreviewCashbookForCrtUserRequest
      * @uses PreviewCashbookForCrtUserRequest::setMidocoCashbookSummary()
      * @param \Pggns\MidocoApi\Order\StructType\CashbookSummaryType[] $midocoCashbookSummary
      */
-    public function __construct(array $midocoCashbookSummary = [])
+    public function __construct(?array $midocoCashbookSummary = null)
     {
         $this
             ->setMidocoCashbookSummary($midocoCashbookSummary);
@@ -36,18 +37,22 @@ class PreviewCashbookForCrtUserRequest extends AbstractStructBase
      * Get MidocoCashbookSummary value
      * @return \Pggns\MidocoApi\Order\StructType\CashbookSummaryType[]
      */
-    public function getMidocoCashbookSummary(): array
+    public function getMidocoCashbookSummary(): ?array
     {
         return $this->MidocoCashbookSummary;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoCashbookSummary method
+     * This method is responsible for validating the value(s) passed to the setMidocoCashbookSummary method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoCashbookSummary method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoCashbookSummaryForArrayConstraintsFromSetMidocoCashbookSummary(array $values = []): string
+    public static function validateMidocoCashbookSummaryForArrayConstraintFromSetMidocoCashbookSummary(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $previewCashbookForCrtUserRequestMidocoCashbookSummaryItem) {
@@ -69,10 +74,10 @@ class PreviewCashbookForCrtUserRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\CashbookSummaryType[] $midocoCashbookSummary
      * @return \Pggns\MidocoApi\Order\StructType\PreviewCashbookForCrtUserRequest
      */
-    public function setMidocoCashbookSummary(array $midocoCashbookSummary = []): self
+    public function setMidocoCashbookSummary(?array $midocoCashbookSummary = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoCashbookSummaryArrayErrorMessage = self::validateMidocoCashbookSummaryForArrayConstraintsFromSetMidocoCashbookSummary($midocoCashbookSummary))) {
+        if ('' !== ($midocoCashbookSummaryArrayErrorMessage = self::validateMidocoCashbookSummaryForArrayConstraintFromSetMidocoCashbookSummary($midocoCashbookSummary))) {
             throw new InvalidArgumentException($midocoCashbookSummaryArrayErrorMessage, __LINE__);
         }
         $this->MidocoCashbookSummary = $midocoCashbookSummary;

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ReportDimensionDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ReportDimensionDTO extends AbstractStructBase
 {
     /**

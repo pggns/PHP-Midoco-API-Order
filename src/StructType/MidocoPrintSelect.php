@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoPrintSelect StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoPrintSelect extends AbstractStructBase
 {
     /**
@@ -45,7 +46,7 @@ class MidocoPrintSelect extends AbstractStructBase
      * - minOccurs: 0
      * @var int[]
      */
-    protected array $itemId = [];
+    protected ?array $itemId = null;
     /**
      * The channel
      * @var int|null
@@ -96,7 +97,7 @@ class MidocoPrintSelect extends AbstractStructBase
      * @param bool $selectNoInsurance
      * @param bool $isItemSelectionSupported
      */
-    public function __construct(?string $printTypeId = null, ?string $desciption = null, ?bool $selected = null, ?string $handler = null, ?int $position = null, array $itemId = [], ?int $channel = null, ?string $orderHistoryRefId = null, ?bool $selectOwnResponsibility = null, ?bool $selectNoInsurance = null, ?bool $isItemSelectionSupported = null)
+    public function __construct(?string $printTypeId = null, ?string $desciption = null, ?bool $selected = null, ?string $handler = null, ?int $position = null, ?array $itemId = null, ?int $channel = null, ?string $orderHistoryRefId = null, ?bool $selectOwnResponsibility = null, ?bool $selectNoInsurance = null, ?bool $isItemSelectionSupported = null)
     {
         $this
             ->setPrintTypeId($printTypeId)
@@ -230,18 +231,22 @@ class MidocoPrintSelect extends AbstractStructBase
      * Get itemId value
      * @return int[]
      */
-    public function getItemId(): array
+    public function getItemId(): ?array
     {
         return $this->itemId;
     }
     /**
-     * This method is responsible for validating the values passed to the setItemId method
+     * This method is responsible for validating the value(s) passed to the setItemId method
      * This method is willingly generated in order to preserve the one-line inline validation within the setItemId method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateItemIdForArrayConstraintsFromSetItemId(array $values = []): string
+    public static function validateItemIdForArrayConstraintFromSetItemId(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoPrintSelectItemIdItem) {
@@ -263,10 +268,10 @@ class MidocoPrintSelect extends AbstractStructBase
      * @param int[] $itemId
      * @return \Pggns\MidocoApi\Order\StructType\MidocoPrintSelect
      */
-    public function setItemId(array $itemId = []): self
+    public function setItemId(?array $itemId = null): self
     {
         // validation for constraint: array
-        if ('' !== ($itemIdArrayErrorMessage = self::validateItemIdForArrayConstraintsFromSetItemId($itemId))) {
+        if ('' !== ($itemIdArrayErrorMessage = self::validateItemIdForArrayConstraintFromSetItemId($itemId))) {
             throw new InvalidArgumentException($itemIdArrayErrorMessage, __LINE__);
         }
         $this->itemId = $itemId;

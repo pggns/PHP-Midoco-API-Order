@@ -17,6 +17,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * position) A sellItem inkasso_value is changeable only in case the tour operator inkasso handling allows the modification.
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveSellItemResponse extends AbstractStructBase
 {
     /**

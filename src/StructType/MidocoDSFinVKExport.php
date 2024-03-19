@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoDSFinVKExport StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoDSFinVKExport extends AbstractStructBase
 {
     /**

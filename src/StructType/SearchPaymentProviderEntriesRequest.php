@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SearchPaymentProviderEntriesRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchPaymentProviderEntriesRequest extends AbstractStructBase
 {
     /**

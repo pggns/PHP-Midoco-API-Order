@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SearchSupplierSettlPaymentConditionResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchSupplierSettlPaymentConditionResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class SearchSupplierSettlPaymentConditionResponse extends AbstractStructBase
      * - ref: MidocoSupplierSettlPaymentCondition
      * @var \Pggns\MidocoApi\Order\StructType\MidocoSupplierSettlPaymentCondition[]
      */
-    protected array $MidocoSupplierSettlPaymentCondition = [];
+    protected ?array $MidocoSupplierSettlPaymentCondition = null;
     /**
      * Constructor method for SearchSupplierSettlPaymentConditionResponse
      * @uses SearchSupplierSettlPaymentConditionResponse::setMidocoSupplierSettlPaymentCondition()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSupplierSettlPaymentCondition[] $midocoSupplierSettlPaymentCondition
      */
-    public function __construct(array $midocoSupplierSettlPaymentCondition = [])
+    public function __construct(?array $midocoSupplierSettlPaymentCondition = null)
     {
         $this
             ->setMidocoSupplierSettlPaymentCondition($midocoSupplierSettlPaymentCondition);
@@ -36,18 +37,22 @@ class SearchSupplierSettlPaymentConditionResponse extends AbstractStructBase
      * Get MidocoSupplierSettlPaymentCondition value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSupplierSettlPaymentCondition[]
      */
-    public function getMidocoSupplierSettlPaymentCondition(): array
+    public function getMidocoSupplierSettlPaymentCondition(): ?array
     {
         return $this->MidocoSupplierSettlPaymentCondition;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoSupplierSettlPaymentCondition method
+     * This method is responsible for validating the value(s) passed to the setMidocoSupplierSettlPaymentCondition method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoSupplierSettlPaymentCondition method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoSupplierSettlPaymentConditionForArrayConstraintsFromSetMidocoSupplierSettlPaymentCondition(array $values = []): string
+    public static function validateMidocoSupplierSettlPaymentConditionForArrayConstraintFromSetMidocoSupplierSettlPaymentCondition(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $searchSupplierSettlPaymentConditionResponseMidocoSupplierSettlPaymentConditionItem) {
@@ -69,10 +74,10 @@ class SearchSupplierSettlPaymentConditionResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSupplierSettlPaymentCondition[] $midocoSupplierSettlPaymentCondition
      * @return \Pggns\MidocoApi\Order\StructType\SearchSupplierSettlPaymentConditionResponse
      */
-    public function setMidocoSupplierSettlPaymentCondition(array $midocoSupplierSettlPaymentCondition = []): self
+    public function setMidocoSupplierSettlPaymentCondition(?array $midocoSupplierSettlPaymentCondition = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoSupplierSettlPaymentConditionArrayErrorMessage = self::validateMidocoSupplierSettlPaymentConditionForArrayConstraintsFromSetMidocoSupplierSettlPaymentCondition($midocoSupplierSettlPaymentCondition))) {
+        if ('' !== ($midocoSupplierSettlPaymentConditionArrayErrorMessage = self::validateMidocoSupplierSettlPaymentConditionForArrayConstraintFromSetMidocoSupplierSettlPaymentCondition($midocoSupplierSettlPaymentCondition))) {
             throw new InvalidArgumentException($midocoSupplierSettlPaymentConditionArrayErrorMessage, __LINE__);
         }
         $this->MidocoSupplierSettlPaymentCondition = $midocoSupplierSettlPaymentCondition;

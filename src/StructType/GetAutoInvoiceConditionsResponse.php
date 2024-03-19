@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: Response with available auto invoice conditions available in the org unit.
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetAutoInvoiceConditionsResponse extends AbstractStructBase
 {
     /**
@@ -23,13 +24,13 @@ class GetAutoInvoiceConditionsResponse extends AbstractStructBase
      * - ref: MidocoAutoInvoiceCondition
      * @var \Pggns\MidocoApi\Order\StructType\AutoInvoiceConditionDTO[]
      */
-    protected array $MidocoAutoInvoiceCondition = [];
+    protected ?array $MidocoAutoInvoiceCondition = null;
     /**
      * Constructor method for GetAutoInvoiceConditionsResponse
      * @uses GetAutoInvoiceConditionsResponse::setMidocoAutoInvoiceCondition()
      * @param \Pggns\MidocoApi\Order\StructType\AutoInvoiceConditionDTO[] $midocoAutoInvoiceCondition
      */
-    public function __construct(array $midocoAutoInvoiceCondition = [])
+    public function __construct(?array $midocoAutoInvoiceCondition = null)
     {
         $this
             ->setMidocoAutoInvoiceCondition($midocoAutoInvoiceCondition);
@@ -38,18 +39,22 @@ class GetAutoInvoiceConditionsResponse extends AbstractStructBase
      * Get MidocoAutoInvoiceCondition value
      * @return \Pggns\MidocoApi\Order\StructType\AutoInvoiceConditionDTO[]
      */
-    public function getMidocoAutoInvoiceCondition(): array
+    public function getMidocoAutoInvoiceCondition(): ?array
     {
         return $this->MidocoAutoInvoiceCondition;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoAutoInvoiceCondition method
+     * This method is responsible for validating the value(s) passed to the setMidocoAutoInvoiceCondition method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoAutoInvoiceCondition method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoAutoInvoiceConditionForArrayConstraintsFromSetMidocoAutoInvoiceCondition(array $values = []): string
+    public static function validateMidocoAutoInvoiceConditionForArrayConstraintFromSetMidocoAutoInvoiceCondition(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getAutoInvoiceConditionsResponseMidocoAutoInvoiceConditionItem) {
@@ -71,10 +76,10 @@ class GetAutoInvoiceConditionsResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\AutoInvoiceConditionDTO[] $midocoAutoInvoiceCondition
      * @return \Pggns\MidocoApi\Order\StructType\GetAutoInvoiceConditionsResponse
      */
-    public function setMidocoAutoInvoiceCondition(array $midocoAutoInvoiceCondition = []): self
+    public function setMidocoAutoInvoiceCondition(?array $midocoAutoInvoiceCondition = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoAutoInvoiceConditionArrayErrorMessage = self::validateMidocoAutoInvoiceConditionForArrayConstraintsFromSetMidocoAutoInvoiceCondition($midocoAutoInvoiceCondition))) {
+        if ('' !== ($midocoAutoInvoiceConditionArrayErrorMessage = self::validateMidocoAutoInvoiceConditionForArrayConstraintFromSetMidocoAutoInvoiceCondition($midocoAutoInvoiceCondition))) {
             throw new InvalidArgumentException($midocoAutoInvoiceConditionArrayErrorMessage, __LINE__);
         }
         $this->MidocoAutoInvoiceCondition = $midocoAutoInvoiceCondition;

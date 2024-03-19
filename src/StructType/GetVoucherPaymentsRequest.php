@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetVoucherPaymentsRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetVoucherPaymentsRequest extends AbstractStructBase
 {
     /**

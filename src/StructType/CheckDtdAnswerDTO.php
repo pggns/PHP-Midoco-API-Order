@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CheckDtdAnswerDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CheckDtdAnswerDTO extends AbstractStructBase
 {
     /**

@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: In case there is CC-information present, the ticket is treated as already paid over BSP
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class Cc_information extends AbstractStructBase
 {
     /**

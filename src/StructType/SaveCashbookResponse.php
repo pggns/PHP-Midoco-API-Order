@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveCashbookResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveCashbookResponse extends AbstractStructBase
 {
 }

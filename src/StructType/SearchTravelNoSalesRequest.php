@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: search all travel no related sales and return values with applicable amounts (not total price of each order but only part which is travelNo related)
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchTravelNoSalesRequest extends AbstractStructBase
 {
     /**

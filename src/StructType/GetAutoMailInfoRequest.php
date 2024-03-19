@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetAutoMailInfoRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetAutoMailInfoRequest extends AbstractStructBase
 {
 }

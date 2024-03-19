@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CcProxyEmailDataDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CcProxyEmailDataDTO extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for AddAdditionalServicesResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class AddAdditionalServicesResponse extends AbstractStructBase
 {
     /**
@@ -20,7 +21,7 @@ class AddAdditionalServicesResponse extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $error = [];
+    protected ?array $error = null;
     /**
      * The orderId
      * @var int|null
@@ -40,7 +41,7 @@ class AddAdditionalServicesResponse extends AbstractStructBase
      * @param int $orderId
      * @param int $orderNo
      */
-    public function __construct(array $error = [], ?int $orderId = null, ?int $orderNo = null)
+    public function __construct(?array $error = null, ?int $orderId = null, ?int $orderNo = null)
     {
         $this
             ->setError($error)
@@ -51,18 +52,22 @@ class AddAdditionalServicesResponse extends AbstractStructBase
      * Get error value
      * @return string[]
      */
-    public function getError(): array
+    public function getError(): ?array
     {
         return $this->error;
     }
     /**
-     * This method is responsible for validating the values passed to the setError method
+     * This method is responsible for validating the value(s) passed to the setError method
      * This method is willingly generated in order to preserve the one-line inline validation within the setError method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateErrorForArrayConstraintsFromSetError(array $values = []): string
+    public static function validateErrorForArrayConstraintFromSetError(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $addAdditionalServicesResponseErrorItem) {
@@ -84,10 +89,10 @@ class AddAdditionalServicesResponse extends AbstractStructBase
      * @param string[] $error
      * @return \Pggns\MidocoApi\Order\StructType\AddAdditionalServicesResponse
      */
-    public function setError(array $error = []): self
+    public function setError(?array $error = null): self
     {
         // validation for constraint: array
-        if ('' !== ($errorArrayErrorMessage = self::validateErrorForArrayConstraintsFromSetError($error))) {
+        if ('' !== ($errorArrayErrorMessage = self::validateErrorForArrayConstraintFromSetError($error))) {
             throw new InvalidArgumentException($errorArrayErrorMessage, __LINE__);
         }
         $this->error = $error;

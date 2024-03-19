@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SplitSupplAgencySettlemBookRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SplitSupplAgencySettlemBookRequest extends AbstractStructBase
 {
     /**

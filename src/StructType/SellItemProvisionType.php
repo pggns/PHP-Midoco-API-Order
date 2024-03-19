@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SellItemProvisionType StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SellItemProvisionType extends SellItemProvisionDTO
 {
     /**
@@ -21,7 +22,7 @@ class SellItemProvisionType extends SellItemProvisionDTO
      * - ref: MidocoRevenueBookingVatDiv
      * @var \Pggns\MidocoApi\Order\StructType\MidocoRevenueBookingVatDiv[]
      */
-    protected array $MidocoRevenueBookingVatDiv = [];
+    protected ?array $MidocoRevenueBookingVatDiv = null;
     /**
      * The MidocoTravelnoPurchaseAssignment
      * Meta information extracted from the WSDL
@@ -30,7 +31,7 @@ class SellItemProvisionType extends SellItemProvisionDTO
      * - ref: MidocoTravelnoPurchaseAssignment
      * @var \Pggns\MidocoApi\Order\StructType\MidocoTravelnoPurchaseAssignment[]
      */
-    protected array $MidocoTravelnoPurchaseAssignment = [];
+    protected ?array $MidocoTravelnoPurchaseAssignment = null;
     /**
      * The needsVatDivision
      * Meta information extracted from the WSDL
@@ -135,7 +136,7 @@ class SellItemProvisionType extends SellItemProvisionDTO
      * @param float $supplierBuyingPrice
      * @param float $originalSupplierInvoiceAmount
      */
-    public function __construct(array $midocoRevenueBookingVatDiv = [], array $midocoTravelnoPurchaseAssignment = [], ?bool $needsVatDivision = false, ?string $travelNo = null, ?string $travelNoHandling = null, ?float $travelNoB2cPercent = null, ?bool $commissionVatFreeRc = null, ?string $settlmAccountsSupplier = null, ?bool $preventPaymentForEntry = false, ?string $supplierInvoiceVatCode = null, ?bool $isStorno = false, ?string $stornoDate = null, ?float $baseBuyingPrice = null, ?float $supplierBuyingPrice = null, ?float $originalSupplierInvoiceAmount = null)
+    public function __construct(?array $midocoRevenueBookingVatDiv = null, ?array $midocoTravelnoPurchaseAssignment = null, ?bool $needsVatDivision = false, ?string $travelNo = null, ?string $travelNoHandling = null, ?float $travelNoB2cPercent = null, ?bool $commissionVatFreeRc = null, ?string $settlmAccountsSupplier = null, ?bool $preventPaymentForEntry = false, ?string $supplierInvoiceVatCode = null, ?bool $isStorno = false, ?string $stornoDate = null, ?float $baseBuyingPrice = null, ?float $supplierBuyingPrice = null, ?float $originalSupplierInvoiceAmount = null)
     {
         $this
             ->setMidocoRevenueBookingVatDiv($midocoRevenueBookingVatDiv)
@@ -158,18 +159,22 @@ class SellItemProvisionType extends SellItemProvisionDTO
      * Get MidocoRevenueBookingVatDiv value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoRevenueBookingVatDiv[]
      */
-    public function getMidocoRevenueBookingVatDiv(): array
+    public function getMidocoRevenueBookingVatDiv(): ?array
     {
         return $this->MidocoRevenueBookingVatDiv;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoRevenueBookingVatDiv method
+     * This method is responsible for validating the value(s) passed to the setMidocoRevenueBookingVatDiv method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoRevenueBookingVatDiv method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoRevenueBookingVatDivForArrayConstraintsFromSetMidocoRevenueBookingVatDiv(array $values = []): string
+    public static function validateMidocoRevenueBookingVatDivForArrayConstraintFromSetMidocoRevenueBookingVatDiv(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $sellItemProvisionTypeMidocoRevenueBookingVatDivItem) {
@@ -191,10 +196,10 @@ class SellItemProvisionType extends SellItemProvisionDTO
      * @param \Pggns\MidocoApi\Order\StructType\MidocoRevenueBookingVatDiv[] $midocoRevenueBookingVatDiv
      * @return \Pggns\MidocoApi\Order\StructType\SellItemProvisionType
      */
-    public function setMidocoRevenueBookingVatDiv(array $midocoRevenueBookingVatDiv = []): self
+    public function setMidocoRevenueBookingVatDiv(?array $midocoRevenueBookingVatDiv = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoRevenueBookingVatDivArrayErrorMessage = self::validateMidocoRevenueBookingVatDivForArrayConstraintsFromSetMidocoRevenueBookingVatDiv($midocoRevenueBookingVatDiv))) {
+        if ('' !== ($midocoRevenueBookingVatDivArrayErrorMessage = self::validateMidocoRevenueBookingVatDivForArrayConstraintFromSetMidocoRevenueBookingVatDiv($midocoRevenueBookingVatDiv))) {
             throw new InvalidArgumentException($midocoRevenueBookingVatDivArrayErrorMessage, __LINE__);
         }
         $this->MidocoRevenueBookingVatDiv = $midocoRevenueBookingVatDiv;
@@ -221,18 +226,22 @@ class SellItemProvisionType extends SellItemProvisionDTO
      * Get MidocoTravelnoPurchaseAssignment value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoTravelnoPurchaseAssignment[]
      */
-    public function getMidocoTravelnoPurchaseAssignment(): array
+    public function getMidocoTravelnoPurchaseAssignment(): ?array
     {
         return $this->MidocoTravelnoPurchaseAssignment;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoTravelnoPurchaseAssignment method
+     * This method is responsible for validating the value(s) passed to the setMidocoTravelnoPurchaseAssignment method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoTravelnoPurchaseAssignment method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoTravelnoPurchaseAssignmentForArrayConstraintsFromSetMidocoTravelnoPurchaseAssignment(array $values = []): string
+    public static function validateMidocoTravelnoPurchaseAssignmentForArrayConstraintFromSetMidocoTravelnoPurchaseAssignment(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $sellItemProvisionTypeMidocoTravelnoPurchaseAssignmentItem) {
@@ -254,10 +263,10 @@ class SellItemProvisionType extends SellItemProvisionDTO
      * @param \Pggns\MidocoApi\Order\StructType\MidocoTravelnoPurchaseAssignment[] $midocoTravelnoPurchaseAssignment
      * @return \Pggns\MidocoApi\Order\StructType\SellItemProvisionType
      */
-    public function setMidocoTravelnoPurchaseAssignment(array $midocoTravelnoPurchaseAssignment = []): self
+    public function setMidocoTravelnoPurchaseAssignment(?array $midocoTravelnoPurchaseAssignment = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoTravelnoPurchaseAssignmentArrayErrorMessage = self::validateMidocoTravelnoPurchaseAssignmentForArrayConstraintsFromSetMidocoTravelnoPurchaseAssignment($midocoTravelnoPurchaseAssignment))) {
+        if ('' !== ($midocoTravelnoPurchaseAssignmentArrayErrorMessage = self::validateMidocoTravelnoPurchaseAssignmentForArrayConstraintFromSetMidocoTravelnoPurchaseAssignment($midocoTravelnoPurchaseAssignment))) {
             throw new InvalidArgumentException($midocoTravelnoPurchaseAssignmentArrayErrorMessage, __LINE__);
         }
         $this->MidocoTravelnoPurchaseAssignment = $midocoTravelnoPurchaseAssignment;

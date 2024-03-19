@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: getPrintedTravelPlanDate --- returns the date when the last travel plan corresponding to the given order was printed
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetPrintedTravelPlanDateResponse extends AbstractStructBase
 {
     /**

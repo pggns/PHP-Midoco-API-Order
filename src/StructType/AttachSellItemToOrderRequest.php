@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for AttachSellItemToOrderRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class AttachSellItemToOrderRequest extends AbstractStructBase
 {
     /**
@@ -20,7 +21,7 @@ class AttachSellItemToOrderRequest extends AbstractStructBase
      * - ref: MidocoSellItemId
      * @var \Pggns\MidocoApi\Order\StructType\MidocoSellItemId[]
      */
-    protected array $MidocoSellItemId = [];
+    protected ?array $MidocoSellItemId = null;
     /**
      * The MidocoOrderId
      * Meta information extracted from the WSDL
@@ -99,7 +100,7 @@ class AttachSellItemToOrderRequest extends AbstractStructBase
      * @param bool $adoptSellingMode
      * @param bool $checkTravelDateRight
      */
-    public function __construct(array $midocoSellItemId = [], ?\Pggns\MidocoApi\Order\StructType\MidocoOrderId $midocoOrderId = null, ?bool $adoptNotes = true, ?bool $adoptAttributes = true, ?bool $adoptAddtlSellData = true, ?bool $adoptRemarks = true, ?bool $adoptConfirmationGroup = true, ?bool $adoptSellingMode = true, ?bool $checkTravelDateRight = true)
+    public function __construct(?array $midocoSellItemId = null, ?\Pggns\MidocoApi\Order\StructType\MidocoOrderId $midocoOrderId = null, ?bool $adoptNotes = true, ?bool $adoptAttributes = true, ?bool $adoptAddtlSellData = true, ?bool $adoptRemarks = true, ?bool $adoptConfirmationGroup = true, ?bool $adoptSellingMode = true, ?bool $checkTravelDateRight = true)
     {
         $this
             ->setMidocoSellItemId($midocoSellItemId)
@@ -116,18 +117,22 @@ class AttachSellItemToOrderRequest extends AbstractStructBase
      * Get MidocoSellItemId value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSellItemId[]
      */
-    public function getMidocoSellItemId(): array
+    public function getMidocoSellItemId(): ?array
     {
         return $this->MidocoSellItemId;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoSellItemId method
+     * This method is responsible for validating the value(s) passed to the setMidocoSellItemId method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoSellItemId method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoSellItemIdForArrayConstraintsFromSetMidocoSellItemId(array $values = []): string
+    public static function validateMidocoSellItemIdForArrayConstraintFromSetMidocoSellItemId(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $attachSellItemToOrderRequestMidocoSellItemIdItem) {
@@ -149,10 +154,10 @@ class AttachSellItemToOrderRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSellItemId[] $midocoSellItemId
      * @return \Pggns\MidocoApi\Order\StructType\AttachSellItemToOrderRequest
      */
-    public function setMidocoSellItemId(array $midocoSellItemId = []): self
+    public function setMidocoSellItemId(?array $midocoSellItemId = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoSellItemIdArrayErrorMessage = self::validateMidocoSellItemIdForArrayConstraintsFromSetMidocoSellItemId($midocoSellItemId))) {
+        if ('' !== ($midocoSellItemIdArrayErrorMessage = self::validateMidocoSellItemIdForArrayConstraintFromSetMidocoSellItemId($midocoSellItemId))) {
             throw new InvalidArgumentException($midocoSellItemIdArrayErrorMessage, __LINE__);
         }
         $this->MidocoSellItemId = $midocoSellItemId;

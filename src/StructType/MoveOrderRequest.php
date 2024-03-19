@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: moves order to the given unit
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MoveOrderRequest extends AbstractStructBase
 {
     /**

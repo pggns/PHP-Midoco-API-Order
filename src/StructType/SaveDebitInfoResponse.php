@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: saveDebitInfo --- updates the debit info of a billing document
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveDebitInfoResponse extends AbstractStructBase
 {
     /**

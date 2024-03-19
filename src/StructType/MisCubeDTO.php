@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MisCubeDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MisCubeDTO extends AbstractStructBase
 {
     /**

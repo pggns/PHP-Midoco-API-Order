@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetEntryHistoryResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetEntryHistoryResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetEntryHistoryResponse extends AbstractStructBase
      * - ref: MidocoEntryHistory
      * @var \Pggns\MidocoApi\Order\StructType\MidocoEntryHistory[]
      */
-    protected array $MidocoEntryHistory = [];
+    protected ?array $MidocoEntryHistory = null;
     /**
      * Constructor method for GetEntryHistoryResponse
      * @uses GetEntryHistoryResponse::setMidocoEntryHistory()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoEntryHistory[] $midocoEntryHistory
      */
-    public function __construct(array $midocoEntryHistory = [])
+    public function __construct(?array $midocoEntryHistory = null)
     {
         $this
             ->setMidocoEntryHistory($midocoEntryHistory);
@@ -36,18 +37,22 @@ class GetEntryHistoryResponse extends AbstractStructBase
      * Get MidocoEntryHistory value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoEntryHistory[]
      */
-    public function getMidocoEntryHistory(): array
+    public function getMidocoEntryHistory(): ?array
     {
         return $this->MidocoEntryHistory;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoEntryHistory method
+     * This method is responsible for validating the value(s) passed to the setMidocoEntryHistory method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoEntryHistory method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoEntryHistoryForArrayConstraintsFromSetMidocoEntryHistory(array $values = []): string
+    public static function validateMidocoEntryHistoryForArrayConstraintFromSetMidocoEntryHistory(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getEntryHistoryResponseMidocoEntryHistoryItem) {
@@ -69,10 +74,10 @@ class GetEntryHistoryResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoEntryHistory[] $midocoEntryHistory
      * @return \Pggns\MidocoApi\Order\StructType\GetEntryHistoryResponse
      */
-    public function setMidocoEntryHistory(array $midocoEntryHistory = []): self
+    public function setMidocoEntryHistory(?array $midocoEntryHistory = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoEntryHistoryArrayErrorMessage = self::validateMidocoEntryHistoryForArrayConstraintsFromSetMidocoEntryHistory($midocoEntryHistory))) {
+        if ('' !== ($midocoEntryHistoryArrayErrorMessage = self::validateMidocoEntryHistoryForArrayConstraintFromSetMidocoEntryHistory($midocoEntryHistory))) {
             throw new InvalidArgumentException($midocoEntryHistoryArrayErrorMessage, __LINE__);
         }
         $this->MidocoEntryHistory = $midocoEntryHistory;

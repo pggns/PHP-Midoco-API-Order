@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for BillingDocumentEmailDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class BillingDocumentEmailDTO extends AbstractStructBase
 {
     /**

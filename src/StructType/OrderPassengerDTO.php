@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for OrderPassengerDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class OrderPassengerDTO extends AbstractStructBase
 {
     /**
@@ -44,6 +45,11 @@ class OrderPassengerDTO extends AbstractStructBase
      */
     protected ?string $orderPassengerSalutation = null;
     /**
+     * The passengerId
+     * @var int|null
+     */
+    protected ?int $passengerId = null;
+    /**
      * Constructor method for OrderPassengerDTO
      * @uses OrderPassengerDTO::setOrderId()
      * @uses OrderPassengerDTO::setOrderPassengerAge()
@@ -51,14 +57,16 @@ class OrderPassengerDTO extends AbstractStructBase
      * @uses OrderPassengerDTO::setOrderPassengerFirstName()
      * @uses OrderPassengerDTO::setOrderPassengerName()
      * @uses OrderPassengerDTO::setOrderPassengerSalutation()
+     * @uses OrderPassengerDTO::setPassengerId()
      * @param int $orderId
      * @param int $orderPassengerAge
      * @param string $orderPassengerBirthdate
      * @param string $orderPassengerFirstName
      * @param string $orderPassengerName
      * @param string $orderPassengerSalutation
+     * @param int $passengerId
      */
-    public function __construct(?int $orderId = null, ?int $orderPassengerAge = null, ?string $orderPassengerBirthdate = null, ?string $orderPassengerFirstName = null, ?string $orderPassengerName = null, ?string $orderPassengerSalutation = null)
+    public function __construct(?int $orderId = null, ?int $orderPassengerAge = null, ?string $orderPassengerBirthdate = null, ?string $orderPassengerFirstName = null, ?string $orderPassengerName = null, ?string $orderPassengerSalutation = null, ?int $passengerId = null)
     {
         $this
             ->setOrderId($orderId)
@@ -66,7 +74,8 @@ class OrderPassengerDTO extends AbstractStructBase
             ->setOrderPassengerBirthdate($orderPassengerBirthdate)
             ->setOrderPassengerFirstName($orderPassengerFirstName)
             ->setOrderPassengerName($orderPassengerName)
-            ->setOrderPassengerSalutation($orderPassengerSalutation);
+            ->setOrderPassengerSalutation($orderPassengerSalutation)
+            ->setPassengerId($passengerId);
     }
     /**
      * Get orderId value
@@ -203,6 +212,29 @@ class OrderPassengerDTO extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($orderPassengerSalutation, true), gettype($orderPassengerSalutation)), __LINE__);
         }
         $this->orderPassengerSalutation = $orderPassengerSalutation;
+        
+        return $this;
+    }
+    /**
+     * Get passengerId value
+     * @return int|null
+     */
+    public function getPassengerId(): ?int
+    {
+        return $this->passengerId;
+    }
+    /**
+     * Set passengerId value
+     * @param int $passengerId
+     * @return \Pggns\MidocoApi\Order\StructType\OrderPassengerDTO
+     */
+    public function setPassengerId(?int $passengerId = null): self
+    {
+        // validation for constraint: int
+        if (!is_null($passengerId) && !(is_int($passengerId) || ctype_digit($passengerId))) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($passengerId, true), gettype($passengerId)), __LINE__);
+        }
+        $this->passengerId = $passengerId;
         
         return $this;
     }

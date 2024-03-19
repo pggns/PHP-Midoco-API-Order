@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ExecuteUserQueryRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ExecuteUserQueryRequest extends AbstractStructBase
 {
     /**

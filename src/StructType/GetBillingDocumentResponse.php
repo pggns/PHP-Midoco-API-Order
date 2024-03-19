@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: getBillingDocument --- retrieve a Billing document, knowing the primary key
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetBillingDocumentResponse extends AbstractStructBase
 {
     /**

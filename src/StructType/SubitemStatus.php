@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for subitemStatus StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SubitemStatus extends AbstractStructBase
 {
     /**

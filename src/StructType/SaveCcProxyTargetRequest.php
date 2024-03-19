@@ -11,12 +11,12 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveCcProxyTargetRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveCcProxyTargetRequest extends AbstractStructBase
 {
     /**
      * The MidocoCcProxyTarget
      * Meta information extracted from the WSDL
-     * - maxOccurs: 1
      * - ref: MidocoCcProxyTarget
      * @var \Pggns\MidocoApi\Order\StructType\MidocoCcProxyTarget|null
      */

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CheckIfPaidBillingDocRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CheckIfPaidBillingDocRequest extends AbstractStructBase
 {
     /**

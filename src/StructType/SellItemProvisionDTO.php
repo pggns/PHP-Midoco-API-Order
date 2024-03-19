@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SellItemProvisionDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SellItemProvisionDTO extends AbstractStructBase
 {
     /**
@@ -301,6 +302,36 @@ class SellItemProvisionDTO extends AbstractStructBase
      */
     protected ?string $creationDate = null;
     /**
+     * The bookedDIAmount
+     * @var float|null
+     */
+    protected ?float $bookedDIAmount = null;
+    /**
+     * The bookedTravelPrice
+     * @var float|null
+     */
+    protected ?float $bookedTravelPrice = null;
+    /**
+     * The bookedCommissionVatIncl
+     * @var float|null
+     */
+    protected ?float $bookedCommissionVatIncl = null;
+    /**
+     * The bookedCommissionInsurance
+     * @var float|null
+     */
+    protected ?float $bookedCommissionInsurance = null;
+    /**
+     * The bookedCommissionVatFree
+     * @var float|null
+     */
+    protected ?float $bookedCommissionVatFree = null;
+    /**
+     * The bookedSupplierInvoice
+     * @var float|null
+     */
+    protected ?float $bookedSupplierInvoice = null;
+    /**
      * Constructor method for SellItemProvisionDTO
      * @uses SellItemProvisionDTO::setItemId()
      * @uses SellItemProvisionDTO::setBookingId()
@@ -359,6 +390,12 @@ class SellItemProvisionDTO extends AbstractStructBase
      * @uses SellItemProvisionDTO::setIsQrInvoiceTransfer()
      * @uses SellItemProvisionDTO::setQrInvoiceRefNo()
      * @uses SellItemProvisionDTO::setCreationDate()
+     * @uses SellItemProvisionDTO::setBookedDIAmount()
+     * @uses SellItemProvisionDTO::setBookedTravelPrice()
+     * @uses SellItemProvisionDTO::setBookedCommissionVatIncl()
+     * @uses SellItemProvisionDTO::setBookedCommissionInsurance()
+     * @uses SellItemProvisionDTO::setBookedCommissionVatFree()
+     * @uses SellItemProvisionDTO::setBookedSupplierInvoice()
      * @param int $itemId
      * @param string $bookingId
      * @param string $traveltype
@@ -416,8 +453,14 @@ class SellItemProvisionDTO extends AbstractStructBase
      * @param bool $isQrInvoiceTransfer
      * @param string $qrInvoiceRefNo
      * @param string $creationDate
+     * @param float $bookedDIAmount
+     * @param float $bookedTravelPrice
+     * @param float $bookedCommissionVatIncl
+     * @param float $bookedCommissionInsurance
+     * @param float $bookedCommissionVatFree
+     * @param float $bookedSupplierInvoice
      */
-    public function __construct(?int $itemId = null, ?string $bookingId = null, ?string $traveltype = null, ?float $totalPrice = null, ?int $numberOfPersons = null, ?string $traveldate = null, ?string $status = null, ?float $calculatedRevenue = null, ?float $grantedRevenue = null, ?string $invoiceDate = null, ?float $vatInclAmount = null, ?float $vatFreeAmount = null, ?float $vatInsurance = null, ?float $supplierInvoice = null, ?string $receiptNo = null, ?string $supplierId = null, ?int $orderId = null, ?int $orderNo = null, ?string $customerSurName = null, ?string $customerForeName = null, ?bool $isCollective = null, ?int $revenueId = null, ?float $nettoAmount = null, ?float $vatAmount = null, ?float $vatPercent = null, ?string $unitName = null, ?int $commissionMode = null, ?bool $entryRestAsProv = null, ?string $paymentType = null, ?bool $inPackage = null, ?bool $isInsurance = null, ?float $inkassoPrice = null, ?string $extId = null, ?string $destination = null, ?float $feeAmount = null, ?bool $manualEntriesExist = null, ?string $currency = null, ?string $foreignCurrency = null, ?float $foreignCurrencyExchangeRate = null, ?float $foreignCurrencyRateMasterData = null, ?int $foreignCurrencyLookupMethod = null, ?bool $isForeignCreditor = false, ?int $inkassoMode = null, ?float $supplierDIAmount = null, ?float $travelPrice = null, ?string $settlementType = null, ?string $settlementTypeDebit = null, ?bool $isDeposit = null, ?string $travelitemDestination = null, ?string $itemType = null, ?string $endTravel = null, ?string $dueDate = null, ?string $bookingDate = null, ?string $bookingText = null, ?bool $isQrInvoiceTransfer = null, ?string $qrInvoiceRefNo = null, ?string $creationDate = null)
+    public function __construct(?int $itemId = null, ?string $bookingId = null, ?string $traveltype = null, ?float $totalPrice = null, ?int $numberOfPersons = null, ?string $traveldate = null, ?string $status = null, ?float $calculatedRevenue = null, ?float $grantedRevenue = null, ?string $invoiceDate = null, ?float $vatInclAmount = null, ?float $vatFreeAmount = null, ?float $vatInsurance = null, ?float $supplierInvoice = null, ?string $receiptNo = null, ?string $supplierId = null, ?int $orderId = null, ?int $orderNo = null, ?string $customerSurName = null, ?string $customerForeName = null, ?bool $isCollective = null, ?int $revenueId = null, ?float $nettoAmount = null, ?float $vatAmount = null, ?float $vatPercent = null, ?string $unitName = null, ?int $commissionMode = null, ?bool $entryRestAsProv = null, ?string $paymentType = null, ?bool $inPackage = null, ?bool $isInsurance = null, ?float $inkassoPrice = null, ?string $extId = null, ?string $destination = null, ?float $feeAmount = null, ?bool $manualEntriesExist = null, ?string $currency = null, ?string $foreignCurrency = null, ?float $foreignCurrencyExchangeRate = null, ?float $foreignCurrencyRateMasterData = null, ?int $foreignCurrencyLookupMethod = null, ?bool $isForeignCreditor = false, ?int $inkassoMode = null, ?float $supplierDIAmount = null, ?float $travelPrice = null, ?string $settlementType = null, ?string $settlementTypeDebit = null, ?bool $isDeposit = null, ?string $travelitemDestination = null, ?string $itemType = null, ?string $endTravel = null, ?string $dueDate = null, ?string $bookingDate = null, ?string $bookingText = null, ?bool $isQrInvoiceTransfer = null, ?string $qrInvoiceRefNo = null, ?string $creationDate = null, ?float $bookedDIAmount = null, ?float $bookedTravelPrice = null, ?float $bookedCommissionVatIncl = null, ?float $bookedCommissionInsurance = null, ?float $bookedCommissionVatFree = null, ?float $bookedSupplierInvoice = null)
     {
         $this
             ->setItemId($itemId)
@@ -476,7 +519,13 @@ class SellItemProvisionDTO extends AbstractStructBase
             ->setBookingText($bookingText)
             ->setIsQrInvoiceTransfer($isQrInvoiceTransfer)
             ->setQrInvoiceRefNo($qrInvoiceRefNo)
-            ->setCreationDate($creationDate);
+            ->setCreationDate($creationDate)
+            ->setBookedDIAmount($bookedDIAmount)
+            ->setBookedTravelPrice($bookedTravelPrice)
+            ->setBookedCommissionVatIncl($bookedCommissionVatIncl)
+            ->setBookedCommissionInsurance($bookedCommissionInsurance)
+            ->setBookedCommissionVatFree($bookedCommissionVatFree)
+            ->setBookedSupplierInvoice($bookedSupplierInvoice);
     }
     /**
      * Get itemId value
@@ -1786,6 +1835,144 @@ class SellItemProvisionDTO extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($creationDate, true), gettype($creationDate)), __LINE__);
         }
         $this->creationDate = $creationDate;
+        
+        return $this;
+    }
+    /**
+     * Get bookedDIAmount value
+     * @return float|null
+     */
+    public function getBookedDIAmount(): ?float
+    {
+        return $this->bookedDIAmount;
+    }
+    /**
+     * Set bookedDIAmount value
+     * @param float $bookedDIAmount
+     * @return \Pggns\MidocoApi\Order\StructType\SellItemProvisionDTO
+     */
+    public function setBookedDIAmount(?float $bookedDIAmount = null): self
+    {
+        // validation for constraint: float
+        if (!is_null($bookedDIAmount) && !(is_float($bookedDIAmount) || is_numeric($bookedDIAmount))) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a float value, %s given', var_export($bookedDIAmount, true), gettype($bookedDIAmount)), __LINE__);
+        }
+        $this->bookedDIAmount = $bookedDIAmount;
+        
+        return $this;
+    }
+    /**
+     * Get bookedTravelPrice value
+     * @return float|null
+     */
+    public function getBookedTravelPrice(): ?float
+    {
+        return $this->bookedTravelPrice;
+    }
+    /**
+     * Set bookedTravelPrice value
+     * @param float $bookedTravelPrice
+     * @return \Pggns\MidocoApi\Order\StructType\SellItemProvisionDTO
+     */
+    public function setBookedTravelPrice(?float $bookedTravelPrice = null): self
+    {
+        // validation for constraint: float
+        if (!is_null($bookedTravelPrice) && !(is_float($bookedTravelPrice) || is_numeric($bookedTravelPrice))) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a float value, %s given', var_export($bookedTravelPrice, true), gettype($bookedTravelPrice)), __LINE__);
+        }
+        $this->bookedTravelPrice = $bookedTravelPrice;
+        
+        return $this;
+    }
+    /**
+     * Get bookedCommissionVatIncl value
+     * @return float|null
+     */
+    public function getBookedCommissionVatIncl(): ?float
+    {
+        return $this->bookedCommissionVatIncl;
+    }
+    /**
+     * Set bookedCommissionVatIncl value
+     * @param float $bookedCommissionVatIncl
+     * @return \Pggns\MidocoApi\Order\StructType\SellItemProvisionDTO
+     */
+    public function setBookedCommissionVatIncl(?float $bookedCommissionVatIncl = null): self
+    {
+        // validation for constraint: float
+        if (!is_null($bookedCommissionVatIncl) && !(is_float($bookedCommissionVatIncl) || is_numeric($bookedCommissionVatIncl))) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a float value, %s given', var_export($bookedCommissionVatIncl, true), gettype($bookedCommissionVatIncl)), __LINE__);
+        }
+        $this->bookedCommissionVatIncl = $bookedCommissionVatIncl;
+        
+        return $this;
+    }
+    /**
+     * Get bookedCommissionInsurance value
+     * @return float|null
+     */
+    public function getBookedCommissionInsurance(): ?float
+    {
+        return $this->bookedCommissionInsurance;
+    }
+    /**
+     * Set bookedCommissionInsurance value
+     * @param float $bookedCommissionInsurance
+     * @return \Pggns\MidocoApi\Order\StructType\SellItemProvisionDTO
+     */
+    public function setBookedCommissionInsurance(?float $bookedCommissionInsurance = null): self
+    {
+        // validation for constraint: float
+        if (!is_null($bookedCommissionInsurance) && !(is_float($bookedCommissionInsurance) || is_numeric($bookedCommissionInsurance))) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a float value, %s given', var_export($bookedCommissionInsurance, true), gettype($bookedCommissionInsurance)), __LINE__);
+        }
+        $this->bookedCommissionInsurance = $bookedCommissionInsurance;
+        
+        return $this;
+    }
+    /**
+     * Get bookedCommissionVatFree value
+     * @return float|null
+     */
+    public function getBookedCommissionVatFree(): ?float
+    {
+        return $this->bookedCommissionVatFree;
+    }
+    /**
+     * Set bookedCommissionVatFree value
+     * @param float $bookedCommissionVatFree
+     * @return \Pggns\MidocoApi\Order\StructType\SellItemProvisionDTO
+     */
+    public function setBookedCommissionVatFree(?float $bookedCommissionVatFree = null): self
+    {
+        // validation for constraint: float
+        if (!is_null($bookedCommissionVatFree) && !(is_float($bookedCommissionVatFree) || is_numeric($bookedCommissionVatFree))) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a float value, %s given', var_export($bookedCommissionVatFree, true), gettype($bookedCommissionVatFree)), __LINE__);
+        }
+        $this->bookedCommissionVatFree = $bookedCommissionVatFree;
+        
+        return $this;
+    }
+    /**
+     * Get bookedSupplierInvoice value
+     * @return float|null
+     */
+    public function getBookedSupplierInvoice(): ?float
+    {
+        return $this->bookedSupplierInvoice;
+    }
+    /**
+     * Set bookedSupplierInvoice value
+     * @param float $bookedSupplierInvoice
+     * @return \Pggns\MidocoApi\Order\StructType\SellItemProvisionDTO
+     */
+    public function setBookedSupplierInvoice(?float $bookedSupplierInvoice = null): self
+    {
+        // validation for constraint: float
+        if (!is_null($bookedSupplierInvoice) && !(is_float($bookedSupplierInvoice) || is_numeric($bookedSupplierInvoice))) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a float value, %s given', var_export($bookedSupplierInvoice, true), gettype($bookedSupplierInvoice)), __LINE__);
+        }
+        $this->bookedSupplierInvoice = $bookedSupplierInvoice;
         
         return $this;
     }

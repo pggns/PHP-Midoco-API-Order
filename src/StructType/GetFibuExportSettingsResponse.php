@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetFibuExportSettingsResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetFibuExportSettingsResponse extends AbstractStructBase
 {
     /**

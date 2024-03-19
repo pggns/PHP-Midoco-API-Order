@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetVatAccountAssignsResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetVatAccountAssignsResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetVatAccountAssignsResponse extends AbstractStructBase
      * - ref: MidocoVatAccountAssign
      * @var \Pggns\MidocoApi\Order\StructType\VatAccountAssignDTO[]
      */
-    protected array $MidocoVatAccountAssign = [];
+    protected ?array $MidocoVatAccountAssign = null;
     /**
      * Constructor method for GetVatAccountAssignsResponse
      * @uses GetVatAccountAssignsResponse::setMidocoVatAccountAssign()
      * @param \Pggns\MidocoApi\Order\StructType\VatAccountAssignDTO[] $midocoVatAccountAssign
      */
-    public function __construct(array $midocoVatAccountAssign = [])
+    public function __construct(?array $midocoVatAccountAssign = null)
     {
         $this
             ->setMidocoVatAccountAssign($midocoVatAccountAssign);
@@ -36,18 +37,22 @@ class GetVatAccountAssignsResponse extends AbstractStructBase
      * Get MidocoVatAccountAssign value
      * @return \Pggns\MidocoApi\Order\StructType\VatAccountAssignDTO[]
      */
-    public function getMidocoVatAccountAssign(): array
+    public function getMidocoVatAccountAssign(): ?array
     {
         return $this->MidocoVatAccountAssign;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoVatAccountAssign method
+     * This method is responsible for validating the value(s) passed to the setMidocoVatAccountAssign method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoVatAccountAssign method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoVatAccountAssignForArrayConstraintsFromSetMidocoVatAccountAssign(array $values = []): string
+    public static function validateMidocoVatAccountAssignForArrayConstraintFromSetMidocoVatAccountAssign(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getVatAccountAssignsResponseMidocoVatAccountAssignItem) {
@@ -69,10 +74,10 @@ class GetVatAccountAssignsResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\VatAccountAssignDTO[] $midocoVatAccountAssign
      * @return \Pggns\MidocoApi\Order\StructType\GetVatAccountAssignsResponse
      */
-    public function setMidocoVatAccountAssign(array $midocoVatAccountAssign = []): self
+    public function setMidocoVatAccountAssign(?array $midocoVatAccountAssign = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoVatAccountAssignArrayErrorMessage = self::validateMidocoVatAccountAssignForArrayConstraintsFromSetMidocoVatAccountAssign($midocoVatAccountAssign))) {
+        if ('' !== ($midocoVatAccountAssignArrayErrorMessage = self::validateMidocoVatAccountAssignForArrayConstraintFromSetMidocoVatAccountAssign($midocoVatAccountAssign))) {
             throw new InvalidArgumentException($midocoVatAccountAssignArrayErrorMessage, __LINE__);
         }
         $this->MidocoVatAccountAssign = $midocoVatAccountAssign;

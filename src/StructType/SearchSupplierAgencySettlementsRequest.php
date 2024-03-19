@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SearchSupplierAgencySettlementsRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchSupplierAgencySettlementsRequest extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ExportCashTurnoverRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ExportCashTurnoverRequest extends AbstractStructBase
 {
     /**

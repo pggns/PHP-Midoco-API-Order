@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetFeeTypesForAgencyRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetFeeTypesForAgencyRequest extends AbstractStructBase
 {
     /**

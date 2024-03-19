@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteContactMediaResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteContactMediaResponse extends AbstractStructBase
 {
     /**

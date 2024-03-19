@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ConnectSupplierSettlBookingResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ConnectSupplierSettlBookingResponse extends AbstractStructBase
 {
     /**

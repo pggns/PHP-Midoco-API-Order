@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DatastoreAssignDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DatastoreAssignDTO extends AbstractStructBase
 {
     /**

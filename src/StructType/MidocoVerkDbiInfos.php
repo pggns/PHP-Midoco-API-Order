@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoVerkDbiInfos StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoVerkDbiInfos extends AbstractStructBase
 {
     /**
@@ -91,7 +92,7 @@ class MidocoVerkDbiInfos extends AbstractStructBase
      * - ref: MidocoDbiDefValue
      * @var \Pggns\MidocoApi\Order\StructType\MidocoDbiDefValue[]
      */
-    protected array $MidocoDbiDefValue = [];
+    protected ?array $MidocoDbiDefValue = null;
     /**
      * Constructor method for MidocoVerkDbiInfos
      * @uses MidocoVerkDbiInfos::setOrderId()
@@ -125,7 +126,7 @@ class MidocoVerkDbiInfos extends AbstractStructBase
      * @param string $dBI_INFO_KEY_DEBITOR
      * @param \Pggns\MidocoApi\Order\StructType\MidocoDbiDefValue[] $midocoDbiDefValue
      */
-    public function __construct(?int $orderId = null, ?int $itemId = null, ?int $passengerAssignment = null, ?string $vERK_KEY_COST_CENTRE = null, ?string $vERK_KEY_CUSTOMER_COST_CENTRE = null, ?string $vERK_KEY_CUSTOMER_PERSON_NO = null, ?string $vERK_KEY_CUSTOMER_PROJECT_NO = null, ?string $vERK_KEY_FUNDING = null, ?string $vERK_KEY_ORDER_DATE = null, ?string $vERK_KEY_ORDER_NO = null, ?string $vERK_KEY_ORDERER = null, ?string $vERK_KEY_REMARK1 = null, ?string $vERK_KEY_REMARK2 = null, ?string $dBI_INFO_KEY_DEBITOR = null, array $midocoDbiDefValue = [])
+    public function __construct(?int $orderId = null, ?int $itemId = null, ?int $passengerAssignment = null, ?string $vERK_KEY_COST_CENTRE = null, ?string $vERK_KEY_CUSTOMER_COST_CENTRE = null, ?string $vERK_KEY_CUSTOMER_PERSON_NO = null, ?string $vERK_KEY_CUSTOMER_PROJECT_NO = null, ?string $vERK_KEY_FUNDING = null, ?string $vERK_KEY_ORDER_DATE = null, ?string $vERK_KEY_ORDER_NO = null, ?string $vERK_KEY_ORDERER = null, ?string $vERK_KEY_REMARK1 = null, ?string $vERK_KEY_REMARK2 = null, ?string $dBI_INFO_KEY_DEBITOR = null, ?array $midocoDbiDefValue = null)
     {
         $this
             ->setOrderId($orderId)
@@ -470,18 +471,22 @@ class MidocoVerkDbiInfos extends AbstractStructBase
      * Get MidocoDbiDefValue value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoDbiDefValue[]
      */
-    public function getMidocoDbiDefValue(): array
+    public function getMidocoDbiDefValue(): ?array
     {
         return $this->MidocoDbiDefValue;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoDbiDefValue method
+     * This method is responsible for validating the value(s) passed to the setMidocoDbiDefValue method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoDbiDefValue method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoDbiDefValueForArrayConstraintsFromSetMidocoDbiDefValue(array $values = []): string
+    public static function validateMidocoDbiDefValueForArrayConstraintFromSetMidocoDbiDefValue(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoVerkDbiInfosMidocoDbiDefValueItem) {
@@ -503,10 +508,10 @@ class MidocoVerkDbiInfos extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoDbiDefValue[] $midocoDbiDefValue
      * @return \Pggns\MidocoApi\Order\StructType\MidocoVerkDbiInfos
      */
-    public function setMidocoDbiDefValue(array $midocoDbiDefValue = []): self
+    public function setMidocoDbiDefValue(?array $midocoDbiDefValue = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoDbiDefValueArrayErrorMessage = self::validateMidocoDbiDefValueForArrayConstraintsFromSetMidocoDbiDefValue($midocoDbiDefValue))) {
+        if ('' !== ($midocoDbiDefValueArrayErrorMessage = self::validateMidocoDbiDefValueForArrayConstraintFromSetMidocoDbiDefValue($midocoDbiDefValue))) {
             throw new InvalidArgumentException($midocoDbiDefValueArrayErrorMessage, __LINE__);
         }
         $this->MidocoDbiDefValue = $midocoDbiDefValue;

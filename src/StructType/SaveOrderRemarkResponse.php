@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: saveOrderRemark --- saves a remark for an order
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveOrderRemarkResponse extends AbstractStructBase
 {
     /**

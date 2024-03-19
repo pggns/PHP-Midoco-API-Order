@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ExecuteRevertAuthResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ExecuteRevertAuthResponse extends AbstractStructBase
 {
 }

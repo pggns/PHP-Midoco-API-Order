@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoTravelDocsPrintInfo StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoTravelDocsPrintInfo extends AbstractStructBase
 {
     /**

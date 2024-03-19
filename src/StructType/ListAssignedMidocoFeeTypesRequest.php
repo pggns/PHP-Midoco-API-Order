@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: list the fee types after a criteria
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ListAssignedMidocoFeeTypesRequest extends AbstractStructBase
 {
     /**

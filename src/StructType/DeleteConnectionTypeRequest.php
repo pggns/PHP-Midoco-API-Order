@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteConnectionTypeRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteConnectionTypeRequest extends AbstractStructBase
 {
     /**

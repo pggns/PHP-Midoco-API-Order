@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoGenericDetailType StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoGenericDetailType extends GenericDetailDTO
 {
     /**

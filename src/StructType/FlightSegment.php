@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for FlightSegment StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class FlightSegment extends SegmentType
 {
     /**
@@ -21,7 +22,7 @@ class FlightSegment extends SegmentType
      * - ref: TravelerRefId
      * @var int[]
      */
-    protected array $TravelerRefId = [];
+    protected ?array $TravelerRefId = null;
     /**
      * The bookingDetailId
      * Meta information extracted from the WSDL
@@ -36,7 +37,7 @@ class FlightSegment extends SegmentType
      * @param int[] $travelerRefId
      * @param int $bookingDetailId
      */
-    public function __construct(array $travelerRefId = [], ?int $bookingDetailId = null)
+    public function __construct(?array $travelerRefId = null, ?int $bookingDetailId = null)
     {
         $this
             ->setTravelerRefId($travelerRefId)
@@ -46,18 +47,22 @@ class FlightSegment extends SegmentType
      * Get TravelerRefId value
      * @return int[]
      */
-    public function getTravelerRefId(): array
+    public function getTravelerRefId(): ?array
     {
         return $this->TravelerRefId;
     }
     /**
-     * This method is responsible for validating the values passed to the setTravelerRefId method
+     * This method is responsible for validating the value(s) passed to the setTravelerRefId method
      * This method is willingly generated in order to preserve the one-line inline validation within the setTravelerRefId method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateTravelerRefIdForArrayConstraintsFromSetTravelerRefId(array $values = []): string
+    public static function validateTravelerRefIdForArrayConstraintFromSetTravelerRefId(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $flightSegmentTravelerRefIdItem) {
@@ -79,10 +84,10 @@ class FlightSegment extends SegmentType
      * @param int[] $travelerRefId
      * @return \Pggns\MidocoApi\Order\StructType\FlightSegment
      */
-    public function setTravelerRefId(array $travelerRefId = []): self
+    public function setTravelerRefId(?array $travelerRefId = null): self
     {
         // validation for constraint: array
-        if ('' !== ($travelerRefIdArrayErrorMessage = self::validateTravelerRefIdForArrayConstraintsFromSetTravelerRefId($travelerRefId))) {
+        if ('' !== ($travelerRefIdArrayErrorMessage = self::validateTravelerRefIdForArrayConstraintFromSetTravelerRefId($travelerRefId))) {
             throw new InvalidArgumentException($travelerRefIdArrayErrorMessage, __LINE__);
         }
         $this->TravelerRefId = $travelerRefId;

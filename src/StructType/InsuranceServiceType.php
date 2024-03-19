@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for insuranceServiceType StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class InsuranceServiceType extends AbstractStructBase
 {
     /**
@@ -272,7 +273,7 @@ class InsuranceServiceType extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($validStart, true), gettype($validStart)), __LINE__);
         }
         // validation for constraint: pattern([0-9]{4}-[0-9]{2}-[0-9]{2})
-        if (!is_null($validStart) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', $validStart)) {
+        if (!is_null($validStart) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', (string) $validStart)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[0-9]{4}-[0-9]{2}-[0-9]{2}/', var_export($validStart, true)), __LINE__);
         }
         $this->validStart = $validStart;
@@ -437,7 +438,7 @@ class InsuranceServiceType extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($annualValidTo, true), gettype($annualValidTo)), __LINE__);
         }
         // validation for constraint: pattern([0-9]{4}-[0-9]{2}-[0-9]{2})
-        if (!is_null($annualValidTo) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', $annualValidTo)) {
+        if (!is_null($annualValidTo) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', (string) $annualValidTo)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[0-9]{4}-[0-9]{2}-[0-9]{2}/', var_export($annualValidTo, true)), __LINE__);
         }
         $this->annualValidTo = $annualValidTo;

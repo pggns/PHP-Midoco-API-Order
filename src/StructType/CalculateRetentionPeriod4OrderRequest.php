@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CalculateRetentionPeriod4OrderRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CalculateRetentionPeriod4OrderRequest extends AbstractStructBase
 {
     /**
@@ -85,16 +86,16 @@ class CalculateRetentionPeriod4OrderRequest extends AbstractStructBase
      */
     public function getOrderId(): ?int
     {
-        return isset($this->orderId) ? $this->orderId : null;
+        return $this->orderId ?? null;
     }
     /**
-     * This method is responsible for validating the value passed to the setOrderId method
+     * This method is responsible for validating the value(s) passed to the setOrderId method
      * This method is willingly generated in order to preserve the one-line inline validation within the setOrderId method
      * This has to validate that the property which is being set is the only one among the given choices
      * @param mixed $value
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public function validateOrderIdForChoiceConstraintsFromSetOrderId($value): string
+    public function validateOrderIdForChoiceConstraintFromSetOrderId($value): string
     {
         $message = '';
         if (is_null($value)) {
@@ -131,7 +132,7 @@ class CalculateRetentionPeriod4OrderRequest extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($orderId, true), gettype($orderId)), __LINE__);
         }
         // validation for constraint: choice(orderId, orderNo)
-        if ('' !== ($orderIdChoiceErrorMessage = self::validateOrderIdForChoiceConstraintsFromSetOrderId($orderId))) {
+        if ('' !== ($orderIdChoiceErrorMessage = self::validateOrderIdForChoiceConstraintFromSetOrderId($orderId))) {
             throw new InvalidArgumentException($orderIdChoiceErrorMessage, __LINE__);
         }
         if (is_null($orderId) || (is_array($orderId) && empty($orderId))) {
@@ -148,16 +149,16 @@ class CalculateRetentionPeriod4OrderRequest extends AbstractStructBase
      */
     public function getOrderNo(): ?int
     {
-        return isset($this->orderNo) ? $this->orderNo : null;
+        return $this->orderNo ?? null;
     }
     /**
-     * This method is responsible for validating the value passed to the setOrderNo method
+     * This method is responsible for validating the value(s) passed to the setOrderNo method
      * This method is willingly generated in order to preserve the one-line inline validation within the setOrderNo method
      * This has to validate that the property which is being set is the only one among the given choices
      * @param mixed $value
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public function validateOrderNoForChoiceConstraintsFromSetOrderNo($value): string
+    public function validateOrderNoForChoiceConstraintFromSetOrderNo($value): string
     {
         $message = '';
         if (is_null($value)) {
@@ -194,7 +195,7 @@ class CalculateRetentionPeriod4OrderRequest extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($orderNo, true), gettype($orderNo)), __LINE__);
         }
         // validation for constraint: choice(orderId, orderNo)
-        if ('' !== ($orderNoChoiceErrorMessage = self::validateOrderNoForChoiceConstraintsFromSetOrderNo($orderNo))) {
+        if ('' !== ($orderNoChoiceErrorMessage = self::validateOrderNoForChoiceConstraintFromSetOrderNo($orderNo))) {
             throw new InvalidArgumentException($orderNoChoiceErrorMessage, __LINE__);
         }
         if (is_null($orderNo) || (is_array($orderNo) && empty($orderNo))) {

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteTravelnoPurchaseAssignmentResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteTravelnoPurchaseAssignmentResponse extends AbstractStructBase
 {
 }

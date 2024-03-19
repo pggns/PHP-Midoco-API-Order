@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoBillingPositionDbiInfo StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoBillingPositionDbiInfo extends BillingPositionDbiInfoDTO
 {
 }

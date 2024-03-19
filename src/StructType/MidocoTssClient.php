@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoTssClient StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoTssClient extends TssClientDTO
 {
     /**
@@ -21,7 +22,7 @@ class MidocoTssClient extends TssClientDTO
      * - ref: MidocoTssClientMetadata
      * @var \Pggns\MidocoApi\Order\StructType\MidocoTssClientMetadata[]
      */
-    protected array $MidocoTssClientMetadata = [];
+    protected ?array $MidocoTssClientMetadata = null;
     /**
      * The comment
      * @var string|null
@@ -41,7 +42,7 @@ class MidocoTssClient extends TssClientDTO
      * @param string $comment
      * @param string $major_version
      */
-    public function __construct(array $midocoTssClientMetadata = [], ?string $comment = null, ?string $major_version = null)
+    public function __construct(?array $midocoTssClientMetadata = null, ?string $comment = null, ?string $major_version = null)
     {
         $this
             ->setMidocoTssClientMetadata($midocoTssClientMetadata)
@@ -52,18 +53,22 @@ class MidocoTssClient extends TssClientDTO
      * Get MidocoTssClientMetadata value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoTssClientMetadata[]
      */
-    public function getMidocoTssClientMetadata(): array
+    public function getMidocoTssClientMetadata(): ?array
     {
         return $this->MidocoTssClientMetadata;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoTssClientMetadata method
+     * This method is responsible for validating the value(s) passed to the setMidocoTssClientMetadata method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoTssClientMetadata method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoTssClientMetadataForArrayConstraintsFromSetMidocoTssClientMetadata(array $values = []): string
+    public static function validateMidocoTssClientMetadataForArrayConstraintFromSetMidocoTssClientMetadata(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoTssClientMidocoTssClientMetadataItem) {
@@ -85,10 +90,10 @@ class MidocoTssClient extends TssClientDTO
      * @param \Pggns\MidocoApi\Order\StructType\MidocoTssClientMetadata[] $midocoTssClientMetadata
      * @return \Pggns\MidocoApi\Order\StructType\MidocoTssClient
      */
-    public function setMidocoTssClientMetadata(array $midocoTssClientMetadata = []): self
+    public function setMidocoTssClientMetadata(?array $midocoTssClientMetadata = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoTssClientMetadataArrayErrorMessage = self::validateMidocoTssClientMetadataForArrayConstraintsFromSetMidocoTssClientMetadata($midocoTssClientMetadata))) {
+        if ('' !== ($midocoTssClientMetadataArrayErrorMessage = self::validateMidocoTssClientMetadataForArrayConstraintFromSetMidocoTssClientMetadata($midocoTssClientMetadata))) {
             throw new InvalidArgumentException($midocoTssClientMetadataArrayErrorMessage, __LINE__);
         }
         $this->MidocoTssClientMetadata = $midocoTssClientMetadata;

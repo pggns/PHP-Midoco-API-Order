@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MedStlmntProdDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MedStlmntProdDTO extends AbstractStructBase
 {
     /**

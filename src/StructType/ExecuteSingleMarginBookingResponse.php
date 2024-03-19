@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ExecuteSingleMarginBookingResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ExecuteSingleMarginBookingResponse extends AbstractStructBase
 {
 }

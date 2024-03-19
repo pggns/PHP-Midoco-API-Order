@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SupplierHistoricalInfo StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SupplierHistoricalInfo extends AbstractStructBase
 {
     /**

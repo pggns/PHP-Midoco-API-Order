@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoFlightSegmentDetails StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoFlightSegmentDetails extends FlightSegmentDetailDTO
 {
     /**
@@ -21,13 +22,13 @@ class MidocoFlightSegmentDetails extends FlightSegmentDetailDTO
      * - ref: MidocoExtendedSellPassenger
      * @var \Pggns\MidocoApi\Order\StructType\MidocoExtendedSellPassenger[]
      */
-    protected array $MidocoExtendedSellPassenger = [];
+    protected ?array $MidocoExtendedSellPassenger = null;
     /**
      * Constructor method for MidocoFlightSegmentDetails
      * @uses MidocoFlightSegmentDetails::setMidocoExtendedSellPassenger()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoExtendedSellPassenger[] $midocoExtendedSellPassenger
      */
-    public function __construct(array $midocoExtendedSellPassenger = [])
+    public function __construct(?array $midocoExtendedSellPassenger = null)
     {
         $this
             ->setMidocoExtendedSellPassenger($midocoExtendedSellPassenger);
@@ -36,18 +37,22 @@ class MidocoFlightSegmentDetails extends FlightSegmentDetailDTO
      * Get MidocoExtendedSellPassenger value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoExtendedSellPassenger[]
      */
-    public function getMidocoExtendedSellPassenger(): array
+    public function getMidocoExtendedSellPassenger(): ?array
     {
         return $this->MidocoExtendedSellPassenger;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoExtendedSellPassenger method
+     * This method is responsible for validating the value(s) passed to the setMidocoExtendedSellPassenger method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoExtendedSellPassenger method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoExtendedSellPassengerForArrayConstraintsFromSetMidocoExtendedSellPassenger(array $values = []): string
+    public static function validateMidocoExtendedSellPassengerForArrayConstraintFromSetMidocoExtendedSellPassenger(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoFlightSegmentDetailsMidocoExtendedSellPassengerItem) {
@@ -69,10 +74,10 @@ class MidocoFlightSegmentDetails extends FlightSegmentDetailDTO
      * @param \Pggns\MidocoApi\Order\StructType\MidocoExtendedSellPassenger[] $midocoExtendedSellPassenger
      * @return \Pggns\MidocoApi\Order\StructType\MidocoFlightSegmentDetails
      */
-    public function setMidocoExtendedSellPassenger(array $midocoExtendedSellPassenger = []): self
+    public function setMidocoExtendedSellPassenger(?array $midocoExtendedSellPassenger = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoExtendedSellPassengerArrayErrorMessage = self::validateMidocoExtendedSellPassengerForArrayConstraintsFromSetMidocoExtendedSellPassenger($midocoExtendedSellPassenger))) {
+        if ('' !== ($midocoExtendedSellPassengerArrayErrorMessage = self::validateMidocoExtendedSellPassengerForArrayConstraintFromSetMidocoExtendedSellPassenger($midocoExtendedSellPassenger))) {
             throw new InvalidArgumentException($midocoExtendedSellPassengerArrayErrorMessage, __LINE__);
         }
         $this->MidocoExtendedSellPassenger = $midocoExtendedSellPassenger;

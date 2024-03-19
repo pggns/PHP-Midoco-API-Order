@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for HandleBookingDotComNotificationResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class HandleBookingDotComNotificationResponse extends AbstractStructBase
 {
 }

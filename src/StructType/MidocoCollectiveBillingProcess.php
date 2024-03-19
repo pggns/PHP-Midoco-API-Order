@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoCollectiveBillingProcess StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoCollectiveBillingProcess extends AbstractStructBase
 {
     /**

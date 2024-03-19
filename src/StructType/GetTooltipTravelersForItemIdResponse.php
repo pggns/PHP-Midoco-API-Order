@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetTooltipTravelersForItemIdResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetTooltipTravelersForItemIdResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetTooltipTravelersForItemIdResponse extends AbstractStructBase
      * - ref: MidocoTooltipTravelersForItem
      * @var \Pggns\MidocoApi\Order\StructType\MidocoTooltipTravelersForItem[]
      */
-    protected array $MidocoTooltipTravelersForItem = [];
+    protected ?array $MidocoTooltipTravelersForItem = null;
     /**
      * Constructor method for GetTooltipTravelersForItemIdResponse
      * @uses GetTooltipTravelersForItemIdResponse::setMidocoTooltipTravelersForItem()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoTooltipTravelersForItem[] $midocoTooltipTravelersForItem
      */
-    public function __construct(array $midocoTooltipTravelersForItem = [])
+    public function __construct(?array $midocoTooltipTravelersForItem = null)
     {
         $this
             ->setMidocoTooltipTravelersForItem($midocoTooltipTravelersForItem);
@@ -36,18 +37,22 @@ class GetTooltipTravelersForItemIdResponse extends AbstractStructBase
      * Get MidocoTooltipTravelersForItem value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoTooltipTravelersForItem[]
      */
-    public function getMidocoTooltipTravelersForItem(): array
+    public function getMidocoTooltipTravelersForItem(): ?array
     {
         return $this->MidocoTooltipTravelersForItem;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoTooltipTravelersForItem method
+     * This method is responsible for validating the value(s) passed to the setMidocoTooltipTravelersForItem method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoTooltipTravelersForItem method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoTooltipTravelersForItemForArrayConstraintsFromSetMidocoTooltipTravelersForItem(array $values = []): string
+    public static function validateMidocoTooltipTravelersForItemForArrayConstraintFromSetMidocoTooltipTravelersForItem(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getTooltipTravelersForItemIdResponseMidocoTooltipTravelersForItemItem) {
@@ -69,10 +74,10 @@ class GetTooltipTravelersForItemIdResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoTooltipTravelersForItem[] $midocoTooltipTravelersForItem
      * @return \Pggns\MidocoApi\Order\StructType\GetTooltipTravelersForItemIdResponse
      */
-    public function setMidocoTooltipTravelersForItem(array $midocoTooltipTravelersForItem = []): self
+    public function setMidocoTooltipTravelersForItem(?array $midocoTooltipTravelersForItem = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoTooltipTravelersForItemArrayErrorMessage = self::validateMidocoTooltipTravelersForItemForArrayConstraintsFromSetMidocoTooltipTravelersForItem($midocoTooltipTravelersForItem))) {
+        if ('' !== ($midocoTooltipTravelersForItemArrayErrorMessage = self::validateMidocoTooltipTravelersForItemForArrayConstraintFromSetMidocoTooltipTravelersForItem($midocoTooltipTravelersForItem))) {
             throw new InvalidArgumentException($midocoTooltipTravelersForItemArrayErrorMessage, __LINE__);
         }
         $this->MidocoTooltipTravelersForItem = $midocoTooltipTravelersForItem;

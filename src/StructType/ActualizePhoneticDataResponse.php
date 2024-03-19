@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: actualizePhoneticData
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ActualizePhoneticDataResponse extends AbstractStructBase
 {
 }

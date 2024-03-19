@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DatahubQueueDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DatahubQueueDTO extends AbstractStructBase
 {
     /**

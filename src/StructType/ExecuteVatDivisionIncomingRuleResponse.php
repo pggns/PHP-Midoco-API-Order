@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ExecuteVatDivisionIncomingRuleResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ExecuteVatDivisionIncomingRuleResponse extends AbstractStructBase
 {
     /**
@@ -21,7 +22,7 @@ class ExecuteVatDivisionIncomingRuleResponse extends AbstractStructBase
      * - ref: ordersd:MidocoVatCode
      * @var \Pggns\MidocoApi\Order\StructType\MidocoVatCode[]
      */
-    protected array $MidocoVatCode = [];
+    protected ?array $MidocoVatCode = null;
     /**
      * The MidocoRevenueBookingVatDiv
      * Meta information extracted from the WSDL
@@ -30,7 +31,7 @@ class ExecuteVatDivisionIncomingRuleResponse extends AbstractStructBase
      * - ref: MidocoRevenueBookingVatDiv
      * @var \Pggns\MidocoApi\Order\StructType\MidocoRevenueBookingVatDiv[]
      */
-    protected array $MidocoRevenueBookingVatDiv = [];
+    protected ?array $MidocoRevenueBookingVatDiv = null;
     /**
      * Constructor method for ExecuteVatDivisionIncomingRuleResponse
      * @uses ExecuteVatDivisionIncomingRuleResponse::setMidocoVatCode()
@@ -38,7 +39,7 @@ class ExecuteVatDivisionIncomingRuleResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoVatCode[] $midocoVatCode
      * @param \Pggns\MidocoApi\Order\StructType\MidocoRevenueBookingVatDiv[] $midocoRevenueBookingVatDiv
      */
-    public function __construct(array $midocoVatCode = [], array $midocoRevenueBookingVatDiv = [])
+    public function __construct(?array $midocoVatCode = null, ?array $midocoRevenueBookingVatDiv = null)
     {
         $this
             ->setMidocoVatCode($midocoVatCode)
@@ -48,18 +49,22 @@ class ExecuteVatDivisionIncomingRuleResponse extends AbstractStructBase
      * Get MidocoVatCode value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoVatCode[]
      */
-    public function getMidocoVatCode(): array
+    public function getMidocoVatCode(): ?array
     {
         return $this->MidocoVatCode;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoVatCode method
+     * This method is responsible for validating the value(s) passed to the setMidocoVatCode method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoVatCode method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoVatCodeForArrayConstraintsFromSetMidocoVatCode(array $values = []): string
+    public static function validateMidocoVatCodeForArrayConstraintFromSetMidocoVatCode(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $executeVatDivisionIncomingRuleResponseMidocoVatCodeItem) {
@@ -81,10 +86,10 @@ class ExecuteVatDivisionIncomingRuleResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoVatCode[] $midocoVatCode
      * @return \Pggns\MidocoApi\Order\StructType\ExecuteVatDivisionIncomingRuleResponse
      */
-    public function setMidocoVatCode(array $midocoVatCode = []): self
+    public function setMidocoVatCode(?array $midocoVatCode = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoVatCodeArrayErrorMessage = self::validateMidocoVatCodeForArrayConstraintsFromSetMidocoVatCode($midocoVatCode))) {
+        if ('' !== ($midocoVatCodeArrayErrorMessage = self::validateMidocoVatCodeForArrayConstraintFromSetMidocoVatCode($midocoVatCode))) {
             throw new InvalidArgumentException($midocoVatCodeArrayErrorMessage, __LINE__);
         }
         $this->MidocoVatCode = $midocoVatCode;
@@ -111,18 +116,22 @@ class ExecuteVatDivisionIncomingRuleResponse extends AbstractStructBase
      * Get MidocoRevenueBookingVatDiv value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoRevenueBookingVatDiv[]
      */
-    public function getMidocoRevenueBookingVatDiv(): array
+    public function getMidocoRevenueBookingVatDiv(): ?array
     {
         return $this->MidocoRevenueBookingVatDiv;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoRevenueBookingVatDiv method
+     * This method is responsible for validating the value(s) passed to the setMidocoRevenueBookingVatDiv method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoRevenueBookingVatDiv method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoRevenueBookingVatDivForArrayConstraintsFromSetMidocoRevenueBookingVatDiv(array $values = []): string
+    public static function validateMidocoRevenueBookingVatDivForArrayConstraintFromSetMidocoRevenueBookingVatDiv(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $executeVatDivisionIncomingRuleResponseMidocoRevenueBookingVatDivItem) {
@@ -144,10 +153,10 @@ class ExecuteVatDivisionIncomingRuleResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoRevenueBookingVatDiv[] $midocoRevenueBookingVatDiv
      * @return \Pggns\MidocoApi\Order\StructType\ExecuteVatDivisionIncomingRuleResponse
      */
-    public function setMidocoRevenueBookingVatDiv(array $midocoRevenueBookingVatDiv = []): self
+    public function setMidocoRevenueBookingVatDiv(?array $midocoRevenueBookingVatDiv = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoRevenueBookingVatDivArrayErrorMessage = self::validateMidocoRevenueBookingVatDivForArrayConstraintsFromSetMidocoRevenueBookingVatDiv($midocoRevenueBookingVatDiv))) {
+        if ('' !== ($midocoRevenueBookingVatDivArrayErrorMessage = self::validateMidocoRevenueBookingVatDivForArrayConstraintFromSetMidocoRevenueBookingVatDiv($midocoRevenueBookingVatDiv))) {
             throw new InvalidArgumentException($midocoRevenueBookingVatDivArrayErrorMessage, __LINE__);
         }
         $this->MidocoRevenueBookingVatDiv = $midocoRevenueBookingVatDiv;

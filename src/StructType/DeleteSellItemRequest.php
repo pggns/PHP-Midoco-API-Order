@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteSellItemRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteSellItemRequest extends AbstractStructBase
 {
     /**

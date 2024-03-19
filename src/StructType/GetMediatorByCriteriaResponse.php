@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetMediatorByCriteriaResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetMediatorByCriteriaResponse extends AbstractStructBase
 {
     /**

@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: deleteBillingDocument --- deletes a billing document if its document no is empty
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteBillingDocumentResponse extends AbstractStructBase
 {
 }

@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: return the fee types that match the criteria
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ListMidocoFeeTypesResponse extends AbstractStructBase
 {
     /**
@@ -23,13 +24,13 @@ class ListMidocoFeeTypesResponse extends AbstractStructBase
      * - ref: MidocoFeeType
      * @var \Pggns\MidocoApi\Order\StructType\MidocoFeeType[]
      */
-    protected array $MidocoFeeType = [];
+    protected ?array $MidocoFeeType = null;
     /**
      * Constructor method for ListMidocoFeeTypesResponse
      * @uses ListMidocoFeeTypesResponse::setMidocoFeeType()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoFeeType[] $midocoFeeType
      */
-    public function __construct(array $midocoFeeType = [])
+    public function __construct(?array $midocoFeeType = null)
     {
         $this
             ->setMidocoFeeType($midocoFeeType);
@@ -38,18 +39,22 @@ class ListMidocoFeeTypesResponse extends AbstractStructBase
      * Get MidocoFeeType value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoFeeType[]
      */
-    public function getMidocoFeeType(): array
+    public function getMidocoFeeType(): ?array
     {
         return $this->MidocoFeeType;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoFeeType method
+     * This method is responsible for validating the value(s) passed to the setMidocoFeeType method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoFeeType method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoFeeTypeForArrayConstraintsFromSetMidocoFeeType(array $values = []): string
+    public static function validateMidocoFeeTypeForArrayConstraintFromSetMidocoFeeType(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $listMidocoFeeTypesResponseMidocoFeeTypeItem) {
@@ -71,10 +76,10 @@ class ListMidocoFeeTypesResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoFeeType[] $midocoFeeType
      * @return \Pggns\MidocoApi\Order\StructType\ListMidocoFeeTypesResponse
      */
-    public function setMidocoFeeType(array $midocoFeeType = []): self
+    public function setMidocoFeeType(?array $midocoFeeType = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoFeeTypeArrayErrorMessage = self::validateMidocoFeeTypeForArrayConstraintsFromSetMidocoFeeType($midocoFeeType))) {
+        if ('' !== ($midocoFeeTypeArrayErrorMessage = self::validateMidocoFeeTypeForArrayConstraintFromSetMidocoFeeType($midocoFeeType))) {
             throw new InvalidArgumentException($midocoFeeTypeArrayErrorMessage, __LINE__);
         }
         $this->MidocoFeeType = $midocoFeeType;

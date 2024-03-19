@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for PS2ImportResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class PS2ImportResponse extends AbstractStructBase
 {
     /**
@@ -20,7 +21,7 @@ class PS2ImportResponse extends AbstractStructBase
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\PS2ImportStatus[]
      */
-    protected array $PS2ImportStatus = [];
+    protected ?array $PS2ImportStatus = null;
     /**
      * The error
      * Meta information extracted from the WSDL
@@ -35,7 +36,7 @@ class PS2ImportResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\PS2ImportStatus[] $pS2ImportStatus
      * @param string $error
      */
-    public function __construct(array $pS2ImportStatus = [], ?string $error = null)
+    public function __construct(?array $pS2ImportStatus = null, ?string $error = null)
     {
         $this
             ->setPS2ImportStatus($pS2ImportStatus)
@@ -45,18 +46,22 @@ class PS2ImportResponse extends AbstractStructBase
      * Get PS2ImportStatus value
      * @return \Pggns\MidocoApi\Order\StructType\PS2ImportStatus[]
      */
-    public function getPS2ImportStatus(): array
+    public function getPS2ImportStatus(): ?array
     {
         return $this->PS2ImportStatus;
     }
     /**
-     * This method is responsible for validating the values passed to the setPS2ImportStatus method
+     * This method is responsible for validating the value(s) passed to the setPS2ImportStatus method
      * This method is willingly generated in order to preserve the one-line inline validation within the setPS2ImportStatus method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validatePS2ImportStatusForArrayConstraintsFromSetPS2ImportStatus(array $values = []): string
+    public static function validatePS2ImportStatusForArrayConstraintFromSetPS2ImportStatus(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $pS2ImportResponsePS2ImportStatusItem) {
@@ -78,10 +83,10 @@ class PS2ImportResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\PS2ImportStatus[] $pS2ImportStatus
      * @return \Pggns\MidocoApi\Order\StructType\PS2ImportResponse
      */
-    public function setPS2ImportStatus(array $pS2ImportStatus = []): self
+    public function setPS2ImportStatus(?array $pS2ImportStatus = null): self
     {
         // validation for constraint: array
-        if ('' !== ($pS2ImportStatusArrayErrorMessage = self::validatePS2ImportStatusForArrayConstraintsFromSetPS2ImportStatus($pS2ImportStatus))) {
+        if ('' !== ($pS2ImportStatusArrayErrorMessage = self::validatePS2ImportStatusForArrayConstraintFromSetPS2ImportStatus($pS2ImportStatus))) {
             throw new InvalidArgumentException($pS2ImportStatusArrayErrorMessage, __LINE__);
         }
         $this->PS2ImportStatus = $pS2ImportStatus;

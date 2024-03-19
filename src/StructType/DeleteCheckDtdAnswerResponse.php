@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteCheckDtdAnswerResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteCheckDtdAnswerResponse extends AbstractStructBase
 {
 }

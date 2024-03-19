@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: define vat division
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class Vat_division extends AbstractStructBase
 {
     /**

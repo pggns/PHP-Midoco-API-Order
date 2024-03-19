@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: Request the latest transaction's information via HTTP GET, and update MilesAndMoreBurnTransaction and billing if necessary.
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class RefreshMilesAndMoreBurnTransactionStatusRequest extends AbstractStructBase
 {
     /**
@@ -70,16 +71,16 @@ class RefreshMilesAndMoreBurnTransactionStatusRequest extends AbstractStructBase
      */
     public function getBillingDocumentId(): ?int
     {
-        return isset($this->billingDocumentId) ? $this->billingDocumentId : null;
+        return $this->billingDocumentId ?? null;
     }
     /**
-     * This method is responsible for validating the value passed to the setBillingDocumentId method
+     * This method is responsible for validating the value(s) passed to the setBillingDocumentId method
      * This method is willingly generated in order to preserve the one-line inline validation within the setBillingDocumentId method
      * This has to validate that the property which is being set is the only one among the given choices
      * @param mixed $value
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public function validateBillingDocumentIdForChoiceConstraintsFromSetBillingDocumentId($value): string
+    public function validateBillingDocumentIdForChoiceConstraintFromSetBillingDocumentId($value): string
     {
         $message = '';
         if (is_null($value)) {
@@ -117,7 +118,7 @@ class RefreshMilesAndMoreBurnTransactionStatusRequest extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($billingDocumentId, true), gettype($billingDocumentId)), __LINE__);
         }
         // validation for constraint: choice(billingDocumentId, billingPositionId, MilesAndMoreCallbackParameters)
-        if ('' !== ($billingDocumentIdChoiceErrorMessage = self::validateBillingDocumentIdForChoiceConstraintsFromSetBillingDocumentId($billingDocumentId))) {
+        if ('' !== ($billingDocumentIdChoiceErrorMessage = self::validateBillingDocumentIdForChoiceConstraintFromSetBillingDocumentId($billingDocumentId))) {
             throw new InvalidArgumentException($billingDocumentIdChoiceErrorMessage, __LINE__);
         }
         // validation for constraint: minInclusive(1)
@@ -138,16 +139,16 @@ class RefreshMilesAndMoreBurnTransactionStatusRequest extends AbstractStructBase
      */
     public function getBillingPositionId(): ?int
     {
-        return isset($this->billingPositionId) ? $this->billingPositionId : null;
+        return $this->billingPositionId ?? null;
     }
     /**
-     * This method is responsible for validating the value passed to the setBillingPositionId method
+     * This method is responsible for validating the value(s) passed to the setBillingPositionId method
      * This method is willingly generated in order to preserve the one-line inline validation within the setBillingPositionId method
      * This has to validate that the property which is being set is the only one among the given choices
      * @param mixed $value
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public function validateBillingPositionIdForChoiceConstraintsFromSetBillingPositionId($value): string
+    public function validateBillingPositionIdForChoiceConstraintFromSetBillingPositionId($value): string
     {
         $message = '';
         if (is_null($value)) {
@@ -185,7 +186,7 @@ class RefreshMilesAndMoreBurnTransactionStatusRequest extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($billingPositionId, true), gettype($billingPositionId)), __LINE__);
         }
         // validation for constraint: choice(billingDocumentId, billingPositionId, MilesAndMoreCallbackParameters)
-        if ('' !== ($billingPositionIdChoiceErrorMessage = self::validateBillingPositionIdForChoiceConstraintsFromSetBillingPositionId($billingPositionId))) {
+        if ('' !== ($billingPositionIdChoiceErrorMessage = self::validateBillingPositionIdForChoiceConstraintFromSetBillingPositionId($billingPositionId))) {
             throw new InvalidArgumentException($billingPositionIdChoiceErrorMessage, __LINE__);
         }
         // validation for constraint: minInclusive(1)
@@ -206,16 +207,16 @@ class RefreshMilesAndMoreBurnTransactionStatusRequest extends AbstractStructBase
      */
     public function getMilesAndMoreCallbackParameters(): ?\Pggns\MidocoApi\Order\StructType\MilesAndMoreCallbackParameters
     {
-        return isset($this->MilesAndMoreCallbackParameters) ? $this->MilesAndMoreCallbackParameters : null;
+        return $this->MilesAndMoreCallbackParameters ?? null;
     }
     /**
-     * This method is responsible for validating the value passed to the setMilesAndMoreCallbackParameters method
+     * This method is responsible for validating the value(s) passed to the setMilesAndMoreCallbackParameters method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMilesAndMoreCallbackParameters method
      * This has to validate that the property which is being set is the only one among the given choices
      * @param mixed $value
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public function validateMilesAndMoreCallbackParametersForChoiceConstraintsFromSetMilesAndMoreCallbackParameters($value): string
+    public function validateMilesAndMoreCallbackParametersForChoiceConstraintFromSetMilesAndMoreCallbackParameters($value): string
     {
         $message = '';
         if (is_null($value)) {
@@ -249,7 +250,7 @@ class RefreshMilesAndMoreBurnTransactionStatusRequest extends AbstractStructBase
     public function setMilesAndMoreCallbackParameters(?\Pggns\MidocoApi\Order\StructType\MilesAndMoreCallbackParameters $milesAndMoreCallbackParameters = null): self
     {
         // validation for constraint: choice(billingDocumentId, billingPositionId, MilesAndMoreCallbackParameters)
-        if ('' !== ($milesAndMoreCallbackParametersChoiceErrorMessage = self::validateMilesAndMoreCallbackParametersForChoiceConstraintsFromSetMilesAndMoreCallbackParameters($milesAndMoreCallbackParameters))) {
+        if ('' !== ($milesAndMoreCallbackParametersChoiceErrorMessage = self::validateMilesAndMoreCallbackParametersForChoiceConstraintFromSetMilesAndMoreCallbackParameters($milesAndMoreCallbackParameters))) {
             throw new InvalidArgumentException($milesAndMoreCallbackParametersChoiceErrorMessage, __LINE__);
         }
         if (is_null($milesAndMoreCallbackParameters) || (is_array($milesAndMoreCallbackParameters) && empty($milesAndMoreCallbackParameters))) {

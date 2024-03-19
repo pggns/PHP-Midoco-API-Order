@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetNamePrefixListResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetNamePrefixListResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetNamePrefixListResponse extends AbstractStructBase
      * - ref: MidocoNamePrefix
      * @var \Pggns\MidocoApi\Order\StructType\NamePrefixDTO[]
      */
-    protected array $MidocoNamePrefix = [];
+    protected ?array $MidocoNamePrefix = null;
     /**
      * Constructor method for GetNamePrefixListResponse
      * @uses GetNamePrefixListResponse::setMidocoNamePrefix()
      * @param \Pggns\MidocoApi\Order\StructType\NamePrefixDTO[] $midocoNamePrefix
      */
-    public function __construct(array $midocoNamePrefix = [])
+    public function __construct(?array $midocoNamePrefix = null)
     {
         $this
             ->setMidocoNamePrefix($midocoNamePrefix);
@@ -36,18 +37,22 @@ class GetNamePrefixListResponse extends AbstractStructBase
      * Get MidocoNamePrefix value
      * @return \Pggns\MidocoApi\Order\StructType\NamePrefixDTO[]
      */
-    public function getMidocoNamePrefix(): array
+    public function getMidocoNamePrefix(): ?array
     {
         return $this->MidocoNamePrefix;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoNamePrefix method
+     * This method is responsible for validating the value(s) passed to the setMidocoNamePrefix method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoNamePrefix method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoNamePrefixForArrayConstraintsFromSetMidocoNamePrefix(array $values = []): string
+    public static function validateMidocoNamePrefixForArrayConstraintFromSetMidocoNamePrefix(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getNamePrefixListResponseMidocoNamePrefixItem) {
@@ -69,10 +74,10 @@ class GetNamePrefixListResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\NamePrefixDTO[] $midocoNamePrefix
      * @return \Pggns\MidocoApi\Order\StructType\GetNamePrefixListResponse
      */
-    public function setMidocoNamePrefix(array $midocoNamePrefix = []): self
+    public function setMidocoNamePrefix(?array $midocoNamePrefix = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoNamePrefixArrayErrorMessage = self::validateMidocoNamePrefixForArrayConstraintsFromSetMidocoNamePrefix($midocoNamePrefix))) {
+        if ('' !== ($midocoNamePrefixArrayErrorMessage = self::validateMidocoNamePrefixForArrayConstraintFromSetMidocoNamePrefix($midocoNamePrefix))) {
             throw new InvalidArgumentException($midocoNamePrefixArrayErrorMessage, __LINE__);
         }
         $this->MidocoNamePrefix = $midocoNamePrefix;

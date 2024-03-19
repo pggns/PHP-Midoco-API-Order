@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for PrepareMidocoMailMessageRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class PrepareMidocoMailMessageRequest extends AbstractStructBase
 {
     /**

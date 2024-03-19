@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: updateFlightTimeChangeEmail --- updates a given FlightTimeChange Email
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class UpdateFlightTimeChangeEmailDetResponse extends AbstractStructBase
 {
     /**

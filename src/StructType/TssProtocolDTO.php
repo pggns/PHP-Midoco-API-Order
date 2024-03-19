@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for TssProtocolDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class TssProtocolDTO extends AbstractStructBase
 {
     /**

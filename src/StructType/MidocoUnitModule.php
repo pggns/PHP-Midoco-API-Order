@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoUnitModule StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoUnitModule extends UnitModuleDTO
 {
     /**

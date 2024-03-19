@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoTravisImportCampaign StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoTravisImportCampaign extends AbstractStructBase
 {
     /**

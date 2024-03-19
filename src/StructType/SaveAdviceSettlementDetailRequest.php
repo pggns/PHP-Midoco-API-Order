@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveAdviceSettlementDetailRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveAdviceSettlementDetailRequest extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class SaveAdviceSettlementDetailRequest extends AbstractStructBase
      * - ref: MidocoAdviceSettlementDetail
      * @var \Pggns\MidocoApi\Order\StructType\MidocoAdviceSettlementDetail[]
      */
-    protected array $MidocoAdviceSettlementDetail = [];
+    protected ?array $MidocoAdviceSettlementDetail = null;
     /**
      * Constructor method for SaveAdviceSettlementDetailRequest
      * @uses SaveAdviceSettlementDetailRequest::setMidocoAdviceSettlementDetail()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoAdviceSettlementDetail[] $midocoAdviceSettlementDetail
      */
-    public function __construct(array $midocoAdviceSettlementDetail = [])
+    public function __construct(?array $midocoAdviceSettlementDetail = null)
     {
         $this
             ->setMidocoAdviceSettlementDetail($midocoAdviceSettlementDetail);
@@ -36,18 +37,22 @@ class SaveAdviceSettlementDetailRequest extends AbstractStructBase
      * Get MidocoAdviceSettlementDetail value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoAdviceSettlementDetail[]
      */
-    public function getMidocoAdviceSettlementDetail(): array
+    public function getMidocoAdviceSettlementDetail(): ?array
     {
         return $this->MidocoAdviceSettlementDetail;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoAdviceSettlementDetail method
+     * This method is responsible for validating the value(s) passed to the setMidocoAdviceSettlementDetail method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoAdviceSettlementDetail method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoAdviceSettlementDetailForArrayConstraintsFromSetMidocoAdviceSettlementDetail(array $values = []): string
+    public static function validateMidocoAdviceSettlementDetailForArrayConstraintFromSetMidocoAdviceSettlementDetail(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $saveAdviceSettlementDetailRequestMidocoAdviceSettlementDetailItem) {
@@ -69,10 +74,10 @@ class SaveAdviceSettlementDetailRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoAdviceSettlementDetail[] $midocoAdviceSettlementDetail
      * @return \Pggns\MidocoApi\Order\StructType\SaveAdviceSettlementDetailRequest
      */
-    public function setMidocoAdviceSettlementDetail(array $midocoAdviceSettlementDetail = []): self
+    public function setMidocoAdviceSettlementDetail(?array $midocoAdviceSettlementDetail = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoAdviceSettlementDetailArrayErrorMessage = self::validateMidocoAdviceSettlementDetailForArrayConstraintsFromSetMidocoAdviceSettlementDetail($midocoAdviceSettlementDetail))) {
+        if ('' !== ($midocoAdviceSettlementDetailArrayErrorMessage = self::validateMidocoAdviceSettlementDetailForArrayConstraintFromSetMidocoAdviceSettlementDetail($midocoAdviceSettlementDetail))) {
             throw new InvalidArgumentException($midocoAdviceSettlementDetailArrayErrorMessage, __LINE__);
         }
         $this->MidocoAdviceSettlementDetail = $midocoAdviceSettlementDetail;

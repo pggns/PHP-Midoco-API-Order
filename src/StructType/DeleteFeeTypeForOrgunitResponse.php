@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteFeeTypeForOrgunitResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteFeeTypeForOrgunitResponse extends AbstractStructBase
 {
 }

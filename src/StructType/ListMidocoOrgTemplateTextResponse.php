@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ListMidocoOrgTemplateTextResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ListMidocoOrgTemplateTextResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class ListMidocoOrgTemplateTextResponse extends AbstractStructBase
      * - ref: MidocoOrgTemplateTextInfo
      * @var \Pggns\MidocoApi\Order\StructType\MidocoOrgTemplateTextInfo[]
      */
-    protected array $MidocoOrgTemplateTextInfo = [];
+    protected ?array $MidocoOrgTemplateTextInfo = null;
     /**
      * Constructor method for ListMidocoOrgTemplateTextResponse
      * @uses ListMidocoOrgTemplateTextResponse::setMidocoOrgTemplateTextInfo()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoOrgTemplateTextInfo[] $midocoOrgTemplateTextInfo
      */
-    public function __construct(array $midocoOrgTemplateTextInfo = [])
+    public function __construct(?array $midocoOrgTemplateTextInfo = null)
     {
         $this
             ->setMidocoOrgTemplateTextInfo($midocoOrgTemplateTextInfo);
@@ -36,18 +37,22 @@ class ListMidocoOrgTemplateTextResponse extends AbstractStructBase
      * Get MidocoOrgTemplateTextInfo value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoOrgTemplateTextInfo[]
      */
-    public function getMidocoOrgTemplateTextInfo(): array
+    public function getMidocoOrgTemplateTextInfo(): ?array
     {
         return $this->MidocoOrgTemplateTextInfo;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoOrgTemplateTextInfo method
+     * This method is responsible for validating the value(s) passed to the setMidocoOrgTemplateTextInfo method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoOrgTemplateTextInfo method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoOrgTemplateTextInfoForArrayConstraintsFromSetMidocoOrgTemplateTextInfo(array $values = []): string
+    public static function validateMidocoOrgTemplateTextInfoForArrayConstraintFromSetMidocoOrgTemplateTextInfo(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $listMidocoOrgTemplateTextResponseMidocoOrgTemplateTextInfoItem) {
@@ -69,10 +74,10 @@ class ListMidocoOrgTemplateTextResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoOrgTemplateTextInfo[] $midocoOrgTemplateTextInfo
      * @return \Pggns\MidocoApi\Order\StructType\ListMidocoOrgTemplateTextResponse
      */
-    public function setMidocoOrgTemplateTextInfo(array $midocoOrgTemplateTextInfo = []): self
+    public function setMidocoOrgTemplateTextInfo(?array $midocoOrgTemplateTextInfo = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoOrgTemplateTextInfoArrayErrorMessage = self::validateMidocoOrgTemplateTextInfoForArrayConstraintsFromSetMidocoOrgTemplateTextInfo($midocoOrgTemplateTextInfo))) {
+        if ('' !== ($midocoOrgTemplateTextInfoArrayErrorMessage = self::validateMidocoOrgTemplateTextInfoForArrayConstraintFromSetMidocoOrgTemplateTextInfo($midocoOrgTemplateTextInfo))) {
             throw new InvalidArgumentException($midocoOrgTemplateTextInfoArrayErrorMessage, __LINE__);
         }
         $this->MidocoOrgTemplateTextInfo = $midocoOrgTemplateTextInfo;

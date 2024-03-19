@@ -15,6 +15,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * print-Queue of the workstation. It does not contain the printjob itself !
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class PrintBillingDocumentResponse extends AbstractStructBase
 {
     /**

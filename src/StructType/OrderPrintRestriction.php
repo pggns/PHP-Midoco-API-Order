@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for OrderPrintRestriction StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class OrderPrintRestriction extends AbstractStructBase
 {
     /**
@@ -21,7 +22,7 @@ class OrderPrintRestriction extends AbstractStructBase
      * - ref: SellItemPrintRestriction
      * @var \Pggns\MidocoApi\Order\StructType\SellItemPrintRestriction[]
      */
-    protected array $SellItemPrintRestriction = [];
+    protected ?array $SellItemPrintRestriction = null;
     /**
      * The disableOrderInvoice
      * @var bool|null
@@ -69,7 +70,7 @@ class OrderPrintRestriction extends AbstractStructBase
      * @param bool $disableExplVoidInvoice
      * @param bool $suggestExplVoidInvoice
      */
-    public function __construct(array $sellItemPrintRestriction = [], ?bool $disableOrderInvoice = null, ?bool $disableSelectiveInvoice = null, ?bool $suggestOrderInvoice = null, ?bool $suggestSelectiveInvoice = null, ?bool $disableExplVoidInvoice = null, ?bool $suggestExplVoidInvoice = null)
+    public function __construct(?array $sellItemPrintRestriction = null, ?bool $disableOrderInvoice = null, ?bool $disableSelectiveInvoice = null, ?bool $suggestOrderInvoice = null, ?bool $suggestSelectiveInvoice = null, ?bool $disableExplVoidInvoice = null, ?bool $suggestExplVoidInvoice = null)
     {
         $this
             ->setSellItemPrintRestriction($sellItemPrintRestriction)
@@ -84,18 +85,22 @@ class OrderPrintRestriction extends AbstractStructBase
      * Get SellItemPrintRestriction value
      * @return \Pggns\MidocoApi\Order\StructType\SellItemPrintRestriction[]
      */
-    public function getSellItemPrintRestriction(): array
+    public function getSellItemPrintRestriction(): ?array
     {
         return $this->SellItemPrintRestriction;
     }
     /**
-     * This method is responsible for validating the values passed to the setSellItemPrintRestriction method
+     * This method is responsible for validating the value(s) passed to the setSellItemPrintRestriction method
      * This method is willingly generated in order to preserve the one-line inline validation within the setSellItemPrintRestriction method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateSellItemPrintRestrictionForArrayConstraintsFromSetSellItemPrintRestriction(array $values = []): string
+    public static function validateSellItemPrintRestrictionForArrayConstraintFromSetSellItemPrintRestriction(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $orderPrintRestrictionSellItemPrintRestrictionItem) {
@@ -117,10 +122,10 @@ class OrderPrintRestriction extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\SellItemPrintRestriction[] $sellItemPrintRestriction
      * @return \Pggns\MidocoApi\Order\StructType\OrderPrintRestriction
      */
-    public function setSellItemPrintRestriction(array $sellItemPrintRestriction = []): self
+    public function setSellItemPrintRestriction(?array $sellItemPrintRestriction = null): self
     {
         // validation for constraint: array
-        if ('' !== ($sellItemPrintRestrictionArrayErrorMessage = self::validateSellItemPrintRestrictionForArrayConstraintsFromSetSellItemPrintRestriction($sellItemPrintRestriction))) {
+        if ('' !== ($sellItemPrintRestrictionArrayErrorMessage = self::validateSellItemPrintRestrictionForArrayConstraintFromSetSellItemPrintRestriction($sellItemPrintRestriction))) {
             throw new InvalidArgumentException($sellItemPrintRestrictionArrayErrorMessage, __LINE__);
         }
         $this->SellItemPrintRestriction = $sellItemPrintRestriction;

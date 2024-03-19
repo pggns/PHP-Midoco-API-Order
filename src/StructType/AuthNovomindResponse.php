@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for AuthNovomindResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class AuthNovomindResponse extends AbstractStructBase
 {
     /**

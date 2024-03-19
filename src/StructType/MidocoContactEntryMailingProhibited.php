@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoContactEntryMailingProhibited StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoContactEntryMailingProhibited extends MidocoContactEntryType
 {
     /**

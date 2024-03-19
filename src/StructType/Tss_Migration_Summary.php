@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for Tss-Migration-Summary StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class Tss_Migration_Summary extends AbstractStructBase
 {
     /**

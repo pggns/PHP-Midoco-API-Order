@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for BookingBlacklistDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class BookingBlacklistDTO extends AbstractStructBase
 {
     /**

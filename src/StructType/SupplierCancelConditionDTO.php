@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SupplierCancelConditionDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SupplierCancelConditionDTO extends AbstractStructBase
 {
     /**

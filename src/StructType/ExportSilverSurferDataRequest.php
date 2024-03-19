@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ExportSilverSurferDataRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ExportSilverSurferDataRequest extends AbstractStructBase
 {
     /**
@@ -21,7 +22,7 @@ class ExportSilverSurferDataRequest extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $unitNames = [];
+    protected ?array $unitNames = null;
     /**
      * The startTravel
      * @var string|null
@@ -34,7 +35,7 @@ class ExportSilverSurferDataRequest extends AbstractStructBase
      * @param string[] $unitNames
      * @param string $startTravel
      */
-    public function __construct(array $unitNames = [], ?string $startTravel = null)
+    public function __construct(?array $unitNames = null, ?string $startTravel = null)
     {
         $this
             ->setUnitNames($unitNames)
@@ -44,18 +45,22 @@ class ExportSilverSurferDataRequest extends AbstractStructBase
      * Get unitNames value
      * @return string[]
      */
-    public function getUnitNames(): array
+    public function getUnitNames(): ?array
     {
         return $this->unitNames;
     }
     /**
-     * This method is responsible for validating the values passed to the setUnitNames method
+     * This method is responsible for validating the value(s) passed to the setUnitNames method
      * This method is willingly generated in order to preserve the one-line inline validation within the setUnitNames method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateUnitNamesForArrayConstraintsFromSetUnitNames(array $values = []): string
+    public static function validateUnitNamesForArrayConstraintFromSetUnitNames(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $exportSilverSurferDataRequestUnitNamesItem) {
@@ -77,10 +82,10 @@ class ExportSilverSurferDataRequest extends AbstractStructBase
      * @param string[] $unitNames
      * @return \Pggns\MidocoApi\Order\StructType\ExportSilverSurferDataRequest
      */
-    public function setUnitNames(array $unitNames = []): self
+    public function setUnitNames(?array $unitNames = null): self
     {
         // validation for constraint: array
-        if ('' !== ($unitNamesArrayErrorMessage = self::validateUnitNamesForArrayConstraintsFromSetUnitNames($unitNames))) {
+        if ('' !== ($unitNamesArrayErrorMessage = self::validateUnitNamesForArrayConstraintFromSetUnitNames($unitNames))) {
             throw new InvalidArgumentException($unitNamesArrayErrorMessage, __LINE__);
         }
         $this->unitNames = $unitNames;

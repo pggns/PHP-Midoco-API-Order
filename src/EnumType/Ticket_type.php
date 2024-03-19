@@ -55,6 +55,11 @@ class Ticket_type extends AbstractStructEnumBase
      */
     const VALUE_TASF = 'TASF';
     /**
+     * Constant for value 'VOID_EMD'
+     * @return string 'VOID_EMD'
+     */
+    const VALUE_VOID_EMD = 'VOID_EMD';
+    /**
      * Return allowed values
      * @uses self::VALUE_TICKET
      * @uses self::VALUE_REFUND
@@ -64,6 +69,7 @@ class Ticket_type extends AbstractStructEnumBase
      * @uses self::VALUE_ADM
      * @uses self::VALUE_ACM
      * @uses self::VALUE_TASF
+     * @uses self::VALUE_VOID_EMD
      * @return string[]
      */
     public static function getValidValues(): array
@@ -77,6 +83,7 @@ class Ticket_type extends AbstractStructEnumBase
             self::VALUE_ADM,
             self::VALUE_ACM,
             self::VALUE_TASF,
+            self::VALUE_VOID_EMD,
         ];
     }
 }

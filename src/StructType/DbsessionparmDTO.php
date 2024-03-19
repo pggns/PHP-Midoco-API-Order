@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DbsessionparmDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DbsessionparmDTO extends AbstractStructBase
 {
     /**

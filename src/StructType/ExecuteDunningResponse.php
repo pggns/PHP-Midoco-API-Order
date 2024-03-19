@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ExecuteDunningResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ExecuteDunningResponse extends AbstractStructBase
 {
     /**

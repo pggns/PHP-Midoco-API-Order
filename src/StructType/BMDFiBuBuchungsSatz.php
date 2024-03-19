@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for BMDFiBuBuchungsSatz StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class BMDFiBuBuchungsSatz extends AbstractStructBase
 {
     /**

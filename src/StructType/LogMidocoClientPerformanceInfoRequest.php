@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for LogMidocoClientPerformanceInfoRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class LogMidocoClientPerformanceInfoRequest extends AbstractStructBase
 {
     /**

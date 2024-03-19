@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoQuery StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoQuery extends AbstractStructBase
 {
     /**
@@ -20,7 +21,7 @@ class MidocoQuery extends AbstractStructBase
      * - ref: MidocoQueryOutputField
      * @var \Pggns\MidocoApi\Order\StructType\MidocoQueryOutputField[]
      */
-    protected array $MidocoQueryOutputField = [];
+    protected ?array $MidocoQueryOutputField = null;
     /**
      * The MidocoQueryCriteria
      * Meta information extracted from the WSDL
@@ -29,7 +30,7 @@ class MidocoQuery extends AbstractStructBase
      * - ref: MidocoQueryCriteria
      * @var \Pggns\MidocoApi\Order\StructType\MidocoQueryCriteria[]
      */
-    protected array $MidocoQueryCriteria = [];
+    protected ?array $MidocoQueryCriteria = null;
     /**
      * The MidocoQueryCriteriaList
      * Meta information extracted from the WSDL
@@ -38,7 +39,7 @@ class MidocoQuery extends AbstractStructBase
      * - ref: MidocoQueryCriteriaList
      * @var \Pggns\MidocoApi\Order\StructType\MidocoQueryCriteriaList[]
      */
-    protected array $MidocoQueryCriteriaList = [];
+    protected ?array $MidocoQueryCriteriaList = null;
     /**
      * The orgUnits
      * Meta information extracted from the WSDL
@@ -46,7 +47,7 @@ class MidocoQuery extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $orgUnits = [];
+    protected ?array $orgUnits = null;
     /**
      * The maxNoResults
      * @var int|null
@@ -120,7 +121,7 @@ class MidocoQuery extends AbstractStructBase
      * @param string $outputLocale
      * @param bool $storeOnePageResults
      */
-    public function __construct(array $midocoQueryOutputField = [], array $midocoQueryCriteria = [], array $midocoQueryCriteriaList = [], array $orgUnits = [], ?int $maxNoResults = null, ?int $rowsPerPage = 100, ?string $queryId = null, ?string $queryType = null, ?string $queryDescription = null, ?bool $menuTemplate = null, ?string $outputLocale = null, ?bool $storeOnePageResults = true)
+    public function __construct(?array $midocoQueryOutputField = null, ?array $midocoQueryCriteria = null, ?array $midocoQueryCriteriaList = null, ?array $orgUnits = null, ?int $maxNoResults = null, ?int $rowsPerPage = 100, ?string $queryId = null, ?string $queryType = null, ?string $queryDescription = null, ?bool $menuTemplate = null, ?string $outputLocale = null, ?bool $storeOnePageResults = true)
     {
         $this
             ->setMidocoQueryOutputField($midocoQueryOutputField)
@@ -140,18 +141,22 @@ class MidocoQuery extends AbstractStructBase
      * Get MidocoQueryOutputField value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoQueryOutputField[]
      */
-    public function getMidocoQueryOutputField(): array
+    public function getMidocoQueryOutputField(): ?array
     {
         return $this->MidocoQueryOutputField;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoQueryOutputField method
+     * This method is responsible for validating the value(s) passed to the setMidocoQueryOutputField method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoQueryOutputField method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoQueryOutputFieldForArrayConstraintsFromSetMidocoQueryOutputField(array $values = []): string
+    public static function validateMidocoQueryOutputFieldForArrayConstraintFromSetMidocoQueryOutputField(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoQueryMidocoQueryOutputFieldItem) {
@@ -173,10 +178,10 @@ class MidocoQuery extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoQueryOutputField[] $midocoQueryOutputField
      * @return \Pggns\MidocoApi\Order\StructType\MidocoQuery
      */
-    public function setMidocoQueryOutputField(array $midocoQueryOutputField = []): self
+    public function setMidocoQueryOutputField(?array $midocoQueryOutputField = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoQueryOutputFieldArrayErrorMessage = self::validateMidocoQueryOutputFieldForArrayConstraintsFromSetMidocoQueryOutputField($midocoQueryOutputField))) {
+        if ('' !== ($midocoQueryOutputFieldArrayErrorMessage = self::validateMidocoQueryOutputFieldForArrayConstraintFromSetMidocoQueryOutputField($midocoQueryOutputField))) {
             throw new InvalidArgumentException($midocoQueryOutputFieldArrayErrorMessage, __LINE__);
         }
         $this->MidocoQueryOutputField = $midocoQueryOutputField;
@@ -203,18 +208,22 @@ class MidocoQuery extends AbstractStructBase
      * Get MidocoQueryCriteria value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoQueryCriteria[]
      */
-    public function getMidocoQueryCriteria(): array
+    public function getMidocoQueryCriteria(): ?array
     {
         return $this->MidocoQueryCriteria;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoQueryCriteria method
+     * This method is responsible for validating the value(s) passed to the setMidocoQueryCriteria method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoQueryCriteria method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoQueryCriteriaForArrayConstraintsFromSetMidocoQueryCriteria(array $values = []): string
+    public static function validateMidocoQueryCriteriaForArrayConstraintFromSetMidocoQueryCriteria(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoQueryMidocoQueryCriteriaItem) {
@@ -236,10 +245,10 @@ class MidocoQuery extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoQueryCriteria[] $midocoQueryCriteria
      * @return \Pggns\MidocoApi\Order\StructType\MidocoQuery
      */
-    public function setMidocoQueryCriteria(array $midocoQueryCriteria = []): self
+    public function setMidocoQueryCriteria(?array $midocoQueryCriteria = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoQueryCriteriaArrayErrorMessage = self::validateMidocoQueryCriteriaForArrayConstraintsFromSetMidocoQueryCriteria($midocoQueryCriteria))) {
+        if ('' !== ($midocoQueryCriteriaArrayErrorMessage = self::validateMidocoQueryCriteriaForArrayConstraintFromSetMidocoQueryCriteria($midocoQueryCriteria))) {
             throw new InvalidArgumentException($midocoQueryCriteriaArrayErrorMessage, __LINE__);
         }
         $this->MidocoQueryCriteria = $midocoQueryCriteria;
@@ -266,18 +275,22 @@ class MidocoQuery extends AbstractStructBase
      * Get MidocoQueryCriteriaList value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoQueryCriteriaList[]
      */
-    public function getMidocoQueryCriteriaList(): array
+    public function getMidocoQueryCriteriaList(): ?array
     {
         return $this->MidocoQueryCriteriaList;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoQueryCriteriaList method
+     * This method is responsible for validating the value(s) passed to the setMidocoQueryCriteriaList method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoQueryCriteriaList method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoQueryCriteriaListForArrayConstraintsFromSetMidocoQueryCriteriaList(array $values = []): string
+    public static function validateMidocoQueryCriteriaListForArrayConstraintFromSetMidocoQueryCriteriaList(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoQueryMidocoQueryCriteriaListItem) {
@@ -299,10 +312,10 @@ class MidocoQuery extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoQueryCriteriaList[] $midocoQueryCriteriaList
      * @return \Pggns\MidocoApi\Order\StructType\MidocoQuery
      */
-    public function setMidocoQueryCriteriaList(array $midocoQueryCriteriaList = []): self
+    public function setMidocoQueryCriteriaList(?array $midocoQueryCriteriaList = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoQueryCriteriaListArrayErrorMessage = self::validateMidocoQueryCriteriaListForArrayConstraintsFromSetMidocoQueryCriteriaList($midocoQueryCriteriaList))) {
+        if ('' !== ($midocoQueryCriteriaListArrayErrorMessage = self::validateMidocoQueryCriteriaListForArrayConstraintFromSetMidocoQueryCriteriaList($midocoQueryCriteriaList))) {
             throw new InvalidArgumentException($midocoQueryCriteriaListArrayErrorMessage, __LINE__);
         }
         $this->MidocoQueryCriteriaList = $midocoQueryCriteriaList;
@@ -329,18 +342,22 @@ class MidocoQuery extends AbstractStructBase
      * Get orgUnits value
      * @return string[]
      */
-    public function getOrgUnits(): array
+    public function getOrgUnits(): ?array
     {
         return $this->orgUnits;
     }
     /**
-     * This method is responsible for validating the values passed to the setOrgUnits method
+     * This method is responsible for validating the value(s) passed to the setOrgUnits method
      * This method is willingly generated in order to preserve the one-line inline validation within the setOrgUnits method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateOrgUnitsForArrayConstraintsFromSetOrgUnits(array $values = []): string
+    public static function validateOrgUnitsForArrayConstraintFromSetOrgUnits(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoQueryOrgUnitsItem) {
@@ -362,10 +379,10 @@ class MidocoQuery extends AbstractStructBase
      * @param string[] $orgUnits
      * @return \Pggns\MidocoApi\Order\StructType\MidocoQuery
      */
-    public function setOrgUnits(array $orgUnits = []): self
+    public function setOrgUnits(?array $orgUnits = null): self
     {
         // validation for constraint: array
-        if ('' !== ($orgUnitsArrayErrorMessage = self::validateOrgUnitsForArrayConstraintsFromSetOrgUnits($orgUnits))) {
+        if ('' !== ($orgUnitsArrayErrorMessage = self::validateOrgUnitsForArrayConstraintFromSetOrgUnits($orgUnits))) {
             throw new InvalidArgumentException($orgUnitsArrayErrorMessage, __LINE__);
         }
         $this->orgUnits = $orgUnits;

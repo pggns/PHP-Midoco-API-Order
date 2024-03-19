@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for OrderChangeLogDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class OrderChangeLogDTO extends AbstractStructBase
 {
     /**

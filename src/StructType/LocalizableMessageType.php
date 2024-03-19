@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for LocalizableMessageType StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class LocalizableMessageType extends AbstractStructBase
 {
     /**
@@ -35,7 +36,7 @@ class LocalizableMessageType extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $args = [];
+    protected ?array $args = null;
     /**
      * Constructor method for LocalizableMessageType
      * @uses LocalizableMessageType::setBundle()
@@ -45,7 +46,7 @@ class LocalizableMessageType extends AbstractStructBase
      * @param string $code
      * @param string[] $args
      */
-    public function __construct(?string $bundle = null, ?string $code = null, array $args = [])
+    public function __construct(?string $bundle = null, ?string $code = null, ?array $args = null)
     {
         $this
             ->setBundle($bundle)
@@ -102,18 +103,22 @@ class LocalizableMessageType extends AbstractStructBase
      * Get args value
      * @return string[]
      */
-    public function getArgs(): array
+    public function getArgs(): ?array
     {
         return $this->args;
     }
     /**
-     * This method is responsible for validating the values passed to the setArgs method
+     * This method is responsible for validating the value(s) passed to the setArgs method
      * This method is willingly generated in order to preserve the one-line inline validation within the setArgs method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateArgsForArrayConstraintsFromSetArgs(array $values = []): string
+    public static function validateArgsForArrayConstraintFromSetArgs(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $localizableMessageTypeArgsItem) {
@@ -135,10 +140,10 @@ class LocalizableMessageType extends AbstractStructBase
      * @param string[] $args
      * @return \Pggns\MidocoApi\Order\StructType\LocalizableMessageType
      */
-    public function setArgs(array $args = []): self
+    public function setArgs(?array $args = null): self
     {
         // validation for constraint: array
-        if ('' !== ($argsArrayErrorMessage = self::validateArgsForArrayConstraintsFromSetArgs($args))) {
+        if ('' !== ($argsArrayErrorMessage = self::validateArgsForArrayConstraintFromSetArgs($args))) {
             throw new InvalidArgumentException($argsArrayErrorMessage, __LINE__);
         }
         $this->args = $args;

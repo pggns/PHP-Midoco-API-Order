@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: prices for flights, split in tax and fare amount
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class TicketPrice extends AbstractStructBase
 {
     /**
@@ -23,7 +24,7 @@ class TicketPrice extends AbstractStructBase
      * - ref: TaxDetail
      * @var \Pggns\MidocoApi\Order\StructType\TaxDetail[]
      */
-    protected array $TaxDetail = [];
+    protected ?array $TaxDetail = null;
     /**
      * The ticketPriceId
      * Meta information extracted from the WSDL
@@ -139,7 +140,7 @@ class TicketPrice extends AbstractStructBase
      * @param float $commissionPercent
      * @param float $commissionVatAmount
      */
-    public function __construct(array $taxDetail = [], ?int $ticketPriceId = null, ?float $baseFare = null, ?string $fareType = null, ?float $totalTax = null, ?float $ticketingPrice = null, ?string $currency = null, ?float $agencyFee = null, ?float $airlineFee = null, ?string $tourCode = null, ?string $endorsement = null, ?string $ticketDesignator = null, ?float $cancellationFee = null, ?float $commission = null, ?float $commissionPercent = null, ?float $commissionVatAmount = null)
+    public function __construct(?array $taxDetail = null, ?int $ticketPriceId = null, ?float $baseFare = null, ?string $fareType = null, ?float $totalTax = null, ?float $ticketingPrice = null, ?string $currency = null, ?float $agencyFee = null, ?float $airlineFee = null, ?string $tourCode = null, ?string $endorsement = null, ?string $ticketDesignator = null, ?float $cancellationFee = null, ?float $commission = null, ?float $commissionPercent = null, ?float $commissionVatAmount = null)
     {
         $this
             ->setTaxDetail($taxDetail)
@@ -163,18 +164,22 @@ class TicketPrice extends AbstractStructBase
      * Get TaxDetail value
      * @return \Pggns\MidocoApi\Order\StructType\TaxDetail[]
      */
-    public function getTaxDetail(): array
+    public function getTaxDetail(): ?array
     {
         return $this->TaxDetail;
     }
     /**
-     * This method is responsible for validating the values passed to the setTaxDetail method
+     * This method is responsible for validating the value(s) passed to the setTaxDetail method
      * This method is willingly generated in order to preserve the one-line inline validation within the setTaxDetail method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateTaxDetailForArrayConstraintsFromSetTaxDetail(array $values = []): string
+    public static function validateTaxDetailForArrayConstraintFromSetTaxDetail(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $ticketPriceTaxDetailItem) {
@@ -196,10 +201,10 @@ class TicketPrice extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\TaxDetail[] $taxDetail
      * @return \Pggns\MidocoApi\Order\StructType\TicketPrice
      */
-    public function setTaxDetail(array $taxDetail = []): self
+    public function setTaxDetail(?array $taxDetail = null): self
     {
         // validation for constraint: array
-        if ('' !== ($taxDetailArrayErrorMessage = self::validateTaxDetailForArrayConstraintsFromSetTaxDetail($taxDetail))) {
+        if ('' !== ($taxDetailArrayErrorMessage = self::validateTaxDetailForArrayConstraintFromSetTaxDetail($taxDetail))) {
             throw new InvalidArgumentException($taxDetailArrayErrorMessage, __LINE__);
         }
         $this->TaxDetail = $taxDetail;

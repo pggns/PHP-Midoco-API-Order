@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoReceipt StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoReceipt extends ReceiptDTO
 {
     /**
@@ -20,7 +21,7 @@ class MidocoReceipt extends ReceiptDTO
      * - ref: MidocoReceiptPosition
      * @var \Pggns\MidocoApi\Order\StructType\MidocoReceiptPosition[]
      */
-    protected array $MidocoReceiptPosition = [];
+    protected ?array $MidocoReceiptPosition = null;
     /**
      * The MidocoDebitInfoForReceipt
      * Meta information extracted from the WSDL
@@ -37,7 +38,7 @@ class MidocoReceipt extends ReceiptDTO
      * - ref: MidocoAdditionalInfoForReceipt
      * @var \Pggns\MidocoApi\Order\StructType\MidocoAdditionalInfoForReceipt[]
      */
-    protected array $MidocoAdditionalInfoForReceipt = [];
+    protected ?array $MidocoAdditionalInfoForReceipt = null;
     /**
      * The MidocoOnlinePaymentTransaction
      * Meta information extracted from the WSDL
@@ -57,7 +58,7 @@ class MidocoReceipt extends ReceiptDTO
      * @param \Pggns\MidocoApi\Order\StructType\MidocoAdditionalInfoForReceipt[] $midocoAdditionalInfoForReceipt
      * @param \Pggns\MidocoApi\Order\StructType\MidocoOnlinePaymentTransaction $midocoOnlinePaymentTransaction
      */
-    public function __construct(array $midocoReceiptPosition = [], ?\Pggns\MidocoApi\Order\StructType\MidocoDebitInfoForReceipt $midocoDebitInfoForReceipt = null, array $midocoAdditionalInfoForReceipt = [], ?\Pggns\MidocoApi\Order\StructType\MidocoOnlinePaymentTransaction $midocoOnlinePaymentTransaction = null)
+    public function __construct(?array $midocoReceiptPosition = null, ?\Pggns\MidocoApi\Order\StructType\MidocoDebitInfoForReceipt $midocoDebitInfoForReceipt = null, ?array $midocoAdditionalInfoForReceipt = null, ?\Pggns\MidocoApi\Order\StructType\MidocoOnlinePaymentTransaction $midocoOnlinePaymentTransaction = null)
     {
         $this
             ->setMidocoReceiptPosition($midocoReceiptPosition)
@@ -69,18 +70,22 @@ class MidocoReceipt extends ReceiptDTO
      * Get MidocoReceiptPosition value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoReceiptPosition[]
      */
-    public function getMidocoReceiptPosition(): array
+    public function getMidocoReceiptPosition(): ?array
     {
         return $this->MidocoReceiptPosition;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoReceiptPosition method
+     * This method is responsible for validating the value(s) passed to the setMidocoReceiptPosition method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoReceiptPosition method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoReceiptPositionForArrayConstraintsFromSetMidocoReceiptPosition(array $values = []): string
+    public static function validateMidocoReceiptPositionForArrayConstraintFromSetMidocoReceiptPosition(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoReceiptMidocoReceiptPositionItem) {
@@ -102,10 +107,10 @@ class MidocoReceipt extends ReceiptDTO
      * @param \Pggns\MidocoApi\Order\StructType\MidocoReceiptPosition[] $midocoReceiptPosition
      * @return \Pggns\MidocoApi\Order\StructType\MidocoReceipt
      */
-    public function setMidocoReceiptPosition(array $midocoReceiptPosition = []): self
+    public function setMidocoReceiptPosition(?array $midocoReceiptPosition = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoReceiptPositionArrayErrorMessage = self::validateMidocoReceiptPositionForArrayConstraintsFromSetMidocoReceiptPosition($midocoReceiptPosition))) {
+        if ('' !== ($midocoReceiptPositionArrayErrorMessage = self::validateMidocoReceiptPositionForArrayConstraintFromSetMidocoReceiptPosition($midocoReceiptPosition))) {
             throw new InvalidArgumentException($midocoReceiptPositionArrayErrorMessage, __LINE__);
         }
         $this->MidocoReceiptPosition = $midocoReceiptPosition;
@@ -151,18 +156,22 @@ class MidocoReceipt extends ReceiptDTO
      * Get MidocoAdditionalInfoForReceipt value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoAdditionalInfoForReceipt[]
      */
-    public function getMidocoAdditionalInfoForReceipt(): array
+    public function getMidocoAdditionalInfoForReceipt(): ?array
     {
         return $this->MidocoAdditionalInfoForReceipt;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoAdditionalInfoForReceipt method
+     * This method is responsible for validating the value(s) passed to the setMidocoAdditionalInfoForReceipt method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoAdditionalInfoForReceipt method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoAdditionalInfoForReceiptForArrayConstraintsFromSetMidocoAdditionalInfoForReceipt(array $values = []): string
+    public static function validateMidocoAdditionalInfoForReceiptForArrayConstraintFromSetMidocoAdditionalInfoForReceipt(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoReceiptMidocoAdditionalInfoForReceiptItem) {
@@ -184,10 +193,10 @@ class MidocoReceipt extends ReceiptDTO
      * @param \Pggns\MidocoApi\Order\StructType\MidocoAdditionalInfoForReceipt[] $midocoAdditionalInfoForReceipt
      * @return \Pggns\MidocoApi\Order\StructType\MidocoReceipt
      */
-    public function setMidocoAdditionalInfoForReceipt(array $midocoAdditionalInfoForReceipt = []): self
+    public function setMidocoAdditionalInfoForReceipt(?array $midocoAdditionalInfoForReceipt = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoAdditionalInfoForReceiptArrayErrorMessage = self::validateMidocoAdditionalInfoForReceiptForArrayConstraintsFromSetMidocoAdditionalInfoForReceipt($midocoAdditionalInfoForReceipt))) {
+        if ('' !== ($midocoAdditionalInfoForReceiptArrayErrorMessage = self::validateMidocoAdditionalInfoForReceiptForArrayConstraintFromSetMidocoAdditionalInfoForReceipt($midocoAdditionalInfoForReceipt))) {
             throw new InvalidArgumentException($midocoAdditionalInfoForReceiptArrayErrorMessage, __LINE__);
         }
         $this->MidocoAdditionalInfoForReceipt = $midocoAdditionalInfoForReceipt;

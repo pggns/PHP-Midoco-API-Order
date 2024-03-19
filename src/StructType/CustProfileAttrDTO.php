@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CustProfileAttrDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CustProfileAttrDTO extends AbstractStructBase
 {
     /**

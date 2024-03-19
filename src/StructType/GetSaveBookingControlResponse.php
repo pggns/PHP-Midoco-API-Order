@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetSaveBookingControlResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetSaveBookingControlResponse extends AbstractStructBase
 {
 }

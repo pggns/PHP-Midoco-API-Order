@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for VermiLinkAttributes StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class VermiLinkAttributes extends AbstractStructBase
 {
     /**
@@ -28,7 +29,7 @@ class VermiLinkAttributes extends AbstractStructBase
      * - ref: MidocoSellPassenger
      * @var \Pggns\MidocoApi\Order\StructType\MidocoSellPassenger[]
      */
-    protected array $MidocoSellPassenger = [];
+    protected ?array $MidocoSellPassenger = null;
     /**
      * The serviceCode
      * Meta information extracted from the WSDL
@@ -36,7 +37,7 @@ class VermiLinkAttributes extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $serviceCode = [];
+    protected ?array $serviceCode = null;
     /**
      * The orderId
      * @var int|null
@@ -151,7 +152,7 @@ class VermiLinkAttributes extends AbstractStructBase
      * @param string $countryDesc
      * @param float $itemPrice
      */
-    public function __construct(?\Pggns\MidocoApi\Order\StructType\MidocoOrderCustomer $midocoOrderCustomer = null, array $midocoSellPassenger = [], array $serviceCode = [], ?int $orderId = null, ?int $orderNo = null, ?int $itemId = null, ?int $midocoUserId = null, ?string $midocoUserName = null, ?string $mediator = null, ?string $extSystem = null, ?string $extId = null, ?string $supplierId = null, ?string $bookingId = null, ?string $startTravel = null, ?string $endTravel = null, ?string $countryCode = null, ?string $countryDesc = null, ?float $itemPrice = null)
+    public function __construct(?\Pggns\MidocoApi\Order\StructType\MidocoOrderCustomer $midocoOrderCustomer = null, ?array $midocoSellPassenger = null, ?array $serviceCode = null, ?int $orderId = null, ?int $orderNo = null, ?int $itemId = null, ?int $midocoUserId = null, ?string $midocoUserName = null, ?string $mediator = null, ?string $extSystem = null, ?string $extId = null, ?string $supplierId = null, ?string $bookingId = null, ?string $startTravel = null, ?string $endTravel = null, ?string $countryCode = null, ?string $countryDesc = null, ?float $itemPrice = null)
     {
         $this
             ->setMidocoOrderCustomer($midocoOrderCustomer)
@@ -196,18 +197,22 @@ class VermiLinkAttributes extends AbstractStructBase
      * Get MidocoSellPassenger value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSellPassenger[]
      */
-    public function getMidocoSellPassenger(): array
+    public function getMidocoSellPassenger(): ?array
     {
         return $this->MidocoSellPassenger;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoSellPassenger method
+     * This method is responsible for validating the value(s) passed to the setMidocoSellPassenger method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoSellPassenger method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoSellPassengerForArrayConstraintsFromSetMidocoSellPassenger(array $values = []): string
+    public static function validateMidocoSellPassengerForArrayConstraintFromSetMidocoSellPassenger(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $vermiLinkAttributesMidocoSellPassengerItem) {
@@ -229,10 +234,10 @@ class VermiLinkAttributes extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSellPassenger[] $midocoSellPassenger
      * @return \Pggns\MidocoApi\Order\StructType\VermiLinkAttributes
      */
-    public function setMidocoSellPassenger(array $midocoSellPassenger = []): self
+    public function setMidocoSellPassenger(?array $midocoSellPassenger = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoSellPassengerArrayErrorMessage = self::validateMidocoSellPassengerForArrayConstraintsFromSetMidocoSellPassenger($midocoSellPassenger))) {
+        if ('' !== ($midocoSellPassengerArrayErrorMessage = self::validateMidocoSellPassengerForArrayConstraintFromSetMidocoSellPassenger($midocoSellPassenger))) {
             throw new InvalidArgumentException($midocoSellPassengerArrayErrorMessage, __LINE__);
         }
         $this->MidocoSellPassenger = $midocoSellPassenger;
@@ -259,18 +264,22 @@ class VermiLinkAttributes extends AbstractStructBase
      * Get serviceCode value
      * @return string[]
      */
-    public function getServiceCode(): array
+    public function getServiceCode(): ?array
     {
         return $this->serviceCode;
     }
     /**
-     * This method is responsible for validating the values passed to the setServiceCode method
+     * This method is responsible for validating the value(s) passed to the setServiceCode method
      * This method is willingly generated in order to preserve the one-line inline validation within the setServiceCode method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateServiceCodeForArrayConstraintsFromSetServiceCode(array $values = []): string
+    public static function validateServiceCodeForArrayConstraintFromSetServiceCode(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $vermiLinkAttributesServiceCodeItem) {
@@ -292,10 +301,10 @@ class VermiLinkAttributes extends AbstractStructBase
      * @param string[] $serviceCode
      * @return \Pggns\MidocoApi\Order\StructType\VermiLinkAttributes
      */
-    public function setServiceCode(array $serviceCode = []): self
+    public function setServiceCode(?array $serviceCode = null): self
     {
         // validation for constraint: array
-        if ('' !== ($serviceCodeArrayErrorMessage = self::validateServiceCodeForArrayConstraintsFromSetServiceCode($serviceCode))) {
+        if ('' !== ($serviceCodeArrayErrorMessage = self::validateServiceCodeForArrayConstraintFromSetServiceCode($serviceCode))) {
             throw new InvalidArgumentException($serviceCodeArrayErrorMessage, __LINE__);
         }
         $this->serviceCode = $serviceCode;

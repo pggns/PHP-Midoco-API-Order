@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for PackageMarginsSearchCriteriaType StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class PackageMarginsSearchCriteriaType extends AbstractStructBase
 {
     /**

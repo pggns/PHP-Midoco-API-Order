@@ -15,6 +15,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * returned. If type='COPY' and the billing document is finished, a copy of the document will be returned (the document data contains the mark COPY).
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ExportBillingDocumentRequest extends AbstractStructBase
 {
     /**

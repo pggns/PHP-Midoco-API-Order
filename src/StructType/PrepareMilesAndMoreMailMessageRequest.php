@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: Creates a MidocoMailMessage with sender, recipient, subject and text, that contains a link to approve the Miles & More BURN-transaction.
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class PrepareMilesAndMoreMailMessageRequest extends AbstractStructBase
 {
     /**

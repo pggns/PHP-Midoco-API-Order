@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: Service fee information, calculated by a delivering system, like storno fee, change fee, name change fee etc.
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class Packagefee extends AbstractStructBase
 {
     /**

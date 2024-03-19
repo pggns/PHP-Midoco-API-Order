@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for TravelNoMarginDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class TravelNoMarginDTO extends AbstractStructBase
 {
     /**

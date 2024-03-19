@@ -11,8 +11,30 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoItemSellingModeType StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoItemSellingModeType extends AbstractStructBase
 {
+    /**
+     * The abtaSection
+     * Meta information extracted from the WSDL
+     * - minOccurs: 0
+     * @var \Pggns\MidocoApi\Order\StructType\ISectionFieldType|null
+     */
+    protected ?\Pggns\MidocoApi\Order\StructType\ISectionFieldType $abtaSection = null;
+    /**
+     * The atolClassificationType
+     * Meta information extracted from the WSDL
+     * - minOccurs: 0
+     * @var \Pggns\MidocoApi\Order\StructType\IAtolClassType|null
+     */
+    protected ?\Pggns\MidocoApi\Order\StructType\IAtolClassType $atolClassificationType = null;
+    /**
+     * The abtaClassificationType
+     * Meta information extracted from the WSDL
+     * - minOccurs: 0
+     * @var \Pggns\MidocoApi\Order\StructType\IAbtaClassType|null
+     */
+    protected ?\Pggns\MidocoApi\Order\StructType\IAbtaClassType $abtaClassificationType = null;
     /**
      * The itemId
      * @var int|null
@@ -64,12 +86,25 @@ class MidocoItemSellingModeType extends AbstractStructBase
      */
     protected ?string $confirmationGroup = null;
     /**
+     * The atolIndex
+     * @var int|null
+     */
+    protected ?int $atolIndex = null;
+    /**
+     * The atolPeriod
+     * @var string|null
+     */
+    protected ?string $atolPeriod = null;
+    /**
      * The sellingModeDetermination
      * @var string|null
      */
     protected ?string $sellingModeDetermination = null;
     /**
      * Constructor method for MidocoItemSellingModeType
+     * @uses MidocoItemSellingModeType::setAbtaSection()
+     * @uses MidocoItemSellingModeType::setAtolClassificationType()
+     * @uses MidocoItemSellingModeType::setAbtaClassificationType()
      * @uses MidocoItemSellingModeType::setItemId()
      * @uses MidocoItemSellingModeType::setItemType()
      * @uses MidocoItemSellingModeType::setSupplierId()
@@ -80,7 +115,12 @@ class MidocoItemSellingModeType extends AbstractStructBase
      * @uses MidocoItemSellingModeType::setPrice()
      * @uses MidocoItemSellingModeType::setSellingMode()
      * @uses MidocoItemSellingModeType::setConfirmationGroup()
+     * @uses MidocoItemSellingModeType::setAtolIndex()
+     * @uses MidocoItemSellingModeType::setAtolPeriod()
      * @uses MidocoItemSellingModeType::setSellingModeDetermination()
+     * @param \Pggns\MidocoApi\Order\StructType\ISectionFieldType $abtaSection
+     * @param \Pggns\MidocoApi\Order\StructType\IAtolClassType $atolClassificationType
+     * @param \Pggns\MidocoApi\Order\StructType\IAbtaClassType $abtaClassificationType
      * @param int $itemId
      * @param string $itemType
      * @param string $supplierId
@@ -91,11 +131,16 @@ class MidocoItemSellingModeType extends AbstractStructBase
      * @param float $price
      * @param int $sellingMode
      * @param string $confirmationGroup
+     * @param int $atolIndex
+     * @param string $atolPeriod
      * @param string $sellingModeDetermination
      */
-    public function __construct(?int $itemId = null, ?string $itemType = null, ?string $supplierId = null, ?string $bookingId = null, ?string $startTravel = null, ?string $endTravel = null, ?string $status = null, ?float $price = null, ?int $sellingMode = null, ?string $confirmationGroup = null, ?string $sellingModeDetermination = null)
+    public function __construct(?\Pggns\MidocoApi\Order\StructType\ISectionFieldType $abtaSection = null, ?\Pggns\MidocoApi\Order\StructType\IAtolClassType $atolClassificationType = null, ?\Pggns\MidocoApi\Order\StructType\IAbtaClassType $abtaClassificationType = null, ?int $itemId = null, ?string $itemType = null, ?string $supplierId = null, ?string $bookingId = null, ?string $startTravel = null, ?string $endTravel = null, ?string $status = null, ?float $price = null, ?int $sellingMode = null, ?string $confirmationGroup = null, ?int $atolIndex = null, ?string $atolPeriod = null, ?string $sellingModeDetermination = null)
     {
         $this
+            ->setAbtaSection($abtaSection)
+            ->setAtolClassificationType($atolClassificationType)
+            ->setAbtaClassificationType($abtaClassificationType)
             ->setItemId($itemId)
             ->setItemType($itemType)
             ->setSupplierId($supplierId)
@@ -106,7 +151,66 @@ class MidocoItemSellingModeType extends AbstractStructBase
             ->setPrice($price)
             ->setSellingMode($sellingMode)
             ->setConfirmationGroup($confirmationGroup)
+            ->setAtolIndex($atolIndex)
+            ->setAtolPeriod($atolPeriod)
             ->setSellingModeDetermination($sellingModeDetermination);
+    }
+    /**
+     * Get abtaSection value
+     * @return \Pggns\MidocoApi\Order\StructType\ISectionFieldType|null
+     */
+    public function getAbtaSection(): ?\Pggns\MidocoApi\Order\StructType\ISectionFieldType
+    {
+        return $this->abtaSection;
+    }
+    /**
+     * Set abtaSection value
+     * @param \Pggns\MidocoApi\Order\StructType\ISectionFieldType $abtaSection
+     * @return \Pggns\MidocoApi\Order\StructType\MidocoItemSellingModeType
+     */
+    public function setAbtaSection(?\Pggns\MidocoApi\Order\StructType\ISectionFieldType $abtaSection = null): self
+    {
+        $this->abtaSection = $abtaSection;
+        
+        return $this;
+    }
+    /**
+     * Get atolClassificationType value
+     * @return \Pggns\MidocoApi\Order\StructType\IAtolClassType|null
+     */
+    public function getAtolClassificationType(): ?\Pggns\MidocoApi\Order\StructType\IAtolClassType
+    {
+        return $this->atolClassificationType;
+    }
+    /**
+     * Set atolClassificationType value
+     * @param \Pggns\MidocoApi\Order\StructType\IAtolClassType $atolClassificationType
+     * @return \Pggns\MidocoApi\Order\StructType\MidocoItemSellingModeType
+     */
+    public function setAtolClassificationType(?\Pggns\MidocoApi\Order\StructType\IAtolClassType $atolClassificationType = null): self
+    {
+        $this->atolClassificationType = $atolClassificationType;
+        
+        return $this;
+    }
+    /**
+     * Get abtaClassificationType value
+     * @return \Pggns\MidocoApi\Order\StructType\IAbtaClassType|null
+     */
+    public function getAbtaClassificationType(): ?\Pggns\MidocoApi\Order\StructType\IAbtaClassType
+    {
+        return $this->abtaClassificationType;
+    }
+    /**
+     * Set abtaClassificationType value
+     * @param \Pggns\MidocoApi\Order\StructType\IAbtaClassType $abtaClassificationType
+     * @return \Pggns\MidocoApi\Order\StructType\MidocoItemSellingModeType
+     */
+    public function setAbtaClassificationType(?\Pggns\MidocoApi\Order\StructType\IAbtaClassType $abtaClassificationType = null): self
+    {
+        $this->abtaClassificationType = $abtaClassificationType;
+        
+        return $this;
     }
     /**
      * Get itemId value
@@ -335,6 +439,52 @@ class MidocoItemSellingModeType extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($confirmationGroup, true), gettype($confirmationGroup)), __LINE__);
         }
         $this->confirmationGroup = $confirmationGroup;
+        
+        return $this;
+    }
+    /**
+     * Get atolIndex value
+     * @return int|null
+     */
+    public function getAtolIndex(): ?int
+    {
+        return $this->atolIndex;
+    }
+    /**
+     * Set atolIndex value
+     * @param int $atolIndex
+     * @return \Pggns\MidocoApi\Order\StructType\MidocoItemSellingModeType
+     */
+    public function setAtolIndex(?int $atolIndex = null): self
+    {
+        // validation for constraint: int
+        if (!is_null($atolIndex) && !(is_int($atolIndex) || ctype_digit($atolIndex))) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($atolIndex, true), gettype($atolIndex)), __LINE__);
+        }
+        $this->atolIndex = $atolIndex;
+        
+        return $this;
+    }
+    /**
+     * Get atolPeriod value
+     * @return string|null
+     */
+    public function getAtolPeriod(): ?string
+    {
+        return $this->atolPeriod;
+    }
+    /**
+     * Set atolPeriod value
+     * @param string $atolPeriod
+     * @return \Pggns\MidocoApi\Order\StructType\MidocoItemSellingModeType
+     */
+    public function setAtolPeriod(?string $atolPeriod = null): self
+    {
+        // validation for constraint: string
+        if (!is_null($atolPeriod) && !is_string($atolPeriod)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($atolPeriod, true), gettype($atolPeriod)), __LINE__);
+        }
+        $this->atolPeriod = $atolPeriod;
         
         return $this;
     }

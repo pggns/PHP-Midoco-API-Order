@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoBankInfo StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoBankInfo extends BankNumberDTO
 {
 }

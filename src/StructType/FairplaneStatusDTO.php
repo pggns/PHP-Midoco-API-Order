@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for FairplaneStatusDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class FairplaneStatusDTO extends AbstractStructBase
 {
     /**

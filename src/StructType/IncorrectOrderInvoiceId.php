@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for IncorrectOrderInvoiceId StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class IncorrectOrderInvoiceId extends AbstractStructBase
 {
     /**

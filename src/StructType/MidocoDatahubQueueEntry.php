@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: A data structure designed to coordinate imports from datahub and other systems.
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoDatahubQueueEntry extends DatahubQueueDTO
 {
     /**
@@ -21,7 +22,7 @@ class MidocoDatahubQueueEntry extends DatahubQueueDTO
      * - maxOccurs: unbounded
      * @var \Pggns\MidocoApi\Order\StructType\MidocoDatahubQueueBookingReference[]
      */
-    protected array $MidocoDatahubQueueBookingReference = [];
+    protected ?array $MidocoDatahubQueueBookingReference = null;
     /**
      * The isProcessing
      * Meta information extracted from the WSDL
@@ -45,7 +46,7 @@ class MidocoDatahubQueueEntry extends DatahubQueueDTO
      * @param bool $isProcessing
      * @param int $orderNo
      */
-    public function __construct(array $midocoDatahubQueueBookingReference = [], ?bool $isProcessing = null, ?int $orderNo = null)
+    public function __construct(?array $midocoDatahubQueueBookingReference = null, ?bool $isProcessing = null, ?int $orderNo = null)
     {
         $this
             ->setMidocoDatahubQueueBookingReference($midocoDatahubQueueBookingReference)
@@ -56,18 +57,22 @@ class MidocoDatahubQueueEntry extends DatahubQueueDTO
      * Get MidocoDatahubQueueBookingReference value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoDatahubQueueBookingReference[]
      */
-    public function getMidocoDatahubQueueBookingReference(): array
+    public function getMidocoDatahubQueueBookingReference(): ?array
     {
         return $this->MidocoDatahubQueueBookingReference;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoDatahubQueueBookingReference method
+     * This method is responsible for validating the value(s) passed to the setMidocoDatahubQueueBookingReference method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoDatahubQueueBookingReference method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoDatahubQueueBookingReferenceForArrayConstraintsFromSetMidocoDatahubQueueBookingReference(array $values = []): string
+    public static function validateMidocoDatahubQueueBookingReferenceForArrayConstraintFromSetMidocoDatahubQueueBookingReference(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoDatahubQueueEntryMidocoDatahubQueueBookingReferenceItem) {
@@ -89,10 +94,10 @@ class MidocoDatahubQueueEntry extends DatahubQueueDTO
      * @param \Pggns\MidocoApi\Order\StructType\MidocoDatahubQueueBookingReference[] $midocoDatahubQueueBookingReference
      * @return \Pggns\MidocoApi\Order\StructType\MidocoDatahubQueueEntry
      */
-    public function setMidocoDatahubQueueBookingReference(array $midocoDatahubQueueBookingReference = []): self
+    public function setMidocoDatahubQueueBookingReference(?array $midocoDatahubQueueBookingReference = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoDatahubQueueBookingReferenceArrayErrorMessage = self::validateMidocoDatahubQueueBookingReferenceForArrayConstraintsFromSetMidocoDatahubQueueBookingReference($midocoDatahubQueueBookingReference))) {
+        if ('' !== ($midocoDatahubQueueBookingReferenceArrayErrorMessage = self::validateMidocoDatahubQueueBookingReferenceForArrayConstraintFromSetMidocoDatahubQueueBookingReference($midocoDatahubQueueBookingReference))) {
             throw new InvalidArgumentException($midocoDatahubQueueBookingReferenceArrayErrorMessage, __LINE__);
         }
         $this->MidocoDatahubQueueBookingReference = $midocoDatahubQueueBookingReference;

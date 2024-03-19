@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveSupplAgencySettlemBookRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveSupplAgencySettlemBookRequest extends AbstractStructBase
 {
     /**
@@ -28,7 +29,7 @@ class SaveSupplAgencySettlemBookRequest extends AbstractStructBase
      * - ref: MidocoSupplierAgencySettlementBookings
      * @var \Pggns\MidocoApi\Order\StructType\SupplAgencySettlemBookDTO[]
      */
-    protected array $MidocoSupplierAgencySettlementBookings = [];
+    protected ?array $MidocoSupplierAgencySettlementBookings = null;
     /**
      * Constructor method for SaveSupplAgencySettlemBookRequest
      * @uses SaveSupplAgencySettlemBookRequest::setMidocoSupplierAgencySettlementBooking()
@@ -36,7 +37,7 @@ class SaveSupplAgencySettlemBookRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSupplierAgencySettlementBooking $midocoSupplierAgencySettlementBooking
      * @param \Pggns\MidocoApi\Order\StructType\SupplAgencySettlemBookDTO[] $midocoSupplierAgencySettlementBookings
      */
-    public function __construct(?\Pggns\MidocoApi\Order\StructType\MidocoSupplierAgencySettlementBooking $midocoSupplierAgencySettlementBooking = null, array $midocoSupplierAgencySettlementBookings = [])
+    public function __construct(?\Pggns\MidocoApi\Order\StructType\MidocoSupplierAgencySettlementBooking $midocoSupplierAgencySettlementBooking = null, ?array $midocoSupplierAgencySettlementBookings = null)
     {
         $this
             ->setMidocoSupplierAgencySettlementBooking($midocoSupplierAgencySettlementBooking)
@@ -65,18 +66,22 @@ class SaveSupplAgencySettlemBookRequest extends AbstractStructBase
      * Get MidocoSupplierAgencySettlementBookings value
      * @return \Pggns\MidocoApi\Order\StructType\SupplAgencySettlemBookDTO[]
      */
-    public function getMidocoSupplierAgencySettlementBookings(): array
+    public function getMidocoSupplierAgencySettlementBookings(): ?array
     {
         return $this->MidocoSupplierAgencySettlementBookings;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoSupplierAgencySettlementBookings method
+     * This method is responsible for validating the value(s) passed to the setMidocoSupplierAgencySettlementBookings method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoSupplierAgencySettlementBookings method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoSupplierAgencySettlementBookingsForArrayConstraintsFromSetMidocoSupplierAgencySettlementBookings(array $values = []): string
+    public static function validateMidocoSupplierAgencySettlementBookingsForArrayConstraintFromSetMidocoSupplierAgencySettlementBookings(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $saveSupplAgencySettlemBookRequestMidocoSupplierAgencySettlementBookingsItem) {
@@ -98,10 +103,10 @@ class SaveSupplAgencySettlemBookRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\SupplAgencySettlemBookDTO[] $midocoSupplierAgencySettlementBookings
      * @return \Pggns\MidocoApi\Order\StructType\SaveSupplAgencySettlemBookRequest
      */
-    public function setMidocoSupplierAgencySettlementBookings(array $midocoSupplierAgencySettlementBookings = []): self
+    public function setMidocoSupplierAgencySettlementBookings(?array $midocoSupplierAgencySettlementBookings = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoSupplierAgencySettlementBookingsArrayErrorMessage = self::validateMidocoSupplierAgencySettlementBookingsForArrayConstraintsFromSetMidocoSupplierAgencySettlementBookings($midocoSupplierAgencySettlementBookings))) {
+        if ('' !== ($midocoSupplierAgencySettlementBookingsArrayErrorMessage = self::validateMidocoSupplierAgencySettlementBookingsForArrayConstraintFromSetMidocoSupplierAgencySettlementBookings($midocoSupplierAgencySettlementBookings))) {
             throw new InvalidArgumentException($midocoSupplierAgencySettlementBookingsArrayErrorMessage, __LINE__);
         }
         $this->MidocoSupplierAgencySettlementBookings = $midocoSupplierAgencySettlementBookings;

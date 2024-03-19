@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SSOFacesResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SSOFacesResponse extends AbstractStructBase
 {
     /**

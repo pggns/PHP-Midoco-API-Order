@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: returns the supplier settlement error records
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetSupplierSettlementErrorResponse extends AbstractStructBase
 {
     /**
@@ -23,13 +24,13 @@ class GetSupplierSettlementErrorResponse extends AbstractStructBase
      * - ref: MidocoSupplierSettlementInfo
      * @var \Pggns\MidocoApi\Order\StructType\MidocoSupplierSettlementInfo[]
      */
-    protected array $MidocoSupplierSettlementInfo = [];
+    protected ?array $MidocoSupplierSettlementInfo = null;
     /**
      * Constructor method for GetSupplierSettlementErrorResponse
      * @uses GetSupplierSettlementErrorResponse::setMidocoSupplierSettlementInfo()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSupplierSettlementInfo[] $midocoSupplierSettlementInfo
      */
-    public function __construct(array $midocoSupplierSettlementInfo = [])
+    public function __construct(?array $midocoSupplierSettlementInfo = null)
     {
         $this
             ->setMidocoSupplierSettlementInfo($midocoSupplierSettlementInfo);
@@ -38,18 +39,22 @@ class GetSupplierSettlementErrorResponse extends AbstractStructBase
      * Get MidocoSupplierSettlementInfo value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoSupplierSettlementInfo[]
      */
-    public function getMidocoSupplierSettlementInfo(): array
+    public function getMidocoSupplierSettlementInfo(): ?array
     {
         return $this->MidocoSupplierSettlementInfo;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoSupplierSettlementInfo method
+     * This method is responsible for validating the value(s) passed to the setMidocoSupplierSettlementInfo method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoSupplierSettlementInfo method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoSupplierSettlementInfoForArrayConstraintsFromSetMidocoSupplierSettlementInfo(array $values = []): string
+    public static function validateMidocoSupplierSettlementInfoForArrayConstraintFromSetMidocoSupplierSettlementInfo(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getSupplierSettlementErrorResponseMidocoSupplierSettlementInfoItem) {
@@ -71,10 +76,10 @@ class GetSupplierSettlementErrorResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSupplierSettlementInfo[] $midocoSupplierSettlementInfo
      * @return \Pggns\MidocoApi\Order\StructType\GetSupplierSettlementErrorResponse
      */
-    public function setMidocoSupplierSettlementInfo(array $midocoSupplierSettlementInfo = []): self
+    public function setMidocoSupplierSettlementInfo(?array $midocoSupplierSettlementInfo = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoSupplierSettlementInfoArrayErrorMessage = self::validateMidocoSupplierSettlementInfoForArrayConstraintsFromSetMidocoSupplierSettlementInfo($midocoSupplierSettlementInfo))) {
+        if ('' !== ($midocoSupplierSettlementInfoArrayErrorMessage = self::validateMidocoSupplierSettlementInfoForArrayConstraintFromSetMidocoSupplierSettlementInfo($midocoSupplierSettlementInfo))) {
             throw new InvalidArgumentException($midocoSupplierSettlementInfoArrayErrorMessage, __LINE__);
         }
         $this->MidocoSupplierSettlementInfo = $midocoSupplierSettlementInfo;

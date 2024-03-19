@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: get a bank account
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetBankAccountRequest extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetBillingNoticesResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetBillingNoticesResponse extends AbstractStructBase
 {
     /**
@@ -21,7 +22,7 @@ class GetBillingNoticesResponse extends AbstractStructBase
      * - ref: MidocoBillingNotice
      * @var \Pggns\MidocoApi\Order\StructType\MidocoBillingNotice[]
      */
-    protected array $MidocoBillingNotice = [];
+    protected ?array $MidocoBillingNotice = null;
     /**
      * The sortOrder
      * @var string|null
@@ -97,7 +98,7 @@ class GetBillingNoticesResponse extends AbstractStructBase
      * @param string $taskType
      * @param int $finishUser
      */
-    public function __construct(array $midocoBillingNotice = [], ?string $sortOrder = null, ?string $orgunitName = null, ?string $selection = null, ?string $fromFinishTimestamp = null, ?string $untilFinishTimestamp = null, ?string $fromCreationTimestamp = null, ?string $untilCreationTimestamp = null, ?string $notice = null, ?string $taskType = null, ?int $finishUser = null)
+    public function __construct(?array $midocoBillingNotice = null, ?string $sortOrder = null, ?string $orgunitName = null, ?string $selection = null, ?string $fromFinishTimestamp = null, ?string $untilFinishTimestamp = null, ?string $fromCreationTimestamp = null, ?string $untilCreationTimestamp = null, ?string $notice = null, ?string $taskType = null, ?int $finishUser = null)
     {
         $this
             ->setMidocoBillingNotice($midocoBillingNotice)
@@ -116,18 +117,22 @@ class GetBillingNoticesResponse extends AbstractStructBase
      * Get MidocoBillingNotice value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoBillingNotice[]
      */
-    public function getMidocoBillingNotice(): array
+    public function getMidocoBillingNotice(): ?array
     {
         return $this->MidocoBillingNotice;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoBillingNotice method
+     * This method is responsible for validating the value(s) passed to the setMidocoBillingNotice method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoBillingNotice method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoBillingNoticeForArrayConstraintsFromSetMidocoBillingNotice(array $values = []): string
+    public static function validateMidocoBillingNoticeForArrayConstraintFromSetMidocoBillingNotice(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getBillingNoticesResponseMidocoBillingNoticeItem) {
@@ -149,10 +154,10 @@ class GetBillingNoticesResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoBillingNotice[] $midocoBillingNotice
      * @return \Pggns\MidocoApi\Order\StructType\GetBillingNoticesResponse
      */
-    public function setMidocoBillingNotice(array $midocoBillingNotice = []): self
+    public function setMidocoBillingNotice(?array $midocoBillingNotice = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoBillingNoticeArrayErrorMessage = self::validateMidocoBillingNoticeForArrayConstraintsFromSetMidocoBillingNotice($midocoBillingNotice))) {
+        if ('' !== ($midocoBillingNoticeArrayErrorMessage = self::validateMidocoBillingNoticeForArrayConstraintFromSetMidocoBillingNotice($midocoBillingNotice))) {
             throw new InvalidArgumentException($midocoBillingNoticeArrayErrorMessage, __LINE__);
         }
         $this->MidocoBillingNotice = $midocoBillingNotice;

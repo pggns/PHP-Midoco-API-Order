@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SearchCashBookPrintResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchCashBookPrintResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class SearchCashBookPrintResponse extends AbstractStructBase
      * - ref: CashBookPrintInfo
      * @var \Pggns\MidocoApi\Order\StructType\CashBookPrintDTO[]
      */
-    protected array $CashBookPrintInfo = [];
+    protected ?array $CashBookPrintInfo = null;
     /**
      * Constructor method for SearchCashBookPrintResponse
      * @uses SearchCashBookPrintResponse::setCashBookPrintInfo()
      * @param \Pggns\MidocoApi\Order\StructType\CashBookPrintDTO[] $cashBookPrintInfo
      */
-    public function __construct(array $cashBookPrintInfo = [])
+    public function __construct(?array $cashBookPrintInfo = null)
     {
         $this
             ->setCashBookPrintInfo($cashBookPrintInfo);
@@ -36,18 +37,22 @@ class SearchCashBookPrintResponse extends AbstractStructBase
      * Get CashBookPrintInfo value
      * @return \Pggns\MidocoApi\Order\StructType\CashBookPrintDTO[]
      */
-    public function getCashBookPrintInfo(): array
+    public function getCashBookPrintInfo(): ?array
     {
         return $this->CashBookPrintInfo;
     }
     /**
-     * This method is responsible for validating the values passed to the setCashBookPrintInfo method
+     * This method is responsible for validating the value(s) passed to the setCashBookPrintInfo method
      * This method is willingly generated in order to preserve the one-line inline validation within the setCashBookPrintInfo method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateCashBookPrintInfoForArrayConstraintsFromSetCashBookPrintInfo(array $values = []): string
+    public static function validateCashBookPrintInfoForArrayConstraintFromSetCashBookPrintInfo(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $searchCashBookPrintResponseCashBookPrintInfoItem) {
@@ -69,10 +74,10 @@ class SearchCashBookPrintResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\CashBookPrintDTO[] $cashBookPrintInfo
      * @return \Pggns\MidocoApi\Order\StructType\SearchCashBookPrintResponse
      */
-    public function setCashBookPrintInfo(array $cashBookPrintInfo = []): self
+    public function setCashBookPrintInfo(?array $cashBookPrintInfo = null): self
     {
         // validation for constraint: array
-        if ('' !== ($cashBookPrintInfoArrayErrorMessage = self::validateCashBookPrintInfoForArrayConstraintsFromSetCashBookPrintInfo($cashBookPrintInfo))) {
+        if ('' !== ($cashBookPrintInfoArrayErrorMessage = self::validateCashBookPrintInfoForArrayConstraintFromSetCashBookPrintInfo($cashBookPrintInfo))) {
             throw new InvalidArgumentException($cashBookPrintInfoArrayErrorMessage, __LINE__);
         }
         $this->CashBookPrintInfo = $cashBookPrintInfo;

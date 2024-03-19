@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SftpCredentialDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SftpCredentialDTO extends AbstractStructBase
 {
     /**

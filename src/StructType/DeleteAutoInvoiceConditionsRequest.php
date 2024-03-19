@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: Delete auto invoice conditions.
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteAutoInvoiceConditionsRequest extends AbstractStructBase
 {
     /**

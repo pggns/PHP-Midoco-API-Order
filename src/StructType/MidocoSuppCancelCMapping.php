@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoSuppCancelCMapping StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoSuppCancelCMapping extends SuppCancelCMappingDTO
 {
     /**

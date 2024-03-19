@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SearchTssProtocolRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchTssProtocolRequest extends AbstractStructBase
 {
     /**

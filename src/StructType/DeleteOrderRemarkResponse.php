@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: deleteOrderRemark --- deletes a remark from an order
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteOrderRemarkResponse extends AbstractStructBase
 {
 }

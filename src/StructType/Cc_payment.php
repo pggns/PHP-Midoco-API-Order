@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for cc-payment StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class Cc_payment extends AbstractStructBase
 {
     /**
@@ -59,7 +60,7 @@ class Cc_payment extends AbstractStructBase
      * - minOccurs: 0
      * @var \Pggns\MidocoApi\Order\StructType\CCPaymentAdditionalInfo[]
      */
-    protected array $cc_additional_info = [];
+    protected ?array $cc_additional_info = null;
     /**
      * The card_holder
      * Meta information extracted from the WSDL
@@ -75,7 +76,7 @@ class Cc_payment extends AbstractStructBase
      * - ref: cc-token
      * @var \Pggns\MidocoApi\Order\StructType\Cc_token[]
      */
-    protected array $cc_token = [];
+    protected ?array $cc_token = null;
     /**
      * The payment_channel_indicator
      * Meta information extracted from the WSDL
@@ -194,7 +195,7 @@ class Cc_payment extends AbstractStructBase
      * @param string $initial_ecom_transaction_id
      * @param int $position
      */
-    public function __construct(?string $cc_type = null, ?string $cc_number = null, ?string $cc_valid_year = null, ?string $cc_valid_month = null, ?string $cvc_code = null, array $cc_additional_info = [], ?string $card_holder = null, array $cc_token = [], ?string $payment_channel_indicator = null, ?string $cardholder_auth_verification = null, ?string $electronic_commerce_indicator = null, ?string $xid = null, ?float $auth_amount = null, ?float $remaining_auth_amount = null, ?string $v3ds = null, ?string $dstid = null, ?string $initial_ecom_transaction_id = null, ?int $position = null)
+    public function __construct(?string $cc_type = null, ?string $cc_number = null, ?string $cc_valid_year = null, ?string $cc_valid_month = null, ?string $cvc_code = null, ?array $cc_additional_info = null, ?string $card_holder = null, ?array $cc_token = null, ?string $payment_channel_indicator = null, ?string $cardholder_auth_verification = null, ?string $electronic_commerce_indicator = null, ?string $xid = null, ?float $auth_amount = null, ?float $remaining_auth_amount = null, ?string $v3ds = null, ?string $dstid = null, ?string $initial_ecom_transaction_id = null, ?int $position = null)
     {
         $this
             ->setCc_type($cc_type)
@@ -282,7 +283,7 @@ class Cc_payment extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($cc_valid_year, true), gettype($cc_valid_year)), __LINE__);
         }
         // validation for constraint: pattern([0-9]{4})
-        if (!is_null($cc_valid_year) && !preg_match('/[0-9]{4}/', $cc_valid_year)) {
+        if (!is_null($cc_valid_year) && !preg_match('/[0-9]{4}/', (string) $cc_valid_year)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[0-9]{4}/', var_export($cc_valid_year, true)), __LINE__);
         }
         $this->cc_valid_year = $this->{'cc-valid-year'} = $cc_valid_year;
@@ -309,7 +310,7 @@ class Cc_payment extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($cc_valid_month, true), gettype($cc_valid_month)), __LINE__);
         }
         // validation for constraint: pattern([0-9]{2})
-        if (!is_null($cc_valid_month) && !preg_match('/[0-9]{2}/', $cc_valid_month)) {
+        if (!is_null($cc_valid_month) && !preg_match('/[0-9]{2}/', (string) $cc_valid_month)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[0-9]{2}/', var_export($cc_valid_month, true)), __LINE__);
         }
         $this->cc_valid_month = $this->{'cc-valid-month'} = $cc_valid_month;
@@ -347,18 +348,22 @@ class Cc_payment extends AbstractStructBase
      * Get cc_additional_info value
      * @return \Pggns\MidocoApi\Order\StructType\CCPaymentAdditionalInfo[]
      */
-    public function getCc_additional_info(): array
+    public function getCc_additional_info(): ?array
     {
         return $this->{'cc-additional-info'};
     }
     /**
-     * This method is responsible for validating the values passed to the setCc_additional_info method
+     * This method is responsible for validating the value(s) passed to the setCc_additional_info method
      * This method is willingly generated in order to preserve the one-line inline validation within the setCc_additional_info method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateCc_additional_infoForArrayConstraintsFromSetCc_additional_info(array $values = []): string
+    public static function validateCc_additional_infoForArrayConstraintFromSetCc_additional_info(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $cc_paymentCc_additional_infoItem) {
@@ -380,10 +385,10 @@ class Cc_payment extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\CCPaymentAdditionalInfo[] $cc_additional_info
      * @return \Pggns\MidocoApi\Order\StructType\Cc_payment
      */
-    public function setCc_additional_info(array $cc_additional_info = []): self
+    public function setCc_additional_info(?array $cc_additional_info = null): self
     {
         // validation for constraint: array
-        if ('' !== ($cc_additional_infoArrayErrorMessage = self::validateCc_additional_infoForArrayConstraintsFromSetCc_additional_info($cc_additional_info))) {
+        if ('' !== ($cc_additional_infoArrayErrorMessage = self::validateCc_additional_infoForArrayConstraintFromSetCc_additional_info($cc_additional_info))) {
             throw new InvalidArgumentException($cc_additional_infoArrayErrorMessage, __LINE__);
         }
         $this->cc_additional_info = $this->{'cc-additional-info'} = $cc_additional_info;
@@ -433,18 +438,22 @@ class Cc_payment extends AbstractStructBase
      * Get cc_token value
      * @return \Pggns\MidocoApi\Order\StructType\Cc_token[]
      */
-    public function getCc_token(): array
+    public function getCc_token(): ?array
     {
         return $this->{'cc-token'};
     }
     /**
-     * This method is responsible for validating the values passed to the setCc_token method
+     * This method is responsible for validating the value(s) passed to the setCc_token method
      * This method is willingly generated in order to preserve the one-line inline validation within the setCc_token method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateCc_tokenForArrayConstraintsFromSetCc_token(array $values = []): string
+    public static function validateCc_tokenForArrayConstraintFromSetCc_token(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $cc_paymentCc_tokenItem) {
@@ -466,10 +475,10 @@ class Cc_payment extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\Cc_token[] $cc_token
      * @return \Pggns\MidocoApi\Order\StructType\Cc_payment
      */
-    public function setCc_token(array $cc_token = []): self
+    public function setCc_token(?array $cc_token = null): self
     {
         // validation for constraint: array
-        if ('' !== ($cc_tokenArrayErrorMessage = self::validateCc_tokenForArrayConstraintsFromSetCc_token($cc_token))) {
+        if ('' !== ($cc_tokenArrayErrorMessage = self::validateCc_tokenForArrayConstraintFromSetCc_token($cc_token))) {
             throw new InvalidArgumentException($cc_tokenArrayErrorMessage, __LINE__);
         }
         $this->cc_token = $this->{'cc-token'} = $cc_token;

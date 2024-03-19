@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for AttributeChoiceValueType StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class AttributeChoiceValueType extends AbstractStructBase
 {
     /**

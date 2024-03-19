@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetBookingControlDataResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetBookingControlDataResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetBookingControlDataResponse extends AbstractStructBase
      * - ref: MidocoBookingControl
      * @var \Pggns\MidocoApi\Order\StructType\MidocoBookingControl[]
      */
-    protected array $MidocoBookingControl = [];
+    protected ?array $MidocoBookingControl = null;
     /**
      * Constructor method for GetBookingControlDataResponse
      * @uses GetBookingControlDataResponse::setMidocoBookingControl()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoBookingControl[] $midocoBookingControl
      */
-    public function __construct(array $midocoBookingControl = [])
+    public function __construct(?array $midocoBookingControl = null)
     {
         $this
             ->setMidocoBookingControl($midocoBookingControl);
@@ -36,18 +37,22 @@ class GetBookingControlDataResponse extends AbstractStructBase
      * Get MidocoBookingControl value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoBookingControl[]
      */
-    public function getMidocoBookingControl(): array
+    public function getMidocoBookingControl(): ?array
     {
         return $this->MidocoBookingControl;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoBookingControl method
+     * This method is responsible for validating the value(s) passed to the setMidocoBookingControl method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoBookingControl method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoBookingControlForArrayConstraintsFromSetMidocoBookingControl(array $values = []): string
+    public static function validateMidocoBookingControlForArrayConstraintFromSetMidocoBookingControl(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getBookingControlDataResponseMidocoBookingControlItem) {
@@ -69,10 +74,10 @@ class GetBookingControlDataResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoBookingControl[] $midocoBookingControl
      * @return \Pggns\MidocoApi\Order\StructType\GetBookingControlDataResponse
      */
-    public function setMidocoBookingControl(array $midocoBookingControl = []): self
+    public function setMidocoBookingControl(?array $midocoBookingControl = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoBookingControlArrayErrorMessage = self::validateMidocoBookingControlForArrayConstraintsFromSetMidocoBookingControl($midocoBookingControl))) {
+        if ('' !== ($midocoBookingControlArrayErrorMessage = self::validateMidocoBookingControlForArrayConstraintFromSetMidocoBookingControl($midocoBookingControl))) {
             throw new InvalidArgumentException($midocoBookingControlArrayErrorMessage, __LINE__);
         }
         $this->MidocoBookingControl = $midocoBookingControl;

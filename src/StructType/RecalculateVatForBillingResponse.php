@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for RecalculateVatForBillingResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class RecalculateVatForBillingResponse extends AbstractStructBase
 {
 }

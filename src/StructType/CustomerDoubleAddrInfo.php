@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CustomerDoubleAddrInfo StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CustomerDoubleAddrInfo extends AbstractStructBase
 {
     /**

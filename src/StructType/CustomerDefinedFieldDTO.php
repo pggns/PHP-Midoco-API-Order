@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CustomerDefinedFieldDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CustomerDefinedFieldDTO extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetEinvoiceDocumentResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetEinvoiceDocumentResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetEinvoiceDocumentResponse extends AbstractStructBase
      * - ref: MidocoEinvoiceDocument
      * @var \Pggns\MidocoApi\Order\StructType\MidocoEinvoiceDocument[]
      */
-    protected array $MidocoEinvoiceDocument = [];
+    protected ?array $MidocoEinvoiceDocument = null;
     /**
      * Constructor method for GetEinvoiceDocumentResponse
      * @uses GetEinvoiceDocumentResponse::setMidocoEinvoiceDocument()
      * @param \Pggns\MidocoApi\Order\StructType\MidocoEinvoiceDocument[] $midocoEinvoiceDocument
      */
-    public function __construct(array $midocoEinvoiceDocument = [])
+    public function __construct(?array $midocoEinvoiceDocument = null)
     {
         $this
             ->setMidocoEinvoiceDocument($midocoEinvoiceDocument);
@@ -36,18 +37,22 @@ class GetEinvoiceDocumentResponse extends AbstractStructBase
      * Get MidocoEinvoiceDocument value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoEinvoiceDocument[]
      */
-    public function getMidocoEinvoiceDocument(): array
+    public function getMidocoEinvoiceDocument(): ?array
     {
         return $this->MidocoEinvoiceDocument;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoEinvoiceDocument method
+     * This method is responsible for validating the value(s) passed to the setMidocoEinvoiceDocument method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoEinvoiceDocument method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoEinvoiceDocumentForArrayConstraintsFromSetMidocoEinvoiceDocument(array $values = []): string
+    public static function validateMidocoEinvoiceDocumentForArrayConstraintFromSetMidocoEinvoiceDocument(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getEinvoiceDocumentResponseMidocoEinvoiceDocumentItem) {
@@ -69,10 +74,10 @@ class GetEinvoiceDocumentResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoEinvoiceDocument[] $midocoEinvoiceDocument
      * @return \Pggns\MidocoApi\Order\StructType\GetEinvoiceDocumentResponse
      */
-    public function setMidocoEinvoiceDocument(array $midocoEinvoiceDocument = []): self
+    public function setMidocoEinvoiceDocument(?array $midocoEinvoiceDocument = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoEinvoiceDocumentArrayErrorMessage = self::validateMidocoEinvoiceDocumentForArrayConstraintsFromSetMidocoEinvoiceDocument($midocoEinvoiceDocument))) {
+        if ('' !== ($midocoEinvoiceDocumentArrayErrorMessage = self::validateMidocoEinvoiceDocumentForArrayConstraintFromSetMidocoEinvoiceDocument($midocoEinvoiceDocument))) {
             throw new InvalidArgumentException($midocoEinvoiceDocumentArrayErrorMessage, __LINE__);
         }
         $this->MidocoEinvoiceDocument = $midocoEinvoiceDocument;

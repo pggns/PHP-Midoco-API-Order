@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetAccountEntriesForDebitorRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetAccountEntriesForDebitorRequest extends AbstractStructBase
 {
     /**
@@ -28,7 +29,7 @@ class GetAccountEntriesForDebitorRequest extends AbstractStructBase
      * - ref: system:MidocoOrderByInfo
      * @var \Pggns\MidocoApi\Order\StructType\MidocoOrderByInfo[]
      */
-    protected array $MidocoOrderByInfo = [];
+    protected ?array $MidocoOrderByInfo = null;
     /**
      * The beginIndex
      * @var int|null
@@ -57,7 +58,7 @@ class GetAccountEntriesForDebitorRequest extends AbstractStructBase
      * @param int $endIndex
      * @param bool $useCacheForPages
      */
-    public function __construct(?\Pggns\MidocoApi\Order\StructType\AccountEntriesSearchCriteria $accountEntriesSearchCriteria = null, array $midocoOrderByInfo = [], ?int $beginIndex = null, ?int $endIndex = null, ?bool $useCacheForPages = null)
+    public function __construct(?\Pggns\MidocoApi\Order\StructType\AccountEntriesSearchCriteria $accountEntriesSearchCriteria = null, ?array $midocoOrderByInfo = null, ?int $beginIndex = null, ?int $endIndex = null, ?bool $useCacheForPages = null)
     {
         $this
             ->setAccountEntriesSearchCriteria($accountEntriesSearchCriteria)
@@ -89,18 +90,22 @@ class GetAccountEntriesForDebitorRequest extends AbstractStructBase
      * Get MidocoOrderByInfo value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoOrderByInfo[]
      */
-    public function getMidocoOrderByInfo(): array
+    public function getMidocoOrderByInfo(): ?array
     {
         return $this->MidocoOrderByInfo;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoOrderByInfo method
+     * This method is responsible for validating the value(s) passed to the setMidocoOrderByInfo method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoOrderByInfo method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoOrderByInfoForArrayConstraintsFromSetMidocoOrderByInfo(array $values = []): string
+    public static function validateMidocoOrderByInfoForArrayConstraintFromSetMidocoOrderByInfo(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getAccountEntriesForDebitorRequestMidocoOrderByInfoItem) {
@@ -122,10 +127,10 @@ class GetAccountEntriesForDebitorRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoOrderByInfo[] $midocoOrderByInfo
      * @return \Pggns\MidocoApi\Order\StructType\GetAccountEntriesForDebitorRequest
      */
-    public function setMidocoOrderByInfo(array $midocoOrderByInfo = []): self
+    public function setMidocoOrderByInfo(?array $midocoOrderByInfo = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoOrderByInfoArrayErrorMessage = self::validateMidocoOrderByInfoForArrayConstraintsFromSetMidocoOrderByInfo($midocoOrderByInfo))) {
+        if ('' !== ($midocoOrderByInfoArrayErrorMessage = self::validateMidocoOrderByInfoForArrayConstraintFromSetMidocoOrderByInfo($midocoOrderByInfo))) {
             throw new InvalidArgumentException($midocoOrderByInfoArrayErrorMessage, __LINE__);
         }
         $this->MidocoOrderByInfo = $midocoOrderByInfo;

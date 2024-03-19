@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ErrorInfoAgencyMissingInDocument StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ErrorInfoAgencyMissingInDocument extends AbstractStructBase
 {
     /**

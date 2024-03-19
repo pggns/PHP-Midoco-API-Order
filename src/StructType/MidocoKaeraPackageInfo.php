@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoKaeraPackageInfo StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoKaeraPackageInfo extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class MidocoKaeraPackageInfo extends AbstractStructBase
      * - ref: MidocoPackageInfo
      * @var \Pggns\MidocoApi\Order\StructType\PackageitemDTO[]
      */
-    protected array $MidocoPackageInfo = [];
+    protected ?array $MidocoPackageInfo = null;
     /**
      * Constructor method for MidocoKaeraPackageInfo
      * @uses MidocoKaeraPackageInfo::setMidocoPackageInfo()
      * @param \Pggns\MidocoApi\Order\StructType\PackageitemDTO[] $midocoPackageInfo
      */
-    public function __construct(array $midocoPackageInfo = [])
+    public function __construct(?array $midocoPackageInfo = null)
     {
         $this
             ->setMidocoPackageInfo($midocoPackageInfo);
@@ -36,18 +37,22 @@ class MidocoKaeraPackageInfo extends AbstractStructBase
      * Get MidocoPackageInfo value
      * @return \Pggns\MidocoApi\Order\StructType\PackageitemDTO[]
      */
-    public function getMidocoPackageInfo(): array
+    public function getMidocoPackageInfo(): ?array
     {
         return $this->MidocoPackageInfo;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoPackageInfo method
+     * This method is responsible for validating the value(s) passed to the setMidocoPackageInfo method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoPackageInfo method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoPackageInfoForArrayConstraintsFromSetMidocoPackageInfo(array $values = []): string
+    public static function validateMidocoPackageInfoForArrayConstraintFromSetMidocoPackageInfo(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoKaeraPackageInfoMidocoPackageInfoItem) {
@@ -69,10 +74,10 @@ class MidocoKaeraPackageInfo extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\PackageitemDTO[] $midocoPackageInfo
      * @return \Pggns\MidocoApi\Order\StructType\MidocoKaeraPackageInfo
      */
-    public function setMidocoPackageInfo(array $midocoPackageInfo = []): self
+    public function setMidocoPackageInfo(?array $midocoPackageInfo = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoPackageInfoArrayErrorMessage = self::validateMidocoPackageInfoForArrayConstraintsFromSetMidocoPackageInfo($midocoPackageInfo))) {
+        if ('' !== ($midocoPackageInfoArrayErrorMessage = self::validateMidocoPackageInfoForArrayConstraintFromSetMidocoPackageInfo($midocoPackageInfo))) {
             throw new InvalidArgumentException($midocoPackageInfoArrayErrorMessage, __LINE__);
         }
         $this->MidocoPackageInfo = $midocoPackageInfo;

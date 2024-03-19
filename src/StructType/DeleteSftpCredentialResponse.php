@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteSftpCredentialResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteSftpCredentialResponse extends AbstractStructBase
 {
 }

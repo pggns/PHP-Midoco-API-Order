@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetTravelNumberVatDivTemplsResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetTravelNumberVatDivTemplsResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetTravelNumberVatDivTemplsResponse extends AbstractStructBase
      * - ref: MidocoTravelNumberVatDivTempl
      * @var \Pggns\MidocoApi\Order\StructType\TravelNumberVatDivTemplDTO[]
      */
-    protected array $MidocoTravelNumberVatDivTempl = [];
+    protected ?array $MidocoTravelNumberVatDivTempl = null;
     /**
      * Constructor method for GetTravelNumberVatDivTemplsResponse
      * @uses GetTravelNumberVatDivTemplsResponse::setMidocoTravelNumberVatDivTempl()
      * @param \Pggns\MidocoApi\Order\StructType\TravelNumberVatDivTemplDTO[] $midocoTravelNumberVatDivTempl
      */
-    public function __construct(array $midocoTravelNumberVatDivTempl = [])
+    public function __construct(?array $midocoTravelNumberVatDivTempl = null)
     {
         $this
             ->setMidocoTravelNumberVatDivTempl($midocoTravelNumberVatDivTempl);
@@ -36,18 +37,22 @@ class GetTravelNumberVatDivTemplsResponse extends AbstractStructBase
      * Get MidocoTravelNumberVatDivTempl value
      * @return \Pggns\MidocoApi\Order\StructType\TravelNumberVatDivTemplDTO[]
      */
-    public function getMidocoTravelNumberVatDivTempl(): array
+    public function getMidocoTravelNumberVatDivTempl(): ?array
     {
         return $this->MidocoTravelNumberVatDivTempl;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoTravelNumberVatDivTempl method
+     * This method is responsible for validating the value(s) passed to the setMidocoTravelNumberVatDivTempl method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoTravelNumberVatDivTempl method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoTravelNumberVatDivTemplForArrayConstraintsFromSetMidocoTravelNumberVatDivTempl(array $values = []): string
+    public static function validateMidocoTravelNumberVatDivTemplForArrayConstraintFromSetMidocoTravelNumberVatDivTempl(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getTravelNumberVatDivTemplsResponseMidocoTravelNumberVatDivTemplItem) {
@@ -69,10 +74,10 @@ class GetTravelNumberVatDivTemplsResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\TravelNumberVatDivTemplDTO[] $midocoTravelNumberVatDivTempl
      * @return \Pggns\MidocoApi\Order\StructType\GetTravelNumberVatDivTemplsResponse
      */
-    public function setMidocoTravelNumberVatDivTempl(array $midocoTravelNumberVatDivTempl = []): self
+    public function setMidocoTravelNumberVatDivTempl(?array $midocoTravelNumberVatDivTempl = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoTravelNumberVatDivTemplArrayErrorMessage = self::validateMidocoTravelNumberVatDivTemplForArrayConstraintsFromSetMidocoTravelNumberVatDivTempl($midocoTravelNumberVatDivTempl))) {
+        if ('' !== ($midocoTravelNumberVatDivTemplArrayErrorMessage = self::validateMidocoTravelNumberVatDivTemplForArrayConstraintFromSetMidocoTravelNumberVatDivTempl($midocoTravelNumberVatDivTempl))) {
             throw new InvalidArgumentException($midocoTravelNumberVatDivTemplArrayErrorMessage, __LINE__);
         }
         $this->MidocoTravelNumberVatDivTempl = $midocoTravelNumberVatDivTempl;

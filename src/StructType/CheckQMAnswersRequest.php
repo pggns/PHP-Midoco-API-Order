@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CheckQMAnswersRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CheckQMAnswersRequest extends AbstractStructBase
 {
     /**

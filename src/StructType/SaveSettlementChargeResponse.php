@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveSettlementChargeResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveSettlementChargeResponse extends AbstractStructBase
 {
     /**

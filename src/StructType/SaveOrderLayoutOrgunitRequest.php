@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveOrderLayoutOrgunitRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveOrderLayoutOrgunitRequest extends AbstractStructBase
 {
     /**
@@ -21,7 +22,7 @@ class SaveOrderLayoutOrgunitRequest extends AbstractStructBase
      * - ref: NotAllowedOrgunit
      * @var \Pggns\MidocoApi\Order\StructType\OrderLayoutOrgunitDTO[]
      */
-    protected array $NotAllowedOrgunit = [];
+    protected ?array $NotAllowedOrgunit = null;
     /**
      * The asNeighbor
      * @var bool|null
@@ -34,7 +35,7 @@ class SaveOrderLayoutOrgunitRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\OrderLayoutOrgunitDTO[] $notAllowedOrgunit
      * @param bool $asNeighbor
      */
-    public function __construct(array $notAllowedOrgunit = [], ?bool $asNeighbor = null)
+    public function __construct(?array $notAllowedOrgunit = null, ?bool $asNeighbor = null)
     {
         $this
             ->setNotAllowedOrgunit($notAllowedOrgunit)
@@ -44,18 +45,22 @@ class SaveOrderLayoutOrgunitRequest extends AbstractStructBase
      * Get NotAllowedOrgunit value
      * @return \Pggns\MidocoApi\Order\StructType\OrderLayoutOrgunitDTO[]
      */
-    public function getNotAllowedOrgunit(): array
+    public function getNotAllowedOrgunit(): ?array
     {
         return $this->NotAllowedOrgunit;
     }
     /**
-     * This method is responsible for validating the values passed to the setNotAllowedOrgunit method
+     * This method is responsible for validating the value(s) passed to the setNotAllowedOrgunit method
      * This method is willingly generated in order to preserve the one-line inline validation within the setNotAllowedOrgunit method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateNotAllowedOrgunitForArrayConstraintsFromSetNotAllowedOrgunit(array $values = []): string
+    public static function validateNotAllowedOrgunitForArrayConstraintFromSetNotAllowedOrgunit(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $saveOrderLayoutOrgunitRequestNotAllowedOrgunitItem) {
@@ -77,10 +82,10 @@ class SaveOrderLayoutOrgunitRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\OrderLayoutOrgunitDTO[] $notAllowedOrgunit
      * @return \Pggns\MidocoApi\Order\StructType\SaveOrderLayoutOrgunitRequest
      */
-    public function setNotAllowedOrgunit(array $notAllowedOrgunit = []): self
+    public function setNotAllowedOrgunit(?array $notAllowedOrgunit = null): self
     {
         // validation for constraint: array
-        if ('' !== ($notAllowedOrgunitArrayErrorMessage = self::validateNotAllowedOrgunitForArrayConstraintsFromSetNotAllowedOrgunit($notAllowedOrgunit))) {
+        if ('' !== ($notAllowedOrgunitArrayErrorMessage = self::validateNotAllowedOrgunitForArrayConstraintFromSetNotAllowedOrgunit($notAllowedOrgunit))) {
             throw new InvalidArgumentException($notAllowedOrgunitArrayErrorMessage, __LINE__);
         }
         $this->NotAllowedOrgunit = $notAllowedOrgunit;

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoCredentialsType StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoCredentialsType extends AbstractStructBase
 {
     /**

@@ -11,8 +11,14 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DocFlightDetailDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DocFlightDetailDTO extends AbstractStructBase
 {
+    /**
+     * The aircraftType
+     * @var string|null
+     */
+    protected ?string $aircraftType = null;
     /**
      * The arrivalDate
      * @var string|null
@@ -170,6 +176,7 @@ class DocFlightDetailDTO extends AbstractStructBase
     protected ?string $serviceStatus = null;
     /**
      * Constructor method for DocFlightDetailDTO
+     * @uses DocFlightDetailDTO::setAircraftType()
      * @uses DocFlightDetailDTO::setArrivalDate()
      * @uses DocFlightDetailDTO::setArrivalTime()
      * @uses DocFlightDetailDTO::setBaggageAllowance()
@@ -201,6 +208,7 @@ class DocFlightDetailDTO extends AbstractStructBase
      * @uses DocFlightDetailDTO::setSegmentNo()
      * @uses DocFlightDetailDTO::setServiceCode()
      * @uses DocFlightDetailDTO::setServiceStatus()
+     * @param string $aircraftType
      * @param string $arrivalDate
      * @param string $arrivalTime
      * @param string $baggageAllowance
@@ -233,9 +241,10 @@ class DocFlightDetailDTO extends AbstractStructBase
      * @param string $serviceCode
      * @param string $serviceStatus
      */
-    public function __construct(?string $arrivalDate = null, ?string $arrivalTime = null, ?string $baggageAllowance = null, ?string $bookingClass = null, ?string $carrier = null, ?string $checkinTime = null, ?string $classDescription = null, ?float $co2Emission = null, ?string $departureCode = null, ?string $departureDate = null, ?string $departureDescription = null, ?string $departureTerminal = null, ?string $departureTime = null, ?string $destinationCode = null, ?string $destinationDescription = null, ?string $duration = null, ?string $fareBase = null, ?string $flightNo = null, ?bool $isDeleted = null, ?int $itemId = null, ?int $miles = null, ?bool $openSegment = null, ?string $operatingCarrier = null, ?string $operatingCarrierFlightNo = null, ?string $personAssignment = null, ?int $position = null, ?bool $preventPrinting = null, ?int $referencePosition = null, ?int $segmentNo = null, ?string $serviceCode = null, ?string $serviceStatus = null)
+    public function __construct(?string $aircraftType = null, ?string $arrivalDate = null, ?string $arrivalTime = null, ?string $baggageAllowance = null, ?string $bookingClass = null, ?string $carrier = null, ?string $checkinTime = null, ?string $classDescription = null, ?float $co2Emission = null, ?string $departureCode = null, ?string $departureDate = null, ?string $departureDescription = null, ?string $departureTerminal = null, ?string $departureTime = null, ?string $destinationCode = null, ?string $destinationDescription = null, ?string $duration = null, ?string $fareBase = null, ?string $flightNo = null, ?bool $isDeleted = null, ?int $itemId = null, ?int $miles = null, ?bool $openSegment = null, ?string $operatingCarrier = null, ?string $operatingCarrierFlightNo = null, ?string $personAssignment = null, ?int $position = null, ?bool $preventPrinting = null, ?int $referencePosition = null, ?int $segmentNo = null, ?string $serviceCode = null, ?string $serviceStatus = null)
     {
         $this
+            ->setAircraftType($aircraftType)
             ->setArrivalDate($arrivalDate)
             ->setArrivalTime($arrivalTime)
             ->setBaggageAllowance($baggageAllowance)
@@ -267,6 +276,29 @@ class DocFlightDetailDTO extends AbstractStructBase
             ->setSegmentNo($segmentNo)
             ->setServiceCode($serviceCode)
             ->setServiceStatus($serviceStatus);
+    }
+    /**
+     * Get aircraftType value
+     * @return string|null
+     */
+    public function getAircraftType(): ?string
+    {
+        return $this->aircraftType;
+    }
+    /**
+     * Set aircraftType value
+     * @param string $aircraftType
+     * @return \Pggns\MidocoApi\Order\StructType\DocFlightDetailDTO
+     */
+    public function setAircraftType(?string $aircraftType = null): self
+    {
+        // validation for constraint: string
+        if (!is_null($aircraftType) && !is_string($aircraftType)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($aircraftType, true), gettype($aircraftType)), __LINE__);
+        }
+        $this->aircraftType = $aircraftType;
+        
+        return $this;
     }
     /**
      * Get arrivalDate value

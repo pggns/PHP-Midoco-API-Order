@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SearchTssProtocolResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchTssProtocolResponse extends AbstractStructBase
 {
     /**
@@ -26,7 +27,7 @@ class SearchTssProtocolResponse extends AbstractStructBase
      * - ref: system:MidocoTssProtocol
      * @var \Pggns\MidocoApi\Order\StructType\MidocoTssProtocol[]
      */
-    protected array $MidocoTssProtocol = [];
+    protected ?array $MidocoTssProtocol = null;
     /**
      * Constructor method for SearchTssProtocolResponse
      * @uses SearchTssProtocolResponse::setUnitName()
@@ -34,7 +35,7 @@ class SearchTssProtocolResponse extends AbstractStructBase
      * @param string $unitName
      * @param \Pggns\MidocoApi\Order\StructType\MidocoTssProtocol[] $midocoTssProtocol
      */
-    public function __construct(?string $unitName = null, array $midocoTssProtocol = [])
+    public function __construct(?string $unitName = null, ?array $midocoTssProtocol = null)
     {
         $this
             ->setUnitName($unitName)
@@ -67,18 +68,22 @@ class SearchTssProtocolResponse extends AbstractStructBase
      * Get MidocoTssProtocol value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoTssProtocol[]
      */
-    public function getMidocoTssProtocol(): array
+    public function getMidocoTssProtocol(): ?array
     {
         return $this->MidocoTssProtocol;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoTssProtocol method
+     * This method is responsible for validating the value(s) passed to the setMidocoTssProtocol method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoTssProtocol method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoTssProtocolForArrayConstraintsFromSetMidocoTssProtocol(array $values = []): string
+    public static function validateMidocoTssProtocolForArrayConstraintFromSetMidocoTssProtocol(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $searchTssProtocolResponseMidocoTssProtocolItem) {
@@ -100,10 +105,10 @@ class SearchTssProtocolResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\MidocoTssProtocol[] $midocoTssProtocol
      * @return \Pggns\MidocoApi\Order\StructType\SearchTssProtocolResponse
      */
-    public function setMidocoTssProtocol(array $midocoTssProtocol = []): self
+    public function setMidocoTssProtocol(?array $midocoTssProtocol = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoTssProtocolArrayErrorMessage = self::validateMidocoTssProtocolForArrayConstraintsFromSetMidocoTssProtocol($midocoTssProtocol))) {
+        if ('' !== ($midocoTssProtocolArrayErrorMessage = self::validateMidocoTssProtocolForArrayConstraintFromSetMidocoTssProtocol($midocoTssProtocol))) {
             throw new InvalidArgumentException($midocoTssProtocolArrayErrorMessage, __LINE__);
         }
         $this->MidocoTssProtocol = $midocoTssProtocol;

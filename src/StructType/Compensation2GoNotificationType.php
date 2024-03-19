@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for Compensation2GoNotificationType StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class Compensation2GoNotificationType extends AbstractStructBase
 {
     /**

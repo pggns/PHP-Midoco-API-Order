@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SearchDuplicatedAdviceSettlementDetailResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchDuplicatedAdviceSettlementDetailResponse extends AbstractStructBase
 {
     /**
@@ -19,13 +20,13 @@ class SearchDuplicatedAdviceSettlementDetailResponse extends AbstractStructBase
      * - maxOccurs: unbounded
      * @var int[]
      */
-    protected array $duplicatedDetailId = [];
+    protected ?array $duplicatedDetailId = null;
     /**
      * Constructor method for SearchDuplicatedAdviceSettlementDetailResponse
      * @uses SearchDuplicatedAdviceSettlementDetailResponse::setDuplicatedDetailId()
      * @param int[] $duplicatedDetailId
      */
-    public function __construct(array $duplicatedDetailId = [])
+    public function __construct(?array $duplicatedDetailId = null)
     {
         $this
             ->setDuplicatedDetailId($duplicatedDetailId);
@@ -34,18 +35,22 @@ class SearchDuplicatedAdviceSettlementDetailResponse extends AbstractStructBase
      * Get duplicatedDetailId value
      * @return int[]
      */
-    public function getDuplicatedDetailId(): array
+    public function getDuplicatedDetailId(): ?array
     {
         return $this->duplicatedDetailId;
     }
     /**
-     * This method is responsible for validating the values passed to the setDuplicatedDetailId method
+     * This method is responsible for validating the value(s) passed to the setDuplicatedDetailId method
      * This method is willingly generated in order to preserve the one-line inline validation within the setDuplicatedDetailId method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateDuplicatedDetailIdForArrayConstraintsFromSetDuplicatedDetailId(array $values = []): string
+    public static function validateDuplicatedDetailIdForArrayConstraintFromSetDuplicatedDetailId(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $searchDuplicatedAdviceSettlementDetailResponseDuplicatedDetailIdItem) {
@@ -67,10 +72,10 @@ class SearchDuplicatedAdviceSettlementDetailResponse extends AbstractStructBase
      * @param int[] $duplicatedDetailId
      * @return \Pggns\MidocoApi\Order\StructType\SearchDuplicatedAdviceSettlementDetailResponse
      */
-    public function setDuplicatedDetailId(array $duplicatedDetailId = []): self
+    public function setDuplicatedDetailId(?array $duplicatedDetailId = null): self
     {
         // validation for constraint: array
-        if ('' !== ($duplicatedDetailIdArrayErrorMessage = self::validateDuplicatedDetailIdForArrayConstraintsFromSetDuplicatedDetailId($duplicatedDetailId))) {
+        if ('' !== ($duplicatedDetailIdArrayErrorMessage = self::validateDuplicatedDetailIdForArrayConstraintFromSetDuplicatedDetailId($duplicatedDetailId))) {
             throw new InvalidArgumentException($duplicatedDetailIdArrayErrorMessage, __LINE__);
         }
         $this->duplicatedDetailId = $duplicatedDetailId;

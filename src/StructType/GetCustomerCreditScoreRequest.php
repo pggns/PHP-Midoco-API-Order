@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetCustomerCreditScoreRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetCustomerCreditScoreRequest extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ExportMessageDTO StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ExportMessageDTO extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoTravelNoMargin StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoTravelNoMargin extends TravelNoMarginDTO
 {
     /**
@@ -21,7 +22,7 @@ class MidocoTravelNoMargin extends TravelNoMarginDTO
      * - ref: MidocoTravelNoMarginBuyItem
      * @var \Pggns\MidocoApi\Order\StructType\MidocoTravelNoMarginBuyItem[]
      */
-    protected array $MidocoTravelNoMarginBuyItem = [];
+    protected ?array $MidocoTravelNoMarginBuyItem = null;
     /**
      * The MidocoTravelNoMarginSaleItem
      * Meta information extracted from the WSDL
@@ -30,7 +31,7 @@ class MidocoTravelNoMargin extends TravelNoMarginDTO
      * - ref: MidocoTravelNoMarginSaleItem
      * @var \Pggns\MidocoApi\Order\StructType\MidocoTravelNoMarginSaleItem[]
      */
-    protected array $MidocoTravelNoMarginSaleItem = [];
+    protected ?array $MidocoTravelNoMarginSaleItem = null;
     /**
      * The calculatedMarginBrutto
      * @var float|null
@@ -59,7 +60,7 @@ class MidocoTravelNoMargin extends TravelNoMarginDTO
      * @param float $bookedMarginBrutto
      * @param string $status
      */
-    public function __construct(array $midocoTravelNoMarginBuyItem = [], array $midocoTravelNoMarginSaleItem = [], ?float $calculatedMarginBrutto = null, ?float $bookedMarginBrutto = null, ?string $status = null)
+    public function __construct(?array $midocoTravelNoMarginBuyItem = null, ?array $midocoTravelNoMarginSaleItem = null, ?float $calculatedMarginBrutto = null, ?float $bookedMarginBrutto = null, ?string $status = null)
     {
         $this
             ->setMidocoTravelNoMarginBuyItem($midocoTravelNoMarginBuyItem)
@@ -72,18 +73,22 @@ class MidocoTravelNoMargin extends TravelNoMarginDTO
      * Get MidocoTravelNoMarginBuyItem value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoTravelNoMarginBuyItem[]
      */
-    public function getMidocoTravelNoMarginBuyItem(): array
+    public function getMidocoTravelNoMarginBuyItem(): ?array
     {
         return $this->MidocoTravelNoMarginBuyItem;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoTravelNoMarginBuyItem method
+     * This method is responsible for validating the value(s) passed to the setMidocoTravelNoMarginBuyItem method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoTravelNoMarginBuyItem method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoTravelNoMarginBuyItemForArrayConstraintsFromSetMidocoTravelNoMarginBuyItem(array $values = []): string
+    public static function validateMidocoTravelNoMarginBuyItemForArrayConstraintFromSetMidocoTravelNoMarginBuyItem(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoTravelNoMarginMidocoTravelNoMarginBuyItemItem) {
@@ -105,10 +110,10 @@ class MidocoTravelNoMargin extends TravelNoMarginDTO
      * @param \Pggns\MidocoApi\Order\StructType\MidocoTravelNoMarginBuyItem[] $midocoTravelNoMarginBuyItem
      * @return \Pggns\MidocoApi\Order\StructType\MidocoTravelNoMargin
      */
-    public function setMidocoTravelNoMarginBuyItem(array $midocoTravelNoMarginBuyItem = []): self
+    public function setMidocoTravelNoMarginBuyItem(?array $midocoTravelNoMarginBuyItem = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoTravelNoMarginBuyItemArrayErrorMessage = self::validateMidocoTravelNoMarginBuyItemForArrayConstraintsFromSetMidocoTravelNoMarginBuyItem($midocoTravelNoMarginBuyItem))) {
+        if ('' !== ($midocoTravelNoMarginBuyItemArrayErrorMessage = self::validateMidocoTravelNoMarginBuyItemForArrayConstraintFromSetMidocoTravelNoMarginBuyItem($midocoTravelNoMarginBuyItem))) {
             throw new InvalidArgumentException($midocoTravelNoMarginBuyItemArrayErrorMessage, __LINE__);
         }
         $this->MidocoTravelNoMarginBuyItem = $midocoTravelNoMarginBuyItem;
@@ -135,18 +140,22 @@ class MidocoTravelNoMargin extends TravelNoMarginDTO
      * Get MidocoTravelNoMarginSaleItem value
      * @return \Pggns\MidocoApi\Order\StructType\MidocoTravelNoMarginSaleItem[]
      */
-    public function getMidocoTravelNoMarginSaleItem(): array
+    public function getMidocoTravelNoMarginSaleItem(): ?array
     {
         return $this->MidocoTravelNoMarginSaleItem;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoTravelNoMarginSaleItem method
+     * This method is responsible for validating the value(s) passed to the setMidocoTravelNoMarginSaleItem method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoTravelNoMarginSaleItem method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoTravelNoMarginSaleItemForArrayConstraintsFromSetMidocoTravelNoMarginSaleItem(array $values = []): string
+    public static function validateMidocoTravelNoMarginSaleItemForArrayConstraintFromSetMidocoTravelNoMarginSaleItem(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoTravelNoMarginMidocoTravelNoMarginSaleItemItem) {
@@ -168,10 +177,10 @@ class MidocoTravelNoMargin extends TravelNoMarginDTO
      * @param \Pggns\MidocoApi\Order\StructType\MidocoTravelNoMarginSaleItem[] $midocoTravelNoMarginSaleItem
      * @return \Pggns\MidocoApi\Order\StructType\MidocoTravelNoMargin
      */
-    public function setMidocoTravelNoMarginSaleItem(array $midocoTravelNoMarginSaleItem = []): self
+    public function setMidocoTravelNoMarginSaleItem(?array $midocoTravelNoMarginSaleItem = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoTravelNoMarginSaleItemArrayErrorMessage = self::validateMidocoTravelNoMarginSaleItemForArrayConstraintsFromSetMidocoTravelNoMarginSaleItem($midocoTravelNoMarginSaleItem))) {
+        if ('' !== ($midocoTravelNoMarginSaleItemArrayErrorMessage = self::validateMidocoTravelNoMarginSaleItemForArrayConstraintFromSetMidocoTravelNoMarginSaleItem($midocoTravelNoMarginSaleItem))) {
             throw new InvalidArgumentException($midocoTravelNoMarginSaleItemArrayErrorMessage, __LINE__);
         }
         $this->MidocoTravelNoMarginSaleItem = $midocoTravelNoMarginSaleItem;

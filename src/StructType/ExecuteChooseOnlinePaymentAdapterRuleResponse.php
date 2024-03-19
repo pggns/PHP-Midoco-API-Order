@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ExecuteChooseOnlinePaymentAdapterRuleResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ExecuteChooseOnlinePaymentAdapterRuleResponse extends AbstractStructBase
 {
     /**

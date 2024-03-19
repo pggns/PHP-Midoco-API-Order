@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: importAgencySettlementData -- import CSV data in Order database
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ImportAgencySettlementDataRequest extends AbstractStructBase
 {
     /**

@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: saveBillingOnlinePayment --- saves a billing online payment
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveBillingOnlinePaymentResponse extends AbstractStructBase
 {
     /**

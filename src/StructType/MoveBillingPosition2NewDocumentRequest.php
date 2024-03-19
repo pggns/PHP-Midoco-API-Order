@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MoveBillingPosition2NewDocumentRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MoveBillingPosition2NewDocumentRequest extends AbstractStructBase
 {
     /**

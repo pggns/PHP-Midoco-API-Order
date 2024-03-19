@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetLinkToExternalReservationResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetLinkToExternalReservationResponse extends AbstractStructBase
 {
     /**
