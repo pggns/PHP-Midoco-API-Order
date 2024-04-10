@@ -102,6 +102,14 @@ class MidocoGDSBooking extends AbstractStructBase
      */
     protected ?string $OriginalBookingMessageBase64 = null;
     /**
+     * The CustomerDefinedField
+     * Meta information extracted from the WSDL
+     * - maxOccurs: unbounded
+     * - minOccurs: 0
+     * @var \Pggns\MidocoApi\Order\StructType\Cdf[]
+     */
+    protected ?array $CustomerDefinedField = null;
+    /**
      * Constructor method for MidocoGDSBooking
      * @uses MidocoGDSBooking::setGDSBookingIdentification()
      * @uses MidocoGDSBooking::setCustomer()
@@ -113,6 +121,7 @@ class MidocoGDSBooking extends AbstractStructBase
      * @uses MidocoGDSBooking::setBillingInfo()
      * @uses MidocoGDSBooking::setAdditionalService()
      * @uses MidocoGDSBooking::setOriginalBookingMessageBase64()
+     * @uses MidocoGDSBooking::setCustomerDefinedField()
      * @param \Pggns\MidocoApi\Order\StructType\GDSBookingIdentification $gDSBookingIdentification
      * @param \Pggns\MidocoApi\Order\StructType\Customer_1[] $customer
      * @param \Pggns\MidocoApi\Order\StructType\Traveler[] $traveler
@@ -123,8 +132,9 @@ class MidocoGDSBooking extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\BillingInfo $billingInfo
      * @param \Pggns\MidocoApi\Order\StructType\AdditionalServiceType[] $additionalService
      * @param string $originalBookingMessageBase64
+     * @param \Pggns\MidocoApi\Order\StructType\Cdf[] $customerDefinedField
      */
-    public function __construct(\Pggns\MidocoApi\Order\StructType\GDSBookingIdentification $gDSBookingIdentification, ?array $customer = null, ?array $traveler = null, ?array $flightBooking = null, ?array $carBooking = null, ?array $hotelBooking = null, ?array $gDSRemark = null, ?\Pggns\MidocoApi\Order\StructType\BillingInfo $billingInfo = null, ?array $additionalService = null, ?string $originalBookingMessageBase64 = null)
+    public function __construct(\Pggns\MidocoApi\Order\StructType\GDSBookingIdentification $gDSBookingIdentification, ?array $customer = null, ?array $traveler = null, ?array $flightBooking = null, ?array $carBooking = null, ?array $hotelBooking = null, ?array $gDSRemark = null, ?\Pggns\MidocoApi\Order\StructType\BillingInfo $billingInfo = null, ?array $additionalService = null, ?string $originalBookingMessageBase64 = null, ?array $customerDefinedField = null)
     {
         $this
             ->setGDSBookingIdentification($gDSBookingIdentification)
@@ -136,7 +146,8 @@ class MidocoGDSBooking extends AbstractStructBase
             ->setGDSRemark($gDSRemark)
             ->setBillingInfo($billingInfo)
             ->setAdditionalService($additionalService)
-            ->setOriginalBookingMessageBase64($originalBookingMessageBase64);
+            ->setOriginalBookingMessageBase64($originalBookingMessageBase64)
+            ->setCustomerDefinedField($customerDefinedField);
     }
     /**
      * Get GDSBookingIdentification value
@@ -673,6 +684,73 @@ class MidocoGDSBooking extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($originalBookingMessageBase64, true), gettype($originalBookingMessageBase64)), __LINE__);
         }
         $this->OriginalBookingMessageBase64 = $originalBookingMessageBase64;
+        
+        return $this;
+    }
+    /**
+     * Get CustomerDefinedField value
+     * @return \Pggns\MidocoApi\Order\StructType\Cdf[]
+     */
+    public function getCustomerDefinedField(): ?array
+    {
+        return $this->CustomerDefinedField;
+    }
+    /**
+     * This method is responsible for validating the value(s) passed to the setCustomerDefinedField method
+     * This method is willingly generated in order to preserve the one-line inline validation within the setCustomerDefinedField method
+     * This has to validate that each item contained by the array match the itemType constraint
+     * @param array $values
+     * @return string A non-empty message if the values does not match the validation rules
+     */
+    public static function validateCustomerDefinedFieldForArrayConstraintFromSetCustomerDefinedField(?array $values = []): string
+    {
+        if (!is_array($values)) {
+            return '';
+        }
+        $message = '';
+        $invalidValues = [];
+        foreach ($values as $midocoGDSBookingCustomerDefinedFieldItem) {
+            // validation for constraint: itemType
+            if (!$midocoGDSBookingCustomerDefinedFieldItem instanceof \Pggns\MidocoApi\Order\StructType\Cdf) {
+                $invalidValues[] = is_object($midocoGDSBookingCustomerDefinedFieldItem) ? get_class($midocoGDSBookingCustomerDefinedFieldItem) : sprintf('%s(%s)', gettype($midocoGDSBookingCustomerDefinedFieldItem), var_export($midocoGDSBookingCustomerDefinedFieldItem, true));
+            }
+        }
+        if (!empty($invalidValues)) {
+            $message = sprintf('The CustomerDefinedField property can only contain items of type \Pggns\MidocoApi\Order\StructType\Cdf, %s given', is_object($invalidValues) ? get_class($invalidValues) : (is_array($invalidValues) ? implode(', ', $invalidValues) : gettype($invalidValues)));
+        }
+        unset($invalidValues);
+        
+        return $message;
+    }
+    /**
+     * Set CustomerDefinedField value
+     * @throws InvalidArgumentException
+     * @param \Pggns\MidocoApi\Order\StructType\Cdf[] $customerDefinedField
+     * @return \Pggns\MidocoApi\Order\StructType\MidocoGDSBooking
+     */
+    public function setCustomerDefinedField(?array $customerDefinedField = null): self
+    {
+        // validation for constraint: array
+        if ('' !== ($customerDefinedFieldArrayErrorMessage = self::validateCustomerDefinedFieldForArrayConstraintFromSetCustomerDefinedField($customerDefinedField))) {
+            throw new InvalidArgumentException($customerDefinedFieldArrayErrorMessage, __LINE__);
+        }
+        $this->CustomerDefinedField = $customerDefinedField;
+        
+        return $this;
+    }
+    /**
+     * Add item to CustomerDefinedField value
+     * @throws InvalidArgumentException
+     * @param \Pggns\MidocoApi\Order\StructType\Cdf $item
+     * @return \Pggns\MidocoApi\Order\StructType\MidocoGDSBooking
+     */
+    public function addToCustomerDefinedField(\Pggns\MidocoApi\Order\StructType\Cdf $item): self
+    {
+        // validation for constraint: itemType
+        if (!$item instanceof \Pggns\MidocoApi\Order\StructType\Cdf) {
+            throw new InvalidArgumentException(sprintf('The CustomerDefinedField property can only contain items of type \Pggns\MidocoApi\Order\StructType\Cdf, %s given', is_object($item) ? get_class($item) : (is_array($item) ? implode(', ', $item) : gettype($item))), __LINE__);
+        }
+        $this->CustomerDefinedField[] = $item;
         
         return $this;
     }

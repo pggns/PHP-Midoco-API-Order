@@ -140,6 +140,15 @@ class Midoco_booking_message extends AbstractStructBase
      */
     protected ?array $verk_data = null;
     /**
+     * The CustomerDefinedField
+     * Meta information extracted from the WSDL
+     * - documentation: Customer Defined Fields
+     * - maxOccurs: unbounded
+     * - minOccurs: 0
+     * @var \Pggns\MidocoApi\Order\StructType\Cdf[]
+     */
+    protected ?array $CustomerDefinedField = null;
+    /**
      * The message_version
      * Meta information extracted from the WSDL
      * - default: 1
@@ -164,6 +173,7 @@ class Midoco_booking_message extends AbstractStructBase
      * @uses Midoco_booking_message::setDunningInfo()
      * @uses Midoco_booking_message::setVoucher()
      * @uses Midoco_booking_message::setVerk_data()
+     * @uses Midoco_booking_message::setCustomerDefinedField()
      * @uses Midoco_booking_message::setMessage_version()
      * @param \Pggns\MidocoApi\Order\StructType\Agency_identity $agency_identity
      * @param \Pggns\MidocoApi\Order\StructType\Customer[] $customer
@@ -181,9 +191,10 @@ class Midoco_booking_message extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\DunningInfo[] $dunningInfo
      * @param \Pggns\MidocoApi\Order\StructType\Voucher[] $voucher
      * @param \Pggns\MidocoApi\Order\StructType\VerkDataInfo[] $verk_data
+     * @param \Pggns\MidocoApi\Order\StructType\Cdf[] $customerDefinedField
      * @param int $message_version
      */
-    public function __construct(?\Pggns\MidocoApi\Order\StructType\Agency_identity $agency_identity = null, ?array $customer = null, ?array $package_info = null, ?array $booking = null, ?\Pggns\MidocoApi\Order\StructType\Prices $prices = null, ?array $ticket = null, ?\Pggns\MidocoApi\Order\StructType\Payment_info $payment_info = null, ?\Pggns\MidocoApi\Order\StructType\Marketing_info $marketing_info = null, ?\Pggns\MidocoApi\Order\StructType\Internal_treatment $internal_treatment = null, ?array $internal_command_configuration = null, ?array $order_remark = null, ?array $externalPayment = null, ?array $imported_document = null, ?array $dunningInfo = null, ?array $voucher = null, ?array $verk_data = null, ?int $message_version = 1)
+    public function __construct(?\Pggns\MidocoApi\Order\StructType\Agency_identity $agency_identity = null, ?array $customer = null, ?array $package_info = null, ?array $booking = null, ?\Pggns\MidocoApi\Order\StructType\Prices $prices = null, ?array $ticket = null, ?\Pggns\MidocoApi\Order\StructType\Payment_info $payment_info = null, ?\Pggns\MidocoApi\Order\StructType\Marketing_info $marketing_info = null, ?\Pggns\MidocoApi\Order\StructType\Internal_treatment $internal_treatment = null, ?array $internal_command_configuration = null, ?array $order_remark = null, ?array $externalPayment = null, ?array $imported_document = null, ?array $dunningInfo = null, ?array $voucher = null, ?array $verk_data = null, ?array $customerDefinedField = null, ?int $message_version = 1)
     {
         $this
             ->setAgency_identity($agency_identity)
@@ -202,6 +213,7 @@ class Midoco_booking_message extends AbstractStructBase
             ->setDunningInfo($dunningInfo)
             ->setVoucher($voucher)
             ->setVerk_data($verk_data)
+            ->setCustomerDefinedField($customerDefinedField)
             ->setMessage_version($message_version);
     }
     /**
@@ -1041,6 +1053,73 @@ class Midoco_booking_message extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('The verk_data property can only contain items of type \Pggns\MidocoApi\Order\StructType\VerkDataInfo, %s given', is_object($item) ? get_class($item) : (is_array($item) ? implode(', ', $item) : gettype($item))), __LINE__);
         }
         $this->verk_data[] = $this->{'verk-data'}[] = $item;
+        
+        return $this;
+    }
+    /**
+     * Get CustomerDefinedField value
+     * @return \Pggns\MidocoApi\Order\StructType\Cdf[]
+     */
+    public function getCustomerDefinedField(): ?array
+    {
+        return $this->CustomerDefinedField;
+    }
+    /**
+     * This method is responsible for validating the value(s) passed to the setCustomerDefinedField method
+     * This method is willingly generated in order to preserve the one-line inline validation within the setCustomerDefinedField method
+     * This has to validate that each item contained by the array match the itemType constraint
+     * @param array $values
+     * @return string A non-empty message if the values does not match the validation rules
+     */
+    public static function validateCustomerDefinedFieldForArrayConstraintFromSetCustomerDefinedField(?array $values = []): string
+    {
+        if (!is_array($values)) {
+            return '';
+        }
+        $message = '';
+        $invalidValues = [];
+        foreach ($values as $midoco_booking_messageCustomerDefinedFieldItem) {
+            // validation for constraint: itemType
+            if (!$midoco_booking_messageCustomerDefinedFieldItem instanceof \Pggns\MidocoApi\Order\StructType\Cdf) {
+                $invalidValues[] = is_object($midoco_booking_messageCustomerDefinedFieldItem) ? get_class($midoco_booking_messageCustomerDefinedFieldItem) : sprintf('%s(%s)', gettype($midoco_booking_messageCustomerDefinedFieldItem), var_export($midoco_booking_messageCustomerDefinedFieldItem, true));
+            }
+        }
+        if (!empty($invalidValues)) {
+            $message = sprintf('The CustomerDefinedField property can only contain items of type \Pggns\MidocoApi\Order\StructType\Cdf, %s given', is_object($invalidValues) ? get_class($invalidValues) : (is_array($invalidValues) ? implode(', ', $invalidValues) : gettype($invalidValues)));
+        }
+        unset($invalidValues);
+        
+        return $message;
+    }
+    /**
+     * Set CustomerDefinedField value
+     * @throws InvalidArgumentException
+     * @param \Pggns\MidocoApi\Order\StructType\Cdf[] $customerDefinedField
+     * @return \Pggns\MidocoApi\Order\StructType\Midoco_booking_message
+     */
+    public function setCustomerDefinedField(?array $customerDefinedField = null): self
+    {
+        // validation for constraint: array
+        if ('' !== ($customerDefinedFieldArrayErrorMessage = self::validateCustomerDefinedFieldForArrayConstraintFromSetCustomerDefinedField($customerDefinedField))) {
+            throw new InvalidArgumentException($customerDefinedFieldArrayErrorMessage, __LINE__);
+        }
+        $this->CustomerDefinedField = $customerDefinedField;
+        
+        return $this;
+    }
+    /**
+     * Add item to CustomerDefinedField value
+     * @throws InvalidArgumentException
+     * @param \Pggns\MidocoApi\Order\StructType\Cdf $item
+     * @return \Pggns\MidocoApi\Order\StructType\Midoco_booking_message
+     */
+    public function addToCustomerDefinedField(\Pggns\MidocoApi\Order\StructType\Cdf $item): self
+    {
+        // validation for constraint: itemType
+        if (!$item instanceof \Pggns\MidocoApi\Order\StructType\Cdf) {
+            throw new InvalidArgumentException(sprintf('The CustomerDefinedField property can only contain items of type \Pggns\MidocoApi\Order\StructType\Cdf, %s given', is_object($item) ? get_class($item) : (is_array($item) ? implode(', ', $item) : gettype($item))), __LINE__);
+        }
+        $this->CustomerDefinedField[] = $item;
         
         return $this;
     }

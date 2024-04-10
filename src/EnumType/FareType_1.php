@@ -16,7 +16,7 @@ class FareType_1 extends AbstractStructEnumBase
      * Constant for value 'PUBLISHED'
      * @return string 'PUBLISHED'
      */
-    const VALUE_PUBLISHED_1 = 'PUBLISHED';
+    const VALUE_PUBLISHED = 'PUBLISHED';
     /**
      * Constant for value 'NETTO'
      * @return string 'NETTO'
@@ -36,31 +36,31 @@ class FareType_1 extends AbstractStructEnumBase
      * Constant for value 'NOFRILL'
      * @return string 'NOFRILL'
      */
-    const VALUE_NOFRILL_1 = 'NOFRILL';
+    const VALUE_NOFRILL = 'NOFRILL';
     /**
      * Constant for value 'CHARTER'
      * @return string 'CHARTER'
      */
-    const VALUE_CHARTER_1 = 'CHARTER';
+    const VALUE_CHARTER = 'CHARTER';
     /**
      * Return allowed values
-     * @uses self::VALUE_PUBLISHED_1
+     * @uses self::VALUE_PUBLISHED
      * @uses self::VALUE_NETTO
      * @uses self::VALUE_NEGO
      * @uses self::VALUE_CORPORATE_NEGO
-     * @uses self::VALUE_NOFRILL_1
-     * @uses self::VALUE_CHARTER_1
+     * @uses self::VALUE_NOFRILL
+     * @uses self::VALUE_CHARTER
      * @return string[]
      */
     public static function getValidValues(): array
     {
         return [
-            self::VALUE_PUBLISHED_1,
+            self::VALUE_PUBLISHED,
             self::VALUE_NETTO,
             self::VALUE_NEGO,
             self::VALUE_CORPORATE_NEGO,
-            self::VALUE_NOFRILL_1,
-            self::VALUE_CHARTER_1,
+            self::VALUE_NOFRILL,
+            self::VALUE_CHARTER,
         ];
     }
 }

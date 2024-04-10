@@ -25,6 +25,11 @@ class BillingPositionDbiInfoDTO extends AbstractStructBase
      */
     protected ?string $dbiKey = null;
     /**
+     * The isManual
+     * @var bool|null
+     */
+    protected ?bool $isManual = null;
+    /**
      * The position
      * @var int|null
      */
@@ -43,20 +48,23 @@ class BillingPositionDbiInfoDTO extends AbstractStructBase
      * Constructor method for BillingPositionDbiInfoDTO
      * @uses BillingPositionDbiInfoDTO::setDbiInfo()
      * @uses BillingPositionDbiInfoDTO::setDbiKey()
+     * @uses BillingPositionDbiInfoDTO::setIsManual()
      * @uses BillingPositionDbiInfoDTO::setPosition()
      * @uses BillingPositionDbiInfoDTO::setPositionId()
      * @uses BillingPositionDbiInfoDTO::setPrintingLabel()
      * @param string $dbiInfo
      * @param string $dbiKey
+     * @param bool $isManual
      * @param int $position
      * @param int $positionId
      * @param string $printingLabel
      */
-    public function __construct(?string $dbiInfo = null, ?string $dbiKey = null, ?int $position = null, ?int $positionId = null, ?string $printingLabel = null)
+    public function __construct(?string $dbiInfo = null, ?string $dbiKey = null, ?bool $isManual = null, ?int $position = null, ?int $positionId = null, ?string $printingLabel = null)
     {
         $this
             ->setDbiInfo($dbiInfo)
             ->setDbiKey($dbiKey)
+            ->setIsManual($isManual)
             ->setPosition($position)
             ->setPositionId($positionId)
             ->setPrintingLabel($printingLabel);
@@ -104,6 +112,29 @@ class BillingPositionDbiInfoDTO extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($dbiKey, true), gettype($dbiKey)), __LINE__);
         }
         $this->dbiKey = $dbiKey;
+        
+        return $this;
+    }
+    /**
+     * Get isManual value
+     * @return bool|null
+     */
+    public function getIsManual(): ?bool
+    {
+        return $this->isManual;
+    }
+    /**
+     * Set isManual value
+     * @param bool $isManual
+     * @return \Pggns\MidocoApi\Order\StructType\BillingPositionDbiInfoDTO
+     */
+    public function setIsManual(?bool $isManual = null): self
+    {
+        // validation for constraint: boolean
+        if (!is_null($isManual) && !is_bool($isManual)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($isManual, true), gettype($isManual)), __LINE__);
+        }
+        $this->isManual = $isManual;
         
         return $this;
     }

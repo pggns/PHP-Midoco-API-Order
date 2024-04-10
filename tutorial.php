@@ -844,6 +844,14 @@ if ($get->getBookingMessage4Takeoff(new \Pggns\MidocoApi\Order\StructType\GetBoo
     print_r($get->getLastError());
 }
 /**
+ * Sample call for getOrderIdsForAgencyCommissionDates operation/method
+ */
+if ($get->getOrderIdsForAgencyCommissionDates(new \Pggns\MidocoApi\Order\StructType\GetOrderIdsForAgencyCommissionDatesRequest()) !== false) {
+    print_r($get->getResult());
+} else {
+    print_r($get->getLastError());
+}
+/**
  * Sample call for getProcessedBookings operation/method
  */
 if ($get->getProcessedBookings(new \Pggns\MidocoApi\Order\StructType\GetProcessedBookingsRequest()) !== false) {
@@ -3624,6 +3632,14 @@ if ($check->checkExistingAgencySettlementLevel(new \Pggns\MidocoApi\Order\Struct
  * Sample call for checkPaymentProviderSettlementBooking operation/method
  */
 if ($check->checkPaymentProviderSettlementBooking(new \Pggns\MidocoApi\Order\StructType\CheckPaymentProviderSettlementBookingRequest()) !== false) {
+    print_r($check->getResult());
+} else {
+    print_r($check->getLastError());
+}
+/**
+ * Sample call for checkPaymentProviderSettlement operation/method
+ */
+if ($check->checkPaymentProviderSettlement(new \Pggns\MidocoApi\Order\StructType\CheckPaymentProviderSettlementRequest()) !== false) {
     print_r($check->getResult());
 } else {
     print_r($check->getLastError());

@@ -300,6 +300,33 @@ class Check extends AbstractSoapClientBase
         }
     }
     /**
+     * Method to call the operation originally named checkPaymentProviderSettlement
+     * Meta information extracted from the WSDL
+     * - SOAPHeaderNames: MidocoCredentials
+     * - SOAPHeaderNamespaces: http://www.midoco.de/system
+     * - SOAPHeaderTypes: \Pggns\MidocoApi\Order\StructType\MidocoCredentialsType
+     * - SOAPHeaders: required
+     * @uses AbstractSoapClientBase::getSoapClient()
+     * @uses AbstractSoapClientBase::setResult()
+     * @uses AbstractSoapClientBase::saveLastError()
+     * @param \Pggns\MidocoApi\Order\StructType\CheckPaymentProviderSettlementRequest $paramCheckPaymentProviderSettlementRequest
+     * @return \Pggns\MidocoApi\Order\StructType\CheckPaymentProviderSettlementResponse|bool
+     */
+    public function checkPaymentProviderSettlement(\Pggns\MidocoApi\Order\StructType\CheckPaymentProviderSettlementRequest $paramCheckPaymentProviderSettlementRequest)
+    {
+        try {
+            $this->setResult($resultCheckPaymentProviderSettlement = $this->getSoapClient()->__soapCall('checkPaymentProviderSettlement', [
+                $paramCheckPaymentProviderSettlementRequest,
+            ], [], [], $this->outputHeaders));
+        
+            return $resultCheckPaymentProviderSettlement;
+        } catch (SoapFault $soapFault) {
+            $this->saveLastError(__METHOD__, $soapFault);
+        
+            return false;
+        }
+    }
+    /**
      * Method to call the operation originally named checkSupplierAgencySettlement
      * Meta information extracted from the WSDL
      * - SOAPHeaderNames: MidocoCredentials
@@ -329,7 +356,7 @@ class Check extends AbstractSoapClientBase
     /**
      * Returns the result
      * @see AbstractSoapClientBase::getResult()
-     * @return \Pggns\MidocoApi\Order\StructType\CheckAccess_TravelDataForCustomerResponse|\Pggns\MidocoApi\Order\StructType\CheckAgencySettlementLevelResponse|\Pggns\MidocoApi\Order\StructType\CheckCreditLimitByOrderResponse|\Pggns\MidocoApi\Order\StructType\CheckCreditLimitResponse|\Pggns\MidocoApi\Order\StructType\CheckIfMultipleMdcSettlementBillingResponse|\Pggns\MidocoApi\Order\StructType\CheckIfPaidBillingDocResponse|\Pggns\MidocoApi\Order\StructType\CheckIfPaidOrderResponse|\Pggns\MidocoApi\Order\StructType\CheckLockedUserByMailResponse|\Pggns\MidocoApi\Order\StructType\CheckPaymentProviderSettlementBookingResponse|\Pggns\MidocoApi\Order\StructType\CheckSupplierAgencySettlementBookingResponse|\Pggns\MidocoApi\Order\StructType\CheckSupplierAgencySettlementResponse
+     * @return \Pggns\MidocoApi\Order\StructType\CheckAccess_TravelDataForCustomerResponse|\Pggns\MidocoApi\Order\StructType\CheckAgencySettlementLevelResponse|\Pggns\MidocoApi\Order\StructType\CheckCreditLimitByOrderResponse|\Pggns\MidocoApi\Order\StructType\CheckCreditLimitResponse|\Pggns\MidocoApi\Order\StructType\CheckIfMultipleMdcSettlementBillingResponse|\Pggns\MidocoApi\Order\StructType\CheckIfPaidBillingDocResponse|\Pggns\MidocoApi\Order\StructType\CheckIfPaidOrderResponse|\Pggns\MidocoApi\Order\StructType\CheckLockedUserByMailResponse|\Pggns\MidocoApi\Order\StructType\CheckPaymentProviderSettlementBookingResponse|\Pggns\MidocoApi\Order\StructType\CheckPaymentProviderSettlementResponse|\Pggns\MidocoApi\Order\StructType\CheckSupplierAgencySettlementBookingResponse|\Pggns\MidocoApi\Order\StructType\CheckSupplierAgencySettlementResponse
      */
     public function getResult()
     {

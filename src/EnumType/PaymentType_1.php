@@ -18,44 +18,44 @@ class PaymentType_1 extends AbstractStructEnumBase
      * Constant for value 'AGENCY'
      * @return string 'AGENCY'
      */
-    const VALUE_AGENCY_1 = 'AGENCY';
+    const VALUE_AGENCY = 'AGENCY';
     /**
      * Constant for value 'SUPPLIER'
      * @return string 'SUPPLIER'
      */
-    const VALUE_SUPPLIER_1 = 'SUPPLIER';
+    const VALUE_SUPPLIER = 'SUPPLIER';
     /**
      * Constant for value 'DEBIT'
      * @return string 'DEBIT'
      */
-    const VALUE_DEBIT_1 = 'DEBIT';
+    const VALUE_DEBIT_3 = 'DEBIT';
     /**
      * Constant for value 'CASH'
      * @return string 'CASH'
      */
-    const VALUE_CASH_1 = 'CASH';
+    const VALUE_CASH_3 = 'CASH';
     /**
      * Constant for value 'CC'
      * @return string 'CC'
      */
-    const VALUE_CC_1 = 'CC';
+    const VALUE_CC_2 = 'CC';
     /**
      * Return allowed values
-     * @uses self::VALUE_AGENCY_1
-     * @uses self::VALUE_SUPPLIER_1
-     * @uses self::VALUE_DEBIT_1
-     * @uses self::VALUE_CASH_1
-     * @uses self::VALUE_CC_1
+     * @uses self::VALUE_AGENCY
+     * @uses self::VALUE_SUPPLIER
+     * @uses self::VALUE_DEBIT_3
+     * @uses self::VALUE_CASH_3
+     * @uses self::VALUE_CC_2
      * @return string[]
      */
     public static function getValidValues(): array
     {
         return [
-            self::VALUE_AGENCY_1,
-            self::VALUE_SUPPLIER_1,
-            self::VALUE_DEBIT_1,
-            self::VALUE_CASH_1,
-            self::VALUE_CC_1,
+            self::VALUE_AGENCY,
+            self::VALUE_SUPPLIER,
+            self::VALUE_DEBIT_3,
+            self::VALUE_CASH_3,
+            self::VALUE_CC_2,
         ];
     }
 }

@@ -47,7 +47,7 @@ class FlightBooking extends AbstractStructBase
      * - maxOccurs: unbounded
      * - minOccurs: 0
      * - ref: SpecialServiceRequest
-     * @var \Pggns\MidocoApi\Order\StructType\SpecialServiceRequest_1[]
+     * @var \Pggns\MidocoApi\Order\StructType\SpecialServiceRequest[]
      */
     protected ?array $SpecialServiceRequest = null;
     /**
@@ -150,7 +150,7 @@ class FlightBooking extends AbstractStructBase
      * @param \Pggns\MidocoApi\Order\StructType\FlightSegment[] $flightSegment
      * @param \Pggns\MidocoApi\Order\StructType\Ticket_1[] $ticket
      * @param \Pggns\MidocoApi\Order\StructType\TicketPrice[] $ticketPrice
-     * @param \Pggns\MidocoApi\Order\StructType\SpecialServiceRequest_1[] $specialServiceRequest
+     * @param \Pggns\MidocoApi\Order\StructType\SpecialServiceRequest[] $specialServiceRequest
      * @param \Pggns\MidocoApi\Order\StructType\BaggageAllowance[] $baggageAllowance
      * @param int[] $travelerRefId
      * @param \Pggns\MidocoApi\Order\StructType\TravelerTotalPrice[] $travelerTotalPrice
@@ -387,7 +387,7 @@ class FlightBooking extends AbstractStructBase
     }
     /**
      * Get SpecialServiceRequest value
-     * @return \Pggns\MidocoApi\Order\StructType\SpecialServiceRequest_1[]
+     * @return \Pggns\MidocoApi\Order\StructType\SpecialServiceRequest[]
      */
     public function getSpecialServiceRequest(): ?array
     {
@@ -409,12 +409,12 @@ class FlightBooking extends AbstractStructBase
         $invalidValues = [];
         foreach ($values as $flightBookingSpecialServiceRequestItem) {
             // validation for constraint: itemType
-            if (!$flightBookingSpecialServiceRequestItem instanceof \Pggns\MidocoApi\Order\StructType\SpecialServiceRequest_1) {
+            if (!$flightBookingSpecialServiceRequestItem instanceof \Pggns\MidocoApi\Order\StructType\SpecialServiceRequest) {
                 $invalidValues[] = is_object($flightBookingSpecialServiceRequestItem) ? get_class($flightBookingSpecialServiceRequestItem) : sprintf('%s(%s)', gettype($flightBookingSpecialServiceRequestItem), var_export($flightBookingSpecialServiceRequestItem, true));
             }
         }
         if (!empty($invalidValues)) {
-            $message = sprintf('The SpecialServiceRequest property can only contain items of type \Pggns\MidocoApi\Order\StructType\SpecialServiceRequest_1, %s given', is_object($invalidValues) ? get_class($invalidValues) : (is_array($invalidValues) ? implode(', ', $invalidValues) : gettype($invalidValues)));
+            $message = sprintf('The SpecialServiceRequest property can only contain items of type \Pggns\MidocoApi\Order\StructType\SpecialServiceRequest, %s given', is_object($invalidValues) ? get_class($invalidValues) : (is_array($invalidValues) ? implode(', ', $invalidValues) : gettype($invalidValues)));
         }
         unset($invalidValues);
         
@@ -423,7 +423,7 @@ class FlightBooking extends AbstractStructBase
     /**
      * Set SpecialServiceRequest value
      * @throws InvalidArgumentException
-     * @param \Pggns\MidocoApi\Order\StructType\SpecialServiceRequest_1[] $specialServiceRequest
+     * @param \Pggns\MidocoApi\Order\StructType\SpecialServiceRequest[] $specialServiceRequest
      * @return \Pggns\MidocoApi\Order\StructType\FlightBooking
      */
     public function setSpecialServiceRequest(?array $specialServiceRequest = null): self
@@ -439,14 +439,14 @@ class FlightBooking extends AbstractStructBase
     /**
      * Add item to SpecialServiceRequest value
      * @throws InvalidArgumentException
-     * @param \Pggns\MidocoApi\Order\StructType\SpecialServiceRequest_1 $item
+     * @param \Pggns\MidocoApi\Order\StructType\SpecialServiceRequest $item
      * @return \Pggns\MidocoApi\Order\StructType\FlightBooking
      */
-    public function addToSpecialServiceRequest(\Pggns\MidocoApi\Order\StructType\SpecialServiceRequest_1 $item): self
+    public function addToSpecialServiceRequest(\Pggns\MidocoApi\Order\StructType\SpecialServiceRequest $item): self
     {
         // validation for constraint: itemType
-        if (!$item instanceof \Pggns\MidocoApi\Order\StructType\SpecialServiceRequest_1) {
-            throw new InvalidArgumentException(sprintf('The SpecialServiceRequest property can only contain items of type \Pggns\MidocoApi\Order\StructType\SpecialServiceRequest_1, %s given', is_object($item) ? get_class($item) : (is_array($item) ? implode(', ', $item) : gettype($item))), __LINE__);
+        if (!$item instanceof \Pggns\MidocoApi\Order\StructType\SpecialServiceRequest) {
+            throw new InvalidArgumentException(sprintf('The SpecialServiceRequest property can only contain items of type \Pggns\MidocoApi\Order\StructType\SpecialServiceRequest, %s given', is_object($item) ? get_class($item) : (is_array($item) ? implode(', ', $item) : gettype($item))), __LINE__);
         }
         $this->SpecialServiceRequest[] = $item;
         

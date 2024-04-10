@@ -336,6 +336,13 @@ class MidocoSellItemInfo4Printing extends MidocoSellItemDetails
      */
     protected ?\Pggns\MidocoApi\Order\StructType\MidocoSellItemPricing $MidocoSellItemPricing = null;
     /**
+     * The buyCurrencyRate
+     * Meta information extracted from the WSDL
+     * - minOccurs: 0
+     * @var float|null
+     */
+    protected ?float $buyCurrencyRate = null;
+    /**
      * Constructor method for MidocoSellItemInfo4Printing
      * @uses MidocoSellItemInfo4Printing::setOrderPosition()
      * @uses MidocoSellItemInfo4Printing::setOriginalPrice()
@@ -388,6 +395,7 @@ class MidocoSellItemInfo4Printing extends MidocoSellItemDetails
      * @uses MidocoSellItemInfo4Printing::setAtolPeriod()
      * @uses MidocoSellItemInfo4Printing::setParentItemId()
      * @uses MidocoSellItemInfo4Printing::setMidocoSellItemPricing()
+     * @uses MidocoSellItemInfo4Printing::setBuyCurrencyRate()
      * @param string $orderPosition
      * @param float $originalPrice
      * @param float $actualPrice
@@ -439,8 +447,9 @@ class MidocoSellItemInfo4Printing extends MidocoSellItemDetails
      * @param string $atolPeriod
      * @param int $parentItemId
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSellItemPricing $midocoSellItemPricing
+     * @param float $buyCurrencyRate
      */
-    public function __construct(?string $orderPosition = null, ?float $originalPrice = null, ?float $actualPrice = null, ?float $totalPrice = null, ?float $salePrice = null, ?float $oldPrice = null, ?float $oldNonBookedVatAmount = 0, ?string $currency = null, ?string $originalCurrency = null, ?string $vatPercent = null, ?float $vatAmount = null, ?float $feeAmount = null, ?float $taxAmount = null, ?string $supplierVatPercent = null, ?float $supplierVatAmount = null, ?bool $isReferenced = true, ?int $printOptionId = null, ?string $reducedVatPercent = null, ?float $reducedVatAmount = null, ?string $supplierReducedVatPercent = null, ?float $supplierReducedVatAmount = null, ?string $geographicalCategory = null, ?bool $isTicketBased = true, ?string $countryCode = 'true', ?string $countryDescription = 'true', ?float $commissionAmount = null, ?float $commissionPercent = null, ?\Pggns\MidocoApi\Order\StructType\TravelSupplierInfoDTO $midocoTravelSupplierInfo = null, ?int $expedientUserId = null, ?string $crsExpedientId = null, ?array $midocoSellItemVatDivision = null, ?string $turnaroundPoint = null, ?float $depositPercent = null, ?int $noOfItems = null, ?float $singlePrice = null, ?string $category = null, ?string $extPaymentType = null, ?array $midocoInvoicePosition = null, ?array $midocoInvoiceVatPosition = null, ?string $groupItemName = null, ?bool $groupItemFlag = false, ?bool $isMarginVat = null, ?string $travelNo = null, ?array $midocoTouchedVatCode = null, ?\Pggns\MidocoApi\Order\StructType\MidocoVoucherInfo4Printing $midocoVoucherInfo4Printing = null, ?array $midocoTravelCm = null, ?array $midocoSellItemSaving = null, ?int $atolIndex = null, ?string $atolPeriod = null, ?int $parentItemId = null, ?\Pggns\MidocoApi\Order\StructType\MidocoSellItemPricing $midocoSellItemPricing = null)
+    public function __construct(?string $orderPosition = null, ?float $originalPrice = null, ?float $actualPrice = null, ?float $totalPrice = null, ?float $salePrice = null, ?float $oldPrice = null, ?float $oldNonBookedVatAmount = 0, ?string $currency = null, ?string $originalCurrency = null, ?string $vatPercent = null, ?float $vatAmount = null, ?float $feeAmount = null, ?float $taxAmount = null, ?string $supplierVatPercent = null, ?float $supplierVatAmount = null, ?bool $isReferenced = true, ?int $printOptionId = null, ?string $reducedVatPercent = null, ?float $reducedVatAmount = null, ?string $supplierReducedVatPercent = null, ?float $supplierReducedVatAmount = null, ?string $geographicalCategory = null, ?bool $isTicketBased = true, ?string $countryCode = 'true', ?string $countryDescription = 'true', ?float $commissionAmount = null, ?float $commissionPercent = null, ?\Pggns\MidocoApi\Order\StructType\TravelSupplierInfoDTO $midocoTravelSupplierInfo = null, ?int $expedientUserId = null, ?string $crsExpedientId = null, ?array $midocoSellItemVatDivision = null, ?string $turnaroundPoint = null, ?float $depositPercent = null, ?int $noOfItems = null, ?float $singlePrice = null, ?string $category = null, ?string $extPaymentType = null, ?array $midocoInvoicePosition = null, ?array $midocoInvoiceVatPosition = null, ?string $groupItemName = null, ?bool $groupItemFlag = false, ?bool $isMarginVat = null, ?string $travelNo = null, ?array $midocoTouchedVatCode = null, ?\Pggns\MidocoApi\Order\StructType\MidocoVoucherInfo4Printing $midocoVoucherInfo4Printing = null, ?array $midocoTravelCm = null, ?array $midocoSellItemSaving = null, ?int $atolIndex = null, ?string $atolPeriod = null, ?int $parentItemId = null, ?\Pggns\MidocoApi\Order\StructType\MidocoSellItemPricing $midocoSellItemPricing = null, ?float $buyCurrencyRate = null)
     {
         $this
             ->setOrderPosition($orderPosition)
@@ -493,7 +502,8 @@ class MidocoSellItemInfo4Printing extends MidocoSellItemDetails
             ->setAtolIndex($atolIndex)
             ->setAtolPeriod($atolPeriod)
             ->setParentItemId($parentItemId)
-            ->setMidocoSellItemPricing($midocoSellItemPricing);
+            ->setMidocoSellItemPricing($midocoSellItemPricing)
+            ->setBuyCurrencyRate($buyCurrencyRate);
     }
     /**
      * Get orderPosition value
@@ -1917,6 +1927,29 @@ class MidocoSellItemInfo4Printing extends MidocoSellItemDetails
     public function setMidocoSellItemPricing(?\Pggns\MidocoApi\Order\StructType\MidocoSellItemPricing $midocoSellItemPricing = null): self
     {
         $this->MidocoSellItemPricing = $midocoSellItemPricing;
+        
+        return $this;
+    }
+    /**
+     * Get buyCurrencyRate value
+     * @return float|null
+     */
+    public function getBuyCurrencyRate(): ?float
+    {
+        return $this->buyCurrencyRate;
+    }
+    /**
+     * Set buyCurrencyRate value
+     * @param float $buyCurrencyRate
+     * @return \Pggns\MidocoApi\Order\StructType\MidocoSellItemInfo4Printing
+     */
+    public function setBuyCurrencyRate(?float $buyCurrencyRate = null): self
+    {
+        // validation for constraint: float
+        if (!is_null($buyCurrencyRate) && !(is_float($buyCurrencyRate) || is_numeric($buyCurrencyRate))) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a float value, %s given', var_export($buyCurrencyRate, true), gettype($buyCurrencyRate)), __LINE__);
+        }
+        $this->buyCurrencyRate = $buyCurrencyRate;
         
         return $this;
     }

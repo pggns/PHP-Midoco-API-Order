@@ -235,7 +235,7 @@ class FlightServiceType extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: unbounded
      * - minOccurs: 0
-     * @var \Pggns\MidocoApi\Order\StructType\SpecialServiceRequest[]
+     * @var \Pggns\MidocoApi\Order\StructType\SpecialServiceRequest_1[]
      */
     protected ?array $specialServiceRequest = null;
     /**
@@ -307,7 +307,7 @@ class FlightServiceType extends AbstractStructBase
      * @param string $duration
      * @param string $fareBase
      * @param float $co2Emission
-     * @param \Pggns\MidocoApi\Order\StructType\SpecialServiceRequest[] $specialServiceRequest
+     * @param \Pggns\MidocoApi\Order\StructType\SpecialServiceRequest_1[] $specialServiceRequest
      * @param string $departureTerminal
      */
     public function __construct(int $position, ?string $carrier = null, ?string $flightNo = null, ?string $bookingClass = null, ?string $classDescription = null, ?bool $openSegment = false, ?string $departureCode = null, ?string $destinationCode = null, ?string $departureDate = null, ?string $departureTime = null, ?string $checkinTime = null, ?string $arrivalDate = null, ?string $arrivalTime = null, ?string $departureDescription = null, ?string $destinationDescription = null, ?string $personAssignment = null, ?string $serviceStatus = null, ?string $baggageAllowance = null, ?int $segmentNo = null, ?string $cabinClass = null, ?int $stopoverCount = null, ?string $aircraftType = null, ?array $meal = null, ?array $seat = null, ?string $operatingCarrier = null, ?string $operatingCarrierFlightNo = null, ?int $miles = null, ?string $duration = null, ?string $fareBase = null, ?float $co2Emission = null, ?array $specialServiceRequest = null, ?string $departureTerminal = null)
@@ -1146,7 +1146,7 @@ class FlightServiceType extends AbstractStructBase
     }
     /**
      * Get specialServiceRequest value
-     * @return \Pggns\MidocoApi\Order\StructType\SpecialServiceRequest[]
+     * @return \Pggns\MidocoApi\Order\StructType\SpecialServiceRequest_1[]
      */
     public function getSpecialServiceRequest(): ?array
     {
@@ -1168,12 +1168,12 @@ class FlightServiceType extends AbstractStructBase
         $invalidValues = [];
         foreach ($values as $flightServiceTypeSpecialServiceRequestItem) {
             // validation for constraint: itemType
-            if (!$flightServiceTypeSpecialServiceRequestItem instanceof \Pggns\MidocoApi\Order\StructType\SpecialServiceRequest) {
+            if (!$flightServiceTypeSpecialServiceRequestItem instanceof \Pggns\MidocoApi\Order\StructType\SpecialServiceRequest_1) {
                 $invalidValues[] = is_object($flightServiceTypeSpecialServiceRequestItem) ? get_class($flightServiceTypeSpecialServiceRequestItem) : sprintf('%s(%s)', gettype($flightServiceTypeSpecialServiceRequestItem), var_export($flightServiceTypeSpecialServiceRequestItem, true));
             }
         }
         if (!empty($invalidValues)) {
-            $message = sprintf('The specialServiceRequest property can only contain items of type \Pggns\MidocoApi\Order\StructType\SpecialServiceRequest, %s given', is_object($invalidValues) ? get_class($invalidValues) : (is_array($invalidValues) ? implode(', ', $invalidValues) : gettype($invalidValues)));
+            $message = sprintf('The specialServiceRequest property can only contain items of type \Pggns\MidocoApi\Order\StructType\SpecialServiceRequest_1, %s given', is_object($invalidValues) ? get_class($invalidValues) : (is_array($invalidValues) ? implode(', ', $invalidValues) : gettype($invalidValues)));
         }
         unset($invalidValues);
         
@@ -1182,7 +1182,7 @@ class FlightServiceType extends AbstractStructBase
     /**
      * Set specialServiceRequest value
      * @throws InvalidArgumentException
-     * @param \Pggns\MidocoApi\Order\StructType\SpecialServiceRequest[] $specialServiceRequest
+     * @param \Pggns\MidocoApi\Order\StructType\SpecialServiceRequest_1[] $specialServiceRequest
      * @return \Pggns\MidocoApi\Order\StructType\FlightServiceType
      */
     public function setSpecialServiceRequest(?array $specialServiceRequest = null): self
@@ -1198,14 +1198,14 @@ class FlightServiceType extends AbstractStructBase
     /**
      * Add item to specialServiceRequest value
      * @throws InvalidArgumentException
-     * @param \Pggns\MidocoApi\Order\StructType\SpecialServiceRequest $item
+     * @param \Pggns\MidocoApi\Order\StructType\SpecialServiceRequest_1 $item
      * @return \Pggns\MidocoApi\Order\StructType\FlightServiceType
      */
-    public function addToSpecialServiceRequest(\Pggns\MidocoApi\Order\StructType\SpecialServiceRequest $item): self
+    public function addToSpecialServiceRequest(\Pggns\MidocoApi\Order\StructType\SpecialServiceRequest_1 $item): self
     {
         // validation for constraint: itemType
-        if (!$item instanceof \Pggns\MidocoApi\Order\StructType\SpecialServiceRequest) {
-            throw new InvalidArgumentException(sprintf('The specialServiceRequest property can only contain items of type \Pggns\MidocoApi\Order\StructType\SpecialServiceRequest, %s given', is_object($item) ? get_class($item) : (is_array($item) ? implode(', ', $item) : gettype($item))), __LINE__);
+        if (!$item instanceof \Pggns\MidocoApi\Order\StructType\SpecialServiceRequest_1) {
+            throw new InvalidArgumentException(sprintf('The specialServiceRequest property can only contain items of type \Pggns\MidocoApi\Order\StructType\SpecialServiceRequest_1, %s given', is_object($item) ? get_class($item) : (is_array($item) ? implode(', ', $item) : gettype($item))), __LINE__);
         }
         $this->specialServiceRequest[] = $item;
         

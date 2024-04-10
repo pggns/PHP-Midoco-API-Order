@@ -131,6 +131,13 @@ class MidocoDocumentitem4Printing extends DocumentitemDTO
      */
     protected ?array $MidocoTouchedVatCode = null;
     /**
+     * The buyCurrencyRate
+     * Meta information extracted from the WSDL
+     * - minOccurs: 0
+     * @var float|null
+     */
+    protected ?float $buyCurrencyRate = null;
+    /**
      * Constructor method for MidocoDocumentitem4Printing
      * @uses MidocoDocumentitem4Printing::setIsReferenced()
      * @uses MidocoDocumentitem4Printing::setMidocoPassengerInfo4Printing()
@@ -147,6 +154,7 @@ class MidocoDocumentitem4Printing extends DocumentitemDTO
      * @uses MidocoDocumentitem4Printing::setOldPrice()
      * @uses MidocoDocumentitem4Printing::setMidocoSellPassenger()
      * @uses MidocoDocumentitem4Printing::setMidocoTouchedVatCode()
+     * @uses MidocoDocumentitem4Printing::setBuyCurrencyRate()
      * @param bool $isReferenced
      * @param \Pggns\MidocoApi\Order\StructType\MidocoPassengerInfo4Printing $midocoPassengerInfo4Printing
      * @param \Pggns\MidocoApi\Order\StructType\MidocoFlightDetailsInfo4Printing[] $midocoFlightDetailsInfo4Printing
@@ -162,8 +170,9 @@ class MidocoDocumentitem4Printing extends DocumentitemDTO
      * @param float $oldPrice
      * @param \Pggns\MidocoApi\Order\StructType\MidocoSellPassenger[] $midocoSellPassenger
      * @param \Pggns\MidocoApi\Order\StructType\TouchedVatCodeType[] $midocoTouchedVatCode
+     * @param float $buyCurrencyRate
      */
-    public function __construct(?bool $isReferenced = true, ?\Pggns\MidocoApi\Order\StructType\MidocoPassengerInfo4Printing $midocoPassengerInfo4Printing = null, ?array $midocoFlightDetailsInfo4Printing = null, ?array $midocoRemarks = null, ?bool $isPrinted = false, ?bool $needsInvoicePrint = false, ?array $midocoDocumentTaxInfo4Printing = null, ?string $bspValidatorName = null, ?bool $preventPrinting = false, ?array $midocoOrdersDbiInfo = null, ?array $midocoInvoicePosition = null, ?array $midocoInvoiceVatPosition = null, ?float $oldPrice = null, ?array $midocoSellPassenger = null, ?array $midocoTouchedVatCode = null)
+    public function __construct(?bool $isReferenced = true, ?\Pggns\MidocoApi\Order\StructType\MidocoPassengerInfo4Printing $midocoPassengerInfo4Printing = null, ?array $midocoFlightDetailsInfo4Printing = null, ?array $midocoRemarks = null, ?bool $isPrinted = false, ?bool $needsInvoicePrint = false, ?array $midocoDocumentTaxInfo4Printing = null, ?string $bspValidatorName = null, ?bool $preventPrinting = false, ?array $midocoOrdersDbiInfo = null, ?array $midocoInvoicePosition = null, ?array $midocoInvoiceVatPosition = null, ?float $oldPrice = null, ?array $midocoSellPassenger = null, ?array $midocoTouchedVatCode = null, ?float $buyCurrencyRate = null)
     {
         $this
             ->setIsReferenced($isReferenced)
@@ -180,7 +189,8 @@ class MidocoDocumentitem4Printing extends DocumentitemDTO
             ->setMidocoInvoiceVatPosition($midocoInvoiceVatPosition)
             ->setOldPrice($oldPrice)
             ->setMidocoSellPassenger($midocoSellPassenger)
-            ->setMidocoTouchedVatCode($midocoTouchedVatCode);
+            ->setMidocoTouchedVatCode($midocoTouchedVatCode)
+            ->setBuyCurrencyRate($buyCurrencyRate);
     }
     /**
      * Get isReferenced value
@@ -872,6 +882,29 @@ class MidocoDocumentitem4Printing extends DocumentitemDTO
             throw new InvalidArgumentException(sprintf('The MidocoTouchedVatCode property can only contain items of type \Pggns\MidocoApi\Order\StructType\TouchedVatCodeType, %s given', is_object($item) ? get_class($item) : (is_array($item) ? implode(', ', $item) : gettype($item))), __LINE__);
         }
         $this->MidocoTouchedVatCode[] = $item;
+        
+        return $this;
+    }
+    /**
+     * Get buyCurrencyRate value
+     * @return float|null
+     */
+    public function getBuyCurrencyRate(): ?float
+    {
+        return $this->buyCurrencyRate;
+    }
+    /**
+     * Set buyCurrencyRate value
+     * @param float $buyCurrencyRate
+     * @return \Pggns\MidocoApi\Order\StructType\MidocoDocumentitem4Printing
+     */
+    public function setBuyCurrencyRate(?float $buyCurrencyRate = null): self
+    {
+        // validation for constraint: float
+        if (!is_null($buyCurrencyRate) && !(is_float($buyCurrencyRate) || is_numeric($buyCurrencyRate))) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a float value, %s given', var_export($buyCurrencyRate, true), gettype($buyCurrencyRate)), __LINE__);
+        }
+        $this->buyCurrencyRate = $buyCurrencyRate;
         
         return $this;
     }

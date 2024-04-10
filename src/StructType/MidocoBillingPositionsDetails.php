@@ -75,6 +75,11 @@ class MidocoBillingPositionsDetails extends AbstractStructBase
      */
     protected ?string $referenceNo = null;
     /**
+     * The orderLockIndicator
+     * @var int|null
+     */
+    protected ?int $orderLockIndicator = null;
+    /**
      * Constructor method for MidocoBillingPositionsDetails
      * @uses MidocoBillingPositionsDetails::setItemType()
      * @uses MidocoBillingPositionsDetails::setCreationDate()
@@ -88,6 +93,7 @@ class MidocoBillingPositionsDetails extends AbstractStructBase
      * @uses MidocoBillingPositionsDetails::setTraveller()
      * @uses MidocoBillingPositionsDetails::setAccountId()
      * @uses MidocoBillingPositionsDetails::setReferenceNo()
+     * @uses MidocoBillingPositionsDetails::setOrderLockIndicator()
      * @param string $itemType
      * @param string $creationDate
      * @param int $orderNo
@@ -100,8 +106,9 @@ class MidocoBillingPositionsDetails extends AbstractStructBase
      * @param string $traveller
      * @param string $accountId
      * @param string $referenceNo
+     * @param int $orderLockIndicator
      */
-    public function __construct(?string $itemType = null, ?string $creationDate = null, ?int $orderNo = null, ?string $calculatedPrintDate = null, ?float $amount = null, ?int $itemId = null, ?string $description = null, ?float $vatPercent = null, ?int $positionId = null, ?string $traveller = null, ?string $accountId = null, ?string $referenceNo = null)
+    public function __construct(?string $itemType = null, ?string $creationDate = null, ?int $orderNo = null, ?string $calculatedPrintDate = null, ?float $amount = null, ?int $itemId = null, ?string $description = null, ?float $vatPercent = null, ?int $positionId = null, ?string $traveller = null, ?string $accountId = null, ?string $referenceNo = null, ?int $orderLockIndicator = null)
     {
         $this
             ->setItemType($itemType)
@@ -115,7 +122,8 @@ class MidocoBillingPositionsDetails extends AbstractStructBase
             ->setPositionId($positionId)
             ->setTraveller($traveller)
             ->setAccountId($accountId)
-            ->setReferenceNo($referenceNo);
+            ->setReferenceNo($referenceNo)
+            ->setOrderLockIndicator($orderLockIndicator);
     }
     /**
      * Get itemType value
@@ -390,6 +398,29 @@ class MidocoBillingPositionsDetails extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($referenceNo, true), gettype($referenceNo)), __LINE__);
         }
         $this->referenceNo = $referenceNo;
+        
+        return $this;
+    }
+    /**
+     * Get orderLockIndicator value
+     * @return int|null
+     */
+    public function getOrderLockIndicator(): ?int
+    {
+        return $this->orderLockIndicator;
+    }
+    /**
+     * Set orderLockIndicator value
+     * @param int $orderLockIndicator
+     * @return \Pggns\MidocoApi\Order\StructType\MidocoBillingPositionsDetails
+     */
+    public function setOrderLockIndicator(?int $orderLockIndicator = null): self
+    {
+        // validation for constraint: int
+        if (!is_null($orderLockIndicator) && !(is_int($orderLockIndicator) || ctype_digit($orderLockIndicator))) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($orderLockIndicator, true), gettype($orderLockIndicator)), __LINE__);
+        }
+        $this->orderLockIndicator = $orderLockIndicator;
         
         return $this;
     }

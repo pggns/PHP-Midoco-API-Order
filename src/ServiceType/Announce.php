@@ -334,7 +334,7 @@ class Announce extends AbstractSoapClientBase
      * @uses AbstractSoapClientBase::setResult()
      * @uses AbstractSoapClientBase::saveLastError()
      * @param \Pggns\MidocoApi\Order\StructType\AnnounceSunnyCarsMessageRequest $paramAnnounceSunnyCarsMessageRequest
-     * @return \Pggns\MidocoApi\Order\StructType\AnnounceSunnyCarsMessageResponse|bool
+     * @return \Pggns\MidocoApi\Order\StructType\ImportHandlerResponseType|bool
      */
     public function announceSunnyCarsMessage(\Pggns\MidocoApi\Order\StructType\AnnounceSunnyCarsMessageRequest $paramAnnounceSunnyCarsMessageRequest)
     {
@@ -434,7 +434,7 @@ class Announce extends AbstractSoapClientBase
     /**
      * Returns the result
      * @see AbstractSoapClientBase::getResult()
-     * @return \Pggns\MidocoApi\Order\StructType\AnnounceA3MMessageResponse|\Pggns\MidocoApi\Order\StructType\AnnounceAgencySaleMessageResponse|\Pggns\MidocoApi\Order\StructType\AnnounceAmwayFilekeyResponse|\Pggns\MidocoApi\Order\StructType\AnnounceAmwayTicketResponse|\Pggns\MidocoApi\Order\StructType\AnnounceBookingMessageNormResponse|\Pggns\MidocoApi\Order\StructType\AnnounceBookingMessageResponse|\Pggns\MidocoApi\Order\StructType\AnnounceExternalPaymentResponse|\Pggns\MidocoApi\Order\StructType\AnnounceFlightTimeChangesResponse|\Pggns\MidocoApi\Order\StructType\AnnounceGdsMessageResponse|\Pggns\MidocoApi\Order\StructType\AnnouncePaymentResponse|\Pggns\MidocoApi\Order\StructType\AnnounceSunnyCarsMessageResponse|\Pggns\MidocoApi\Order\StructType\ImportHandlerResponseType
+     * @return \Pggns\MidocoApi\Order\StructType\AnnounceA3MMessageResponse|\Pggns\MidocoApi\Order\StructType\AnnounceAgencySaleMessageResponse|\Pggns\MidocoApi\Order\StructType\AnnounceAmwayFilekeyResponse|\Pggns\MidocoApi\Order\StructType\AnnounceAmwayTicketResponse|\Pggns\MidocoApi\Order\StructType\AnnounceBookingMessageNormResponse|\Pggns\MidocoApi\Order\StructType\AnnounceBookingMessageResponse|\Pggns\MidocoApi\Order\StructType\AnnounceExternalPaymentResponse|\Pggns\MidocoApi\Order\StructType\AnnounceFlightTimeChangesResponse|\Pggns\MidocoApi\Order\StructType\AnnounceGdsMessageResponse|\Pggns\MidocoApi\Order\StructType\AnnouncePaymentResponse|\Pggns\MidocoApi\Order\StructType\ImportHandlerResponseType
      */
     public function getResult()
     {

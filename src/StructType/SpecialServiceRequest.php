@@ -8,19 +8,30 @@ use InvalidArgumentException;
 use WsdlToPhp\PackageBase\AbstractStructBase;
 
 /**
- * This class stands for specialServiceRequest StructType
+ * This class stands for SpecialServiceRequest StructType
  * @subpackage Structs
  */
 #[\AllowDynamicProperties]
 class SpecialServiceRequest extends AbstractStructBase
 {
     /**
-     * The personAssignment
+     * The BookingDetailRefId
      * Meta information extracted from the WSDL
+     * - maxOccurs: unbounded
      * - minOccurs: 0
-     * @var string|null
+     * - ref: BookingDetailRefId
+     * @var int[]
      */
-    protected ?string $personAssignment = null;
+    protected ?array $BookingDetailRefId = null;
+    /**
+     * The TravelerRefId
+     * Meta information extracted from the WSDL
+     * - maxOccurs: unbounded
+     * - minOccurs: 0
+     * - ref: TravelerRefId
+     * @var int[]
+     */
+    protected ?array $TravelerRefId = null;
     /**
      * The ssrId
      * @var int|null
@@ -47,24 +58,27 @@ class SpecialServiceRequest extends AbstractStructBase
      */
     protected ?string $status = null;
     /**
-     * Constructor method for specialServiceRequest
-     * @uses SpecialServiceRequest::setPersonAssignment()
+     * Constructor method for SpecialServiceRequest
+     * @uses SpecialServiceRequest::setBookingDetailRefId()
+     * @uses SpecialServiceRequest::setTravelerRefId()
      * @uses SpecialServiceRequest::setSsrId()
      * @uses SpecialServiceRequest::setCode()
      * @uses SpecialServiceRequest::setDescription()
      * @uses SpecialServiceRequest::setSeat()
      * @uses SpecialServiceRequest::setStatus()
-     * @param string $personAssignment
+     * @param int[] $bookingDetailRefId
+     * @param int[] $travelerRefId
      * @param int $ssrId
      * @param string $code
      * @param string $description
      * @param string $seat
      * @param string $status
      */
-    public function __construct(?string $personAssignment = null, ?int $ssrId = null, ?string $code = null, ?string $description = null, ?string $seat = null, ?string $status = null)
+    public function __construct(?array $bookingDetailRefId = null, ?array $travelerRefId = null, ?int $ssrId = null, ?string $code = null, ?string $description = null, ?string $seat = null, ?string $status = null)
     {
         $this
-            ->setPersonAssignment($personAssignment)
+            ->setBookingDetailRefId($bookingDetailRefId)
+            ->setTravelerRefId($travelerRefId)
             ->setSsrId($ssrId)
             ->setCode($code)
             ->setDescription($description)
@@ -72,25 +86,136 @@ class SpecialServiceRequest extends AbstractStructBase
             ->setStatus($status);
     }
     /**
-     * Get personAssignment value
-     * @return string|null
+     * Get BookingDetailRefId value
+     * @return int[]
      */
-    public function getPersonAssignment(): ?string
+    public function getBookingDetailRefId(): ?array
     {
-        return $this->personAssignment;
+        return $this->BookingDetailRefId;
     }
     /**
-     * Set personAssignment value
-     * @param string $personAssignment
+     * This method is responsible for validating the value(s) passed to the setBookingDetailRefId method
+     * This method is willingly generated in order to preserve the one-line inline validation within the setBookingDetailRefId method
+     * This has to validate that each item contained by the array match the itemType constraint
+     * @param array $values
+     * @return string A non-empty message if the values does not match the validation rules
+     */
+    public static function validateBookingDetailRefIdForArrayConstraintFromSetBookingDetailRefId(?array $values = []): string
+    {
+        if (!is_array($values)) {
+            return '';
+        }
+        $message = '';
+        $invalidValues = [];
+        foreach ($values as $specialServiceRequestBookingDetailRefIdItem) {
+            // validation for constraint: itemType
+            if (!(is_int($specialServiceRequestBookingDetailRefIdItem) || ctype_digit($specialServiceRequestBookingDetailRefIdItem))) {
+                $invalidValues[] = is_object($specialServiceRequestBookingDetailRefIdItem) ? get_class($specialServiceRequestBookingDetailRefIdItem) : sprintf('%s(%s)', gettype($specialServiceRequestBookingDetailRefIdItem), var_export($specialServiceRequestBookingDetailRefIdItem, true));
+            }
+        }
+        if (!empty($invalidValues)) {
+            $message = sprintf('The BookingDetailRefId property can only contain items of type int, %s given', is_object($invalidValues) ? get_class($invalidValues) : (is_array($invalidValues) ? implode(', ', $invalidValues) : gettype($invalidValues)));
+        }
+        unset($invalidValues);
+        
+        return $message;
+    }
+    /**
+     * Set BookingDetailRefId value
+     * @throws InvalidArgumentException
+     * @param int[] $bookingDetailRefId
      * @return \Pggns\MidocoApi\Order\StructType\SpecialServiceRequest
      */
-    public function setPersonAssignment(?string $personAssignment = null): self
+    public function setBookingDetailRefId(?array $bookingDetailRefId = null): self
     {
-        // validation for constraint: string
-        if (!is_null($personAssignment) && !is_string($personAssignment)) {
-            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($personAssignment, true), gettype($personAssignment)), __LINE__);
+        // validation for constraint: array
+        if ('' !== ($bookingDetailRefIdArrayErrorMessage = self::validateBookingDetailRefIdForArrayConstraintFromSetBookingDetailRefId($bookingDetailRefId))) {
+            throw new InvalidArgumentException($bookingDetailRefIdArrayErrorMessage, __LINE__);
         }
-        $this->personAssignment = $personAssignment;
+        $this->BookingDetailRefId = $bookingDetailRefId;
+        
+        return $this;
+    }
+    /**
+     * Add item to BookingDetailRefId value
+     * @throws InvalidArgumentException
+     * @param int $item
+     * @return \Pggns\MidocoApi\Order\StructType\SpecialServiceRequest
+     */
+    public function addToBookingDetailRefId(int $item): self
+    {
+        // validation for constraint: itemType
+        if (!(is_int($item) || ctype_digit($item))) {
+            throw new InvalidArgumentException(sprintf('The BookingDetailRefId property can only contain items of type int, %s given', is_object($item) ? get_class($item) : (is_array($item) ? implode(', ', $item) : gettype($item))), __LINE__);
+        }
+        $this->BookingDetailRefId[] = $item;
+        
+        return $this;
+    }
+    /**
+     * Get TravelerRefId value
+     * @return int[]
+     */
+    public function getTravelerRefId(): ?array
+    {
+        return $this->TravelerRefId;
+    }
+    /**
+     * This method is responsible for validating the value(s) passed to the setTravelerRefId method
+     * This method is willingly generated in order to preserve the one-line inline validation within the setTravelerRefId method
+     * This has to validate that each item contained by the array match the itemType constraint
+     * @param array $values
+     * @return string A non-empty message if the values does not match the validation rules
+     */
+    public static function validateTravelerRefIdForArrayConstraintFromSetTravelerRefId(?array $values = []): string
+    {
+        if (!is_array($values)) {
+            return '';
+        }
+        $message = '';
+        $invalidValues = [];
+        foreach ($values as $specialServiceRequestTravelerRefIdItem) {
+            // validation for constraint: itemType
+            if (!(is_int($specialServiceRequestTravelerRefIdItem) || ctype_digit($specialServiceRequestTravelerRefIdItem))) {
+                $invalidValues[] = is_object($specialServiceRequestTravelerRefIdItem) ? get_class($specialServiceRequestTravelerRefIdItem) : sprintf('%s(%s)', gettype($specialServiceRequestTravelerRefIdItem), var_export($specialServiceRequestTravelerRefIdItem, true));
+            }
+        }
+        if (!empty($invalidValues)) {
+            $message = sprintf('The TravelerRefId property can only contain items of type int, %s given', is_object($invalidValues) ? get_class($invalidValues) : (is_array($invalidValues) ? implode(', ', $invalidValues) : gettype($invalidValues)));
+        }
+        unset($invalidValues);
+        
+        return $message;
+    }
+    /**
+     * Set TravelerRefId value
+     * @throws InvalidArgumentException
+     * @param int[] $travelerRefId
+     * @return \Pggns\MidocoApi\Order\StructType\SpecialServiceRequest
+     */
+    public function setTravelerRefId(?array $travelerRefId = null): self
+    {
+        // validation for constraint: array
+        if ('' !== ($travelerRefIdArrayErrorMessage = self::validateTravelerRefIdForArrayConstraintFromSetTravelerRefId($travelerRefId))) {
+            throw new InvalidArgumentException($travelerRefIdArrayErrorMessage, __LINE__);
+        }
+        $this->TravelerRefId = $travelerRefId;
+        
+        return $this;
+    }
+    /**
+     * Add item to TravelerRefId value
+     * @throws InvalidArgumentException
+     * @param int $item
+     * @return \Pggns\MidocoApi\Order\StructType\SpecialServiceRequest
+     */
+    public function addToTravelerRefId(int $item): self
+    {
+        // validation for constraint: itemType
+        if (!(is_int($item) || ctype_digit($item))) {
+            throw new InvalidArgumentException(sprintf('The TravelerRefId property can only contain items of type int, %s given', is_object($item) ? get_class($item) : (is_array($item) ? implode(', ', $item) : gettype($item))), __LINE__);
+        }
+        $this->TravelerRefId[] = $item;
         
         return $this;
     }
