@@ -23,22 +23,22 @@ class TicketType extends AbstractStructEnumBase
      * Constant for value 'REFUND'
      * @return string 'REFUND'
      */
-    const VALUE_REFUND_1 = 'REFUND';
+    const VALUE_REFUND = 'REFUND';
     /**
      * Constant for value 'VOID'
      * @return string 'VOID'
      */
-    const VALUE_VOID_1 = 'VOID';
+    const VALUE_VOID = 'VOID';
     /**
      * Constant for value 'MCO'
      * @return string 'MCO'
      */
-    const VALUE_MCO_1 = 'MCO';
+    const VALUE_MCO = 'MCO';
     /**
      * Constant for value 'EMD'
      * @return string 'EMD'
      */
-    const VALUE_EMD_1 = 'EMD';
+    const VALUE_EMD = 'EMD';
     /**
      * Constant for value 'ADM'
      * @return string 'ADM'
@@ -62,10 +62,10 @@ class TicketType extends AbstractStructEnumBase
     /**
      * Return allowed values
      * @uses self::VALUE_TICKET
-     * @uses self::VALUE_REFUND_1
-     * @uses self::VALUE_VOID_1
-     * @uses self::VALUE_MCO_1
-     * @uses self::VALUE_EMD_1
+     * @uses self::VALUE_REFUND
+     * @uses self::VALUE_VOID
+     * @uses self::VALUE_MCO
+     * @uses self::VALUE_EMD
      * @uses self::VALUE_ADM
      * @uses self::VALUE_ACM
      * @uses self::VALUE_TASF
@@ -76,10 +76,10 @@ class TicketType extends AbstractStructEnumBase
     {
         return [
             self::VALUE_TICKET,
-            self::VALUE_REFUND_1,
-            self::VALUE_VOID_1,
-            self::VALUE_MCO_1,
-            self::VALUE_EMD_1,
+            self::VALUE_REFUND,
+            self::VALUE_VOID,
+            self::VALUE_MCO,
+            self::VALUE_EMD,
             self::VALUE_ADM,
             self::VALUE_ACM,
             self::VALUE_TASF,

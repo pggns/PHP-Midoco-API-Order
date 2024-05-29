@@ -224,6 +224,34 @@ class Car_service_type extends AbstractStructBase
      */
     protected ?array $traveler_ref_id = null;
     /**
+     * The destination_area
+     * Meta information extracted from the WSDL
+     * - minOccurs: 0
+     * @var string|null
+     */
+    protected ?string $destination_area = null;
+    /**
+     * The area_description
+     * Meta information extracted from the WSDL
+     * - minOccurs: 0
+     * @var string|null
+     */
+    protected ?string $area_description = null;
+    /**
+     * The return_destination_area
+     * Meta information extracted from the WSDL
+     * - minOccurs: 0
+     * @var string|null
+     */
+    protected ?string $return_destination_area = null;
+    /**
+     * The return_area_description
+     * Meta information extracted from the WSDL
+     * - minOccurs: 0
+     * @var string|null
+     */
+    protected ?string $return_area_description = null;
+    /**
      * The bookingId
      * @var string|null
      */
@@ -285,6 +313,10 @@ class Car_service_type extends AbstractStructBase
      * @uses Car_service_type::setRegion_description()
      * @uses Car_service_type::setCorporate_discount()
      * @uses Car_service_type::setTraveler_ref_id()
+     * @uses Car_service_type::setDestination_area()
+     * @uses Car_service_type::setArea_description()
+     * @uses Car_service_type::setReturn_destination_area()
+     * @uses Car_service_type::setReturn_area_description()
      * @uses Car_service_type::setBookingId()
      * @uses Car_service_type::setBookingDate()
      * @uses Car_service_type::setSupplierId()
@@ -321,6 +353,10 @@ class Car_service_type extends AbstractStructBase
      * @param string $region_description
      * @param string $corporate_discount
      * @param int[] $traveler_ref_id
+     * @param string $destination_area
+     * @param string $area_description
+     * @param string $return_destination_area
+     * @param string $return_area_description
      * @param string $bookingId
      * @param string $bookingDate
      * @param string $supplierId
@@ -328,7 +364,7 @@ class Car_service_type extends AbstractStructBase
      * @param string $sourceSystem
      * @param string $sourceExtId
      */
-    public function __construct(int $position, ?string $service_code = null, ?string $service_name = null, ?string $category = null, ?string $car_type = null, ?string $car_description = null, ?string $pickup_code = null, ?string $pickup_description = null, ?string $pickup_date = null, ?string $pickup_time = null, ?string $return_code = null, ?string $return_description = null, ?string $return_date = null, ?string $return_time = null, ?string $service_status = null, ?float $service_price = null, ?int $no_of_services = null, ?string $currency = null, ?string $insurance_type = null, ?string $insurance_description = null, ?bool $vat_included = false, ?string $country_code = null, ?string $country_description = null, ?string $return_country_code = null, ?string $return_country_description = null, ?string $car_supplier = null, ?string $region_code = null, ?string $region_description = null, ?string $corporate_discount = null, ?array $traveler_ref_id = null, ?string $bookingId = null, ?string $bookingDate = null, ?string $supplierId = null, ?string $extId = null, ?string $sourceSystem = null, ?string $sourceExtId = null)
+    public function __construct(int $position, ?string $service_code = null, ?string $service_name = null, ?string $category = null, ?string $car_type = null, ?string $car_description = null, ?string $pickup_code = null, ?string $pickup_description = null, ?string $pickup_date = null, ?string $pickup_time = null, ?string $return_code = null, ?string $return_description = null, ?string $return_date = null, ?string $return_time = null, ?string $service_status = null, ?float $service_price = null, ?int $no_of_services = null, ?string $currency = null, ?string $insurance_type = null, ?string $insurance_description = null, ?bool $vat_included = false, ?string $country_code = null, ?string $country_description = null, ?string $return_country_code = null, ?string $return_country_description = null, ?string $car_supplier = null, ?string $region_code = null, ?string $region_description = null, ?string $corporate_discount = null, ?array $traveler_ref_id = null, ?string $destination_area = null, ?string $area_description = null, ?string $return_destination_area = null, ?string $return_area_description = null, ?string $bookingId = null, ?string $bookingDate = null, ?string $supplierId = null, ?string $extId = null, ?string $sourceSystem = null, ?string $sourceExtId = null)
     {
         $this
             ->setPosition($position)
@@ -361,6 +397,10 @@ class Car_service_type extends AbstractStructBase
             ->setRegion_description($region_description)
             ->setCorporate_discount($corporate_discount)
             ->setTraveler_ref_id($traveler_ref_id)
+            ->setDestination_area($destination_area)
+            ->setArea_description($area_description)
+            ->setReturn_destination_area($return_destination_area)
+            ->setReturn_area_description($return_area_description)
             ->setBookingId($bookingId)
             ->setBookingDate($bookingDate)
             ->setSupplierId($supplierId)
@@ -1115,6 +1155,98 @@ class Car_service_type extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('The traveler_ref_id property can only contain items of type int, %s given', is_object($item) ? get_class($item) : (is_array($item) ? implode(', ', $item) : gettype($item))), __LINE__);
         }
         $this->traveler_ref_id[] = $this->{'traveler-ref-id'}[] = $item;
+        
+        return $this;
+    }
+    /**
+     * Get destination_area value
+     * @return string|null
+     */
+    public function getDestination_area(): ?string
+    {
+        return $this->{'destination-area'};
+    }
+    /**
+     * Set destination_area value
+     * @param string $destination_area
+     * @return \Pggns\MidocoApi\Order\StructType\Car_service_type
+     */
+    public function setDestination_area(?string $destination_area = null): self
+    {
+        // validation for constraint: string
+        if (!is_null($destination_area) && !is_string($destination_area)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($destination_area, true), gettype($destination_area)), __LINE__);
+        }
+        $this->destination_area = $this->{'destination-area'} = $destination_area;
+        
+        return $this;
+    }
+    /**
+     * Get area_description value
+     * @return string|null
+     */
+    public function getArea_description(): ?string
+    {
+        return $this->{'area-description'};
+    }
+    /**
+     * Set area_description value
+     * @param string $area_description
+     * @return \Pggns\MidocoApi\Order\StructType\Car_service_type
+     */
+    public function setArea_description(?string $area_description = null): self
+    {
+        // validation for constraint: string
+        if (!is_null($area_description) && !is_string($area_description)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($area_description, true), gettype($area_description)), __LINE__);
+        }
+        $this->area_description = $this->{'area-description'} = $area_description;
+        
+        return $this;
+    }
+    /**
+     * Get return_destination_area value
+     * @return string|null
+     */
+    public function getReturn_destination_area(): ?string
+    {
+        return $this->{'return-destination-area'};
+    }
+    /**
+     * Set return_destination_area value
+     * @param string $return_destination_area
+     * @return \Pggns\MidocoApi\Order\StructType\Car_service_type
+     */
+    public function setReturn_destination_area(?string $return_destination_area = null): self
+    {
+        // validation for constraint: string
+        if (!is_null($return_destination_area) && !is_string($return_destination_area)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($return_destination_area, true), gettype($return_destination_area)), __LINE__);
+        }
+        $this->return_destination_area = $this->{'return-destination-area'} = $return_destination_area;
+        
+        return $this;
+    }
+    /**
+     * Get return_area_description value
+     * @return string|null
+     */
+    public function getReturn_area_description(): ?string
+    {
+        return $this->{'return-area-description'};
+    }
+    /**
+     * Set return_area_description value
+     * @param string $return_area_description
+     * @return \Pggns\MidocoApi\Order\StructType\Car_service_type
+     */
+    public function setReturn_area_description(?string $return_area_description = null): self
+    {
+        // validation for constraint: string
+        if (!is_null($return_area_description) && !is_string($return_area_description)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($return_area_description, true), gettype($return_area_description)), __LINE__);
+        }
+        $this->return_area_description = $this->{'return-area-description'} = $return_area_description;
         
         return $this;
     }

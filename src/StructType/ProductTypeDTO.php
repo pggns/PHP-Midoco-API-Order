@@ -40,6 +40,11 @@ class ProductTypeDTO extends AbstractStructBase
      */
     protected ?string $productType = null;
     /**
+     * The restrictedBySupplier
+     * @var bool|null
+     */
+    protected ?bool $restrictedBySupplier = null;
+    /**
      * The vatDivTemplIdIn
      * @var int|null
      */
@@ -71,6 +76,7 @@ class ProductTypeDTO extends AbstractStructBase
      * @uses ProductTypeDTO::setForCompany()
      * @uses ProductTypeDTO::setForPerson()
      * @uses ProductTypeDTO::setProductType()
+     * @uses ProductTypeDTO::setRestrictedBySupplier()
      * @uses ProductTypeDTO::setVatDivTemplIdIn()
      * @uses ProductTypeDTO::setVatDivTemplIdOut()
      * @uses ProductTypeDTO::setVatDivisionInRequired()
@@ -81,13 +87,14 @@ class ProductTypeDTO extends AbstractStructBase
      * @param bool $forCompany
      * @param bool $forPerson
      * @param string $productType
+     * @param bool $restrictedBySupplier
      * @param int $vatDivTemplIdIn
      * @param int $vatDivTemplIdOut
      * @param bool $vatDivisionInRequired
      * @param bool $vatDivisionOutRequired
      * @param int $vatSchemaId
      */
-    public function __construct(?string $accountIdNoVat = null, ?string $accountIdVat = null, ?bool $forCompany = null, ?bool $forPerson = null, ?string $productType = null, ?int $vatDivTemplIdIn = null, ?int $vatDivTemplIdOut = null, ?bool $vatDivisionInRequired = null, ?bool $vatDivisionOutRequired = null, ?int $vatSchemaId = null)
+    public function __construct(?string $accountIdNoVat = null, ?string $accountIdVat = null, ?bool $forCompany = null, ?bool $forPerson = null, ?string $productType = null, ?bool $restrictedBySupplier = null, ?int $vatDivTemplIdIn = null, ?int $vatDivTemplIdOut = null, ?bool $vatDivisionInRequired = null, ?bool $vatDivisionOutRequired = null, ?int $vatSchemaId = null)
     {
         $this
             ->setAccountIdNoVat($accountIdNoVat)
@@ -95,6 +102,7 @@ class ProductTypeDTO extends AbstractStructBase
             ->setForCompany($forCompany)
             ->setForPerson($forPerson)
             ->setProductType($productType)
+            ->setRestrictedBySupplier($restrictedBySupplier)
             ->setVatDivTemplIdIn($vatDivTemplIdIn)
             ->setVatDivTemplIdOut($vatDivTemplIdOut)
             ->setVatDivisionInRequired($vatDivisionInRequired)
@@ -213,6 +221,29 @@ class ProductTypeDTO extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($productType, true), gettype($productType)), __LINE__);
         }
         $this->productType = $productType;
+        
+        return $this;
+    }
+    /**
+     * Get restrictedBySupplier value
+     * @return bool|null
+     */
+    public function getRestrictedBySupplier(): ?bool
+    {
+        return $this->restrictedBySupplier;
+    }
+    /**
+     * Set restrictedBySupplier value
+     * @param bool $restrictedBySupplier
+     * @return \Pggns\MidocoApi\Order\StructType\ProductTypeDTO
+     */
+    public function setRestrictedBySupplier(?bool $restrictedBySupplier = null): self
+    {
+        // validation for constraint: boolean
+        if (!is_null($restrictedBySupplier) && !is_bool($restrictedBySupplier)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($restrictedBySupplier, true), gettype($restrictedBySupplier)), __LINE__);
+        }
+        $this->restrictedBySupplier = $restrictedBySupplier;
         
         return $this;
     }

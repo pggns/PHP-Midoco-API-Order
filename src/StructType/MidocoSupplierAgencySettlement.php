@@ -45,6 +45,16 @@ class MidocoSupplierAgencySettlement extends SupplierAgencySettlementDTO
      */
     protected ?bool $checked = null;
     /**
+     * The checkSum
+     * @var float|null
+     */
+    protected ?float $checkSum = null;
+    /**
+     * The exchangeRateMasterData
+     * @var float|null
+     */
+    protected ?float $exchangeRateMasterData = null;
+    /**
      * Constructor method for MidocoSupplierAgencySettlement
      * @uses MidocoSupplierAgencySettlement::setStatusChecked()
      * @uses MidocoSupplierAgencySettlement::setStatusBooked()
@@ -52,14 +62,18 @@ class MidocoSupplierAgencySettlement extends SupplierAgencySettlementDTO
      * @uses MidocoSupplierAgencySettlement::setSupplierId()
      * @uses MidocoSupplierAgencySettlement::setSettlementParty()
      * @uses MidocoSupplierAgencySettlement::setChecked()
+     * @uses MidocoSupplierAgencySettlement::setCheckSum()
+     * @uses MidocoSupplierAgencySettlement::setExchangeRateMasterData()
      * @param string $statusChecked
      * @param string $statusBooked
      * @param string $status
      * @param string $supplierId
      * @param string $settlementParty
      * @param bool $checked
+     * @param float $checkSum
+     * @param float $exchangeRateMasterData
      */
-    public function __construct(?string $statusChecked = null, ?string $statusBooked = null, ?string $status = null, ?string $supplierId = null, ?string $settlementParty = null, ?bool $checked = null)
+    public function __construct(?string $statusChecked = null, ?string $statusBooked = null, ?string $status = null, ?string $supplierId = null, ?string $settlementParty = null, ?bool $checked = null, ?float $checkSum = null, ?float $exchangeRateMasterData = null)
     {
         $this
             ->setStatusChecked($statusChecked)
@@ -67,7 +81,9 @@ class MidocoSupplierAgencySettlement extends SupplierAgencySettlementDTO
             ->setStatus($status)
             ->setSupplierId($supplierId)
             ->setSettlementParty($settlementParty)
-            ->setChecked($checked);
+            ->setChecked($checked)
+            ->setCheckSum($checkSum)
+            ->setExchangeRateMasterData($exchangeRateMasterData);
     }
     /**
      * Get statusChecked value
@@ -204,6 +220,52 @@ class MidocoSupplierAgencySettlement extends SupplierAgencySettlementDTO
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($checked, true), gettype($checked)), __LINE__);
         }
         $this->checked = $checked;
+        
+        return $this;
+    }
+    /**
+     * Get checkSum value
+     * @return float|null
+     */
+    public function getCheckSum(): ?float
+    {
+        return $this->checkSum;
+    }
+    /**
+     * Set checkSum value
+     * @param float $checkSum
+     * @return \Pggns\MidocoApi\Order\StructType\MidocoSupplierAgencySettlement
+     */
+    public function setCheckSum(?float $checkSum = null): self
+    {
+        // validation for constraint: float
+        if (!is_null($checkSum) && !(is_float($checkSum) || is_numeric($checkSum))) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a float value, %s given', var_export($checkSum, true), gettype($checkSum)), __LINE__);
+        }
+        $this->checkSum = $checkSum;
+        
+        return $this;
+    }
+    /**
+     * Get exchangeRateMasterData value
+     * @return float|null
+     */
+    public function getExchangeRateMasterData(): ?float
+    {
+        return $this->exchangeRateMasterData;
+    }
+    /**
+     * Set exchangeRateMasterData value
+     * @param float $exchangeRateMasterData
+     * @return \Pggns\MidocoApi\Order\StructType\MidocoSupplierAgencySettlement
+     */
+    public function setExchangeRateMasterData(?float $exchangeRateMasterData = null): self
+    {
+        // validation for constraint: float
+        if (!is_null($exchangeRateMasterData) && !(is_float($exchangeRateMasterData) || is_numeric($exchangeRateMasterData))) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a float value, %s given', var_export($exchangeRateMasterData, true), gettype($exchangeRateMasterData)), __LINE__);
+        }
+        $this->exchangeRateMasterData = $exchangeRateMasterData;
         
         return $this;
     }

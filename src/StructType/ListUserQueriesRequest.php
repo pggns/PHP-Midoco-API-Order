@@ -22,14 +22,22 @@ class ListUserQueriesRequest extends AbstractStructBase
      */
     protected ?string $queryType = null;
     /**
+     * The description
+     * @var string|null
+     */
+    protected ?string $description = null;
+    /**
      * Constructor method for ListUserQueriesRequest
      * @uses ListUserQueriesRequest::setQueryType()
+     * @uses ListUserQueriesRequest::setDescription()
      * @param string $queryType
+     * @param string $description
      */
-    public function __construct(?string $queryType = 'B')
+    public function __construct(?string $queryType = 'B', ?string $description = null)
     {
         $this
-            ->setQueryType($queryType);
+            ->setQueryType($queryType)
+            ->setDescription($description);
     }
     /**
      * Get queryType value
@@ -51,6 +59,29 @@ class ListUserQueriesRequest extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($queryType, true), gettype($queryType)), __LINE__);
         }
         $this->queryType = $queryType;
+        
+        return $this;
+    }
+    /**
+     * Get description value
+     * @return string|null
+     */
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+    /**
+     * Set description value
+     * @param string $description
+     * @return \Pggns\MidocoApi\Order\StructType\ListUserQueriesRequest
+     */
+    public function setDescription(?string $description = null): self
+    {
+        // validation for constraint: string
+        if (!is_null($description) && !is_string($description)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($description, true), gettype($description)), __LINE__);
+        }
+        $this->description = $description;
         
         return $this;
     }

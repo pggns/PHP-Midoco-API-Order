@@ -295,6 +295,11 @@ class OrderDTO extends AbstractStructBase
      */
     protected ?string $invoicingType = null;
     /**
+     * The isDeleted
+     * @var bool|null
+     */
+    protected ?bool $isDeleted = null;
+    /**
      * The isOrderControlled
      * @var bool|null
      */
@@ -687,6 +692,7 @@ class OrderDTO extends AbstractStructBase
      * @uses OrderDTO::setInternalVersion()
      * @uses OrderDTO::setInvoicedAmount()
      * @uses OrderDTO::setInvoicingType()
+     * @uses OrderDTO::setIsDeleted()
      * @uses OrderDTO::setIsOrderControlled()
      * @uses OrderDTO::setIsReadonly()
      * @uses OrderDTO::setIsStorno()
@@ -810,6 +816,7 @@ class OrderDTO extends AbstractStructBase
      * @param int $internalVersion
      * @param float $invoicedAmount
      * @param string $invoicingType
+     * @param bool $isDeleted
      * @param bool $isOrderControlled
      * @param bool $isReadonly
      * @param bool $isStorno
@@ -878,7 +885,7 @@ class OrderDTO extends AbstractStructBase
      * @param string $workStartTime
      * @param int $workingUser
      */
-    public function __construct(?string $agencyCurrency = null, ?int $agencyCustomerId = null, ?string $agencyDebitorNo = null, ?string $agencyId = null, ?int $atolInfoLastCheckedBy = null, ?string $atolInfoLastCheckedTime = null, ?float $bookingCurrencyRate = null, ?float $calculatedMediatorTotal = null, ?bool $catalogKey = null, ?bool $collectiveBilling = null, ?float $commissionBaseAmount = null, ?bool $companyUsage = null, ?string $cooperationId = null, ?string $creationDate = null, ?string $creationTime = null, ?int $creationUser = null, ?string $currency = null, ?int $currencyLookupMethod = null, ?string $customerCostCentre = null, ?string $debitorNo = null, ?string $deliveryType = null, ?string $deliveryTypeId = null, ?string $department = null, ?float $depositAmount = null, ?string $depositDate = null, ?string $depositDunningDate = null, ?string $depositPaymentDueDate = null, ?bool $depositPreset = null, ?bool $depositReceived = null, ?string $depositReceivedDate = null, ?string $destinationKey = null, ?string $displayedCurrency = null, ?float $displayedCurrencyRate = null, ?float $displayedDepositAmount = null, ?float $displayedInkassoPrice = null, ?float $displayedTotalPayment = null, ?float $displayedTotalPrice = null, ?string $dunningDate = null, ?bool $dunningLock = null, ?bool $dunningPreset = null, ?string $durationKey = null, ?string $endTravelDate = null, ?string $errorBundle = null, ?string $errorCode = null, ?string $errorCodeParameters = null, ?string $extBookingId = null, ?string $finalPayment = null, ?bool $finalPaymentReceived = null, ?string $finalPaymentReceivedDate = null, ?string $firstWorkTime = null, ?bool $groupReservation = null, ?bool $hasForeignDebitor = null, ?float $inkassoPrice = null, ?int $internalVersion = null, ?float $invoicedAmount = null, ?string $invoicingType = null, ?bool $isOrderControlled = null, ?bool $isReadonly = null, ?bool $isStorno = null, ?int $lastAgencySettlementPos = null, ?float $lastInkassoPrice = null, ?int $lastInvoiceId = null, ?int $lastWorkingUser = null, ?string $lastWorkingUserTimestamp = null, ?string $legalCountry = null, ?int $lockIndicator = null, ?string $lockReason = null, ?string $lockTimestamp = null, ?int $lockUser = null, ?string $mainBookingId = null, ?string $mainSupplierId = null, ?bool $manualCommission = null, ?string $mediatorAffiliate = null, ?string $mediatorCurrency = null, ?string $mediatorId = null, ?string $mediatorType = null, ?string $modifyDate = null, ?string $modifyTime = null, ?int $modifyUser = null, ?bool $needsCommissionPrint = null, ?bool $needsInvoicePrint = null, ?bool $needsSellModeAssign = null, ?float $nonBookedVat = null, ?bool $optionHandled = null, ?int $orderControlledBy = null, ?string $orderControlledTimestamp = null, ?int $orderId = null, ?int $orderNo = null, ?string $paymentDueDate = null, ?bool $paymentExported = null, ?string $paymentType = null, ?string $personsKey = null, ?string $productType = null, ?string $projectNo = null, ?int $ranking = null, ?bool $requestHandled = null, ?int $sellingType = null, ?string $startTravelDate = null, ?bool $stornoHandled = null, ?string $subAgencyId = null, ?float $totalCommission = null, ?float $totalCommissionAgencyCurrency = null, ?float $totalCommissionInsurance = null, ?float $totalCommissionInsuranceAgencyCurrency = null, ?float $totalCommissionVat = null, ?float $totalCommissionVatAgencyCurrency = null, ?float $totalPayment = null, ?float $totalPrice = null, ?string $transportKey = null, ?string $travelDate = null, ?string $travelDocsDeliveryComm = null, ?int $travelDocumentsDeliveredBy = null, ?string $travelDocumentsDeliveryDate = null, ?string $travelDocumentsReceiveDate = null, ?int $travelDocumentsReceivedBy = null, ?int $traveldocsInfoCustBy = null, ?string $traveldocsInfoCustDate = null, ?string $traveldocsInfoCustType = null, ?int $travellerId = null, ?string $traveltypeKey = null, ?string $unitName = null, ?string $workStartTime = null, ?int $workingUser = null)
+    public function __construct(?string $agencyCurrency = null, ?int $agencyCustomerId = null, ?string $agencyDebitorNo = null, ?string $agencyId = null, ?int $atolInfoLastCheckedBy = null, ?string $atolInfoLastCheckedTime = null, ?float $bookingCurrencyRate = null, ?float $calculatedMediatorTotal = null, ?bool $catalogKey = null, ?bool $collectiveBilling = null, ?float $commissionBaseAmount = null, ?bool $companyUsage = null, ?string $cooperationId = null, ?string $creationDate = null, ?string $creationTime = null, ?int $creationUser = null, ?string $currency = null, ?int $currencyLookupMethod = null, ?string $customerCostCentre = null, ?string $debitorNo = null, ?string $deliveryType = null, ?string $deliveryTypeId = null, ?string $department = null, ?float $depositAmount = null, ?string $depositDate = null, ?string $depositDunningDate = null, ?string $depositPaymentDueDate = null, ?bool $depositPreset = null, ?bool $depositReceived = null, ?string $depositReceivedDate = null, ?string $destinationKey = null, ?string $displayedCurrency = null, ?float $displayedCurrencyRate = null, ?float $displayedDepositAmount = null, ?float $displayedInkassoPrice = null, ?float $displayedTotalPayment = null, ?float $displayedTotalPrice = null, ?string $dunningDate = null, ?bool $dunningLock = null, ?bool $dunningPreset = null, ?string $durationKey = null, ?string $endTravelDate = null, ?string $errorBundle = null, ?string $errorCode = null, ?string $errorCodeParameters = null, ?string $extBookingId = null, ?string $finalPayment = null, ?bool $finalPaymentReceived = null, ?string $finalPaymentReceivedDate = null, ?string $firstWorkTime = null, ?bool $groupReservation = null, ?bool $hasForeignDebitor = null, ?float $inkassoPrice = null, ?int $internalVersion = null, ?float $invoicedAmount = null, ?string $invoicingType = null, ?bool $isDeleted = null, ?bool $isOrderControlled = null, ?bool $isReadonly = null, ?bool $isStorno = null, ?int $lastAgencySettlementPos = null, ?float $lastInkassoPrice = null, ?int $lastInvoiceId = null, ?int $lastWorkingUser = null, ?string $lastWorkingUserTimestamp = null, ?string $legalCountry = null, ?int $lockIndicator = null, ?string $lockReason = null, ?string $lockTimestamp = null, ?int $lockUser = null, ?string $mainBookingId = null, ?string $mainSupplierId = null, ?bool $manualCommission = null, ?string $mediatorAffiliate = null, ?string $mediatorCurrency = null, ?string $mediatorId = null, ?string $mediatorType = null, ?string $modifyDate = null, ?string $modifyTime = null, ?int $modifyUser = null, ?bool $needsCommissionPrint = null, ?bool $needsInvoicePrint = null, ?bool $needsSellModeAssign = null, ?float $nonBookedVat = null, ?bool $optionHandled = null, ?int $orderControlledBy = null, ?string $orderControlledTimestamp = null, ?int $orderId = null, ?int $orderNo = null, ?string $paymentDueDate = null, ?bool $paymentExported = null, ?string $paymentType = null, ?string $personsKey = null, ?string $productType = null, ?string $projectNo = null, ?int $ranking = null, ?bool $requestHandled = null, ?int $sellingType = null, ?string $startTravelDate = null, ?bool $stornoHandled = null, ?string $subAgencyId = null, ?float $totalCommission = null, ?float $totalCommissionAgencyCurrency = null, ?float $totalCommissionInsurance = null, ?float $totalCommissionInsuranceAgencyCurrency = null, ?float $totalCommissionVat = null, ?float $totalCommissionVatAgencyCurrency = null, ?float $totalPayment = null, ?float $totalPrice = null, ?string $transportKey = null, ?string $travelDate = null, ?string $travelDocsDeliveryComm = null, ?int $travelDocumentsDeliveredBy = null, ?string $travelDocumentsDeliveryDate = null, ?string $travelDocumentsReceiveDate = null, ?int $travelDocumentsReceivedBy = null, ?int $traveldocsInfoCustBy = null, ?string $traveldocsInfoCustDate = null, ?string $traveldocsInfoCustType = null, ?int $travellerId = null, ?string $traveltypeKey = null, ?string $unitName = null, ?string $workStartTime = null, ?int $workingUser = null)
     {
         $this
             ->setAgencyCurrency($agencyCurrency)
@@ -937,6 +944,7 @@ class OrderDTO extends AbstractStructBase
             ->setInternalVersion($internalVersion)
             ->setInvoicedAmount($invoicedAmount)
             ->setInvoicingType($invoicingType)
+            ->setIsDeleted($isDeleted)
             ->setIsOrderControlled($isOrderControlled)
             ->setIsReadonly($isReadonly)
             ->setIsStorno($isStorno)
@@ -2290,6 +2298,29 @@ class OrderDTO extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($invoicingType, true), gettype($invoicingType)), __LINE__);
         }
         $this->invoicingType = $invoicingType;
+        
+        return $this;
+    }
+    /**
+     * Get isDeleted value
+     * @return bool|null
+     */
+    public function getIsDeleted(): ?bool
+    {
+        return $this->isDeleted;
+    }
+    /**
+     * Set isDeleted value
+     * @param bool $isDeleted
+     * @return \Pggns\MidocoApi\Order\StructType\OrderDTO
+     */
+    public function setIsDeleted(?bool $isDeleted = null): self
+    {
+        // validation for constraint: boolean
+        if (!is_null($isDeleted) && !is_bool($isDeleted)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($isDeleted, true), gettype($isDeleted)), __LINE__);
+        }
+        $this->isDeleted = $isDeleted;
         
         return $this;
     }

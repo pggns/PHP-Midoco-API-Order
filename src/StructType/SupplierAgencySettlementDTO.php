@@ -15,6 +15,11 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 class SupplierAgencySettlementDTO extends AbstractStructBase
 {
     /**
+     * The adoptSellitemCurrencyRate
+     * @var bool|null
+     */
+    protected ?bool $adoptSellitemCurrencyRate = null;
+    /**
      * The creationDate
      * @var string|null
      */
@@ -60,7 +65,13 @@ class SupplierAgencySettlementDTO extends AbstractStructBase
      */
     protected ?string $settlementSystem = null;
     /**
+     * The useMasterDataExchangeRate
+     * @var bool|null
+     */
+    protected ?bool $useMasterDataExchangeRate = null;
+    /**
      * Constructor method for SupplierAgencySettlementDTO
+     * @uses SupplierAgencySettlementDTO::setAdoptSellitemCurrencyRate()
      * @uses SupplierAgencySettlementDTO::setCreationDate()
      * @uses SupplierAgencySettlementDTO::setCurrency()
      * @uses SupplierAgencySettlementDTO::setDueDate()
@@ -70,6 +81,8 @@ class SupplierAgencySettlementDTO extends AbstractStructBase
      * @uses SupplierAgencySettlementDTO::setSettlementId()
      * @uses SupplierAgencySettlementDTO::setSettlementMonth()
      * @uses SupplierAgencySettlementDTO::setSettlementSystem()
+     * @uses SupplierAgencySettlementDTO::setUseMasterDataExchangeRate()
+     * @param bool $adoptSellitemCurrencyRate
      * @param string $creationDate
      * @param string $currency
      * @param string $dueDate
@@ -79,10 +92,12 @@ class SupplierAgencySettlementDTO extends AbstractStructBase
      * @param int $settlementId
      * @param string $settlementMonth
      * @param string $settlementSystem
+     * @param bool $useMasterDataExchangeRate
      */
-    public function __construct(?string $creationDate = null, ?string $currency = null, ?string $dueDate = null, ?float $exchangeRate = null, ?string $receiptNo = null, ?string $settlementHash = null, ?int $settlementId = null, ?string $settlementMonth = null, ?string $settlementSystem = null)
+    public function __construct(?bool $adoptSellitemCurrencyRate = null, ?string $creationDate = null, ?string $currency = null, ?string $dueDate = null, ?float $exchangeRate = null, ?string $receiptNo = null, ?string $settlementHash = null, ?int $settlementId = null, ?string $settlementMonth = null, ?string $settlementSystem = null, ?bool $useMasterDataExchangeRate = null)
     {
         $this
+            ->setAdoptSellitemCurrencyRate($adoptSellitemCurrencyRate)
             ->setCreationDate($creationDate)
             ->setCurrency($currency)
             ->setDueDate($dueDate)
@@ -91,7 +106,31 @@ class SupplierAgencySettlementDTO extends AbstractStructBase
             ->setSettlementHash($settlementHash)
             ->setSettlementId($settlementId)
             ->setSettlementMonth($settlementMonth)
-            ->setSettlementSystem($settlementSystem);
+            ->setSettlementSystem($settlementSystem)
+            ->setUseMasterDataExchangeRate($useMasterDataExchangeRate);
+    }
+    /**
+     * Get adoptSellitemCurrencyRate value
+     * @return bool|null
+     */
+    public function getAdoptSellitemCurrencyRate(): ?bool
+    {
+        return $this->adoptSellitemCurrencyRate;
+    }
+    /**
+     * Set adoptSellitemCurrencyRate value
+     * @param bool $adoptSellitemCurrencyRate
+     * @return \Pggns\MidocoApi\Order\StructType\SupplierAgencySettlementDTO
+     */
+    public function setAdoptSellitemCurrencyRate(?bool $adoptSellitemCurrencyRate = null): self
+    {
+        // validation for constraint: boolean
+        if (!is_null($adoptSellitemCurrencyRate) && !is_bool($adoptSellitemCurrencyRate)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($adoptSellitemCurrencyRate, true), gettype($adoptSellitemCurrencyRate)), __LINE__);
+        }
+        $this->adoptSellitemCurrencyRate = $adoptSellitemCurrencyRate;
+        
+        return $this;
     }
     /**
      * Get creationDate value
@@ -297,6 +336,29 @@ class SupplierAgencySettlementDTO extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($settlementSystem, true), gettype($settlementSystem)), __LINE__);
         }
         $this->settlementSystem = $settlementSystem;
+        
+        return $this;
+    }
+    /**
+     * Get useMasterDataExchangeRate value
+     * @return bool|null
+     */
+    public function getUseMasterDataExchangeRate(): ?bool
+    {
+        return $this->useMasterDataExchangeRate;
+    }
+    /**
+     * Set useMasterDataExchangeRate value
+     * @param bool $useMasterDataExchangeRate
+     * @return \Pggns\MidocoApi\Order\StructType\SupplierAgencySettlementDTO
+     */
+    public function setUseMasterDataExchangeRate(?bool $useMasterDataExchangeRate = null): self
+    {
+        // validation for constraint: boolean
+        if (!is_null($useMasterDataExchangeRate) && !is_bool($useMasterDataExchangeRate)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($useMasterDataExchangeRate, true), gettype($useMasterDataExchangeRate)), __LINE__);
+        }
+        $this->useMasterDataExchangeRate = $useMasterDataExchangeRate;
         
         return $this;
     }

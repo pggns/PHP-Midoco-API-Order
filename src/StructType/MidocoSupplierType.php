@@ -67,6 +67,11 @@ class MidocoSupplierType extends SupplierDTO
      */
     protected ?string $city = null;
     /**
+     * The searchCode
+     * @var string|null
+     */
+    protected ?string $searchCode = null;
+    /**
      * Constructor method for MidocoSupplierType
      * @uses MidocoSupplierType::setIsInheritance()
      * @uses MidocoSupplierType::setOrgunit()
@@ -78,6 +83,7 @@ class MidocoSupplierType extends SupplierDTO
      * @uses MidocoSupplierType::setCreationDate()
      * @uses MidocoSupplierType::setAccountRevenueOwnService()
      * @uses MidocoSupplierType::setCity()
+     * @uses MidocoSupplierType::setSearchCode()
      * @param bool $isInheritance
      * @param string $orgunit
      * @param string $inkassoModeDescription
@@ -88,8 +94,9 @@ class MidocoSupplierType extends SupplierDTO
      * @param string $creationDate
      * @param string $accountRevenueOwnService
      * @param string $city
+     * @param string $searchCode
      */
-    public function __construct(?bool $isInheritance = null, ?string $orgunit = null, ?string $inkassoModeDescription = null, ?string $language = null, ?string $defaultProductType = null, ?bool $isHistorical = null, ?int $creationUser = null, ?string $creationDate = null, ?string $accountRevenueOwnService = null, ?string $city = '')
+    public function __construct(?bool $isInheritance = null, ?string $orgunit = null, ?string $inkassoModeDescription = null, ?string $language = null, ?string $defaultProductType = null, ?bool $isHistorical = null, ?int $creationUser = null, ?string $creationDate = null, ?string $accountRevenueOwnService = null, ?string $city = '', ?string $searchCode = null)
     {
         $this
             ->setIsInheritance($isInheritance)
@@ -101,7 +108,8 @@ class MidocoSupplierType extends SupplierDTO
             ->setCreationUser($creationUser)
             ->setCreationDate($creationDate)
             ->setAccountRevenueOwnService($accountRevenueOwnService)
-            ->setCity($city);
+            ->setCity($city)
+            ->setSearchCode($searchCode);
     }
     /**
      * Get isInheritance value
@@ -330,6 +338,29 @@ class MidocoSupplierType extends SupplierDTO
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($city, true), gettype($city)), __LINE__);
         }
         $this->city = $city;
+        
+        return $this;
+    }
+    /**
+     * Get searchCode value
+     * @return string|null
+     */
+    public function getSearchCode(): ?string
+    {
+        return $this->searchCode;
+    }
+    /**
+     * Set searchCode value
+     * @param string $searchCode
+     * @return \Pggns\MidocoApi\Order\StructType\MidocoSupplierType
+     */
+    public function setSearchCode(?string $searchCode = null): self
+    {
+        // validation for constraint: string
+        if (!is_null($searchCode) && !is_string($searchCode)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($searchCode, true), gettype($searchCode)), __LINE__);
+        }
+        $this->searchCode = $searchCode;
         
         return $this;
     }

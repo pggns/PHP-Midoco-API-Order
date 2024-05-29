@@ -50,6 +50,11 @@ class CrmExternalOfferDTO extends AbstractStructBase
      */
     protected ?int $customerId = null;
     /**
+     * The customerViewUrl
+     * @var string|null
+     */
+    protected ?string $customerViewUrl = null;
+    /**
      * The departureCode
      * @var string|null
      */
@@ -143,6 +148,7 @@ class CrmExternalOfferDTO extends AbstractStructBase
      * @uses CrmExternalOfferDTO::setCountryDescription()
      * @uses CrmExternalOfferDTO::setCreationTimestamp()
      * @uses CrmExternalOfferDTO::setCustomerId()
+     * @uses CrmExternalOfferDTO::setCustomerViewUrl()
      * @uses CrmExternalOfferDTO::setDepartureCode()
      * @uses CrmExternalOfferDTO::setDepartureDescription()
      * @uses CrmExternalOfferDTO::setDestinationCode()
@@ -167,6 +173,7 @@ class CrmExternalOfferDTO extends AbstractStructBase
      * @param string $countryDescription
      * @param string $creationTimestamp
      * @param int $customerId
+     * @param string $customerViewUrl
      * @param string $departureCode
      * @param string $departureDescription
      * @param string $destinationCode
@@ -185,7 +192,7 @@ class CrmExternalOfferDTO extends AbstractStructBase
      * @param float $travelPrice
      * @param string $traveldate
      */
-    public function __construct(?string $advisoryId = null, ?string $category = null, ?string $city = null, ?string $countryCode = null, ?string $countryDescription = null, ?string $creationTimestamp = null, ?int $customerId = null, ?string $departureCode = null, ?string $departureDescription = null, ?string $destinationCode = null, ?string $destinationDescription = null, ?int $duration = null, ?string $hotelName = null, ?string $modifyTimestamp = null, ?int $noOfOffer = null, ?int $noOfPersons = null, ?string $offerId = null, ?string $offerSource = null, ?int $refId = null, ?string $scope = null, ?string $status = null, ?string $supplierId = null, ?float $travelPrice = null, ?string $traveldate = null)
+    public function __construct(?string $advisoryId = null, ?string $category = null, ?string $city = null, ?string $countryCode = null, ?string $countryDescription = null, ?string $creationTimestamp = null, ?int $customerId = null, ?string $customerViewUrl = null, ?string $departureCode = null, ?string $departureDescription = null, ?string $destinationCode = null, ?string $destinationDescription = null, ?int $duration = null, ?string $hotelName = null, ?string $modifyTimestamp = null, ?int $noOfOffer = null, ?int $noOfPersons = null, ?string $offerId = null, ?string $offerSource = null, ?int $refId = null, ?string $scope = null, ?string $status = null, ?string $supplierId = null, ?float $travelPrice = null, ?string $traveldate = null)
     {
         $this
             ->setAdvisoryId($advisoryId)
@@ -195,6 +202,7 @@ class CrmExternalOfferDTO extends AbstractStructBase
             ->setCountryDescription($countryDescription)
             ->setCreationTimestamp($creationTimestamp)
             ->setCustomerId($customerId)
+            ->setCustomerViewUrl($customerViewUrl)
             ->setDepartureCode($departureCode)
             ->setDepartureDescription($departureDescription)
             ->setDestinationCode($destinationCode)
@@ -371,6 +379,29 @@ class CrmExternalOfferDTO extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($customerId, true), gettype($customerId)), __LINE__);
         }
         $this->customerId = $customerId;
+        
+        return $this;
+    }
+    /**
+     * Get customerViewUrl value
+     * @return string|null
+     */
+    public function getCustomerViewUrl(): ?string
+    {
+        return $this->customerViewUrl;
+    }
+    /**
+     * Set customerViewUrl value
+     * @param string $customerViewUrl
+     * @return \Pggns\MidocoApi\Order\StructType\CrmExternalOfferDTO
+     */
+    public function setCustomerViewUrl(?string $customerViewUrl = null): self
+    {
+        // validation for constraint: string
+        if (!is_null($customerViewUrl) && !is_string($customerViewUrl)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($customerViewUrl, true), gettype($customerViewUrl)), __LINE__);
+        }
+        $this->customerViewUrl = $customerViewUrl;
         
         return $this;
     }

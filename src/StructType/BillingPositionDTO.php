@@ -340,6 +340,11 @@ class BillingPositionDTO extends AbstractStructBase
      */
     protected ?float $vatBaseExtern = null;
     /**
+     * The vatCode
+     * @var string|null
+     */
+    protected ?string $vatCode = null;
+    /**
      * The vatPercent
      * @var float|null
      */
@@ -426,6 +431,7 @@ class BillingPositionDTO extends AbstractStructBase
      * @uses BillingPositionDTO::setVatAmountExtern()
      * @uses BillingPositionDTO::setVatBase()
      * @uses BillingPositionDTO::setVatBaseExtern()
+     * @uses BillingPositionDTO::setVatCode()
      * @uses BillingPositionDTO::setVatPercent()
      * @uses BillingPositionDTO::setVatPercentExtern()
      * @uses BillingPositionDTO::setVoidPositionId()
@@ -495,12 +501,13 @@ class BillingPositionDTO extends AbstractStructBase
      * @param float $vatAmountExtern
      * @param float $vatBase
      * @param float $vatBaseExtern
+     * @param string $vatCode
      * @param float $vatPercent
      * @param float $vatPercentExtern
      * @param int $voidPositionId
      * @param bool $voided
      */
-    public function __construct(?bool $acceptCc = null, ?bool $acceptDebit = null, ?string $accountId = null, ?string $calculatedPrintDate = null, ?float $commissionPercent = null, ?string $costCentre = null, ?string $costUnit = null, ?string $creationTimestamp = null, ?int $creationUser = null, ?string $currency = null, ?int $dbiInfosStatus = null, ?int $degussaPositionId = null, ?string $description = null, ?string $destinationCode = null, ?int $detailPosition = null, ?string $documentCode = null, ?int $documentId = null, ?string $dueDate = null, ?float $exchangeRate = null, ?bool $forAgency = null, ?bool $imported = null, ?bool $isBackgroundPosition = null, ?bool $isCommission = null, ?bool $isDeposit = null, ?bool $isNettoSinglePrice = null, ?bool $isPackage = null, ?bool $isPackageManual = null, ?bool $isPayment = null, ?bool $isRevenue = null, ?bool $isReverseCharge = null, ?int $itemId = null, ?int $noOfItems = null, ?int $orderId = null, ?string $originalCurrency = null, ?float $originalPrice = null, ?string $packageCode = null, ?string $paidDate = null, ?string $paymentPosition = null, ?int $paymentPositionId = null, ?string $paymentType = null, ?string $planId = null, ?int $position = null, ?int $positionId = null, ?float $price = null, ?string $printDescription = null, ?string $printPackageCode = null, ?string $referenceNo = null, ?float $revenuePercent = null, ?int $settlementPositionId = null, ?float $singlePrice = null, ?int $splitPositionId = null, ?bool $tokenChecked = null, ?float $totalTax = null, ?int $transactionId = null, ?string $travelNoHandling = null, ?float $vat2Amount = null, ?float $vat2AmountExtern = null, ?float $vat2Base = null, ?float $vat2BaseExtern = null, ?float $vat2Percent = null, ?float $vat2PercentExtern = null, ?float $vatAmount = null, ?float $vatAmountExtern = null, ?float $vatBase = null, ?float $vatBaseExtern = null, ?float $vatPercent = null, ?float $vatPercentExtern = null, ?int $voidPositionId = null, ?bool $voided = null)
+    public function __construct(?bool $acceptCc = null, ?bool $acceptDebit = null, ?string $accountId = null, ?string $calculatedPrintDate = null, ?float $commissionPercent = null, ?string $costCentre = null, ?string $costUnit = null, ?string $creationTimestamp = null, ?int $creationUser = null, ?string $currency = null, ?int $dbiInfosStatus = null, ?int $degussaPositionId = null, ?string $description = null, ?string $destinationCode = null, ?int $detailPosition = null, ?string $documentCode = null, ?int $documentId = null, ?string $dueDate = null, ?float $exchangeRate = null, ?bool $forAgency = null, ?bool $imported = null, ?bool $isBackgroundPosition = null, ?bool $isCommission = null, ?bool $isDeposit = null, ?bool $isNettoSinglePrice = null, ?bool $isPackage = null, ?bool $isPackageManual = null, ?bool $isPayment = null, ?bool $isRevenue = null, ?bool $isReverseCharge = null, ?int $itemId = null, ?int $noOfItems = null, ?int $orderId = null, ?string $originalCurrency = null, ?float $originalPrice = null, ?string $packageCode = null, ?string $paidDate = null, ?string $paymentPosition = null, ?int $paymentPositionId = null, ?string $paymentType = null, ?string $planId = null, ?int $position = null, ?int $positionId = null, ?float $price = null, ?string $printDescription = null, ?string $printPackageCode = null, ?string $referenceNo = null, ?float $revenuePercent = null, ?int $settlementPositionId = null, ?float $singlePrice = null, ?int $splitPositionId = null, ?bool $tokenChecked = null, ?float $totalTax = null, ?int $transactionId = null, ?string $travelNoHandling = null, ?float $vat2Amount = null, ?float $vat2AmountExtern = null, ?float $vat2Base = null, ?float $vat2BaseExtern = null, ?float $vat2Percent = null, ?float $vat2PercentExtern = null, ?float $vatAmount = null, ?float $vatAmountExtern = null, ?float $vatBase = null, ?float $vatBaseExtern = null, ?string $vatCode = null, ?float $vatPercent = null, ?float $vatPercentExtern = null, ?int $voidPositionId = null, ?bool $voided = null)
     {
         $this
             ->setAcceptCc($acceptCc)
@@ -568,6 +575,7 @@ class BillingPositionDTO extends AbstractStructBase
             ->setVatAmountExtern($vatAmountExtern)
             ->setVatBase($vatBase)
             ->setVatBaseExtern($vatBaseExtern)
+            ->setVatCode($vatCode)
             ->setVatPercent($vatPercent)
             ->setVatPercentExtern($vatPercentExtern)
             ->setVoidPositionId($voidPositionId)
@@ -2065,6 +2073,29 @@ class BillingPositionDTO extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a float value, %s given', var_export($vatBaseExtern, true), gettype($vatBaseExtern)), __LINE__);
         }
         $this->vatBaseExtern = $vatBaseExtern;
+        
+        return $this;
+    }
+    /**
+     * Get vatCode value
+     * @return string|null
+     */
+    public function getVatCode(): ?string
+    {
+        return $this->vatCode;
+    }
+    /**
+     * Set vatCode value
+     * @param string $vatCode
+     * @return \Pggns\MidocoApi\Order\StructType\BillingPositionDTO
+     */
+    public function setVatCode(?string $vatCode = null): self
+    {
+        // validation for constraint: string
+        if (!is_null($vatCode) && !is_string($vatCode)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($vatCode, true), gettype($vatCode)), __LINE__);
+        }
+        $this->vatCode = $vatCode;
         
         return $this;
     }
